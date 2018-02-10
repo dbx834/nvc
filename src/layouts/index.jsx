@@ -292,48 +292,58 @@ class TemplateWrapper extends React.Component {
               </ul>
             </MobileMenu>
             <DesktopHeader className={desktopHeaderStyleClass}>
-              <Container threeQuarters block noFade style={{ padding: 0 }}>
-                <Image
-                  src={giraffes}
+              <Container threeQuarters block noFade>
+                <div
                   style={{
-                    position: 'absolute',
-                    height: 250,
-                    width: 250,
-                    background: 'transparent',
-                    border: 0,
-                    right: 0,
+                    display: 'flex',
+                    ...applyRhythm({ padding: '4X 0X 0.5X 0X' }),
                   }}
-                />
-                <H1 style={{ margin: '89px 0px 10px 0px' }}>
-                  <Link to="/">
-                    <i>
-                      Joy<br />Living<br />Learning
-                    </i>
-                  </Link>
-                </H1>
-                <hr />
-                <div className="nav text-center">
-                  <Link className="mask-p" to="/">
-                    <span>About</span>
-                  </Link>
-                  <span className="mask-p">
-                    <small>&nbsp;•&nbsp;</small>
-                  </span>
-                  <Link className="mask-p" to="/services">
-                    <span>Events</span>
-                  </Link>
-                  <span className="mask-p">
-                    <small>&nbsp;•&nbsp;</small>
-                  </span>
-                  <Link className="mask-p" to="/about">
-                    <span>Writings</span>
-                  </Link>
-                  <span className="mask-p">
-                    <small>&nbsp;•&nbsp;</small>
-                  </span>
-                  <Link className="mask-p" to="/contact">
-                    <span>Contact</span>
-                  </Link>
+                >
+                  <div
+                    style={{
+                      flexGrow: 15,
+                      flexBasis: 0,
+                      paddingRight: 40,
+                    }}
+                  >
+                    <div
+                      style={{
+                        background: 'blue',
+                        width: '100%',
+                        height: '100%',
+                      }}
+                    />
+                  </div>
+                  <div style={{ flexGrow: 75, flexBasis: 0, marginRight: 40 }}>
+                    <H1
+                      style={{ marginTop: 0, marginBottom: 10 }}
+                      scale="1.25X"
+                    >
+                      <Link to="/">
+                        <i>Joy Living Learning</i>
+                      </Link>
+                    </H1>
+                    <Paragraph scale="1.25X">
+                      NVC and Restorative Circles in India… blah blah blah blah
+                      blah blah tagline ends.
+                    </Paragraph>
+                  </div>
+                  <div style={{ flexGrow: 15, flexBasis: 0, paddingLeft: 20 }}>
+                    <ul style={{ padding: 0, listStyle: 'none' }}>
+                      <li>
+                        <Link to="/">Calendar</Link>
+                      </li>
+                      <li>
+                        <Link to="/">Writings</Link>
+                      </li>
+                      <li>
+                        <Link to="/">About</Link>
+                      </li>
+                      <li>
+                        <Link to="/">Contact</Link>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
                 <hr />
               </Container>

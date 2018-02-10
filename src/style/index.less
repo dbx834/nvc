@@ -1,0 +1,104 @@
+/* ----------------------------------------------------------------- */
+/* --------------------------------------------------------- Globals
+/* ----------------------------------------------------------------- */
+body {
+  background-color: #fffdf9;
+  color: #363636;
+  line-height: unset;
+}
+
+/* ----------------------------------------------------------------------------------- */
+/* ------------------------------ Alignment // Display ------------------------------- */
+/* ----------------------------------------------------------------------------------- */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-constrained {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.hide {
+  max-height: 0 !important;
+  overflow: hidden !important;
+  speak: none !important;
+  visibility: hidden !important;
+}
+
+.stash {
+  position: absolute;
+  margin: -1px;
+  padding: 0;
+  height: 1px;
+  width: 100%;
+  overflow: hidden;
+  border: 0;
+  clip: rect(0 0 0 0);
+}
+
+/* ----------------------------------------------------------------------------------- */
+/* ------------------------------------- Footer -------------------------------------- */
+/* ----------------------------------------------------------------------------------- */
+#lightboxBackdrop {
+  background-color: #222222 !important;
+  background: #222222 !important;
+}
+
+.grid {
+  width: 100%;
+  max-width: 100%;
+  list-style: none;
+  margin: 2px auto;
+  padding: 0;
+}
+
+.grid li {
+  display: block;
+  float: left;
+  padding: 3px;
+  width: 49%;
+}
+
+.slowFade {
+  -webkit-animation: 1s ease 0s normal forwards 1 fadein;
+  animation: 1s ease 0s normal forwards 1 fadein;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  66% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  66% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

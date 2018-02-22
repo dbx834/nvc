@@ -17,7 +17,7 @@ import {
   Header,
   Footer,
 } from '@bodhi-project/semantic-webflow';
-import { Elements, applyRhythm } from '@bodhi-project/typography';
+import { Elements } from '@bodhi-project/typography';
 import { treeCodeParser } from '@bodhi-project/markdown-to-react';
 import {
   // --------------- Basic
@@ -30,6 +30,7 @@ import {
   // --------------- Schema.org JSON-LD
   WebpageSchema,
   BreadcrumbSchema,
+  BlogPostSchema,
 } from '@bodhi-project/seo';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals - Images
@@ -49,18 +50,14 @@ const { H1, Paragraph } = Elements;
 // ----------------------------------------------------------------------------
 const pageStyle = css({
   position: 'relative',
-  ...applyRhythm({ maxWidth: '27X' }),
-  '& div + p': {
-    ...applyRhythm({ marginTop: '2X' }),
-  },
 });
 const pageStyleClass = pageStyle.toString();
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
-/** PageTemplate */
-class PageTemplate extends React.Component {
+/** BlogPostTemplate */
+class BlogPostTemplate extends React.Component {
   /** standard constructor */
   constructor(props) {
     super(props);
@@ -80,6 +77,7 @@ class PageTemplate extends React.Component {
     // Date stuff
     const mDate = moment(frontmatter.date);
     const humanDate = mDate.format('dddd, MMMM Do YYYY');
+    const isoDate = mDate.format();
     const elapsed = mDate.fromNow();
 
     const generalMetaData = {
@@ -123,6 +121,15 @@ class PageTemplate extends React.Component {
       ],
     };
 
+    const blogPageSchemaData = {
+      headline: frontmatter.title,
+      image: indexImage,
+      url: `${data.nakedWebsiteUrl}${route}`,
+      datePublished: isoDate,
+      description: frontmatter.abstract,
+      publisher: data.org.name,
+    };
+
     return (
       <Fragment>
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
@@ -132,6 +139,7 @@ class PageTemplate extends React.Component {
         <OpenGraphSummary data={openGraphSummaryData} />
         <WebpageSchema data={webpageSchemaData} />
         <BreadcrumbSchema data={breadcrumbSchemaData} />
+        <BlogPostSchema data={blogPageSchemaData} />
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={`${markdownStylesClass} ${pageStyleClass}`}>
@@ -146,7 +154,7 @@ class PageTemplate extends React.Component {
               {
                 localLink: Link,
                 linkHeaders: true,
-                trackHeaders: false,
+                trackHeaders: true,
                 nestHeaders: true,
               },
               {},
@@ -166,11 +174,11 @@ class PageTemplate extends React.Component {
   }
 }
 
-PageTemplate.propTypes = {
+BlogPostTemplate.propTypes = {
   pathContext: PropTypes.object,
 };
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Export
 // ----------------------------------------------------------------------------
-export default PageTemplate;
+export default BlogPostTemplate;

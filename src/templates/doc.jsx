@@ -10,6 +10,7 @@ import moment from 'moment';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from 'gatsby-link';
+import { Row, Col } from 'antd';
 import {
   Page,
   // Section,
@@ -17,8 +18,8 @@ import {
   Header,
   Footer,
 } from '@bodhi-project/semantic-webflow';
-import { Elements, applyRhythm } from '@bodhi-project/typography';
-import { treeCodeParser } from '@bodhi-project/markdown-to-react';
+import { Elements } from '@bodhi-project/typography';
+import { treeCodeParser, tocParser } from '@bodhi-project/markdown-to-react';
 import {
   // --------------- Basic
   UpdateTitle,
@@ -32,10 +33,8 @@ import {
   BreadcrumbSchema,
 } from '@bodhi-project/seo';
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals - Images
-import indexImage from '../pages/assets/index.jpg';
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
+import indexImage from '../pages/assets/index.jpg';
 import packageJson from '../../package.json';
 import markdownStylesClass from '../styles/markdownStyles';
 
@@ -49,18 +48,14 @@ const { H1, Paragraph } = Elements;
 // ----------------------------------------------------------------------------
 const pageStyle = css({
   position: 'relative',
-  ...applyRhythm({ maxWidth: '27X' }),
-  '& div + p': {
-    ...applyRhythm({ marginTop: '2X' }),
-  },
 });
 const pageStyleClass = pageStyle.toString();
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
-/** PageTemplate */
-class PageTemplate extends React.Component {
+/** DocTemplate */
+class DocTemplate extends React.Component {
   /** standard constructor */
   constructor(props) {
     super(props);
@@ -71,11 +66,11 @@ class PageTemplate extends React.Component {
     // Abstract stuff
     const { pathContext } = this.props;
     const { frontmatter } = pathContext;
-    // const { toc } = pathContext;
+    const { toc } = pathContext;
     const { markdownAst } = pathContext;
     const { route } = pathContext;
     const checkedRoute = _.startsWith(route, '/') ? route : `/${route}`;
-    // const { headings } = pathContext;
+    const { headings } = pathContext;
 
     // Date stuff
     const mDate = moment(frontmatter.date);
@@ -135,10 +130,10 @@ class PageTemplate extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={`${markdownStylesClass} ${pageStyleClass}`}>
-          <Header className="stash">
+          <Header>
             <H1>{frontmatter.title}</H1>
             <Paragraph>{humanDate}</Paragraph>
-            <Paragraph>{frontmatter.abstract}</Paragraph>
+            <Paragraph className="stash">{frontmatter.abstract}</Paragraph>
           </Header>
           <Article>
             {treeCodeParser(
@@ -146,10 +141,17 @@ class PageTemplate extends React.Component {
               {
                 localLink: Link,
                 linkHeaders: true,
-                trackHeaders: false,
+                trackHeaders: true,
                 nestHeaders: true,
               },
               {},
+            )}
+            {tocParser(
+              toc,
+              this.props.location.pathname,
+              { localLink: Link },
+              {},
+              { where: frontmatter.title, what: headings },
             )}
           </Article>
           <Footer className="stash">
@@ -166,11 +168,11 @@ class PageTemplate extends React.Component {
   }
 }
 
-PageTemplate.propTypes = {
+DocTemplate.propTypes = {
   pathContext: PropTypes.object,
 };
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Export
 // ----------------------------------------------------------------------------
-export default PageTemplate;
+export default DocTemplate;

@@ -1,21 +1,22 @@
-// ------------------------------------------------------------------------------
-// ---------------------------------------------------------------------- Imports
-// ------------------------------------------------------------------------------
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import React from 'react'; // eslint-disable-line import/no-extraneous-dependencies
+// ----------------------------------------------------------------------------
+// -------------------------------------------------------------------- Imports
+// ----------------------------------------------------------------------------
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
+import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
+import moment from 'moment';
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from 'gatsby-link';
-import { Icon } from 'antd'; // eslint-disable-line import/no-extraneous-dependencies
+import { Icon } from 'antd';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import {
   CompositeHeader,
   Container,
-  Image,
   OutLink,
+  Image,
 } from '@bodhi-project/components';
 import { Elements, Type, applyRhythm } from '@bodhi-project/typography';
 import {
@@ -29,89 +30,66 @@ import {
   OrganisationSchema,
 } from '@bodhi-project/seo';
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Styles
-import '../style/index.less';
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
+import '../styles/index.less';
+import mobileLogo from './assets/mobileLogo.png';
+import mobileBurger from './assets/mobileBurger.png';
+import mobileCross from './assets/mobileCross.png';
+import indexImage from '../pages/assets/launch.jpg';
+import packageJson from '../../package.json';
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Images
-import headerBanner from './assets/header.png';
-import burgerMenu from './assets/burger_menu.png';
-import burgerCross from './assets/burger_menu.png';
-import logo from './assets/logo.png';
-import indexImage from '../pages/assets/index.jpg';
-import giraffes from './assets/giraffes.png';
-import waves from './assets/waves.png';
-import boat from './assets/boat.png';
-import creativeCommons from './assets/creative-commons.svg';
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstract stuff
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const {
   ResponsiveHeader,
   DesktopHeader,
   MobileMenu,
   MobileHeader,
 } = CompositeHeader;
-const { Paragraph, H1, H2, H3, H4, H5, H6 } = Elements;
+// const { Fragment } = React;
+const { H1, Paragraph, Ul } = Elements;
+const { data } = packageJson;
 
-// ------------------------------------------------------------------------------
-// ------------------------------------------------------------------- Global SEO
-// ------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------- Global SEO
+// ----------------------------------------------------------------------------
 const websiteSchemaData = {
-  url: 'https://www.nimas.pub/',
-  name: 'Launch Kit',
-  description: 'Launch Kit is an opionated GatsbyJS Starter kit.',
-  author: 'Bodhi Project',
-  publisher: 'Bodhi Project',
+  url: data.websiteUrl,
+  name: data.websiteName,
+  description: data.websiteDescription,
+  author: data.org.name,
+  publisher: data.org.name,
   image: indexImage,
 };
 
 const organisationSchemaData = {
-  name: 'Bodhi Project',
-  legalName: 'Bodhi Project',
-  url: 'https://www.bodhiproject.org/',
-  logo:
-    'https://d33wubrfki0l68.cloudfront.net/2226b7992d5cabd99e7363d4ca031cad3b25fff6/5c67d/static/logoalpha.edbd60a8.png',
-  foundingDate: '2017',
-  founders: ['Pranav Kumar', 'Mangal Varshney', 'Dr. Brijesh Kumar'],
-  streetAddress: 'Kotagiri',
-  addressLocality: 'Kotagiri',
-  addressRegion: 'Tamil Nadu',
-  postalCode: '643217',
-  addressCountry: 'India',
-  telephone: ['na'],
-  email: 'hello@bodhiproject.org',
-  sameAs: [
-    'http://instagram.com/bodhisystems',
-    'https://twitter.com/_dmi_systems',
-  ],
+  name: data.org.name,
+  legalName: data.org.legalName,
+  url: data.org.url,
+  logo: `${data.org.url}${data.org.logo}`,
+  foundingDate: moment(data.org.foundingDate).format(),
+  founders: data.org.founders,
+  streetAddress: data.orgLocation.streetAddress,
+  addressLocality: data.orgLocation.addressLocality,
+  addressRegion: data.orgLocation.addressRegion,
+  postalCode: data.orgLocation.postalCode,
+  addressCountry: data.orgLocation.addressCountry,
+  telephone: data.orgContact.telephone,
+  email: data.orgContact.email,
+  sameAs: data.orgSocialMediaProfiles,
   image: indexImage,
 };
 
-// ------------------------------------------------------------------------------
-// ----------------------------------------------------------------------- Styles
-// ------------------------------------------------------------------------------
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Wrapper
+// ----------------------------------------------------------------------------
+// --------------------------------------------------------------------- Styles
+// ----------------------------------------------------------------------------
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const wrapperStyles = css({
-  margin: 30,
-  background: '#F8F2E6',
+  // margin: 30,
+  background: 'transparent',
   position: 'relative',
 
   '& h1, h2, h3, h4, h5, h6, p, li': {
     color: '#4a4a4a',
-  },
-
-  '& h6': {
-    position: 'relative',
-  },
-
-  '& h6:before': {
-    display: 'block',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    ...applyRhythm({ height: '0.234X' }),
-    ...applyRhythm({ width: '0.675X' }),
-    background: '#4a4a4a',
-    content: `' '`,
   },
 
   '& a': {
@@ -133,344 +111,287 @@ const wrapperStyles = css({
     },
   },
 
-  '& hr': {
-    border: '2px solid #4a4a4a',
+  '& #content': {
+    ...applyRhythm({ padding: '4.8X 3X' }),
+    marginLeft: 0,
+  },
+
+  '& #footer': {
+    ...applyRhythm({ padding: '0X 3X 4.8X 3X' }),
+
+    '& hr': {
+      height: 1,
+      border: 0,
+      backgroundImage:
+        'linear-gradient(to right, #4a4a4a 30%, rgba(74, 74, 74, 0) 0%)',
+      backgroundPosition: 'bottom',
+      backgroundSize: '5px 1px',
+      backgroundRepeat: 'repeat-x',
+    },
   },
 });
 const wrapperStylesClass = wrapperStyles.toString();
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mobile Header
-const mobileHeaderStyle = css({
-  height: '110px',
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mobile
+const mobileHeader = css({
+  paddingBottom: 20,
 });
+const mobileHeaderClass = mobileHeader.toString();
 
-const mobileHeaderStyleClass = mobileHeaderStyle.toString();
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mobile Menu
-const mobileMenuStyle = css({
-  '& ul': {
-    margin: 0,
-    padding: 0,
-  },
-
-  '& ul li': {
-    display: 'block',
-    paddingTop: '27px',
-    paddingBottom: '27px',
-
+const mobileMenu = css({
+  backgroundColor: '#fcfcfc',
+  '& .bm-item-list': {
+    padding: '1em',
     '& a': {
-      color: '#081359',
+      display: 'block',
+      fontSize: '150%',
+      marginBottom: '1em',
     },
   },
 });
-const mobileMenuStyleClass = mobileMenuStyle.toString();
+const mobileMenuClass = mobileMenu.toString();
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Desktop Header
 const desktopHeaderStyle = css({
-  '& h1': {
-    '& a': {
-      color: '#4a4a4a',
-      borderBottom: 'none',
-      transition: '0.125s',
+  '& ul': {
+    listStyle: 'none',
+    paddingLeft: 40,
 
-      '&:hover': {
-        color: '#0000FF',
-        borderBottom: 'none',
+    '& li': {
+      fontFamily: 'futura-pt, sans-serif !important',
+      ...applyRhythm({ marginBottom: '0.075X' }),
+    },
+
+    '& li.header': {
+      fontWeight: 700,
+
+      '& span': {
+        fontSize: '90%',
+        letterSpacing: '-0.08775ex',
       },
     },
-  },
 
-  '& .nav': {
-    ...applyRhythm({ padding: '0X 0X 0.625X 0X' }),
+    '& li.header:not(:first-child)': {
+      ...applyRhythm({ marginTop: '1X' }),
+    },
+
+    '& a': {
+      color: '#4a4a4a',
+      borderBottom: '1.625px solid transparent',
+      transition: '0.125s',
+      textTransform: 'uppercase',
+      letterSpacing: '0.14625ex',
+
+      '& span': {
+        fontSize: '68%',
+      },
+
+      '&:hover': {
+        color: '#4a4a4a',
+        borderBottom: '1.625px solid #4a4a4a',
+      },
+    },
   },
 });
 const desktopHeaderStyleClass = desktopHeaderStyle.toString();
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Footer
-const footerStyle = css({
-  '& .abstract': {
-    ...applyRhythm({ marginTop: '1X' }),
-    ...applyRhythm({ marginBottom: '1X' }),
-    padding: 0,
-    '& .one': {
-      borderTop: '1px solid #4a4a4a',
-      textAlign: 'center',
-      ...applyRhythm({ marginBottom: '2X' }),
-      '&:after': {
-        content: `'☉'`,
-        display: 'inline-block',
-        position: 'relative',
-        top: -14,
-        padding: '0 10px',
-        background: '#ffffff',
-        color: '#4a4a4a',
-        fontSize: '18px',
-        transform: 'rotate(60deg)',
-      },
-    },
-    '& .two': {
-      borderTop: '1px solid #4a4a4a',
-      textAlign: 'center',
-      ...applyRhythm({ marginTop: '3.2X' }),
-      '&:after': {
-        content: `'☉'`,
-        display: 'inline-block',
-        position: 'relative',
-        top: -14,
-        padding: '0 10px',
-        background: '#ffffff',
-        color: '#4a4a4a',
-        fontSize: '18px',
-        transform: 'rotate(60deg)',
-      },
-    },
-  },
-  '& .double': {
-    ...applyRhythm({ marginTop: '2X' }),
-  },
-  '& .cr': {
-    ...applyRhythm({ padding: '2X 0X' }),
-  },
-  '& .cp': {
-    position: 'absolute',
-    ...applyRhythm({ padding: '0.5X 0X' }),
-  },
-});
-const footerStyleClass = footerStyle.toString();
-
-// ----------------------------------------------------------------------- Component
-/**
- * Indexpage
- */
+// ----------------------------------------------------------------------------
+// ------------------------------------------------------------------ Component
+// ----------------------------------------------------------------------------
+/** Indexpage */
 class TemplateWrapper extends React.Component {
+  /** standard constructor */
   constructor(props) {
     super(props);
   }
 
+  /** standard renderer */
   render() {
     return (
       <Type
-        kit="ltb1ekq"
+        kit="dkc2ilk"
         style={{ minHeight: '100vh' }}
         className={wrapperStylesClass}
       >
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
         <InitializeMeta data={{ titleTemplate: '%s | Joy Living Learning' }} />
-        <UpdateTitle title="NVC and Restorative Circles in India" />
+        <UpdateTitle title="Loading..." />
         <WebsiteSchema data={websiteSchemaData} />
         <OrganisationSchema data={organisationSchemaData} />
-
-        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Header */}
-        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Header */}
-        <SemanticHeader>
-          <ResponsiveHeader path={this.props.location}>
-            <MobileHeader className={mobileHeaderStyleClass}>
-              <img
-                id="logo"
-                src={headerBanner}
-                style={{ height: 100, width: 'auto' }}
-              />
-              <img
-                id="menu"
-                src={burgerMenu}
-                style={{ height: 48, width: 48, top: 26, right: 0 }}
-              />
-              <img
-                id="cross"
-                src={burgerCross}
-                style={{ height: 37, width: 37 }}
-              />
-            </MobileHeader>
-            <MobileMenu className={mobileMenuStyleClass}>
-              <ul>
-                <li>
-                  <Link to="/">Features »</Link>
-                </li>
-                <li>
-                  <Link to="/">Docs »</Link>
-                </li>
-              </ul>
-            </MobileMenu>
-            <DesktopHeader className={desktopHeaderStyleClass}>
-              <Container threeQuarters block noFade>
-                <div
-                  style={{
-                    display: 'flex',
-                    ...applyRhythm({ padding: '4X 0X 0.5X 0X' }),
-                  }}
-                >
-                  <div
-                    style={{
-                      flexGrow: 15,
-                      flexBasis: 0,
-                      paddingRight: 40,
-                    }}
-                  >
-                    <div
-                      style={{
-                        background: 'blue',
-                        width: '100%',
-                        height: '100%',
-                      }}
-                    />
-                  </div>
-                  <div style={{ flexGrow: 75, flexBasis: 0, marginRight: 40 }}>
-                    <H1
-                      style={{ marginTop: 0, marginBottom: 10 }}
-                      scale="1.25X"
-                    >
-                      <Link to="/">
-                        <i>Joy Living Learning</i>
-                      </Link>
-                    </H1>
-                    <Paragraph scale="1.25X">
-                      NVC and Restorative Circles in India… blah blah blah blah
-                      blah blah tagline ends.
-                    </Paragraph>
-                  </div>
-                  <div style={{ flexGrow: 15, flexBasis: 0, paddingLeft: 20 }}>
-                    <ul style={{ padding: 0, listStyle: 'none' }}>
-                      <li>
-                        <Link to="/">Calendar</Link>
-                      </li>
-                      <li>
-                        <Link to="/">Writings</Link>
-                      </li>
-                      <li>
-                        <Link to="/">About</Link>
-                      </li>
-                      <li>
-                        <Link to="/">Contact</Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <hr />
-              </Container>
-            </DesktopHeader>
-          </ResponsiveHeader>
-        </SemanticHeader>
-
-        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
-        <div style={{ minHeight: '100vh' }}>{this.props.children()}</div>
-
-        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Footer */}
-        <SemanticFooter className={footerStyleClass}>
-          <Container
-            threeQuarters
-            block
-            noFade
-            className="cr"
-            style={{ position: 'relative' }}
+        <div style={{ display: 'flex' }}>
+          <div
+            style={{
+              flexGrow: '22',
+              flexBasis: 0,
+              background: '#fafafa',
+              height: '100vh',
+            }}
           >
-            <Image
-              src={waves}
-              style={{
-                height: 7,
-                width: '100%',
-                background: 'transparent',
-                border: 0,
-                display: 'block',
-                ...applyRhythm({ marginBottom: '1X' }),
-                zIndex: 2,
-              }}
-            />
-            <Image
-              src={boat}
-              style={{
-                height: 150,
-                width: 150,
-                background: 'transparent',
-                border: 0,
-                position: 'absolute',
-                right: 0,
-                zIndex: 1,
-                top: -101,
-              }}
-            />
-            <H4 style={{ ...applyRhythm({ marginBottom: '2X' }) }}>
-              Notes & Further Resources
-            </H4>
-            <div style={{ display: 'flex' }}>
-              <div style={{ flexGrow: 30, flexBasis: 0, paddingRight: 40 }}>
-                <H6
-                  caps
-                  scale="0.825X"
-                  style={{ ...applyRhythm({ marginBottom: '0.74X' }) }}
-                >
-                  Helpful Links
-                </H6>
-                <ul style={{ padding: 0 }}>
-                  <li>
-                    <Link to="/">Link 1</Link>
-                  </li>
-                  <li>
-                    <Link to="/">Link 2</Link>
-                  </li>
-                  <li>
-                    <Link to="/">Link 3</Link>
-                  </li>
-                </ul>
-              </div>
-              <div style={{ flexGrow: 48, flexBasis: 0, paddingRight: 40 }}>
-                <H6
-                  caps
-                  scale="0.825X"
-                  style={{ ...applyRhythm({ marginBottom: '0.74X' }) }}
-                >
-                  About
-                </H6>
+            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Header */}
+            <SemanticHeader>
+              <ResponsiveHeader path={this.props.location}>
+                <MobileHeader className={mobileHeaderClass}>
+                  <img
+                    id="logo"
+                    src={mobileLogo}
+                    style={{
+                      height: 55,
+                      width: 'auto',
+                      marginTop: 20,
+                    }}
+                  />
+                  <img
+                    id="menu"
+                    src={mobileBurger}
+                    style={{ height: 55, width: 55, top: 13, right: 3 }}
+                  />
+                  <img
+                    id="cross"
+                    src={mobileCross}
+                    style={{ height: 37, width: 37 }}
+                  />
+                </MobileHeader>
+                <MobileMenu className={mobileMenuClass}>
+                  <Link to="/">Portfolio »</Link>
+                  <Link to="/products-and-solutions">
+                    Products & Solutions »
+                  </Link>
+                  <Link to="/about">About »</Link>
+                  <Link to="/contact">Contact »</Link>
+                </MobileMenu>
+                <DesktopHeader className={desktopHeaderStyleClass}>
+                  <Container bleed block noFade style={{ padding: 0 }}>
+                    <Image
+                      src={''}
+                      style={{
+                        height: 80,
+                        width: 128,
+                        border: 0,
+                        background: '#4a4a4a',
+                        marginLeft: 40,
+                        marginBottom: 26,
+                        marginTop: 26,
+                      }}
+                      loader="gradient"
+                    />
+                    <nav>
+                      <Ul>
+                        <li className="header">
+                          <span>About</span>
+                        </li>
+                        <li>
+                          <Link to="/nonviolent-communication">
+                            <span>Nonviolent Communication</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/restorative-circles">
+                            <span>Restorative Circles</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/internal-family-systems">
+                            <span>Internal Family Systems</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/sociocracy">
+                            <span>Sociocracy</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/laura-joy">
+                            <span>Laur'a Joy</span>
+                          </Link>
+                        </li>
+                        <li className="header">
+                          <span>Learn</span>
+                        </li>
+                        <li>
+                          <Link to="/events">
+                            <span>Upcoming Events</span>
+                          </Link>
+                        </li>
+                        <li className="header">
+                          <span>Facilitation</span>
+                        </li>
+                        <li>
+                          <Link to="/mediated-restorative-circles">
+                            <span>Restorative Circles</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/mediation">
+                            <span>Mediation</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/meeting-and-group-processes">
+                            <span>Meeting & group processes</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/individual-coaching">
+                            <span>Individual coaching</span>
+                          </Link>
+                        </li>
+                        <li className="header">
+                          <span>More</span>
+                        </li>
+                        <li>
+                          <Link to="/writings">
+                            <span>Blog</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link to="/contact">
+                            <span>Contact Us</span>
+                          </Link>
+                        </li>
+                      </Ul>
+                    </nav>
+                  </Container>
+                </DesktopHeader>
+              </ResponsiveHeader>
+            </SemanticHeader>
+          </div>
+          <div
+            style={{
+              flexGrow: '78',
+              flexBasis: 0,
+              maxHeight: '100vh',
+              overflow: 'scroll',
+            }}
+          >
+            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
+            <Container noFade block id="content">
+              {this.props.children()}
+            </Container>
+
+            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Footer */}
+            <SemanticFooter>
+              <Container bleed noFade block id="footer">
+                <hr />
+                <br />
+                <br />
                 <Paragraph>
-                  Joy Living Learning is a blah blah blah blah blah blah blah
-                  blah blah blah blah blah blah.
-                </Paragraph>
-                <Paragraph>
-                  blah blah blah blah blah blah blah blah blah blah blah blah.
-                </Paragraph>
-              </div>
-              <div style={{ flexGrow: 48, flexBasis: 0, paddingRight: 40 }}>
-                <H6 caps scale="0.825X" style={{ visibility: 'hidden' }}>
-                  Legal
-                </H6>
-                <Image
-                  src={creativeCommons}
-                  style={{
-                    height: 25,
-                    width: 'auto',
-                    background: 'transparent',
-                    border: 0,
-                    display: 'block',
-                    ...applyRhythm({ marginBottom: '1X' }),
-                  }}
-                />
-                <Paragraph>
-                  This work is licensed under a{' '}
-                  <OutLink to="https://creativecommons.org/licenses/by-sa/2.0/uk/">
-                    Creative Commons License
+                  Made with{' '}
+                  <Icon
+                    type="heart"
+                    style={{ color: '#D34025', fontSize: '80%' }}
+                  />{' '}
+                  by{' '}
+                  <OutLink to="https://www.bodhiproject.org/">
+                    Bodhi Project
                   </OutLink>.
+                  <br />
+                  <br />
+                  {data.copyright}
                 </Paragraph>
-                <Paragraph>
-                  <Link to="/legal-notice">Legal Notice</Link>
-                </Paragraph>
-              </div>
-            </div>
-          </Container>
-          <Container bleed block noFade className="cp">
-            <Paragraph className="text-center">
-              Made with&nbsp;
-              <Icon
-                type="heart"
-                style={{ color: '#D34025', fontSize: '80%' }}
-              />&nbsp;by&nbsp;
-              <OutLink to="https://www.bodhiproject.org/">
-                Bodhi Project
-              </OutLink>
-            </Paragraph>
-            <Paragraph className="text-center">
-              © 2018 Laura Joy and Joy Living Learning
-            </Paragraph>
-          </Container>
-        </SemanticFooter>
+              </Container>
+            </SemanticFooter>
+          </div>
+        </div>
       </Type>
     );
   }

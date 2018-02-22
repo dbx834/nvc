@@ -1,20 +1,55 @@
 {
-  "name": "nvc",
-  "description": "Joy Living Learning website.",
-  "version": "0.0.1",
+  "name": "@bodhi-project/web-template",
+  "description": "Gatsbyjs website template with advanced features.",
+  "version": "1.0.0",
   "author": {
-    "name": "Pranav Kumar",
-    "email": "pranav@bodhiproject.org",
+    "name": "Bodhi Project",
+    "email": "hello@bodhiproject.org",
     "url": "https://www.bodhiproject.org/"
   },
-  "homepage": "https://github.com/dbx834/nvc",
+  "homepage": "https://launch-kit.bodhiproject.org/",
   "repository": {
     "type": "git",
-    "url": "git@github.com:dbx834/nvc.git"
+    "url": "git@github.com:bodhi-project/launch-kit.git"
   },
-  "keywords": [
-    "nvc"
-  ],
+  "keywords": ["gatsby"],
+  "data": {
+    "websiteName": "Launch Kit",
+    "websiteCreator": "Bodhi Project",
+    "websiteUrl": "https://launch-kit.bodhiproject.org/",
+    "nakedWebsiteUrl": "https://launch-kit.bodhiproject.org",
+    "websiteKeywords": "GatsbyJS, React, Netlify",
+    "websiteDescription": "Launch Kit is an opionated GatsbyJS Starter kit.",
+    "rssUrl": "/rss.xml",
+    "org": {
+      "name": "Bodhi Project",
+      "legalName": "Bodhi Project Inc.",
+      "url": "https://www.bodhiproject.org",
+      "logo": "/logo.png",
+      "foundingDate": "2017-01-01",
+      "founders": ["Pranav Kumar", "Brijesh Kumar", "Mangal Varshney"]
+    },
+    "orgLocation": {
+      "streetAddress": "Street #123",
+      "addressLocality": "Kotagiri",
+      "addressRegion": "Tamil Nadu",
+      "postalCode": "643217",
+      "addressCountry": "India",
+      "locationName": "Kotagiri",
+      "locationUrl": "https://en.wikipedia.org/wiki/Kotagiri"
+    },
+    "orgContact": {
+      "email": "hello@bodhiproject.org",
+      "telephone": ["na"]
+    },
+    "orgSocialMediaProfiles": [
+      "http://instagram.com/bodhisystems",
+      "https://twitter.com/_dmi_systems"
+    ],
+    "pathPrefix": "/",
+    "copyright": "Copyright © 2018. Joy Living Learning",
+    "googleAnalyticsID": "GA-ABC"
+  },
   "license": "MIT",
   "main": "n/a",
   "scripts": {
@@ -31,12 +66,12 @@
     "format:js": "prettier '**/*.{js,jsx}' --write"
   },
   "dependencies": {
-    "@bodhi-project/components": "0.0.71",
+    "@bodhi-project/components": "0.0.72",
     "@bodhi-project/markdown-to-react": "0.0.31",
     "@bodhi-project/semantic-webflow": "0.0.10",
-    "@bodhi-project/seo": "0.0.3",
-    "@bodhi-project/typography": "0.0.35",
-    "antd": "^3.2.0",
+    "@bodhi-project/seo": "0.0.4",
+    "@bodhi-project/typography": "0.0.37",
+    "antd": "^3.2.1",
     "babel-plugin-lodash": "^3.3.2",
     "gatsby": "^1.9.192",
     "gatsby-link": "^1.6.36",
@@ -62,32 +97,32 @@
     "glamor": "^2.20.40",
     "lodash": "^4.17.5",
     "lodash-webpack-plugin": "^0.11.4",
+    "moment": "^2.20.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "remark-parse": "^5.0.0",
-    "unified": "^6.1.6"
+    "unified": "^6.1.6",
+    "validator": "^9.4.1"
   },
   "devDependencies": {
     "cli-glob": "^0.1.0",
-    "eslint": "^4.17.0",
+    "eslint": "^4.18.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.6.1",
+    "eslint-plugin-react": "^7.7.0",
     "gh-pages": "^1.1.0",
     "prettier": "^1.10.2",
     "remark-cli": "^5.0.0",
     "remark-preset-lint-recommended": "^3.0.1",
     "stylefmt": "^6.0.0",
-    "stylelint": "^8.4.0",
-    "stylelint-config-standard": "^18.0.0",
+    "stylelint": "^9.1.1",
+    "stylelint-config-standard": "^18.1.0",
     "write-good": "^0.11.3"
   },
   "remarkConfig": {
-    "plugins": [
-      "remark-preset-lint-recommended"
-    ]
+    "plugins": ["remark-preset-lint-recommended"]
   }
 }

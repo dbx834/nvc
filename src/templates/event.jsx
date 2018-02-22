@@ -17,7 +17,7 @@ import {
   Header,
   Footer,
 } from '@bodhi-project/semantic-webflow';
-import { Elements, applyRhythm } from '@bodhi-project/typography';
+import { Elements } from '@bodhi-project/typography';
 import { treeCodeParser } from '@bodhi-project/markdown-to-react';
 import {
   // --------------- Basic
@@ -30,12 +30,11 @@ import {
   // --------------- Schema.org JSON-LD
   WebpageSchema,
   BreadcrumbSchema,
+  EventSchema,
 } from '@bodhi-project/seo';
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals - Images
-import indexImage from '../pages/assets/index.jpg';
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
+import indexImage from '../pages/assets/index.jpg';
 import packageJson from '../../package.json';
 import markdownStylesClass from '../styles/markdownStyles';
 
@@ -49,18 +48,14 @@ const { H1, Paragraph } = Elements;
 // ----------------------------------------------------------------------------
 const pageStyle = css({
   position: 'relative',
-  ...applyRhythm({ maxWidth: '27X' }),
-  '& div + p': {
-    ...applyRhythm({ marginTop: '2X' }),
-  },
 });
 const pageStyleClass = pageStyle.toString();
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
-/** PageTemplate */
-class PageTemplate extends React.Component {
+/** EventTemplate */
+class EventTemplate extends React.Component {
   /** standard constructor */
   constructor(props) {
     super(props);
@@ -81,6 +76,10 @@ class PageTemplate extends React.Component {
     const mDate = moment(frontmatter.date);
     const humanDate = mDate.format('dddd, MMMM Do YYYY');
     const elapsed = mDate.fromNow();
+    const startDate = mDate.format();
+    const endDate = mDate.add(23, 'hours').format();
+
+    const { orgLocation } = data;
 
     const generalMetaData = {
       description: frontmatter.abstract,
@@ -123,6 +122,22 @@ class PageTemplate extends React.Component {
       ],
     };
 
+    const eventSchemaData = {
+      name: frontmatter.title,
+      url: `${data.nakedWebsiteUrl}${route}`,
+      description: frontmatter.abstract,
+      startDate,
+      endDate,
+      locationName: orgLocation.locationName,
+      locationUrl: orgLocation.locationUrl,
+      streetAddress: orgLocation.streetAddress,
+      addressLocality: orgLocation.addressLocality,
+      addressRegion: orgLocation.addressRegion,
+      postalCode: orgLocation.postalCode,
+      addressCountry: orgLocation.addressCountry,
+      image: indexImage,
+    };
+
     return (
       <Fragment>
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
@@ -132,13 +147,14 @@ class PageTemplate extends React.Component {
         <OpenGraphSummary data={openGraphSummaryData} />
         <WebpageSchema data={webpageSchemaData} />
         <BreadcrumbSchema data={breadcrumbSchemaData} />
+        <EventSchema data={eventSchemaData} />
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={`${markdownStylesClass} ${pageStyleClass}`}>
-          <Header className="stash">
+          <Header>
             <H1>{frontmatter.title}</H1>
             <Paragraph>{humanDate}</Paragraph>
-            <Paragraph>{frontmatter.abstract}</Paragraph>
+            <Paragraph className="stash">{frontmatter.abstract}</Paragraph>
           </Header>
           <Article>
             {treeCodeParser(
@@ -146,7 +162,7 @@ class PageTemplate extends React.Component {
               {
                 localLink: Link,
                 linkHeaders: true,
-                trackHeaders: false,
+                trackHeaders: true,
                 nestHeaders: true,
               },
               {},
@@ -166,11 +182,11 @@ class PageTemplate extends React.Component {
   }
 }
 
-PageTemplate.propTypes = {
+EventTemplate.propTypes = {
   pathContext: PropTypes.object,
 };
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Export
 // ----------------------------------------------------------------------------
-export default PageTemplate;
+export default EventTemplate;

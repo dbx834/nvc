@@ -1,10 +1,10 @@
 ---
-title: SEO
+title: Just a random page
 cover: https://unsplash.it/400/300/?random?AngelsofMist
 category: 1.Random Category
 abstract: Page abstract.
 date: 2018-01-01
-type: post
+type: page
 tags:
   - some tag
 ---

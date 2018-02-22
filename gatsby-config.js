@@ -1,27 +1,29 @@
-const config = require('./data/SiteConfig');
+// ----------------------------------------------------------------------------
+// -------------------------------------------------------------------- Imports
+// ----------------------------------------------------------------------------
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
+const packageJson = require('./package.json');
 
-const siteTitle = 'Launch Kit';
-const siteDescription = 'Launch Kit is a GatsbyJS starter and can be used to create Static, Progressive, Single-Page Web Applications which run on Netlify.';
-const siteUrl = 'https://launch-kit.bodhiproject.org';
-const pathPrefix = '/';
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
+const { data } = packageJson;
 const themeColor = '#FFD801';
 const backgroundColor = '#FFD801';
-const siteRss = '/rss.xml';
-const userName = 'Bodhi Project';
-const copyright = 'Copyright © 2017. Bodhi Project';
 
+// ----------------------------------------------------------------------------
+// ------------------------------------------------------------------ Component
+// ----------------------------------------------------------------------------
 module.exports = {
-  pathPrefix,
+  pathPrefix: data.pathPrefix,
   siteMetadata: {
-    siteUrl: siteUrl + pathPrefix,
+    siteUrl: data.websiteUrl,
     rssMetadata: {
-      site_url: siteUrl + pathPrefix,
-      feed_url: siteUrl + pathPrefix + siteRss,
-      title: siteTitle,
-      description: siteDescription,
-      image_url: `${siteUrl + pathPrefix}/android-chrome-512x512.png`,
-      author: userName,
-      copyright,
+      site_url: data.websiteUrl,
+      feed_url: `${data.nakedWebsiteUrl}${data.rssUrl}`,
+      title: data.websiteName,
+      description: data.websiteDescription,
+      image_url: `${data.nakedWebsiteUrl}/android-chrome-384x384.png`,
+      author: data.org.name,
+      copyright: data.copyright,
     },
   },
   plugins: [
@@ -58,13 +60,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: config.googleAnalyticsID,
+        trackingId: data.googleAnalyticsID,
       },
     },
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {
-        color: config.themeColor,
+        color: themeColor,
       },
     },
     'gatsby-plugin-sharp',
@@ -73,10 +75,10 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: siteTitle,
-        short_name: siteTitle,
-        description: siteDescription,
-        start_url: pathPrefix,
+        name: data.websiteName,
+        short_name: data.websiteName,
+        description: data.websiteDescription,
+        start_url: data.pathPrefix,
         background_color: backgroundColor,
         theme_color: themeColor,
         display: 'standalone',
@@ -124,7 +126,7 @@ module.exports = {
         feeds: [
           {
             serialize(ctx) {
-              const rssMetadata = ctx.query.site.siteMetadata.rssMetadata;
+              const { rssMetadata } = ctx.query.site.siteMetadata;
               return ctx.query.allMarkdownRemark.edges.map(edge => ({
                 categories: edge.node.frontmatter.tags,
                 date: edge.node.frontmatter.date,
@@ -160,7 +162,7 @@ module.exports = {
               }
             }
           `,
-            output: config.siteRss,
+            output: data.rssUrl,
           },
         ],
       },

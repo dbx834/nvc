@@ -1,24 +1,26 @@
 // ------------------------------------------------------------------------------
 // ---------------------------------------------------------------------- Imports
 // ------------------------------------------------------------------------------
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import React from 'react'; // eslint-disable-line import/no-extraneous-dependencies
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
+import React from 'react';
 // import PropTypes from 'prop-types';
 // import _ from 'lodash';
 import { css } from 'glamor';
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link from 'gatsby-link';
-import { Calendar } from 'antd';
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
+// import Link from 'gatsby-link';
+// import { Row, Col } from 'antd';
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import {
-  Container,
-  OutLink,
-  Image,
-  HexaGrid as HexaGridX,
-} from '@bodhi-project/components';
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
+// import { Image } from '@bodhi-project/components';
 import { Elements } from '@bodhi-project/typography';
+import {
+  Page,
+  // Section,
+  // Article,
+  // Header,
+  // Footer,
+} from '@bodhi-project/semantic-webflow';
 import {
   // --------------- Basic
   UpdateTitle,
@@ -32,16 +34,12 @@ import {
   BreadcrumbSchema,
 } from '@bodhi-project/seo';
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Styles
-import '../style/index.less';
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Images
 import indexImage from './assets/index.jpg';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstract stuff
-// const { Fragment } = React;
+const { Fragment } = React;
 const { H3, Paragraph } = Elements;
-// const { HexaGrid, Hex } = HexaGridX;
 
 // ------------------------------------------------------------------------------
 // -------------------------------------------------------------------------- SEO
@@ -85,22 +83,28 @@ const breadcrumbSchemaData = {
 // ----------------------------------------------------------------------- Styles
 // ------------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
-const pageStyle = css({});
+const pageStyle = css({
+  // «««««««««««««««««««««««««««««««««««««««««««««««««««««««««« HR
+  '& hr': {
+    border: '2px solid #363636',
+    '@media(min-width: 800px)': {
+      border: '3px solid #363636',
+    },
+    '@media(min-width: 1250px)': {
+      border: '4px solid #363636',
+    },
+  },
+});
 const pageStyleClass = pageStyle.toString();
 
 // ----------------------------------------------------------------------- Component
-/**
- * IndexPage
- */
+/** IndexPage */
 class IndexPage extends React.Component {
-  // eslint-disable-line react/prefer-stateless-function
-  /**
-   * Standard renderer
-   */
+  /** standard renderer */
   render() {
     return (
-      <Container block bleed style={{ padding: 0 }} className={pageStyleClass}>
-        {/* SEO */}
+      <Fragment>
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
         <UpdateTitle title="Coming Soon" />
         <GeneralMeta data={generalMetaData} />
         <TwitterSummaryCard data={twitterSummaryCardData} />
@@ -108,214 +112,12 @@ class IndexPage extends React.Component {
         <WebpageSchema data={webpageSchemaData} />
         <BreadcrumbSchema data={breadcrumbSchemaData} />
 
-        <Container
-          noFade
-          threeQuarters
-          block
-          style={{ paddingTop: '3em', paddingBottom: '3em' }}
-        >
-          <div>
-            <div style={{ display: 'flex' }}>
-              <div
-                style={{
-                  flexGrow: 20,
-                  flexBasis: 0,
-                  paddingRight: 20,
-                }}
-              >
-                <div
-                  style={{ background: '#665F7B', width: '100%', height: 200 }}
-                />
-              </div>
-              <div
-                style={{
-                  flexGrow: 20,
-                  flexBasis: 0,
-                  paddingLeft: 20,
-                  paddingRight: 20,
-                }}
-              >
-                <div
-                  style={{ background: '#665F7B', width: '100%', height: 200 }}
-                />
-              </div>
-              <div
-                style={{
-                  flexGrow: 20,
-                  flexBasis: 0,
-                  paddingLeft: 20,
-                  paddingRight: 20,
-                }}
-              >
-                <div
-                  style={{ background: '#665F7B', width: '100%', height: 200 }}
-                />
-              </div>
-              <div
-                style={{
-                  flexGrow: 20,
-                  flexBasis: 0,
-                  paddingLeft: 20,
-                  paddingRight: 20,
-                }}
-              >
-                <div
-                  style={{ background: '#665F7B', width: '100%', height: 200 }}
-                />
-              </div>
-              <div
-                style={{
-                  flexGrow: 20,
-                  flexBasis: 0,
-                  paddingLeft: 20,
-                }}
-              >
-                <div
-                  style={{ background: '#665F7B', width: '100%', height: 200 }}
-                />
-              </div>
-            </div>
-            <div style={{ display: 'flex' }}>
-              <div
-                style={{
-                  flexGrow: 80,
-                  flexBasis: 0,
-                  paddingRight: 20,
-                  padding: '2em 0px 2em 0px',
-                }}
-              >
-                <Paragraph>
-                  Alaudeen was a small boy. He lived in a village in Persia. He
-                  played in the streets with his friends often. One day he met a
-                  stranger in the road, while he was playing. He said that he
-                  was his father’s brother. He had seen him as a small boy. So
-                  you didn’t recognize me. "I am your uncle. If you come with
-                  me, I will show a wonderful thing" he said in a low voice.
-                  Alaudeen saw his face and followed him with confidence.
-                </Paragraph>
-                <Paragraph>
-                  The stranger went into a dark place under a mountain with
-                  Alaudeen. He was a good magician. "Here is a wonderful thing
-                  in the center of the Cave". He said to Alaudeen. "You can take
-                  whatever your want. "At one corner, you will find an old lamp.
-                  Bring it to me. Now wear this ring and it will save you from
-                  any danger" he said.
-                </Paragraph>
-              </div>
-              <div
-                style={{
-                  flexGrow: 20,
-                  flexBasis: 0,
-                  padding: '2em 0px 2em 0px',
-                }}
-              >
-                <ul style={{ padding: 0, listStyle: 'none' }}>
-                  <li>
-                    <Link to="/">Link 1</Link>
-                  </li>
-                  <li>
-                    <Link to="/">Link 2</Link>
-                  </li>
-                  <li>
-                    <Link to="/">Link 3</Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <hr />
-            <H3 caps scale="0.85X">
-              Calendar
-            </H3>
-            <Calendar />
-            <Paragraph>
-              <Link to="/">See more ⇝</Link>
-            </Paragraph>
-            <hr />
-            <H3 caps scale="0.85X">
-              Featured Writings
-            </H3>
-            <div style={{ display: 'flex' }}>
-              <div
-                style={{
-                  flexGrow: 20,
-                  flexBasis: 0,
-                  paddingRight: 20,
-                }}
-              >
-                <div
-                  style={{ background: '#665F7B', width: '100%', height: 400 }}
-                />
-              </div>
-              <div
-                style={{
-                  flexGrow: 20,
-                  flexBasis: 0,
-                  paddingLeft: 20,
-                  paddingRight: 20,
-                }}
-              >
-                <div
-                  style={{ background: '#665F7B', width: '100%', height: 400 }}
-                />
-              </div>
-              <div
-                style={{
-                  flexGrow: 20,
-                  flexBasis: 0,
-                  paddingLeft: 20,
-                  paddingRight: 20,
-                }}
-              >
-                <div
-                  style={{ background: '#665F7B', width: '100%', height: 400 }}
-                />
-              </div>
-            </div>
-            <br />
-            <br />
-            <div style={{ display: 'flex' }}>
-              <div
-                style={{
-                  flexGrow: 20,
-                  flexBasis: 0,
-                  paddingRight: 20,
-                }}
-              >
-                <div
-                  style={{ background: '#665F7B', width: '100%', height: 400 }}
-                />
-              </div>
-              <div
-                style={{
-                  flexGrow: 20,
-                  flexBasis: 0,
-                  paddingLeft: 20,
-                  paddingRight: 20,
-                }}
-              >
-                <div
-                  style={{ background: '#665F7B', width: '100%', height: 400 }}
-                />
-              </div>
-              <div
-                style={{
-                  flexGrow: 20,
-                  flexBasis: 0,
-                  paddingLeft: 20,
-                  paddingRight: 20,
-                }}
-              >
-                <div
-                  style={{ background: '#665F7B', width: '100%', height: 400 }}
-                />
-              </div>
-            </div>
-            <Paragraph>
-              <Link to="/">See more ⇝</Link>
-            </Paragraph>
-          </div>
-        </Container>
-      </Container>
+        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
+        <Page className={`${pageStyleClass} text-center`}>
+          <hr />
+          <H3>Coming Soon</H3>
+        </Page>
+      </Fragment>
     );
   }
 }

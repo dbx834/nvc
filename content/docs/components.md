@@ -1,5 +1,5 @@
 ---
-title: SEO
+title: Component
 cover: https://unsplash.it/400/300/?random?AngelsofMist
 category: 1.Random Category
 abstract: Page abstract.

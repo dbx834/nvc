@@ -1,5 +1,5 @@
 ---
-title: Laura Joy
+title: L’aura Joy
 cover: https://unsplash.it/400/300/?random?AngelsofMist
 category: 1.General
 abstract: Laura Joy is a Certified Trainer in Nonviolent Communication (CNVC, USA), and over the past 10 years she has been been working in the field of communication, conflict transformation, peace and justice, community building and healing, decision-making and leadership.
@@ -9,7 +9,7 @@ tags:
   - some tag
 ---
 
-# Laura Joy
+# L’aura Joy
 
 L’aura Joy is a Certified Trainer in Nonviolent Communication (CNVC, USA), and over the past 10 years she has been been working in the field of communication, conflict transformation, peace and justice, community building and healing, decision-making and leadership.
 
@@ -22,5 +22,4 @@ L'aura has been a pioneer in bringing NVC to India and has supported an ever-gro
 At the beginning of her career, L'aura was a high-school teacher, and she taught in both Canada and Auroville. Her main subjects were English and French as second languages, plus introductory courses to Sociology, Anthropology and Psychology. She specialized in the International Baccalaureate Program (an internationally accredited program) and taught senior IB students. She organized several extra-curricular programs for the students, including international travel programs, cultural outings, camping and trekking trips, and cross-country running.
 
 L'aura's personal interests lie in making deep connections with people, living a meaningful and sustainable life, contributing to community, and practicing yoga and being physically active.
-
 

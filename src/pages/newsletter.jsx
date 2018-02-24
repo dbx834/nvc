@@ -6,6 +6,7 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { css } from 'glamor';
+import serialize from 'form-serialize';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from 'gatsby-link';
@@ -26,7 +27,7 @@ import {
   BreadcrumbSchema,
 } from '@bodhi-project/seo';
 import {
-  Page,
+  Page as SemanticPage,
   // Section,
   Article,
   Header,
@@ -113,7 +114,7 @@ const formStyle = css({
       display: 'flex !important',
       width: '100%',
       '@media(min-width: 768px)': {
-        width: '37.5%',
+        width: '62.5%',
       },
       flexGrow: '1',
 
@@ -130,69 +131,7 @@ const formStyle = css({
     width: '100%',
   },
 
-  '@media(min-width: 768px)': {
-    '& .ant-form-item:nth-child(1)': {
-      marginRight: 10,
-    },
-
-    '& .ant-form-item:nth-child(2)': {
-      marginLeft: 10,
-    },
-  },
-
-  // Dropdown
-  '& .ant-form-item:nth-child(3)': {
-    display: 'none !important',
-    width: '100%',
-
-    '& .ant-select': {
-      fontSize: 'inherit',
-      fontFamily: 'inherit',
-      color: '#363636',
-    },
-
-    '& .ant-select-selection': {
-      border: 'none',
-      borderBottom: '3px solid #363636',
-      borderRadius: 0,
-      height: 'auto',
-
-      '&:focus,:active': {
-        border: 'none',
-        boxShadow: 'none',
-        borderBottom: '3px solid #363636',
-      },
-    },
-
-    '& .ant-select-selection__rendered': {
-      margin: 0,
-      ...applyRhythm({ padding: '0X 0X 0.141X' }),
-    },
-
-    '& .ant-select-selection__placeholder': {
-      color: '#363636',
-      height: 'auto',
-      top: 'unset',
-      left: 'unset',
-      right: 'unset',
-      marginTop: 'unset',
-    },
-
-    '& .ant-select-arrow': _.merge(
-      {
-        color: '#363636',
-        right: 0,
-      },
-      ...applyType('ltb1ekq'),
-    ),
-  },
-
-  // Textarea
-  '& .ant-form-item:nth-child(4)': {
-    width: '100%',
-  },
-
-  // Name, email, concern
+  // Email
   '& .ant-input': {
     fontSize: 'inherit',
     fontFamily: 'inherit',
@@ -282,55 +221,26 @@ const hasErrors = fieldsError =>
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
-/**
- * IndexPage
- */
-class IndexPage extends React.Component {
-  /**
-   * constructor - Just a standard constructor.
-   */
+/** Page */
+class Page extends React.Component {
+  /** standard constructor. */
   constructor(props) {
     super(props);
-
-    /**
-     * state - Track token-check mutation, send-verification-mail mutation, and when to redirect.
-     */
     this.state = {
       loader: null,
       formSent: false,
-      geo: null,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.checkEmailValid = this.checkEmailValid.bind(this);
   }
 
+  /** componentDidMount - Disable submit button at the beginning. */
   componentDidMount() {
-    // To disabled submit button at the beginning.
     this.props.form.validateFields();
-
-    fetch('https://freegeoip.net/json/')
-      .then(response => response.json())
-      .then(json => {
-        this.setState({
-          geo: {
-            ip: json.ip,
-            country: `${json.country_name} (${json.country_code})`,
-            region: `${json.region_name} (${json.region_code})`,
-            city: json.city ? json.city : 'NA',
-            latLon: `${json.latitude}, ${json.longitude}`,
-            pin: `http://maps.google.com/maps?q=${json.latitude},${
-              json.longitude
-            }`,
-            timeZone: json.time_zone,
-          },
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
   }
 
+  /** handleSubmit - Post to google spreadsheet. */
   handleSubmit(e) {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -341,71 +251,26 @@ class IndexPage extends React.Component {
           loader: true,
         });
 
+        const { email } = values;
+
         setTimeout(() => {
           // Mock some delay
           fetch(
-            'https://hooks.slack.com/services/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',
+            `https://script.google.com/macros/s/AKfycbx6xNPY__NC6jrneaGeH1NPLkjdrNSc3NMUV-oHAWnWln2WDWZL/exec?email=${email}&callback=?`,
             {
-              method: 'POST',
-              headers: {
-                Accept: 'application/json',
-              },
-              body: JSON.stringify({
-                attachments: [
-                  {
-                    fallback:
-                      'Someone filled the contact form @ <https://www.dmi.systems/contact|https://www.dmi.systems/contact>',
-                    pretext:
-                      'Someone filled the contact form @ <https://www.dmi.systems/contact|https://www.dmi.systems/contact>',
-                    color: '#DEAE4D',
-                    fields: [
-                      {
-                        title: 'Name',
-                        value: values.name,
-                        short: false,
-                      },
-                      {
-                        title: 'Email',
-                        value: values.email,
-                        short: false,
-                      },
-                      {
-                        title: 'Reason',
-                        value: values.reason,
-                        short: false,
-                      },
-                      {
-                        title: 'Concern',
-                        value: values.concern,
-                        short: false,
-                      },
-                      {
-                        title: 'Location (Approximation)',
-                        value: `IP: ${this.state.geo.ip}\nCountry: ${
-                          this.state.geo.country
-                        }\nRegion: ${this.state.geo.region}\nCity: ${
-                          this.state.geo.city
-                        }\nRegion: ${this.state.geo.region}\nLat,Lon: ${
-                          this.state.geo.latLon
-                        }\nPin: <${this.state.geo.pin}|${
-                          this.state.geo.pin
-                        }>\nTimezone: ${this.state.geo.timeZone}`,
-                        short: false,
-                      },
-                    ],
-                  },
-                ],
-              }),
+              method: 'GET',
+              mode: 'no-cors',
             },
           )
-            .then(() => {
+            .then(response => {
+              console.log('success', response);
               this.setState({
                 loader: false,
                 formSent: true,
               });
             })
             .catch(error => {
-              console.log(error);
+              console.log('error', error);
               this.setState({
                 loader: false,
               });
@@ -438,10 +303,7 @@ class IndexPage extends React.Component {
       isFieldTouched,
     } = this.props.form;
     // Only show error after a field is touched.
-    const nameError = isFieldTouched('name') && getFieldError('name');
     const emailError = isFieldTouched('email') && getFieldError('email');
-    const reasonError = isFieldTouched('reason') && getFieldError('reason');
-    const concernError = isFieldTouched('concern') && getFieldError('concern');
 
     return (
       <Fragment>
@@ -454,29 +316,15 @@ class IndexPage extends React.Component {
         <BreadcrumbSchema data={breadcrumbSchemaData} />
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
-        <Page className={pageWrapperClass}>
+        <SemanticPage className={pageWrapperClass}>
           {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Form */}
           <div>
-            <H1>Contact</H1>
+            <H1>Newsletter</H1>
             <Paragraph>
-              Our email is -&nbsp;
-              <a href="mailto:joylivinglearning@gmail.com">
-                joylivinglearning@gmail.com
-              </a>. You can also fill the form below…
+              You can subscribe to our montly newsletter below —
             </Paragraph>
             {this.state.formSent === false && (
               <Form onSubmit={this.handleSubmit} className={formStyleClass}>
-                <FormItem
-                  validateStatus={nameError ? 'error' : ''}
-                  help={nameError || ''}
-                >
-                  {getFieldDecorator('name', {
-                    validateTrigger: ['onChange', 'onBlur'],
-                    rules: [
-                      { required: true, message: 'Please fill in your name.' },
-                    ],
-                  })(<Input placeholder="Name…" />)}
-                </FormItem>
                 <FormItem
                   validateStatus={emailError ? 'error' : ''}
                   help={emailError || ''}
@@ -485,51 +333,6 @@ class IndexPage extends React.Component {
                     validateTrigger: ['onChange', 'onBlur'],
                     rules: [{ validator: this.checkEmailValid }],
                   })(<Input placeholder="Email…" />)}
-                </FormItem>
-                <FormItem
-                  validateStatus={reasonError ? 'error' : ''}
-                  help={reasonError || ''}
-                >
-                  {getFieldDecorator('reason', {
-                    initialValue: 'request-for-information',
-                    rules: [
-                      {
-                        required: true,
-                        message:
-                          'Telling us what we can help you with will allow us to get back to you quicker.',
-                      },
-                    ],
-                  })(
-                    <Select placeholder="How can we help you?">
-                      <Option value="request-for-information">
-                        Request for information
-                      </Option>
-                      <Option value="general-support">General support</Option>
-                      <Option value="billing-and-payment">
-                        Billing and payment issues
-                      </Option>
-                      <Option value="technical-issues">Technical issues</Option>
-                      <Option value="upload-issues">Upload issues</Option>
-                      <Option value="account-issues">Account Issues</Option>
-                      <Option value="other-issues">Other Issues</Option>
-                    </Select>,
-                  )}
-                </FormItem>
-                <FormItem
-                  validateStatus={concernError ? 'error' : ''}
-                  help={concernError || ''}
-                >
-                  {getFieldDecorator('concern', {
-                    validateTrigger: ['onChange', 'onBlur'],
-                    rules: [
-                      { required: true, message: 'Please add your comments.' },
-                    ],
-                  })(
-                    <TextArea
-                      placeholder="Your questions / comments…"
-                      autosize={{ minRows: 1, maxRows: 6 }}
-                    />,
-                  )}
                 </FormItem>
                 <FormItem>
                   <Button
@@ -546,45 +349,19 @@ class IndexPage extends React.Component {
             {/* On-sent message */}
             {this.state.formSent === true && (
               <Paragraph className="home" style={{ textIndent: 0 }}>
-                We recieved your message. We'll get back to you shortly.
+                Thanks! We've added your email to our list.
               </Paragraph>
             )}
           </div>
-
-          {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Person Details */}
-          <H1>Contact Person</H1>
-          <Image
-            src={''}
-            style={{
-              height: 250,
-              width: 155,
-              border: 0,
-              background: '#4a4a4a',
-            }}
-            loader="gradient"
-          />
-          <br />
-          <br />
-          <Paragraph>
-            Email:&nbsp;
-            <a href="mailto:joylivinglearning@gmail.com">
-              joylivinglearning@gmail.com
-            </a>
-            <br />
-            Facebook:{' '}
-            <OutLink to="https://www.facebook.com/JoyLivingLearning/">
-              https://www.facebook.com/JoyLivingLearning/
-            </OutLink>
-          </Paragraph>
-        </Page>
+        </SemanticPage>
       </Fragment>
     );
   }
 }
 
-const WrappedForm = Form.create()(IndexPage);
+const WrappedPage = Form.create()(Page);
 
 // ----------------------------------------------------------------------------
 // -------------------------------------------------------------------- Exports
 // ----------------------------------------------------------------------------
-export default WrappedForm;
+export default WrappedPage;

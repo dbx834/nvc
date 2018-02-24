@@ -6,12 +6,13 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 import _ from 'lodash';
 import { css } from 'glamor';
+import moment from 'moment';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from 'gatsby-link';
 import { Form, Select, Input, Button } from 'antd';
 import isEmail from 'validator/lib/isEmail';
-import { Image, OutLink } from '@bodhi-project/components';
+import isAlpha from 'validator/lib/isAlphanumeric';
 import { Elements, applyType, applyRhythm } from '@bodhi-project/typography';
 import {
   // --------------- Basic
@@ -142,7 +143,6 @@ const formStyle = css({
 
   // Dropdown
   '& .ant-form-item:nth-child(3)': {
-    display: 'none !important',
     width: '100%',
 
     '& .ant-select': {
@@ -156,6 +156,7 @@ const formStyle = css({
       borderBottom: '3px solid #363636',
       borderRadius: 0,
       height: 'auto',
+      backgroundColor: '#f8f2e6',
 
       '&:focus,:active': {
         border: 'none',
@@ -182,6 +183,7 @@ const formStyle = css({
       {
         color: '#363636',
         right: 0,
+        marginTop: -16,
       },
       ...applyType('ltb1ekq'),
     ),
@@ -275,9 +277,35 @@ const formStyleClass = formStyle.toString();
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Functions
 // ----------------------------------------------------------------------------
-/** Checks errors */
+/** Check if a field has an error */
 const hasErrors = fieldsError =>
   Object.keys(fieldsError).some(field => fieldsError[field]);
+
+/** Check email is valid */
+const validateEmail = (rule, value, callback) => {
+  if (_.isEmpty(value)) {
+    callback('Your email please…');
+  } else {
+    if (!isEmail(value)) {
+      callback("That's not a valid email address!");
+    } else {
+      callback();
+    }
+  }
+};
+
+/** Check username is valid */
+const validateName = (rule, value, callback) => {
+  if (_.isEmpty(value)) {
+    callback('Name thyself!');
+  } else {
+    if (!isAlpha(_.replace(value, ' ', ''))) {
+      callback('A name can have only characters (a-z, A-Z).');
+    } else {
+      callback();
+    }
+  }
+};
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
@@ -292,45 +320,20 @@ class IndexPage extends React.Component {
   constructor(props) {
     super(props);
 
-    /**
-     * state - Track token-check mutation, send-verification-mail mutation, and when to redirect.
-     */
     this.state = {
       loader: null,
       formSent: false,
-      geo: null,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.checkEmailValid = this.checkEmailValid.bind(this);
   }
 
+  /** componentDidMount - Disable submit button at the beginning. */
   componentDidMount() {
-    // To disabled submit button at the beginning.
     this.props.form.validateFields();
-
-    fetch('https://freegeoip.net/json/')
-      .then(response => response.json())
-      .then(json => {
-        this.setState({
-          geo: {
-            ip: json.ip,
-            country: `${json.country_name} (${json.country_code})`,
-            region: `${json.region_name} (${json.region_code})`,
-            city: json.city ? json.city : 'NA',
-            latLon: `${json.latitude}, ${json.longitude}`,
-            pin: `http://maps.google.com/maps?q=${json.latitude},${
-              json.longitude
-            }`,
-            timeZone: json.time_zone,
-          },
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
   }
 
+  /** handleSubmit - Post to google spreadsheet. */
   handleSubmit(e) {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -341,71 +344,26 @@ class IndexPage extends React.Component {
           loader: true,
         });
 
+        const { name, email, event } = values;
+
         setTimeout(() => {
           // Mock some delay
           fetch(
-            'https://hooks.slack.com/services/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',
+            `https://script.google.com/macros/s/AKfycbxe5KaEdHtLH5JVpf-yntF5LZYAszQTwHHQ4tEjvBT4DyykpRtZ/exec?name=${name}&email=${email}&event=${event}&callback=?`,
             {
-              method: 'POST',
-              headers: {
-                Accept: 'application/json',
-              },
-              body: JSON.stringify({
-                attachments: [
-                  {
-                    fallback:
-                      'Someone filled the contact form @ <https://www.dmi.systems/contact|https://www.dmi.systems/contact>',
-                    pretext:
-                      'Someone filled the contact form @ <https://www.dmi.systems/contact|https://www.dmi.systems/contact>',
-                    color: '#DEAE4D',
-                    fields: [
-                      {
-                        title: 'Name',
-                        value: values.name,
-                        short: false,
-                      },
-                      {
-                        title: 'Email',
-                        value: values.email,
-                        short: false,
-                      },
-                      {
-                        title: 'Reason',
-                        value: values.reason,
-                        short: false,
-                      },
-                      {
-                        title: 'Concern',
-                        value: values.concern,
-                        short: false,
-                      },
-                      {
-                        title: 'Location (Approximation)',
-                        value: `IP: ${this.state.geo.ip}\nCountry: ${
-                          this.state.geo.country
-                        }\nRegion: ${this.state.geo.region}\nCity: ${
-                          this.state.geo.city
-                        }\nRegion: ${this.state.geo.region}\nLat,Lon: ${
-                          this.state.geo.latLon
-                        }\nPin: <${this.state.geo.pin}|${
-                          this.state.geo.pin
-                        }>\nTimezone: ${this.state.geo.timeZone}`,
-                        short: false,
-                      },
-                    ],
-                  },
-                ],
-              }),
+              method: 'GET',
+              mode: 'no-cors',
             },
           )
-            .then(() => {
+            .then(response => {
+              console.log('success', response);
               this.setState({
                 loader: false,
                 formSent: true,
               });
             })
             .catch(error => {
-              console.log(error);
+              console.log('error', error);
               this.setState({
                 loader: false,
               });
@@ -413,21 +371,6 @@ class IndexPage extends React.Component {
         }, 1500);
       }
     });
-  }
-
-  /** checkEmailValid -- checks email is valid */
-  checkEmailValid(rule, value, callback) {
-    if (_.isEmpty(value)) {
-      // Is empty
-      callback('Your email please...');
-    } else {
-      if (!isEmail(value)) {
-        // Is not an email
-        callback("That's not a valid email address!");
-      } else {
-        callback();
-      }
-    }
   }
 
   render() {
@@ -440,8 +383,21 @@ class IndexPage extends React.Component {
     // Only show error after a field is touched.
     const nameError = isFieldTouched('name') && getFieldError('name');
     const emailError = isFieldTouched('email') && getFieldError('email');
-    const reasonError = isFieldTouched('reason') && getFieldError('reason');
-    const concernError = isFieldTouched('concern') && getFieldError('concern');
+    const eventError = isFieldTouched('event') && getFieldError('event');
+
+    const postEdges = this.props.data.allMarkdownRemark.edges;
+
+    // get only events
+    const eventNodes = [];
+    const dates = [];
+    _.map(postEdges, ({ node }) => {
+      if (_.startsWith(_.trim(node.fields.route), 'events') === true) {
+        eventNodes.push({ node });
+        dates.push({ date: moment(node.frontmatter.date, 'YYYY-MM-DD'), node });
+      }
+    });
+
+    const today = moment();
 
     return (
       <Fragment>
@@ -457,80 +413,66 @@ class IndexPage extends React.Component {
         <Page className={pageWrapperClass}>
           {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Form */}
           <div>
-            <H1>Contact</H1>
-            <Paragraph>
-              Our email is -&nbsp;
-              <a href="mailto:joylivinglearning@gmail.com">
-                joylivinglearning@gmail.com
-              </a>. You can also fill the form below…
-            </Paragraph>
+            <H1>Register</H1>
+            <Paragraph>blah blah blah…</Paragraph>
             {this.state.formSent === false && (
               <Form onSubmit={this.handleSubmit} className={formStyleClass}>
+                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Name */}
                 <FormItem
                   validateStatus={nameError ? 'error' : ''}
                   help={nameError || ''}
                 >
                   {getFieldDecorator('name', {
                     validateTrigger: ['onChange', 'onBlur'],
-                    rules: [
-                      { required: true, message: 'Please fill in your name.' },
-                    ],
-                  })(<Input placeholder="Name…" />)}
+                    rules: [{ validator: validateName }],
+                  })(<Input placeholder="Name" />)}
                 </FormItem>
+                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
                 <FormItem
                   validateStatus={emailError ? 'error' : ''}
                   help={emailError || ''}
                 >
                   {getFieldDecorator('email', {
                     validateTrigger: ['onChange', 'onBlur'],
-                    rules: [{ validator: this.checkEmailValid }],
-                  })(<Input placeholder="Email…" />)}
+                    rules: [{ validator: validateEmail }],
+                  })(<Input placeholder="Email" />)}
                 </FormItem>
+                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Event Selection */}
                 <FormItem
-                  validateStatus={reasonError ? 'error' : ''}
-                  help={reasonError || ''}
+                  validateStatus={eventError ? 'error' : ''}
+                  help={eventError || ''}
                 >
-                  {getFieldDecorator('reason', {
-                    initialValue: 'request-for-information',
+                  {getFieldDecorator('event', {
                     rules: [
                       {
                         required: true,
-                        message:
-                          'Telling us what we can help you with will allow us to get back to you quicker.',
+                        message: 'Please select an event from the dropdown...',
                       },
                     ],
                   })(
-                    <Select placeholder="How can we help you?">
-                      <Option value="request-for-information">
-                        Request for information
-                      </Option>
-                      <Option value="general-support">General support</Option>
-                      <Option value="billing-and-payment">
-                        Billing and payment issues
-                      </Option>
-                      <Option value="technical-issues">Technical issues</Option>
-                      <Option value="upload-issues">Upload issues</Option>
-                      <Option value="account-issues">Account Issues</Option>
-                      <Option value="other-issues">Other Issues</Option>
+                    <Select placeholder="Select an event from the dropdown...">
+                      {_.map(eventNodes, ({ node }, index) => {
+                        // let eventSchemaData = null;
+                        const { frontmatter } = node;
+                        const mDate = moment(frontmatter.date);
+                        const humanDate = mDate.format('dddd, MMMM Do YYYY');
+                        const elapsed = mDate.fromNow();
+
+                        if (mDate.isSameOrAfter(today) === true) {
+                          return (
+                            <Option
+                              key={humanDate}
+                              value={`${frontmatter.title} on ${humanDate}`}
+                            >
+                              {frontmatter.title} on {humanDate} ({elapsed})
+                            </Option>
+                          );
+                        }
+                      })}
                     </Select>,
                   )}
                 </FormItem>
-                <FormItem
-                  validateStatus={concernError ? 'error' : ''}
-                  help={concernError || ''}
-                >
-                  {getFieldDecorator('concern', {
-                    validateTrigger: ['onChange', 'onBlur'],
-                    rules: [
-                      { required: true, message: 'Please add your comments.' },
-                    ],
-                  })(
-                    <TextArea
-                      placeholder="Your questions / comments…"
-                      autosize={{ minRows: 1, maxRows: 6 }}
-                    />,
-                  )}
-                </FormItem>
+                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Submit */}
                 <FormItem>
                   <Button
                     type="primary"
@@ -546,36 +488,10 @@ class IndexPage extends React.Component {
             {/* On-sent message */}
             {this.state.formSent === true && (
               <Paragraph className="home" style={{ textIndent: 0 }}>
-                We recieved your message. We'll get back to you shortly.
+                Thank you for registering! We'll get back to you shortly.
               </Paragraph>
             )}
           </div>
-
-          {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Person Details */}
-          <H1>Contact Person</H1>
-          <Image
-            src={''}
-            style={{
-              height: 250,
-              width: 155,
-              border: 0,
-              background: '#4a4a4a',
-            }}
-            loader="gradient"
-          />
-          <br />
-          <br />
-          <Paragraph>
-            Email:&nbsp;
-            <a href="mailto:joylivinglearning@gmail.com">
-              joylivinglearning@gmail.com
-            </a>
-            <br />
-            Facebook:{' '}
-            <OutLink to="https://www.facebook.com/JoyLivingLearning/">
-              https://www.facebook.com/JoyLivingLearning/
-            </OutLink>
-          </Paragraph>
         </Page>
       </Fragment>
     );
@@ -583,6 +499,35 @@ class IndexPage extends React.Component {
 }
 
 const WrappedForm = Form.create()(IndexPage);
+
+// ----------------------------------------------------------------------------
+// ---------------------------------------------------------------------- Query
+// ----------------------------------------------------------------------------
+/* eslint-disable no-undef */
+export const pageQuery = graphql`
+  query EventSignUpQuery {
+    allMarkdownRemark(
+      limit: 2000
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
+      edges {
+        node {
+          fields {
+            route
+          }
+          frontmatter {
+            abstract
+            title
+            cover
+            date
+            category
+          }
+        }
+      }
+    }
+  }
+`;
+/* eslint-enable no-undef */
 
 // ----------------------------------------------------------------------------
 // -------------------------------------------------------------------- Exports

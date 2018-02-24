@@ -159,20 +159,20 @@ const desktopHeaderStyle = css({
 
     '& li': {
       fontFamily: 'futura-pt, sans-serif !important',
-      ...applyRhythm({ marginBottom: '0.075X' }),
+      marginBottom: '0px !important',
     },
 
     '& li.header': {
       fontWeight: 700,
 
       '& span': {
-        fontSize: '90%',
+        fontSize: '82%',
         letterSpacing: '-0.08775ex',
       },
     },
 
     '& li.header:not(:first-child)': {
-      ...applyRhythm({ marginTop: '1X' }),
+      ...applyRhythm({ marginTop: '0.75X' }),
     },
 
     '& a': {
@@ -180,16 +180,20 @@ const desktopHeaderStyle = css({
       borderBottom: '1.625px solid transparent',
       transition: '0.125s',
       textTransform: 'uppercase',
-      letterSpacing: '0.14625ex',
+      letterSpacing: '0.08775ex',
 
       '& span': {
-        fontSize: '68%',
+        fontSize: '65%',
       },
 
       '&:hover': {
         color: '#4a4a4a',
         borderBottom: '1.625px solid #4a4a4a',
       },
+    },
+
+    '& a.active': {
+      color: '#0000FF',
     },
   },
 });
@@ -207,6 +211,7 @@ class TemplateWrapper extends React.Component {
 
   /** standard renderer */
   render() {
+    const { pathname } = this.props.location;
     return (
       <Type
         kit="dkc2ilk"
@@ -280,58 +285,112 @@ class TemplateWrapper extends React.Component {
                           <span>About</span>
                         </li>
                         <li>
-                          <Link to="/nonviolent-communication">
+                          <Link
+                            to="/"
+                            className={pathname === '/' ? 'active' : ''}
+                          >
+                            <span>Joy Living Learning</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="/nonviolent-communication"
+                            className={
+                              pathname === '/nonviolent-communication'
+                                ? 'active'
+                                : ''
+                            }
+                          >
                             <span>Nonviolent Communication</span>
                           </Link>
                         </li>
                         <li>
-                          <Link to="/restorative-circles">
+                          <Link
+                            to="/restorative-circles"
+                            className={
+                              pathname === '/restorative-circles'
+                                ? 'active'
+                                : ''
+                            }
+                          >
                             <span>Restorative Circles</span>
                           </Link>
                         </li>
                         <li>
-                          <Link to="/internal-family-systems">
-                            <span>Internal Family Systems</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="/sociocracy">
-                            <span>Sociocracy</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link to="/laura-joy">
-                            <span>Laur'a Joy</span>
+                          <Link
+                            to="/laura-joy"
+                            className={
+                              pathname === '/laura-joy' ? 'active' : ''
+                            }
+                          >
+                            <span>L'aura Joy</span>
                           </Link>
                         </li>
                         <li className="header">
                           <span>Learn</span>
                         </li>
                         <li>
-                          <Link to="/events">
+                          <Link
+                            to="/events"
+                            className={pathname === '/events' ? 'active' : ''}
+                          >
                             <span>Upcoming Events</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="/register"
+                            className={pathname === '/register' ? 'active' : ''}
+                          >
+                            <span>Register</span>
                           </Link>
                         </li>
                         <li className="header">
                           <span>Facilitation</span>
                         </li>
                         <li>
-                          <Link to="/mediated-restorative-circles">
+                          <Link
+                            to="/mediated-restorative-circles"
+                            className={
+                              pathname === '/mediated-restorative-circles'
+                                ? 'active'
+                                : ''
+                            }
+                          >
                             <span>Restorative Circles</span>
                           </Link>
                         </li>
                         <li>
-                          <Link to="/mediation">
+                          <Link
+                            to="/mediation"
+                            className={
+                              pathname === '/mediation' ? 'active' : ''
+                            }
+                          >
                             <span>Mediation</span>
                           </Link>
                         </li>
                         <li>
-                          <Link to="/meeting-and-group-processes">
+                          <Link
+                            to="/meeting-and-group-processes"
+                            className={
+                              pathname === '/meeting-and-group-processes'
+                                ? 'active'
+                                : ''
+                            }
+                          >
                             <span>Meeting & group processes</span>
                           </Link>
                         </li>
                         <li>
-                          <Link to="/individual-coaching">
+                          <Link
+                            to="/individual-coaching"
+                            className={
+                              pathname === '/individual-coaching'
+                                ? 'active'
+                                : ''
+                            }
+                          >
                             <span>Individual coaching</span>
                           </Link>
                         </li>
@@ -339,12 +398,58 @@ class TemplateWrapper extends React.Component {
                           <span>More</span>
                         </li>
                         <li>
-                          <Link to="/writings">
+                          <Link
+                            to="/internal-family-systems"
+                            className={
+                              pathname === '/internal-family-systems'
+                                ? 'active'
+                                : ''
+                            }
+                          >
+                            <span>Internal Family Systems</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="/sociocracy"
+                            className={
+                              pathname === '/sociocracy' ? 'active' : ''
+                            }
+                          >
+                            <span>Sociocracy</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="/writings"
+                            className={pathname === '/writings' ? 'active' : ''}
+                          >
                             <span>Blog</span>
                           </Link>
                         </li>
                         <li>
-                          <Link to="/contact">
+                          <Link
+                            to="/gallery"
+                            className={pathname === '/gallery' ? 'active' : ''}
+                          >
+                            <span>Gallery</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="/newsletter"
+                            className={
+                              pathname === '/newsletter' ? 'active' : ''
+                            }
+                          >
+                            <span>Newsletter</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="/contact"
+                            className={pathname === '/contact' ? 'active' : ''}
+                          >
                             <span>Contact Us</span>
                           </Link>
                         </li>

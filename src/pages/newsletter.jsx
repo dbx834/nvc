@@ -35,7 +35,13 @@ import {
 } from '@bodhi-project/semantic-webflow';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import docbrij from './assets/docbrij.jpg';
+import {
+  hasErrors,
+  validateEmail,
+  validateName,
+  validateComment,
+} from '../helpers/formHelpers';
+import { formStyleClass } from '../helpers/defaultFormStyles';
 import ogX from './assets/ogX.jpg';
 import twitterSummaryX from './assets/twitterSummaryX.jpg';
 import packageJson from '../../package.json';
@@ -100,123 +106,22 @@ const breadcrumbSchemaData = {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageWrapper = css({
   ...applyRhythm({ maxWidth: '27X' }),
+
+  '& .ant-form-item': {
+    width: '100% !important',
+  },
+
+  '@media(min-width: 768px)': {
+    '& .ant-form-item:nth-child(1)': {
+      marginRight: '0px !important',
+    },
+
+    '& .ant-form-item:nth-child(2)': {
+      marginLeft: '0px !important',
+    },
+  },
 });
 const pageWrapperClass = pageWrapper.toString();
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Hex style
-const formStyle = css({
-  display: 'flex !important',
-  flexWrap: 'wrap !important',
-  color: 'inherit !important',
-
-  '& .ant-form-item': _.merge(
-    {
-      display: 'flex !important',
-      width: '100%',
-      '@media(min-width: 768px)': {
-        width: '62.5%',
-      },
-      flexGrow: '1',
-
-      '& .ant-form-explain': {
-        fontSize: '70%',
-        marginTop: 5,
-      },
-    },
-    ...applyType('ltb1ekq'),
-    ...applyRhythm({ marginBottom: '1.625X' }),
-  ),
-
-  '& .ant-form-item-control-wrapper': {
-    width: '100%',
-  },
-
-  // Email
-  '& .ant-input': {
-    fontSize: 'inherit',
-    fontFamily: 'inherit',
-    border: 'none',
-    borderBottom: '3px solid #363636',
-    borderRadius: 0,
-    height: 'auto',
-    color: '#363636',
-    transition: 'border 500ms cubic-bezier(0.215, 0.61, 0.355, 1)',
-    backgroundColor: '#f8f2e6',
-    ...applyRhythm({ padding: '0X 0X 0.141X' }),
-
-    '&::-webkit-input-placeholder': {
-      color: '#363636',
-    },
-
-    '&:hover::-webkit-input-placeholder': {
-      color: '#0000FF',
-    },
-
-    '&:hover': {
-      border: 'none',
-      boxShadow: 'none',
-      borderBottom: '3px solid #0000FF',
-      color: '#0000FF',
-    },
-    '&:visited': {
-      border: 'none',
-      boxShadow: 'none',
-      borderBottom: '3px solid #363636',
-    },
-    '&:link': {
-      border: 'none',
-      boxShadow: 'none',
-      borderBottom: '3px solid #363636',
-    },
-    '&:active': {
-      border: 'none',
-      boxShadow: 'none',
-      borderBottom: '3px solid #363636',
-    },
-    '&:focus': {
-      border: 'none',
-      boxShadow: 'none',
-      borderBottom: '3px solid #0000FF',
-      color: '#0000FF',
-    },
-  },
-
-  // Submit button
-  '& .ant-btn-primary': _.merge(
-    {
-      fontSize: 'inherit',
-      borderRadius: 0,
-      backgroundColor: '#0000FF',
-      borderColor: '#0000FF',
-    },
-    ...applyRhythm({ height: '1.375X' }),
-    ...applyRhythm({ padding: '0X 1.625X' }),
-  ),
-
-  '& .ant-btn-primary[disabled]': {
-    color: 'rgba(54, 54, 54, 0.375)',
-    backgroundColor: '#FFFFFF',
-    borderColor: '#363636',
-    backgroundImage:
-      'linear-gradient(-45deg, rgba(0, 0, 0, 0) 46%, #363636 49%, #363636 51%, rgba(0, 0, 0, 0) 10%)',
-    ...applyRhythm({ backgroundSize: '0.45X 0.45X' }),
-  },
-
-  '& .has-error .ant-input:focus': {
-    border: 'none !important',
-    boxShadow: 'none !important',
-    borderBottom: '3px solid #ff4d4f !important',
-  },
-});
-
-const formStyleClass = formStyle.toString();
-
-// ----------------------------------------------------------------------------
-// ------------------------------------------------------------------ Functions
-// ----------------------------------------------------------------------------
-/** Checks errors */
-const hasErrors = fieldsError =>
-  Object.keys(fieldsError).some(field => fieldsError[field]);
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
@@ -232,7 +137,6 @@ class Page extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.checkEmailValid = this.checkEmailValid.bind(this);
   }
 
   /** componentDidMount - Disable submit button at the beginning. */
@@ -253,8 +157,8 @@ class Page extends React.Component {
 
         const { email } = values;
 
+        // Mock some delay
         setTimeout(() => {
-          // Mock some delay
           fetch(
             `https://script.google.com/macros/s/AKfycbx6xNPY__NC6jrneaGeH1NPLkjdrNSc3NMUV-oHAWnWln2WDWZL/exec?email=${email}&callback=?`,
             {
@@ -280,21 +184,7 @@ class Page extends React.Component {
     });
   }
 
-  /** checkEmailValid -- checks email is valid */
-  checkEmailValid(rule, value, callback) {
-    if (_.isEmpty(value)) {
-      // Is empty
-      callback('Your email please...');
-    } else {
-      if (!isEmail(value)) {
-        // Is not an email
-        callback("That's not a valid email address!");
-      } else {
-        callback();
-      }
-    }
-  }
-
+  /** standard renderer */
   render() {
     const {
       getFieldDecorator,
@@ -325,15 +215,17 @@ class Page extends React.Component {
             </Paragraph>
             {this.state.formSent === false && (
               <Form onSubmit={this.handleSubmit} className={formStyleClass}>
+                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
                 <FormItem
                   validateStatus={emailError ? 'error' : ''}
                   help={emailError || ''}
                 >
                   {getFieldDecorator('email', {
                     validateTrigger: ['onChange', 'onBlur'],
-                    rules: [{ validator: this.checkEmailValid }],
-                  })(<Input placeholder="Email…" />)}
+                    rules: [{ validator: validateEmail }],
+                  })(<Input placeholder="Email" />)}
                 </FormItem>
+                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Submit */}
                 <FormItem>
                   <Button
                     type="primary"

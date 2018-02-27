@@ -495,16 +495,18 @@ class EventsAndCalendar extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={pageStyleClass}>
-          <H1>Event Calendar</H1>
-          <LocaleProvider locale={enGB}>
-            <Calendar
-              dateFullCellRender={dateFullCellRender}
-              onSelect={this.onSelect}
-              defaultValue={this.state.selectedDate}
-            />
-          </LocaleProvider>
-          <br />
-          <br />
+          <div className="hidden-sm">
+            <H1>Event Calendar</H1>
+            <LocaleProvider locale={enGB}>
+              <Calendar
+                dateFullCellRender={dateFullCellRender}
+                onSelect={this.onSelect}
+                defaultValue={this.state.selectedDate}
+              />
+            </LocaleProvider>
+            <br />
+            <br />
+          </div>
           <H1>Upcoming Events</H1>
           <HexaGrid id="events-grid">
             {_.map(eventNodes, ({ node }, index) => {

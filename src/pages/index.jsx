@@ -83,18 +83,7 @@ const breadcrumbSchemaData = {
 // ----------------------------------------------------------------------- Styles
 // ------------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
-const pageStyle = css({
-  // «««««««««««««««««««««««««««««««««««««««««««««««««««««««««« HR
-  '& hr': {
-    border: '2px solid #363636',
-    '@media(min-width: 800px)': {
-      border: '3px solid #363636',
-    },
-    '@media(min-width: 1250px)': {
-      border: '4px solid #363636',
-    },
-  },
-});
+const pageStyle = css({});
 const pageStyleClass = pageStyle.toString();
 
 // ----------------------------------------------------------------------- Component
@@ -114,7 +103,6 @@ class IndexPage extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={`${pageStyleClass} text-center`}>
-          <hr />
           <H3>Coming Soon</H3>
         </Page>
       </Fragment>

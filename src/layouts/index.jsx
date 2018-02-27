@@ -9,9 +9,7 @@ import moment from 'moment';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from 'gatsby-link';
-import { Icon } from 'antd';
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
+import { Row, Col, Icon } from 'antd';
 import {
   CompositeHeader,
   Container,
@@ -37,6 +35,9 @@ import mobileBurger from './assets/mobileBurger.png';
 import mobileCross from './assets/mobileCross.png';
 import indexImage from '../pages/assets/launch.jpg';
 import packageJson from '../../package.json';
+import waves from './assets/waves.png';
+import boat from './assets/boat.png';
+import facebook from './assets/facebook.png';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const {
@@ -115,20 +116,6 @@ const wrapperStyles = css({
     ...applyRhythm({ padding: '4.8X 3X' }),
     marginLeft: 0,
   },
-
-  '& #footer': {
-    ...applyRhythm({ padding: '0X 3X 4.8X 3X' }),
-
-    '& hr': {
-      height: 1,
-      border: 0,
-      backgroundImage:
-        'linear-gradient(to right, #4a4a4a 30%, rgba(74, 74, 74, 0) 0%)',
-      backgroundPosition: 'bottom',
-      backgroundSize: '5px 1px',
-      backgroundRepeat: 'repeat-x',
-    },
-  },
 });
 const wrapperStylesClass = wrapperStyles.toString();
 
@@ -198,6 +185,23 @@ const desktopHeaderStyle = css({
   },
 });
 const desktopHeaderStyleClass = desktopHeaderStyle.toString();
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Footer
+const footerStyle = css({
+  ...applyRhythm({ padding: '0X 3X 4.8X 3X' }),
+
+  '& .boat': {
+    height: '120px !important',
+    width: '120px !important',
+    background: 'transparent !important',
+    border: 'none !important',
+    position: 'absolute',
+    right: 54,
+    zIndex: 1,
+    top: -118,
+  },
+});
+const footerStyleClass = footerStyle.toString();
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
@@ -337,14 +341,6 @@ class TemplateWrapper extends React.Component {
                             <span>Upcoming Events</span>
                           </Link>
                         </li>
-                        <li>
-                          <Link
-                            to="/register"
-                            className={pathname === '/register' ? 'active' : ''}
-                          >
-                            <span>Register</span>
-                          </Link>
-                        </li>
                         <li className="header">
                           <span>Facilitation</span>
                         </li>
@@ -474,25 +470,69 @@ class TemplateWrapper extends React.Component {
             </Container>
 
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Footer */}
-            <SemanticFooter>
+            <SemanticFooter className={footerStyleClass}>
               <Container bleed noFade block id="footer">
-                <hr />
-                <br />
-                <br />
-                <Paragraph>
-                  Made with{' '}
-                  <Icon
-                    type="heart"
-                    style={{ color: '#D34025', fontSize: '80%' }}
-                  />{' '}
-                  by{' '}
-                  <OutLink to="https://www.bodhiproject.org/">
-                    Bodhi Project
-                  </OutLink>.
-                  <br />
-                  <br />
-                  {data.copyright}
-                </Paragraph>
+                <Image
+                  src={waves}
+                  style={{
+                    height: 7,
+                    width: '100%',
+                    background: 'transparent',
+                    border: 0,
+                    display: 'block',
+                    ...applyRhythm({ marginBottom: '1X' }),
+                    zIndex: 2,
+                  }}
+                />
+                <Image src={boat} className="boat" />
+                <Row type="flex">
+                  <Col xs={23} sm={23} md={20} lg={17} xl={15}>
+                    <Paragraph scale="1.375X">
+                      <br />
+                      <strong>
+                        Nonviolent Communication & Restorative Circles in India
+                      </strong>
+                      <br />
+                      <br />
+                      blah blah blah blah blah blah blah blah blah blah blah
+                      blah blah blah blah blah blah blah blah blah blah blah
+                      blah blah blah blah blah blah blah blah blah blah blah
+                      blah blah blah.
+                      <br />
+                      <br />
+                    </Paragraph>
+                    <div className="mask-p hidden-sm">
+                      <OutLink to="https://www.facebook.com/JoyLivingLearning/">
+                        <Image
+                          src={facebook}
+                          rawWidth={450}
+                          rawHeight={450}
+                          style={{
+                            display: 'inline-block',
+                            border: 'none',
+                            background: 'none',
+                            height: 47,
+                            width: 47,
+                          }}
+                        />
+                      </OutLink>
+                    </div>
+                    <Paragraph>
+                      <br />
+                      Made with{' '}
+                      <Icon
+                        type="heart"
+                        style={{ color: '#D34025', fontSize: '80%' }}
+                      />{' '}
+                      by{' '}
+                      <OutLink to="https://www.bodhiproject.org/">
+                        Bodhi Project
+                      </OutLink>.
+                      <br />
+                      {data.copyright}
+                    </Paragraph>
+                  </Col>
+                </Row>
               </Container>
             </SemanticFooter>
           </div>

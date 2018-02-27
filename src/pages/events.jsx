@@ -10,7 +10,8 @@ import moment from 'moment';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from 'gatsby-link';
-import { Calendar, Tooltip, Popover } from 'antd';
+import { LocaleProvider, Calendar, Tooltip, Popover, Badge } from 'antd';
+import en_GB from 'antd/lib/locale-provider/en_GB';
 import {
   Page,
   // Section,
@@ -19,7 +20,7 @@ import {
   // Footer,
 } from '@bodhi-project/semantic-webflow';
 import { Image, HexaGrid as HexaGridX } from '@bodhi-project/components';
-import { Elements, applyRhythm } from '@bodhi-project/typography';
+import { Elements, applyRhythm, applyType } from '@bodhi-project/typography';
 import {
   // --------------- Basic
   UpdateTitle,
@@ -53,6 +54,7 @@ const { data } = packageJson;
 const { Fragment } = React;
 const { H1, H2, Paragraph } = Elements;
 const { HexaGrid, Hex } = HexaGridX;
+const enGB = en_GB;
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
@@ -133,6 +135,10 @@ const pageStyle = css({
       },
     },
   },
+  '& .blank': {
+    visibility: 'hidden',
+  },
+
   '& .cover': {
     zIndex: -1,
   },
@@ -153,6 +159,165 @@ const pageStyle = css({
         border: 0,
         marginTop: 2,
         marginRight: 2,
+      },
+    },
+  },
+
+  '& .ant-fullcalendar-fullscreen': {
+    '& .ant-fullcalendar-header': {
+      width: 90 * 7,
+      padding: '11px 0px',
+    },
+
+    '& .ant-fullcalendar-year-select': {
+      ...applyType('ltb1ekq'),
+      '& .ant-select-selection': {
+        fontSize: '80%',
+        backgroundColor: 'transparent',
+        border: 'none',
+      },
+    },
+
+    '& .ant-fullcalendar-month-select': {
+      ...applyType('ltb1ekq'),
+      '& .ant-select-selection': {
+        fontSize: '80%',
+        backgroundColor: 'transparent',
+        border: 'none',
+      },
+    },
+
+    '& .ant-radio-group': {
+      display: 'none',
+    },
+  },
+
+  '& .ant-fullcalendar': {
+    ...applyType('ltb1ekq'),
+
+    '& .ant-fullcalendar-calendar-body': {
+      padding: 0,
+      width: 'fit-content',
+      maxWidth: 'fit-content',
+
+      '& table': {
+        '& thead': {
+          borderTop: '1px solid #4a4a4a',
+          borderBottom: '1px solid #4a4a4a',
+
+          '& .ant-fullcalendar-column-header': {
+            textAlign: 'left',
+            paddingTop: 6,
+            paddingBottom: 6,
+            '& span': {
+              fontWeight: 700,
+              fontStyle: 'italic',
+            },
+          },
+        },
+      },
+    },
+
+    '& table': {
+      width: 'unset',
+      maxWidth: 'unset',
+    },
+
+    '& tbody': {
+      '& .ant-fullcalendar-cell': {
+        position: 'relative',
+        width: 90,
+        height: 90,
+      },
+
+      '& div.date-block': {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: 89,
+        height: 89,
+        WebkitTransition: 'all 300ms cubic-bezier(0.78, 0.14, 0.15, 0.86)',
+        transition: 'all 300ms cubic-bezier(0.78, 0.14, 0.15, 0.86)',
+
+        '&:hover': {
+          backgroundColor: '#FFDA9A',
+        },
+
+        '& > span': {
+          display: 'block',
+          width: 88,
+          height: 89,
+        },
+
+        '& .ant-badge': {
+          fontFamily: 'inherit',
+          fontSize: 'inherit',
+          '& .ant-badge-dot': {
+            top: 4,
+            height: 8,
+            width: 8,
+            transform: 'translateX(-10%)',
+          },
+        },
+
+        '& a': {
+          display: 'block',
+          height: 89,
+          width: 89,
+
+          '&:hover': {
+            color: '#6D00FF',
+            borderBottom: '1.625px solid transparent',
+          },
+        },
+      },
+
+      '& div.this-month': {
+        backgroundColor: '#fff5cd',
+      },
+
+      '& div.that-month': {
+        backgroundColor: '#F6F4FE',
+      },
+
+      '& tr': {
+        '& td': {
+          '& div.date-block': {
+            backgroundImage:
+              'linear-gradient(to right, #4a4a4a 30%, rgba(74, 74, 74, 0) 0%), linear-gradient(to bottom, #4a4a4a 30%, rgba(74, 74, 74, 0) 0%)',
+            backgroundPosition: 'bottom, right',
+            backgroundSize: '4.45px 1px, 1px 4.45px',
+            backgroundRepeat: 'repeat-x, repeat-y',
+          },
+        },
+
+        '& td:last-child': {
+          '& div.date-block': {
+            backgroundImage:
+              'linear-gradient(to right, #4a4a4a 30%, rgba(74, 74, 74, 0) 0%)',
+            backgroundPosition: 'bottom',
+            backgroundSize: '4.45px 1px',
+            backgroundRepeat: 'repeat-x',
+          },
+        },
+      },
+
+      '& tr:last-child': {
+        '& td': {
+          '& div.date-block': {
+            backgroundImage:
+              'linear-gradient(to bottom, #4a4a4a 30%, rgba(74, 74, 74, 0) 0%)',
+            backgroundPosition: 'right',
+            backgroundSize: '1px 4.45px',
+            backgroundRepeat: 'repeat-y',
+          },
+        },
+
+        '& td:last-child': {
+          '& div.date-block': {
+            backgroundImage: 'none',
+          },
+        },
       },
     },
   },
@@ -179,6 +344,21 @@ class EventsAndCalendar extends React.Component {
   /** standard constructor */
   constructor(props) {
     super(props);
+    this.state = {
+      selectedDate: null,
+    };
+    this.onSelect = this.onSelect.bind(this);
+  }
+
+  /** componentDidMount - set current date */
+  componentDidMount() {
+    const today = moment();
+    this.setState({ selectedDate: today });
+  }
+
+  /** logs date */
+  onSelect(value, mode) {
+    this.setState({ selectedDate: value });
   }
 
   /** standard renderer */
@@ -187,41 +367,119 @@ class EventsAndCalendar extends React.Component {
 
     // get only events
     const eventNodes = [];
-    const dates = [];
     _.map(postEdges, ({ node }) => {
       if (_.startsWith(_.trim(node.fields.route), 'events') === true) {
         eventNodes.push({ node });
-        dates.push({ date: moment(node.frontmatter.date, 'YYYY-MM-DD'), node });
       }
     });
 
+    const todayInt = parseInt(moment().format('YYYYMMDD'), 10);
+    const selectedMonth =
+      !_.isNull(this.state.selectedDate) && this.state.selectedDate.format('M');
+
     /** renders each date */
-    const dateCellRender = value => {
-      let frag = <Fragment />;
-      _.map(dates, ({ date, node }) => {
+    const dateFullCellRender = value => {
+      // console.log(value);
+      const day = value.format('D');
+      const thisMonth = value.format('M');
+      const thisDate = parseInt(value.format('YYYYMMDD'), 10);
+      let classNames = 'date-block';
+      if (selectedMonth === thisMonth) {
+        classNames += ' this-month';
+      } else {
+        classNames += ' that-month';
+      }
+      let frag = <div className={classNames}>{day}</div>;
+
+      _.map(postEdges, ({ node }) => {
         const { frontmatter } = node;
+        const { fields } = node;
         const { title } = frontmatter;
-        if (value.format('YYYY-MM-DD') === date.format('YYYY-MM-DD')) {
-          frag = <span>{title}</span>;
+        const mDate = moment(frontmatter.date);
+        const xDate = parseInt(mDate.format('YYYYMMDD'), 10);
+        const humanDate = mDate.format('dddd, MMMM Do YYYY');
+        let badgeStatus = null;
+        // const when = moment(mDate).fromNow();
+        const { route } = fields;
+        const { tags } = frontmatter;
+
+        if (thisDate === xDate) {
+          if (todayInt > xDate) {
+            classNames += ' past-event';
+            badgeStatus = 'default';
+          } else if (todayInt < xDate) {
+            classNames += ' planned-event';
+            badgeStatus = 'warning';
+          } else {
+            classNames += ' happening-event';
+            badgeStatus = 'success';
+          }
+
+          const content = (
+            <div>
+              <Paragraph style={{ marginBottom: 0, padding: '9px 6px' }}>
+                <span className="title" style={{ fontSize: '110%' }}>
+                  {title}
+                </span>
+                <br />
+                <small className="date">
+                  <i>{humanDate}</i>
+                </small>
+                <br />
+                <br />
+                {frontmatter.abstract}
+              </Paragraph>
+            </div>
+          );
+
+          frag = (
+            <div className={classNames}>
+              <Popover content={content} title={false}>
+                <Link to={route}>
+                  <Badge status={badgeStatus}>{day}</Badge>
+                  <br />
+                  {inArray(tags, 'nvc') && (
+                    <Image
+                      src={nvc}
+                      rawHeight={450}
+                      rawWidth={450}
+                      className="icon"
+                      style={{
+                        height: 60,
+                        width: 60,
+                        background: 'transparent',
+                        border: 0,
+                        left: 15,
+                        top: -5,
+                      }}
+                    />
+                  )}
+                  {inArray(tags, 'rc') && (
+                    <Image
+                      src={rc}
+                      rawHeight={450}
+                      rawWidth={450}
+                      className="icon"
+                      style={{
+                        height: 60,
+                        width: 60,
+                        background: 'transparent',
+                        border: 0,
+                        left: 15,
+                        top: -5,
+                      }}
+                    />
+                  )}
+                </Link>
+              </Popover>
+            </div>
+          );
         }
       });
       return frag;
     };
 
-    /** renders each month */
-    const monthCellRender = value => {
-      let frag = <Fragment />;
-      let totalEvents = 0;
-      _.map(dates, date => {
-        if (value.format('YYYY-MM') === date.format('YYYY-MM')) {
-          totalEvents += 1;
-        }
-      });
-      if (totalEvents > 0) {
-        frag = <span>{totalEvents}</span>;
-      }
-      return frag;
-    };
+    let totalEvents = 0;
 
     return (
       <Fragment>
@@ -236,218 +494,209 @@ class EventsAndCalendar extends React.Component {
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={pageStyleClass}>
           <H1>Event Calendar</H1>
-          <Calendar
-            dateCellRender={dateCellRender}
-            monthCellRender={monthCellRender}
-          />
+          <LocaleProvider locale={enGB}>
+            <Calendar
+              dateFullCellRender={dateFullCellRender}
+              onSelect={this.onSelect}
+              defaultValue={this.state.selectedDate}
+            />
+          </LocaleProvider>
           <br />
           <br />
-          <H1>Events</H1>
+          <H1>Upcoming Events</H1>
           <HexaGrid id="events-grid">
             {_.map(eventNodes, ({ node }, index) => {
-              let eventSchemaData = null;
               const { frontmatter } = node;
               const mDate = moment(frontmatter.date);
               const humanDate = mDate.format('dddd, MMMM Do YYYY');
               const { tags } = frontmatter;
               const when = moment(mDate).fromNow();
+              const { fields } = node;
+              const { route } = fields;
+              const xDate = parseInt(mDate.format('YYYYMMDD'), 10);
 
-              if (index <= 30) {
-                const startDate = mDate.format();
-                const endDate = mDate.add(23, 'hours').format();
-                const { orgLocation } = data;
-                const { route } = node.fields;
-
-                eventSchemaData = {
-                  name: frontmatter.title,
-                  url: `${data.nakedWebsiteUrl}${route}`,
-                  description: frontmatter.abstract,
-                  startDate,
-                  endDate,
-                  locationName: orgLocation.locationName,
-                  locationUrl: orgLocation.locationUrl,
-                  streetAddress: orgLocation.streetAddress,
-                  addressLocality: orgLocation.addressLocality,
-                  addressRegion: orgLocation.addressRegion,
-                  postalCode: orgLocation.postalCode,
-                  addressCountry: orgLocation.addressCountry,
-                  image: ogX,
-                };
-              }
-
-              return (
-                <Hex className="hex" key={humanDate}>
-                  <Article>
-                    {index <= 30 && <EventSchema data={eventSchemaData} />}
-                    <ul className="event-icons">
-                      {inArray(tags, 'nvc') && (
-                        <li>
-                          <Tooltip title="Nonviolent Communication">
-                            <div>
-                              <Image
-                                src={nvc}
-                                rawHeight={450}
-                                rawWidth={450}
-                                className="icon"
-                                style={{
-                                  height: 30,
-                                  width: 30,
-                                  background: 'transparent',
-                                }}
-                              />
-                            </div>
-                          </Tooltip>
-                        </li>
-                      )}
-                      {inArray(tags, 'rc') && (
-                        <li>
-                          <Tooltip title="Restorative Circle">
-                            <div>
-                              <Image
-                                src={rc}
-                                rawHeight={450}
-                                rawWidth={450}
-                                className="icon"
-                                style={{
-                                  height: 30,
-                                  width: 30,
-                                  background: 'transparent',
-                                }}
-                              />
-                            </div>
-                          </Tooltip>
-                        </li>
-                      )}
-                      {inArray(tags, 'introduction') && (
-                        <li>
-                          <Tooltip title="Introduction">
-                            <div>
-                              <Image
-                                src={introduction}
-                                rawHeight={450}
-                                rawWidth={450}
-                                className="icon"
-                                style={{
-                                  height: 30,
-                                  width: 30,
-                                  background: 'transparent',
-                                }}
-                              />
-                            </div>
-                          </Tooltip>
-                        </li>
-                      )}
-                      {inArray(tags, 'deepening') && (
-                        <li>
-                          <Tooltip title="Deepening">
-                            <div>
-                              <Image
-                                src={deepening}
-                                rawHeight={450}
-                                rawWidth={450}
-                                className="icon"
-                                style={{
-                                  height: 30,
-                                  width: 30,
-                                  background: 'transparent',
-                                }}
-                              />
-                            </div>
-                          </Tooltip>
-                        </li>
-                      )}
-                      {inArray(tags, 'workshop') && (
-                        <li>
-                          <Tooltip title="Workshop">
-                            <div>
-                              <Image
-                                src={workshop}
-                                rawHeight={450}
-                                rawWidth={450}
-                                className="icon"
-                                style={{
-                                  height: 30,
-                                  width: 30,
-                                  background: 'transparent',
-                                }}
-                              />
-                            </div>
-                          </Tooltip>
-                        </li>
-                      )}
-                      {inArray(tags, 'practice group') && (
-                        <li>
-                          <Tooltip title="Practice group">
-                            <div>
-                              <Image
-                                src={practiceGroup}
-                                rawHeight={450}
-                                rawWidth={450}
-                                className="icon"
-                                style={{
-                                  height: 30,
-                                  width: 30,
-                                  background: 'transparent',
-                                }}
-                              />
-                            </div>
-                          </Tooltip>
-                        </li>
-                      )}
-                      {inArray(tags, 'webinar') && (
-                        <li>
-                          <Tooltip title="Webinar">
-                            <div>
-                              <Image
-                                src={webinar}
-                                rawHeight={450}
-                                rawWidth={450}
-                                className="icon"
-                                style={{
-                                  height: 30,
-                                  width: 30,
-                                  background: 'transparent',
-                                }}
-                              />
-                            </div>
-                          </Tooltip>
-                        </li>
-                      )}
-                    </ul>
-                    <Image
-                      src={dummy1}
-                      rawHeight={1400}
-                      rawWidth={2100}
-                      className="cover"
-                      style={{
-                        height: 'auto',
-                        width: '100%',
-                        border: 0,
-                        borderTopLeftRadius: 8,
-                        borderTopRightRadius: 8,
-                      }}
-                      loader="gradient"
-                    />
-                    <Paragraph className="abstract">
-                      <Tooltip title={when} placement="topLeft">
-                        <span className="title" style={{ fontSize: '110%' }}>
-                          {frontmatter.title}
-                        </span>
+              if (todayInt <= xDate) {
+                totalEvents += 1;
+                return (
+                  <Hex className="hex" key={humanDate}>
+                    <Article>
+                      <ul className="event-icons">
+                        {inArray(tags, 'nvc') && (
+                          <li>
+                            <Tooltip title="Nonviolent Communication">
+                              <div>
+                                <Image
+                                  src={nvc}
+                                  rawHeight={450}
+                                  rawWidth={450}
+                                  className="icon"
+                                  style={{
+                                    height: 30,
+                                    width: 30,
+                                    background: 'transparent',
+                                  }}
+                                />
+                              </div>
+                            </Tooltip>
+                          </li>
+                        )}
+                        {inArray(tags, 'rc') && (
+                          <li>
+                            <Tooltip title="Restorative Circle">
+                              <div>
+                                <Image
+                                  src={rc}
+                                  rawHeight={450}
+                                  rawWidth={450}
+                                  className="icon"
+                                  style={{
+                                    height: 30,
+                                    width: 30,
+                                    background: 'transparent',
+                                  }}
+                                />
+                              </div>
+                            </Tooltip>
+                          </li>
+                        )}
+                        {inArray(tags, 'introduction') && (
+                          <li>
+                            <Tooltip title="Introduction">
+                              <div>
+                                <Image
+                                  src={introduction}
+                                  rawHeight={450}
+                                  rawWidth={450}
+                                  className="icon"
+                                  style={{
+                                    height: 30,
+                                    width: 30,
+                                    background: 'transparent',
+                                  }}
+                                />
+                              </div>
+                            </Tooltip>
+                          </li>
+                        )}
+                        {inArray(tags, 'deepening') && (
+                          <li>
+                            <Tooltip title="Deepening">
+                              <div>
+                                <Image
+                                  src={deepening}
+                                  rawHeight={450}
+                                  rawWidth={450}
+                                  className="icon"
+                                  style={{
+                                    height: 30,
+                                    width: 30,
+                                    background: 'transparent',
+                                  }}
+                                />
+                              </div>
+                            </Tooltip>
+                          </li>
+                        )}
+                        {inArray(tags, 'workshop') && (
+                          <li>
+                            <Tooltip title="Workshop">
+                              <div>
+                                <Image
+                                  src={workshop}
+                                  rawHeight={450}
+                                  rawWidth={450}
+                                  className="icon"
+                                  style={{
+                                    height: 30,
+                                    width: 30,
+                                    background: 'transparent',
+                                  }}
+                                />
+                              </div>
+                            </Tooltip>
+                          </li>
+                        )}
+                        {inArray(tags, 'practice group') && (
+                          <li>
+                            <Tooltip title="Practice group">
+                              <div>
+                                <Image
+                                  src={practiceGroup}
+                                  rawHeight={450}
+                                  rawWidth={450}
+                                  className="icon"
+                                  style={{
+                                    height: 30,
+                                    width: 30,
+                                    background: 'transparent',
+                                  }}
+                                />
+                              </div>
+                            </Tooltip>
+                          </li>
+                        )}
+                        {inArray(tags, 'webinar') && (
+                          <li>
+                            <Tooltip title="Webinar">
+                              <div>
+                                <Image
+                                  src={webinar}
+                                  rawHeight={450}
+                                  rawWidth={450}
+                                  className="icon"
+                                  style={{
+                                    height: 30,
+                                    width: 30,
+                                    background: 'transparent',
+                                  }}
+                                />
+                              </div>
+                            </Tooltip>
+                          </li>
+                        )}
+                      </ul>
+                      <Image
+                        src={dummy1}
+                        rawHeight={1400}
+                        rawWidth={2100}
+                        className="cover"
+                        style={{
+                          height: 'auto',
+                          width: '100%',
+                          border: 0,
+                          borderTopLeftRadius: 8,
+                          borderTopRightRadius: 8,
+                        }}
+                        loader="gradient"
+                      />
+                      <Paragraph className="abstract">
+                        <Tooltip title={when} placement="topLeft">
+                          <span className="title" style={{ fontSize: '110%' }}>
+                            {frontmatter.title}
+                          </span>
+                          <br />
+                          <small className="date">
+                            <i>{humanDate}</i>
+                          </small>
+                        </Tooltip>
                         <br />
-                        <small className="date">
-                          <i>{humanDate}</i>
+                        <br />
+                        {frontmatter.abstract}
+                        <br />
+                        <br />
+                        <small className="readmore">
+                          <Link to={route}>Read more ⇾</Link>
                         </small>
-                      </Tooltip>
-                      <br />
-                      <br />
-                      {frontmatter.abstract}
-                      <br />
-                      <br />
-                      <small className="readmore">
-                        <Link to="/">Read more ⇾</Link>
-                      </small>
-                    </Paragraph>
-                  </Article>
+                      </Paragraph>
+                    </Article>
+                  </Hex>
+                );
+              }
+            })}
+            {_.map(_.times(3 - totalEvents % 3, String), x => {
+              return (
+                <Hex className="hex blank" key={x}>
+                  <div>&nbsp;</div>
                 </Hex>
               );
             })}
@@ -470,7 +719,7 @@ export const pageQuery = graphql`
   query EventsQuery {
     allMarkdownRemark(
       limit: 2000
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { fields: [frontmatter___date], order: ASC }
     ) {
       edges {
         node {

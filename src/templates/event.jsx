@@ -17,7 +17,7 @@ import {
   Header,
   Footer,
 } from '@bodhi-project/semantic-webflow';
-import { Elements } from '@bodhi-project/typography';
+import { Elements, applyRhythm } from '@bodhi-project/typography';
 import { treeCodeParser } from '@bodhi-project/markdown-to-react';
 import {
   // --------------- Basic
@@ -37,6 +37,7 @@ import {
 import indexImage from '../pages/assets/index.jpg';
 import packageJson from '../../package.json';
 import markdownStylesClass from '../styles/markdownStyles';
+import Register from '../components/Register';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -48,6 +49,10 @@ const { H1, Paragraph } = Elements;
 // ----------------------------------------------------------------------------
 const pageStyle = css({
   position: 'relative',
+  ...applyRhythm({ maxWidth: '27X' }),
+  '& div + p': {
+    ...applyRhythm({ marginTop: '2X' }),
+  },
 });
 const pageStyleClass = pageStyle.toString();
 
@@ -162,11 +167,15 @@ class EventTemplate extends React.Component {
               {
                 localLink: Link,
                 linkHeaders: true,
-                trackHeaders: true,
-                nestHeaders: true,
+                trackHeaders: false,
+                nestHeaders: false,
               },
               {},
             )}
+            <H1>Register</H1>
+            <div id="register-form">
+              <Register event={{ key: humanDate }} />
+            </div>
           </Article>
           <Footer className="stash">
             <Paragraph>

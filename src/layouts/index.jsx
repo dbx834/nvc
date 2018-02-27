@@ -6,6 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import moment from 'moment';
+import _ from 'lodash';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from 'gatsby-link';
@@ -112,9 +113,32 @@ const wrapperStyles = css({
     },
   },
 
-  '& #content': {
+  '& #content': _.merge(
+    {
+      marginLeft: 0,
+    },
     ...applyRhythm({ padding: '4.8X 3X' }),
-    marginLeft: 0,
+  ),
+
+  '& #appWrapper': {
+    display: 'block',
+    '@media(min-width: 768px)': {
+      display: 'flex',
+
+      '& #menuWrapper': {
+        flexGrow: '22',
+        flexBasis: 0,
+        background: '#fafafa',
+        height: '100vh',
+      },
+
+      '& #contentWrapper': {
+        flexGrow: '78',
+        flexBasis: 0,
+        maxHeight: '100vh',
+        overflow: 'scroll',
+      },
+    },
   },
 });
 const wrapperStylesClass = wrapperStyles.toString();
@@ -129,10 +153,40 @@ const mobileMenu = css({
   backgroundColor: '#fcfcfc',
   '& .bm-item-list': {
     padding: '1em',
+
     '& a': {
+      fontFamily: 'futura-pt, sans-serif !important',
+      color: '#4a4a4a',
+      borderBottom: '1.625px solid transparent',
+      transition: '0.125s',
+      textTransform: 'uppercase',
+      letterSpacing: '0.08775ex',
       display: 'block',
-      fontSize: '150%',
-      marginBottom: '1em',
+      marginBottom: '0.9em',
+      fontSize: '115%',
+
+      '&:hover': {
+        color: '#4a4a4a',
+        borderBottom: '1.625px solid transparent',
+      },
+    },
+
+    '& a.active': {
+      color: '#0000FF',
+    },
+
+    '& span.header': {
+      display: 'block',
+      fontWeight: 700,
+      fontSize: '95%',
+      letterSpacing: '-0.08775ex',
+      textTransform: 'uppercase',
+      marginTop: '2.7em',
+      marginBottom: '0.9em',
+    },
+
+    '& span.header:first-child': {
+      marginTop: '1.3em',
     },
   },
 });
@@ -190,15 +244,27 @@ const desktopHeaderStyleClass = desktopHeaderStyle.toString();
 const footerStyle = css({
   ...applyRhythm({ padding: '0X 3X 4.8X 3X' }),
 
+  '& .waves': {
+    ...applyRhythm({ marginBottom: '1X' }),
+  },
+
   '& .boat': {
-    height: '120px !important',
-    width: '120px !important',
     background: 'transparent !important',
     border: 'none !important',
     position: 'absolute',
-    right: 54,
+    height: '90px !important',
+    width: '90px !important',
+    right: 14,
     zIndex: 1,
-    top: -118,
+    top: -82,
+
+    '@media(min-width: 768px)': {
+      height: '120px !important',
+      width: '120px !important',
+      right: 54,
+      zIndex: 1,
+      top: -118,
+    },
   },
 });
 const footerStyleClass = footerStyle.toString();
@@ -216,6 +282,14 @@ class TemplateWrapper extends React.Component {
   /** standard renderer */
   render() {
     const { pathname } = this.props.location;
+    console.log(
+      _.merge(
+        {
+          marginLeft: 0,
+        },
+        ...applyRhythm({ padding: '4.8X 3X' }),
+      ),
+    );
     return (
       <Type
         kit="dkc2ilk"
@@ -227,15 +301,8 @@ class TemplateWrapper extends React.Component {
         <UpdateTitle title="Loading..." />
         <WebsiteSchema data={websiteSchemaData} />
         <OrganisationSchema data={organisationSchemaData} />
-        <div style={{ display: 'flex' }}>
-          <div
-            style={{
-              flexGrow: '22',
-              flexBasis: 0,
-              background: '#fafafa',
-              height: '100vh',
-            }}
-          >
+        <div id="appWrapper">
+          <div id="menuWrapper">
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Header */}
             <SemanticHeader>
               <ResponsiveHeader path={this.props.location}>
@@ -261,12 +328,113 @@ class TemplateWrapper extends React.Component {
                   />
                 </MobileHeader>
                 <MobileMenu className={mobileMenuClass}>
-                  <Link to="/">Portfolio »</Link>
-                  <Link to="/products-and-solutions">
-                    Products & Solutions »
+                  <span className="header">About</span>
+                  <Link to="/" className={pathname === '/' ? 'active' : ''}>
+                    <span>Joy Living Learning</span>
                   </Link>
-                  <Link to="/about">About »</Link>
-                  <Link to="/contact">Contact »</Link>
+                  <Link
+                    to="/nonviolent-communication"
+                    className={
+                      pathname === '/nonviolent-communication' ? 'active' : ''
+                    }
+                  >
+                    <span>Nonviolent Communication</span>
+                  </Link>
+                  <Link
+                    to="/restorative-circles"
+                    className={
+                      pathname === '/restorative-circles' ? 'active' : ''
+                    }
+                  >
+                    <span>Restorative Circles</span>
+                  </Link>
+                  <Link
+                    to="/laura-joy"
+                    className={pathname === '/laura-joy' ? 'active' : ''}
+                  >
+                    <span>L'aura Joy</span>
+                  </Link>
+                  <span className="header">Learn</span>
+                  <Link
+                    to="/events"
+                    className={pathname === '/events' ? 'active' : ''}
+                  >
+                    <span>Upcoming Events</span>
+                  </Link>
+                  <span className="header">Facilitation</span>
+                  <Link
+                    to="/mediated-restorative-circles"
+                    className={
+                      pathname === '/mediated-restorative-circles'
+                        ? 'active'
+                        : ''
+                    }
+                  >
+                    <span>Restorative Circles</span>
+                  </Link>
+                  <Link
+                    to="/mediation"
+                    className={pathname === '/mediation' ? 'active' : ''}
+                  >
+                    <span>Mediation</span>
+                  </Link>
+                  <Link
+                    to="/meeting-and-group-processes"
+                    className={
+                      pathname === '/meeting-and-group-processes'
+                        ? 'active'
+                        : ''
+                    }
+                  >
+                    <span>Meeting & group processes</span>
+                  </Link>
+                  <Link
+                    to="/individual-coaching"
+                    className={
+                      pathname === '/individual-coaching' ? 'active' : ''
+                    }
+                  >
+                    <span>Individual coaching</span>
+                  </Link>
+                  <span className="header">More</span>
+                  <Link
+                    to="/internal-family-systems"
+                    className={
+                      pathname === '/internal-family-systems' ? 'active' : ''
+                    }
+                  >
+                    <span>Internal Family Systems</span>
+                  </Link>
+                  <Link
+                    to="/sociocracy"
+                    className={pathname === '/sociocracy' ? 'active' : ''}
+                  >
+                    <span>Sociocracy</span>
+                  </Link>
+                  <Link
+                    to="/writings"
+                    className={pathname === '/writings' ? 'active' : ''}
+                  >
+                    <span>Blog</span>
+                  </Link>
+                  <Link
+                    to="/gallery"
+                    className={pathname === '/gallery' ? 'active' : ''}
+                  >
+                    <span>Gallery</span>
+                  </Link>
+                  <Link
+                    to="/newsletter"
+                    className={pathname === '/newsletter' ? 'active' : ''}
+                  >
+                    <span>Newsletter</span>
+                  </Link>
+                  <Link
+                    to="/contact"
+                    className={pathname === '/contact' ? 'active' : ''}
+                  >
+                    <span>Contact Us</span>
+                  </Link>
                 </MobileMenu>
                 <DesktopHeader className={desktopHeaderStyleClass}>
                   <Container bleed block noFade style={{ padding: 0 }}>
@@ -456,14 +624,7 @@ class TemplateWrapper extends React.Component {
               </ResponsiveHeader>
             </SemanticHeader>
           </div>
-          <div
-            style={{
-              flexGrow: '78',
-              flexBasis: 0,
-              maxHeight: '100vh',
-              overflow: 'scroll',
-            }}
-          >
+          <div id="contentWrapper">
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
             <Container noFade block id="content">
               {this.props.children()}
@@ -474,13 +635,13 @@ class TemplateWrapper extends React.Component {
               <Container bleed noFade block id="footer">
                 <Image
                   src={waves}
+                  className="waves"
                   style={{
                     height: 7,
                     width: '100%',
                     background: 'transparent',
                     border: 0,
                     display: 'block',
-                    ...applyRhythm({ marginBottom: '1X' }),
                     zIndex: 2,
                   }}
                 />

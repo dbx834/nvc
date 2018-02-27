@@ -112,6 +112,8 @@ const pageStyle = css({
     border: '1px solid #4a4a4a !important',
     borderRadius: 8,
     background: '#f6f2f8',
+    marginBottom: 30,
+
     '@media (min-width: 768px)': {
       flex: '0 0 32.333%',
       maxWidth: '32.333%',

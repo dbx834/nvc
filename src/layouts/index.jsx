@@ -675,7 +675,7 @@ class TemplateWrapper extends React.Component {
                         />
                       </OutLink>
                       <OutLink
-                        to="https://www.youtube.com/channel/UCL5_GF39OXImcDOug2dNOqw"
+                        to="https://www.youtube.com/user/laurajoyful/videos"
                         style={{ marginLeft: 17 }}
                       >
                         <Image

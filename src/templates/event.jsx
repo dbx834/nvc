@@ -10,6 +10,7 @@ import moment from 'moment';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from 'gatsby-link';
+import { OutLink, Image } from '@bodhi-project/components';
 import {
   Page,
   // Section,
@@ -38,6 +39,7 @@ import indexImage from '../pages/assets/index.jpg';
 import packageJson from '../../package.json';
 import markdownStylesClass from '../styles/markdownStyles';
 import Register from '../components/Register';
+import donateButton from '../pages/assets/donateButton.png';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -52,6 +54,25 @@ const pageStyle = css({
   ...applyRhythm({ maxWidth: '27X' }),
   '& div + p': {
     ...applyRhythm({ marginTop: '2X' }),
+  },
+
+  '& a': {
+    color: 'inherit',
+    borderBottom: 'none',
+
+    '&:hover': {
+      color: 'inherit',
+      borderBottom: 'none',
+    },
+    '&:visited': {
+      textDecoration: 'none',
+    },
+    '&:link': {
+      textDecoration: 'none',
+    },
+    '&:active': {
+      textDecoration: 'none',
+    },
   },
 });
 const pageStyleClass = pageStyle.toString();
@@ -172,10 +193,52 @@ class EventTemplate extends React.Component {
               },
               {},
             )}
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
             <H1>Register</H1>
+            <Paragraph style={{ marginBottom: 30 }}>
+              Abstract - blah blah blah blah blah blah blah blah blah blah blah
+              blah blah blah blah blah blah blah blah blah blah blah blah blah
+              blah blah blah blah blah blah blah blah blah blah blah blah blah
+              blah blah.
+            </Paragraph>
             <div id="register-form">
               <Register event={{ key: humanDate }} />
             </div>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <H1>Donate</H1>
+            <Paragraph>
+              Abstract - blah blah blah blah blah blah blah blah blah blah blah
+              blah blah blah blah blah blah blah blah blah blah blah blah blah
+              blah blah blah blah blah blah blah blah blah blah blah blah blah
+              blah blah.
+            </Paragraph>
+            <Paragraph>
+              <OutLink to="https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD">
+                <Image
+                  src={donateButton}
+                  rawWidth={135}
+                  rawHeight={48}
+                  style={{
+                    height: 'auto',
+                    width: '150px',
+                    border: 0,
+                    background: 'transparent',
+                    display: 'inline-block',
+                  }}
+                  loader="gradient"
+                />
+              </OutLink>
+            </Paragraph>
           </Article>
           <Footer className="stash">
             <Paragraph>

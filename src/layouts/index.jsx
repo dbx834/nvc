@@ -39,6 +39,7 @@ import packageJson from '../../package.json';
 import waves from './assets/waves.png';
 import boat from './assets/boat.png';
 import facebook from './assets/facebook.png';
+import youtube from './assets/youtube.png';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const {
@@ -136,7 +137,8 @@ const wrapperStyles = css({
         flexGrow: '78',
         flexBasis: 0,
         maxHeight: '100vh',
-        overflow: 'scroll',
+        overflowX: 'hidden',
+        overflowY: 'scroll',
       },
     },
   },
@@ -282,14 +284,6 @@ class TemplateWrapper extends React.Component {
   /** standard renderer */
   render() {
     const { pathname } = this.props.location;
-    console.log(
-      _.merge(
-        {
-          marginLeft: 0,
-        },
-        ...applyRhythm({ padding: '4.8X 3X' }),
-      ),
-    );
     return (
       <Type
         kit="dkc2ilk"
@@ -648,10 +642,13 @@ class TemplateWrapper extends React.Component {
                 <Image src={boat} className="boat" />
                 <Row type="flex">
                   <Col xs={23} sm={23} md={20} lg={17} xl={15}>
-                    <Paragraph scale="1.375X">
+                    <Paragraph>
                       <br />
                       <strong>
-                        Nonviolent Communication & Restorative Circles in India
+                        <i>
+                          Nonviolent Communication & Restorative Circles in
+                          India
+                        </i>
                       </strong>
                       <br />
                       <br />
@@ -662,7 +659,7 @@ class TemplateWrapper extends React.Component {
                       <br />
                       <br />
                     </Paragraph>
-                    <div className="mask-p hidden-sm">
+                    <Paragraph className="hidden-sm">
                       <OutLink to="https://www.facebook.com/JoyLivingLearning/">
                         <Image
                           src={facebook}
@@ -672,12 +669,29 @@ class TemplateWrapper extends React.Component {
                             display: 'inline-block',
                             border: 'none',
                             background: 'none',
-                            height: 47,
-                            width: 47,
+                            height: 45,
+                            width: 45,
                           }}
                         />
                       </OutLink>
-                    </div>
+                      <OutLink
+                        to="https://www.youtube.com/channel/UCL5_GF39OXImcDOug2dNOqw"
+                        style={{ marginLeft: 17 }}
+                      >
+                        <Image
+                          src={youtube}
+                          rawWidth={450}
+                          rawHeight={450}
+                          style={{
+                            display: 'inline-block',
+                            border: 'none',
+                            background: 'none',
+                            height: 45,
+                            width: 45,
+                          }}
+                        />
+                      </OutLink>
+                    </Paragraph>
                     <Paragraph>
                       <br />
                       Made with{' '}

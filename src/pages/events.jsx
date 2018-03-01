@@ -12,6 +12,7 @@ import moment from 'moment';
 import Link from 'gatsby-link';
 import { LocaleProvider, Calendar, Tooltip, Popover, Badge } from 'antd';
 import en_GB from 'antd/lib/locale-provider/en_GB';
+import 'moment/locale/en-gb';
 import {
   Page,
   // Section,

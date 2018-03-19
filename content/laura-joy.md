@@ -9,6 +9,8 @@ tags:
   - some tag
 ---
 
+![{"height": "37vh", "width": "auto", "background": "transparent", "display": "block"}](/content-assets/laura-joy/laura_281X350.jpg)
+
 # L’aura Joy
 
 L’aura Joy is a Certified Trainer in Nonviolent Communication (CNVC, USA), and over the past 10 years she has been been working in the field of communication, conflict transformation, peace and justice, community building and healing, decision-making and leadership.
@@ -16,6 +18,10 @@ L’aura Joy is a Certified Trainer in Nonviolent Communication (CNVC, USA), and
 Having grown up in Auroville, an international intentional community in Tamil Nadu, L'aura is passionate about exploring how we can live our lives in empowered and co-creative ways. Nonviolent Communication offers such a clear, yet deeply powerful and transformative framework within which to explore both our inner realities as well as outer relationships. In addition to NVC, L'aura is also trained in Restorative Circles and Sociocracy, and she applies these approaches to her work with justice and governance in Auroville.
 
 L’aura has traveled and shared in different countries and contexts, ranging from the corporate sector, to schools, to NGOs working with women and street kid, exploring NVC as a means to transformation and sustainable change. Most of her work has been in India, although she has also worked in Canada, UK, Switzerland, USA, Sri Lanka and Nepal.
+
+![Image](/content-assets/laura-joy/nvcX1_600X450.jpg)
+
+![Image](/content-assets/laura-joy/nvcX8_600X818.jpg)
 
 L'aura has been a pioneer in bringing NVC to India and has supported an ever-growing community to emerge. She has hosted and organized events for several international trainers here, she has published NVC books and teaching material, and she has offered her own training programs.
 

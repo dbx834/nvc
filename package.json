@@ -55,7 +55,7 @@
       "https://twitter.com/_dmi_systems"
     ],
     "pathPrefix": "/",
-    "copyright": "Copyright © 2018. L’aura Joy and Joy Living Learning",
+    "copyright": "Copyright © 2018 L’aura Joy & Joy Living Learning",
     "googleAnalyticsID": "GA-ABC"
   },
   "license": "MIT",
@@ -75,7 +75,7 @@
   },
   "dependencies": {
     "@bodhi-project/components": "0.0.72",
-    "@bodhi-project/markdown-to-react": "0.0.31",
+    "@bodhi-project/markdown-to-react": "0.0.35",
     "@bodhi-project/semantic-webflow": "0.0.10",
     "@bodhi-project/seo": "0.0.4",
     "@bodhi-project/typography": "0.0.37",

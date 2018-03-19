@@ -2,28 +2,28 @@
 // ---------------------------------------------------------------------- Imports
 // ------------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import React from 'react';
-import PropTypes from 'prop-types';
-import _ from 'lodash';
-import { css } from 'glamor';
-import moment from 'moment';
+import React from "react";
+import PropTypes from "prop-types";
+import _ from "lodash";
+import { css } from "glamor";
+import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link from 'gatsby-link';
-import { Tooltip } from 'antd';
+import Link from "gatsby-link";
+import { Tooltip } from "antd";
 import {
   Image,
   TetraGrid as TetraGridX,
   HexaGrid as HexaGridX,
-} from '@bodhi-project/components';
-import { Elements, applyRhythm } from '@bodhi-project/typography';
+} from "@bodhi-project/components";
+import { Elements, applyRhythm } from "@bodhi-project/typography";
 import {
   Page,
   // Section,
   Article,
   // Header,
   // Footer,
-} from '@bodhi-project/semantic-webflow';
+} from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -35,21 +35,22 @@ import {
   // --------------- Schema.org JSON-LD
   WebpageSchema,
   BreadcrumbSchema,
-} from '@bodhi-project/seo';
+} from "@bodhi-project/seo";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import ogX from './assets/ogX.jpg';
-import twitterSummaryX from './assets/twitterSummaryX.jpg';
-import packageJson from '../../package.json';
+import ogX from "./assets/ogX.jpg";
+import twitterSummaryX from "./assets/twitterSummaryX.jpg";
+import packageJson from "../../package.json";
 
-import deepening from './assets/deepening.png';
-import introduction from './assets/introduction.png';
-import practiceGroup from './assets/practiceGroup.png';
-import webinar from './assets/webinar.png';
-import workshop from './assets/workshop.png';
-import nvc from './assets/nvc.png';
-import rc from './assets/rc.png';
-import dummy1 from './assets/dummy1.jpg';
+import deepening from "./assets/deepening.png";
+import introduction from "./assets/introduction.png";
+import practiceGroup from "./assets/practiceGroup.png";
+import webinar from "./assets/webinar.png";
+import workshop from "./assets/workshop.png";
+import nvc from "./assets/nvc.png";
+import rc from "./assets/rc.png";
+import dummy1 from "./assets/dummy1.jpg";
+import nvcPhoto from "./assets/nvc-in-progress.jpg";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -63,8 +64,8 @@ const HHex = HexaGridX.Hex;
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
-const pageTitle = 'About Us';
-const pageSlug = 'about';
+const pageTitle = "About Us";
+const pageSlug = "about";
 const pageAbstract =
   "Digital Media Initiatives has a small, close-knit and formidable team with expertise in the domains of technology, design, teaching, marketing, finance, management and core banking. Our passion for quality, aesthetics and social transformation informs what we do every day, whether it's building innovative technology tools, connecting with communities, or dreaming up new things.";
 
@@ -101,7 +102,7 @@ const webpageSchemaData = {
 
 const breadcrumbSchemaData = {
   breadcrumbs: [
-    { name: 'Home', url: `${data.websiteUrl}` },
+    { name: "Home", url: `${data.websiteUrl}` },
     { name: pageTitle, url: `${data.websiteUrl}${pageSlug}` },
   ],
 };
@@ -111,127 +112,127 @@ const breadcrumbSchemaData = {
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageWrapper = css({
-  '& .constrain': {
-    ...applyRhythm({ maxWidth: '27X' }),
+  "& .constrain": {
+    ...applyRhythm({ maxWidth: "27X" }),
   },
 
-  '& .hex': {
-    boxShadow: 'none ',
-    padding: '0px ',
-    paddingBottom: '1vh',
-    paddingRight: '1vh',
+  "& .hex": {
+    boxShadow: "none ",
+    padding: "0px ",
+    paddingBottom: "1vh",
+    paddingRight: "1vh",
 
-    '& a': {
-      display: 'block',
-      height: '100%',
-      width: '100%',
-      borderBottom: 'none',
-      color: '#4a4a4a',
+    "& a": {
+      display: "block",
+      height: "100%",
+      width: "100%",
+      borderBottom: "none",
+      color: "#4a4a4a",
 
-      '&:hover': {
-        color: '#4a4a4a',
-        borderBottom: 'none',
+      "&:hover": {
+        color: "#4a4a4a",
+        borderBottom: "none",
       },
-      '&:visited': {
-        textDecoration: 'none',
+      "&:visited": {
+        textDecoration: "none",
       },
-      '&:link': {
-        textDecoration: 'none',
+      "&:link": {
+        textDecoration: "none",
       },
-      '&:active': {
-        textDecoration: 'none',
+      "&:active": {
+        textDecoration: "none",
       },
     },
 
-    '& div': {
-      WebkitTransition: 'all 300ms cubic-bezier(0.78, 0.14, 0.15, 0.86)',
-      transition: 'all 300ms cubic-bezier(0.78, 0.14, 0.15, 0.86)',
-      cursor: 'pointer',
-      position: 'relative',
-      overflow: 'hidden',
+    "& div": {
+      WebkitTransition: "all 300ms cubic-bezier(0.78, 0.14, 0.15, 0.86)",
+      transition: "all 300ms cubic-bezier(0.78, 0.14, 0.15, 0.86)",
+      cursor: "pointer",
+      position: "relative",
+      overflow: "hidden",
     },
 
-    '& h3': {
-      position: 'absolute',
-      width: '100%',
-      margin: '0px !important',
-      textAlign: 'center',
-      background: '#f9ba59',
-      color: '#4a4a4a',
+    "& h3": {
+      position: "absolute",
+      width: "100%",
+      margin: "0px !important",
+      textAlign: "center",
+      background: "#f9ba59",
+      color: "#4a4a4a",
       bottom: -100,
       left: 0,
-      WebkitTransition: 'all 300ms cubic-bezier(0.78, 0.14, 0.15, 0.86)',
-      transition: 'all 300ms cubic-bezier(0.78, 0.14, 0.15, 0.86)',
-      paddingTop: '10px',
-      paddingBottom: '10px',
+      WebkitTransition: "all 300ms cubic-bezier(0.78, 0.14, 0.15, 0.86)",
+      transition: "all 300ms cubic-bezier(0.78, 0.14, 0.15, 0.86)",
+      paddingTop: "10px",
+      paddingBottom: "10px",
       fontWeight: 400,
     },
 
-    '@media(max-width: 768px)': {
-      '& h3': {
-        position: 'relative',
+    "@media(max-width: 768px)": {
+      "& h3": {
+        position: "relative",
         bottom: 0,
       },
     },
 
-    '& div:hover': {
-      '& h3': {
+    "& div:hover": {
+      "& h3": {
         bottom: 0,
       },
     },
   },
 
-  '& .eHex': {
+  "& .eHex": {
     padding: 0,
-    border: '1px solid #4a4a4a !important',
+    border: "1px solid #4a4a4a !important",
     borderRadius: 8,
-    background: '#f6f2f8',
+    background: "#f6f2f8",
     marginBottom: 30,
 
-    '@media (min-width: 768px)': {
-      flex: '0 0 32.333%',
-      maxWidth: '32.333%',
-      WebkitFlex: '0 0 32.333%',
-      marginRight: '1%',
-      marginBottom: '1%',
+    "@media (min-width: 768px)": {
+      flex: "0 0 32.333%",
+      maxWidth: "32.333%",
+      WebkitFlex: "0 0 32.333%",
+      marginRight: "1%",
+      marginBottom: "1%",
     },
 
-    '& .abstract': {
-      padding: '9px 12px',
+    "& .abstract": {
+      padding: "9px 12px",
       marginBottom: 0,
 
-      '& .title': {
-        fontFamily: 'futura-pt, sans-serif !important',
+      "& .title": {
+        fontFamily: "futura-pt, sans-serif !important",
         fontWeight: 700,
-        letterSpacing: '-0.08775ex',
+        letterSpacing: "-0.08775ex",
       },
 
-      '& .date': {
-        fontFamily: 'futura-pt, sans-serif !important',
+      "& .date": {
+        fontFamily: "futura-pt, sans-serif !important",
       },
     },
   },
-  '& .blank': {
-    visibility: 'hidden',
+  "& .blank": {
+    visibility: "hidden",
   },
 
-  '& .cover': {
+  "& .cover": {
     zIndex: -1,
   },
 
-  '& ul.event-icons': {
-    listStyle: 'none',
+  "& ul.event-icons": {
+    listStyle: "none",
     padding: 0,
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     right: 0,
     zIndex: 1,
 
-    '& li': {
-      margin: '0 !important',
-      display: 'inline-block',
+    "& li": {
+      margin: "0 !important",
+      display: "inline-block",
 
-      '& .icon': {
+      "& .icon": {
         border: 0,
         marginTop: 2,
         marginRight: 2,
@@ -265,11 +266,11 @@ class IndexPage extends React.Component {
     // get only events
     const eventNodes = [];
     _.map(postEdges, ({ node }) => {
-      if (_.startsWith(_.trim(node.fields.route), 'events') === true) {
+      if (_.startsWith(_.trim(node.fields.route), "events") === true) {
         eventNodes.push({ node });
       }
     });
-    const todayInt = parseInt(moment().format('YYYYMMDD'), 10);
+    const todayInt = parseInt(moment().format("YYYYMMDD"), 10);
     let totalEvents = 0;
 
     return (
@@ -285,29 +286,47 @@ class IndexPage extends React.Component {
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={`${pageStyleClass}`}>
           <div className="constrain">
-            <H1>Joy Living Learning</H1>
-            <Paragraph scale="1.375X">
-              <i>Nonviolent Communication & Restorative Circles in India</i>
+            <H1 style={{ marginBottom: 10 }}>Joy Living Learning</H1>
+            <Paragraph>
+              Nonviolent Communication & Restorative Circles in Auroville &
+              India.
             </Paragraph>
             <Image
-              src={''}
+              src={nvcPhoto}
+              rawWidth={1440}
+              rawHeight={900}
               style={{
-                height: '50vh',
-                width: '100%',
+                height: "50vh",
+                width: "auto",
                 border: 0,
-                background: '#4a4a4a',
+                background: "transparent",
               }}
               loader="gradient"
               className="mask-p"
             />
             <Paragraph>
-              Abstract - blah blah blah blah blah blah blah blah blah blah blah
-              blah blah blah blah blah blah blah blah blah blah blah blah blah
-              blah blah blah blah blah blah blah blah blah blah blah blah blah
-              blah blah.
+              With our main focus on Nonviolence, we organize workshops,
+              residential programs and practice groups on Nonviolent
+              Communication (NVC) and Restorative Circles (RC). We are also
+              available for community support, mediations, and personal
+              coaching.
             </Paragraph>
-            <Paragraph style={{ marginBottom: 0 }}>
-              <Link to="/nonviolent-communication">Learn More ⇾</Link>
+            <Paragraph>
+              We are situated in Auroville, an international community in south
+              India, and with its purpose being to actualize human unity, we’re
+              surrounded by opportunities for growth, learning and exploration.
+            </Paragraph>
+            <Paragraph
+              style={{ paddingLeft: 10, borderLeft: "1px solid #B43808" }}
+            >
+              <i>
+                “My optimism rests on my belief in the infinite possibilities of
+                the individual to develop nonviolence. The more you develop it
+                in your own heart, the more infectious it becomes, till it
+                overwhelms your surroundings and, by and by, might oversweep the
+                world.”
+              </i>{" "}
+              – Gandhi
             </Paragraph>
             <br />
             <br />
@@ -326,14 +345,14 @@ class IndexPage extends React.Component {
               <THex className="hex">
                 <Link to="/mediation">
                   <Image
-                    src={''}
+                    src={""}
                     rawWidth={900}
                     rawHeight={900}
                     style={{
-                      height: '33vh',
-                      width: '100%',
+                      height: "33vh",
+                      width: "100%",
                       border: 0,
-                      background: '#4a4a4a',
+                      background: "#4a4a4a",
                     }}
                   />
                   <H3 style={{ lineHeight: 1 }}>Something 1</H3>
@@ -342,14 +361,14 @@ class IndexPage extends React.Component {
               <THex className="hex">
                 <Link to="/mediation">
                   <Image
-                    src={''}
+                    src={""}
                     rawWidth={900}
                     rawHeight={900}
                     style={{
-                      height: '33vh',
-                      width: '100%',
+                      height: "33vh",
+                      width: "100%",
                       border: 0,
-                      background: '#4a4a4a',
+                      background: "#4a4a4a",
                     }}
                   />
                   <H3 style={{ lineHeight: 1 }}>Something 2</H3>
@@ -358,14 +377,14 @@ class IndexPage extends React.Component {
               <THex className="hex">
                 <Link to="/mediation">
                   <Image
-                    src={''}
+                    src={""}
                     rawWidth={900}
                     rawHeight={900}
                     style={{
-                      height: '33vh',
-                      width: '100%',
+                      height: "33vh",
+                      width: "100%",
                       border: 0,
-                      background: '#4a4a4a',
+                      background: "#4a4a4a",
                     }}
                   />
                   <H3 style={{ lineHeight: 1 }}>Something 3</H3>
@@ -374,14 +393,14 @@ class IndexPage extends React.Component {
               <THex className="hex">
                 <Link to="/mediation">
                   <Image
-                    src={''}
+                    src={""}
                     rawWidth={900}
                     rawHeight={900}
                     style={{
-                      height: '33vh',
-                      width: '100%',
+                      height: "33vh",
+                      width: "100%",
                       border: 0,
-                      background: '#4a4a4a',
+                      background: "#4a4a4a",
                     }}
                   />
                   <H3 style={{ lineHeight: 1 }}>Something 4</H3>
@@ -406,12 +425,12 @@ class IndexPage extends React.Component {
             {_.map(eventNodes, ({ node }, index) => {
               const { frontmatter } = node;
               const mDate = moment(frontmatter.date);
-              const humanDate = mDate.format('dddd, MMMM Do YYYY');
+              const humanDate = mDate.format("dddd, MMMM Do YYYY");
               const { tags } = frontmatter;
               const when = moment(mDate).fromNow();
               const { fields } = node;
               const { route } = fields;
-              const xDate = parseInt(mDate.format('YYYYMMDD'), 10);
+              const xDate = parseInt(mDate.format("YYYYMMDD"), 10);
 
               if (todayInt <= xDate) {
                 totalEvents += 1;
@@ -419,7 +438,7 @@ class IndexPage extends React.Component {
                   <HHex className="eHex" key={humanDate}>
                     <Article>
                       <ul className="event-icons">
-                        {inArray(tags, 'nvc') && (
+                        {inArray(tags, "nvc") && (
                           <li>
                             <Tooltip title="Nonviolent Communication">
                               <div>
@@ -431,14 +450,14 @@ class IndexPage extends React.Component {
                                   style={{
                                     height: 30,
                                     width: 30,
-                                    background: 'transparent',
+                                    background: "transparent",
                                   }}
                                 />
                               </div>
                             </Tooltip>
                           </li>
                         )}
-                        {inArray(tags, 'rc') && (
+                        {inArray(tags, "rc") && (
                           <li>
                             <Tooltip title="Restorative Circle">
                               <div>
@@ -450,14 +469,14 @@ class IndexPage extends React.Component {
                                   style={{
                                     height: 30,
                                     width: 30,
-                                    background: 'transparent',
+                                    background: "transparent",
                                   }}
                                 />
                               </div>
                             </Tooltip>
                           </li>
                         )}
-                        {inArray(tags, 'introduction') && (
+                        {inArray(tags, "introduction") && (
                           <li>
                             <Tooltip title="Introduction">
                               <div>
@@ -469,14 +488,14 @@ class IndexPage extends React.Component {
                                   style={{
                                     height: 30,
                                     width: 30,
-                                    background: 'transparent',
+                                    background: "transparent",
                                   }}
                                 />
                               </div>
                             </Tooltip>
                           </li>
                         )}
-                        {inArray(tags, 'deepening') && (
+                        {inArray(tags, "deepening") && (
                           <li>
                             <Tooltip title="Deepening">
                               <div>
@@ -488,14 +507,14 @@ class IndexPage extends React.Component {
                                   style={{
                                     height: 30,
                                     width: 30,
-                                    background: 'transparent',
+                                    background: "transparent",
                                   }}
                                 />
                               </div>
                             </Tooltip>
                           </li>
                         )}
-                        {inArray(tags, 'workshop') && (
+                        {inArray(tags, "workshop") && (
                           <li>
                             <Tooltip title="Workshop">
                               <div>
@@ -507,14 +526,14 @@ class IndexPage extends React.Component {
                                   style={{
                                     height: 30,
                                     width: 30,
-                                    background: 'transparent',
+                                    background: "transparent",
                                   }}
                                 />
                               </div>
                             </Tooltip>
                           </li>
                         )}
-                        {inArray(tags, 'practice group') && (
+                        {inArray(tags, "practice group") && (
                           <li>
                             <Tooltip title="Practice group">
                               <div>
@@ -526,14 +545,14 @@ class IndexPage extends React.Component {
                                   style={{
                                     height: 30,
                                     width: 30,
-                                    background: 'transparent',
+                                    background: "transparent",
                                   }}
                                 />
                               </div>
                             </Tooltip>
                           </li>
                         )}
-                        {inArray(tags, 'webinar') && (
+                        {inArray(tags, "webinar") && (
                           <li>
                             <Tooltip title="Webinar">
                               <div>
@@ -545,7 +564,7 @@ class IndexPage extends React.Component {
                                   style={{
                                     height: 30,
                                     width: 30,
-                                    background: 'transparent',
+                                    background: "transparent",
                                   }}
                                 />
                               </div>
@@ -559,8 +578,8 @@ class IndexPage extends React.Component {
                         rawWidth={2100}
                         className="cover"
                         style={{
-                          height: 'auto',
-                          width: '100%',
+                          height: "auto",
+                          width: "100%",
                           border: 0,
                           borderTopLeftRadius: 8,
                           borderTopRightRadius: 8,
@@ -569,7 +588,7 @@ class IndexPage extends React.Component {
                       />
                       <Paragraph className="abstract">
                         <Tooltip title={when} placement="topLeft">
-                          <span className="title" style={{ fontSize: '110%' }}>
+                          <span className="title" style={{ fontSize: "110%" }}>
                             {frontmatter.title}
                           </span>
                           <br />

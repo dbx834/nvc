@@ -2,25 +2,25 @@
 // ---------------------------------------------------------------------- Imports
 // ------------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import React from 'react';
+import React from "react";
 // import PropTypes from 'prop-types';
 // import _ from 'lodash';
-import { css } from 'glamor';
+import { css } from "glamor";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 // import Link from 'gatsby-link';
 // import { Row, Col } from 'antd';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import { Images } from '@bodhi-project/components';
-import { Elements } from '@bodhi-project/typography';
+import { Images } from "@bodhi-project/components";
+import { Elements } from "@bodhi-project/typography";
 import {
   Page as SemanticPage,
   // Section,
   // Article,
   // Header,
   // Footer,
-} from '@bodhi-project/semantic-webflow';
+} from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -32,174 +32,139 @@ import {
   // --------------- Schema.org JSON-LD
   WebpageSchema,
   BreadcrumbSchema,
-} from '@bodhi-project/seo';
+} from "@bodhi-project/seo";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Images
-import indexImage from './assets/index.jpg';
+import indexImage from "./assets/index.jpg";
+
+import nvcX1 from "./assets/gallery/nvcX1.jpg";
+import nvcX2 from "./assets/gallery/nvcX2.jpg";
+import nvcX3 from "./assets/gallery/nvcX3.jpg";
+import nvcX4 from "./assets/gallery/nvcX4.jpg";
+import nvcX5 from "./assets/gallery/nvcX5.jpg";
+import nvcX6 from "./assets/gallery/nvcX6.jpg";
+import nvcX7 from "./assets/gallery/nvcX7.jpg";
+import nvcX8 from "./assets/gallery/nvcX8.jpg";
+import nvcX9 from "./assets/gallery/nvcX9.jpg";
+import nvcX10 from "./assets/gallery/nvcX10.jpg";
+import nvcX11 from "./assets/gallery/nvcX11.jpg";
+import nvcX12 from "./assets/gallery/nvcX12.jpg";
+import nvcX13 from "./assets/gallery/nvcX13.jpg";
+import nvcX14 from "./assets/gallery/nvcX14.jpg";
+import nvcX15 from "./assets/gallery/nvcX15.jpg";
+import nvcX16 from "./assets/gallery/nvcX16.jpg";
+import nvcX17 from "./assets/gallery/nvcX17.jpg";
+import nvcX18 from "./assets/gallery/nvcX18.jpg";
+import nvcX19 from "./assets/gallery/nvcX19.jpg";
+import nvcX20 from "./assets/gallery/nvcX20.jpg";
+import nvcX21 from "./assets/gallery/nvcX21.jpg";
+import nvcX22 from "./assets/gallery/nvcX22.jpg";
+import nvcX23 from "./assets/gallery/nvcX23.jpg";
+import nvcX24 from "./assets/gallery/nvcX24.jpg";
+import nvcX25 from "./assets/gallery/nvcX25.jpg";
+import nvcX26 from "./assets/gallery/nvcX26.jpg";
+import nvcX27 from "./assets/gallery/nvcX27.jpg";
+import nvcX28 from "./assets/gallery/nvcX28.jpg";
+import nvcX29 from "./assets/gallery/nvcX29.jpg";
+import nvcX30 from "./assets/gallery/nvcX30.jpg";
+import nvcX31 from "./assets/gallery/nvcX31.jpg";
+import nvcX32 from "./assets/gallery/nvcX32.jpg";
+import nvcX33 from "./assets/gallery/nvcX33.jpg";
+import nvcX34 from "./assets/gallery/nvcX34.jpg";
+import nvcX35 from "./assets/gallery/nvcX35.jpg";
+import nvcX36 from "./assets/gallery/nvcX36.jpg";
+import nvcX37 from "./assets/gallery/nvcX37.jpg";
+import nvcX38 from "./assets/gallery/nvcX38.jpg";
+import nvcX39 from "./assets/gallery/nvcX39.jpg";
+import nvcX40 from "./assets/gallery/nvcX40.jpg";
+import nvcX41 from "./assets/gallery/nvcX41.jpg";
+import nvcX42 from "./assets/gallery/nvcX42.jpg";
+
+const photos = [
+  { src: nvcX1, width: 600, height: 450 },
+  { src: nvcX2, width: 600, height: 353 },
+  { src: nvcX3, width: 600, height: 448 },
+  { src: nvcX4, width: 600, height: 800 },
+  { src: nvcX5, width: 600, height: 400 },
+  { src: nvcX6, width: 600, height: 803 },
+  { src: nvcX7, width: 600, height: 401 },
+  { src: nvcX8, width: 600, height: 818 },
+  { src: nvcX9, width: 600, height: 450 },
+  { src: nvcX10, width: 600, height: 433 },
+  { src: nvcX11, width: 600, height: 450 },
+  { src: nvcX12, width: 600, height: 373 },
+  { src: nvcX13, width: 600, height: 800 },
+  { src: nvcX14, width: 600, height: 530 },
+  { src: nvcX15, width: 600, height: 800 },
+  { src: nvcX16, width: 600, height: 800 },
+  { src: nvcX17, width: 600, height: 448 },
+  { src: nvcX18, width: 600, height: 1077 },
+  { src: nvcX19, width: 600, height: 448 },
+  { src: nvcX20, width: 600, height: 450 },
+  { src: nvcX21, width: 600, height: 367 },
+  { src: nvcX22, width: 600, height: 368 },
+  { src: nvcX23, width: 600, height: 377 },
+  { src: nvcX24, width: 600, height: 450 },
+  { src: nvcX25, width: 600, height: 450 },
+  { src: nvcX26, width: 600, height: 400 },
+  { src: nvcX27, width: 600, height: 328 },
+  { src: nvcX28, width: 600, height: 596 },
+  { src: nvcX29, width: 600, height: 368 },
+  { src: nvcX30, width: 600, height: 465 },
+  { src: nvcX31, width: 600, height: 525 },
+  { src: nvcX32, width: 600, height: 333 },
+  { src: nvcX33, width: 600, height: 356 },
+  { src: nvcX34, width: 600, height: 450 },
+  { src: nvcX35, width: 600, height: 396 },
+  { src: nvcX36, width: 600, height: 450 },
+  { src: nvcX37, width: 600, height: 800 },
+  { src: nvcX38, width: 600, height: 450 },
+  { src: nvcX39, width: 600, height: 450 },
+  { src: nvcX40, width: 600, height: 414 },
+  { src: nvcX41, width: 600, height: 450 },
+  { src: nvcX42, width: 600, height: 367 },
+];
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstract stuff
 const { Fragment } = React;
 const { H1 } = Elements;
 
-const photos = [
-  {
-    src: 'https://source.unsplash.com/2ShvY8Lf6l0/1440x900',
-    width: 1440,
-    height: 900,
-  },
-  {
-    src: 'https://source.unsplash.com/Dm-qxdynoEc/900x900',
-    width: 900,
-    height: 900,
-  },
-  {
-    src: 'https://source.unsplash.com/qDkso9nvCg0/600x799',
-    width: 600,
-    height: 800,
-  },
-  {
-    src: 'https://source.unsplash.com/iecJiKe_RNg/600x799',
-    width: 600,
-    height: 800,
-  },
-  {
-    src: 'https://source.unsplash.com/epcsn8Ed8kY/600x799',
-    width: 600,
-    height: 800,
-  },
-  {
-    src: 'https://source.unsplash.com/NQSWvyVRIJk/800x599',
-    width: 800,
-    height: 600,
-  },
-  {
-    src: 'https://source.unsplash.com/zh7GEuORbUw/600x799',
-    width: 600,
-    height: 800,
-  },
-  {
-    src: 'https://source.unsplash.com/PpOHJezOalU/800x599',
-    width: 800,
-    height: 600,
-  },
-  {
-    src: 'https://source.unsplash.com/I1ASdgphUH4/800x599',
-    width: 800,
-    height: 600,
-  },
-  {
-    src: 'https://source.unsplash.com/CSID46Dq4LA/800x599',
-    width: 800,
-    height: 600,
-  },
-  {
-    src: 'https://source.unsplash.com/7bwQXzbF6KE/800x599',
-    width: 800,
-    height: 600,
-  },
-  {
-    src: 'https://source.unsplash.com/hwyGkHopSRE/1200x800',
-    width: 1200,
-    height: 800,
-  },
-  {
-    src: 'https://source.unsplash.com/_QoAuZGAoPY/600x900',
-    width: 600,
-    height: 900,
-  },
-  {
-    src: 'https://source.unsplash.com/VW8MUbHyxCU/1600x1200',
-    width: 1600,
-    height: 1200,
-  },
-  {
-    src: 'https://source.unsplash.com/r5H2y4nUKAk/900x600',
-    width: 900,
-    height: 600,
-  },
-  {
-    src: 'https://source.unsplash.com/2gk6BDXSxlQ/800x599',
-    width: 800,
-    height: 600,
-  },
-  {
-    src: 'https://source.unsplash.com/lRSChvh1Mhs/600x600',
-    width: 600,
-    height: 600,
-  },
-  {
-    src: 'https://source.unsplash.com/vddccTqwal8/900x1600',
-    width: 900,
-    height: 1600,
-  },
-  {
-    src: 'https://source.unsplash.com/2Bjq3A7rGn4/800x1200',
-    width: 800,
-    height: 1200,
-  },
-  {
-    src: 'https://source.unsplash.com/5Rhl-kSRydQ/2700x900',
-    width: 2700,
-    height: 900,
-  },
-  {
-    src: 'https://source.unsplash.com/YN_JWPDYVoM/300x600',
-    width: 300,
-    height: 600,
-  },
-  {
-    src: 'https://source.unsplash.com/X0OoHrPvgXE/1400x900',
-    width: 1400,
-    height: 900,
-  },
-  {
-    src: 'https://source.unsplash.com/pHANr-CpbYM/1200x1600',
-    width: 1200,
-    height: 1600,
-  },
-  {
-    src: 'https://source.unsplash.com/lpjb_UMOyx8/900x1800',
-    width: 900,
-    height: 1800,
-  },
-];
-
 // ------------------------------------------------------------------------------
 // -------------------------------------------------------------------------- SEO
 // ------------------------------------------------------------------------------
 const generalMetaData = {
-  description: 'Launch Kit is an opionated GatsbyJS Starter kit.',
-  keywords: 'GatsbyJS, React, Netlify',
+  description: "Launch Kit is an opionated GatsbyJS Starter kit.",
+  keywords: "GatsbyJS, React, Netlify",
   image: indexImage,
 };
 
 const twitterSummaryCardData = {
-  site: 'Launch Kit',
-  creator: 'Bodhi Project',
-  title: 'Launch Kit',
-  description: 'Launch Kit is an opionated GatsbyJS Starter kit.',
+  site: "Launch Kit",
+  creator: "Bodhi Project",
+  title: "Launch Kit",
+  description: "Launch Kit is an opionated GatsbyJS Starter kit.",
   image: indexImage,
 };
 
 const openGraphSummaryData = {
-  siteName: 'Launch Kit',
-  url: 'https://launch-kit.bodhiproject.org/',
-  title: 'Launch Kit',
-  description: 'Launch Kit is an opionated GatsbyJS Starter kit.',
+  siteName: "Launch Kit",
+  url: "https://launch-kit.bodhiproject.org/",
+  title: "Launch Kit",
+  description: "Launch Kit is an opionated GatsbyJS Starter kit.",
   image: indexImage,
 };
 
 const webpageSchemaData = {
-  url: 'https://launch-kit.bodhiproject.org/',
-  name: 'Launch Kit',
-  description: 'Launch Kit is an opionated GatsbyJS Starter kit.',
-  author: 'Bodhi Project',
-  publisher: 'Bodhi Project',
+  url: "https://launch-kit.bodhiproject.org/",
+  name: "Launch Kit",
+  description: "Launch Kit is an opionated GatsbyJS Starter kit.",
+  author: "Bodhi Project",
+  publisher: "Bodhi Project",
   image: indexImage,
 };
 
 const breadcrumbSchemaData = {
-  breadcrumbs: [{ name: 'Home', url: 'https://launch-kit.bodhiproject.org/' }],
+  breadcrumbs: [{ name: "Home", url: "https://launch-kit.bodhiproject.org/" }],
 };
 
 // ------------------------------------------------------------------------------

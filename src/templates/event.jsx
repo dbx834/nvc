@@ -2,24 +2,24 @@
 // -------------------------------------------------------------------- Imports
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import React from 'react';
-import PropTypes from 'prop-types';
-import _ from 'lodash';
-import { css } from 'glamor';
-import moment from 'moment';
+import React from "react";
+import PropTypes from "prop-types";
+import _ from "lodash";
+import { css } from "glamor";
+import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link from 'gatsby-link';
-import { OutLink, Image } from '@bodhi-project/components';
+import Link from "gatsby-link";
+import { OutLink, Image } from "@bodhi-project/components";
 import {
   Page,
   // Section,
   Article,
   Header,
   Footer,
-} from '@bodhi-project/semantic-webflow';
-import { Elements, applyRhythm } from '@bodhi-project/typography';
-import { treeCodeParser } from '@bodhi-project/markdown-to-react';
+} from "@bodhi-project/semantic-webflow";
+import { Elements, applyRhythm } from "@bodhi-project/typography";
+import { treeCodeParser } from "@bodhi-project/markdown-to-react";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -32,14 +32,14 @@ import {
   WebpageSchema,
   BreadcrumbSchema,
   EventSchema,
-} from '@bodhi-project/seo';
+} from "@bodhi-project/seo";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import indexImage from '../pages/assets/index.jpg';
-import packageJson from '../../package.json';
-import markdownStylesClass from '../styles/markdownStyles';
-import Register from '../components/Register';
-import donateButton from '../pages/assets/donateButton.png';
+import indexImage from "../pages/assets/index.jpg";
+import packageJson from "../../package.json";
+import markdownStylesClass from "../styles/markdownStyles";
+import Register from "../components/Register";
+import donateButton from "../pages/assets/donateButton.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -50,28 +50,28 @@ const { H1, Paragraph } = Elements;
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 const pageStyle = css({
-  position: 'relative',
-  ...applyRhythm({ maxWidth: '27X' }),
-  '& div + p': {
-    ...applyRhythm({ marginTop: '2X' }),
+  position: "relative",
+  ...applyRhythm({ maxWidth: "27X" }),
+  "& div + p": {
+    ...applyRhythm({ marginTop: "2X" }),
   },
 
-  '& a': {
-    color: 'inherit',
-    borderBottom: 'none',
+  "& a": {
+    color: "inherit",
+    borderBottom: "none",
 
-    '&:hover': {
-      color: 'inherit',
-      borderBottom: 'none',
+    "&:hover": {
+      color: "inherit",
+      borderBottom: "none",
     },
-    '&:visited': {
-      textDecoration: 'none',
+    "&:visited": {
+      textDecoration: "none",
     },
-    '&:link': {
-      textDecoration: 'none',
+    "&:link": {
+      textDecoration: "none",
     },
-    '&:active': {
-      textDecoration: 'none',
+    "&:active": {
+      textDecoration: "none",
     },
   },
 });
@@ -95,15 +95,15 @@ class EventTemplate extends React.Component {
     // const { toc } = pathContext;
     const { markdownAst } = pathContext;
     const { route } = pathContext;
-    const checkedRoute = _.startsWith(route, '/') ? route : `/${route}`;
+    const checkedRoute = _.startsWith(route, "/") ? route : `/${route}`;
     // const { headings } = pathContext;
 
     // Date stuff
     const mDate = moment(frontmatter.date);
-    const humanDate = mDate.format('dddd, MMMM Do YYYY');
+    const humanDate = mDate.format("dddd, MMMM Do YYYY");
     const elapsed = mDate.fromNow();
     const startDate = mDate.format();
-    const endDate = mDate.add(23, 'hours').format();
+    const endDate = mDate.add(23, "hours").format();
 
     const { orgLocation } = data;
 
@@ -140,7 +140,7 @@ class EventTemplate extends React.Component {
 
     const breadcrumbSchemaData = {
       breadcrumbs: [
-        { name: 'Home', url: `${data.websiteUrl}` },
+        { name: "Home", url: `${data.websiteUrl}` },
         {
           name: frontmatter.title,
           url: `${data.nakedWebsiteUrl}${checkedRoute}`,
@@ -215,7 +215,7 @@ class EventTemplate extends React.Component {
             <br />
             <br />
             <br />
-            <H1>Donate</H1>
+            <H1>Pay Now</H1>
             <Paragraph>
               Abstract - blah blah blah blah blah blah blah blah blah blah blah
               blah blah blah blah blah blah blah blah blah blah blah blah blah
@@ -229,11 +229,11 @@ class EventTemplate extends React.Component {
                   rawWidth={135}
                   rawHeight={48}
                   style={{
-                    height: 'auto',
-                    width: '150px',
+                    height: "auto",
+                    width: "150px",
                     border: 0,
-                    background: 'transparent',
-                    display: 'inline-block',
+                    background: "transparent",
+                    display: "inline-block",
                   }}
                   loader="gradient"
                 />

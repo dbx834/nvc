@@ -2,14 +2,14 @@
 // -------------------------------------------------------------------- Imports
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import React from 'react';
+import React from "react";
 // import PropTypes from 'prop-types';
-import _ from 'lodash';
-import moment from 'moment';
+import _ from "lodash";
+import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import { Form, Select, Input, Button } from 'antd';
-import { Elements, applyType, applyRhythm } from '@bodhi-project/typography';
+import { Form, Select, Input, Button } from "antd";
+import { Elements, applyType, applyRhythm } from "@bodhi-project/typography";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import {
@@ -17,8 +17,8 @@ import {
   validateEmail,
   validateName,
   validateComment,
-} from '../helpers/formHelpers';
-import { formStyleClass } from '../helpers/defaultFormStyles';
+} from "../helpers/formHelpers";
+import { formStyleClass } from "../helpers/defaultFormStyles";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -66,19 +66,19 @@ class Component extends React.Component {
           fetch(
             `https://script.google.com/macros/s/AKfycbxe5KaEdHtLH5JVpf-yntF5LZYAszQTwHHQ4tEjvBT4DyykpRtZ/exec?name=${name}&email=${email}&event=${event}&callback=?`,
             {
-              method: 'GET',
-              mode: 'no-cors',
+              method: "GET",
+              mode: "no-cors",
             },
           )
             .then(response => {
-              console.log('success', response);
+              console.log("success", response);
               this.setState({
                 loader: false,
                 formSent: true,
               });
             })
             .catch(error => {
-              console.log('error', error);
+              console.log("error", error);
               this.setState({
                 loader: false,
               });
@@ -88,6 +88,7 @@ class Component extends React.Component {
     });
   }
 
+  /** standard renderer */
   render() {
     const {
       getFieldDecorator,
@@ -96,9 +97,9 @@ class Component extends React.Component {
       isFieldTouched,
     } = this.props.form;
     // Only show error after a field is touched.
-    const nameError = isFieldTouched('name') && getFieldError('name');
-    const emailError = isFieldTouched('email') && getFieldError('email');
-    const eventError = isFieldTouched('event') && getFieldError('event');
+    const nameError = isFieldTouched("name") && getFieldError("name");
+    const emailError = isFieldTouched("email") && getFieldError("email");
+    const eventError = isFieldTouched("event") && getFieldError("event");
 
     // const today = moment();
 
@@ -108,36 +109,36 @@ class Component extends React.Component {
           <Form onSubmit={this.handleSubmit} className={formStyleClass}>
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Name */}
             <FormItem
-              validateStatus={nameError ? 'error' : ''}
-              help={nameError || ''}
+              validateStatus={nameError ? "error" : ""}
+              help={nameError || ""}
             >
-              {getFieldDecorator('name', {
-                validateTrigger: ['onChange', 'onBlur'],
+              {getFieldDecorator("name", {
+                validateTrigger: ["onChange", "onBlur"],
                 rules: [{ validator: validateName }],
               })(<Input placeholder="Name" />)}
             </FormItem>
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
             <FormItem
-              validateStatus={emailError ? 'error' : ''}
-              help={emailError || ''}
+              validateStatus={emailError ? "error" : ""}
+              help={emailError || ""}
             >
-              {getFieldDecorator('email', {
-                validateTrigger: ['onChange', 'onBlur'],
+              {getFieldDecorator("email", {
+                validateTrigger: ["onChange", "onBlur"],
                 rules: [{ validator: validateEmail }],
               })(<Input placeholder="Email" />)}
             </FormItem>
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Event Selection */}
-            <div style={{ display: 'none' }}>
+            <div style={{ display: "none" }}>
               <FormItem
-                validateStatus={eventError ? 'error' : ''}
-                help={eventError || ''}
+                validateStatus={eventError ? "error" : ""}
+                help={eventError || ""}
               >
-                {getFieldDecorator('event', {
+                {getFieldDecorator("event", {
                   initialValue: this.props.event.key,
                   rules: [
                     {
                       required: true,
-                      message: 'Please select an event from the dropdown...',
+                      message: "Please select an event from the dropdown...",
                     },
                   ],
                 })(

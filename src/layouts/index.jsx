@@ -2,44 +2,49 @@
 // -------------------------------------------------------------------- Imports
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import React from 'react';
-import PropTypes from 'prop-types';
-import { css } from 'glamor';
-import moment from 'moment';
-import _ from 'lodash';
+import React from "react";
+import PropTypes from "prop-types";
+import { css } from "glamor";
+import moment from "moment";
+import _ from "lodash";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link from 'gatsby-link';
-import { Row, Col, Icon } from 'antd';
+import Link from "gatsby-link";
+import { Row, Col, Icon } from "antd";
 import {
   CompositeHeader,
   Container,
   OutLink,
   Image,
-} from '@bodhi-project/components';
-import { Elements, Type, applyRhythm } from '@bodhi-project/typography';
+} from "@bodhi-project/components";
+import { Elements, Type, applyRhythm } from "@bodhi-project/typography";
 import {
   Header as SemanticHeader,
   Footer as SemanticFooter,
-} from '@bodhi-project/semantic-webflow';
+} from "@bodhi-project/semantic-webflow";
 import {
   InitializeMeta,
   UpdateTitle,
   WebsiteSchema,
   OrganisationSchema,
-} from '@bodhi-project/seo';
+} from "@bodhi-project/seo";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import '../styles/index.less';
-import mobileLogo from './assets/mobileLogo.png';
-import mobileBurger from './assets/mobileBurger.png';
-import mobileCross from './assets/mobileCross.png';
-import indexImage from '../pages/assets/launch.jpg';
-import packageJson from '../../package.json';
-import waves from './assets/waves.png';
-import boat from './assets/boat.png';
-import facebook from './assets/facebook.png';
-import youtube from './assets/youtube.png';
+import "../styles/index.less";
+import logo from "./assets/logo.png";
+import mobileLogo from "./assets/mobileLogo.png";
+import mobileBurger from "./assets/mobileBurger.png";
+import mobileCross from "./assets/mobileCross.png";
+import indexImage from "../pages/assets/launch.jpg";
+import packageJson from "../../package.json";
+import waves from "./assets/waves.png";
+import boat from "./assets/boat.png";
+import facebook from "./assets/facebook.png";
+import youtube from "./assets/youtube.png";
+import vimeo from "./assets/vimeo.png";
+import paypal from "./assets/paypal.png";
+import payu from "./assets/payu.png";
+import cnvc from "./assets/cnvc.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const {
@@ -88,57 +93,57 @@ const organisationSchemaData = {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const wrapperStyles = css({
   // margin: 30,
-  background: 'transparent',
-  position: 'relative',
+  background: "transparent",
+  position: "relative",
 
-  '& h1, h2, h3, h4, h5, h6, p, li': {
-    color: '#4a4a4a',
+  "& h1, h2, h3, h4, h5, h6, p, li": {
+    color: "#4a4a4a",
   },
 
-  '& a': {
-    color: '#0000FF',
-    borderBottom: '1.625px solid transparent',
+  "& a": {
+    color: "#0000FF",
+    borderBottom: "1.625px solid transparent",
 
-    '&:hover': {
-      color: '#6D00FF',
-      borderBottom: '1.625px solid #6D00FF',
+    "&:hover": {
+      color: "#6D00FF",
+      borderBottom: "1.625px solid #6D00FF",
     },
-    '&:visited': {
-      textDecoration: 'none',
+    "&:visited": {
+      textDecoration: "none",
     },
-    '&:link': {
-      textDecoration: 'none',
+    "&:link": {
+      textDecoration: "none",
     },
-    '&:active': {
-      textDecoration: 'none',
+    "&:active": {
+      textDecoration: "none",
     },
   },
 
-  '& #content': _.merge(
+  "& #content": _.merge(
     {
       marginLeft: 0,
     },
-    ...applyRhythm({ padding: '4.8X 3X' }),
+    ...applyRhythm({ padding: "1X 3X 4.8X 3X" }),
   ),
 
-  '& #appWrapper': {
-    display: 'block',
-    '@media(min-width: 768px)': {
-      display: 'flex',
+  "& #appWrapper": {
+    display: "block",
+    "@media(min-width: 768px)": {
+      display: "flex",
 
-      '& #menuWrapper': {
-        flexGrow: '22',
+      "& #menuWrapper": {
+        flexGrow: "22",
         flexBasis: 0,
-        background: '#fafafa',
-        height: '100vh',
+        background: "#fafafa",
+        height: "100vh",
       },
 
-      '& #contentWrapper': {
-        flexGrow: '78',
+      "& #contentWrapper": {
+        flexGrow: "78",
         flexBasis: 0,
-        maxHeight: '100vh',
-        overflowX: 'hidden',
-        overflowY: 'scroll',
+        maxHeight: "100vh",
+        overflowX: "hidden",
+        overflowY: "scroll",
       },
     },
   },
@@ -152,43 +157,43 @@ const mobileHeader = css({
 const mobileHeaderClass = mobileHeader.toString();
 
 const mobileMenu = css({
-  backgroundColor: '#fcfcfc',
-  '& .bm-item-list': {
-    padding: '1em',
+  backgroundColor: "#fcfcfc",
+  "& .bm-item-list": {
+    padding: "1em",
 
-    '& a': {
-      fontFamily: 'futura-pt, sans-serif !important',
-      color: '#4a4a4a',
-      borderBottom: '1.625px solid transparent',
-      transition: '0.125s',
-      textTransform: 'uppercase',
-      letterSpacing: '0.08775ex',
-      display: 'block',
-      marginBottom: '0.9em',
-      fontSize: '115%',
+    "& a": {
+      fontFamily: "futura-pt, sans-serif !important",
+      color: "#4a4a4a",
+      borderBottom: "1.625px solid transparent",
+      transition: "0.125s",
+      textTransform: "uppercase",
+      letterSpacing: "0.08775ex",
+      display: "block",
+      marginBottom: "0.9em",
+      fontSize: "115%",
 
-      '&:hover': {
-        color: '#4a4a4a',
-        borderBottom: '1.625px solid transparent',
+      "&:hover": {
+        color: "#4a4a4a",
+        borderBottom: "1.625px solid transparent",
       },
     },
 
-    '& a.active': {
-      color: '#0000FF',
+    "& a.active": {
+      color: "#0000FF",
     },
 
-    '& span.header': {
-      display: 'block',
+    "& span.header": {
+      display: "block",
       fontWeight: 700,
-      fontSize: '95%',
-      letterSpacing: '-0.08775ex',
-      textTransform: 'uppercase',
-      marginTop: '2.7em',
-      marginBottom: '0.9em',
+      fontSize: "95%",
+      letterSpacing: "-0.08775ex",
+      textTransform: "uppercase",
+      marginTop: "2.7em",
+      marginBottom: "0.9em",
     },
 
-    '& span.header:first-child': {
-      marginTop: '1.3em',
+    "& span.header:first-child": {
+      marginTop: "1.3em",
     },
   },
 });
@@ -196,47 +201,47 @@ const mobileMenuClass = mobileMenu.toString();
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Desktop Header
 const desktopHeaderStyle = css({
-  '& ul': {
-    listStyle: 'none',
+  "& ul": {
+    listStyle: "none",
     paddingLeft: 40,
 
-    '& li': {
-      fontFamily: 'futura-pt, sans-serif !important',
-      marginBottom: '0px !important',
+    "& li": {
+      fontFamily: "futura-pt, sans-serif !important",
+      marginBottom: "0px !important",
     },
 
-    '& li.header': {
+    "& li.header": {
       fontWeight: 700,
 
-      '& span': {
-        fontSize: '82%',
-        letterSpacing: '-0.08775ex',
+      "& span": {
+        fontSize: "90%",
+        letterSpacing: "-0.08775ex",
       },
     },
 
-    '& li.header:not(:first-child)': {
-      ...applyRhythm({ marginTop: '0.75X' }),
+    "& li.header:not(:first-child)": {
+      ...applyRhythm({ marginTop: "0.75X" }),
     },
 
-    '& a': {
-      color: '#4a4a4a',
-      borderBottom: '1.625px solid transparent',
-      transition: '0.125s',
-      textTransform: 'uppercase',
-      letterSpacing: '0.08775ex',
+    "& a": {
+      color: "#4a4a4a",
+      borderBottom: "1.625px solid transparent",
+      transition: "0.125s",
+      textTransform: "uppercase",
+      letterSpacing: "0.14625ex",
 
-      '& span': {
-        fontSize: '65%',
+      "& span": {
+        fontSize: "66%",
       },
 
-      '&:hover': {
-        color: '#4a4a4a',
-        borderBottom: '1.625px solid #4a4a4a',
+      "&:hover": {
+        color: "#4a4a4a",
+        borderBottom: "1.625px solid #4a4a4a",
       },
     },
 
-    '& a.active': {
-      color: '#0000FF',
+    "& a.active": {
+      color: "#0000FF",
     },
   },
 });
@@ -244,25 +249,25 @@ const desktopHeaderStyleClass = desktopHeaderStyle.toString();
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Footer
 const footerStyle = css({
-  ...applyRhythm({ padding: '0X 3X 4.8X 3X' }),
+  ...applyRhythm({ padding: "0X 3X 1X 3X" }),
 
-  '& .waves': {
-    ...applyRhythm({ marginBottom: '1X' }),
+  "& .waves": {
+    ...applyRhythm({ marginBottom: "1X" }),
   },
 
-  '& .boat': {
-    background: 'transparent !important',
-    border: 'none !important',
-    position: 'absolute',
-    height: '90px !important',
-    width: '90px !important',
+  "& .boat": {
+    background: "transparent !important",
+    border: "none !important",
+    position: "absolute",
+    height: "90px !important",
+    width: "90px !important",
     right: 14,
     zIndex: 1,
     top: -82,
 
-    '@media(min-width: 768px)': {
-      height: '120px !important',
-      width: '120px !important',
+    "@media(min-width: 768px)": {
+      height: "120px !important",
+      width: "120px !important",
       right: 54,
       zIndex: 1,
       top: -118,
@@ -287,11 +292,11 @@ class TemplateWrapper extends React.Component {
     return (
       <Type
         kit="dkc2ilk"
-        style={{ minHeight: '100vh' }}
+        style={{ minHeight: "100vh" }}
         className={wrapperStylesClass}
       >
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
-        <InitializeMeta data={{ titleTemplate: '%s | Joy Living Learning' }} />
+        <InitializeMeta data={{ titleTemplate: "%s | Joy Living Learning" }} />
         <UpdateTitle title="Loading..." />
         <WebsiteSchema data={websiteSchemaData} />
         <OrganisationSchema data={organisationSchemaData} />
@@ -306,7 +311,7 @@ class TemplateWrapper extends React.Component {
                     src={mobileLogo}
                     style={{
                       height: 55,
-                      width: 'auto',
+                      width: "auto",
                       marginTop: 20,
                     }}
                   />
@@ -323,13 +328,13 @@ class TemplateWrapper extends React.Component {
                 </MobileHeader>
                 <MobileMenu className={mobileMenuClass}>
                   <span className="header">About</span>
-                  <Link to="/" className={pathname === '/' ? 'active' : ''}>
+                  <Link to="/" className={pathname === "/" ? "active" : ""}>
                     <span>Joy Living Learning</span>
                   </Link>
                   <Link
                     to="/nonviolent-communication"
                     className={
-                      pathname === '/nonviolent-communication' ? 'active' : ''
+                      pathname === "/nonviolent-communication" ? "active" : ""
                     }
                   >
                     <span>Nonviolent Communication</span>
@@ -337,21 +342,21 @@ class TemplateWrapper extends React.Component {
                   <Link
                     to="/restorative-circles"
                     className={
-                      pathname === '/restorative-circles' ? 'active' : ''
+                      pathname === "/restorative-circles" ? "active" : ""
                     }
                   >
                     <span>Restorative Circles</span>
                   </Link>
                   <Link
                     to="/laura-joy"
-                    className={pathname === '/laura-joy' ? 'active' : ''}
+                    className={pathname === "/laura-joy" ? "active" : ""}
                   >
                     <span>L'aura Joy</span>
                   </Link>
                   <span className="header">Learn</span>
                   <Link
                     to="/events"
-                    className={pathname === '/events' ? 'active' : ''}
+                    className={pathname === "/events" ? "active" : ""}
                   >
                     <span>Upcoming Events</span>
                   </Link>
@@ -359,25 +364,25 @@ class TemplateWrapper extends React.Component {
                   <Link
                     to="/mediated-restorative-circles"
                     className={
-                      pathname === '/mediated-restorative-circles'
-                        ? 'active'
-                        : ''
+                      pathname === "/mediated-restorative-circles"
+                        ? "active"
+                        : ""
                     }
                   >
                     <span>Restorative Circles</span>
                   </Link>
                   <Link
                     to="/mediation"
-                    className={pathname === '/mediation' ? 'active' : ''}
+                    className={pathname === "/mediation" ? "active" : ""}
                   >
                     <span>Mediation</span>
                   </Link>
                   <Link
                     to="/meeting-and-group-processes"
                     className={
-                      pathname === '/meeting-and-group-processes'
-                        ? 'active'
-                        : ''
+                      pathname === "/meeting-and-group-processes"
+                        ? "active"
+                        : ""
                     }
                   >
                     <span>Meeting & group processes</span>
@@ -385,7 +390,7 @@ class TemplateWrapper extends React.Component {
                   <Link
                     to="/individual-coaching"
                     className={
-                      pathname === '/individual-coaching' ? 'active' : ''
+                      pathname === "/individual-coaching" ? "active" : ""
                     }
                   >
                     <span>Individual coaching</span>
@@ -394,38 +399,38 @@ class TemplateWrapper extends React.Component {
                   <Link
                     to="/internal-family-systems"
                     className={
-                      pathname === '/internal-family-systems' ? 'active' : ''
+                      pathname === "/internal-family-systems" ? "active" : ""
                     }
                   >
                     <span>Internal Family Systems</span>
                   </Link>
                   <Link
                     to="/sociocracy"
-                    className={pathname === '/sociocracy' ? 'active' : ''}
+                    className={pathname === "/sociocracy" ? "active" : ""}
                   >
                     <span>Sociocracy</span>
                   </Link>
                   <Link
                     to="/writings"
-                    className={pathname === '/writings' ? 'active' : ''}
+                    className={pathname === "/writings" ? "active" : ""}
                   >
                     <span>Blog</span>
                   </Link>
                   <Link
                     to="/gallery"
-                    className={pathname === '/gallery' ? 'active' : ''}
+                    className={pathname === "/gallery" ? "active" : ""}
                   >
                     <span>Gallery</span>
                   </Link>
                   <Link
                     to="/newsletter"
-                    className={pathname === '/newsletter' ? 'active' : ''}
+                    className={pathname === "/newsletter" ? "active" : ""}
                   >
                     <span>Newsletter</span>
                   </Link>
                   <Link
                     to="/contact"
-                    className={pathname === '/contact' ? 'active' : ''}
+                    className={pathname === "/contact" ? "active" : ""}
                   >
                     <span>Contact Us</span>
                   </Link>
@@ -433,12 +438,14 @@ class TemplateWrapper extends React.Component {
                 <DesktopHeader className={desktopHeaderStyleClass}>
                   <Container bleed block noFade style={{ padding: 0 }}>
                     <Image
-                      src={''}
+                      src={logo}
+                      rawWidth={842}
+                      rawHeight={936}
                       style={{
-                        height: 80,
-                        width: 128,
+                        height: 156,
+                        width: 140,
                         border: 0,
-                        background: '#4a4a4a',
+                        background: "transparent",
                         marginLeft: 40,
                         marginBottom: 26,
                         marginTop: 26,
@@ -453,18 +460,31 @@ class TemplateWrapper extends React.Component {
                         <li>
                           <Link
                             to="/"
-                            className={pathname === '/' ? 'active' : ''}
+                            className={pathname === "/" ? "active" : ""}
                           >
                             <span>Joy Living Learning</span>
                           </Link>
                         </li>
                         <li>
                           <Link
+                            to="/laura-joy"
+                            className={
+                              pathname === "/laura-joy" ? "active" : ""
+                            }
+                          >
+                            <span>L'aura Joy</span>
+                          </Link>
+                        </li>
+                        <li className="header">
+                          <span>Workshops & Facilitation</span>
+                        </li>
+                        <li>
+                          <Link
                             to="/nonviolent-communication"
                             className={
-                              pathname === '/nonviolent-communication'
-                                ? 'active'
-                                : ''
+                              pathname === "/nonviolent-communication"
+                                ? "active"
+                                : ""
                             }
                           >
                             <span>Nonviolent Communication</span>
@@ -474,45 +494,9 @@ class TemplateWrapper extends React.Component {
                           <Link
                             to="/restorative-circles"
                             className={
-                              pathname === '/restorative-circles'
-                                ? 'active'
-                                : ''
-                            }
-                          >
-                            <span>Restorative Circles</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="/laura-joy"
-                            className={
-                              pathname === '/laura-joy' ? 'active' : ''
-                            }
-                          >
-                            <span>L'aura Joy</span>
-                          </Link>
-                        </li>
-                        <li className="header">
-                          <span>Learn</span>
-                        </li>
-                        <li>
-                          <Link
-                            to="/events"
-                            className={pathname === '/events' ? 'active' : ''}
-                          >
-                            <span>Upcoming Events</span>
-                          </Link>
-                        </li>
-                        <li className="header">
-                          <span>Facilitation</span>
-                        </li>
-                        <li>
-                          <Link
-                            to="/mediated-restorative-circles"
-                            className={
-                              pathname === '/mediated-restorative-circles'
-                                ? 'active'
-                                : ''
+                              pathname === "/restorative-circles"
+                                ? "active"
+                                : ""
                             }
                           >
                             <span>Restorative Circles</span>
@@ -522,7 +506,7 @@ class TemplateWrapper extends React.Component {
                           <Link
                             to="/mediation"
                             className={
-                              pathname === '/mediation' ? 'active' : ''
+                              pathname === "/mediation" ? "active" : ""
                             }
                           >
                             <span>Mediation</span>
@@ -530,26 +514,25 @@ class TemplateWrapper extends React.Component {
                         </li>
                         <li>
                           <Link
-                            to="/meeting-and-group-processes"
+                            to="/individual-coaching"
                             className={
-                              pathname === '/meeting-and-group-processes'
-                                ? 'active'
-                                : ''
+                              pathname === "/individual-coaching"
+                                ? "active"
+                                : ""
                             }
                           >
-                            <span>Meeting & group processes</span>
+                            <span>Coaching</span>
                           </Link>
+                        </li>
+                        <li className="header">
+                          <span>Learn</span>
                         </li>
                         <li>
                           <Link
-                            to="/individual-coaching"
-                            className={
-                              pathname === '/individual-coaching'
-                                ? 'active'
-                                : ''
-                            }
+                            to="/events"
+                            className={pathname === "/events" ? "active" : ""}
                           >
-                            <span>Individual coaching</span>
+                            <span>Upcoming Events</span>
                           </Link>
                         </li>
                         <li className="header">
@@ -557,30 +540,8 @@ class TemplateWrapper extends React.Component {
                         </li>
                         <li>
                           <Link
-                            to="/internal-family-systems"
-                            className={
-                              pathname === '/internal-family-systems'
-                                ? 'active'
-                                : ''
-                            }
-                          >
-                            <span>Internal Family Systems</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
-                            to="/sociocracy"
-                            className={
-                              pathname === '/sociocracy' ? 'active' : ''
-                            }
-                          >
-                            <span>Sociocracy</span>
-                          </Link>
-                        </li>
-                        <li>
-                          <Link
                             to="/writings"
-                            className={pathname === '/writings' ? 'active' : ''}
+                            className={pathname === "/writings" ? "active" : ""}
                           >
                             <span>Blog</span>
                           </Link>
@@ -588,7 +549,7 @@ class TemplateWrapper extends React.Component {
                         <li>
                           <Link
                             to="/gallery"
-                            className={pathname === '/gallery' ? 'active' : ''}
+                            className={pathname === "/gallery" ? "active" : ""}
                           >
                             <span>Gallery</span>
                           </Link>
@@ -597,7 +558,7 @@ class TemplateWrapper extends React.Component {
                           <Link
                             to="/newsletter"
                             className={
-                              pathname === '/newsletter' ? 'active' : ''
+                              pathname === "/newsletter" ? "active" : ""
                             }
                           >
                             <span>Newsletter</span>
@@ -605,8 +566,20 @@ class TemplateWrapper extends React.Component {
                         </li>
                         <li>
                           <Link
+                            to="/donation-and-fee-payment"
+                            className={
+                              pathname === "/donation-and-fee-payment"
+                                ? "active"
+                                : ""
+                            }
+                          >
+                            <span>Donation & Fee</span>
+                          </Link>
+                        </li>
+                        <li>
+                          <Link
                             to="/contact"
-                            className={pathname === '/contact' ? 'active' : ''}
+                            className={pathname === "/contact" ? "active" : ""}
                           >
                             <span>Contact Us</span>
                           </Link>
@@ -632,10 +605,10 @@ class TemplateWrapper extends React.Component {
                   className="waves"
                   style={{
                     height: 7,
-                    width: '100%',
-                    background: 'transparent',
+                    width: "100%",
+                    background: "transparent",
                     border: 0,
-                    display: 'block',
+                    display: "block",
                     zIndex: 2,
                   }}
                 />
@@ -647,16 +620,9 @@ class TemplateWrapper extends React.Component {
                       <strong>
                         <i>
                           Nonviolent Communication & Restorative Circles in
-                          India
+                          Auroville & India
                         </i>
                       </strong>
-                      <br />
-                      <br />
-                      blah blah blah blah blah blah blah blah blah blah blah
-                      blah blah blah blah blah blah blah blah blah blah blah
-                      blah blah blah blah blah blah blah blah blah blah blah
-                      blah blah blah.
-                      <br />
                       <br />
                     </Paragraph>
                     <Paragraph className="hidden-sm">
@@ -666,9 +632,9 @@ class TemplateWrapper extends React.Component {
                           rawWidth={450}
                           rawHeight={450}
                           style={{
-                            display: 'inline-block',
-                            border: 'none',
-                            background: 'none',
+                            display: "inline-block",
+                            border: "none",
+                            background: "none",
                             height: 45,
                             width: 45,
                           }}
@@ -683,28 +649,112 @@ class TemplateWrapper extends React.Component {
                           rawWidth={450}
                           rawHeight={450}
                           style={{
-                            display: 'inline-block',
-                            border: 'none',
-                            background: 'none',
+                            display: "inline-block",
+                            border: "none",
+                            background: "none",
+                            height: 45,
+                            width: 45,
+                          }}
+                        />
+                      </OutLink>
+                      <OutLink
+                        to="https://vimeo.com/laurajoyful"
+                        style={{ marginLeft: 17 }}
+                      >
+                        <Image
+                          src={vimeo}
+                          rawWidth={450}
+                          rawHeight={450}
+                          style={{
+                            display: "inline-block",
+                            border: "none",
+                            background: "none",
+                            height: 42,
+                            width: 42,
+                          }}
+                        />
+                      </OutLink>
+                      <OutLink
+                        to="https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD"
+                        style={{ marginLeft: 17 }}
+                      >
+                        <Image
+                          src={payu}
+                          rawWidth={450}
+                          rawHeight={450}
+                          style={{
+                            display: "inline-block",
+                            border: "none",
+                            background: "none",
+                            height: 42,
+                            width: 42,
+                          }}
+                        />
+                      </OutLink>
+                      <form
+                        action="https://www.paypal.com/cgi-bin/webscr"
+                        method="post"
+                        target="_top"
+                        style={{ display: "inline-block", marginLeft: 17 }}
+                      >
+                        <input type="hidden" name="cmd" value="_s-xclick" />
+                        <input
+                          type="hidden"
+                          name="hosted_button_id"
+                          value="WFXM5RNDGBXL4"
+                        />
+                        <input
+                          type="image"
+                          src={paypal}
+                          border="0"
+                          name="submit"
+                          alt="PayPal – The safer, easier way to pay online!"
+                          style={{
+                            height: 42,
+                            width: 42,
+                          }}
+                        />
+                        <img
+                          alt=""
+                          border="0"
+                          src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif"
+                          width="1"
+                          height="1"
+                        />
+                      </form>
+                      <OutLink
+                        to="http://www.cnvc.org/"
+                        style={{ marginLeft: 17 }}
+                      >
+                        <Image
+                          src={cnvc}
+                          rawWidth={450}
+                          rawHeight={450}
+                          style={{
+                            display: "inline-block",
+                            border: "none",
+                            background: "none",
                             height: 45,
                             width: 45,
                           }}
                         />
                       </OutLink>
                     </Paragraph>
-                    <Paragraph>
-                      <br />
-                      Made with{' '}
+                    <Paragraph style={{ marginBottom: 20 }}>
+                      Made with{" "}
                       <Icon
                         type="heart"
-                        style={{ color: '#D34025', fontSize: '80%' }}
-                      />{' '}
-                      by{' '}
+                        style={{ color: "#D34025", fontSize: "80%" }}
+                      />{" "}
+                      by{" "}
                       <OutLink to="https://www.bodhiproject.org/">
                         Bodhi Project
-                      </OutLink>.
+                      </OutLink>
                       <br />
                       {data.copyright}
+                      <br />
+                      <br />
+                      A Unit of Auroville Foundation
                     </Paragraph>
                   </Col>
                 </Row>

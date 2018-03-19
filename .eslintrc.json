@@ -17,10 +17,8 @@
     "react/require-default-props": 0,
     "react/no-unescaped-entities": 0,
     "react/jsx-filename-extension": 0,
-    "comma-dangle": [
-      "error",
-      "always-multiline"
-    ],
+    "react/prefer-stateless-function": 0,
+    "comma-dangle": ["error", "always-multiline"],
     "require-jsdoc": [
       "error",
       {

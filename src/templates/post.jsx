@@ -2,23 +2,23 @@
 // -------------------------------------------------------------------- Imports
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import React from 'react';
-import PropTypes from 'prop-types';
-import _ from 'lodash';
-import { css } from 'glamor';
-import moment from 'moment';
+import React from "react";
+import PropTypes from "prop-types";
+import _ from "lodash";
+import { css } from "glamor";
+import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link from 'gatsby-link';
+import Link from "gatsby-link";
 import {
   Page,
   // Section,
   Article,
   Header,
   Footer,
-} from '@bodhi-project/semantic-webflow';
-import { Elements } from '@bodhi-project/typography';
-import { treeCodeParser } from '@bodhi-project/markdown-to-react';
+} from "@bodhi-project/semantic-webflow";
+import { Elements } from "@bodhi-project/typography";
+import { treeCodeParser } from "@bodhi-project/markdown-to-react";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -31,14 +31,14 @@ import {
   WebpageSchema,
   BreadcrumbSchema,
   BlogPostSchema,
-} from '@bodhi-project/seo';
+} from "@bodhi-project/seo";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals - Images
-import indexImage from '../pages/assets/index.jpg';
+import indexImage from "../pages/assets/index.jpg";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import packageJson from '../../package.json';
-import markdownStylesClass from '../styles/markdownStyles';
+import packageJson from "../../package.json";
+import markdownStylesClass from "../styles/markdownStyles";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -49,7 +49,7 @@ const { H1, Paragraph } = Elements;
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 const pageStyle = css({
-  position: 'relative',
+  position: "relative",
 });
 const pageStyleClass = pageStyle.toString();
 
@@ -71,12 +71,12 @@ class BlogPostTemplate extends React.Component {
     // const { toc } = pathContext;
     const { markdownAst } = pathContext;
     const { route } = pathContext;
-    const checkedRoute = _.startsWith(route, '/') ? route : `/${route}`;
+    const checkedRoute = _.startsWith(route, "/") ? route : `/${route}`;
     // const { headings } = pathContext;
 
     // Date stuff
     const mDate = moment(frontmatter.date);
-    const humanDate = mDate.format('dddd, MMMM Do YYYY');
+    const humanDate = mDate.format("dddd, MMMM Do YYYY");
     const isoDate = mDate.format();
     const elapsed = mDate.fromNow();
 
@@ -113,7 +113,7 @@ class BlogPostTemplate extends React.Component {
 
     const breadcrumbSchemaData = {
       breadcrumbs: [
-        { name: 'Home', url: `${data.websiteUrl}` },
+        { name: "Home", url: `${data.websiteUrl}` },
         {
           name: frontmatter.title,
           url: `${data.nakedWebsiteUrl}${checkedRoute}`,
@@ -154,7 +154,7 @@ class BlogPostTemplate extends React.Component {
               {
                 localLink: Link,
                 linkHeaders: true,
-                trackHeaders: true,
+                trackHeaders: false,
                 nestHeaders: true,
               },
               {},

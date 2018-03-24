@@ -79,6 +79,9 @@ import nvcX39 from "./assets/gallery/nvcX39.jpg";
 import nvcX40 from "./assets/gallery/nvcX40.jpg";
 import nvcX41 from "./assets/gallery/nvcX41.jpg";
 import nvcX42 from "./assets/gallery/nvcX42.jpg";
+import nvcX43 from "./assets/gallery/nvcX43.jpg";
+import nvcX44 from "./assets/gallery/nvcX44.jpg";
+import nvcX45 from "./assets/gallery/nvcX45.jpg";
 
 const photos = [
   { src: nvcX1, width: 600, height: 450 },
@@ -123,6 +126,9 @@ const photos = [
   { src: nvcX40, width: 600, height: 414 },
   { src: nvcX41, width: 600, height: 450 },
   { src: nvcX42, width: 600, height: 367 },
+  { src: nvcX43, width: 600, height: 450 },
+  { src: nvcX44, width: 600, height: 461 },
+  { src: nvcX45, width: 600, height: 800 },
 ];
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstract stuff
@@ -171,7 +177,9 @@ const breadcrumbSchemaData = {
 // ----------------------------------------------------------------------- Styles
 // ------------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
-const pageStyle = css({});
+const pageStyle = css({
+  marginBottom: 40,
+});
 const pageStyleClass = pageStyle.toString();
 
 // ----------------------------------------------------------------------- Component
@@ -182,7 +190,7 @@ class Page extends React.Component {
     return (
       <Fragment>
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
-        <UpdateTitle title="Coming Soon" />
+        <UpdateTitle title="Gallery" />
         <GeneralMeta data={generalMetaData} />
         <TwitterSummaryCard data={twitterSummaryCardData} />
         <OpenGraphSummary data={openGraphSummaryData} />

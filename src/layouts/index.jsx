@@ -32,6 +32,7 @@ import {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import "../styles/index.less";
 import logo from "./assets/logo.png";
+import auroville from "./assets/auroville.png";
 import mobileLogo from "./assets/mobileLogo.png";
 import mobileBurger from "./assets/mobileBurger.png";
 import mobileCross from "./assets/mobileCross.png";
@@ -613,6 +614,54 @@ class TemplateWrapper extends React.Component {
                   }}
                 />
                 <Image src={boat} className="boat" />
+                <div style={{ position: "absolute", right: 0 }}>
+                  <OutLink to="http://www.cnvc.org/" style={{ marginLeft: 17 }}>
+                    <Image
+                      src={cnvc}
+                      rawWidth={450}
+                      rawHeight={450}
+                      style={{
+                        display: "inline-block",
+                        border: "none",
+                        background: "none",
+                        height: 75,
+                        width: 75,
+                        marginRight: 15,
+                      }}
+                    />
+                  </OutLink>
+                  <Image
+                    src={logo}
+                    rawWidth={450}
+                    rawHeight={450}
+                    style={{
+                      display: "inline-block",
+                      border: "none",
+                      background: "none",
+                      height: 60,
+                      width: 60,
+                    }}
+                  />
+                  <Image
+                    src={auroville}
+                    rawWidth={450}
+                    rawHeight={450}
+                    style={{
+                      display: "inline-block",
+                      border: "none",
+                      background: "none",
+                      height: 75,
+                      width: 75,
+                    }}
+                  />
+                  <Paragraph className="text-center">
+                    <small>
+                      <i>
+                        A Unit of<br />Auroville Foundation
+                      </i>
+                    </small>
+                  </Paragraph>
+                </div>
                 <Row type="flex">
                   <Col xs={23} sm={23} md={20} lg={17} xl={15}>
                     <Paragraph>
@@ -694,7 +743,7 @@ class TemplateWrapper extends React.Component {
                       <form
                         action="https://www.paypal.com/cgi-bin/webscr"
                         method="post"
-                        target="_top"
+                        target="_blank"
                         style={{ display: "inline-block", marginLeft: 17 }}
                       >
                         <input type="hidden" name="cmd" value="_s-xclick" />
@@ -722,23 +771,6 @@ class TemplateWrapper extends React.Component {
                           height="1"
                         />
                       </form>
-                      <OutLink
-                        to="http://www.cnvc.org/"
-                        style={{ marginLeft: 17 }}
-                      >
-                        <Image
-                          src={cnvc}
-                          rawWidth={450}
-                          rawHeight={450}
-                          style={{
-                            display: "inline-block",
-                            border: "none",
-                            background: "none",
-                            height: 45,
-                            width: 45,
-                          }}
-                        />
-                      </OutLink>
                     </Paragraph>
                     <Paragraph style={{ marginBottom: 20 }}>
                       Made with{" "}
@@ -752,9 +784,6 @@ class TemplateWrapper extends React.Component {
                       </OutLink>
                       <br />
                       {data.copyright}
-                      <br />
-                      <br />
-                      A Unit of Auroville Foundation
                     </Paragraph>
                   </Col>
                 </Row>

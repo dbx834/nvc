@@ -2,23 +2,23 @@
 // -------------------------------------------------------------------- Imports
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import React from 'react';
-import PropTypes from 'prop-types';
-import _ from 'lodash';
-import { css } from 'glamor';
-import moment from 'moment';
+import React from "react";
+import PropTypes from "prop-types";
+import _ from "lodash";
+import { css } from "glamor";
+import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link from 'gatsby-link';
+import Link from "gatsby-link";
 import {
   Page,
   // Section,
   Article,
   Header,
   Footer,
-} from '@bodhi-project/semantic-webflow';
-import { Elements, applyRhythm } from '@bodhi-project/typography';
-import { treeCodeParser } from '@bodhi-project/markdown-to-react';
+} from "@bodhi-project/semantic-webflow";
+import { Elements, applyRhythm } from "@bodhi-project/typography";
+import { treeCodeParser } from "@bodhi-project/markdown-to-react";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -30,14 +30,15 @@ import {
   // --------------- Schema.org JSON-LD
   WebpageSchema,
   BreadcrumbSchema,
-} from '@bodhi-project/seo';
+} from "@bodhi-project/seo";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals - Images
-import indexImage from '../pages/assets/index.jpg';
+import indexImage from "../pages/assets/index.jpg";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import packageJson from '../../package.json';
-import markdownStylesClass from '../styles/markdownStyles';
+import LearnMore from "../components/LearnMore";
+import packageJson from "../../package.json";
+import markdownStylesClass from "../styles/markdownStyles";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -48,10 +49,10 @@ const { H1, Paragraph } = Elements;
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 const pageStyle = css({
-  position: 'relative',
-  ...applyRhythm({ maxWidth: '27X' }),
-  '& div + p': {
-    ...applyRhythm({ marginTop: '2X' }),
+  position: "relative",
+  ...applyRhythm({ maxWidth: "27X" }),
+  "& div + p": {
+    ...applyRhythm({ marginTop: "2X" }),
   },
 });
 const pageStyleClass = pageStyle.toString();
@@ -74,12 +75,13 @@ class PageTemplate extends React.Component {
     // const { toc } = pathContext;
     const { markdownAst } = pathContext;
     const { route } = pathContext;
-    const checkedRoute = _.startsWith(route, '/') ? route : `/${route}`;
+    const checkedRoute = _.startsWith(route, "/") ? route : `/${route}`;
+    const nakedRoute = checkedRoute.substr(1);
     // const { headings } = pathContext;
 
     // Date stuff
     const mDate = moment(frontmatter.date);
-    const humanDate = mDate.format('dddd, MMMM Do YYYY');
+    const humanDate = mDate.format("dddd, MMMM Do YYYY");
     const elapsed = mDate.fromNow();
 
     const generalMetaData = {
@@ -115,7 +117,7 @@ class PageTemplate extends React.Component {
 
     const breadcrumbSchemaData = {
       breadcrumbs: [
-        { name: 'Home', url: `${data.websiteUrl}` },
+        { name: "Home", url: `${data.websiteUrl}` },
         {
           name: frontmatter.title,
           url: `${data.nakedWebsiteUrl}${checkedRoute}`,
@@ -160,6 +162,8 @@ class PageTemplate extends React.Component {
               Published on {humanDate} ({elapsed}).
             </Paragraph>
           </Footer>
+          {nakedRoute === "nonviolent-communication" && <LearnMore />}
+          {nakedRoute === "restorative-circles" && <LearnMore />}
         </Page>
       </Fragment>
     );

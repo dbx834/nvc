@@ -33,7 +33,12 @@ Restorative Circles are a specific restorative practice whose development began 
 
 Learn more: Join our [workshops](/) and/or [practice groups](/).
 
-Call a circle: Contact [restorative@auroville.org.in](mailto:restorative@auroville.org.in).
-
 See more: [Dominic Barter and Restorative Circles](http://www.restorativecircles.org/).
+
+More videos:
+
+[embed](https://www.youtube.com/watch?v=n1Uf1IYQ2_Y)
+
+[embed](https://www.youtube.com/watch?v=ngOhj-NhKJo)
+
 

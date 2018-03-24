@@ -64,7 +64,7 @@ const HHex = HexaGridX.Hex;
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
-const pageTitle = "About Us";
+const pageTitle = "Donation & Fee";
 const pageSlug = "about";
 const pageAbstract =
   "Digital Media Initiatives has a small, close-knit and formidable team with expertise in the domains of technology, design, teaching, marketing, finance, management and core banking. Our passion for quality, aesthetics and social transformation informs what we do every day, whether it's building innovative technology tools, connecting with communities, or dreaming up new things.";

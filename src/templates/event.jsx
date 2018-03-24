@@ -177,7 +177,7 @@ class EventTemplate extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={`${markdownStylesClass} ${pageStyleClass}`}>
-          <Header>
+          <Header className="stash">
             <H1>{frontmatter.title}</H1>
             <Paragraph>{humanDate}</Paragraph>
             <Paragraph className="stash">{frontmatter.abstract}</Paragraph>

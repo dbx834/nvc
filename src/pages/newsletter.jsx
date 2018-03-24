@@ -2,18 +2,18 @@
 // -------------------------------------------------------------------- Imports
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import React from 'react';
+import React from "react";
 // import PropTypes from 'prop-types';
-import _ from 'lodash';
-import { css } from 'glamor';
-import serialize from 'form-serialize';
+import _ from "lodash";
+import { css } from "glamor";
+import serialize from "form-serialize";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link from 'gatsby-link';
-import { Form, Select, Input, Button } from 'antd';
-import isEmail from 'validator/lib/isEmail';
-import { Image, OutLink } from '@bodhi-project/components';
-import { Elements, applyType, applyRhythm } from '@bodhi-project/typography';
+import Link from "gatsby-link";
+import { Form, Select, Input, Button } from "antd";
+import isEmail from "validator/lib/isEmail";
+import { Image, OutLink } from "@bodhi-project/components";
+import { Elements, applyType, applyRhythm } from "@bodhi-project/typography";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -25,14 +25,14 @@ import {
   // --------------- Schema.org JSON-LD
   WebpageSchema,
   BreadcrumbSchema,
-} from '@bodhi-project/seo';
+} from "@bodhi-project/seo";
 import {
   Page as SemanticPage,
   // Section,
   Article,
   Header,
   Footer,
-} from '@bodhi-project/semantic-webflow';
+} from "@bodhi-project/semantic-webflow";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import {
@@ -40,11 +40,11 @@ import {
   validateEmail,
   validateName,
   validateComment,
-} from '../helpers/formHelpers';
-import { formStyleClass } from '../helpers/defaultFormStyles';
-import ogX from './assets/ogX.jpg';
-import twitterSummaryX from './assets/twitterSummaryX.jpg';
-import packageJson from '../../package.json';
+} from "../helpers/formHelpers";
+import { formStyleClass } from "../helpers/defaultFormStyles";
+import ogX from "./assets/ogX.jpg";
+import twitterSummaryX from "./assets/twitterSummaryX.jpg";
+import packageJson from "../../package.json";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -57,10 +57,10 @@ const { data } = packageJson;
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
-const pageTitle = 'Contact Us';
-const pageSlug = 'contact';
+const pageTitle = "Newsletter";
+const pageSlug = "contact";
 const pageAbstract =
-  'Expertise, care to detail and professionalism matter deeply to us and our clients recognise it in us. That is why 9 out of 10 people come back to us with more work. Talk to us today to find out what we can do for you.';
+  "Expertise, care to detail and professionalism matter deeply to us and our clients recognise it in us. That is why 9 out of 10 people come back to us with more work. Talk to us today to find out what we can do for you.";
 
 const generalMetaData = {
   description: pageAbstract,
@@ -95,7 +95,7 @@ const webpageSchemaData = {
 
 const breadcrumbSchemaData = {
   breadcrumbs: [
-    { name: 'Home', url: `${data.websiteUrl}` },
+    { name: "Home", url: `${data.websiteUrl}` },
     { name: pageTitle, url: `${data.websiteUrl}${pageSlug}` },
   ],
 };
@@ -105,19 +105,19 @@ const breadcrumbSchemaData = {
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageWrapper = css({
-  ...applyRhythm({ maxWidth: '27X' }),
+  ...applyRhythm({ maxWidth: "27X" }),
 
-  '& .ant-form-item': {
-    width: '100% !important',
+  "& .ant-form-item": {
+    width: "100% !important",
   },
 
-  '@media(min-width: 768px)': {
-    '& .ant-form-item:nth-child(1)': {
-      marginRight: '0px !important',
+  "@media(min-width: 768px)": {
+    "& .ant-form-item:nth-child(1)": {
+      marginRight: "0px !important",
     },
 
-    '& .ant-form-item:nth-child(2)': {
-      marginLeft: '0px !important',
+    "& .ant-form-item:nth-child(2)": {
+      marginLeft: "0px !important",
     },
   },
 });
@@ -162,19 +162,19 @@ class Page extends React.Component {
           fetch(
             `https://script.google.com/macros/s/AKfycbx6xNPY__NC6jrneaGeH1NPLkjdrNSc3NMUV-oHAWnWln2WDWZL/exec?email=${email}&callback=?`,
             {
-              method: 'GET',
-              mode: 'no-cors',
+              method: "GET",
+              mode: "no-cors",
             },
           )
             .then(response => {
-              console.log('success', response);
+              console.log("success", response);
               this.setState({
                 loader: false,
                 formSent: true,
               });
             })
             .catch(error => {
-              console.log('error', error);
+              console.log("error", error);
               this.setState({
                 loader: false,
               });
@@ -193,7 +193,7 @@ class Page extends React.Component {
       isFieldTouched,
     } = this.props.form;
     // Only show error after a field is touched.
-    const emailError = isFieldTouched('email') && getFieldError('email');
+    const emailError = isFieldTouched("email") && getFieldError("email");
 
     return (
       <Fragment>
@@ -217,11 +217,11 @@ class Page extends React.Component {
               <Form onSubmit={this.handleSubmit} className={formStyleClass}>
                 {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
                 <FormItem
-                  validateStatus={emailError ? 'error' : ''}
-                  help={emailError || ''}
+                  validateStatus={emailError ? "error" : ""}
+                  help={emailError || ""}
                 >
-                  {getFieldDecorator('email', {
-                    validateTrigger: ['onChange', 'onBlur'],
+                  {getFieldDecorator("email", {
+                    validateTrigger: ["onChange", "onBlur"],
                     rules: [{ validator: validateEmail }],
                   })(<Input placeholder="Email" />)}
                 </FormItem>

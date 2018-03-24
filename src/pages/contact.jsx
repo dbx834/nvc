@@ -2,16 +2,16 @@
 // -------------------------------------------------------------------- Imports
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import React from 'react';
+import React from "react";
 // import PropTypes from 'prop-types';
-import _ from 'lodash';
-import { css } from 'glamor';
+import _ from "lodash";
+import { css } from "glamor";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link from 'gatsby-link';
-import { Form, Select, Input, Button } from 'antd';
-import { Image, OutLink } from '@bodhi-project/components';
-import { Elements, applyType, applyRhythm } from '@bodhi-project/typography';
+import Link from "gatsby-link";
+import { Form, Select, Input, Button } from "antd";
+import { Image, OutLink } from "@bodhi-project/components";
+import { Elements, applyType, applyRhythm } from "@bodhi-project/typography";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -23,14 +23,14 @@ import {
   // --------------- Schema.org JSON-LD
   WebpageSchema,
   BreadcrumbSchema,
-} from '@bodhi-project/seo';
+} from "@bodhi-project/seo";
 import {
   Page,
   // Section,
   Article,
   Header,
   Footer,
-} from '@bodhi-project/semantic-webflow';
+} from "@bodhi-project/semantic-webflow";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import {
@@ -38,11 +38,11 @@ import {
   validateEmail,
   validateName,
   validateComment,
-} from '../helpers/formHelpers';
-import { formStyleClass } from '../helpers/defaultFormStyles';
-import ogX from './assets/ogX.jpg';
-import twitterSummaryX from './assets/twitterSummaryX.jpg';
-import packageJson from '../../package.json';
+} from "../helpers/formHelpers";
+import { formStyleClass } from "../helpers/defaultFormStyles";
+import ogX from "./assets/ogX.jpg";
+import twitterSummaryX from "./assets/twitterSummaryX.jpg";
+import packageJson from "../../package.json";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -55,10 +55,10 @@ const { data } = packageJson;
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
-const pageTitle = 'Contact Us';
-const pageSlug = 'contact';
+const pageTitle = "Contact Us";
+const pageSlug = "contact";
 const pageAbstract =
-  'Expertise, care to detail and professionalism matter deeply to us and our clients recognise it in us. That is why 9 out of 10 people come back to us with more work. Talk to us today to find out what we can do for you.';
+  "Expertise, care to detail and professionalism matter deeply to us and our clients recognise it in us. That is why 9 out of 10 people come back to us with more work. Talk to us today to find out what we can do for you.";
 
 const generalMetaData = {
   description: pageAbstract,
@@ -93,7 +93,7 @@ const webpageSchemaData = {
 
 const breadcrumbSchemaData = {
   breadcrumbs: [
-    { name: 'Home', url: `${data.websiteUrl}` },
+    { name: "Home", url: `${data.websiteUrl}` },
     { name: pageTitle, url: `${data.websiteUrl}${pageSlug}` },
   ],
 };
@@ -103,7 +103,7 @@ const breadcrumbSchemaData = {
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageWrapper = css({
-  ...applyRhythm({ maxWidth: '27X' }),
+  ...applyRhythm({ maxWidth: "27X" }),
 });
 const pageWrapperClass = pageWrapper.toString();
 
@@ -146,19 +146,19 @@ class IndexPage extends React.Component {
           fetch(
             `https://script.google.com/macros/s/AKfycbxapf3fZy2Jafdoc_-wB7FXa_OPI30iPcRZK8rNc8wyUQ52cEvT/exec?email=${email}&name=${name}&comment=${comment}&callback=?`,
             {
-              method: 'GET',
-              mode: 'no-cors',
+              method: "GET",
+              mode: "no-cors",
             },
           )
             .then(response => {
-              console.log('success', response);
+              console.log("success", response);
               this.setState({
                 loader: false,
                 formSent: true,
               });
             })
             .catch(error => {
-              console.log('error', error);
+              console.log("error", error);
               this.setState({
                 loader: false,
               });
@@ -177,9 +177,9 @@ class IndexPage extends React.Component {
       isFieldTouched,
     } = this.props.form;
     // Only show error after a field is touched.
-    const nameError = isFieldTouched('name') && getFieldError('name');
-    const emailError = isFieldTouched('email') && getFieldError('email');
-    const commentError = isFieldTouched('comment') && getFieldError('comment');
+    const nameError = isFieldTouched("name") && getFieldError("name");
+    const emailError = isFieldTouched("email") && getFieldError("email");
+    const commentError = isFieldTouched("comment") && getFieldError("comment");
 
     return (
       <Fragment>
@@ -206,31 +206,31 @@ class IndexPage extends React.Component {
               <Form onSubmit={this.handleSubmit} className={formStyleClass}>
                 {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Name */}
                 <FormItem
-                  validateStatus={nameError ? 'error' : ''}
-                  help={nameError || ''}
+                  validateStatus={nameError ? "error" : ""}
+                  help={nameError || ""}
                 >
-                  {getFieldDecorator('name', {
-                    validateTrigger: ['onChange', 'onBlur'],
+                  {getFieldDecorator("name", {
+                    validateTrigger: ["onChange", "onBlur"],
                     rules: [{ validator: validateName }],
                   })(<Input placeholder="Name" />)}
                 </FormItem>
                 {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
                 <FormItem
-                  validateStatus={emailError ? 'error' : ''}
-                  help={emailError || ''}
+                  validateStatus={emailError ? "error" : ""}
+                  help={emailError || ""}
                 >
-                  {getFieldDecorator('email', {
-                    validateTrigger: ['onChange', 'onBlur'],
+                  {getFieldDecorator("email", {
+                    validateTrigger: ["onChange", "onBlur"],
                     rules: [{ validator: validateEmail }],
                   })(<Input placeholder="Email" />)}
                 </FormItem>
                 {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment */}
                 <FormItem
-                  validateStatus={commentError ? 'error' : ''}
-                  help={commentError || ''}
+                  validateStatus={commentError ? "error" : ""}
+                  help={commentError || ""}
                 >
-                  {getFieldDecorator('comment', {
-                    validateTrigger: ['onChange', 'onBlur'],
+                  {getFieldDecorator("comment", {
+                    validateTrigger: ["onChange", "onBlur"],
                     rules: [{ validator: validateComment }],
                   })(
                     <TextArea
@@ -259,32 +259,6 @@ class IndexPage extends React.Component {
               </Paragraph>
             )}
           </div>
-
-          {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Person Details */}
-          <H1>Contact Person</H1>
-          <Image
-            src={''}
-            style={{
-              height: 250,
-              width: 155,
-              border: 0,
-              background: '#4a4a4a',
-            }}
-            loader="gradient"
-          />
-          <br />
-          <br />
-          <Paragraph>
-            Email:&nbsp;
-            <a href="mailto:joylivinglearning@gmail.com">
-              joylivinglearning@gmail.com
-            </a>
-            <br />
-            Facebook:{' '}
-            <OutLink to="https://www.facebook.com/JoyLivingLearning/">
-              https://www.facebook.com/JoyLivingLearning/
-            </OutLink>
-          </Paragraph>
         </Page>
       </Fragment>
     );

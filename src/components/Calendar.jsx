@@ -17,6 +17,7 @@ import { Image } from "@bodhi-project/components";
 import { Elements, applyRhythm, applyType } from "@bodhi-project/typography";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
+import packageJson from "../../package.json";
 import nvc from "../assets/nvc.png";
 import rc from "../assets/rc.png";
 
@@ -379,7 +380,7 @@ class CalendarX extends React.Component {
             frag = (
               <div className={classNames}>
                 <Popover content={content} title={false}>
-                  <Link to={route}>
+                  <Link to={`/${route}`}>
                     <Badge status={badgeStatus}>{day}</Badge>
                     <br />
                     {inArray(tags, "nvc") && (

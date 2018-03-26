@@ -33,10 +33,8 @@ import {
   BlogPostSchema,
 } from "@bodhi-project/seo";
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals - Images
-import indexImage from "../pages/assets/index.jpg";
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
+import seoHelper from "../helpers/seoHelper";
 import packageJson from "../../package.json";
 import markdownStylesClass from "../styles/markdownStyles";
 
@@ -72,7 +70,7 @@ class BlogPostTemplate extends React.Component {
     const { markdownAst } = pathContext;
     const { route } = pathContext;
     const checkedRoute = _.startsWith(route, "/") ? route : `/${route}`;
-    // const { headings } = pathContext;
+    const nakedRoute = checkedRoute.substr(1);
 
     // Date stuff
     const mDate = moment(frontmatter.date);
@@ -80,50 +78,28 @@ class BlogPostTemplate extends React.Component {
     const isoDate = mDate.format();
     const elapsed = mDate.fromNow();
 
-    const generalMetaData = {
-      description: frontmatter.abstract,
-      keywords: data.websiteKeywords,
-      image: indexImage,
+    // -------------------------------------------------------------------- SEO
+    const pageData = {
+      pageTitle: frontmatter.title,
+      nakedPageSlug: nakedRoute,
+      pageAbstract: frontmatter.abstract,
     };
 
-    const twitterSummaryCardData = {
-      site: data.websiteName,
-      creator: data.websiteCreator,
-      title: frontmatter.title,
-      description: frontmatter.abstract,
-      image: indexImage,
-    };
+    const seoData = seoHelper(pageData);
 
-    const openGraphSummaryData = {
-      siteName: data.websiteName,
-      url: `${data.nakedWebsiteUrl}${checkedRoute}`,
-      title: frontmatter.title,
-      description: frontmatter.abstract,
-      image: indexImage,
-    };
-
-    const webpageSchemaData = {
-      url: `${data.nakedWebsiteUrl}${checkedRoute}`,
-      name: frontmatter.title,
-      description: frontmatter.abstract,
-      author: data.websiteCreator,
-      publisher: data.websiteCreator,
-      image: indexImage,
-    };
-
-    const breadcrumbSchemaData = {
-      breadcrumbs: [
-        { name: "Home", url: `${data.websiteUrl}` },
-        {
-          name: frontmatter.title,
-          url: `${data.nakedWebsiteUrl}${checkedRoute}`,
-        },
-      ],
-    };
+    const {
+      pageTitle,
+      twitterSummaryX,
+      generalMetaData,
+      twitterSummaryCardData,
+      openGraphSummaryData,
+      webpageSchemaData,
+      breadcrumbSchemaData,
+    } = seoData;
 
     const blogPageSchemaData = {
       headline: frontmatter.title,
-      image: indexImage,
+      image: twitterSummaryX,
       url: `${data.nakedWebsiteUrl}${route}`,
       datePublished: isoDate,
       description: frontmatter.abstract,
@@ -133,7 +109,7 @@ class BlogPostTemplate extends React.Component {
     return (
       <Fragment>
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
-        <UpdateTitle title={frontmatter.title} />
+        <UpdateTitle title={pageTitle} />
         <GeneralMeta data={generalMetaData} />
         <TwitterSummaryCard data={twitterSummaryCardData} />
         <OpenGraphSummary data={openGraphSummaryData} />

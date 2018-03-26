@@ -35,53 +35,53 @@ import {
 } from "@bodhi-project/seo";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Images
-import indexImage from "./assets/index.jpg";
+import seoHelper from "../helpers/seoHelper";
 
-import nvcX1 from "./assets/gallery/nvcX1.jpg";
-import nvcX2 from "./assets/gallery/nvcX2.jpg";
-import nvcX3 from "./assets/gallery/nvcX3.jpg";
-import nvcX4 from "./assets/gallery/nvcX4.jpg";
-import nvcX5 from "./assets/gallery/nvcX5.jpg";
-import nvcX6 from "./assets/gallery/nvcX6.jpg";
-import nvcX7 from "./assets/gallery/nvcX7.jpg";
-import nvcX8 from "./assets/gallery/nvcX8.jpg";
-import nvcX9 from "./assets/gallery/nvcX9.jpg";
-import nvcX10 from "./assets/gallery/nvcX10.jpg";
-import nvcX11 from "./assets/gallery/nvcX11.jpg";
-import nvcX12 from "./assets/gallery/nvcX12.jpg";
-import nvcX13 from "./assets/gallery/nvcX13.jpg";
-import nvcX14 from "./assets/gallery/nvcX14.jpg";
-import nvcX15 from "./assets/gallery/nvcX15.jpg";
-import nvcX16 from "./assets/gallery/nvcX16.jpg";
-import nvcX17 from "./assets/gallery/nvcX17.jpg";
-import nvcX18 from "./assets/gallery/nvcX18.jpg";
-import nvcX19 from "./assets/gallery/nvcX19.jpg";
-import nvcX20 from "./assets/gallery/nvcX20.jpg";
-import nvcX21 from "./assets/gallery/nvcX21.jpg";
-import nvcX22 from "./assets/gallery/nvcX22.jpg";
-import nvcX23 from "./assets/gallery/nvcX23.jpg";
-import nvcX24 from "./assets/gallery/nvcX24.jpg";
-import nvcX25 from "./assets/gallery/nvcX25.jpg";
-import nvcX26 from "./assets/gallery/nvcX26.jpg";
-import nvcX27 from "./assets/gallery/nvcX27.jpg";
-import nvcX28 from "./assets/gallery/nvcX28.jpg";
-import nvcX29 from "./assets/gallery/nvcX29.jpg";
-import nvcX30 from "./assets/gallery/nvcX30.jpg";
-import nvcX31 from "./assets/gallery/nvcX31.jpg";
-import nvcX32 from "./assets/gallery/nvcX32.jpg";
-import nvcX33 from "./assets/gallery/nvcX33.jpg";
-import nvcX34 from "./assets/gallery/nvcX34.jpg";
-import nvcX35 from "./assets/gallery/nvcX35.jpg";
-import nvcX36 from "./assets/gallery/nvcX36.jpg";
-import nvcX37 from "./assets/gallery/nvcX37.jpg";
-import nvcX38 from "./assets/gallery/nvcX38.jpg";
-import nvcX39 from "./assets/gallery/nvcX39.jpg";
-import nvcX40 from "./assets/gallery/nvcX40.jpg";
-import nvcX41 from "./assets/gallery/nvcX41.jpg";
-import nvcX42 from "./assets/gallery/nvcX42.jpg";
-import nvcX43 from "./assets/gallery/nvcX43.jpg";
-import nvcX44 from "./assets/gallery/nvcX44.jpg";
-import nvcX45 from "./assets/gallery/nvcX45.jpg";
+import nvcX1 from "../assets/gallery/nvcX1.jpg";
+import nvcX2 from "../assets/gallery/nvcX2.jpg";
+import nvcX3 from "../assets/gallery/nvcX3.jpg";
+import nvcX4 from "../assets/gallery/nvcX4.jpg";
+import nvcX5 from "../assets/gallery/nvcX5.jpg";
+import nvcX6 from "../assets/gallery/nvcX6.jpg";
+import nvcX7 from "../assets/gallery/nvcX7.jpg";
+import nvcX8 from "../assets/gallery/nvcX8.jpg";
+import nvcX9 from "../assets/gallery/nvcX9.jpg";
+import nvcX10 from "../assets/gallery/nvcX10.jpg";
+import nvcX11 from "../assets/gallery/nvcX11.jpg";
+import nvcX12 from "../assets/gallery/nvcX12.jpg";
+import nvcX13 from "../assets/gallery/nvcX13.jpg";
+import nvcX14 from "../assets/gallery/nvcX14.jpg";
+import nvcX15 from "../assets/gallery/nvcX15.jpg";
+import nvcX16 from "../assets/gallery/nvcX16.jpg";
+import nvcX17 from "../assets/gallery/nvcX17.jpg";
+import nvcX18 from "../assets/gallery/nvcX18.jpg";
+import nvcX19 from "../assets/gallery/nvcX19.jpg";
+import nvcX20 from "../assets/gallery/nvcX20.jpg";
+import nvcX21 from "../assets/gallery/nvcX21.jpg";
+import nvcX22 from "../assets/gallery/nvcX22.jpg";
+import nvcX23 from "../assets/gallery/nvcX23.jpg";
+import nvcX24 from "../assets/gallery/nvcX24.jpg";
+import nvcX25 from "../assets/gallery/nvcX25.jpg";
+import nvcX26 from "../assets/gallery/nvcX26.jpg";
+import nvcX27 from "../assets/gallery/nvcX27.jpg";
+import nvcX28 from "../assets/gallery/nvcX28.jpg";
+import nvcX29 from "../assets/gallery/nvcX29.jpg";
+import nvcX30 from "../assets/gallery/nvcX30.jpg";
+import nvcX31 from "../assets/gallery/nvcX31.jpg";
+import nvcX32 from "../assets/gallery/nvcX32.jpg";
+import nvcX33 from "../assets/gallery/nvcX33.jpg";
+import nvcX34 from "../assets/gallery/nvcX34.jpg";
+import nvcX35 from "../assets/gallery/nvcX35.jpg";
+import nvcX36 from "../assets/gallery/nvcX36.jpg";
+import nvcX37 from "../assets/gallery/nvcX37.jpg";
+import nvcX38 from "../assets/gallery/nvcX38.jpg";
+import nvcX39 from "../assets/gallery/nvcX39.jpg";
+import nvcX40 from "../assets/gallery/nvcX40.jpg";
+import nvcX41 from "../assets/gallery/nvcX41.jpg";
+import nvcX42 from "../assets/gallery/nvcX42.jpg";
+import nvcX43 from "../assets/gallery/nvcX43.jpg";
+import nvcX44 from "../assets/gallery/nvcX44.jpg";
+import nvcX45 from "../assets/gallery/nvcX45.jpg";
 
 const photos = [
   { src: nvcX1, width: 600, height: 450 },
@@ -125,7 +125,7 @@ const photos = [
   { src: nvcX39, width: 600, height: 450 },
   { src: nvcX40, width: 600, height: 414 },
   { src: nvcX41, width: 600, height: 450 },
-  { src: nvcX42, width: 600, height: 367 },
+  { src: nvcX42, width: 600, height: 450 },
   { src: nvcX43, width: 600, height: 450 },
   { src: nvcX44, width: 600, height: 461 },
   { src: nvcX45, width: 600, height: 800 },
@@ -135,43 +135,25 @@ const photos = [
 const { Fragment } = React;
 const { H1 } = Elements;
 
-// ------------------------------------------------------------------------------
-// -------------------------------------------------------------------------- SEO
-// ------------------------------------------------------------------------------
-const generalMetaData = {
-  description: "Launch Kit is an opionated GatsbyJS Starter kit.",
-  keywords: "GatsbyJS, React, Netlify",
-  image: indexImage,
+// ----------------------------------------------------------------------------
+// ------------------------------------------------------------------------ SEO
+// ----------------------------------------------------------------------------
+const pageData = {
+  pageTitle: "Gallery",
+  nakedPageSlug: "gallery",
+  pageAbstract: "Page abstract.",
 };
 
-const twitterSummaryCardData = {
-  site: "Launch Kit",
-  creator: "Bodhi Project",
-  title: "Launch Kit",
-  description: "Launch Kit is an opionated GatsbyJS Starter kit.",
-  image: indexImage,
-};
+const seoData = seoHelper(pageData);
 
-const openGraphSummaryData = {
-  siteName: "Launch Kit",
-  url: "https://launch-kit.bodhiproject.org/",
-  title: "Launch Kit",
-  description: "Launch Kit is an opionated GatsbyJS Starter kit.",
-  image: indexImage,
-};
-
-const webpageSchemaData = {
-  url: "https://launch-kit.bodhiproject.org/",
-  name: "Launch Kit",
-  description: "Launch Kit is an opionated GatsbyJS Starter kit.",
-  author: "Bodhi Project",
-  publisher: "Bodhi Project",
-  image: indexImage,
-};
-
-const breadcrumbSchemaData = {
-  breadcrumbs: [{ name: "Home", url: "https://launch-kit.bodhiproject.org/" }],
-};
+const {
+  pageTitle,
+  generalMetaData,
+  twitterSummaryCardData,
+  openGraphSummaryData,
+  webpageSchemaData,
+  breadcrumbSchemaData,
+} = seoData;
 
 // ------------------------------------------------------------------------------
 // ----------------------------------------------------------------------- Styles
@@ -190,7 +172,7 @@ class Page extends React.Component {
     return (
       <Fragment>
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
-        <UpdateTitle title="Gallery" />
+        <UpdateTitle title={pageTitle} />
         <GeneralMeta data={generalMetaData} />
         <TwitterSummaryCard data={twitterSummaryCardData} />
         <OpenGraphSummary data={openGraphSummaryData} />

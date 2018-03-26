@@ -1,8 +1,8 @@
 // ----------------------------------------------------------------------- Imports
-const path = require('path');
-const _ = require('lodash');
-const unified = require('unified');
-const markdown = require('remark-parse');
+const path = require("path");
+const _ = require("lodash");
+const unified = require("unified");
+const markdown = require("remark-parse");
 // const webpackLodashPlugin = require("lodash-webpack-plugin");
 
 // console.log(unified().use(markdown).parse(testMd));
@@ -13,14 +13,14 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
   let route;
   // Where will createPages attach the component? ...
   // Get raw markdown ...
-  if (node.internal.type === 'MarkdownRemark') {
+  if (node.internal.type === "MarkdownRemark") {
     const fileNode = getNode(node.parent);
     const parsedFilePath = path.parse(fileNode.relativePath);
-    route = `${parsedFilePath.dir === '' ? '' : parsedFilePath.dir}/${
+    route = `${parsedFilePath.dir === "" ? "" : parsedFilePath.dir}/${
       parsedFilePath.name
     }`;
-    createNodeField({ node, name: 'route', value: route }); // ...createPages will attach the component at this route
-    createNodeField({ node, name: 'rawContent', value: node.internal.content }); // ...createPages will attach the component at this route
+    createNodeField({ node, name: "route", value: route }); // ...createPages will attach the component at this route
+    createNodeField({ node, name: "rawContent", value: node.internal.content }); // ...createPages will attach the component at this route
     // console.log(node.internal.content);
   }
 };
@@ -30,11 +30,11 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
   const { createPage } = boundActionCreators;
 
   return new Promise((resolve, reject) => {
-    const doc = path.resolve('src/templates/doc.jsx');
-    const event = path.resolve('src/templates/event.jsx');
-    const faq = path.resolve('src/templates/faq.jsx');
-    const page = path.resolve('src/templates/page.jsx');
-    const post = path.resolve('src/templates/post.jsx');
+    // const doc = path.resolve("src/templates/doc.jsx");
+    const event = path.resolve("src/templates/event.jsx");
+    // const faq = path.resolve("src/templates/faq.jsx");
+    const page = path.resolve("src/templates/page.jsx");
+    const post = path.resolve("src/templates/post.jsx");
     resolve(
       graphql(
         `
@@ -47,6 +47,10 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                     title
                     cover
                     date
+                    starts
+                    end
+                    from
+                    to
                     category
                     tags
                     abstract
@@ -83,25 +87,13 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           };
           const pathX = edge.node.fields.route;
 
-          if (_.startsWith(trimmedRoute, 'docs')) {
-            createPage({
-              path: pathX,
-              component: doc,
-              context,
-            });
-          } else if (_.startsWith(trimmedRoute, 'events')) {
+          if (_.startsWith(trimmedRoute, "events")) {
             createPage({
               path: pathX,
               component: event,
               context,
             });
-          } else if (_.startsWith(trimmedRoute, 'faq')) {
-            createPage({
-              path: pathX,
-              component: faq,
-              context,
-            });
-          } else if (_.startsWith(trimmedRoute, 'writings')) {
+          } else if (_.startsWith(trimmedRoute, "writings")) {
             createPage({
               path: pathX,
               component: post,

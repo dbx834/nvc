@@ -24,6 +24,7 @@ import { formStyleClass } from "../helpers/defaultFormStyles";
 const { Fragment } = React;
 const FormItem = Form.Item;
 const { Option } = Select;
+const { TextArea } = Input;
 const { Paragraph } = Elements;
 
 // ----------------------------------------------------------------------------
@@ -100,6 +101,8 @@ class Component extends React.Component {
     const nameError = isFieldTouched("name") && getFieldError("name");
     const emailError = isFieldTouched("email") && getFieldError("email");
     const eventError = isFieldTouched("event") && getFieldError("event");
+    const countryError = isFieldTouched("country") && getFieldError("country");
+    const commentError = isFieldTouched("comment") && getFieldError("comment");
 
     // const today = moment();
 
@@ -126,6 +129,80 @@ class Component extends React.Component {
                 validateTrigger: ["onChange", "onBlur"],
                 rules: [{ validator: validateEmail }],
               })(<Input placeholder="Email" />)}
+            </FormItem>
+            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
+            <FormItem
+              validateStatus={emailError ? "error" : ""}
+              help={emailError || ""}
+            >
+              {getFieldDecorator("email", {
+                validateTrigger: ["onChange", "onBlur"],
+                rules: [{ validator: validateEmail }],
+              })(<Input placeholder="Mobile / Whatsapp" />)}
+            </FormItem>
+            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Country Selection */}
+            <FormItem
+              validateStatus={countryError ? "error" : ""}
+              help={countryError || ""}
+            >
+              {getFieldDecorator("country", {
+                initialValue: "India",
+                rules: [
+                  {
+                    required: true,
+                    message: "Please select an event from the dropdown...",
+                  },
+                ],
+              })(
+                <Select placeholder="Your country...">
+                  <Option key="India" value="India">
+                    India
+                  </Option>
+                  <Option key="USA" value="USA">
+                    USA
+                  </Option>
+                </Select>,
+              )}
+            </FormItem>
+            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
+            <FormItem
+              validateStatus={emailError ? "error" : ""}
+              help={emailError || ""}
+            >
+              {getFieldDecorator("email", {
+                validateTrigger: ["onChange", "onBlur"],
+                rules: [{ validator: validateEmail }],
+              })(<Input placeholder="Where do you living presently?" />)}
+            </FormItem>
+            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment */}
+            <FormItem
+              validateStatus={commentError ? "error" : ""}
+              help={commentError || ""}
+            >
+              {getFieldDecorator("comment", {
+                validateTrigger: ["onChange", "onBlur"],
+                rules: [{ validator: validateComment }],
+              })(
+                <TextArea
+                  placeholder="Any other comments/questions?"
+                  autosize={{ minRows: 1, maxRows: 6 }}
+                />,
+              )}
+            </FormItem>
+            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment */}
+            <FormItem
+              validateStatus={commentError ? "error" : ""}
+              help={commentError || ""}
+            >
+              {getFieldDecorator("comment", {
+                validateTrigger: ["onChange", "onBlur"],
+                rules: [{ validator: validateComment }],
+              })(
+                <TextArea
+                  placeholder="What draws you to this workshop/training/practice group?"
+                  autosize={{ minRows: 1, maxRows: 6 }}
+                />,
+              )}
             </FormItem>
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Event Selection */}
             <div style={{ display: "none" }}>

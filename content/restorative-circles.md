@@ -11,6 +11,8 @@ tags:
 
 # Restorative Circles
 
+[embed](https://vimeo.com/242213125)
+
 > “_Conflict is not a problem that needs solving, but a phenomenon that needs understanding._” – Dominic Barter
 
 <br />
@@ -27,13 +29,11 @@ Restorative Circles are facilitated in 3 stages, and are designed to identify th
 
 [embed](https://www.youtube.com/watch?v=kqBM5Xr5VfI)
 
-Restorative Circles are a specific restorative practice whose development began with the work of Dominic Barker in the favelas in Rio de Janeiro in the mid 1990s and continues with a growing community both in Brazil and internationally.
+Restorative Circles are a specific restorative practice whose development began with the work of Dominic Barker in the favelas in Rio de Janeiro in the mid 1990s and continues with a growing community both in Brazil and internationally. [Source: [Dominic Barter and Restorative Circles](http://www.restorativecircles.org/)]
 
 > "_Power without love is reckless and abusive, and love without power is sentimental and anemic. Power at its best is love implementing the demands of justice, and justice at its best is power correcting everything that stands against love._” – Martin Luther King Jr.
 
 Learn more: Join our [workshops](/) and/or [practice groups](/).
-
-See more: [Dominic Barter and Restorative Circles](http://www.restorativecircles.org/).
 
 More videos:
 

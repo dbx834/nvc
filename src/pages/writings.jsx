@@ -2,24 +2,18 @@
 // ---------------------------------------------------------------------- Imports
 // ------------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import React from 'react';
-import PropTypes from 'prop-types';
-import _ from 'lodash';
-import { css } from 'glamor';
-import moment from 'moment';
+import React from "react";
+import PropTypes from "prop-types";
+import _ from "lodash";
+import { css } from "glamor";
+import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link from 'gatsby-link';
+import Link from "gatsby-link";
 // import { Row, Col, Carousel } from 'antd';
-import { Image } from '@bodhi-project/components';
-import { Elements, applyRhythm } from '@bodhi-project/typography';
-import {
-  Page,
-  Section,
-  Article,
-  Header,
-  Footer,
-} from '@bodhi-project/semantic-webflow';
+import { Image } from "@bodhi-project/components";
+import { Elements, applyRhythm } from "@bodhi-project/typography";
+import { Page, Article, Header } from "@bodhi-project/semantic-webflow";
 
 import {
   // --------------- Basic
@@ -32,104 +26,76 @@ import {
   // --------------- Schema.org JSON-LD
   WebpageSchema,
   BreadcrumbSchema,
-} from '@bodhi-project/seo';
+} from "@bodhi-project/seo";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import ogX from './assets/ogX.jpg';
-import twitterSummaryX from './assets/twitterSummaryX.jpg';
-import packageJson from '../../package.json';
+import seoHelper from "../helpers/seoHelper";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
-const { H1, H2, H3, Paragraph } = Elements;
-const { data } = packageJson;
+const { H1, H3, Paragraph } = Elements;
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
-const pageTitle = 'Blog';
-const pageSlug = 'writings';
-const pageAbstract = 'Blog abstract.';
-
-const generalMetaData = {
-  description: pageAbstract,
-  keywords: data.websiteKeywords,
-  image: ogX,
+const pageData = {
+  pageTitle: "Blog",
+  nakedPageSlug: "",
+  pageAbstract: "Blog.",
 };
 
-const twitterSummaryCardData = {
-  site: data.websiteName,
-  creator: data.org.name,
-  title: pageTitle,
-  description: pageAbstract,
-  image: twitterSummaryX,
-};
+const seoData = seoHelper(pageData);
 
-const openGraphSummaryData = {
-  siteName: data.websiteName,
-  url: `${data.websiteUrl}${pageSlug}`,
-  title: pageTitle,
-  description: pageAbstract,
-  image: ogX,
-};
-
-const webpageSchemaData = {
-  url: `${data.websiteUrl}${pageSlug}`,
-  name: pageTitle,
-  description: pageAbstract,
-  author: data.org.name,
-  publisher: data.org.name,
-  image: ogX,
-};
-
-const breadcrumbSchemaData = {
-  breadcrumbs: [
-    { name: 'Home', url: `${data.websiteUrl}` },
-    { name: pageTitle, url: `${data.websiteUrl}${pageSlug}` },
-  ],
-};
+const {
+  pageTitle,
+  generalMetaData,
+  twitterSummaryCardData,
+  openGraphSummaryData,
+  webpageSchemaData,
+  breadcrumbSchemaData,
+} = seoData;
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageStyle = css({
-  ...applyRhythm({ maxWidth: '40X' }),
-  '& div.category': {
-    ...applyRhythm({ marginBottom: '3X' }),
+  ...applyRhythm({ maxWidth: "40X" }),
+  "& div.category": {
+    ...applyRhythm({ marginBottom: "3X" }),
   },
-  '& article': {
-    display: 'flex',
-    flexFlow: 'row wrap',
-    alignItems: 'flex-start',
-    ...applyRhythm({ marginBottom: '1.86X' }),
+  "& article": {
+    display: "flex",
+    flexFlow: "row wrap",
+    alignItems: "flex-start",
+    ...applyRhythm({ marginBottom: "1.86X" }),
 
-    '& .banner': {
-      flex: '12 1 0%',
+    "& .banner": {
+      flex: "12 1 0%",
     },
 
-    '& .abstract': {
-      flex: '12 1 0%',
-      ...applyRhythm({ paddingLeft: '0.6882X' }),
+    "& .abstract": {
+      flex: "12 1 0%",
+      ...applyRhythm({ paddingLeft: "0.6882X" }),
 
-      '& h3': {
+      "& h3": {
         marginTop: 0,
         marginBottom: 5,
       },
     },
   },
-  '& article:last-child': {
-    border: '0 !important',
+  "& article:last-child": {
+    border: "0 !important",
   },
-  '@media(max-width: 768px)': {
-    '& .display': {
-      display: 'block',
-      '& .banner': {
-        display: 'block',
+  "@media(max-width: 768px)": {
+    "& .display": {
+      display: "block",
+      "& .banner": {
+        display: "block",
       },
-      '& .abstract': {
-        display: 'block',
-        padding: '0px',
+      "& .abstract": {
+        display: "block",
+        padding: "0px",
       },
     },
   },
@@ -153,7 +119,7 @@ class Blog extends React.Component {
     let accessibleCategories = [];
 
     _.map(postEdges, ({ node }) => {
-      if (_.startsWith(_.trim(node.fields.route), 'writings') === true) {
+      if (_.startsWith(_.trim(node.fields.route), "writings") === true) {
         writingsNodes.push({ node });
         accessibleCategories.push(node.frontmatter.category);
       }
@@ -184,7 +150,7 @@ class Blog extends React.Component {
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={pageStyleClass}>
           {_.map(categories, category => {
-            const catString = _.trim(_.last(_.split(category, '.')));
+            const catString = _.trim(_.last(_.split(category, ".")));
             const catId = _.kebabCase(_.toLower(catString));
 
             return (
@@ -193,7 +159,7 @@ class Blog extends React.Component {
                 {_.map(writingsNodes, ({ node }) => {
                   const { date, title, abstract, cover } = node.frontmatter;
                   const { route } = node.fields;
-                  const dateStr = moment(date).format('dddd, MMMM Do YYYY');
+                  const dateStr = moment(date).format("dddd, MMMM Do YYYY");
                   const when = moment(date).fromNow();
 
                   return (
@@ -235,7 +201,7 @@ class Blog extends React.Component {
             );
           })}
         </Page>
-        <Paragraph style={{ textAlign: 'center' }}>~ fin ~</Paragraph>
+        <Paragraph style={{ textAlign: "center" }}>~ fin ~</Paragraph>
       </Fragment>
     );
   }

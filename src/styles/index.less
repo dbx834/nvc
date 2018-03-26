@@ -2,9 +2,9 @@
 /* --------------------------------------------------------- Globals
 /* ----------------------------------------------------------------- */
 body {
-  background-color: #f8f2e6;
-  color: #292929;
-  line-height: unset;
+  background-color: #f8f2e6 !important;
+  color: #292929 !important;
+  line-height: unset !important;
 }
 
 @media (max-width: 768px) {
@@ -13,13 +13,40 @@ body {
   }
 }
 
+.menu-tip > ul {
+  list-style: none;
+  padding: 0.625em 1em;
+  margin-bottom: 0px;
+}
+
+.menu-tip > ul > li {
+  font-family: "futura-pt", sans-serif !important;
+  margin-bottom: 0px !important;
+}
+
+.menu-tip > ul > li > a {
+  color: #4a4a4a;
+  border-bottom: 1.625px solid transparent;
+  transition: 0.125s;
+  text-transform: uppercase;
+  letter-spacing: 0.14625ex;
+}
+
+.menu-tip > ul > li > a:hover {
+  color: #4a4a4a;
+  border-bottom: 1.625px solid #4a4a4a;
+}
+
+.menu-tip > ul > li > a > span {
+  font-size: 66%;
+}
+
 .ant-popover-inner-content {
   padding: 0px !important;
 }
 
 .ant-popover-inner {
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  border-radius: 8px;
 }
 
 /* ----------------------------------------------------------------------------------- */

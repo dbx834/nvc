@@ -38,24 +38,21 @@ import {
 } from "@bodhi-project/seo";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import ogX from "./assets/ogX.jpg";
-import twitterSummaryX from "./assets/twitterSummaryX.jpg";
-import packageJson from "../../package.json";
+import seoHelper from "../helpers/seoHelper";
 
-import deepening from "./assets/deepening.png";
-import introduction from "./assets/introduction.png";
-import practiceGroup from "./assets/practiceGroup.png";
-import webinar from "./assets/webinar.png";
-import workshop from "./assets/workshop.png";
-import nvc from "./assets/nvc.png";
-import rc from "./assets/rc.png";
-import dummy1 from "./assets/dummy1.jpg";
-import nvcPhoto from "./assets/nvc-in-progress.jpg";
+import deepening from "../assets/deepening.png";
+import introduction from "../assets/introduction.png";
+import practiceGroup from "../assets/practiceGroup.png";
+import webinar from "../assets/webinar.png";
+import workshop from "../assets/workshop.png";
+import nvc from "../assets/nvc.png";
+import rc from "../assets/rc.png";
+import dummy1 from "../assets/dummy1.jpg";
+import nvcPhoto from "../assets/nvc-in-progress.jpg";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
 const { H1, H3, Paragraph } = Elements;
-const { data } = packageJson;
 const { TetraGrid } = TetraGridX;
 const THex = TetraGridX.Hex;
 const { HexaGrid } = HexaGridX;
@@ -64,48 +61,22 @@ const HHex = HexaGridX.Hex;
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
-const pageTitle = "About Us";
-const pageSlug = "about";
-const pageAbstract =
-  "Digital Media Initiatives has a small, close-knit and formidable team with expertise in the domains of technology, design, teaching, marketing, finance, management and core banking. Our passion for quality, aesthetics and social transformation informs what we do every day, whether it's building innovative technology tools, connecting with communities, or dreaming up new things.";
-
-const generalMetaData = {
-  description: pageAbstract,
-  keywords: data.websiteKeywords,
-  image: ogX,
+const pageData = {
+  pageTitle: "Homepage",
+  nakedPageSlug: "",
+  pageAbstract: "Page abstract.",
 };
 
-const twitterSummaryCardData = {
-  site: data.websiteName,
-  creator: data.org.name,
-  title: pageTitle,
-  description: pageAbstract,
-  image: twitterSummaryX,
-};
+const seoData = seoHelper(pageData);
 
-const openGraphSummaryData = {
-  siteName: data.websiteName,
-  url: `${data.websiteUrl}${pageSlug}`,
-  title: pageTitle,
-  description: pageAbstract,
-  image: ogX,
-};
-
-const webpageSchemaData = {
-  url: `${data.websiteUrl}${pageSlug}`,
-  name: pageTitle,
-  description: pageAbstract,
-  author: data.org.name,
-  publisher: data.org.name,
-  image: ogX,
-};
-
-const breadcrumbSchemaData = {
-  breadcrumbs: [
-    { name: "Home", url: `${data.websiteUrl}` },
-    { name: pageTitle, url: `${data.websiteUrl}${pageSlug}` },
-  ],
-};
+const {
+  pageTitle,
+  generalMetaData,
+  twitterSummaryCardData,
+  openGraphSummaryData,
+  webpageSchemaData,
+  breadcrumbSchemaData,
+} = seoData;
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
@@ -425,7 +396,7 @@ class IndexPage extends React.Component {
             {_.map(eventNodes, ({ node }, index) => {
               const { frontmatter } = node;
               const mDate = moment(frontmatter.date);
-              const humanDate = mDate.format("dddd, MMMM Do YYYY");
+              const humanDate = mDate.format("dddd, MMMM D, YYYY");
               const { tags } = frontmatter;
               const when = moment(mDate).fromNow();
               const { fields } = node;
@@ -639,7 +610,7 @@ IndexPage.propTypes = {};
 export const pageQuery = graphql`
   query IndexQuery {
     allMarkdownRemark(
-      limit: 100
+      limit: 6
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
       edges {

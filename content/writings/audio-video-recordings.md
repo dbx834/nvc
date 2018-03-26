@@ -9,22 +9,12 @@ tags:
   - some tag
 ---
 
-**Spontaneous responses from “NVC Leadership Program" participants…**
+**Spontaneous responses from “NVC Leadership Program" participants, Mumbai 2014…**
 
-– Mumbai 2014”
+[embed](https://www.youtube.com/watch?v=O3gJNdraz0Y)
 
-[embed](https://www.youtube.com/watch?v=Ie3kMLRnIfc)
+[embed](https://www.youtube.com/watch?v=h8oYQ2Zh28Y)
 
-[embed](https://www.youtube.com/watch?v=OEwwiJw7I8E)
+[embed](https://www.youtube.com/watch?v=h-uuOKdmAPs)
 
-[embed](https://www.youtube.com/watch?v=aRmoMX9qVMw)
-
-**Reflections from NVC Leadership Participants…**
-
-– March 2, 2014
-
-[embed](https://www.youtube.com/watch?v=zTmYnF96l8Q)
-
-[embed](https://www.youtube.com/watch?v=Hsr0jxZKVvc)
-
-[embed](https://www.youtube.com/watch?v=IFVbef_WtN8)
+[embed](https://www.youtube.com/watch?v=DOEc7DzvqUw)

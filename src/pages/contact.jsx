@@ -40,9 +40,7 @@ import {
   validateComment,
 } from "../helpers/formHelpers";
 import { formStyleClass } from "../helpers/defaultFormStyles";
-import ogX from "./assets/ogX.jpg";
-import twitterSummaryX from "./assets/twitterSummaryX.jpg";
-import packageJson from "../../package.json";
+import seoHelper from "../helpers/seoHelper";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -50,53 +48,26 @@ const FormItem = Form.Item;
 const { Option } = Select;
 const { TextArea } = Input;
 const { H1, H2, Paragraph } = Elements;
-const { data } = packageJson;
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
-const pageTitle = "Contact Us";
-const pageSlug = "contact";
-const pageAbstract =
-  "Expertise, care to detail and professionalism matter deeply to us and our clients recognise it in us. That is why 9 out of 10 people come back to us with more work. Talk to us today to find out what we can do for you.";
-
-const generalMetaData = {
-  description: pageAbstract,
-  keywords: data.websiteKeywords,
-  image: ogX,
+const pageData = {
+  pageTitle: "Contact Us",
+  nakedPageSlug: "contact",
+  pageAbstract: "Page abstract.",
 };
 
-const twitterSummaryCardData = {
-  site: data.websiteName,
-  creator: data.org.name,
-  title: pageTitle,
-  description: pageAbstract,
-  image: twitterSummaryX,
-};
+const seoData = seoHelper(pageData);
 
-const openGraphSummaryData = {
-  siteName: data.websiteName,
-  url: `${data.websiteUrl}${pageSlug}`,
-  title: pageTitle,
-  description: pageAbstract,
-  image: ogX,
-};
-
-const webpageSchemaData = {
-  url: `${data.websiteUrl}${pageSlug}`,
-  name: pageTitle,
-  description: pageAbstract,
-  author: data.org.name,
-  publisher: data.org.name,
-  image: ogX,
-};
-
-const breadcrumbSchemaData = {
-  breadcrumbs: [
-    { name: "Home", url: `${data.websiteUrl}` },
-    { name: pageTitle, url: `${data.websiteUrl}${pageSlug}` },
-  ],
-};
+const {
+  pageTitle,
+  generalMetaData,
+  twitterSummaryCardData,
+  openGraphSummaryData,
+  webpageSchemaData,
+  breadcrumbSchemaData,
+} = seoData;
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
@@ -196,12 +167,6 @@ class IndexPage extends React.Component {
           {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Form */}
           <div>
             <H1>Contact</H1>
-            <Paragraph>
-              Our email is -&nbsp;
-              <a href="mailto:joylivinglearning@gmail.com">
-                joylivinglearning@gmail.com
-              </a>. You can also fill the form below…
-            </Paragraph>
             {this.state.formSent === false && (
               <Form onSubmit={this.handleSubmit} className={formStyleClass}>
                 {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Name */}

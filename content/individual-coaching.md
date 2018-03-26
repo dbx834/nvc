@@ -11,4 +11,19 @@ tags:
 
 # Individual Coaching
 
-blah blah blah...
+Something something…
+
+NVC and IFS
+
+Empathy
+
+Role-plays
+
+Clarity and empowerment
+
+Capacity to listen to other
+
+Reconnecting to values and dreams, and having strategies that are in alignment
+
+Testimonial?
+

@@ -11,4 +11,17 @@ tags:
 
 # Mediation
 
-blah blah blah...
+Image: practice group with British lady?
+
+Something something…
+
+Mediation is a process…
+
+Lending our ears…
+
+(see more: NVC Mediation link?)
+
+(to make: video / demo)
+
+(ask M + J for testimonial?)
+

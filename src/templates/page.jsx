@@ -32,10 +32,8 @@ import {
   BreadcrumbSchema,
 } from "@bodhi-project/seo";
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals - Images
-import indexImage from "../pages/assets/index.jpg";
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
+import seoHelper from "../helpers/seoHelper";
 import LearnMore from "../components/LearnMore";
 import packageJson from "../../package.json";
 import markdownStylesClass from "../styles/markdownStyles";
@@ -84,51 +82,28 @@ class PageTemplate extends React.Component {
     const humanDate = mDate.format("dddd, MMMM Do YYYY");
     const elapsed = mDate.fromNow();
 
-    const generalMetaData = {
-      description: frontmatter.abstract,
-      keywords: data.websiteKeywords,
-      image: indexImage,
+    // -------------------------------------------------------------------- SEO
+    const pageData = {
+      pageTitle: frontmatter.title,
+      nakedPageSlug: nakedRoute,
+      pageAbstract: frontmatter.abstract,
     };
 
-    const twitterSummaryCardData = {
-      site: data.websiteName,
-      creator: data.websiteCreator,
-      title: frontmatter.title,
-      description: frontmatter.abstract,
-      image: indexImage,
-    };
+    const seoData = seoHelper(pageData);
 
-    const openGraphSummaryData = {
-      siteName: data.websiteName,
-      url: `${data.nakedWebsiteUrl}${checkedRoute}`,
-      title: frontmatter.title,
-      description: frontmatter.abstract,
-      image: indexImage,
-    };
-
-    const webpageSchemaData = {
-      url: `${data.nakedWebsiteUrl}${checkedRoute}`,
-      name: frontmatter.title,
-      description: frontmatter.abstract,
-      author: data.websiteCreator,
-      publisher: data.websiteCreator,
-      image: indexImage,
-    };
-
-    const breadcrumbSchemaData = {
-      breadcrumbs: [
-        { name: "Home", url: `${data.websiteUrl}` },
-        {
-          name: frontmatter.title,
-          url: `${data.nakedWebsiteUrl}${checkedRoute}`,
-        },
-      ],
-    };
+    const {
+      pageTitle,
+      generalMetaData,
+      twitterSummaryCardData,
+      openGraphSummaryData,
+      webpageSchemaData,
+      breadcrumbSchemaData,
+    } = seoData;
 
     return (
       <Fragment>
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
-        <UpdateTitle title={frontmatter.title} />
+        <UpdateTitle title={pageTitle} />
         <GeneralMeta data={generalMetaData} />
         <TwitterSummaryCard data={twitterSummaryCardData} />
         <OpenGraphSummary data={openGraphSummaryData} />

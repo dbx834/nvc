@@ -25,14 +25,6 @@ The form is simple, yet powerfully transformative.
 
 Through the practice of NVC, we can learn to clarify what we are observing, what emotions we are feeling, what values we want to live by, and what we want to ask of ourselves and others. We will no longer need to use the language of blame, judgment or domination. We can experience the deep pleasure of contributing to each other’s well being.
 
-NVC creates a path for healing and reconciliation in its many applications, ranging from intimate relationships, work settings, health care, social services, police, prison staff and inmates, to governments, schools and social change organizations.
+NVC creates a path for healing and reconciliation in its many applications, ranging from intimate relationships, work settings, health care, social services, police, prison staff and inmates, to governments, schools and social change organizations. [Source: [Marshall Rosenberg and CNVC](http://cnvc.org/)]
 
-> "_I want to say thank you yet again!_"
->
-> "_I was giving and receiving feedback with a colleague who I much respect, when she shared with me that she sees me as an example of living NVC -- being able to accept each person for what s/he is and yet not mincing my words in stating what my truth is. I so cherished this feedback and went back to the journey I have been on with you. And then your face and way of being flashed in front of me._"
->
-> "_Thank you for all you have done and all that you are -- grounded, free flowing, demanding, accepting, caring, patient, happy, unhappy, an expert, a learner, and SUPER FUN!_”
->
-> – Participant from NVC Leadership Program, 2014
-
-See more: [Marshall Rosenberg and CNVC](http://cnvc.org/).
+> "_I want to say thank you yet again! I was giving and receiving feedback with a colleague who I much respect, when she shared with me that she sees me as an example of living NVC -- being able to accept each person for what s/he is and yet not mincing my words in stating what my truth is. I so cherished this feedback and went back to the journey I have been on with you. And then your face and way of being flashed in front of me. Thank you for all you have done and all that you are -- grounded, free flowing, demanding, accepting, caring, patient, happy, unhappy, an expert, a learner, and SUPER FUN!_" – Participant from NVC Leadership Program, 2014

@@ -35,16 +35,16 @@ import {
 } from "@bodhi-project/seo";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import indexImage from "../pages/assets/index.jpg";
+import seoHelper from "../helpers/seoHelper";
 import packageJson from "../../package.json";
 import markdownStylesClass from "../styles/markdownStyles";
 import Register from "../components/Register";
-import donateButton from "../pages/assets/donateButton.png";
+import donateButton from "../assets/donateButton.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
 const { data } = packageJson;
-const { H1, Paragraph } = Elements;
+const { H1, H2, Paragraph } = Elements;
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
@@ -56,24 +56,24 @@ const pageStyle = css({
     ...applyRhythm({ marginTop: "2X" }),
   },
 
-  "& a": {
-    color: "inherit",
-    borderBottom: "none",
+  // "& a": {
+  //   color: "inherit",
+  //   borderBottom: "none",
 
-    "&:hover": {
-      color: "inherit",
-      borderBottom: "none",
-    },
-    "&:visited": {
-      textDecoration: "none",
-    },
-    "&:link": {
-      textDecoration: "none",
-    },
-    "&:active": {
-      textDecoration: "none",
-    },
-  },
+  //   "&:hover": {
+  //     color: "inherit",
+  //     borderBottom: "none",
+  //   },
+  //   "&:visited": {
+  //     textDecoration: "none",
+  //   },
+  //   "&:link": {
+  //     textDecoration: "none",
+  //   },
+  //   "&:active": {
+  //     textDecoration: "none",
+  //   },
+  // },
 });
 const pageStyleClass = pageStyle.toString();
 
@@ -96,7 +96,7 @@ class EventTemplate extends React.Component {
     const { markdownAst } = pathContext;
     const { route } = pathContext;
     const checkedRoute = _.startsWith(route, "/") ? route : `/${route}`;
-    // const { headings } = pathContext;
+    const nakedRoute = checkedRoute.substr(1);
 
     // Date stuff
     const mDate = moment(frontmatter.date);
@@ -107,46 +107,24 @@ class EventTemplate extends React.Component {
 
     const { orgLocation } = data;
 
-    const generalMetaData = {
-      description: frontmatter.abstract,
-      keywords: data.websiteKeywords,
-      image: indexImage,
+    // -------------------------------------------------------------------- SEO
+    const pageData = {
+      pageTitle: frontmatter.title,
+      nakedPageSlug: nakedRoute,
+      pageAbstract: frontmatter.abstract,
     };
 
-    const twitterSummaryCardData = {
-      site: data.websiteName,
-      creator: data.websiteCreator,
-      title: frontmatter.title,
-      description: frontmatter.abstract,
-      image: indexImage,
-    };
+    const seoData = seoHelper(pageData);
 
-    const openGraphSummaryData = {
-      siteName: data.websiteName,
-      url: `${data.nakedWebsiteUrl}${checkedRoute}`,
-      title: frontmatter.title,
-      description: frontmatter.abstract,
-      image: indexImage,
-    };
-
-    const webpageSchemaData = {
-      url: `${data.nakedWebsiteUrl}${checkedRoute}`,
-      name: frontmatter.title,
-      description: frontmatter.abstract,
-      author: data.websiteCreator,
-      publisher: data.websiteCreator,
-      image: indexImage,
-    };
-
-    const breadcrumbSchemaData = {
-      breadcrumbs: [
-        { name: "Home", url: `${data.websiteUrl}` },
-        {
-          name: frontmatter.title,
-          url: `${data.nakedWebsiteUrl}${checkedRoute}`,
-        },
-      ],
-    };
+    const {
+      pageTitle,
+      twitterSummaryX,
+      generalMetaData,
+      twitterSummaryCardData,
+      openGraphSummaryData,
+      webpageSchemaData,
+      breadcrumbSchemaData,
+    } = seoData;
 
     const eventSchemaData = {
       name: frontmatter.title,
@@ -161,13 +139,13 @@ class EventTemplate extends React.Component {
       addressRegion: orgLocation.addressRegion,
       postalCode: orgLocation.postalCode,
       addressCountry: orgLocation.addressCountry,
-      image: indexImage,
+      image: twitterSummaryX,
     };
 
     return (
       <Fragment>
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
-        <UpdateTitle title={frontmatter.title} />
+        <UpdateTitle title={pageTitle} />
         <GeneralMeta data={generalMetaData} />
         <TwitterSummaryCard data={twitterSummaryCardData} />
         <OpenGraphSummary data={openGraphSummaryData} />
@@ -180,7 +158,7 @@ class EventTemplate extends React.Component {
           <Header className="stash">
             <H1>{frontmatter.title}</H1>
             <Paragraph>{humanDate}</Paragraph>
-            <Paragraph className="stash">{frontmatter.abstract}</Paragraph>
+            <Paragraph>{frontmatter.abstract}</Paragraph>
           </Header>
           <Article>
             {treeCodeParser(
@@ -193,35 +171,27 @@ class EventTemplate extends React.Component {
               },
               {},
             )}
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
+            <H1>Price</H1>
+            <Paragraph>blah blah.</Paragraph>
             <H1>Register</H1>
             <Paragraph style={{ marginBottom: 30 }}>
-              Abstract - blah blah blah blah blah blah blah blah blah blah blah
-              blah blah blah blah blah blah blah blah blah blah blah blah blah
-              blah blah blah blah blah blah blah blah blah blah blah blah blah
-              blah blah.
+              Thank you for your interest in this upcoming
+              workshop/training/practice group! Please fill out the below
+              details, and we will respond shortly with additional details
+              (availability, price, venue, etc).
             </Paragraph>
             <div id="register-form">
               <Register event={{ key: humanDate }} />
             </div>
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
             <H1>Pay Now</H1>
             <Paragraph>
-              Abstract - blah blah blah blah blah blah blah blah blah blah blah
-              blah blah blah blah blah blah blah blah blah blah blah blah blah
-              blah blah blah blah blah blah blah blah blah blah blah blah blah
-              blah blah.
+              Please make your payment to confirm your seat.
             </Paragraph>
+            <Paragraph>
+              Select the Domestic option for Indian bank/credit cards, or the
+              International option for foreign bank/credit cards.
+            </Paragraph>
+            <H2>Domestic Transfer (₹)</H2>
             <Paragraph>
               <OutLink to="https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD">
                 <Image
@@ -239,6 +209,33 @@ class EventTemplate extends React.Component {
                 />
               </OutLink>
             </Paragraph>
+            <H2>International Transfer ($)</H2>
+            <form
+              action="https://www.paypal.com/cgi-bin/webscr"
+              method="post"
+              target="_blank"
+            >
+              <input type="hidden" name="cmd" value="_s-xclick" />
+              <input
+                type="hidden"
+                name="hosted_button_id"
+                value="WFXM5RNDGBXL4"
+              />
+              <input
+                type="image"
+                src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif"
+                border="0"
+                name="submit"
+                alt="PayPal – The safer, easier way to pay online!"
+              />
+              <img
+                alt=""
+                border="0"
+                src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif"
+                width="1"
+                height="1"
+              />
+            </form>
           </Article>
           <Footer className="stash">
             <Paragraph>

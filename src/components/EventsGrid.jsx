@@ -52,6 +52,26 @@ const componentStyle = css({
     background: "#f6f2f8",
     marginBottom: 30,
 
+    "& ul.event-icons": {
+      listStyle: "none",
+      padding: 0,
+      position: "absolute",
+      top: 0,
+      right: 0,
+      zIndex: 1,
+
+      "& li": {
+        margin: "0 !important",
+        display: "inline-block",
+
+        "& .icon": {
+          border: 0,
+          marginTop: 2,
+          marginRight: 2,
+        },
+      },
+    },
+
     "@media (min-width: 768px)": {
       flex: "0 0 32.333%",
       maxWidth: "32.333%",

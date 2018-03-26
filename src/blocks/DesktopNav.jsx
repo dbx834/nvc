@@ -150,7 +150,6 @@ class DesktopNav extends React.Component {
                           <li>
                             <Popover
                               placement={menuPopoverLocation}
-                              trigger="click"
                               content={
                                 <div className="menu-tip">
                                   <ul>

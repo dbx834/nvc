@@ -10,7 +10,7 @@ import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-import { LocaleProvider, Calendar, Popover, Badge } from "antd";
+import { LocaleProvider, Calendar, Popover, Badge, Button } from "antd";
 import en_GB from "antd/lib/locale-provider/en_GB";
 import "moment/locale/en-gb";
 import { Image } from "@bodhi-project/components";
@@ -21,6 +21,7 @@ import nvc from "../assets/nvc.png";
 import rc from "../assets/rc.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
+const { Fragment } = React;
 const { Paragraph } = Elements;
 const enGB = en_GB;
 
@@ -29,35 +30,6 @@ const enGB = en_GB;
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageStyle = css({
-  ...applyRhythm({ maxWidth: "40X" }),
-  "& .blank": {
-    visibility: "hidden",
-  },
-
-  "& .cover": {
-    zIndex: -1,
-  },
-
-  "& ul.event-icons": {
-    listStyle: "none",
-    padding: 0,
-    position: "absolute",
-    top: 0,
-    right: 0,
-    zIndex: 1,
-
-    "& li": {
-      margin: "0 !important",
-      display: "inline-block",
-
-      "& .icon": {
-        border: 0,
-        marginTop: 2,
-        marginRight: 2,
-      },
-    },
-  },
-
   "& .ant-fullcalendar-fullscreen": {
     "& .ant-fullcalendar-header": {
       width: 90 * 7,
@@ -215,6 +187,46 @@ const pageStyle = css({
         },
       },
     },
+  }, // B43808
+
+  "& .ant-btn": _.merge(
+    { ...applyType("ltb1ekq") },
+    {
+      fontWeight: 700,
+      fontStyle: "italic",
+      borderRadius: 0,
+      backgroundColor: "#FFFFFF",
+      borderColor: "#B43808",
+      color: "#B43808 !important",
+      height: "auto",
+      transition: "all 200ms cubic-bezier(0.78, 0.14, 0.15, 0.86)",
+      "&:not(:last-child)": {
+        marginRight: "10px",
+      },
+
+      "&:hover": {
+        backgroundColor: "#B43808 !important",
+        color: "#FFFFFF !important",
+        borderColor: "transparent",
+        transform: "scale(1.1)",
+      },
+
+      "& span": {
+        fontSize: "90%",
+      },
+    },
+    ...applyRhythm({ padding: "0X 0.65X" }),
+  ),
+
+  "& .ant-btn-primary": {
+    backgroundColor: "#B43808",
+    color: "#FFFFFF !important",
+    borderColor: "transparent",
+
+    "&:hover": {
+      backgroundColor: "#B43808 !important",
+      transform: "scale(1.05)",
+    },
   },
 });
 const pageStyleClass = pageStyle.toString();
@@ -231,6 +243,17 @@ const inArray = (array, value) => {
   return rx;
 };
 
+/** parseQueryString */
+const parseQueryString = string => {
+  const objURL = {};
+
+  string.replace(new RegExp("([^?=&]+)(=([^&]*))?", "g"), ($0, $1, $2, $3) => {
+    objURL[$1] = $3;
+  });
+
+  return objURL;
+};
+
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
@@ -243,12 +266,14 @@ class CalendarX extends React.Component {
       selectedDate: null,
     };
     this.onSelect = this.onSelect.bind(this);
+    this.applyFilter = this.applyFilter.bind(this);
   }
 
   /** componentDidMount - set current date */
   componentDidMount() {
     const today = moment();
-    this.setState({ selectedDate: today });
+    const query = parseQueryString(this.props.location.search);
+    this.setState({ selectedDate: today, query: query });
   }
 
   /** logs date */
@@ -256,9 +281,39 @@ class CalendarX extends React.Component {
     this.setState({ selectedDate: value });
   }
 
+  /** applyFilter */
+  applyFilter(filter) {
+    this.setState({ query: { filter: filter } });
+  }
+
   /** standard renderer */
   render() {
     const { data } = this.props;
+    const uniqueTags = [];
+    let activeFilter = null;
+
+    // Get all unique tags
+    _.map(data, ({ node }) => {
+      const { frontmatter } = node;
+      const { tags } = frontmatter;
+      _.map(tags, tag => {
+        if (!inArray(uniqueTags, tag)) {
+          uniqueTags.push(tag);
+        }
+      });
+    });
+
+    let filteredData = null;
+    if (!_.isUndefined(this.state.query)) {
+      activeFilter = this.state.query.filter;
+      filteredData = _.filter(data, ({ node }) => {
+        let displayThis = false;
+        if (inArray(node.frontmatter.tags, activeFilter)) {
+          displayThis = true;
+        }
+        return displayThis;
+      });
+    }
 
     const todayInt = parseInt(moment().format("YYYYMMDD"), 10);
     const selectedMonth =
@@ -279,98 +334,121 @@ class CalendarX extends React.Component {
       }
       let frag = <div className={classNames}>{day}</div>;
 
-      _.map(data, ({ node }) => {
-        const { frontmatter } = node;
-        const { fields } = node;
-        const { title } = frontmatter;
-        const mDate = moment(frontmatter.date);
-        const xDate = parseInt(mDate.format("YYYYMMDD"), 10);
-        const humanDate = mDate.format("dddd, MMMM D, YYYY");
-        let badgeStatus = null;
-        // const when = moment(mDate).fromNow();
-        const { route } = fields;
-        const { tags } = frontmatter;
+      if (!_.isNull(filteredData)) {
+        _.map(filteredData, ({ node }) => {
+          const { frontmatter } = node;
+          const { fields } = node;
+          const { title } = frontmatter;
+          const mDate = moment(frontmatter.date);
+          const xDate = parseInt(mDate.format("YYYYMMDD"), 10);
+          const humanDate = mDate.format("dddd, MMMM D, YYYY");
+          let badgeStatus = null;
+          // const when = moment(mDate).fromNow();
+          const { route } = fields;
+          const { tags } = frontmatter;
 
-        if (thisDate === xDate) {
-          if (todayInt > xDate) {
-            classNames += " past-event";
-            badgeStatus = "default";
-          } else if (todayInt < xDate) {
-            classNames += " planned-event";
-            badgeStatus = "warning";
-          } else {
-            classNames += " happening-event";
-            badgeStatus = "success";
-          }
+          if (thisDate === xDate) {
+            if (todayInt > xDate) {
+              classNames += " past-event";
+              badgeStatus = "default";
+            } else if (todayInt < xDate) {
+              classNames += " planned-event";
+              badgeStatus = "warning";
+            } else {
+              classNames += " happening-event";
+              badgeStatus = "success";
+            }
 
-          const content = (
-            <div>
-              <Paragraph style={{ marginBottom: 0, padding: "9px 6px" }}>
-                <span className="title" style={{ fontSize: "110%" }}>
-                  {title}
-                </span>
-                <br />
-                <small className="date">
-                  <i>{humanDate}</i>
-                </small>
-                <br />
-                <br />
-                {frontmatter.abstract}
-              </Paragraph>
-            </div>
-          );
-
-          frag = (
-            <div className={classNames}>
-              <Popover content={content} title={false}>
-                <Link to={route}>
-                  <Badge status={badgeStatus}>{day}</Badge>
+            const content = (
+              <div>
+                <Paragraph style={{ marginBottom: 0, padding: "9px 6px" }}>
+                  <span className="title" style={{ fontSize: "110%" }}>
+                    {title}
+                  </span>
                   <br />
-                  {inArray(tags, "nvc") && (
-                    <Image
-                      src={nvc}
-                      rawHeight={450}
-                      rawWidth={450}
-                      className="icon"
-                      style={{
-                        height: 45,
-                        width: 45,
-                        position: "absolute",
-                        background: "transparent",
-                        border: 0,
-                        right: 3,
-                        top: 3,
-                      }}
-                    />
-                  )}
-                  {inArray(tags, "rc") && (
-                    <Image
-                      src={rc}
-                      rawHeight={450}
-                      rawWidth={450}
-                      className="icon"
-                      style={{
-                        height: 45,
-                        width: 45,
-                        position: "absolute",
-                        background: "transparent",
-                        border: 0,
-                        right: 3,
-                        top: 3,
-                      }}
-                    />
-                  )}
-                </Link>
-              </Popover>
-            </div>
-          );
-        }
-      });
-      return frag;
+                  <small className="date">
+                    <i>{humanDate}</i>
+                  </small>
+                  <br />
+                  <br />
+                  {frontmatter.abstract}
+                </Paragraph>
+              </div>
+            );
+
+            frag = (
+              <div className={classNames}>
+                <Popover content={content} title={false}>
+                  <Link to={route}>
+                    <Badge status={badgeStatus}>{day}</Badge>
+                    <br />
+                    {inArray(tags, "nvc") && (
+                      <Image
+                        src={nvc}
+                        rawHeight={450}
+                        rawWidth={450}
+                        className="icon"
+                        style={{
+                          height: 45,
+                          width: 45,
+                          position: "absolute",
+                          background: "transparent",
+                          border: 0,
+                          right: 3,
+                          top: 3,
+                        }}
+                      />
+                    )}
+                    {inArray(tags, "rc") && (
+                      <Image
+                        src={rc}
+                        rawHeight={450}
+                        rawWidth={450}
+                        className="icon"
+                        style={{
+                          height: 45,
+                          width: 45,
+                          position: "absolute",
+                          background: "transparent",
+                          border: 0,
+                          right: 3,
+                          top: 3,
+                        }}
+                      />
+                    )}
+                  </Link>
+                </Popover>
+              </div>
+            );
+          }
+        });
+        return frag;
+      }
     };
 
     return (
       <div className={pageStyleClass}>
+        {_.map(uniqueTags, tag => {
+          let filterName = tag;
+          if (tag === "nvc" || tag === "rc") {
+            filterName = "all";
+          } else {
+            filterName = _.capitalize(tag);
+          }
+          return (
+            <Fragment>
+              {activeFilter === tag ? (
+                <Button type="primary" onClick={() => this.applyFilter(tag)}>
+                  <span>{tag}</span>
+                </Button>
+              ) : (
+                <Button onClick={() => this.applyFilter(tag)}>
+                  <span>{tag}</span>
+                </Button>
+              )}
+            </Fragment>
+          );
+        })}
         <LocaleProvider locale={enGB}>
           <Calendar
             dateFullCellRender={dateFullCellRender}

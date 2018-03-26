@@ -47,11 +47,11 @@ const menu = [
         menu: [
           {
             title: "Workshops",
-            link: "/nonviolent-communication/events?filter=workshops",
+            link: "/nonviolent-communication/events?filter=workshop",
           },
           {
             title: "Practice Groups",
-            link: "/nonviolent-communication/events?filter=practice-groups",
+            link: "/nonviolent-communication/events?filter=practice-group",
           },
           { title: "Articles", link: "/writings?filter=nvc" },
         ],
@@ -63,11 +63,11 @@ const menu = [
         menu: [
           {
             title: "Workshops",
-            link: "/restorative-circles/events?filter=workshops",
+            link: "/restorative-circles/events?filter=workshop",
           },
           {
             title: "Practice Groups",
-            link: "/restorative-circles/events?filter=practice-groups",
+            link: "/restorative-circles/events?filter=practice-group",
           },
           { title: "Call a Circle", link: "/call-a-circle" },
           { title: "Articles", link: "/writings?filter=rc" },

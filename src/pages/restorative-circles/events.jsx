@@ -4,7 +4,7 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
 import PropTypes from "prop-types";
-// import _ from "lodash";
+import _ from "lodash";
 import { css } from "glamor";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
@@ -25,10 +25,8 @@ import {
 } from "@bodhi-project/seo";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import seoHelper from "../helpers/seoHelper";
-
-import EventsGrid from "../components/EventsGrid";
-import Calendar from "../components/Calendar";
+import seoHelper from "../../helpers/seoHelper";
+import Calendar from "../../components/Calendar";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -71,6 +69,18 @@ const pageStyle = css({
 const pageStyleClass = pageStyle.toString();
 
 // ----------------------------------------------------------------------------
+// ------------------------------------------------------------------ Functions
+// ----------------------------------------------------------------------------
+/** inArray */
+const inArray = (array, value) => {
+  let rx = false;
+  if (_.indexOf(array, value) >= 0) {
+    rx = true;
+  }
+  return rx;
+};
+
+// ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
 /** EventsAndCalendar */
@@ -83,6 +93,13 @@ class EventsAndCalendar extends React.Component {
   /** standard renderer */
   render() {
     const postEdges = this.props.data.allMarkdownRemark.edges;
+    // get only events
+    const rcNodes = [];
+    _.map(postEdges, ({ node }) => {
+      if (inArray(node.frontmatter.tags, "rc")) {
+        rcNodes.push({ node });
+      }
+    });
 
     return (
       <Fragment>
@@ -97,9 +114,7 @@ class EventsAndCalendar extends React.Component {
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={pageStyleClass}>
           <H1>Event Calendar</H1>
-          <Calendar data={postEdges} />
-          <H1>Upcoming Events</H1>
-          <EventsGrid data={postEdges} totalEvents={6} />
+          <Calendar data={rcNodes} location={this.props.location} />
         </Page>
       </Fragment>
     );
@@ -115,7 +130,7 @@ EventsAndCalendar.propTypes = {
 // ----------------------------------------------------------------------------
 /* eslint-disable no-undef */
 export const pageQuery = graphql`
-  query EventsQuery {
+  query RCEventsQuery {
     allMarkdownRemark(
       limit: 365
       sort: { fields: [frontmatter___date], order: ASC }

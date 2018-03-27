@@ -278,6 +278,16 @@ class CalendarX extends React.Component {
     this.setState({ selectedDate: today, query: query });
   }
 
+  /** componentDidMount - set current date */
+  shouldComponentUpdate(nextProps, nextState) {
+    const nextQuery = parseQueryString(nextProps.location.search);
+    const shouldUpdate = !_.isEqual(nextQuery, this.state.query);
+    if (shouldUpdate) {
+      this.setState({ query: nextQuery });
+    }
+    return shouldUpdate;
+  }
+
   /** logs date */
   onSelect(value, mode) {
     // this.setState({ selectedDate: value });

@@ -108,7 +108,7 @@ class EventTemplate extends React.Component {
     const { pathContext } = this.props;
     const { frontmatter } = pathContext;
     const { tags, date, startDate } = frontmatter;
-    const { markdownAst } = pathContext;
+    const { markdownAst, next, prev } = pathContext;
     const { route } = pathContext;
     const checkedRoute = _.startsWith(route, "/") ? route : `/${route}`;
     const nakedRoute = checkedRoute.substr(1);
@@ -195,9 +195,24 @@ class EventTemplate extends React.Component {
                 {},
               )}
             </Article>
-            <Footer className="stash">
-              <Paragraph>
-                Copyright&nbsp;{data.websiteCreator}&nbsp;2018.
+            <Footer
+              style={{ borderTop: "1px solid #4a4a4a", paddingTop: "1em" }}
+            >
+              <H1 mask="h4">More like this…</H1>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div>
+                  {!_.isNull(prev) && (
+                    <Link to={`/${prev.fields.route}`}>⇜ Previous</Link>
+                  )}
+                </div>
+                <div>
+                  {!_.isNull(next) && (
+                    <Link to={`/${next.fields.route}`}>Next ⇝</Link>
+                  )}
+                </div>
+              </div>
+              <Paragraph className="stash">
+                {data.copyright}
                 <br />
                 <br />
                 Published on {humanDate} ({elapsed}).

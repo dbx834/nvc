@@ -74,9 +74,16 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           console.log(result.errors); // eslint-disable-line no-console
           reject(result.errors);
         }
+
+        const { edges } = result.data.allMarkdownRemark;
+
         // Loop through markdown nodes
-        result.data.allMarkdownRemark.edges.forEach(edge => {
+        edges.forEach((edge, index) => {
           const trimmedRoute = _.trim(edge.node.fields.route);
+          const prev = index === 0 ? null : edges[index - 1].node;
+          const next =
+            index === edges.length - 1 ? null : edges[index + 1].node;
+
           const context = {
             frontmatter: edge.node.frontmatter,
             headings: edge.node.headings,
@@ -84,7 +91,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             markdownAst: unified()
               .use(markdown)
               .parse(edge.node.fields.rawContent),
-            toc: result.data.allMarkdownRemark.edges,
+            prev,
+            next,
           };
           const pathX = edge.node.fields.route;
 

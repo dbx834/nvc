@@ -281,11 +281,11 @@ class CalendarX extends React.Component {
   /** componentDidMount - set current date */
   shouldComponentUpdate(nextProps, nextState) {
     const nextQuery = parseQueryString(nextProps.location.search);
-    const shouldUpdate = !_.isEqual(nextQuery, this.state.query);
-    if (shouldUpdate) {
+    const urlQueryDifferent = !_.isEqual(nextQuery, this.state.query);
+    if (urlQueryDifferent) {
       this.setState({ query: nextQuery });
     }
-    return shouldUpdate;
+    return true;
   }
 
   /** logs date */

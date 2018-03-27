@@ -275,22 +275,22 @@ class CalendarX extends React.Component {
   componentDidMount() {
     const today = moment();
     const query = parseQueryString(this.props.location.search);
-    this.setState({ selectedDate: today, query: query });
+    this.setState({ selectedDate: today, query });
   }
 
-  /** componentDidMount - set current date */
-  shouldComponentUpdate(nextProps, nextState) {
-    const nextQuery = parseQueryString(nextProps.location.search);
-    const urlQueryDifferent = !_.isEqual(nextQuery, this.state.query);
-    if (urlQueryDifferent) {
+  /** componentWillReceiveProps - set current date */
+  componentWillReceiveProps(nextProps) {
+    const nextQuery = parseQueryString(
+      nextProps.location ? nextProps.location.search : null,
+    );
+    if (!_.isEqual(nextQuery, this.state.query)) {
       this.setState({ query: nextQuery });
     }
-    return true;
   }
 
   /** logs date */
   onSelect(value, mode) {
-    // this.setState({ selectedDate: value });
+    console.log(value, mode);
   }
 
   /** applyFilter */

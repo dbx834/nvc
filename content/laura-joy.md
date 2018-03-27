@@ -9,7 +9,13 @@ tags:
   - some tag
 ---
 
-![{"height": "37vh", "width": "auto", "background": "transparent", "display": "block"}](/content-assets/laura-joy/laura_281X350.jpg)
+![image](/content-assets/laura-joy/laura4_900X600.jpeg)
+
+![image](/content-assets/laura-joy/laura2_900X600.jpeg)
+
+![image](/content-assets/laura-joy/laura3_900X600.jpeg)
+
+![image](/content-assets/laura-joy/laura1_281X350.jpg)
 
 # L’aura Joy
 

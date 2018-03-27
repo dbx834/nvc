@@ -3,13 +3,15 @@ title: Restorative Circles in Hungary
 cover: https://unsplash.it/400/300/?random?AngelsofMist
 category: 1.Random Category
 abstract: Page abstract.
-starts: 2018-09-14
-end: 2018-09-16
-from: 09:00
-to: 17:00
+startDate: 2018-09-14
+finishDate: 2018-09-16
+fromTime: 9am
+toTime: 5pm
 type: event
+cost: variable
 tags:
-  - nvc
+  - rc
+  - featured
 ---
 
 # Restorative Circles in Hungary

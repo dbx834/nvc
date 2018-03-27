@@ -9,9 +9,9 @@ const _ = require("lodash");
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------- Data
 // ----------------------------------------------------------------------------
-const dirName = "rc-practice-groups";
+const dirName = "nvc-practice-groups";
 const years = ["2018"];
-const every = "Thursday";
+const every = "Wednesday";
 
 /** make a dir */
 const makeDir = dir => {
@@ -57,30 +57,23 @@ fs.writeFileIfNotExist = (fname, contents, options, callback) => {
 
 const template = `
 ---
-title: RC Practice Group
+title: NVC Workshop
 cover: https://unsplash.it/400/300/?random?AngelsofMist
-category: 1.RC
+category: 1.NVC
 abstract: Page abstract.
 date: %date%
-startTime: 16:30
-endTime: 18:30
+fromTime: 4.30pm
+toTime: 6.30pm
 type: event
+cost: Variable
 tags:
-  - rc
-  - practice-group
+  - nvc
+  - workshop
 ---
 
-# RC Practice Group on %humanDate%
+# NVC Workshop
 
-Drop-in practice group. Everyone is welcome!
-
-Prerequisite: for those who have some background in Restorative Circles
-
-If it’s your first time, contact L’aura: (+91) 9442788016, joylivinglearning@gmail.com for additional details, venue, etc.
-
-Also possible to join in on Zoom (online video conference).
-
-Contact L’aura: (+91) 9442788016, joylivinglearning@gmail.com for additional details.
+NVC Workshop – blah blah blah.
 `;
 
 // ----------------------------------------------------------------------------

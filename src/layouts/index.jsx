@@ -95,7 +95,7 @@ const wrapperStyles = css({
     {
       marginLeft: 0,
     },
-    ...applyRhythm({ padding: "1X 3X 4.8X 3X" }),
+    ...applyRhythm({ padding: "1X 1X 4.8X 1X" }),
   ),
 
   "& #appWrapper": {

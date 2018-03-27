@@ -103,6 +103,11 @@ class Component extends React.Component {
     const eventError = isFieldTouched("event") && getFieldError("event");
     const countryError = isFieldTouched("country") && getFieldError("country");
     const commentError = isFieldTouched("comment") && getFieldError("comment");
+    const whatDrawsYouError =
+      isFieldTouched("whatDrawsYou") && getFieldError("whatDrawsYou");
+    const mobileError = isFieldTouched("mobile") && getFieldError("mobile");
+    const currentLocationError =
+      isFieldTouched("currentLocation") && getFieldError("currentLocation");
 
     // const today = moment();
 
@@ -130,12 +135,12 @@ class Component extends React.Component {
                 rules: [{ validator: validateEmail }],
               })(<Input placeholder="Email" />)}
             </FormItem>
-            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
+            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mobile */}
             <FormItem
-              validateStatus={emailError ? "error" : ""}
-              help={emailError || ""}
+              validateStatus={mobileError ? "error" : ""}
+              help={mobileError || ""}
             >
-              {getFieldDecorator("email", {
+              {getFieldDecorator("mobile", {
                 validateTrigger: ["onChange", "onBlur"],
                 rules: [{ validator: validateEmail }],
               })(<Input placeholder="Mobile / Whatsapp" />)}
@@ -146,33 +151,19 @@ class Component extends React.Component {
               help={countryError || ""}
             >
               {getFieldDecorator("country", {
-                initialValue: "India",
-                rules: [
-                  {
-                    required: true,
-                    message: "Please select an event from the dropdown...",
-                  },
-                ],
-              })(
-                <Select placeholder="Your country...">
-                  <Option key="India" value="India">
-                    India
-                  </Option>
-                  <Option key="USA" value="USA">
-                    USA
-                  </Option>
-                </Select>,
-              )}
-            </FormItem>
-            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
-            <FormItem
-              validateStatus={emailError ? "error" : ""}
-              help={emailError || ""}
-            >
-              {getFieldDecorator("email", {
                 validateTrigger: ["onChange", "onBlur"],
-                rules: [{ validator: validateEmail }],
-              })(<Input placeholder="Where do you living presently?" />)}
+                rules: [{ validator: validateName }],
+              })(<Input placeholder="Your country..." />)}
+            </FormItem>
+            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Location */}
+            <FormItem
+              validateStatus={currentLocationError ? "error" : ""}
+              help={currentLocationError || ""}
+            >
+              {getFieldDecorator("currentLocation", {
+                validateTrigger: ["onChange", "onBlur"],
+                rules: [{ validator: validateName }],
+              })(<Input placeholder="Where are you living presently?" />)}
             </FormItem>
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment */}
             <FormItem
@@ -185,22 +176,22 @@ class Component extends React.Component {
               })(
                 <TextArea
                   placeholder="Any other comments/questions?"
-                  autosize={{ minRows: 1, maxRows: 6 }}
+                  autosize={{ minRows: 4, maxRows: 6 }}
                 />,
               )}
             </FormItem>
-            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment */}
+            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ What Draws You */}
             <FormItem
-              validateStatus={commentError ? "error" : ""}
-              help={commentError || ""}
+              validateStatus={whatDrawsYouError ? "error" : ""}
+              help={whatDrawsYouError || ""}
             >
-              {getFieldDecorator("comment", {
+              {getFieldDecorator("whatDrawsYou", {
                 validateTrigger: ["onChange", "onBlur"],
                 rules: [{ validator: validateComment }],
               })(
                 <TextArea
                   placeholder="What draws you to this workshop/training/practice group?"
-                  autosize={{ minRows: 1, maxRows: 6 }}
+                  autosize={{ minRows: 4, maxRows: 6 }}
                 />,
               )}
             </FormItem>
@@ -252,6 +243,9 @@ class Component extends React.Component {
             Thank you for registering! We'll get back to you shortly.
           </Paragraph>
         )}
+        <br />
+        <br />
+        <br />
       </Fragment>
     );
   }

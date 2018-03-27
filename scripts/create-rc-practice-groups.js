@@ -9,9 +9,9 @@ const _ = require("lodash");
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------- Data
 // ----------------------------------------------------------------------------
-const dirName = "nvc-practice-groups";
+const dirName = "rc-practice-groups";
 const years = ["2018"];
-const every = "Wednesday";
+const every = "Thursday";
 
 /** make a dir */
 const makeDir = dir => {
@@ -57,27 +57,31 @@ fs.writeFileIfNotExist = (fname, contents, options, callback) => {
 
 const template = `
 ---
-title: NVC Practice Group
+title: RC Practice Group
 cover: https://unsplash.it/400/300/?random?AngelsofMist
-category: 1.NVC
+category: 1.RC
 abstract: Page abstract.
 date: %date%
-startTime: 16:30
-endTime: 18:30
+fromTime: 4.30pm
+toTime: 6.30pm
 type: event
+cost: Free
 tags:
-  - nvc
+  - rc
   - practice-group
 ---
 
-# NVC Practice Group on %humanDate%
+# RC Practice Group
 
-Prerequisite: for those who have some background in Nonviolent Communication
+Drop-in practice group. Everyone is welcome!
 
-Requirement: commitment for minimum 1-month
+Prerequisite: for those who have some background in Restorative Circles
 
-Contact L’aura: (+91) 9442788016, joylivinglearning@gmail.com for additional details, venue, etc.
+If it’s your first time, contact L’aura: (+91) 9442788016, joylivinglearning@gmail.com for additional details, venue, etc.
 
+Also possible to join in on Zoom (online video conference).
+
+To confirm your attendance and for additional details like venue, etc - please register.
 `;
 
 // ----------------------------------------------------------------------------

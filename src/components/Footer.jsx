@@ -39,7 +39,7 @@ const { data } = packageJson;
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Footer
 const footerStyle = css({
-  ...applyRhythm({ padding: "0X 3X 1X 3X" }),
+  ...applyRhythm({ padding: "0X 1X 1X 1X" }),
 
   "& .waves": {
     ...applyRhythm({ marginBottom: "1X" }),

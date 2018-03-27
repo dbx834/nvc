@@ -97,9 +97,7 @@ class EventsAndCalendar extends React.Component {
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={pageStyleClass}>
           <H1>Event Calendar</H1>
-          <Calendar data={postEdges} />
-          <H1>Upcoming Events</H1>
-          <EventsGrid data={postEdges} totalEvents={6} />
+          <Calendar data={postEdges} location={this.props.location} />
         </Page>
       </Fragment>
     );
@@ -115,7 +113,7 @@ EventsAndCalendar.propTypes = {
 // ----------------------------------------------------------------------------
 /* eslint-disable no-undef */
 export const pageQuery = graphql`
-  query EventsQuery {
+  query UpcomingEventsQuery {
     allMarkdownRemark(
       limit: 365
       sort: { fields: [frontmatter___date], order: ASC }
@@ -131,10 +129,10 @@ export const pageQuery = graphql`
             title
             cover
             date
-            starts
-            end
-            from
-            to
+            startDate
+            finishDate
+            fromTime
+            toTime
             category
             tags
             type

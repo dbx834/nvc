@@ -47,12 +47,13 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                     title
                     cover
                     date
-                    starts
-                    end
-                    from
-                    to
+                    startDate
+                    finishDate
+                    fromTime
+                    toTime
                     category
                     tags
+                    cost
                     abstract
                   }
                   headings {

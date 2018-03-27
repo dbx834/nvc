@@ -40,6 +40,7 @@ import packageJson from "../../package.json";
 import markdownStylesClass from "../styles/markdownStyles";
 import Register from "../components/Register";
 import donateButton from "../assets/donateButton.png";
+import Price from "../bits/EventPagePrice";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -50,10 +51,24 @@ const { H1, H2, Paragraph } = Elements;
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 const pageStyle = css({
+  marginBottom: 40,
   position: "relative",
-  ...applyRhythm({ maxWidth: "27X" }),
+  display: "flex",
+  // ...applyRhythm({ maxWidth: "27X" }),
   "& div + p": {
-    ...applyRhythm({ marginTop: "2X" }),
+    // ...applyRhythm({ marginTop: "2X" }),
+  },
+
+  "& .contain": {
+    padding: "0em 2em",
+  },
+
+  "& .etc": {
+    "& h1": {
+      textTransform: "uppercase",
+      borderTop: "3px solid #4a4a4a",
+      fontStyle: "italic",
+    },
   },
 
   // "& a": {
@@ -92,20 +107,21 @@ class EventTemplate extends React.Component {
     // Abstract stuff
     const { pathContext } = this.props;
     const { frontmatter } = pathContext;
-    // const { toc } = pathContext;
+    const { tags, date, startDate } = frontmatter;
     const { markdownAst } = pathContext;
     const { route } = pathContext;
     const checkedRoute = _.startsWith(route, "/") ? route : `/${route}`;
     const nakedRoute = checkedRoute.substr(1);
 
     // Date stuff
-    const mDate = moment(frontmatter.date);
-    const humanDate = mDate.format("dddd, MMMM Do YYYY");
+    const mDate = moment(!_.isNull(date) ? date : startDate);
+    const humanDate = mDate.format("dddd, MMMM D, YYYY");
     const elapsed = mDate.fromNow();
-    const startDate = mDate.format();
+    // const startDate = mDate;
     const endDate = mDate.add(23, "hours").format();
 
     const { orgLocation } = data;
+    const { fromTime, toTime } = frontmatter;
 
     // -------------------------------------------------------------------- SEO
     const pageData = {
@@ -155,43 +171,75 @@ class EventTemplate extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={`${markdownStylesClass} ${pageStyleClass}`}>
-          <Header className="stash">
-            <H1>{frontmatter.title}</H1>
-            <Paragraph>{humanDate}</Paragraph>
-            <Paragraph>{frontmatter.abstract}</Paragraph>
-          </Header>
-          <Article>
-            {treeCodeParser(
-              markdownAst,
-              {
-                localLink: Link,
-                linkHeaders: true,
-                trackHeaders: false,
-                nestHeaders: false,
-              },
-              {},
-            )}
-            <H1>Price</H1>
-            <Paragraph>blah blah.</Paragraph>
-            <H1>Register</H1>
+          <div
+            style={{
+              flexGrow: 10,
+              flexBasis: 0,
+            }}
+            className="contain"
+          >
+            <Header className="stash">
+              <H1>{frontmatter.title}</H1>
+              <Paragraph>{humanDate}</Paragraph>
+              <Paragraph>{frontmatter.abstract}</Paragraph>
+            </Header>
+            <Article>
+              {treeCodeParser(
+                markdownAst,
+                {
+                  localLink: Link,
+                  linkHeaders: true,
+                  trackHeaders: false,
+                  nestHeaders: false,
+                },
+                {},
+              )}
+            </Article>
+            <Footer className="stash">
+              <Paragraph>
+                Copyright&nbsp;{data.websiteCreator}&nbsp;2018.
+                <br />
+                <br />
+                Published on {humanDate} ({elapsed}).
+              </Paragraph>
+            </Footer>
+          </div>
+          <div
+            style={{
+              flexGrow: 5,
+              flexBasis: 0,
+            }}
+            className="etc"
+          >
+            <H1 mask="h4">Date & Time</H1>
+            <Paragraph>
+              {humanDate}
+              <br />
+              <i>
+                {fromTime} – {toTime}
+              </i>
+            </Paragraph>
+            <Price frontmatter={frontmatter} />
+
+            <H1 mask="h4">Register</H1>
             <Paragraph style={{ marginBottom: 30 }}>
               Thank you for your interest in this upcoming
-              workshop/training/practice group! Please fill out the below
-              details, and we will respond shortly with additional details
-              (availability, price, venue, etc).
+              workshop/training/practice group!
+              <br />
+              <br />
+              Please fill out the below details, and we will respond shortly
+              with additional details (availability, price, venue, etc).
             </Paragraph>
             <div id="register-form">
               <Register event={{ key: humanDate }} />
             </div>
-            <H1>Pay Now</H1>
+            <H1 mask="h4">Pay Now</H1>
             <Paragraph>
-              Please make your payment to confirm your seat.
+              Please make your payment to confirm your seat. Select the Domestic
+              option for Indian bank/credit cards, or the International option
+              for foreign bank/credit cards.
             </Paragraph>
-            <Paragraph>
-              Select the Domestic option for Indian bank/credit cards, or the
-              International option for foreign bank/credit cards.
-            </Paragraph>
-            <H2>Domestic Transfer (₹)</H2>
+            <H2 mask="h5">Domestic Transfer (₹)</H2>
             <Paragraph>
               <OutLink to="https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD">
                 <Image
@@ -209,7 +257,7 @@ class EventTemplate extends React.Component {
                 />
               </OutLink>
             </Paragraph>
-            <H2>International Transfer ($)</H2>
+            <H2 mask="h5">International Transfer ($)</H2>
             <form
               action="https://www.paypal.com/cgi-bin/webscr"
               method="post"
@@ -236,15 +284,7 @@ class EventTemplate extends React.Component {
                 height="1"
               />
             </form>
-          </Article>
-          <Footer className="stash">
-            <Paragraph>
-              Copyright&nbsp;{data.websiteCreator}&nbsp;2018.
-              <br />
-              <br />
-              Published on {humanDate} ({elapsed}).
-            </Paragraph>
-          </Footer>
+          </div>
         </Page>
       </Fragment>
     );

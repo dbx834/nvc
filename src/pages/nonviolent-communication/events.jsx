@@ -146,10 +146,10 @@ export const pageQuery = graphql`
             title
             cover
             date
-            starts
-            end
-            from
-            to
+            startDate
+            finishDate
+            fromTime
+            toTime
             category
             tags
             type

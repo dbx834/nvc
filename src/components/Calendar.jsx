@@ -265,6 +265,7 @@ class CalendarX extends React.Component {
     super(props);
     this.state = {
       selectedDate: null,
+      query: { filter: null },
     };
     this.onSelect = this.onSelect.bind(this);
     this.applyFilter = this.applyFilter.bind(this);
@@ -304,8 +305,9 @@ class CalendarX extends React.Component {
       });
     });
 
+    // Filter data by tag
     let filteredData = null;
-    if (!_.isUndefined(this.state.query)) {
+    if (!_.isNull(this.state.query.filter)) {
       activeFilter = this.state.query.filter;
       filteredData = _.filter(data, ({ node }) => {
         let displayThis = false;
@@ -314,6 +316,8 @@ class CalendarX extends React.Component {
         }
         return displayThis;
       });
+    } else {
+      filteredData = data;
     }
 
     const todayInt = parseInt(moment().format("YYYYMMDD"), 10);
@@ -343,6 +347,7 @@ class CalendarX extends React.Component {
           const mDate = moment(frontmatter.date);
           const xDate = parseInt(mDate.format("YYYYMMDD"), 10);
           const humanDate = mDate.format("dddd, MMMM D, YYYY");
+          const { fromTime, toTime } = frontmatter;
           let badgeStatus = null;
           // const when = moment(mDate).fromNow();
           const { route } = fields;
@@ -361,18 +366,59 @@ class CalendarX extends React.Component {
             }
 
             const content = (
-              <div>
-                <Paragraph style={{ marginBottom: 0, padding: "9px 6px" }}>
-                  <span className="title" style={{ fontSize: "110%" }}>
+              <div style={{ maxWidth: 300, padding: "0.5em" }}>
+                <Paragraph style={{ marginBottom: 0 }}>
+                  <strong
+                    style={{
+                      display: "block",
+                      borderBottom: "1px solid #4a4a4a",
+                      fontSize: "90%",
+                    }}
+                  >
                     {title}
-                  </span>
-                  <br />
-                  <small className="date">
+                  </strong>
+                  <small
+                    className="date"
+                    style={{
+                      display: "block",
+                      fontSize: "70%",
+                      marginTop: -2,
+                    }}
+                  >
                     <i>{humanDate}</i>
                   </small>
-                  <br />
-                  <br />
-                  {frontmatter.abstract}
+                  <small
+                    className="time"
+                    style={{
+                      display: "block",
+                      fontSize: "70%",
+                      marginTop: -2,
+                    }}
+                  >
+                    <i>
+                      {fromTime} – {toTime}
+                    </i>
+                  </small>
+                  <span
+                    style={{
+                      display: "block",
+                      fontSize: "80%",
+                      marginTop: 10,
+                    }}
+                    className="abstract"
+                  >
+                    {frontmatter.abstract}
+                  </span>
+                  <small
+                    style={{
+                      display: "block",
+                      fontSize: "70%",
+                      marginTop: 10,
+                    }}
+                    className="readmore"
+                  >
+                    <Link to={`/${route}`}>Read more ⇾</Link>
+                  </small>
                 </Paragraph>
               </div>
             );

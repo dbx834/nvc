@@ -93,6 +93,10 @@ const componentStyle = css({
       "& .date": {
         fontFamily: "futura-pt, sans-serif !important",
       },
+
+      "& .time": {
+        fontFamily: "futura-pt, sans-serif !important",
+      },
     },
   },
 });
@@ -116,9 +120,14 @@ class EventsGrid extends React.Component {
     const filtered = _.filter(data, ({ node }) => {
       let includeThis = false;
       const { frontmatter } = node;
-      const mDate = moment(frontmatter.date);
+      const { tags, date, startDate } = frontmatter;
+      const mDate = moment(!_.isNull(date) ? date : startDate);
       const xDate = parseInt(mDate.format("YYYYMMDD"), 10);
-      if (todayInt <= xDate && totalEvents >= filteredRecords) {
+
+      const inTheFuture = todayInt <= xDate;
+      const belowMax = totalEvents >= filteredRecords;
+      const isFeatured = inArray(tags, "featured");
+      if (inTheFuture && belowMax && isFeatured) {
         includeThis = true;
         filteredRecords += 1;
       }
@@ -130,190 +139,194 @@ class EventsGrid extends React.Component {
         <HexaGrid id="events-grid">
           {_.map(filtered, ({ node }, index) => {
             const { frontmatter } = node;
-            const mDate = moment(frontmatter.date);
+            const { tags, date, startDate, fromTime, toTime } = frontmatter;
+            const mDate = moment(!_.isNull(date) ? date : startDate);
             const humanDate = mDate.format("dddd, MMMM D, YYYY");
-            const { tags } = frontmatter;
             const when = moment(mDate).fromNow();
             const { fields } = node;
             const { route } = fields;
             const xDate = parseInt(mDate.format("YYYYMMDD"), 10);
-            // console.log(frontmatter, todayInt <= xDate);
-            if (todayInt <= xDate) {
-              return (
-                <Hex className="hex" key={humanDate}>
-                  <Article>
-                    <ul className="event-icons">
-                      {inArray(tags, "nvc") && (
-                        <li>
-                          <Tooltip title="Nonviolent Communication">
-                            <div>
-                              <Image
-                                src={nvc}
-                                rawHeight={450}
-                                rawWidth={450}
-                                className="icon"
-                                style={{
-                                  height: 30,
-                                  width: 30,
-                                  background: "transparent",
-                                }}
-                              />
-                            </div>
-                          </Tooltip>
-                        </li>
-                      )}
-                      {inArray(tags, "rc") && (
-                        <li>
-                          <Tooltip title="Restorative Circle">
-                            <div>
-                              <Image
-                                src={rc}
-                                rawHeight={450}
-                                rawWidth={450}
-                                className="icon"
-                                style={{
-                                  height: 30,
-                                  width: 30,
-                                  background: "transparent",
-                                }}
-                              />
-                            </div>
-                          </Tooltip>
-                        </li>
-                      )}
-                      {inArray(tags, "introduction") && (
-                        <li>
-                          <Tooltip title="Introduction">
-                            <div>
-                              <Image
-                                src={introduction}
-                                rawHeight={450}
-                                rawWidth={450}
-                                className="icon"
-                                style={{
-                                  height: 30,
-                                  width: 30,
-                                  background: "transparent",
-                                }}
-                              />
-                            </div>
-                          </Tooltip>
-                        </li>
-                      )}
-                      {inArray(tags, "deepening") && (
-                        <li>
-                          <Tooltip title="Deepening">
-                            <div>
-                              <Image
-                                src={deepening}
-                                rawHeight={450}
-                                rawWidth={450}
-                                className="icon"
-                                style={{
-                                  height: 30,
-                                  width: 30,
-                                  background: "transparent",
-                                }}
-                              />
-                            </div>
-                          </Tooltip>
-                        </li>
-                      )}
-                      {inArray(tags, "workshop") && (
-                        <li>
-                          <Tooltip title="Workshop">
-                            <div>
-                              <Image
-                                src={workshop}
-                                rawHeight={450}
-                                rawWidth={450}
-                                className="icon"
-                                style={{
-                                  height: 30,
-                                  width: 30,
-                                  background: "transparent",
-                                }}
-                              />
-                            </div>
-                          </Tooltip>
-                        </li>
-                      )}
-                      {inArray(tags, "practice group") && (
-                        <li>
-                          <Tooltip title="Practice group">
-                            <div>
-                              <Image
-                                src={practiceGroup}
-                                rawHeight={450}
-                                rawWidth={450}
-                                className="icon"
-                                style={{
-                                  height: 30,
-                                  width: 30,
-                                  background: "transparent",
-                                }}
-                              />
-                            </div>
-                          </Tooltip>
-                        </li>
-                      )}
-                      {inArray(tags, "webinar") && (
-                        <li>
-                          <Tooltip title="Webinar">
-                            <div>
-                              <Image
-                                src={webinar}
-                                rawHeight={450}
-                                rawWidth={450}
-                                className="icon"
-                                style={{
-                                  height: 30,
-                                  width: 30,
-                                  background: "transparent",
-                                }}
-                              />
-                            </div>
-                          </Tooltip>
-                        </li>
-                      )}
-                    </ul>
-                    <Image
-                      src={dummy1}
-                      rawHeight={1400}
-                      rawWidth={2100}
-                      className="cover"
-                      style={{
-                        height: "auto",
-                        width: "100%",
-                        border: 0,
-                        borderTopLeftRadius: 8,
-                        borderTopRightRadius: 8,
-                      }}
-                      loader="gradient"
-                    />
-                    <Paragraph className="abstract">
-                      <Tooltip title={when} placement="topLeft">
-                        <span className="title" style={{ fontSize: "110%" }}>
-                          {frontmatter.title}
-                        </span>
-                        <br />
-                        <small className="date">
-                          <i>{humanDate}</i>
-                        </small>
-                      </Tooltip>
+
+            return (
+              <Hex className="hex" key={humanDate}>
+                <Article>
+                  <ul className="event-icons">
+                    {inArray(tags, "nvc") && (
+                      <li>
+                        <Tooltip title="Nonviolent Communication">
+                          <div>
+                            <Image
+                              src={nvc}
+                              rawHeight={450}
+                              rawWidth={450}
+                              className="icon"
+                              style={{
+                                height: 30,
+                                width: 30,
+                                background: "transparent",
+                              }}
+                            />
+                          </div>
+                        </Tooltip>
+                      </li>
+                    )}
+                    {inArray(tags, "rc") && (
+                      <li>
+                        <Tooltip title="Restorative Circle">
+                          <div>
+                            <Image
+                              src={rc}
+                              rawHeight={450}
+                              rawWidth={450}
+                              className="icon"
+                              style={{
+                                height: 30,
+                                width: 30,
+                                background: "transparent",
+                              }}
+                            />
+                          </div>
+                        </Tooltip>
+                      </li>
+                    )}
+                    {inArray(tags, "introduction") && (
+                      <li>
+                        <Tooltip title="Introduction">
+                          <div>
+                            <Image
+                              src={introduction}
+                              rawHeight={450}
+                              rawWidth={450}
+                              className="icon"
+                              style={{
+                                height: 30,
+                                width: 30,
+                                background: "transparent",
+                              }}
+                            />
+                          </div>
+                        </Tooltip>
+                      </li>
+                    )}
+                    {inArray(tags, "deepening") && (
+                      <li>
+                        <Tooltip title="Deepening">
+                          <div>
+                            <Image
+                              src={deepening}
+                              rawHeight={450}
+                              rawWidth={450}
+                              className="icon"
+                              style={{
+                                height: 30,
+                                width: 30,
+                                background: "transparent",
+                              }}
+                            />
+                          </div>
+                        </Tooltip>
+                      </li>
+                    )}
+                    {inArray(tags, "workshop") && (
+                      <li>
+                        <Tooltip title="Workshop">
+                          <div>
+                            <Image
+                              src={workshop}
+                              rawHeight={450}
+                              rawWidth={450}
+                              className="icon"
+                              style={{
+                                height: 30,
+                                width: 30,
+                                background: "transparent",
+                              }}
+                            />
+                          </div>
+                        </Tooltip>
+                      </li>
+                    )}
+                    {inArray(tags, "practice group") && (
+                      <li>
+                        <Tooltip title="Practice group">
+                          <div>
+                            <Image
+                              src={practiceGroup}
+                              rawHeight={450}
+                              rawWidth={450}
+                              className="icon"
+                              style={{
+                                height: 30,
+                                width: 30,
+                                background: "transparent",
+                              }}
+                            />
+                          </div>
+                        </Tooltip>
+                      </li>
+                    )}
+                    {inArray(tags, "webinar") && (
+                      <li>
+                        <Tooltip title="Webinar">
+                          <div>
+                            <Image
+                              src={webinar}
+                              rawHeight={450}
+                              rawWidth={450}
+                              className="icon"
+                              style={{
+                                height: 30,
+                                width: 30,
+                                background: "transparent",
+                              }}
+                            />
+                          </div>
+                        </Tooltip>
+                      </li>
+                    )}
+                  </ul>
+                  <Image
+                    src={dummy1}
+                    rawHeight={1400}
+                    rawWidth={2100}
+                    className="cover"
+                    style={{
+                      height: "auto",
+                      width: "100%",
+                      border: 0,
+                      borderTopLeftRadius: 8,
+                      borderTopRightRadius: 8,
+                    }}
+                    loader="gradient"
+                  />
+                  <Paragraph className="abstract">
+                    <Tooltip title={when} placement="topLeft">
+                      <span className="title" style={{ fontSize: "110%" }}>
+                        {frontmatter.title}
+                      </span>
                       <br />
-                      <br />
-                      {frontmatter.abstract}
-                      <br />
-                      <br />
-                      <small className="readmore">
-                        <Link to={route}>Read more ⇾</Link>
+                      <small className="date">
+                        <i>{humanDate}</i>
                       </small>
-                    </Paragraph>
-                  </Article>
-                </Hex>
-              );
-            }
+                      <br />
+                      <small className="time">
+                        <i>
+                          {fromTime} – {toTime}
+                        </i>
+                      </small>
+                    </Tooltip>
+                    <br />
+                    <br />
+                    {frontmatter.abstract}
+                    <br />
+                    <br />
+                    <small className="readmore">
+                      <Link to={`/${route}`}>Read more ⇾</Link>
+                    </small>
+                  </Paragraph>
+                </Article>
+              </Hex>
+            );
           })}
           {_.map(_.times(3 - totalEvents % 3, String), x => {
             return (

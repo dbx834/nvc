@@ -1,7 +1,7 @@
 ---
 title: Emergency Honesty
 cover: https://unsplash.it/400/300/?random?AngelsofMist
-category: 1.Random Category
+category: 4.Journal
 abstract: I’s an f…ing passive! wanna hear? if so, read ahead!
 date: 2010-02-04
 type: post

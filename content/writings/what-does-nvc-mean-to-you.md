@@ -1,7 +1,7 @@
 ---
 title: What does NVC mean to you…?
-cover: https://unsplash.it/400/300/?random?AngelsofMist
-category: 1.Random Category
+cover: https://images.unsplash.com/photo-1518983498539-c6e66c62f6b3?ixlib=rb-0.3.5&s=580f065422952f086541ba61e8ae5304&auto=format&fit=crop&w=1440&h=900
+category: 1.NVC
 abstract: Workshop participants’ brainstorming responses to “What does NVC mean to you…?”
 date: 2012-04-17
 type: post

@@ -60,12 +60,20 @@ class Component extends React.Component {
           loader: true,
         });
 
-        const { name, email, event } = values;
+        const {
+          name,
+          email,
+          event,
+          mobile,
+          country,
+          whatDrawsYou,
+          currentLocation,
+        } = values;
 
         setTimeout(() => {
           // Mock some delay
           fetch(
-            `https://script.google.com/macros/s/AKfycbxe5KaEdHtLH5JVpf-yntF5LZYAszQTwHHQ4tEjvBT4DyykpRtZ/exec?name=${name}&email=${email}&event=${event}&callback=?`,
+            `https://script.google.com/macros/s/AKfycbxe5KaEdHtLH5JVpf-yntF5LZYAszQTwHHQ4tEjvBT4DyykpRtZ/exec?name=${name}&email=${email}&event=${event}&mobile=${mobile}&country=${country}&whatDrawsYou=${whatDrawsYou}&currentLocation=${currentLocation}&callback=?`,
             {
               method: "GET",
               mode: "no-cors",

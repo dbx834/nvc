@@ -1,7 +1,7 @@
 ---
 title: Word Play
 cover: https://unsplash.it/400/300/?random?AngelsofMist
-category: 1.Random Category
+category: 4.Journal
 abstract: “Word Play” by Parul Bajaj
 date: 2011-07-08
 type: post

@@ -1,7 +1,7 @@
 ---
 title: Taboo
-cover: https://unsplash.it/400/300/?random?AngelsofMist
-category: 1.Random Category
+cover: https://images.unsplash.com/photo-1452174344330-c4343dc1cb8f?ixlib=rb-0.3.5&s=e6e9cb5447ba3d4a79db1cff1e524f22&auto=format&fit=crop&w=1440&h=900
+category: 4.Journal
 abstract: Haha, I often say “Sorry is bullshit,” but now I’m gonna say “Taboo is bullshit!”…
 date: 2011-04-08
 type: post

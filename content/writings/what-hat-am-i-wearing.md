@@ -1,7 +1,7 @@
 ---
 title: What Hat Am I Wearing
-cover: https://unsplash.it/400/300/?random?AngelsofMist
-category: 1.Random Category
+cover: https://images.unsplash.com/photo-1510114054347-3b2610d5e362?ixlib=rb-0.3.5&s=633da955647a39fcc59cfbfb565e9f3f&auto=format&fit=crop&w=1440&h=900
+category: 4.Journal
 abstract: If i walk around so much in my own world, with my own reality, my own concerns, my own inner state or self-connection as being the most “important” thing right now, then how can i be open to receiving another… and the life they may be wanting to express…?
 date: 2012-08-16
 type: post

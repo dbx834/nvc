@@ -53,7 +53,7 @@ const menu = [
             title: "Practice Groups",
             link: "/nonviolent-communication/events?filter=practice-group",
           },
-          { title: "Articles", link: "/writings?filter=nvc" },
+          { title: "Articles", link: "/writings#nvc" },
         ],
       },
       {
@@ -70,7 +70,7 @@ const menu = [
             link: "/restorative-circles/events?filter=practice-group",
           },
           { title: "Call a Circle", link: "/call-a-circle" },
-          { title: "Articles", link: "/writings?filter=rc" },
+          { title: "Articles", link: "/writings#rc" },
         ],
       },
       { title: "Mediation", link: "/mediation" },

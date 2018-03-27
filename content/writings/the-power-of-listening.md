@@ -1,7 +1,7 @@
 ---
 title: The power of listening
-cover: https://unsplash.it/400/300/?random?AngelsofMist
-category: 1.Random Category
+cover: https://images.unsplash.com/photo-1507263145141-2d789bf04fe3?ixlib=rb-0.3.5&s=764ad28d22c24846135dafe43028b777&auto=format&fit=crop&w=1440&h=900
+category: 4.Journal
 abstract: I met with a friend the other day, someone who had asked me for NVC support, as he wanted counseling with his wife. He ended up joining my practice group for a few weeks and then attended our International Convention in Pondy. At first, he felt a little apprehensive about NVC, but after the Convention was convinced by its power and has started to see how NVC could be integrated into every aspect of his life. Cool!
 date: 2011-04-14
 type: post

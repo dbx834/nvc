@@ -1,7 +1,7 @@
 ---
 title: To Hear Each Other - AV Radio
 cover: https://unsplash.it/400/300/?random?AngelsofMist
-category: 1.Random Category
+category: 4.Journal
 abstract: Get this! NVC out of the closet! NVC in public! NVC in Auroville’s Town Hall!
 date: 2011-07-19
 type: post

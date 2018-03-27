@@ -1,7 +1,7 @@
 ---
 title: Feedback
 cover: https://unsplash.it/400/300/?random?AngelsofMist
-category: 1.Random Category
+category: 3.Testimonials
 abstract: Fedback from participants.
 date: 2018-01-01
 type: post

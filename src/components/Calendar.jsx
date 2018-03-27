@@ -280,7 +280,7 @@ class CalendarX extends React.Component {
 
   /** logs date */
   onSelect(value, mode) {
-    this.setState({ selectedDate: value });
+    // this.setState({ selectedDate: value });
   }
 
   /** applyFilter */
@@ -363,6 +363,10 @@ class CalendarX extends React.Component {
             } else {
               classNames += " happening-event";
               badgeStatus = "success";
+            }
+
+            if (todayInt === thisDate) {
+              classNames += " today";
             }
 
             const content = (

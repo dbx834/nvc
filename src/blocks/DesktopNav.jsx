@@ -127,6 +127,7 @@ class DesktopNav extends React.Component {
                     const popMenu = subMenu.menu;
                     const { link, menuPopoverLocation } = subMenu;
                     const isOutLink = _.startsWith(link, "http");
+
                     return (
                       <Fragment>
                         {_.isUndefined(popMenu) && (
@@ -162,12 +163,12 @@ class DesktopNav extends React.Component {
                                       );
                                       return (
                                         <li>
-                                          {isOutLink === true && (
-                                            <OutLink to={isItemLinkOutLink}>
+                                          {isItemLinkOutLink === true && (
+                                            <OutLink to={itemLink}>
                                               <span>{itemTitle}</span>
                                             </OutLink>
                                           )}
-                                          {isOutLink === false && (
+                                          {isItemLinkOutLink === false && (
                                             <Link
                                               to={itemLink}
                                               className={

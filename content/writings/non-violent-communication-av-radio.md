@@ -1,7 +1,7 @@
 ---
 title: Non Violent Communication - AV Radio
-cover: https://unsplash.it/400/300/?random?AngelsofMist
-category: 1.Random Category
+cover: /content-assets/covers/nvcavradio.jpg
+category: 1.NVC
 abstract: Get this! NVC out of the closet! NVC in public! NVC in Auroville’s Town Hall!
 date: 2011-01-21
 type: post

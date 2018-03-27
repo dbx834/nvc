@@ -11,11 +11,7 @@ import moment from "moment";
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
 import { Tooltip } from "antd";
-import {
-  Image,
-  TetraGrid as TetraGridX,
-  HexaGrid as HexaGridX,
-} from "@bodhi-project/components";
+import { Image, OutLink } from "@bodhi-project/components";
 import { Elements, applyRhythm } from "@bodhi-project/typography";
 import {
   Page,
@@ -39,10 +35,11 @@ import {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
+import donateButton from "../assets/donateButton.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
-const { H1, H3, Paragraph } = Elements;
+const { H1, H2, Paragraph } = Elements;
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
@@ -96,13 +93,58 @@ class IndexPage extends React.Component {
         <Page className={`${pageStyleClass}`}>
           <div className="constrain">
             <H1>Fee Payment</H1>
-            <Paragraph>blah blah.</Paragraph>
-            <H3>Domestic Transfer</H3>
-            <Paragraph>blah blah.</Paragraph>
-            <H3>International Transfer</H3>
-            <Paragraph>blah blah.</Paragraph>
+            <Paragraph>
+              Please make your payment to confirm your seat. Select the Domestic
+              option for Indian bank/credit cards, or the International option
+              for foreign bank/credit cards.
+            </Paragraph>
+            <H2 mask="h5">Domestic Transfer (₹)</H2>
+            <Paragraph>
+              <OutLink to="https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD">
+                <Image
+                  src={donateButton}
+                  rawWidth={135}
+                  rawHeight={48}
+                  style={{
+                    height: "auto",
+                    width: "150px",
+                    border: 0,
+                    background: "transparent",
+                    display: "inline-block",
+                  }}
+                  loader="gradient"
+                />
+              </OutLink>
+            </Paragraph>
+            <H2 mask="h5">International Transfer ($)</H2>
+            <form
+              action="https://www.paypal.com/cgi-bin/webscr"
+              method="post"
+              target="_blank"
+            >
+              <input type="hidden" name="cmd" value="_s-xclick" />
+              <input
+                type="hidden"
+                name="hosted_button_id"
+                value="WFXM5RNDGBXL4"
+              />
+              <input
+                type="image"
+                src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif"
+                border="0"
+                name="submit"
+                alt="PayPal – The safer, easier way to pay online!"
+              />
+              <img
+                alt=""
+                border="0"
+                src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif"
+                width="1"
+                height="1"
+              />
+            </form>
             <H1>Donation</H1>
-            <Paragraph>blah blah.</Paragraph>
+            <Paragraph>something something.</Paragraph>
           </div>
         </Page>
       </Fragment>

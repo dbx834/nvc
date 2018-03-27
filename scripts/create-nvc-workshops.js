@@ -9,9 +9,9 @@ const _ = require("lodash");
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------- Data
 // ----------------------------------------------------------------------------
-const dirName = "nvc-practice-groups";
+const dirName = "nvc-workshops";
 const years = ["2018"];
-const every = "Wednesday";
+const every = "Friday";
 
 /** make a dir */
 const makeDir = dir => {

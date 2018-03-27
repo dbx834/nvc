@@ -188,7 +188,7 @@ class EventTemplate extends React.Component {
                 markdownAst,
                 {
                   localLink: Link,
-                  linkHeaders: true,
+                  linkHeaders: false,
                   trackHeaders: false,
                   nestHeaders: false,
                 },

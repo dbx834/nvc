@@ -129,9 +129,9 @@ class BlogPostTemplate extends React.Component {
               markdownAst,
               {
                 localLink: Link,
-                linkHeaders: true,
+                linkHeaders: false,
                 trackHeaders: false,
-                nestHeaders: true,
+                nestHeaders: false,
               },
               {},
             )}

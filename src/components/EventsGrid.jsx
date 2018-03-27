@@ -113,7 +113,7 @@ const componentStyleClass = componentStyle.toString();
 class EventsGrid extends React.Component {
   /** standard renderer */
   render() {
-    const { data, totalEvents } = this.props;
+    const { data, totalEvents, featured } = this.props;
     const todayInt = parseInt(moment().format("YYYYMMDD"), 10);
 
     let filteredRecords = 1;
@@ -126,7 +126,8 @@ class EventsGrid extends React.Component {
 
       const inTheFuture = todayInt <= xDate;
       const belowMax = totalEvents >= filteredRecords;
-      const isFeatured = inArray(tags, "featured");
+      const isFeatured = featured === true ? inArray(tags, "featured") : true;
+
       if (inTheFuture && belowMax && isFeatured) {
         includeThis = true;
         filteredRecords += 1;

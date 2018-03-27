@@ -97,7 +97,7 @@ class EventsAndCalendar extends React.Component {
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={pageStyleClass}>
           <H1>Featured Events</H1>
-          <EventsGrid data={postEdges} totalEvents={6} />
+          <EventsGrid data={postEdges} totalEvents={6} featured={true} />
         </Page>
       </Fragment>
     );

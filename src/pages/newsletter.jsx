@@ -138,14 +138,12 @@ class Page extends React.Component {
             },
           )
             .then(response => {
-              console.log("success", response);
               this.setState({
                 loader: false,
                 formSent: true,
               });
             })
             .catch(error => {
-              console.log("error", error);
               this.setState({
                 loader: false,
               });

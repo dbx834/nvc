@@ -45,6 +45,10 @@ const inArray = (array, value) => {
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const componentStyle = css({
+  "& .blank": {
+    display: "none",
+  },
+
   "& .hex": {
     padding: 0,
     border: "1px solid #4a4a4a !important",

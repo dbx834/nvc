@@ -3,27 +3,15 @@
 // ------------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import _ from "lodash";
 import { css } from "glamor";
 import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link from "gatsby-link";
-import { Tooltip } from "antd";
-import {
-  Image,
-  TetraGrid as TetraGridX,
-  HexaGrid as HexaGridX,
-} from "@bodhi-project/components";
+import { Image } from "@bodhi-project/components";
 import { Elements, applyRhythm } from "@bodhi-project/typography";
-import {
-  Page,
-  // Section,
-  Article,
-  // Header,
-  // Footer,
-} from "@bodhi-project/semantic-webflow";
+import { Page } from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -40,6 +28,7 @@ import {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
 import EventsGrid from "../components/EventsGrid";
+import LearnMore from "../components/LearnMore";
 
 import deepening from "../assets/deepening.png";
 import introduction from "../assets/introduction.png";
@@ -53,11 +42,7 @@ import nvcPhoto from "../assets/nvc-in-progress.jpg";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
-const { H1, H3, Paragraph } = Elements;
-const { TetraGrid } = TetraGridX;
-const THex = TetraGridX.Hex;
-const { HexaGrid } = HexaGridX;
-const HHex = HexaGridX.Hex;
+const { H1, Paragraph } = Elements;
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
@@ -88,77 +73,11 @@ const pageWrapper = css({
     ...applyRhythm({ maxWidth: "27X" }),
   },
 
-  "& .eHex": {
-    padding: 0,
-    border: "1px solid #4a4a4a !important",
-    borderRadius: 8,
-    background: "#f6f2f8",
-    marginBottom: 30,
-
-    "@media (min-width: 768px)": {
-      flex: "0 0 32.333%",
-      maxWidth: "32.333%",
-      WebkitFlex: "0 0 32.333%",
-      marginRight: "1%",
-      marginBottom: "1%",
-    },
-
-    "& .abstract": {
-      padding: "9px 12px",
-      marginBottom: 0,
-
-      "& .title": {
-        fontFamily: "futura-pt, sans-serif !important",
-        fontWeight: 700,
-        letterSpacing: "-0.08775ex",
-      },
-
-      "& .date": {
-        fontFamily: "futura-pt, sans-serif !important",
-      },
-    },
-  },
-  "& .blank": {
-    visibility: "hidden",
-  },
-
-  "& .cover": {
-    zIndex: -1,
-  },
-
-  "& ul.event-icons": {
-    listStyle: "none",
-    padding: 0,
-    position: "absolute",
-    top: 0,
-    right: 0,
-    zIndex: 1,
-
-    "& li": {
-      margin: "0 !important",
-      display: "inline-block",
-
-      "& .icon": {
-        border: 0,
-        marginTop: 2,
-        marginRight: 2,
-      },
-    },
+  "& .events": {
+    ...applyRhythm({ maxWidth: "40X" }),
   },
 });
 const pageStyleClass = pageWrapper.toString();
-
-// ----------------------------------------------------------------------------
-// ------------------------------------------------------------------ Functions
-// ----------------------------------------------------------------------------
-/** inArray */
-const inArray = (array, value) => {
-  let rx = false;
-  if (_.indexOf(array, value) >= 0) {
-    rx = true;
-  }
-  return rx;
-};
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
@@ -236,7 +155,14 @@ class IndexPage extends React.Component {
             </Paragraph>
             <H1>Upcoming Events...</H1>
           </div>
-          <EventsGrid data={postEdges} totalEvents={6} featured={false} />
+          <div className="events">
+            <EventsGrid data={postEdges} totalEvents={6} featured={false} />
+          </div>
+          <br />
+          <br />
+          <div className="constrain">
+            <LearnMore />
+          </div>
         </Page>
       </Fragment>
     );
@@ -252,8 +178,9 @@ IndexPage.propTypes = {};
 export const pageQuery = graphql`
   query IndexQuery {
     allMarkdownRemark(
-      limit: 6
-      sort: { fields: [frontmatter___date], order: DESC }
+      limit: 365
+      sort: { fields: [frontmatter___date], order: ASC }
+      filter: { frontmatter: { type: { eq: "event" } } }
     ) {
       edges {
         node {
@@ -265,8 +192,13 @@ export const pageQuery = graphql`
             title
             cover
             date
+            startDate
+            finishDate
+            fromTime
+            toTime
             category
             tags
+            type
           }
         }
       }

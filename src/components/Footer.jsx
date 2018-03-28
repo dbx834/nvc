@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 import { css } from "glamor";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
+import Link from "gatsby-link";
 import { Row, Col, Icon } from "antd";
 import { Container, Image, OutLink } from "@bodhi-project/components";
 import { Elements, applyRhythm } from "@bodhi-project/typography";
@@ -43,6 +44,15 @@ const footerStyle = css({
 
   "& .waves": {
     ...applyRhythm({ marginBottom: "1X" }),
+  },
+
+  "& .hover": {
+    borderBottom: "1.625px solid transparent",
+
+    "&:hover": {
+      color: "#6D00FF",
+      borderBottom: "1.625px solid #6D00FF",
+    },
   },
 
   "& .boat": {
@@ -110,30 +120,34 @@ class Header extends React.Component {
                 }}
               />
             </OutLink>
-            <Image
-              src={logo}
-              rawWidth={450}
-              rawHeight={450}
-              style={{
-                display: "inline-block",
-                border: "none",
-                background: "none",
-                height: 60,
-                width: 60,
-              }}
-            />
-            <Image
-              src={auroville}
-              rawWidth={450}
-              rawHeight={450}
-              style={{
-                display: "inline-block",
-                border: "none",
-                background: "none",
-                height: 75,
-                width: 75,
-              }}
-            />
+            <Link to="/">
+              <Image
+                src={logo}
+                rawWidth={450}
+                rawHeight={450}
+                style={{
+                  display: "inline-block",
+                  border: "none",
+                  background: "none",
+                  height: 60,
+                  width: 60,
+                }}
+              />
+            </Link>
+            <OutLink to="https://www.auroville.org/">
+              <Image
+                src={auroville}
+                rawWidth={450}
+                rawHeight={450}
+                style={{
+                  display: "inline-block",
+                  border: "none",
+                  background: "none",
+                  height: 75,
+                  width: 75,
+                }}
+              />
+            </OutLink>
             <Paragraph className="text-center">
               <small>
                 <i>
@@ -204,6 +218,23 @@ class Header extends React.Component {
                   />
                 </OutLink>
                 <OutLink
+                  to="https://soundcloud.com/laura-joy-145472107"
+                  style={{ marginLeft: 17 }}
+                >
+                  <Image
+                    src={soundcloud}
+                    rawWidth={450}
+                    rawHeight={450}
+                    style={{
+                      display: "inline-block",
+                      border: "none",
+                      background: "none",
+                      height: 42,
+                      width: 42,
+                    }}
+                  />
+                </OutLink>
+                <OutLink
                   to="https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD"
                   style={{ marginLeft: 17 }}
                 >
@@ -252,23 +283,6 @@ class Header extends React.Component {
                     height="1"
                   />
                 </form>
-                <OutLink
-                  to="https://soundcloud.com/laura-joy-145472107"
-                  style={{ marginLeft: 17 }}
-                >
-                  <Image
-                    src={soundcloud}
-                    rawWidth={450}
-                    rawHeight={450}
-                    style={{
-                      display: "inline-block",
-                      border: "none",
-                      background: "none",
-                      height: 42,
-                      width: 42,
-                    }}
-                  />
-                </OutLink>
               </Paragraph>
               <Paragraph style={{ marginBottom: 20 }}>
                 Made with{" "}

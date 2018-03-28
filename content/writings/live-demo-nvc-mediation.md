@@ -11,8 +11,6 @@ tags:
 
 # Live Demo – NVC Mediation
 
-[embed](https://www.youtube.com/watch?v=3lt-qsmHi0A)
-
 Get this! NVC out of the closet! NVC in public! NVC in Auroville’s Town Hall!
 
-
+[embed](https://www.youtube.com/watch?v=3lt-qsmHi0A)

@@ -71,7 +71,15 @@ const pageStyle = css({
     ...applyRhythm({ marginBottom: "1.86X" }),
 
     "& .banner": {
-      flex: "12 1 0%",
+      flex: "7 1 0%",
+
+      "& a": {
+        borderBottom: "none",
+
+        "&:hover": {
+          borderBottom: "none",
+        },
+      },
     },
 
     "& .abstract": {
@@ -150,8 +158,16 @@ class Blog extends React.Component {
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={pageStyleClass}>
           {_.map(categories, category => {
-            const catString = _.trim(_.last(_.split(category, ".")));
+            let catString = _.trim(_.last(_.split(category, ".")));
             const catId = _.kebabCase(_.toLower(catString));
+            switch (catString) {
+              case "NVC":
+                catString = "Nonviolent Communication";
+                break;
+              case "RC":
+                catString = "Restorative Circles";
+                break;
+            }
 
             return (
               <div className="category" key={catId}>
@@ -159,7 +175,7 @@ class Blog extends React.Component {
                 {_.map(writingsNodes, ({ node }) => {
                   const { date, title, abstract, cover } = node.frontmatter;
                   const { route } = node.fields;
-                  const dateStr = moment(date).format("dddd, MMMM Do YYYY");
+                  const dateStr = moment(date).format("dddd, MMMM D, YYYY");
                   const when = moment(date).fromNow();
 
                   return (
@@ -167,13 +183,15 @@ class Blog extends React.Component {
                       {node.frontmatter.category === category && (
                         <Article key={route}>
                           <div className="banner">
-                            <Image
-                              src={cover}
-                              rawWidth={1440}
-                              rawHeight={900}
-                              loader="gradient"
-                              style={{ border: 0 }}
-                            />
+                            <Link style={{ display: "block" }} to={route}>
+                              <Image
+                                src={cover}
+                                rawWidth={1440}
+                                rawHeight={900}
+                                loader="gradient"
+                                style={{ border: 0 }}
+                              />
+                            </Link>
                           </div>
                           <div className="abstract">
                             <Header>
@@ -201,7 +219,6 @@ class Blog extends React.Component {
             );
           })}
         </Page>
-        <Paragraph style={{ textAlign: "center" }}>~ fin ~</Paragraph>
       </Fragment>
     );
   }

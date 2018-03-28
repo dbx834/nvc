@@ -1,15 +1,13 @@
 ---
-title: Culture in my face
+title: Culture in my Face
 cover: https://images.unsplash.com/photo-1507184915978-447ac6ab3ecb?ixlib=rb-0.3.5&s=e1f0e60b77167b3ab7383ad81e2e3435&auto=format&fit=crop&w=1440&h=900
-category: 4.Journal
+category: 6.Journal
 abstract: Yesterday I heard a goat crying, and both my ears and the dogs’ ears perked up. We went to see whether there was a stranded goat in the garden, and we found Murugan carrying a little one in his arms. My heart ached (as I love little animals and want them to be happy and safe), and I asked him what was going on…
 date: 2011-04-14
 type: post
 tags:
   - some tag
 ---
-
-# Culture in my face
 
 Wow… What a different reality… I absolutely LOVE that I live so close to the Tamil village culture, that I have so many chances to experience these human beings “raw,” that they allow me in with such openness and trust, despite the fact that I’m so far removed from their reality, so naive. I could even be viewed as potentially not caring, indifferent, disregarding – all that good stuff…
 

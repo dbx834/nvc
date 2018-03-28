@@ -10,6 +10,7 @@ import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
+import { Tag } from "antd";
 import {
   Page,
   // Section,
@@ -17,7 +18,8 @@ import {
   Header,
   Footer,
 } from "@bodhi-project/semantic-webflow";
-import { Elements } from "@bodhi-project/typography";
+import { Image } from "@bodhi-project/components";
+import { Elements, applyRhythm } from "@bodhi-project/typography";
 import { treeCodeParser } from "@bodhi-project/markdown-to-react";
 import {
   // --------------- Basic
@@ -47,7 +49,35 @@ const { H1, Paragraph } = Elements;
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 const pageStyle = css({
+  display: "flex",
   position: "relative",
+
+  "& .ant-tag": {
+    color: "#B43808",
+    background: "#fdf2ed",
+    borderColor: "#B43808",
+  },
+
+  "& .headings": {
+    display: "flex",
+    flexFlow: "row wrap",
+    alignItems: "flex-start",
+    ...applyRhythm({ marginBottom: "1.86X" }),
+
+    "& .banner": {
+      flex: "7 1 0%",
+    },
+
+    "& .abstract": {
+      flex: "12 1 0%",
+      ...applyRhythm({ paddingLeft: "0.6882X" }),
+
+      "& h3": {
+        marginTop: 0,
+        marginBottom: 5,
+      },
+    },
+  },
 });
 const pageStyleClass = pageStyle.toString();
 
@@ -67,7 +97,7 @@ class BlogPostTemplate extends React.Component {
     const { pathContext } = this.props;
     const { frontmatter } = pathContext;
     // const { toc } = pathContext;
-    const { markdownAst } = pathContext;
+    const { markdownAst, next, prev } = pathContext;
     const { route } = pathContext;
     const checkedRoute = _.startsWith(route, "/") ? route : `/${route}`;
     const nakedRoute = checkedRoute.substr(1);
@@ -77,6 +107,19 @@ class BlogPostTemplate extends React.Component {
     const humanDate = mDate.format("dddd, MMMM Do YYYY");
     const isoDate = mDate.format();
     const elapsed = mDate.fromNow();
+
+    const dateStr = moment(mDate).format("dddd, MMMM D, YYYY");
+    const when = moment(mDate).fromNow();
+
+    let catString = _.trim(_.last(_.split(frontmatter.category, ".")));
+    switch (catString) {
+      case "NVC":
+        catString = "Nonviolent Communication";
+        break;
+      case "RC":
+        catString = "Restorative Circles";
+        break;
+    }
 
     // -------------------------------------------------------------------- SEO
     const pageData = {
@@ -119,31 +162,87 @@ class BlogPostTemplate extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={`${markdownStylesClass} ${pageStyleClass}`}>
-          <Header className="stash">
-            <H1>{frontmatter.title}</H1>
-            <Paragraph>{humanDate}</Paragraph>
-            <Paragraph>{frontmatter.abstract}</Paragraph>
-          </Header>
-          <Article>
-            {treeCodeParser(
-              markdownAst,
-              {
-                localLink: Link,
-                linkHeaders: false,
-                trackHeaders: false,
-                nestHeaders: false,
-              },
-              {},
-            )}
-          </Article>
-          <Footer className="stash">
-            <Paragraph>
-              Copyright&nbsp;{data.websiteCreator}&nbsp;2018.
-              <br />
-              <br />
-              Published on {humanDate} ({elapsed}).
-            </Paragraph>
-          </Footer>
+          <div
+            style={{
+              flexGrow: 10,
+              flexBasis: 0,
+            }}
+            className="contain"
+          >
+            <Header className="headings">
+              <div className="banner">
+                <Image
+                  src={frontmatter.cover}
+                  rawWidth={1440}
+                  rawHeight={900}
+                  loader="gradient"
+                  style={{ border: 0 }}
+                />
+              </div>
+              <div className="abstract">
+                <H1 className="mask-h3" style={{ marginBottom: 5 }}>
+                  {frontmatter.title}
+                </H1>
+                <Tag>{catString}</Tag>
+                <Paragraph style={{ marginBottom: 0 }}>
+                  <small>
+                    <i>
+                      {dateStr}&nbsp;({when})
+                    </i>
+                  </small>
+                  <br />
+                  <br />
+                  {frontmatter.abstract}
+                </Paragraph>
+              </div>
+            </Header>
+            <hr />
+            <br />
+            <Article>
+              {treeCodeParser(
+                markdownAst,
+                {
+                  localLink: Link,
+                  linkHeaders: false,
+                  trackHeaders: false,
+                  nestHeaders: false,
+                },
+                {},
+              )}
+            </Article>
+            <Footer
+              style={{ borderTop: "1px solid #4a4a4a", paddingTop: "1em" }}
+            >
+              <H1 mask="h4">More like this…</H1>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div>
+                  {!_.isNull(prev) && (
+                    <Link to={`/${prev.fields.route}`}>⇜ Previous</Link>
+                  )}
+                </div>
+                <div>
+                  {!_.isNull(next) && (
+                    <Link to={`/${next.fields.route}`}>Next ⇝</Link>
+                  )}
+                </div>
+              </div>
+              <Paragraph className="stash">
+                {data.copyright}
+                <br />
+                <br />
+                Published on {humanDate} ({elapsed}).
+              </Paragraph>
+            </Footer>
+          </div>
+          <div
+            style={{
+              flexGrow: 5,
+              flexBasis: 0,
+            }}
+            className="contain"
+          >
+            &nbsp;
+          </div>
         </Page>
       </Fragment>
     );

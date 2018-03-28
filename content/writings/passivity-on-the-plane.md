@@ -1,15 +1,13 @@
 ---
 title: Passivity on the Plane
 cover: https://images.unsplash.com/photo-1453825517242-1a1527bf0a39?ixlib=rb-0.3.5&s=c97b93f170796ae2e043e971633901f1&auto=format&fit=crop&w=1440&h=900
-category: 4.Journal
+category: 6.Journal
 abstract: This is just not fair! But actually… I’m so grateful to be alive, to have so many opportunities to feel alive and to be challenged to live my values.
 date: 2009-11-27
 type: post
 tags:
   - some tag
 ---
-
-# Passivity on the Plane
 
 This is just not fair! But actually… I’m so grateful to be alive, to have so many opportunities to feel alive and to be challenged to live my values.
 

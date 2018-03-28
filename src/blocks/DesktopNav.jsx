@@ -195,7 +195,10 @@ class DesktopNav extends React.Component {
                                   to={link}
                                   className={pathname === link ? "active" : ""}
                                 >
-                                  <span>{subTitle}&nbsp;⁜</span>
+                                  <span>{subTitle}</span>
+                                  <span style={{ fontSize: "88%" }}>
+                                    &nbsp;»
+                                  </span>
                                 </Link>
                               )}
                             </Popover>

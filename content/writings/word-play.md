@@ -1,17 +1,13 @@
 ---
 title: Word Play
-cover: https://unsplash.it/400/300/?random?AngelsofMist
-category: 4.Journal
+cover: /content-assets/covers/wordplay.jpg
+category: 5.Published Articles
 abstract: “Word Play” by Parul Bajaj
 date: 2011-07-08
 type: post
 tags:
   - some tag
 ---
-
-![{"height": "37vh", "width": "auto", "background": "transparent", "display": "block"}](/content-assets/word-play/img1_768X1024.jpg)
-
-# Word Play
 
 “Word Play” by Parul Bajaj, Indian Express.
 

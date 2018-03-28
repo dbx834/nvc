@@ -352,6 +352,7 @@ class CalendarX extends React.Component {
       if (!_.isNull(filteredData)) {
         _.map(filteredData, ({ node }) => {
           const { frontmatter } = node;
+          console.log(frontmatter);
           const { fields } = node;
           const { title } = frontmatter;
           const mDate = moment(frontmatter.date);

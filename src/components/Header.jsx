@@ -81,7 +81,7 @@ const menu = [
   {
     title: "Learn",
     menu: [
-      { title: "Upcoming Events", link: "/upcoming-events" },
+      { title: "Upcoming Events", link: "/upcoming-events?filter=all" },
       { title: "Featured Events", link: "/featured-events" },
     ],
   },
@@ -110,6 +110,10 @@ const menu = [
           {
             title: "Restorative Auroville",
             link: "https://restorativeauroville.org/",
+          },
+          {
+            title: "India NVC",
+            link: "https://www.indianvc.org/",
           },
           { title: "Sociocracy", link: "http://www.sociocracy.info/" },
           {

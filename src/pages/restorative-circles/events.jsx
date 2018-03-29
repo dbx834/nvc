@@ -114,7 +114,15 @@ class EventsAndCalendar extends React.Component {
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={pageStyleClass}>
           <H1>Event Calendar</H1>
-          <Calendar data={rcNodes} location={this.props.location} />
+          <Calendar
+            data={rcNodes}
+            location={this.props.location}
+            givenTags={{
+              all: "All RC Events",
+              workshop: "Workshops",
+              "practice-group": "Practice Group",
+            }}
+          />
         </Page>
       </Fragment>
     );

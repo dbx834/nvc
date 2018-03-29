@@ -1,5 +1,5 @@
 ---
-title: emergency honesty
+title: "emergency honesty!"
 cover: https://images.unsplash.com/photo-1518208734895-46d2ff97e480?ixlib=rb-0.3.5&s=4b4033bd770ce8666301dbb0e78e8085&auto=format&fit=crop&w=1440&w=900
 category: 6.Journal
 abstract: i’s an f…ing passive! wanna hear? if so, read ahead!

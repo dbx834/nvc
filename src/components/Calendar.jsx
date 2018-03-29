@@ -10,7 +10,7 @@ import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-import { LocaleProvider, Calendar, Popover, Badge, Button } from "antd";
+import { LocaleProvider, Calendar, Popover, Badge, Tag } from "antd";
 import en_GB from "antd/lib/locale-provider/en_GB";
 import "moment/locale/en-gb";
 import { Image } from "@bodhi-project/components";
@@ -20,11 +20,13 @@ import { Elements, applyRhythm, applyType } from "@bodhi-project/typography";
 import packageJson from "../../package.json";
 import nvc from "../assets/nvc.png";
 import rc from "../assets/rc.png";
+import featured from "../assets/featured.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
 const { Paragraph } = Elements;
 const enGB = en_GB;
+const { CheckableTag } = Tag;
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
@@ -300,20 +302,29 @@ class CalendarX extends React.Component {
 
   /** standard renderer */
   render() {
-    const { data } = this.props;
-    const uniqueTags = [];
+    const { data, givenTags } = this.props;
+    let uniqueTags = [];
+    let displayTagsAs = {};
     let activeFilter = null;
 
-    // Get all unique tags
-    _.map(data, ({ node }) => {
-      const { frontmatter } = node;
-      const { tags } = frontmatter;
-      _.map(tags, tag => {
-        if (!inArray(uniqueTags, tag)) {
-          uniqueTags.push(tag);
-        }
+    if (_.isEmpty(givenTags)) {
+      // Get all unique tags
+      _.map(data, ({ node }) => {
+        const { frontmatter } = node;
+        const { tags } = frontmatter;
+        _.map(tags, tag => {
+          if (!inArray(uniqueTags, tag)) {
+            uniqueTags.push(tag);
+          }
+        });
       });
-    });
+    } else {
+      uniqueTags = _.keys(givenTags);
+    }
+
+    if (!_.isEmpty(givenTags)) {
+      displayTagsAs = givenTags;
+    }
 
     // Filter data by tag
     let filteredData = null;
@@ -321,7 +332,9 @@ class CalendarX extends React.Component {
       activeFilter = this.state.query.filter;
       filteredData = _.filter(data, ({ node }) => {
         let displayThis = false;
-        if (inArray(node.frontmatter.tags, activeFilter)) {
+        if (activeFilter === "all") {
+          displayThis = true;
+        } else if (inArray(node.frontmatter.tags, activeFilter)) {
           displayThis = true;
         }
         return displayThis;
@@ -478,6 +491,23 @@ class CalendarX extends React.Component {
                         }}
                       />
                     )}
+                    {inArray(tags, "featured") && (
+                      <Image
+                        src={featured}
+                        rawHeight={450}
+                        rawWidth={450}
+                        className="icon"
+                        style={{
+                          height: 45,
+                          width: 45,
+                          position: "absolute",
+                          background: "transparent",
+                          border: 0,
+                          right: 3,
+                          top: 3,
+                        }}
+                      />
+                    )}
                   </Link>
                 </Popover>
               </div>
@@ -490,23 +520,15 @@ class CalendarX extends React.Component {
 
     return (
       <div className={pageStyleClass}>
-        {_.map(uniqueTags, tag => {
-          let filterName = tag;
-          if (tag === "nvc" || tag === "rc") {
-            filterName = "all";
-          } else {
-            filterName = _.capitalize(tag);
-          }
+        {_.map(displayTagsAs, (tag, key) => {
           return (
             <Fragment>
-              {activeFilter === tag ? (
-                <Button type="primary" onClick={() => this.applyFilter(tag)}>
-                  <span>{tag}</span>
-                </Button>
+              {activeFilter === key ? (
+                <CheckableTag checked onClick={() => this.applyFilter(key)}>
+                  {tag}
+                </CheckableTag>
               ) : (
-                <Button onClick={() => this.applyFilter(tag)}>
-                  <span>{tag}</span>
-                </Button>
+                <Tag onClick={() => this.applyFilter(key)}>{tag}</Tag>
               )}
             </Fragment>
           );
@@ -525,6 +547,11 @@ class CalendarX extends React.Component {
 
 CalendarX.propTypes = {
   data: PropTypes.object,
+  givenTags: PropTypes.object,
+};
+
+CalendarX.defaultProps = {
+  givenTags: [],
 };
 
 // ----------------------------------------------------------------------------

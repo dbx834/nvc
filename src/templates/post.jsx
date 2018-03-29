@@ -52,12 +52,6 @@ const pageStyle = css({
   display: "flex",
   position: "relative",
 
-  "& .ant-tag": {
-    color: "#B43808",
-    background: "#fdf2ed",
-    borderColor: "#B43808",
-  },
-
   "& .headings": {
     display: "flex",
     flexFlow: "row wrap",

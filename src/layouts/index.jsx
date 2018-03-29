@@ -10,7 +10,7 @@ import _ from "lodash";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import { Container } from "@bodhi-project/components";
-import { Type, applyRhythm } from "@bodhi-project/typography";
+import { Type, applyRhythm, applyType } from "@bodhi-project/typography";
 import {
   InitializeMeta,
   UpdateTitle,
@@ -22,6 +22,7 @@ import {
 import "../styles/index.less";
 import indexImage from "../assets/launch.jpg";
 import packageJson from "../../package.json";
+import globalWithMediaQueries from "../helpers/globalWithMediaQueries";
 
 import Footer from "../components/Footer";
 import Header from "../components/Header";

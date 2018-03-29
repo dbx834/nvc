@@ -1,6 +1,6 @@
 ---
-title: L'aura and Restorative Circles
-cover: https://images.unsplash.com/photo-1452174344330-c4343dc1cb8f?ixlib=rb-0.3.5&s=e6e9cb5447ba3d4a79db1cff1e524f22&auto=format&fit=crop&w=1440&h=900
+title: L'aura & Restorative Circles (Auroville Radio)
+cover: /content-assets/covers/laura-and-restorative-circles.jpg
 category: 2.RC
 abstract: Something something…
 date: 2014-09-24
@@ -8,5 +8,7 @@ type: post
 tags:
   - some tag
 ---
+
+Exploring “justice” in Auroville, and how we can respond to conflict and so-called unacceptable behaviour in ways that hold all sides of the story and support moving forward as an entire community. At present, we don’t really have a “justice system” – meaning agreements for how we respond to conflict, agreements on what is/isn’t acceptable, and how we hold each other accountable when something painful happens… We’re hoping to start dialoguing more and more on these subjects…
 
 [embed](https://www.youtube.com/watch?v=jRrurVLtprE)

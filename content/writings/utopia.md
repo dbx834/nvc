@@ -1,7 +1,7 @@
 ---
 title: Utopia
-cover: https://unsplash.it/400/300/?random?AngelsofMist
-category: 1.NVC
+cover: /content-assets/covers/utopia.jpg
+category: 5.Published Articles
 abstract: Samata shared an Alanis song, “Utopia” with our practice group. She added the text and some images…
 date: 2010-02-04
 type: post

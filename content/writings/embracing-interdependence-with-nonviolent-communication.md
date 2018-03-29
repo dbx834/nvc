@@ -1,0 +1,28 @@
+---
+title: Embracing Interdependence with Nonviolent Communication
+cover: /content-assets/covers/embracing-interdependence-with-nonviolent-communication.jpg
+category: 5.Published Articles
+abstract: Yay, an article I’m writing for Lifelong Learning Foundation’s brochure…
+date: 2012-12-17
+type: post
+tags:
+  - some tag
+---
+
+What does walking a path of Nonviolence actually mean? From my experience, it is so much more than I had ever expected, both in terms of the willingness and commitment it requires from my side, as well as what it offers in return and how much it can enrich my life as a result. It is not new that “No man is an island” – we are interdependent and need each other more than we might want to accept. As humans, we’ve created complex systems, from families and schools to trade and commerce to justice and law enforcement, all of which keep us in a variety of interdependent relationships with each other. Now living Nonviolence may look relatively easy with loved ones or within apparently harmonious systems, where it’s clear that my intentions are to show care and respect and to generally create an atmosphere of mutual benefit. But what about living Nonviolence when my relationships are less than harmonious or even apparently violent and disrespectful? Or what about when I forget our interdependence and think that the other doesn’t really matter, that he or she has no impact on me, that our paths will never cross again, or that he or she doesn’t deserve to be acknowledged?
+
+I find Nonviolent Communication to be an incredibly powerful resource, one that offers a resilient framework within which I can celebrate the relationships that work and honour how they contribute to life, and at the same time embrace and walk safely towards the relationships that appear more challenging.
+
+One fundamental principle that Nonviolent Communication puts forward is that behind all of our actions is an attempt to meet a basic human need. So no matter what someone says or does, we can trust he’s doing his best in the moment, given his resources, to express a need for, say love, safety, belonging, or to be seen. With this understanding, I can learn to develop a genuine curiosity towards others, and instead of allowing myself to be controlled by my own judgements of the person or his behaviour, I can now wonder about why he did what he did. Did he yell those swear words because he was afraid and needed to trust that our friendship still mattered?
+
+This genuine curiosity supports me to slow down and connect to a deeper part of my own being. It allows me to shift from listening to what my head is saying (possible judgements and blame) to what my heart knows is true (we are all so alike and have the same universal feelings and needs, just that they’re activated at different times). I might even be able to see that this person’s behaviour is actually not about me or against me; it is instead just an expression of his own inner state in the moment. In this way, I don’t have to take what he says personally, I don’t have to defend myself or react, because all he’s really doing is just saying, “Please see my need.” If I can learn to separate what’s going on for another from my own reaction to it, I can slowly learn to sit with discomfort, to see our shared humanity and develop compassion. Only in this state can I have genuine care and curiosity for what’s going on for another, especially if it appears like he’s trying to attack me (and therefore possibly putting some of my own needs at risk).
+
+Now it doesn’t mean that I have to like or agree with this person’s particular way of expressing himself. I may actually not appreciate his present choices at all – and the shift happens when I can see that my power lies in how I choose to respond to it. I can do it the old way and just react with my habitual patterns (maybe anger and blame, maybe avoidance and denial), or I can choose to take responsibility for what’s going on in me and develop that same curiosity towards myself. What needs are at stake in this situation, what am I really trying to express behind this anger that’s emerging now? Maybe I too have a need for safety, or to be seen. Maybe I’m fed up and want to trust that we can find a different way of communicating.
+
+Once I have this clarity about what’s going on for me and the curiosity for what’s going on in the other, I can initiate a dialogue based on our feelings and needs, instead of on blame and judgement. Blame and judgement are likely to create more distance, and possibly more violence, between us, making it virtually impossible to fully enjoy the interdependence of our lives. When I shift my focus to our needs, we can start to look at concrete ways of moving forward, focusing on what we do want instead of on what we don’t want. There’s the potential for a whole new world to open up, where there’s an abundance of strategies for getting our needs met and we become less and less dependent on others needing to behave they way we want them to. And often by simply understanding each other on this deeper needs-based level, we are able to feel connection in our shared humanity, and what appeared to previously be a conflict might lessen in intensity.
+
+Although choosing to live Nonviolence invites us to reconsider the way we think and behave and in that light can take us on a deep life journey, it also offers some basic key distinctions and tangible steps to support us as we deepen this practice. So the beginner and advanced practitioner alike can walk through the steps and move from disconnection towards connection, thereby increasing our willingness and ability to co-exist together on this planet.
+
+– by L’aura Joy
+
+CNVC Certified Trainer

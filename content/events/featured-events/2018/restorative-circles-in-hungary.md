@@ -1,5 +1,6 @@
 ---
 title: Restorative Circles in Hungary
+subTitle: na
 cover: https://unsplash.it/400/300/?random?AngelsofMist
 category: 3.Featured
 abstract: Page abstract.
@@ -13,8 +14,6 @@ cost: variable
 tags:
   - featured
 ---
-
-# Restorative Circles in Hungary
 
 ### Learning Community Exploration
 

@@ -58,6 +58,7 @@ fs.writeFileIfNotExist = (fname, contents, options, callback) => {
 const template = `
 ---
 title: NVC Workshop
+subTitle: na
 cover: https://unsplash.it/400/300/?random?AngelsofMist
 category: 1.NVC
 abstract: Page abstract.
@@ -70,8 +71,6 @@ tags:
   - nvc
   - workshop
 ---
-
-# NVC Workshop
 
 NVC Workshop – blah blah blah.
 `;

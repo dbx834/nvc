@@ -58,6 +58,7 @@ fs.writeFileIfNotExist = (fname, contents, options, callback) => {
 const template = `
 ---
 title: RC Workshop
+subTitle: na
 cover: https://unsplash.it/400/300/?random?AngelsofMist
 category: 1.RC
 abstract: Page abstract.
@@ -70,8 +71,6 @@ tags:
   - rc
   - workshop
 ---
-
-# RC Workshop
 
 RC Workshop – blah blah blah.
 `;

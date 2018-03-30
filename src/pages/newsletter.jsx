@@ -180,7 +180,8 @@ class Page extends React.Component {
           <div>
             <H1>Newsletter</H1>
             <Paragraph>
-              You can subscribe to our montly newsletter below —
+              If you'd like to receive updates about our programs, please sign
+              up for our newsletter.
             </Paragraph>
             {this.state.formSent === false && (
               <Form onSubmit={this.handleSubmit} className={formStyleClass}>

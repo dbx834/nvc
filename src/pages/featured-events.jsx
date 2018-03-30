@@ -127,6 +127,7 @@ export const pageQuery = graphql`
           frontmatter {
             abstract
             title
+            subTitle
             cover
             date
             startDate

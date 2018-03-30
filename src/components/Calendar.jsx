@@ -22,6 +22,10 @@ import nvc from "../assets/nvc.png";
 import rc from "../assets/rc.png";
 import featured from "../assets/featured.png";
 
+import start from "../assets/start.png";
+import middle from "../assets/middle.png";
+import end from "../assets/end.png";
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
 const { Paragraph } = Elements;
@@ -256,6 +260,9 @@ const parseQueryString = string => {
 
   return objURL;
 };
+
+/** dateStuff */
+const dateStuff = node => {};
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component

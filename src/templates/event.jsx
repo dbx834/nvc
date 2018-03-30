@@ -10,6 +10,7 @@ import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
+import { Tag } from "antd";
 import { OutLink, Image } from "@bodhi-project/components";
 import {
   Page,
@@ -39,6 +40,7 @@ import seoHelper from "../helpers/seoHelper";
 import packageJson from "../../package.json";
 import markdownStylesClass from "../styles/markdownStyles";
 import Register from "../components/Register";
+import RCPracticeGroupSide from "../components/RCPracticeGroupSide";
 import donateButton from "../assets/donateButton.png";
 import Price from "../bits/EventPagePrice";
 
@@ -51,46 +53,55 @@ const { H1, H2, Paragraph } = Elements;
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 const pageStyle = css({
-  marginBottom: 40,
-  position: "relative",
   display: "flex",
-  // ...applyRhythm({ maxWidth: "27X" }),
-  "& div + p": {
-    // ...applyRhythm({ marginTop: "2X" }),
-  },
+  position: "relative",
 
-  "& .contain": {
-    padding: "0em 2em",
-  },
+  "& .left": {
+    flexGrow: 10,
+    flexBasis: 0,
+    padding: "0em 1em",
 
-  "& .etc": {
-    "& h1": {
-      textTransform: "uppercase",
-      borderTop: "3px solid #4a4a4a",
-      fontStyle: "italic",
+    "& .headings": {
+      display: "flex",
+      flexFlow: "row wrap",
+      alignItems: "flex-start",
+      ...applyRhythm({ marginBottom: "1.86X" }),
+
+      "& .banner": {
+        flex: "7 1 0%",
+      },
+
+      "& .abstract": {
+        flex: "12 1 0%",
+        ...applyRhythm({ paddingLeft: "0.6882X" }),
+
+        "& h3": {
+          marginTop: 0,
+          marginBottom: 5,
+        },
+      },
     },
   },
 
-  // "& a": {
-  //   color: "inherit",
-  //   borderBottom: "none",
-
-  //   "&:hover": {
-  //     color: "inherit",
-  //     borderBottom: "none",
-  //   },
-  //   "&:visited": {
-  //     textDecoration: "none",
-  //   },
-  //   "&:link": {
-  //     textDecoration: "none",
-  //   },
-  //   "&:active": {
-  //     textDecoration: "none",
-  //   },
-  // },
+  "& .right": {
+    flexGrow: 5,
+    flexBasis: 0,
+    padding: "0em 1em",
+  },
 });
 const pageStyleClass = pageStyle.toString();
+
+// ----------------------------------------------------------------------------
+// ------------------------------------------------------------------ Functions
+// ----------------------------------------------------------------------------
+/** inArray */
+const inArray = (array, value) => {
+  let rx = false;
+  if (_.indexOf(array, value) >= 0) {
+    rx = true;
+  }
+  return rx;
+};
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
@@ -122,6 +133,23 @@ class EventTemplate extends React.Component {
 
     const { orgLocation } = data;
     const { fromTime, toTime } = frontmatter;
+
+    let catString = _.trim(_.last(_.split(frontmatter.category, ".")));
+    switch (catString) {
+      case "NVC":
+        catString = "Nonviolent Communication";
+        break;
+      case "RC":
+        catString = "Restorative Circles";
+        break;
+    }
+
+    console.log(humanDate);
+
+    let whichSide = null;
+    if (inArray(tags, "rc") && inArray(tags, "practice-group")) {
+      whichSide = "rc-practice-group";
+    }
 
     // -------------------------------------------------------------------- SEO
     const pageData = {
@@ -171,18 +199,48 @@ class EventTemplate extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={`${markdownStylesClass} ${pageStyleClass}`}>
-          <div
-            style={{
-              flexGrow: 10,
-              flexBasis: 0,
-            }}
-            className="contain"
-          >
-            <Header className="stash">
-              <H1>{frontmatter.title}</H1>
-              <Paragraph>{humanDate}</Paragraph>
-              <Paragraph>{frontmatter.abstract}</Paragraph>
+          {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Main */}
+          <div className="left">
+            <Header className="headings">
+              <div className="banner">
+                <Image
+                  src={frontmatter.cover}
+                  rawWidth={1440}
+                  rawHeight={900}
+                  loader="gradient"
+                  style={{ border: 0 }}
+                />
+              </div>
+              <div className="abstract">
+                <H1 className="mask-h3" style={{ marginBottom: 5 }}>
+                  {frontmatter.title}
+                </H1>
+                <Paragraph style={{ marginBottom: 0 }}>
+                  {((inArray(tags, "rc") && inArray(tags, "practice-group")) ||
+                    (inArray(tags, "nvc") &&
+                      inArray(tags, "practice-group"))) && (
+                    <Fragment>
+                      <strong>
+                        {frontmatter.subTitle}
+                        &nbsp; • &nbsp;
+                        {fromTime} – {toTime}
+                      </strong>
+                      <br />
+                      <br />
+                    </Fragment>
+                  )}
+                  <i>
+                    {humanDate}&nbsp;({elapsed})
+                  </i>
+                  <br />
+                  <i>
+                    {fromTime} – {toTime}
+                  </i>
+                </Paragraph>
+              </div>
             </Header>
+            <hr />
+            <br />
             <Article>
               {treeCodeParser(
                 markdownAst,
@@ -219,86 +277,13 @@ class EventTemplate extends React.Component {
               </Paragraph>
             </Footer>
           </div>
-          <div
-            style={{
-              flexGrow: 5,
-              flexBasis: 0,
-            }}
-            className="etc"
-          >
-            <H1 mask="h4">Date & Time</H1>
-            <Paragraph>
-              {humanDate}
-              <br />
-              <i>
-                {fromTime} – {toTime}
-              </i>
-            </Paragraph>
-            <Price frontmatter={frontmatter} />
 
-            <H1 mask="h4">Register</H1>
-            <Paragraph style={{ marginBottom: 30 }}>
-              Thank you for your interest in this upcoming
-              workshop/training/practice group!
-              <br />
-              <br />
-              Please fill out the below details, and we will respond shortly
-              with additional details (availability, price, venue, etc).
-            </Paragraph>
-            <div id="register-form">
-              <Register event={{ key: humanDate }} />
-            </div>
-            <H1 mask="h4">Pay Now</H1>
-            <Paragraph>
-              Please make your payment to confirm your seat. Select the Domestic
-              option for Indian bank/credit cards, or the International option
-              for foreign bank/credit cards.
-            </Paragraph>
-            <H2 mask="h5">Domestic Transfer (₹)</H2>
-            <Paragraph>
-              <OutLink to="https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD">
-                <Image
-                  src={donateButton}
-                  rawWidth={135}
-                  rawHeight={48}
-                  style={{
-                    height: "auto",
-                    width: "150px",
-                    border: 0,
-                    background: "transparent",
-                    display: "inline-block",
-                  }}
-                  loader="gradient"
-                />
-              </OutLink>
-            </Paragraph>
-            <H2 mask="h5">International Transfer ($)</H2>
-            <form
-              action="https://www.paypal.com/cgi-bin/webscr"
-              method="post"
-              target="_blank"
-            >
-              <input type="hidden" name="cmd" value="_s-xclick" />
-              <input
-                type="hidden"
-                name="hosted_button_id"
-                value="WFXM5RNDGBXL4"
-              />
-              <input
-                type="image"
-                src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif"
-                border="0"
-                name="submit"
-                alt="PayPal – The safer, easier way to pay online!"
-              />
-              <img
-                alt=""
-                border="0"
-                src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif"
-                width="1"
-                height="1"
-              />
-            </form>
+          {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Side */}
+          <div className="right">
+            {!_.isNull(whichSide) &&
+              whichSide === "rc-practice-group" && (
+                <RCPracticeGroupSide data={frontmatter} />
+              )}
           </div>
         </Page>
       </Fragment>

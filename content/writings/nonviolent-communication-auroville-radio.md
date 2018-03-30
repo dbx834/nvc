@@ -1,5 +1,5 @@
 ---
-title: Nonviolent Communication - AV Radio
+title: Nonviolent Communication (Auroville Radio)
 cover: /content-assets/covers/nvcavradio.jpg
 category: 1.NVC
 abstract: Get this! NVC out of the closet! NVC in public! NVC in Auroville’s Town Hall!

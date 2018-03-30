@@ -58,6 +58,7 @@ fs.writeFileIfNotExist = (fname, contents, options, callback) => {
 const template = `
 ---
 title: RC Practice Group
+subTitle: Every Thursday
 cover: https://unsplash.it/400/300/?random?AngelsofMist
 category: 1.RC
 abstract: Page abstract.
@@ -71,13 +72,11 @@ tags:
   - practice-group
 ---
 
-# RC Practice Group
-
 Drop-in practice group. Everyone is welcome!
 
 Prerequisite: for those who have some background in Restorative Circles
 
-If it’s your first time, contact L’aura: (+91) 9442788016, joylivinglearning@gmail.com for additional details, venue, etc.
+If it’s your first time, contact L’aura (joylivinglearning@gmail.com) for additional details, venue, etc.
 
 Also possible to join in on Zoom (online video conference).
 

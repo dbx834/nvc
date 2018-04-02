@@ -163,6 +163,7 @@ class Page extends React.Component {
     } = this.props.form;
     // Only show error after a field is touched.
     const emailError = isFieldTouched("email") && getFieldError("email");
+    const nameError = isFieldTouched("name") && getFieldError("name");
 
     return (
       <Fragment>
@@ -185,6 +186,16 @@ class Page extends React.Component {
             </Paragraph>
             {this.state.formSent === false && (
               <Form onSubmit={this.handleSubmit} className={formStyleClass}>
+                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Name */}
+                <FormItem
+                  validateStatus={nameError ? "error" : ""}
+                  help={nameError || ""}
+                >
+                  {getFieldDecorator("name", {
+                    validateTrigger: ["onChange", "onBlur"],
+                    rules: [{ validator: validateName }],
+                  })(<Input placeholder="Name" />)}
+                </FormItem>
                 {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
                 <FormItem
                   validateStatus={emailError ? "error" : ""}

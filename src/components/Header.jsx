@@ -73,8 +73,10 @@ const menu = [
           { title: "Articles", link: "/writings#rc" },
         ],
       },
-      { title: "Mediation", link: "/mediation" },
-      { title: "Group Facilitation", link: "/group-facilitation" },
+      {
+        title: "Mediation & Facilitation",
+        link: "/mediation-and-facilitation",
+      },
       { title: "Individual Coaching", link: "/individual-coaching" },
     ],
   },
@@ -114,11 +116,6 @@ const menu = [
           {
             title: "India NVC",
             link: "https://www.indianvc.org/",
-          },
-          { title: "Sociocracy", link: "http://www.sociocracy.info/" },
-          {
-            title: "Internal Family Systems",
-            link: "https://selfleadership.org/",
           },
         ],
       },

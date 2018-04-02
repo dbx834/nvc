@@ -10,7 +10,7 @@ const _ = require("lodash");
 // ----------------------------------------------------------------------- Data
 // ----------------------------------------------------------------------------
 const dirName = "nvc-practice-groups";
-const years = ["2018"];
+const years = ["2018", "2019"];
 const every = "Wednesday";
 
 /** make a dir */
@@ -66,18 +66,23 @@ date: %date%
 fromTime: 4.30pm
 toTime: 6.30pm
 type: event
-cost: ₹500
+cost: ₹600
 tags:
   - nvc
   - practice-group
 ---
 
-Prerequisite: for those who have some background in Nonviolent Communication
+Come and deepen your NVC, and connect with others on the journey.
 
-Requirement: commitment for minimum 1-month
+This practice group is for those who already have some background in NVC. And we request that you join for a minimum of 1 month, so as to deepen connection and a sense of community.
 
-To confirm your attendance and for additional details like venue, etc - please register.
+![image](/content-assets/nvc-practice-group/nvc-practice-group-3_720X450.jpg)
 
+![image](/content-assets/nvc-practice-group/nvc-practice-group-4_1105X500.jpg)
+
+If you don’t have any experience with NVC, please attend an [Introduction to NVC Workshop](/nonviolent-communication/events?filter=workshop) first.
+
+Register to confirm your attendance, and to receive additional details like venue, availability, etc.
 `;
 
 // ----------------------------------------------------------------------------

@@ -10,7 +10,7 @@ import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-import { Tooltip } from "antd";
+import { Modal } from "antd";
 import { Image, OutLink } from "@bodhi-project/components";
 import { Elements, applyRhythm } from "@bodhi-project/typography";
 import {
@@ -35,6 +35,7 @@ import {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
+import globalWithMediaQueries from "../helpers/globalWithMediaQueries";
 import donateButton from "../assets/donateButton.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
@@ -77,6 +78,36 @@ const pageStyleClass = pageWrapper.toString();
 // ----------------------------------------------------------------------------
 /** IndexPage */
 class IndexPage extends React.Component {
+  /** standard constructor */
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      visible: false,
+      modalData: null,
+    };
+
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
+  }
+
+  /** show the modal */
+  showModal(e, dataKey) {
+    e.preventDefault();
+    this.setState({
+      visible: true,
+      modalData: dataKey,
+    });
+  }
+
+  /** hide the modal */
+  hideModal(e) {
+    this.setState({
+      visible: false,
+      modalData: null,
+    });
+  }
+
   /** standard renderer */
   render() {
     return (
@@ -94,59 +125,87 @@ class IndexPage extends React.Component {
           <div className="constrain">
             <H1>Fee Payment</H1>
             <Paragraph>
-              Please make your payment to confirm your seat. Select the Domestic
-              option for Indian bank/credit cards, or the International option
-              for foreign bank/credit cards.
+              You may pay your fees here, or directly on the page on the event
+              you’re registering for.
+              <br />
+              <br />
+              Select the Domestic option for Indian bank/credit cards, or the
+              International option for foreign bank/credit cards.
             </Paragraph>
-            <H2 mask="h5">Domestic Transfer (₹)</H2>
-            <Paragraph>
-              <OutLink to="https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD">
-                <Image
-                  src={donateButton}
-                  rawWidth={135}
-                  rawHeight={48}
-                  style={{
-                    height: "auto",
-                    width: "150px",
-                    border: 0,
-                    background: "transparent",
-                    display: "inline-block",
-                  }}
-                  loader="gradient"
-                />
-              </OutLink>
-            </Paragraph>
-            <H2 mask="h5">International Transfer ($)</H2>
-            <form
-              action="https://www.paypal.com/cgi-bin/webscr"
-              method="post"
-              target="_blank"
-            >
-              <input type="hidden" name="cmd" value="_s-xclick" />
-              <input
-                type="hidden"
-                name="hosted_button_id"
-                value="WFXM5RNDGBXL4"
-              />
-              <input
-                type="image"
-                src="https://www.paypalobjects.com/en_GB/i/btn/btn_buynowCC_LG.gif"
-                border="0"
-                name="submit"
-                alt="PayPal – The safer, easier way to pay online!"
-              />
-              <img
-                alt=""
-                border="0"
-                src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif"
-                width="1"
-                height="1"
-              />
-            </form>
+            <Image
+              src={""}
+              rawHeight={450}
+              rawWidth={450}
+              className="icon"
+              style={{
+                height: 65,
+                width: 65,
+                display: "inline-block",
+                background: "transparent",
+                border: "1px solid #4a4a4a",
+                marginRight: 15,
+              }}
+            />
+            <Image
+              src={""}
+              rawHeight={450}
+              rawWidth={450}
+              className="icon"
+              style={{
+                height: 65,
+                width: 65,
+                background: "transparent",
+                border: "1px solid #4a4a4a",
+                display: "inline-block",
+              }}
+            />
+            <br />
+            <br />
+            <br />
+            <br />
             <H1>Donation</H1>
-            <Paragraph>something something.</Paragraph>
+            <Paragraph>
+              If you’d like to make a donation to Joy Living Learning, you may
+              do so below. This will link directly to the Auroville Foundation
+              payment gateway page, and you will be able to receive a tax
+              exemption.
+            </Paragraph>
+            <Paragraph>
+              <a href="#" onClick={e => this.showModal(e)}>
+                click!
+              </a>
+            </Paragraph>
+            <Paragraph>
+              Please email{" "}
+              <OutLink to="mailto:joylivinglearning@gmail.com">
+                joylivinglearning@gmail.com
+              </OutLink>{" "}
+              to let us know that you have sent a donation, so that we can track
+              it.
+            </Paragraph>
+            <Paragraph>
+              Joy Living Learning is a Unit under the Auroville Foundation,
+              which is a Charitable Trust under the Ministry of Human Resources
+              (Indian Government). Your donation will support Joy Living
+              Learning in its mission to share the principles of applied
+              nonviolence in different communities and sectors, such as
+              education, governance, and the corporate world.
+            </Paragraph>
+            <Paragraph>
+              If you would like more detailed information about our projects,{" "}
+              <Link to="/contact">contact us</Link>.
+            </Paragraph>
           </div>
         </Page>
+        <Modal
+          footer={null}
+          visible={this.state.visible}
+          onCancel={this.hideModal}
+        >
+          {!_.isNull(this.state.modalData) && (
+            <div className="av-page">hello!</div>
+          )}
+        </Modal>
       </Fragment>
     );
   }

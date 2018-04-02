@@ -41,6 +41,8 @@ import packageJson from "../../package.json";
 import markdownStylesClass from "../styles/markdownStyles";
 import Register from "../components/Register";
 import RCPracticeGroupSide from "../components/RCPracticeGroupSide";
+import NVCPracticeGroupSide from "../components/NVCPracticeGroupSide";
+import WorkshopSide from "../components/WorkshopSide";
 import donateButton from "../assets/donateButton.png";
 import Price from "../bits/EventPagePrice";
 
@@ -55,6 +57,7 @@ const { H1, H2, Paragraph } = Elements;
 const pageStyle = css({
   display: "flex",
   position: "relative",
+  marginBottom: 60,
 
   "& .left": {
     flexGrow: 10,
@@ -144,11 +147,15 @@ class EventTemplate extends React.Component {
         break;
     }
 
-    console.log(humanDate);
-
     let whichSide = null;
     if (inArray(tags, "rc") && inArray(tags, "practice-group")) {
       whichSide = "rc-practice-group";
+    }
+    if (inArray(tags, "nvc") && inArray(tags, "practice-group")) {
+      whichSide = "nvc-practice-group";
+    }
+    if (inArray(tags, "workshop")) {
+      whichSide = "workshop";
     }
 
     // -------------------------------------------------------------------- SEO
@@ -284,6 +291,12 @@ class EventTemplate extends React.Component {
               whichSide === "rc-practice-group" && (
                 <RCPracticeGroupSide data={frontmatter} />
               )}
+            {!_.isNull(whichSide) &&
+              whichSide === "nvc-practice-group" && (
+                <NVCPracticeGroupSide data={frontmatter} />
+              )}
+            {!_.isNull(whichSide) &&
+              whichSide === "workshop" && <WorkshopSide data={frontmatter} />}
           </div>
         </Page>
       </Fragment>

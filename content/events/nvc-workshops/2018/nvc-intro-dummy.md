@@ -7,12 +7,10 @@ date: 2018-04-14
 fromTime: 4.30pm
 toTime: 6.30pm
 type: event
-cost: Variable
+cost: na
 tags:
   - nvc
   - workshop
 ---
-
-# NVC Intro Dummy
 
 something something

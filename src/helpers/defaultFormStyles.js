@@ -36,7 +36,7 @@ const formStyle = css({
 
       "& .ant-select-selection": {
         border: "none",
-        borderBottom: "3px solid #646464",
+        borderBottom: "2px solid #646464",
         borderRadius: 0,
         height: "auto",
         backgroundColor: "#f8f2e6",
@@ -83,7 +83,7 @@ const formStyle = css({
     fontSize: "80%",
     fontFamily: "inherit",
     border: "none",
-    borderBottom: "3px solid #646464",
+    borderBottom: "2px solid #646464",
     borderRadius: 0,
     height: "auto",
     color: "#363636",
@@ -102,28 +102,28 @@ const formStyle = css({
     "&:hover": {
       border: "none",
       boxShadow: "none",
-      borderBottom: "3px solid #646464",
+      borderBottom: "2px solid #646464",
       color: "#0000FF",
     },
     "&:visited": {
       border: "none",
       boxShadow: "none",
-      borderBottom: "3px solid #646464",
+      borderBottom: "2px solid #646464",
     },
     "&:link": {
       border: "none",
       boxShadow: "none",
-      borderBottom: "3px solid #646464",
+      borderBottom: "2px solid #646464",
     },
     "&:active": {
       border: "none",
       boxShadow: "none",
-      borderBottom: "3px solid #646464",
+      borderBottom: "2px solid #646464",
     },
     "&:focus": {
       border: "none",
       boxShadow: "none",
-      borderBottom: "3px solid #0000FF",
+      borderBottom: "2px solid #0000FF",
       color: "#0000FF",
     },
   },
@@ -135,9 +135,13 @@ const formStyle = css({
       borderRadius: 0,
       backgroundColor: "#0000FF",
       borderColor: "#0000FF",
+
+      "& span": {
+        fontSize: "80%",
+      },
     },
-    ...applyRhythm({ height: "1.375X" }),
-    ...applyRhythm({ padding: "0X 1.625X" }),
+    ...applyRhythm({ height: "1X" }),
+    ...applyRhythm({ padding: "0X 0.625X" }),
   ),
 
   "& .ant-btn-primary[disabled]": {

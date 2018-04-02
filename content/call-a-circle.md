@@ -1,5 +1,5 @@
 ---
-title: Call A Circle
+title: Call a Circle
 cover: https://unsplash.it/400/300/?random?AngelsofMist
 category: 1.Another Random Category
 abstract: Page abstract.
@@ -9,6 +9,6 @@ tags:
   - some tag
 ---
 
-# Call A Circle
+# Call a Circle
 
 Something something…

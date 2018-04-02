@@ -10,7 +10,7 @@ const _ = require("lodash");
 // ----------------------------------------------------------------------- Data
 // ----------------------------------------------------------------------------
 const dirName = "rc-practice-groups";
-const years = ["2018"];
+const years = ["2018", "2019"];
 const every = "Thursday";
 
 /** make a dir */
@@ -72,15 +72,17 @@ tags:
   - practice-group
 ---
 
-Drop-in practice group. Everyone is welcome!
+Come and practice your RC facilitation skills! 
 
-Prerequisite: for those who have some background in Restorative Circles
+This is a drop-in practice group, so you may come sometimes or all the time! We request that you have some prior RC experience before joining this group.
 
-If it’s your first time, contact L’aura (joylivinglearning@gmail.com) for additional details, venue, etc.
+![image](/content-assets/rc-practice-group/rc-practice-group-1_1200X700.jpg)
 
-Also possible to join in on Zoom (online video conference).
+![image](/content-assets/rc-practice-group/rc-practice-group-2_1600X900.jpg)
 
-To confirm your attendance and for additional details like venue, etc - please register.
+You may also call-in online, via Zoom (online video conference).
+
+If it's your first time, please register to confirm your attendance, and to receive additional details like venue, Zoom ID, etc.
 `;
 
 // ----------------------------------------------------------------------------

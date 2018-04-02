@@ -172,6 +172,19 @@ const mobileMenu = css({
 });
 const mobileMenuClass = mobileMenu.toString();
 
+globalWithMediaQueries(".ant-modal", {
+  height: "90vh !important",
+  width: "90vw !important",
+  overflow: "scroll !important",
+  padding: "0em !important",
+  top: "20px !important",
+});
+
+globalWithMediaQueries(".ant-modal-content", {
+  minHeight: "90vh !important",
+  minWidth: "90vw !important",
+});
+
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------

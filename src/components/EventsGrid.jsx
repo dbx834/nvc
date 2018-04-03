@@ -49,6 +49,10 @@ const componentStyle = css({
     display: "none",
   },
 
+  "& > div": {
+    justifyContent: "flex-start !important",
+  },
+
   "& .hex": {
     padding: 0,
     border: "1px solid #4a4a4a !important",
@@ -141,7 +145,7 @@ class EventsGrid extends React.Component {
 
     return (
       <div className={componentStyleClass}>
-        <HexaGrid id="events-grid">
+        <HexaGrid>
           {_.map(filtered, ({ node }, index) => {
             const { frontmatter } = node;
             const { tags, date, startDate, fromTime, toTime } = frontmatter;
@@ -330,13 +334,6 @@ class EventsGrid extends React.Component {
                     </small>
                   </Paragraph>
                 </Article>
-              </Hex>
-            );
-          })}
-          {_.map(_.times(3 - totalEvents % 3, String), x => {
-            return (
-              <Hex className="hex blank" key={x}>
-                <div>&nbsp;</div>
               </Hex>
             );
           })}

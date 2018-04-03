@@ -138,9 +138,10 @@ const pageStyle = css({
           display: "block",
           height: 89,
           width: 89,
+          color: "inherit",
 
           "&:hover": {
-            color: "#6D00FF",
+            color: "inherit",
             borderBottom: "1.625px solid transparent",
           },
         },
@@ -261,8 +262,344 @@ const parseQueryString = string => {
   return objURL;
 };
 
-/** dateStuff */
-const dateStuff = node => {};
+/** popContent */
+const popContent = standardData => {
+  const {
+    title,
+    humanDate,
+    fromTime,
+    toTime,
+    abstract,
+    route,
+    diff,
+    beginHumanDate,
+    endHumanDate,
+  } = standardData;
+
+  return (
+    <div style={{ maxWidth: 300, padding: "0.5em" }}>
+      <Paragraph style={{ marginBottom: 0 }}>
+        <strong
+          style={{
+            display: "block",
+            borderBottom: "1px solid #4a4a4a",
+            fontSize: "90%",
+          }}
+        >
+          {title}
+        </strong>
+        <small
+          className="date"
+          style={{
+            display: "block",
+            fontSize: "70%",
+            marginTop: -2,
+          }}
+        >
+          {diff === 0 ? (
+            <i>{humanDate}</i>
+          ) : (
+            <Fragment>
+              Begins: <i>{beginHumanDate}</i>
+              <br />
+              Ends: <i>{endHumanDate}</i>
+              <br />
+              <br />
+            </Fragment>
+          )}
+        </small>
+        <small
+          className="time"
+          style={{
+            display: "block",
+            fontSize: "70%",
+            marginTop: -2,
+          }}
+        >
+          <i>
+            {fromTime} – {toTime}
+          </i>
+        </small>
+        <span
+          style={{
+            display: "block",
+            fontSize: "80%",
+            marginTop: 10,
+          }}
+          className="abstract"
+        >
+          {abstract}
+        </span>
+        <small
+          style={{
+            display: "block",
+            fontSize: "70%",
+            marginTop: 10,
+          }}
+          className="readmore"
+        >
+          <Link to={`/${route}`}>Read more ⇾</Link>
+        </small>
+      </Paragraph>
+    </div>
+  );
+};
+
+/** getStandardData */
+const getStandardData = ({ node }) => {
+  const { frontmatter, fields } = node;
+  const {
+    title,
+    fromTime,
+    toTime,
+    tags,
+    date,
+    startDate,
+    finishDate,
+    abstract,
+  } = frontmatter;
+  const { route } = fields;
+
+  const begins = moment(!_.isNull(startDate) ? startDate : date);
+  const ends = moment(
+    !_.isNull(finishDate) ? finishDate : begins.add(23, "hours"),
+  );
+  const beginDateInt = parseInt(begins.format("YYYYMMDD"), 10);
+  const diff = moment.duration(ends.diff(begins)).asDays();
+  const humanDate = begins.format("dddd, MMMM D, YYYY");
+
+  let beginHumanDate = null;
+  let endHumanDate = null;
+  if (diff !== 0) {
+    beginHumanDate = humanDate;
+    endHumanDate = ends.format("dddd, MMMM D, YYYY");
+  }
+
+  return {
+    title,
+    fromTime,
+    toTime,
+    tags,
+    date,
+    startDate,
+    finishDate,
+    route,
+    begins,
+    ends,
+    beginDateInt,
+    diff,
+    humanDate,
+    abstract,
+    beginHumanDate,
+    endHumanDate,
+  };
+};
+
+/** makeFrag */
+const makeFrag = ({
+  standardData,
+  todayInt,
+  thisDate,
+  selectedMonth,
+  thisMonth,
+  day,
+  multiDay,
+}) => {
+  const { tags, route, beginDateInt } = standardData;
+  let badgeStatus = null;
+  let classNames = "date-block";
+
+  if (selectedMonth === thisMonth) {
+    classNames += " this-month";
+  } else {
+    classNames += " that-month";
+  }
+
+  if (todayInt > beginDateInt) {
+    classNames += " past-event";
+    badgeStatus = "default";
+  } else if (todayInt < beginDateInt) {
+    classNames += " planned-event";
+    badgeStatus = "warning";
+  } else {
+    classNames += " happening-event";
+    badgeStatus = "success";
+  }
+
+  if (todayInt === thisDate) {
+    classNames += " today";
+  }
+
+  const content = popContent(standardData);
+
+  const frag = (
+    <div className={classNames}>
+      <Popover content={content} title={false}>
+        <Link to={`/${route}`}>
+          <Badge status={badgeStatus}>{day}</Badge>
+          <br />
+          {inArray(tags, "nvc") && (
+            <Image
+              src={nvc}
+              rawHeight={450}
+              rawWidth={450}
+              className="icon"
+              style={{
+                height: 45,
+                width: 45,
+                position: "absolute",
+                background: "transparent",
+                border: 0,
+                right: 3,
+                top: 3,
+                zIndex: 2,
+              }}
+            />
+          )}
+          {inArray(tags, "rc") && (
+            <Image
+              src={rc}
+              rawHeight={450}
+              rawWidth={450}
+              className="icon"
+              style={{
+                height: 45,
+                width: 45,
+                position: "absolute",
+                background: "transparent",
+                border: 0,
+                right: 3,
+                top: 3,
+                zIndex: 2,
+              }}
+            />
+          )}
+          {inArray(tags, "featured") && (
+            <Image
+              src={featured}
+              rawHeight={450}
+              rawWidth={450}
+              className="icon"
+              style={{
+                height: 45,
+                width: 45,
+                position: "absolute",
+                background: "transparent",
+                border: 0,
+                right: 3,
+                top: 3,
+                zIndex: 2,
+              }}
+            />
+          )}
+          {multiDay === true && (
+            <Image
+              src={start}
+              rawHeight={450}
+              rawWidth={450}
+              className="icon"
+              style={{
+                height: "100%",
+                width: "auto",
+                position: "absolute",
+                background: "transparent",
+                border: 0,
+                right: 0,
+                top: 0,
+                zIndex: 1,
+              }}
+            />
+          )}
+        </Link>
+      </Popover>
+    </div>
+  );
+
+  return frag;
+};
+
+/** makeMultiFrag */
+const makeMultiFrag = ({
+  standardData,
+  todayInt,
+  thisDate,
+  selectedMonth,
+  thisMonth,
+  day,
+  multiSpan,
+}) => {
+  const { route, beginDateInt } = standardData;
+  let classNames = "date-block";
+
+  if (selectedMonth === thisMonth) {
+    classNames += " this-month";
+  } else {
+    classNames += " that-month";
+  }
+
+  if (todayInt > beginDateInt) {
+    classNames += " past-event";
+  } else if (todayInt < beginDateInt) {
+    classNames += " planned-event";
+  } else {
+    classNames += " happening-event";
+  }
+
+  if (todayInt === thisDate) {
+    classNames += " today";
+  }
+
+  const content = popContent(standardData);
+
+  const frag = (
+    <div className={classNames}>
+      <Popover content={content} title={false}>
+        <Link to={`/${route}`}>
+          {day}
+          <br />
+          {multiSpan === 2 && (
+            <Image
+              src={middle}
+              rawHeight={450}
+              rawWidth={450}
+              className="icon"
+              style={{
+                height: "100%",
+                width: "auto",
+                position: "absolute",
+                background: "transparent",
+                border: 0,
+                right: 0,
+                top: 0,
+                zIndex: 1,
+              }}
+            />
+          )}
+          {multiSpan === 1 && (
+            <Image
+              src={end}
+              rawHeight={450}
+              rawWidth={450}
+              className="icon"
+              style={{
+                height: "100%",
+                width: "auto",
+                position: "absolute",
+                background: "transparent",
+                border: 0,
+                right: 0,
+                top: 0,
+                zIndex: 1,
+              }}
+            />
+          )}
+        </Link>
+      </Popover>
+    </div>
+  );
+
+  return frag;
+};
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
@@ -273,18 +610,11 @@ class CalendarX extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedDate: null,
+      currentMonth: null,
       query: { filter: null },
     };
-    this.onSelect = this.onSelect.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.applyFilter = this.applyFilter.bind(this);
-  }
-
-  /** componentDidMount - set current date */
-  componentDidMount() {
-    const today = moment();
-    const query = parseQueryString(this.props.location.search);
-    this.setState({ selectedDate: today, query });
   }
 
   /** componentWillReceiveProps - set current date */
@@ -298,8 +628,8 @@ class CalendarX extends React.Component {
   }
 
   /** logs date */
-  onSelect(value, mode) {
-    // console.log(value, mode);
+  onChange(value, mode) {
+    this.setState({ currentMonth: value });
   }
 
   /** applyFilter */
@@ -313,9 +643,28 @@ class CalendarX extends React.Component {
     let uniqueTags = [];
     let displayTagsAs = {};
     let activeFilter = null;
+    const todayInt = parseInt(moment().format("YYYYMMDD"), 10);
+    const selectedMonth = moment().format("M");
+    const urlQuery = parseQueryString(this.props.location.search);
 
+    const thatMonth = _.isNull(this.state.currentMonth)
+      ? moment()
+      : this.state.currentMonth;
+    const thatMonthF = thatMonth.format("YYYYMM");
+    const lastMonthF = thatMonth
+      .clone()
+      .subtract(1, "month")
+      .format("YYYYMM");
+    const nextMonthF = thatMonth
+      .clone()
+      .add(1, "month")
+      .format("YYYYMM");
+    const monthFilter = [lastMonthF, thatMonthF, nextMonthF];
+
+    let filteredData = null;
+
+    // Get all unique tags
     if (_.isEmpty(givenTags)) {
-      // Get all unique tags
       _.map(data, ({ node }) => {
         const { frontmatter } = node;
         const { tags } = frontmatter;
@@ -333,10 +682,13 @@ class CalendarX extends React.Component {
       displayTagsAs = givenTags;
     }
 
+    const query = _.isNull(this.state.query.filter)
+      ? urlQuery
+      : this.state.query;
+    const { filter } = query;
     // Filter data by tag
-    let filteredData = null;
-    if (!_.isNull(this.state.query.filter)) {
-      activeFilter = this.state.query.filter;
+    if (filter) {
+      activeFilter = filter;
       filteredData = _.filter(data, ({ node }) => {
         let displayThis = false;
         if (activeFilter === "all") {
@@ -344,24 +696,33 @@ class CalendarX extends React.Component {
         } else if (inArray(node.frontmatter.tags, activeFilter)) {
           displayThis = true;
         }
+        if (displayThis === true) {
+          const { date, startDate } = node.frontmatter;
+          const begins = moment(!_.isNull(startDate) ? startDate : date);
+          const thisEventMonth = begins.format("YYYYMM");
+          if (inArray(monthFilter, thisEventMonth)) {
+            displayThis = true;
+          } else {
+            displayThis = false;
+          }
+        }
         return displayThis;
       });
     } else {
       filteredData = data;
     }
 
-    const todayInt = parseInt(moment().format("YYYYMMDD"), 10);
-    const selectedMonth =
-      !_.isNull(this.state.selectedDate) && this.state.selectedDate.format("M");
+    let multiDay = false;
+    let multiSpan = 0;
+    let multiDayEvent = {};
 
     /** renders each date */
     const dateFullCellRender = value => {
-      // console.log(value);
       const day = value.format("D");
       const thisMonth = value.format("M");
       const thisDate = parseInt(value.format("YYYYMMDD"), 10);
-      let classNames = "date-block";
 
+      let classNames = "date-block";
       if (selectedMonth === thisMonth) {
         classNames += " this-month";
       } else {
@@ -369,160 +730,64 @@ class CalendarX extends React.Component {
       }
       let frag = <div className={classNames}>{day}</div>;
 
-      if (!_.isNull(filteredData)) {
-        _.map(filteredData, ({ node }) => {
-          const { frontmatter } = node;
-          // console.log(frontmatter);
-          const { fields } = node;
-          const { title } = frontmatter;
-          const mDate = moment(frontmatter.date);
-          const xDate = parseInt(mDate.format("YYYYMMDD"), 10);
-          const humanDate = mDate.format("dddd, MMMM D, YYYY");
-          const { fromTime, toTime } = frontmatter;
-          let badgeStatus = null;
-          // const when = moment(mDate).fromNow();
-          const { route } = fields;
-          const { tags } = frontmatter;
+      let record = null;
+      if (multiDay === true) {
+        record = multiDayEvent;
+        const standardData = getStandardData(record);
 
-          if (thisDate === xDate) {
-            if (todayInt > xDate) {
-              classNames += " past-event";
-              badgeStatus = "default";
-            } else if (todayInt < xDate) {
-              classNames += " planned-event";
-              badgeStatus = "warning";
-            } else {
-              classNames += " happening-event";
-              badgeStatus = "success";
-            }
-
-            if (todayInt === thisDate) {
-              classNames += " today";
-            }
-
-            const content = (
-              <div style={{ maxWidth: 300, padding: "0.5em" }}>
-                <Paragraph style={{ marginBottom: 0 }}>
-                  <strong
-                    style={{
-                      display: "block",
-                      borderBottom: "1px solid #4a4a4a",
-                      fontSize: "90%",
-                    }}
-                  >
-                    {title}
-                  </strong>
-                  <small
-                    className="date"
-                    style={{
-                      display: "block",
-                      fontSize: "70%",
-                      marginTop: -2,
-                    }}
-                  >
-                    <i>{humanDate}</i>
-                  </small>
-                  <small
-                    className="time"
-                    style={{
-                      display: "block",
-                      fontSize: "70%",
-                      marginTop: -2,
-                    }}
-                  >
-                    <i>
-                      {fromTime} – {toTime}
-                    </i>
-                  </small>
-                  <span
-                    style={{
-                      display: "block",
-                      fontSize: "80%",
-                      marginTop: 10,
-                    }}
-                    className="abstract"
-                  >
-                    {frontmatter.abstract}
-                  </span>
-                  <small
-                    style={{
-                      display: "block",
-                      fontSize: "70%",
-                      marginTop: 10,
-                    }}
-                    className="readmore"
-                  >
-                    <Link to={`/${route}`}>Read more ⇾</Link>
-                  </small>
-                </Paragraph>
-              </div>
-            );
-
-            frag = (
-              <div className={classNames}>
-                <Popover content={content} title={false}>
-                  <Link to={`/${route}`}>
-                    <Badge status={badgeStatus}>{day}</Badge>
-                    <br />
-                    {inArray(tags, "nvc") && (
-                      <Image
-                        src={nvc}
-                        rawHeight={450}
-                        rawWidth={450}
-                        className="icon"
-                        style={{
-                          height: 45,
-                          width: 45,
-                          position: "absolute",
-                          background: "transparent",
-                          border: 0,
-                          right: 3,
-                          top: 3,
-                        }}
-                      />
-                    )}
-                    {inArray(tags, "rc") && (
-                      <Image
-                        src={rc}
-                        rawHeight={450}
-                        rawWidth={450}
-                        className="icon"
-                        style={{
-                          height: 45,
-                          width: 45,
-                          position: "absolute",
-                          background: "transparent",
-                          border: 0,
-                          right: 3,
-                          top: 3,
-                        }}
-                      />
-                    )}
-                    {inArray(tags, "featured") && (
-                      <Image
-                        src={featured}
-                        rawHeight={450}
-                        rawWidth={450}
-                        className="icon"
-                        style={{
-                          height: 45,
-                          width: 45,
-                          position: "absolute",
-                          background: "transparent",
-                          border: 0,
-                          right: 3,
-                          top: 3,
-                        }}
-                      />
-                    )}
-                  </Link>
-                </Popover>
-              </div>
-            );
-          }
+        frag = makeMultiFrag({
+          standardData,
+          todayInt,
+          thisDate,
+          selectedMonth,
+          thisMonth,
+          day,
+          multiSpan,
         });
-        return frag;
+
+        multiSpan -= 1;
+        if (multiSpan === 0) {
+          multiDay = false;
+          multiDayEvent = {};
+          multiDay = false;
+        }
+      } else if (!_.isNull(filteredData)) {
+        record = _.filter(filteredData, ({ node }) => {
+          let filterThis = false;
+          const { frontmatter } = node;
+          const { date, startDate } = frontmatter;
+          const begins = moment(!_.isNull(startDate) ? startDate : date);
+          const beginDateInt = parseInt(begins.format("YYYYMMDD"), 10);
+          if (thisDate === beginDateInt) {
+            filterThis = true;
+          }
+          return filterThis;
+        });
+        record = record[0];
+
+        if (!_.isUndefined(record)) {
+          const standardData = getStandardData(record);
+          const { diff } = standardData;
+
+          if (diff !== 0) {
+            multiDay = true;
+            multiSpan = diff;
+            multiDayEvent = record;
+          }
+
+          frag = makeFrag({
+            standardData,
+            todayInt,
+            thisDate,
+            selectedMonth,
+            thisMonth,
+            day,
+            multiDay,
+          });
+        }
       }
+
+      return frag;
     };
 
     return (
@@ -544,6 +809,7 @@ class CalendarX extends React.Component {
           <Calendar
             dateFullCellRender={dateFullCellRender}
             onSelect={this.onSelect}
+            onPanelChange={this.onChange}
             defaultValue={this.state.selectedDate}
           />
         </LocaleProvider>

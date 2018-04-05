@@ -82,10 +82,7 @@ const menu = [
   },
   {
     title: "Learn",
-    menu: [
-      { title: "Upcoming Events", link: "/upcoming-events?filter=all" },
-      { title: "Featured Events", link: "/featured-events" },
-    ],
+    menu: [{ title: "Upcoming Events", link: "/upcoming-events?filter=all" }],
   },
   {
     title: "More",

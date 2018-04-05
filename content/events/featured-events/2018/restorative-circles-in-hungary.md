@@ -1,7 +1,7 @@
 ---
 title: Restorative Circles in Hungary
 subTitle: na
-cover: https://unsplash.it/400/300/?random?AngelsofMist
+cover: fallback
 category: 3.Featured
 abstract: Page abstract.
 date: 2018-09-14

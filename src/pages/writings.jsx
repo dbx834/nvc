@@ -110,6 +110,29 @@ const pageStyle = css({
 });
 const pageStyleClass = pageStyle.toString();
 
+// ----------------------------------------------------------------------------
+// ------------------------------------------------------------------ Functions
+// ----------------------------------------------------------------------------
+/** inArray */
+const inArray = (array, value) => {
+  let rx = false;
+  if (_.indexOf(array, value) >= 0) {
+    rx = true;
+  }
+  return rx;
+};
+
+/** parseQueryString */
+const parseQueryString = string => {
+  const objURL = {};
+
+  string.replace(new RegExp("([^?=&]+)(=([^&]*))?", "g"), ($0, $1, $2, $3) => {
+    objURL[$1] = $3;
+  });
+
+  return objURL;
+};
+
 // ------------------------------------------------------------------------------
 // -------------------------------------------------------------------- Component
 // ------------------------------------------------------------------------------
@@ -118,20 +141,52 @@ class Blog extends React.Component {
   /** standard constructor */
   constructor(props) {
     super(props);
+    this.state = {
+      query: { filter: null },
+    };
+  }
+
+  /** componentWillReceiveProps - set current date */
+  componentWillReceiveProps(nextProps) {
+    const nextQuery = parseQueryString(
+      nextProps.location ? nextProps.location.search : null,
+    );
+    if (!_.isEqual(nextQuery, this.state.query)) {
+      this.setState({ query: nextQuery });
+    }
   }
 
   /** standard renderer */
   render() {
     const postEdges = this.props.data.allMarkdownRemark.edges;
-    const writingsNodes = [];
     let accessibleCategories = [];
+    let activeFilter = null;
+    const urlQuery = parseQueryString(this.props.location.search);
+    const query = _.isNull(this.state.query.filter)
+      ? urlQuery
+      : this.state.query;
+    const { filter } = query;
 
-    _.map(postEdges, ({ node }) => {
-      if (_.startsWith(_.trim(node.fields.route), "writings") === true) {
-        writingsNodes.push({ node });
-        accessibleCategories.push(node.frontmatter.category);
-      }
-    });
+    let filteredData = null;
+    if (filter) {
+      activeFilter = filter;
+      filteredData = _.filter(postEdges, ({ node }) => {
+        let displayThis = false;
+        if (_.startsWith(_.trim(node.fields.route), "writings") === true) {
+          const cat = _.lowercase(_.split(node.frontmatter.category, ".")[1]);
+          if (activeFilter === "all") {
+            displayThis = true;
+            accessibleCategories.push(node.frontmatter.category);
+          } else if (activeFilter === cat) {
+            displayThis = true;
+            accessibleCategories.push(node.frontmatter.category);
+          }
+        }
+        return displayThis;
+      });
+    } else {
+      filteredData = postEdges;
+    }
 
     accessibleCategories = _.uniq(accessibleCategories);
 
@@ -172,7 +227,7 @@ class Blog extends React.Component {
             return (
               <div className="category" key={catId}>
                 <H1 id={catId}>{catString}</H1>
-                {_.map(writingsNodes, ({ node }) => {
+                {_.map(filteredData, ({ node }) => {
                   const { date, title, abstract, cover } = node.frontmatter;
                   const { route } = node.fields;
                   const dateStr = moment(date).format("dddd, MMMM D, YYYY");

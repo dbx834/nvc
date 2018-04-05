@@ -436,7 +436,7 @@ const makeFrag = ({
     <div className={classNames}>
       <Popover content={content} title={false}>
         <Link to={`/${route}`}>
-          <Badge status={badgeStatus}>{day}</Badge>
+          {day}
           <br />
           {inArray(tags, "nvc") && (
             <Image
@@ -445,13 +445,13 @@ const makeFrag = ({
               rawWidth={450}
               className="icon"
               style={{
-                height: 45,
-                width: 45,
+                height: 28,
+                width: 28,
                 position: "absolute",
                 background: "transparent",
                 border: 0,
-                right: 3,
-                top: 3,
+                right: 31,
+                top: 31,
                 zIndex: 2,
               }}
             />
@@ -463,13 +463,13 @@ const makeFrag = ({
               rawWidth={450}
               className="icon"
               style={{
-                height: 45,
-                width: 45,
+                height: 28,
+                width: 28,
                 position: "absolute",
                 background: "transparent",
                 border: 0,
-                right: 3,
-                top: 3,
+                right: 31,
+                top: 31,
                 zIndex: 2,
               }}
             />
@@ -481,13 +481,13 @@ const makeFrag = ({
               rawWidth={450}
               className="icon"
               style={{
-                height: 45,
-                width: 45,
+                height: 28,
+                width: 28,
                 position: "absolute",
                 background: "transparent",
                 border: 0,
-                right: 3,
-                top: 3,
+                right: 31,
+                top: 31,
                 zIndex: 2,
               }}
             />

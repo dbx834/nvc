@@ -140,7 +140,11 @@ class DesktopNav extends React.Component {
                             {isOutLink === false && (
                               <Link
                                 to={link}
-                                className={pathname === link ? "active" : ""}
+                                className={
+                                  pathname === _.split(link, "?", 1)[0]
+                                    ? "active"
+                                    : ""
+                                }
                               >
                                 <span>{subTitle}</span>
                               </Link>
@@ -172,7 +176,8 @@ class DesktopNav extends React.Component {
                                             <Link
                                               to={itemLink}
                                               className={
-                                                pathname === itemLink
+                                                pathname ===
+                                                _.split(itemLink, "?", 1)[0]
                                                   ? "active"
                                                   : ""
                                               }
@@ -193,7 +198,11 @@ class DesktopNav extends React.Component {
                               {isOutLink === false && (
                                 <Link
                                   to={link}
-                                  className={pathname === link ? "active" : ""}
+                                  className={
+                                    pathname === _.split(link, "?", 1)[0]
+                                      ? "active"
+                                      : ""
+                                  }
                                 >
                                   <span>{subTitle}</span>
                                   <span style={{ fontSize: "88%" }}>

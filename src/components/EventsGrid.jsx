@@ -148,7 +148,14 @@ class EventsGrid extends React.Component {
         <HexaGrid>
           {_.map(filtered, ({ node }, index) => {
             const { frontmatter } = node;
-            const { tags, date, startDate, fromTime, toTime } = frontmatter;
+            const {
+              tags,
+              date,
+              startDate,
+              fromTime,
+              toTime,
+              cover,
+            } = frontmatter;
             const mDate = moment(!_.isNull(date) ? date : startDate);
             const humanDate = mDate.format("dddd, MMMM D, YYYY");
             const when = moment(mDate).fromNow();
@@ -295,7 +302,7 @@ class EventsGrid extends React.Component {
                     )}
                   </ul>
                   <Image
-                    src={dummy1}
+                    src={cover !== "fallback" ? cover : dummy1}
                     rawHeight={1400}
                     rawWidth={2100}
                     className="cover"

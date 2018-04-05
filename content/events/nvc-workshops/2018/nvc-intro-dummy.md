@@ -1,6 +1,6 @@
 ---
 title: NVC Intro Dummy
-cover: https://unsplash.it/400/300/?random?AngelsofMist
+cover: fallback
 category: 3.Featured
 abstract: Page abstract.
 date: 2018-04-14

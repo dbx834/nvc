@@ -53,7 +53,7 @@ const menu = [
             title: "Practice Groups",
             link: "/nonviolent-communication/events?filter=practice-group",
           },
-          { title: "Articles", link: "/writings#nvc" },
+          { title: "Articles", link: "/writings?filter=nvc" },
         ],
       },
       {
@@ -70,7 +70,7 @@ const menu = [
             link: "/restorative-circles/events?filter=practice-group",
           },
           { title: "Call a Circle", link: "/call-a-circle" },
-          { title: "Articles", link: "/writings#rc" },
+          { title: "Articles", link: "/writings?filter=rc" },
         ],
       },
       {
@@ -90,7 +90,7 @@ const menu = [
   {
     title: "More",
     menu: [
-      { title: "Blog", link: "/writings" },
+      { title: "Blog", link: "/writings?filter=all" },
       { title: "Gallery", link: "/gallery" },
       { title: "Newsletter", link: "/newsletter" },
       { title: "Fee & Donation", link: "/fee-and-donation" },

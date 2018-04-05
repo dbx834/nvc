@@ -33,7 +33,7 @@ import seoHelper from "../helpers/seoHelper";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
-const { H1, H3, Paragraph } = Elements;
+const { H1, H2, Paragraph } = Elements;
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
@@ -61,6 +61,14 @@ const {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageStyle = css({
   ...applyRhythm({ maxWidth: "40X" }),
+  "& .top-link": {
+    color: "inherit",
+    "&:hover": {
+      color: "#6D00FF",
+      borderBottom: "1.625px solid #6D00FF",
+    },
+  },
+
   "& div.category": {
     ...applyRhythm({ marginBottom: "3X" }),
   },
@@ -113,15 +121,6 @@ const pageStyleClass = pageStyle.toString();
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Functions
 // ----------------------------------------------------------------------------
-/** inArray */
-const inArray = (array, value) => {
-  let rx = false;
-  if (_.indexOf(array, value) >= 0) {
-    rx = true;
-  }
-  return rx;
-};
-
 /** parseQueryString */
 const parseQueryString = string => {
   const objURL = {};
@@ -226,7 +225,17 @@ class Blog extends React.Component {
 
             return (
               <div className="category" key={catId}>
-                <H1 id={catId}>{catString}</H1>
+                <H1 className="mask-h2" id={catId}>
+                  {filter !== "all" && (
+                    <Fragment>
+                      <Link to="/writings?filter=all" className="top-link">
+                        Blog
+                      </Link>
+                      &nbsp;›&nbsp;
+                    </Fragment>
+                  )}
+                  {catString}
+                </H1>
                 {_.map(filteredData, ({ node }) => {
                   const { date, title, abstract, cover } = node.frontmatter;
                   const { route } = node.fields;
@@ -251,7 +260,7 @@ class Blog extends React.Component {
                           <div className="abstract">
                             <Header>
                               <Link to={route}>
-                                <H3 mask="h4">{title}</H3>
+                                <H2 className="mask-h4">{title}</H2>
                                 <Paragraph style={{ marginBottom: 20 }}>
                                   <small>
                                     <i>

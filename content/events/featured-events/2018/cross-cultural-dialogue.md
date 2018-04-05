@@ -3,8 +3,10 @@ title: Cross Cultural Dialogue
 subTitle: na
 cover: /content-assets/featured-events/2018/cross-cultural-hero.jpg
 category: 3.Featured
-abstract: Page abstract.
+abstract: In response to the recent claim of discrimination against some in the Tamil community in Auroville, we are hosting a 2-day Cross-Cultural Dialogue. We offer a space to explore this topic further and to have a deep sharing about our experiences and pain, as well as our felt sense of togetherness and aspiration to manifest Human Unity.
 date: 2018-04-28
+startDate: 2018-04-28
+finishDate: 2018-04-29
 fromTime: 9am
 toTime: 5pm
 type: event

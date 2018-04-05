@@ -3,7 +3,7 @@ title: Restorative Circles in Hungary
 subTitle: na
 cover: fallback
 category: 3.Featured
-abstract: Page abstract.
+abstract: Restorative Circles (RC) offer ways for individuals and communities to establish connection, discover meaning and recover power on profound levels. They create forums for reaching agreements that help sustain effective and nurturing relationships both personally and collectively.
 date: 2018-09-14
 startDate: 2018-09-14
 finishDate: 2018-09-16

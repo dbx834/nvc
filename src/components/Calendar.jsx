@@ -662,6 +662,11 @@ class CalendarX extends React.Component {
     const monthFilter = [lastMonthF, thatMonthF, nextMonthF];
 
     let filteredData = null;
+    const thisYear = moment().startOf("year");
+    const nextYear = thisYear
+      .clone()
+      .add("1", "years")
+      .endOf("year");
 
     // Get all unique tags
     if (_.isEmpty(givenTags)) {
@@ -811,6 +816,7 @@ class CalendarX extends React.Component {
             onSelect={this.onSelect}
             onPanelChange={this.onChange}
             defaultValue={this.state.selectedDate}
+            validRange={[thisYear, nextYear]}
           />
         </LocaleProvider>
       </div>

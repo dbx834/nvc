@@ -1,7 +1,7 @@
 ---
-title: Cross Cultural Dialogue
+title: Cross-Cultural Dialogue
 subTitle: na
-cover: /content-assets/featured-events/2018/cross-cultural-hero.jpg
+cover: /content-assets/featured-events/2018/cross-cultural-dialogue.jpg
 category: 3.Featured
 abstract: In response to the recent claim of discrimination against some in the Tamil community in Auroville, we are hosting a 2-day Cross-Cultural Dialogue. We offer a space to explore this topic further and to have a deep sharing about our experiences and pain, as well as our felt sense of togetherness and aspiration to manifest Human Unity.
 date: 2018-04-28
@@ -42,30 +42,26 @@ We offer to meet Tamils who joined Auroville from the bioregion separately, as t
 
 ## Schedule
 
-##### A. Pre-Dialogue:
+** A. Pre-Dialogue: **
 
 We are offering 2 dates. Please choose the one that suits you best.
 
-_1. Thursday, April 19_
+* Thursday, April 19
+  * 3pm – 4.30pm: non-Tamil Aurovilians
+  * 5pm – 6.30pm: Tamil Aurovilians, especially those who are concerned about discrimination
+* Thursday, April 26
+  * 3pm – 4.30pm: non-Tamil Aurovilians
+  * 5pm – 6.30pm: Tamil Aurovilians, especially those who are concerned about discrimination
 
-* 3pm – 4.30pm: non-Tamil Aurovilians
-* 5pm – 6.30pm: Tamil Aurovilians, especially those who are concerned about discrimination
+** B. Dialogue: ** 
 
-_2. Thursday, April 26_
+* Saturday, April 28 – Sunday, April 29
+  * 9am – 5pm
+  * Lunch and tea breaks are included
 
-* 3pm – 4.30pm: non-Tamil Aurovilians
-* 5pm – 6.30pm: Tamil Aurovilians, especially those who are concerned about discrimination
+** C. Post-Dialogue / Follow-Up: ** 
 
-##### B. Dialogue:
-
-_Saturday, April 28 – Sunday, April 29_
-
-* 9am – 5pm
-* Lunch and tea breaks are included
-
-##### C. Post-Dialogue / Follow-Up:
-
-…to be decided collectively…
+* …to be decided collectively…
 
 ## Filming
 
@@ -73,14 +69,15 @@ We intend to make a documentary about the event, and it will be shared if and wh
 
 ## Registration
 
-Please register as soon as possible by filling out [the online form](https://bit.ly/2Ef3nLI), so as to confirm your seat. Registration closes on Wednesday, April 18.
+Please register as soon as possible, so as to confirm your seat. Registration closes on Wednesday, April 18.
 
-You may also register:
+We you may register in 1 of 3 ways:
 
-* By answering the following questions, and sending them by email to restorative@auroville.org.in.
-* By answering the following questions, and drop them off in person at L’aura’s house (in Centre Field).
+1. Fill out [the online form](https://bit.ly/2Ef3nLI).
+2. Or answer the following questions, and send them by email to restorative@auroville.org.in.
+3. Or answer the following questions, and drop them off in person at L’aura’s house (in Centre Field).
 
-Please answer the following questions:
+_Please answer the following questions_
 
 * Name
 * Community
@@ -89,15 +86,16 @@ Please answer the following questions:
 * Explain in a few sentences why you would like to join this 2-day Cross-Cultural Dialogue.
 * Please confirm that you intend to participate for the full program (the Pre-Dialogue appointment, plus the entire 2 days for the Dialogue itself).
 * Please confirm which Pre-Dialogue date you will be attending:
-- 3pm – 4.30pm (non-Tamils)
-- 5pm – 6.30pm (Tamils, especially those concerned about discrimination)
-* April 26
-- 3pm – 4.30pm (non-Tamils)
-- 5pm – 6.30pm (Tamils, especially those concerned about discrimination)
+  * April 19
+    * 3pm – 4.30pm (non-Tamils)
+    * 5pm – 6.30pm (Tamils, especially those concerned about discrimination)
+  * **OR**
+  * April 26
+    * 3pm – 4.30pm (non-Tamils)
+    * 5pm – 6.30pm (Tamils, especially those concerned about discrimination)
 * Please let us know if you are willing to be filmed:
-- willing to be filmed
-- not willing to be filmed
-
+  * willing to be filmed
+  * not willing to be filmed
 * Any other questions / comments.
 
 ## Donation
@@ -106,10 +104,10 @@ We offer this event for free.
 
 However, if you would like to support us financially, we welcome all donations! Our expenses will include: lunch, tea and cookies, photocopies, hall and sound equipment rental, and a stipend for our filmmaker. You may transfer your donation to “Joy Living Learning Donations #251772,” or sign the blue-sheet during the event itself.
 
-With love,
-Restorative Auroville
-L’aura, Janet, Shanti, Kati, Rita, Pranjal and Genie
+__With love__,  
+__Restorative Auroville__  
+__L’aura, Janet, Shanti, Kati, Rita, Pranjal and Genie__  
 
-PS. We offered our first Cross-Cultural Dialogue in Sept 2016, with 55 Aurovilians participating. The experience was powerful and enriching for everyone present. If you would like to know more, or to read our reports, please see Auronet: https://www.auroville.org.in/article/60486. If you would like to watch a short video-compilation we made, see:
+PS. We offered our first Cross-Cultural Dialogue in Sept 2016, with 55 Aurovilians participating. The experience was powerful and enriching for everyone present. If you would like to know more, or to read our reports, please see [Auronet](https://www.auroville.org.in/article/60486). If you would like to watch a short video-compilation we made, see:
 
 [embed](https://www.youtube.com/watch?v=3J4SeG6LfCQ&t=891s)

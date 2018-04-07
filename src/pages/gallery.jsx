@@ -39,7 +39,6 @@ import seoHelper from "../helpers/seoHelper";
 
 import nvcX1 from "../assets/gallery/nvcX1.jpg";
 import nvcX2 from "../assets/gallery/nvcX2.jpg";
-import nvcX3 from "../assets/gallery/nvcX3.jpg";
 import nvcX4 from "../assets/gallery/nvcX4.jpg";
 import nvcX5 from "../assets/gallery/nvcX5.jpg";
 import nvcX6 from "../assets/gallery/nvcX6.jpg";
@@ -67,7 +66,6 @@ import nvcX27 from "../assets/gallery/nvcX27.jpg";
 import nvcX28 from "../assets/gallery/nvcX28.jpg";
 import nvcX29 from "../assets/gallery/nvcX29.jpg";
 import nvcX30 from "../assets/gallery/nvcX30.jpg";
-import nvcX31 from "../assets/gallery/nvcX31.jpg";
 import nvcX32 from "../assets/gallery/nvcX32.jpg";
 import nvcX33 from "../assets/gallery/nvcX33.jpg";
 import nvcX34 from "../assets/gallery/nvcX34.jpg";
@@ -86,7 +84,6 @@ import nvcX45 from "../assets/gallery/nvcX45.jpg";
 const photos = [
   { src: nvcX1, width: 600, height: 450 },
   { src: nvcX2, width: 600, height: 353 },
-  { src: nvcX3, width: 600, height: 448 },
   { src: nvcX4, width: 600, height: 800 },
   { src: nvcX5, width: 600, height: 400 },
   { src: nvcX6, width: 600, height: 803 },
@@ -114,7 +111,6 @@ const photos = [
   { src: nvcX28, width: 600, height: 596 },
   { src: nvcX29, width: 600, height: 368 },
   { src: nvcX30, width: 600, height: 465 },
-  { src: nvcX31, width: 600, height: 525 },
   { src: nvcX32, width: 600, height: 333 },
   { src: nvcX33, width: 600, height: 356 },
   { src: nvcX34, width: 600, height: 450 },

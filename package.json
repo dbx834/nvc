@@ -77,7 +77,7 @@
   },
   "dependencies": {
     "@bodhi-project/components": "0.0.72",
-    "@bodhi-project/markdown-to-react": "0.0.36",
+    "@bodhi-project/markdown-to-react": "0.0.39",
     "@bodhi-project/semantic-webflow": "0.0.10",
     "@bodhi-project/seo": "0.0.4",
     "@bodhi-project/typography": "0.0.37",
@@ -113,6 +113,7 @@
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "remark-parse": "^5.0.0",
+    "twix": "^1.2.1",
     "unified": "^6.1.6",
     "validator": "^9.4.1"
   },

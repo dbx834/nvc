@@ -7,9 +7,10 @@ import PropTypes from "prop-types";
 import _ from "lodash";
 import { css } from "glamor";
 import moment from "moment";
+import twix from "twix";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link from "gatsby-link";
+import Link, { withPrefix } from "gatsby-link";
 import { Tag } from "antd";
 import { OutLink, Image } from "@bodhi-project/components";
 import {
@@ -39,12 +40,9 @@ import {
 import seoHelper from "../helpers/seoHelper";
 import packageJson from "../../package.json";
 import markdownStylesClass from "../styles/markdownStyles";
-import Register from "../components/Register";
 import RCPracticeGroupSide from "../components/RCPracticeGroupSide";
 import NVCPracticeGroupSide from "../components/NVCPracticeGroupSide";
 import WorkshopSide from "../components/WorkshopSide";
-import donateButton from "../assets/donateButton.png";
-import Price from "../bits/EventPagePrice";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -121,21 +119,51 @@ class EventTemplate extends React.Component {
     // Abstract stuff
     const { pathContext } = this.props;
     const { frontmatter } = pathContext;
-    const { tags, date, startDate } = frontmatter;
+    const {
+      fromTime,
+      toTime,
+      tags,
+      date,
+      startDate,
+      finishDate,
+      cover,
+    } = frontmatter;
     const { markdownAst, next, prev } = pathContext;
     const { route } = pathContext;
     const checkedRoute = _.startsWith(route, "/") ? route : `/${route}`;
     const nakedRoute = checkedRoute.substr(1);
 
     // Date stuff
-    const mDate = moment(!_.isNull(date) ? date : startDate);
-    const humanDate = mDate.format("dddd, MMMM D, YYYY");
-    const elapsed = mDate.fromNow();
-    // const startDate = mDate;
-    const endDate = mDate.add(23, "hours").format();
+    const begins = moment(!_.isNull(startDate) ? startDate : date);
+    const sameDay = _.isNull(finishDate);
+    const elapsed = begins.fromNow();
+    const ends = moment(
+      !_.isNull(finishDate) ? finishDate : begins.add(23, "hours"),
+    );
+
+    let humanDate = begins.format("ddd, MMMM D, YYYY");
+    if (sameDay === false) {
+      const range = begins.twix(ends, { allDay: true });
+      const rangeX = range.format({
+        showDayOfWeek: true,
+        hideTime: true,
+        spaceBeforeMeridiem: false,
+        yearFormat: "YYYY",
+        monthFormat: "MMMM",
+        dayFormat: "D",
+        weekdayFormat: "ddd",
+        meridiemFormat: "A",
+      });
+      const beginsYear = begins.format("YYYY");
+      const endsYear = ends.format("YYYY");
+      if (beginsYear === endsYear) {
+        humanDate = `${rangeX}, ${beginsYear}`;
+      } else {
+        humanDate = rangeX;
+      }
+    }
 
     const { orgLocation } = data;
-    const { fromTime, toTime } = frontmatter;
 
     let catString = _.trim(_.last(_.split(frontmatter.category, ".")));
     switch (catString) {
@@ -156,6 +184,17 @@ class EventTemplate extends React.Component {
     }
     if (inArray(tags, "workshop")) {
       whichSide = "workshop";
+    }
+
+    // Make banner
+    let eventBanner = null;
+    if (cover === "fallback") {
+      const coverHint = _.join(tags, "-");
+      eventBanner = withPrefix(
+        `/content-assets/event-fallbacks/${coverHint}.jpg`,
+      );
+    } else {
+      eventBanner = withPrefix(cover);
     }
 
     // -------------------------------------------------------------------- SEO
@@ -181,8 +220,8 @@ class EventTemplate extends React.Component {
       name: frontmatter.title,
       url: `${data.nakedWebsiteUrl}${route}`,
       description: frontmatter.abstract,
-      startDate,
-      endDate,
+      startDate: begins,
+      endDate: ends,
       locationName: orgLocation.locationName,
       locationUrl: orgLocation.locationUrl,
       streetAddress: orgLocation.streetAddress,
@@ -211,7 +250,7 @@ class EventTemplate extends React.Component {
             <Header className="headings">
               <div className="banner">
                 <Image
-                  src={frontmatter.cover}
+                  src={eventBanner}
                   rawWidth={1440}
                   rawHeight={900}
                   loader="gradient"
@@ -241,7 +280,7 @@ class EventTemplate extends React.Component {
                   </i>
                   <br />
                   <i>
-                    {fromTime} – {toTime}
+                    {fromTime} - {toTime}
                   </i>
                 </Paragraph>
               </div>

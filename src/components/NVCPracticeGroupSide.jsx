@@ -157,11 +157,8 @@ class NVCPracticeGroupSide extends React.Component {
         {(eventStatus === "past" || eventStatus === "present") && (
           <Fragment>
             <H1 mask="h4">
-              <span>Registeration Closed</span>
+              <span>Registration Closed</span>
             </H1>
-            <Paragraph style={{ marginBottom: 30 }}>
-              something something.
-            </Paragraph>
           </Fragment>
         )}
         {eventStatus === "future" && (

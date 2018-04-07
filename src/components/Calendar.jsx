@@ -296,17 +296,7 @@ const popContent = standardData => {
             marginTop: -2,
           }}
         >
-          {diff === 0 ? (
-            <i>{humanDate}</i>
-          ) : (
-            <Fragment>
-              Begins: <i>{beginHumanDate}</i>
-              <br />
-              Ends: <i>{endHumanDate}</i>
-              <br />
-              <br />
-            </Fragment>
-          )}
+          <i>{humanDate}</i>
         </small>
         <small
           className="time"
@@ -317,7 +307,7 @@ const popContent = standardData => {
           }}
         >
           <i>
-            {fromTime} – {toTime}
+            {fromTime} - {toTime}
           </i>
         </small>
         <span
@@ -366,7 +356,32 @@ const getStandardData = ({ node }) => {
   );
   const beginDateInt = parseInt(begins.format("YYYYMMDD"), 10);
   const diff = moment.duration(ends.diff(begins)).asDays();
-  const humanDate = begins.format("dddd, MMMM D, YYYY");
+
+  // Date stuff
+  const sameDay = _.isNull(finishDate);
+  // const elapsed = begins.fromNow();
+
+  let humanDate = begins.format("ddd, MMMM D, YYYY");
+  if (sameDay === false) {
+    const range = begins.twix(ends, { allDay: true });
+    const rangeX = range.format({
+      showDayOfWeek: true,
+      hideTime: true,
+      spaceBeforeMeridiem: false,
+      yearFormat: "YYYY",
+      monthFormat: "MMMM",
+      dayFormat: "D",
+      weekdayFormat: "ddd",
+      meridiemFormat: "A",
+    });
+    const beginsYear = begins.format("YYYY");
+    const endsYear = ends.format("YYYY");
+    if (beginsYear === endsYear) {
+      humanDate = `${rangeX}, ${beginsYear}`;
+    } else {
+      humanDate = rangeX;
+    }
+  }
 
   let beginHumanDate = null;
   let endHumanDate = null;

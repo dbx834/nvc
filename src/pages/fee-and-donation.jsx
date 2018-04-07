@@ -10,16 +10,10 @@ import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-import { Modal } from "antd";
+import { Modal, Tooltip } from "antd";
 import { Image, OutLink } from "@bodhi-project/components";
 import { Elements, applyRhythm } from "@bodhi-project/typography";
-import {
-  Page,
-  // Section,
-  Article,
-  // Header,
-  // Footer,
-} from "@bodhi-project/semantic-webflow";
+import { Page } from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -36,7 +30,8 @@ import {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
 import globalWithMediaQueries from "../helpers/globalWithMediaQueries";
-import donateButton from "../assets/donateButton.png";
+import domestic from "../assets/domestic.png";
+import international from "../assets/international.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -69,6 +64,14 @@ const {
 const pageWrapper = css({
   "& .constrain": {
     ...applyRhythm({ maxWidth: "27X" }),
+  },
+  "& .hover": {
+    borderBottom: "1.625px solid transparent",
+
+    "&:hover": {
+      color: "#6D00FF",
+      borderBottom: "1.625px solid #6D00FF",
+    },
   },
 });
 const pageStyleClass = pageWrapper.toString();
@@ -132,37 +135,64 @@ class IndexPage extends React.Component {
               Select the Domestic option for Indian bank/credit cards, or the
               International option for foreign bank/credit cards.
             </Paragraph>
-            <Image
-              src={""}
-              rawHeight={450}
-              rawWidth={450}
-              className="icon"
-              style={{
-                height: 65,
-                width: 65,
-                display: "inline-block",
-                background: "transparent",
-                border: "1px solid #4a4a4a",
-                marginRight: 15,
-              }}
-            />
-            <Image
-              src={""}
-              rawHeight={450}
-              rawWidth={450}
-              className="icon"
-              style={{
-                height: 65,
-                width: 65,
-                background: "transparent",
-                border: "1px solid #4a4a4a",
-                display: "inline-block",
-              }}
-            />
-            <br />
-            <br />
-            <br />
-            <br />
+            <div className="mask-p">
+              <OutLink
+                to="https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD"
+                style={{ marginRight: 17 }}
+              >
+                <Tooltip title="Indian Card">
+                  <div style={{ display: "inline-block" }}>
+                    <Image
+                      src={domestic}
+                      rawHeight={450}
+                      rawWidth={450}
+                      className="icon"
+                      style={{
+                        height: 65,
+                        width: 65,
+                        display: "inline-block",
+                        background: "transparent",
+                        border: "unset",
+                      }}
+                    />
+                  </div>
+                </Tooltip>
+              </OutLink>
+              <form
+                action="https://www.paypal.com/cgi-bin/webscr"
+                method="post"
+                target="_blank"
+                style={{ display: "inline-block" }}
+                className="hover"
+              >
+                <input type="hidden" name="cmd" value="_s-xclick" />
+                <input
+                  type="hidden"
+                  name="hosted_button_id"
+                  value="WFXM5RNDGBXL4"
+                />
+                <Tooltip title="International Card">
+                  <input
+                    type="image"
+                    src={international}
+                    border="0"
+                    name="submit"
+                    alt="PayPal – The safer, easier way to pay online!"
+                    style={{
+                      height: 65,
+                      width: 65,
+                    }}
+                  />
+                </Tooltip>
+                <img
+                  alt=""
+                  border="0"
+                  src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif"
+                  width="1"
+                  height="1"
+                />
+              </form>
+            </div>
             <H1>Donation</H1>
             <Paragraph>
               If you’d like to make a donation to Joy Living Learning, you may

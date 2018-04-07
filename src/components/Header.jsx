@@ -74,10 +74,9 @@ const menu = [
         ],
       },
       {
-        title: "Mediation & Facilitation",
-        link: "/mediation-and-facilitation",
+        title: "Mediation / Facilitation / Coaching",
+        link: "/mediation-facilitation-coaching",
       },
-      { title: "Individual Coaching", link: "/individual-coaching" },
     ],
   },
   {
@@ -98,6 +97,14 @@ const menu = [
         menuPopoverLocation: "rightBottom",
         menu: [
           {
+            title: "Restorative Auroville",
+            link: "https://restorativeauroville.org/",
+          },
+          {
+            title: "India NVC",
+            link: "https://www.indianvc.org/",
+          },
+          {
             title: "Nonviolent Communication & CNVC",
             link: "http://www.cnvc.org/",
           },
@@ -106,14 +113,6 @@ const menu = [
             link: "http://www.restorativecircles.org/",
           },
           { title: "Auroville", link: "https://www.auroville.org/" },
-          {
-            title: "Restorative Auroville",
-            link: "https://restorativeauroville.org/",
-          },
-          {
-            title: "India NVC",
-            link: "https://www.indianvc.org/",
-          },
         ],
       },
     ],

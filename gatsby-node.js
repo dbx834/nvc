@@ -7,6 +7,45 @@ const markdown = require("remark-parse");
 
 // console.log(unified().use(markdown).parse(testMd));
 
+// ----------------------------------------------------------------------------
+// ------------------------------------------------------------------ Functions
+// ----------------------------------------------------------------------------
+/** gets last page */
+const getPrev = (index, edges, thisEdge) => {
+  const sliced = _.slice(edges, 0, index);
+  let returnNode = null;
+
+  _.map(_.reverse(sliced), edge => {
+    if (_.isNull(returnNode)) {
+      const type = _.split(_.trim(edge.node.fields.route), "/", 1)[0];
+      const thisType = _.split(_.trim(thisEdge.node.fields.route), "/", 1)[0];
+      if (type === thisType) {
+        returnNode = edge.node;
+      }
+    }
+  });
+
+  return returnNode;
+};
+
+/** gets next page */
+const getNext = (index, edges, thisEdge) => {
+  const sliced = _.slice(edges, index + 1);
+  let returnNode = null;
+
+  _.map(sliced, edge => {
+    if (_.isNull(returnNode)) {
+      const type = _.split(_.trim(edge.node.fields.route), "/", 1)[0];
+      const thisType = _.split(_.trim(thisEdge.node.fields.route), "/", 1)[0];
+      if (type === thisType) {
+        returnNode = edge.node;
+      }
+    }
+  });
+
+  return returnNode;
+};
+
 // ----------------------------------------------------------------------- Create Nodes
 exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
   const { createNodeField } = boundActionCreators;
@@ -78,12 +117,21 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
         const { edges } = result.data.allMarkdownRemark;
 
+        edges.sort((a, b) => {
+          const aNode = a.node.frontmatter;
+          const bNode = b.node.frontmatter;
+          const A = !_.isNull(aNode.startDate) ? aNode.startDate : aNode.date;
+          const B = !_.isNull(bNode.startDate) ? bNode.startDate : bNode.date;
+          const dateA = new Date(A);
+          const dateB = new Date(B);
+          return dateA - dateB;
+        });
+
         // Loop through markdown nodes
-        edges.forEach((edge, index) => {
+        edges.forEach((edge, i) => {
           const trimmedRoute = _.trim(edge.node.fields.route);
-          const prev = index === 0 ? null : edges[index - 1].node;
-          const next =
-            index === edges.length - 1 ? null : edges[index + 1].node;
+          const prev = i === 0 ? null : getPrev(i, edges, edge);
+          const next = i === edges.length - 1 ? null : getNext(i, edges, edge);
 
           const context = {
             frontmatter: edge.node.frontmatter,

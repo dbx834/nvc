@@ -165,7 +165,9 @@ class EventsGrid extends React.Component {
             const sameDay = _.isNull(finishDate);
             const elapsed = begins.fromNow();
             const ends = moment(
-              !_.isNull(finishDate) ? finishDate : begins.add(23, "hours"),
+              !_.isNull(finishDate)
+                ? finishDate
+                : begins.clone().add(23, "hours"),
             );
 
             let humanDate = begins.format("ddd, MMMM D, YYYY");

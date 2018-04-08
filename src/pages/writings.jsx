@@ -10,7 +10,7 @@ import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-// import { Row, Col, Carousel } from 'antd';
+import { Tag } from "antd";
 import { Image } from "@bodhi-project/components";
 import { Elements, applyRhythm } from "@bodhi-project/typography";
 import { Page, Article, Header } from "@bodhi-project/semantic-webflow";
@@ -33,7 +33,8 @@ import seoHelper from "../helpers/seoHelper";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
-const { H1, H2, Paragraph } = Elements;
+const { CheckableTag } = Tag;
+const { H1, H2, H3, Paragraph } = Elements;
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
@@ -69,9 +70,23 @@ const pageStyle = css({
     },
   },
 
+  "& h2": {
+    marginTop: "50px !important",
+    marginBottom: "50px !important",
+    textTransform: "uppercase",
+    fontStyle: "italic",
+    borderTop: "3px solid #B43808",
+    color: "#B43808",
+
+    "& span": {
+      fontSize: "70%",
+    },
+  },
+
   "& div.category": {
     ...applyRhythm({ marginBottom: "3X" }),
   },
+
   "& article": {
     display: "flex",
     flexFlow: "row wrap",
@@ -100,9 +115,11 @@ const pageStyle = css({
       },
     },
   },
+
   "& article:last-child": {
     border: "0 !important",
   },
+
   "@media(max-width: 768px)": {
     "& .display": {
       display: "block",
@@ -143,6 +160,7 @@ class Blog extends React.Component {
     this.state = {
       query: { filter: null },
     };
+    this.applyFilter = this.applyFilter.bind(this);
   }
 
   /** componentWillReceiveProps - set current date */
@@ -155,10 +173,16 @@ class Blog extends React.Component {
     }
   }
 
+  /** applyFilter */
+  applyFilter(filter) {
+    this.setState({ query: { filter: filter } });
+  }
+
   /** standard renderer */
   render() {
     const postEdges = this.props.data.allMarkdownRemark.edges;
     let accessibleCategories = [];
+    let allCategories = [];
     let activeFilter = null;
     const urlQuery = parseQueryString(this.props.location.search);
     const query = _.isNull(this.state.query.filter)
@@ -172,7 +196,12 @@ class Blog extends React.Component {
       filteredData = _.filter(postEdges, ({ node }) => {
         let displayThis = false;
         if (_.startsWith(_.trim(node.fields.route), "writings") === true) {
-          const cat = _.lowercase(_.split(node.frontmatter.category, ".")[1]);
+          allCategories.push(node.frontmatter.category);
+          const cat = _.replace(
+            _.lowercase(_.split(node.frontmatter.category, ".")[1]),
+            " ",
+            "-",
+          );
           if (activeFilter === "all") {
             displayThis = true;
             accessibleCategories.push(node.frontmatter.category);
@@ -189,6 +218,13 @@ class Blog extends React.Component {
 
     accessibleCategories = _.uniq(accessibleCategories);
 
+    allCategories = _.uniq(allCategories);
+    const sortedCategories = allCategories.sort((a, b) => {
+      if (a < b) return -1;
+      if (a > b) return 1;
+      return 0;
+    });
+
     const categories = accessibleCategories.sort((a, b) => {
       const A = a.toLowerCase();
       const B = b.toLowerCase();
@@ -198,6 +234,31 @@ class Blog extends React.Component {
       // default return value (no sorting)
       return 0;
     });
+
+    let displayFilterAs = null;
+    switch (activeFilter) {
+      case "nvc":
+        displayFilterAs = "Nonviolent Communication";
+        break;
+      case "rc":
+        displayFilterAs = "Restorative Circles";
+        break;
+      case "journal":
+        displayFilterAs = "Personal Journal";
+        break;
+      case "corporate":
+        displayFilterAs = "Corporate Work";
+        break;
+      case "published-articles":
+        displayFilterAs = "Published Articles";
+        break;
+      case "all":
+        displayFilterAs = "All Posts";
+        break;
+      case "testimonials":
+        displayFilterAs = "Testimonials";
+        break;
+    }
 
     return (
       <Fragment>
@@ -211,6 +272,63 @@ class Blog extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={pageStyleClass}>
+          <H1 className="mask-h2">Blog&nbsp;›&nbsp;{displayFilterAs}</H1>
+          {activeFilter === "all" ? (
+            <CheckableTag
+              checked
+              onClick={() => this.applyFilter("all")}
+              style={{ marginBottom: 10 }}
+            >
+              All posts
+            </CheckableTag>
+          ) : (
+            <Tag
+              onClick={() => this.applyFilter("all")}
+              style={{ marginBottom: 10 }}
+            >
+              All posts
+            </Tag>
+          )}
+          {_.map(sortedCategories, category => {
+            let displayAs = _.trim(_.last(_.split(category, ".")));
+            const tagKey = _.kebabCase(_.toLower(displayAs));
+
+            switch (displayAs) {
+              case "NVC":
+                displayAs = "Nonviolent Communication";
+                break;
+              case "RC":
+                displayAs = "Restorative Circles";
+                break;
+              case "Journal":
+                displayAs = "Personal Journal";
+                break;
+              case "Corporate":
+                displayAs = "Corporate Work";
+                break;
+            }
+
+            return (
+              <Fragment>
+                {activeFilter === tagKey ? (
+                  <CheckableTag
+                    checked
+                    onClick={() => this.applyFilter(tagKey)}
+                    style={{ marginBottom: 10 }}
+                  >
+                    {displayAs}
+                  </CheckableTag>
+                ) : (
+                  <Tag
+                    onClick={() => this.applyFilter(tagKey)}
+                    style={{ marginBottom: 10 }}
+                  >
+                    {displayAs}
+                  </Tag>
+                )}
+              </Fragment>
+            );
+          })}
           {_.map(categories, category => {
             let catString = _.trim(_.last(_.split(category, ".")));
             const catId = _.kebabCase(_.toLower(catString));
@@ -221,21 +339,19 @@ class Blog extends React.Component {
               case "RC":
                 catString = "Restorative Circles";
                 break;
+              case "Journal":
+                catString = "Personal Journal";
+                break;
+              case "Corporate":
+                catString = "Corporate Work";
+                break;
             }
 
             return (
               <div className="category" key={catId}>
-                <H1 className="mask-h2" id={catId}>
-                  {filter !== "all" && (
-                    <Fragment>
-                      <Link to="/writings?filter=all" className="top-link">
-                        Blog
-                      </Link>
-                      &nbsp;›&nbsp;
-                    </Fragment>
-                  )}
-                  {catString}
-                </H1>
+                <H2 className="mask-h3" id={catId}>
+                  <span>{catString}</span>
+                </H2>
                 {_.map(filteredData, ({ node }) => {
                   const { date, title, abstract, cover } = node.frontmatter;
                   const { route } = node.fields;
@@ -260,7 +376,7 @@ class Blog extends React.Component {
                           <div className="abstract">
                             <Header>
                               <Link to={route}>
-                                <H2 className="mask-h4">{title}</H2>
+                                <H3 className="mask-h4">{title}</H3>
                                 <Paragraph style={{ marginBottom: 20 }}>
                                   <small>
                                     <i>

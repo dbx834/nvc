@@ -10,7 +10,7 @@ import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-import { LocaleProvider, Calendar, Popover, Badge, Tag } from "antd";
+import { LocaleProvider, Calendar, Popover, Tag } from "antd";
 import en_GB from "antd/lib/locale-provider/en_GB";
 import "moment/locale/en-gb";
 import { Image } from "@bodhi-project/components";
@@ -352,10 +352,12 @@ const getStandardData = ({ node }) => {
 
   const begins = moment(!_.isNull(startDate) ? startDate : date);
   const ends = moment(
-    !_.isNull(finishDate) ? finishDate : begins.add(23, "hours"),
+    !_.isNull(finishDate) ? finishDate : begins.clone().add(23, "hours"),
   );
   const beginDateInt = parseInt(begins.format("YYYYMMDD"), 10);
-  const diff = moment.duration(ends.diff(begins)).asDays();
+  let diff = !_.isNull(finishDate)
+    ? moment.duration(ends.diff(begins)).asDays()
+    : 0;
 
   // Date stuff
   const sameDay = _.isNull(finishDate);
@@ -382,6 +384,8 @@ const getStandardData = ({ node }) => {
       humanDate = rangeX;
     }
   }
+
+  console.log(diff);
 
   let beginHumanDate = null;
   let endHumanDate = null;

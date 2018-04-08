@@ -3,16 +3,17 @@
 // ------------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import _ from "lodash";
 import { css } from "glamor";
-import moment from "moment";
+// import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
 import { Modal, Tooltip } from "antd";
 import { Image, OutLink } from "@bodhi-project/components";
 import { Elements, applyRhythm } from "@bodhi-project/typography";
+import Iframe from "react-iframe";
 import { Page } from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
@@ -233,7 +234,17 @@ class IndexPage extends React.Component {
           onCancel={this.hideModal}
         >
           {!_.isNull(this.state.modalData) && (
-            <div className="av-page">hello!</div>
+            <div className="av-page">
+              <Iframe
+                url="https://www.auroville.com/donations/"
+                width="450px"
+                height="450px"
+                className="embed"
+                display="initial"
+                position="relative"
+                allowFullScreen
+              />
+            </div>
           )}
         </Modal>
       </Fragment>

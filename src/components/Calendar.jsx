@@ -17,7 +17,6 @@ import { Image } from "@bodhi-project/components";
 import { Elements, applyRhythm, applyType } from "@bodhi-project/typography";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import packageJson from "../../package.json";
 import nvc from "../assets/nvc.png";
 import rc from "../assets/rc.png";
 import featured from "../assets/featured.png";
@@ -264,17 +263,7 @@ const parseQueryString = string => {
 
 /** popContent */
 const popContent = standardData => {
-  const {
-    title,
-    humanDate,
-    fromTime,
-    toTime,
-    abstract,
-    route,
-    diff,
-    beginHumanDate,
-    endHumanDate,
-  } = standardData;
+  const { title, humanDate, fromTime, toTime, abstract, route } = standardData;
 
   return (
     <div style={{ maxWidth: 300, padding: "0.5em" }}>
@@ -348,51 +337,16 @@ const getStandardData = ({ node }) => {
     finishDate,
     abstract,
   } = frontmatter;
-  const { route } = fields;
+  const { route, humanDate } = fields;
 
   const begins = moment(!_.isNull(startDate) ? startDate : date);
   const ends = moment(
     !_.isNull(finishDate) ? finishDate : begins.clone().add(23, "hours"),
   );
   const beginDateInt = parseInt(begins.format("YYYYMMDD"), 10);
-  let diff = !_.isNull(finishDate)
+  const diff = !_.isNull(finishDate)
     ? moment.duration(ends.diff(begins)).asDays()
     : 0;
-
-  // Date stuff
-  const sameDay = _.isNull(finishDate);
-  // const elapsed = begins.fromNow();
-
-  let humanDate = begins.format("ddd, MMMM D, YYYY");
-  if (sameDay === false) {
-    const range = begins.twix(ends, { allDay: true });
-    const rangeX = range.format({
-      showDayOfWeek: true,
-      hideTime: true,
-      spaceBeforeMeridiem: false,
-      yearFormat: "YYYY",
-      monthFormat: "MMMM",
-      dayFormat: "D",
-      weekdayFormat: "ddd",
-      meridiemFormat: "A",
-    });
-    const beginsYear = begins.format("YYYY");
-    const endsYear = ends.format("YYYY");
-    if (beginsYear === endsYear) {
-      humanDate = `${rangeX}, ${beginsYear}`;
-    } else {
-      humanDate = rangeX;
-    }
-  }
-
-  console.log(diff);
-
-  let beginHumanDate = null;
-  let endHumanDate = null;
-  if (diff !== 0) {
-    beginHumanDate = humanDate;
-    endHumanDate = ends.format("dddd, MMMM D, YYYY");
-  }
 
   return {
     title,
@@ -409,8 +363,6 @@ const getStandardData = ({ node }) => {
     diff,
     humanDate,
     abstract,
-    beginHumanDate,
-    endHumanDate,
   };
 };
 

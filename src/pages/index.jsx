@@ -186,6 +186,8 @@ export const pageQuery = graphql`
         node {
           fields {
             route
+            humanDate
+            elapsed
           }
           frontmatter {
             abstract

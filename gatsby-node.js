@@ -1,4 +1,6 @@
 // ----------------------------------------------------------------------- Imports
+const twix = require("twix");
+const moment = require("moment");
 const path = require("path");
 const _ = require("lodash");
 const unified = require("unified");
@@ -58,8 +60,43 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
     route = `${parsedFilePath.dir === "" ? "" : parsedFilePath.dir}/${
       parsedFilePath.name
     }`;
-    createNodeField({ node, name: "route", value: route }); // ...createPages will attach the component at this route
-    createNodeField({ node, name: "rawContent", value: node.internal.content }); // ...createPages will attach the component at this route
+
+    const { date, startDate, finishDate } = node.frontmatter;
+
+    const begins = moment(!_.isUndefined(startDate) ? startDate : date);
+    const ends = moment(
+      !_.isUndefined(finishDate) ? finishDate : begins.clone().add(23, "hours"),
+    );
+
+    const sameDay = _.isUndefined(finishDate);
+    const elapsed = begins.fromNow();
+
+    let humanDate = begins.format("ddd, MMMM D, YYYY");
+    if (sameDay === false) {
+      const range = begins.twix(ends, { allDay: true });
+      const rangeX = range.format({
+        showDayOfWeek: true,
+        hideTime: true,
+        spaceBeforeMeridiem: false,
+        yearFormat: "YYYY",
+        monthFormat: "MMMM",
+        dayFormat: "D",
+        weekdayFormat: "ddd",
+        meridiemFormat: "A",
+      });
+      const beginsYear = begins.format("YYYY");
+      const endsYear = ends.format("YYYY");
+      if (beginsYear === endsYear) {
+        humanDate = `${rangeX}, ${beginsYear}`;
+      } else {
+        humanDate = rangeX;
+      }
+    }
+
+    createNodeField({ node, name: "elapsed", value: elapsed });
+    createNodeField({ node, name: "humanDate", value: humanDate });
+    createNodeField({ node, name: "route", value: route });
+    createNodeField({ node, name: "rawContent", value: node.internal.content });
     // console.log(node.internal.content);
   }
 };
@@ -103,6 +140,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                   fields {
                     route
                     rawContent
+                    elapsed
+                    humanDate
                   }
                 }
               }
@@ -137,6 +176,8 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             frontmatter: edge.node.frontmatter,
             headings: edge.node.headings,
             route: edge.node.fields.route,
+            elapsed: edge.node.fields.elapsed,
+            humanDate: edge.node.fields.humanDate,
             markdownAst: unified()
               .use(markdown)
               .parse(edge.node.fields.rawContent),

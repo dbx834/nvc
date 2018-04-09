@@ -7,7 +7,6 @@ import PropTypes from "prop-types";
 import _ from "lodash";
 import { css } from "glamor";
 import moment from "moment";
-import twix from "twix";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link, { withPrefix } from "gatsby-link";
@@ -129,39 +128,15 @@ class EventTemplate extends React.Component {
       cover,
     } = frontmatter;
     const { markdownAst, next, prev } = pathContext;
-    const { route } = pathContext;
+    const { route, humanDate, elapsed } = pathContext;
     const checkedRoute = _.startsWith(route, "/") ? route : `/${route}`;
     const nakedRoute = checkedRoute.substr(1);
 
     // Date stuff
     const begins = moment(!_.isNull(startDate) ? startDate : date);
-    const sameDay = _.isNull(finishDate);
-    const elapsed = begins.fromNow();
     const ends = moment(
       !_.isNull(finishDate) ? finishDate : begins.clone().add(23, "hours"),
     );
-
-    let humanDate = begins.format("ddd, MMMM D, YYYY");
-    if (sameDay === false) {
-      const range = begins.twix(ends, { allDay: true });
-      const rangeX = range.format({
-        showDayOfWeek: true,
-        hideTime: true,
-        spaceBeforeMeridiem: false,
-        yearFormat: "YYYY",
-        monthFormat: "MMMM",
-        dayFormat: "D",
-        weekdayFormat: "ddd",
-        meridiemFormat: "A",
-      });
-      const beginsYear = begins.format("YYYY");
-      const endsYear = ends.format("YYYY");
-      if (beginsYear === endsYear) {
-        humanDate = `${rangeX}, ${beginsYear}`;
-      } else {
-        humanDate = rangeX;
-      }
-    }
 
     const { orgLocation } = data;
 

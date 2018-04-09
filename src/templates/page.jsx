@@ -67,20 +67,12 @@ class PageTemplate extends React.Component {
 
   /** standard renderer */
   render() {
-    // Abstract stuff
     const { pathContext } = this.props;
     const { frontmatter } = pathContext;
-    // const { toc } = pathContext;
     const { markdownAst } = pathContext;
-    const { route } = pathContext;
+    const { route, humanDate, elapsed } = pathContext;
     const checkedRoute = _.startsWith(route, "/") ? route : `/${route}`;
     const nakedRoute = checkedRoute.substr(1);
-    // const { headings } = pathContext;
-
-    // Date stuff
-    const mDate = moment(frontmatter.date);
-    const humanDate = mDate.format("dddd, MMMM Do YYYY");
-    const elapsed = mDate.fromNow();
 
     // -------------------------------------------------------------------- SEO
     const pageData = {

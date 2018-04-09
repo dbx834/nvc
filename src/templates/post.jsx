@@ -92,15 +92,13 @@ class BlogPostTemplate extends React.Component {
     const { frontmatter } = pathContext;
     // const { toc } = pathContext;
     const { markdownAst, next, prev } = pathContext;
-    const { route } = pathContext;
+    const { route, humanDate, elapsed } = pathContext;
     const checkedRoute = _.startsWith(route, "/") ? route : `/${route}`;
     const nakedRoute = checkedRoute.substr(1);
 
     // Date stuff
     const mDate = moment(frontmatter.date);
-    const humanDate = mDate.format("dddd, MMMM Do YYYY");
     const isoDate = mDate.format();
-    const elapsed = mDate.fromNow();
 
     const dateStr = moment(mDate).format("dddd, MMMM D, YYYY");
     const when = moment(mDate).fromNow();

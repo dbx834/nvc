@@ -148,49 +148,9 @@ class EventsGrid extends React.Component {
         <HexaGrid>
           {_.map(filtered, ({ node }, index) => {
             const { frontmatter } = node;
-            const {
-              tags,
-              date,
-              startDate,
-              finishDate,
-              fromTime,
-              toTime,
-              cover,
-            } = frontmatter;
+            const { tags, fromTime, toTime, cover } = frontmatter;
             const { fields } = node;
-            const { route } = fields;
-
-            // Date stuff
-            const begins = moment(!_.isNull(startDate) ? startDate : date);
-            const sameDay = _.isNull(finishDate);
-            const elapsed = begins.fromNow();
-            const ends = moment(
-              !_.isNull(finishDate)
-                ? finishDate
-                : begins.clone().add(23, "hours"),
-            );
-
-            let humanDate = begins.format("ddd, MMMM D, YYYY");
-            if (sameDay === false) {
-              const range = begins.twix(ends, { allDay: true });
-              const rangeX = range.format({
-                showDayOfWeek: true,
-                hideTime: true,
-                spaceBeforeMeridiem: false,
-                yearFormat: "YYYY",
-                monthFormat: "MMMM",
-                dayFormat: "D",
-                weekdayFormat: "ddd",
-                meridiemFormat: "A",
-              });
-              const beginsYear = begins.format("YYYY");
-              const endsYear = ends.format("YYYY");
-              if (beginsYear === endsYear) {
-                humanDate = `${rangeX}, ${beginsYear}`;
-              } else {
-                humanDate = rangeX;
-              }
-            }
+            const { route, elapsed, humanDate } = fields;
 
             return (
               <Hex className="hex" key={humanDate}>

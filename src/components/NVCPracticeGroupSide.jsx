@@ -9,9 +9,9 @@ import { css } from "glamor";
 import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import { Form, Select, Input, Button } from "antd";
+import { Form, Select, Input, Button, Tooltip } from "antd";
 import { Elements } from "@bodhi-project/typography";
-import { Image } from "@bodhi-project/components";
+import { Image, OutLink } from "@bodhi-project/components";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import {
@@ -21,6 +21,8 @@ import {
   validateComment,
 } from "../helpers/formHelpers";
 import { formStyleClass } from "../helpers/defaultFormStyles";
+import domestic from "../assets/domestic.png";
+import international from "../assets/international.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -178,31 +180,62 @@ class NVCPracticeGroupSide extends React.Component {
               Select the Domestic option for Indian bank/credit cards, or the
               International option for foreign bank/credit cards.
             </Paragraph>
-            <Image
-              src={""}
-              rawHeight={450}
-              rawWidth={450}
-              className="icon"
-              style={{
-                height: 65,
-                width: 65,
-                display: "inline-block",
-                background: "#4a4a4a",
-                marginRight: 15,
-              }}
-            />
-            <Image
-              src={""}
-              rawHeight={450}
-              rawWidth={450}
-              className="icon"
-              style={{
-                height: 65,
-                width: 65,
-                background: "#4a4a4a",
-                display: "inline-block",
-              }}
-            />
+            <OutLink
+              to="https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD"
+              style={{ marginRight: 17 }}
+            >
+              <Tooltip title="Indian Card">
+                <div style={{ display: "inline-block" }}>
+                  <Image
+                    src={domestic}
+                    rawHeight={450}
+                    rawWidth={450}
+                    className="icon"
+                    style={{
+                      height: 65,
+                      width: 65,
+                      display: "inline-block",
+                      background: "transparent",
+                      border: "unset",
+                    }}
+                  />
+                </div>
+              </Tooltip>
+            </OutLink>
+            <form
+              action="https://www.paypal.com/cgi-bin/webscr"
+              method="post"
+              target="_blank"
+              style={{ display: "inline-block" }}
+              className="hover"
+            >
+              <input type="hidden" name="cmd" value="_s-xclick" />
+              <input
+                type="hidden"
+                name="hosted_button_id"
+                value="WFXM5RNDGBXL4"
+              />
+              <Tooltip title="International Card">
+                <input
+                  type="image"
+                  src={international}
+                  border="0"
+                  name="submit"
+                  alt="PayPal – The safer, easier way to pay online!"
+                  style={{
+                    height: 65,
+                    width: 65,
+                  }}
+                />
+              </Tooltip>
+              <img
+                alt=""
+                border="0"
+                src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif"
+                width="1"
+                height="1"
+              />
+            </form>
             <br />
             <br />
             <br />

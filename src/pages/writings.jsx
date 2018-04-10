@@ -244,7 +244,7 @@ class Blog extends React.Component {
         displayFilterAs = "Restorative Circles";
         break;
       case "journal":
-        displayFilterAs = "Personal Journal";
+        displayFilterAs = "Journal";
         break;
       case "corporate":
         displayFilterAs = "Corporate Work";
@@ -301,7 +301,7 @@ class Blog extends React.Component {
                 displayAs = "Restorative Circles";
                 break;
               case "Journal":
-                displayAs = "Personal Journal";
+                displayAs = "Journal";
                 break;
               case "Corporate":
                 displayAs = "Corporate Work";
@@ -340,7 +340,7 @@ class Blog extends React.Component {
                 catString = "Restorative Circles";
                 break;
               case "Journal":
-                catString = "Personal Journal";
+                catString = "Journal";
                 break;
               case "Corporate":
                 catString = "Corporate Work";
@@ -349,9 +349,17 @@ class Blog extends React.Component {
 
             return (
               <div className="category" key={catId}>
-                <H2 className="mask-h3" id={catId}>
-                  <span>{catString}</span>
-                </H2>
+                {activeFilter === "all" && (
+                  <H2 className="mask-h3" id={catId}>
+                    <span>{catString}</span>
+                  </H2>
+                )}
+                {activeFilter !== "all" && (
+                  <Fragment>
+                    <br />
+                    <br />
+                  </Fragment>
+                )}
                 {_.map(filteredData, ({ node }) => {
                   const { date, title, abstract, cover } = node.frontmatter;
                   const { route } = node.fields;

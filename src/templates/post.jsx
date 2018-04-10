@@ -100,7 +100,7 @@ class BlogPostTemplate extends React.Component {
     const mDate = moment(frontmatter.date);
     const isoDate = mDate.format();
 
-    const dateStr = moment(mDate).format("dddd, MMMM D, YYYY");
+    const dateStr = moment(mDate).format("ddd, MMMM D, YYYY");
     const when = moment(mDate).fromNow();
 
     let catString = _.trim(_.last(_.split(frontmatter.category, ".")));

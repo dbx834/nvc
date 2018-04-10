@@ -237,9 +237,7 @@ class IndexPage extends React.Component {
             <div className="av-page">
               <Iframe
                 url="https://www.auroville.com/donations/"
-                width="450px"
-                height="450px"
-                className="embed"
+                className="iframe-embed"
                 display="initial"
                 position="relative"
                 allowFullScreen

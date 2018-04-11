@@ -66,12 +66,12 @@ const organisationSchemaData = {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const wrapperStyles = css({
   // margin: 30,
-  backgroundColor: "#f8f2e6",
-  background: "#f8f2e6",
+  backgroundColor: "#f8f2e6 !important",
+  background: "#f8f2e6 !important",
   position: "relative",
 
   "& h1, h2, h3, h4, h5, h6, p, li": {
-    color: "#4a4a4a",
+    color: "#4a4a4a !important",
   },
 
   "& a": {

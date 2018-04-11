@@ -10,8 +10,9 @@ finishDate: 2018-04-29
 fromTime: 9am
 toTime: 5pm
 type: event
-cost: Variable
+cost: na
 tags:
+  - workshop
   - featured
 ---
 

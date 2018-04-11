@@ -1,9 +1,9 @@
 // ----------------------------------------------------------------------------
 // -------------------------------------------------------------------- Imports
 // ----------------------------------------------------------------------------
-import _ from 'lodash';
-import isEmail from 'validator/lib/isEmail';
-import isAlpha from 'validator/lib/isAlphanumeric';
+import _ from "lodash";
+import isEmail from "validator/lib/isEmail";
+import isAlpha from "validator/lib/isAlphanumeric";
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Functions
@@ -15,7 +15,7 @@ const hasErrors = fieldsError =>
 /** Check email is valid */
 const validateEmail = (rule, value, callback) => {
   if (_.isEmpty(value)) {
-    callback('Please fill in your email.');
+    callback("Please fill in your email.");
   } else {
     if (!isEmail(value)) {
       callback("That's not a valid email address!");
@@ -25,26 +25,49 @@ const validateEmail = (rule, value, callback) => {
   }
 };
 
+/** Check email is valid */
+const validateMobile = (rule, value, callback) => {
+  callback();
+  // if (_.isEmpty(value)) {
+  //   callback("Please fill in these details.");
+  // }
+};
+
+const validateCountry = (rule, value, callback) => {
+  callback();
+  // if (_.isEmpty(value)) {
+  //   callback("Please fill in these details.");
+  // }
+};
+
+const validateCurrentLocation = (rule, value, callback) => {
+  callback();
+  // if (_.isEmpty(value)) {
+  //   callback("Please fill in these details.");
+  // }
+};
+
+const validateWhatDrawsYou = (rule, value, callback) => {
+  callback();
+  // if (_.isEmpty(value)) {
+  //   callback("Please fill in these details.");
+  // }
+};
+
+const validateComment = (rule, value, callback) => {
+  callback();
+  // if (_.isEmpty(value)) {
+  //   callback("Please fill in these details.");
+  // }
+};
+
 /** Check name is valid */
 const validateName = (rule, value, callback) => {
   if (_.isEmpty(value)) {
-    callback('Please fill in your name.');
+    callback("Please fill in your name.");
   } else {
-    if (!isAlpha(_.replace(value, ' ', ''))) {
-      callback('A name can have only characters (a-z, A-Z).');
-    } else {
-      callback();
-    }
-  }
-};
-
-/** Check comment is valid */
-const validateComment = (rule, value, callback) => {
-  if (_.isEmpty(value)) {
-    callback('Please add your comments.');
-  } else {
-    if (!isAlpha(_.replace(value, ' ', ''))) {
-      callback('Comments can have only characters (a-z, A-Z).');
+    if (!isAlpha(_.replace(value, " ", ""))) {
+      callback("A name can have only characters (a-z, A-Z).");
     } else {
       callback();
     }

@@ -18,6 +18,10 @@ import {
   hasErrors,
   validateEmail,
   validateName,
+  validateMobile,
+  validateCountry,
+  validateCurrentLocation,
+  validateWhatDrawsYou,
   validateComment,
 } from "../helpers/formHelpers";
 import { formStyleClass } from "../helpers/defaultFormStyles";
@@ -90,12 +94,13 @@ class NVCPracticeGroupSide extends React.Component {
           country,
           whatDrawsYou,
           currentLocation,
+          comment,
         } = values;
 
         setTimeout(() => {
           // Mock some delay
           fetch(
-            `https://script.google.com/macros/s/AKfycbxe5KaEdHtLH5JVpf-yntF5LZYAszQTwHHQ4tEjvBT4DyykpRtZ/exec?name=${name}&email=${email}&event=${event}&mobile=${mobile}&country=${country}&whatDrawsYou=${whatDrawsYou}&currentLocation=${currentLocation}&callback=?`,
+            `https://script.google.com/macros/s/AKfycbxe5KaEdHtLH5JVpf-yntF5LZYAszQTwHHQ4tEjvBT4DyykpRtZ/exec?name=${name}&email=${email}&event=${event}&mobile=${mobile}&country=${country}&whatDrawsYou=${whatDrawsYou}&comment=${comment}&currentLocation=${currentLocation}&callback=?`,
             {
               method: "GET",
               mode: "no-cors",
@@ -119,7 +124,7 @@ class NVCPracticeGroupSide extends React.Component {
 
   /** standard renderer */
   render() {
-    const { data } = this.props;
+    const { data, pathContext } = this.props;
     const {
       getFieldDecorator,
       getFieldsError,
@@ -139,8 +144,9 @@ class NVCPracticeGroupSide extends React.Component {
       isFieldTouched("currentLocation") && getFieldError("currentLocation");
 
     const { date, startDate } = data;
+    const { humanDate } = pathContext;
 
-    const key = `${data.title} @ ${data.date}`;
+    const key = `${data.title} @ ${humanDate}`;
     const todayInt = parseInt(moment().format("YYYYMMDD"), 10);
     const begins = moment(!_.isNull(startDate) ? startDate : date);
     const beginDateInt = parseInt(begins.format("YYYYMMDD"), 10);
@@ -274,7 +280,7 @@ class NVCPracticeGroupSide extends React.Component {
                 >
                   {getFieldDecorator("mobile", {
                     validateTrigger: ["onChange", "onBlur"],
-                    rules: [{ validator: validateEmail }],
+                    rules: [{ validator: validateMobile }],
                   })(<Input placeholder="Mobile / Whatsapp" />)}
                 </FormItem>
                 {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Country Selection */}
@@ -284,7 +290,7 @@ class NVCPracticeGroupSide extends React.Component {
                 >
                   {getFieldDecorator("country", {
                     validateTrigger: ["onChange", "onBlur"],
-                    rules: [{ validator: validateName }],
+                    rules: [{ validator: validateCountry }],
                   })(<Input placeholder="What's your country of origin?" />)}
                 </FormItem>
                 {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Location */}
@@ -294,7 +300,7 @@ class NVCPracticeGroupSide extends React.Component {
                 >
                   {getFieldDecorator("currentLocation", {
                     validateTrigger: ["onChange", "onBlur"],
-                    rules: [{ validator: validateName }],
+                    rules: [{ validator: validateCurrentLocation }],
                   })(<Input placeholder="Where are you living presently?" />)}
                 </FormItem>
                 {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ What Draws You */}
@@ -304,7 +310,7 @@ class NVCPracticeGroupSide extends React.Component {
                 >
                   {getFieldDecorator("whatDrawsYou", {
                     validateTrigger: ["onChange", "onBlur"],
-                    rules: [{ validator: validateComment }],
+                    rules: [{ validator: validateWhatDrawsYou }],
                   })(
                     <TextArea
                       placeholder="What draws you to this practice group?"

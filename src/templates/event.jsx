@@ -161,6 +161,9 @@ class EventTemplate extends React.Component {
       whichSide = "workshop";
     }
 
+    console.log(tags);
+    console.log(whichSide);
+
     // Make banner
     let eventBanner = null;
     if (cover === "fallback") {
@@ -303,14 +306,22 @@ class EventTemplate extends React.Component {
           <div className="right">
             {!_.isNull(whichSide) &&
               whichSide === "rc-practice-group" && (
-                <RCPracticeGroupSide data={frontmatter} />
+                <RCPracticeGroupSide
+                  data={frontmatter}
+                  pathContext={pathContext}
+                />
               )}
             {!_.isNull(whichSide) &&
               whichSide === "nvc-practice-group" && (
-                <NVCPracticeGroupSide data={frontmatter} />
+                <NVCPracticeGroupSide
+                  data={frontmatter}
+                  pathContext={pathContext}
+                />
               )}
             {!_.isNull(whichSide) &&
-              whichSide === "workshop" && <WorkshopSide data={frontmatter} />}
+              whichSide === "workshop" && (
+                <WorkshopSide data={frontmatter} pathContext={pathContext} />
+              )}
           </div>
         </Page>
       </Fragment>

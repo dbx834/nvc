@@ -105,7 +105,7 @@ class LearnMore extends React.Component {
   render() {
     return (
       <div className={pageStyleClass}>
-        <H2>Further Links...</H2>
+        <h3 className="mask-p">Further Links</h3>
         <TetraGrid>
           <THex className="hex">
             <Link to="/mediation">

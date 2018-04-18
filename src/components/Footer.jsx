@@ -7,7 +7,6 @@ import PropTypes from "prop-types";
 import { css } from "glamor";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link from "gatsby-link";
 import { Row, Col, Icon } from "antd";
 import { Container, Image, OutLink } from "@bodhi-project/components";
 import { Elements, applyRhythm } from "@bodhi-project/typography";
@@ -22,10 +21,7 @@ import youtube from "../assets/youtube.png";
 import vimeo from "../assets/vimeo.png";
 import paypal from "../assets/paypal.png";
 import payu from "../assets/payu.png";
-import cnvc from "../assets/cnvc.png";
 import soundcloud from "../assets/soundcloud.png";
-import logo from "../assets/logo.png";
-import auroville from "../assets/auroville.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Paragraph } = Elements;
@@ -104,58 +100,6 @@ class Header extends React.Component {
             }}
           />
           <Image src={boat} className="boat" />
-          <div style={{ position: "absolute", right: 0 }}>
-            <OutLink to="http://www.cnvc.org/" style={{ marginLeft: 17 }}>
-              <Image
-                src={cnvc}
-                rawWidth={450}
-                rawHeight={450}
-                style={{
-                  display: "inline-block",
-                  border: "none",
-                  background: "none",
-                  height: 75,
-                  width: 75,
-                  marginRight: 15,
-                }}
-              />
-            </OutLink>
-            <Link to="/">
-              <Image
-                src={logo}
-                rawWidth={450}
-                rawHeight={450}
-                style={{
-                  display: "inline-block",
-                  border: "none",
-                  background: "none",
-                  height: 60,
-                  width: 60,
-                }}
-              />
-            </Link>
-            <OutLink to="https://www.auroville.org/">
-              <Image
-                src={auroville}
-                rawWidth={450}
-                rawHeight={450}
-                style={{
-                  display: "inline-block",
-                  border: "none",
-                  background: "none",
-                  height: 75,
-                  width: 75,
-                }}
-              />
-            </OutLink>
-            <Paragraph className="text-center">
-              <small>
-                <i>
-                  A Unit of<br />Auroville Foundation
-                </i>
-              </small>
-            </Paragraph>
-          </div>
           <Row type="flex">
             <Col xs={23} sm={23} md={20} lg={17} xl={15}>
               <Paragraph>

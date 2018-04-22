@@ -6,7 +6,7 @@ abstract: Restorative Circles, a system of conflict resolution which is based on
 date: 2015-04-01
 type: post
 tags:
-  - some tag
+  - highlight
 ---
 
 Meet L’aura Joy, born 1978, second generation Aurovilian, and passionate about Nonviolent Communication (or NVC for short). NVC, she explains, is about using communication as a means to get to the consciousness behind our words. “There’s so much judging and blaming, even if ever-so subtle, in our language, and we’re not aware of it. We’re conditioned by our upbringing, culture and education to speak and think in ways that create separation between us. Once we start dissecting our language, we realize that what we’re actually saying is not really what’s going on inside us. NVC supports us to become more conscious of why we say certain things and to understand what’s going on inside ourselves, without starting a blame game. At the same time, it’s about developing curiosity and listening skills to understand what’s really going on for the other person. NVC uses communication as a means, although the ultimate goal is not communication but the development of consciousness.”

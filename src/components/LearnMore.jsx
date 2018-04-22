@@ -22,8 +22,6 @@ const { H2, H3, Paragraph } = Elements;
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageWrapper = css({
-  maxWidth: "40em",
-
   "& .hex": {
     boxShadow: "none ",
     padding: "0px ",
@@ -105,7 +103,6 @@ class LearnMore extends React.Component {
   render() {
     return (
       <div className={pageStyleClass}>
-        <h3 className="mask-p">Further Links</h3>
         <TetraGrid>
           <THex className="hex">
             <Link to="/mediation">

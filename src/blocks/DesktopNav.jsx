@@ -74,7 +74,7 @@ const desktopNavStyle = css({
     },
 
     "& a.active": {
-      color: "#0000FF",
+      color: "#B43808",
     },
   },
 });

@@ -10,6 +10,7 @@ import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
+import FacebookProvider, { Like as FBLike } from "react-facebook";
 import { Tag } from "antd";
 import {
   Page,
@@ -186,6 +187,30 @@ class BlogPostTemplate extends React.Component {
                   <br />
                   {frontmatter.abstract}
                 </Paragraph>
+                <br />
+                <div style={{ position: "relative" }}>
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 99,
+                      backgroundColor: "#f8f2e6",
+                      zIndex: 10,
+                      height: 20,
+                      width: "calc(100% - 98px)",
+                    }}
+                  />
+                  <div style={{ maxWidth: 98 }}>
+                    <FacebookProvider appId="218604115574634">
+                      <FBLike
+                        href={`http://localhost:8000/${route}`}
+                        colorScheme="dark"
+                        showFaces
+                        share
+                      />
+                    </FacebookProvider>
+                  </div>
+                </div>
               </div>
             </Header>
             <hr />

@@ -10,8 +10,9 @@ import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
+import FacebookProvider, { Page as FBPage } from "react-facebook";
 import { Image, OutLink } from "@bodhi-project/components";
-import { Collapse } from "antd";
+import { Collapse, Carousel } from "antd";
 import { Page, Article } from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
@@ -29,10 +30,14 @@ import {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
 import LearnMore from "../components/LearnMore";
+import MiniCalendar from "../components/MiniCalendar";
 
 import nvcPhoto from "../assets/nvc-in-progress.jpg";
 import cnvc from "../assets/cnvc.png";
 import logo from "../assets/logo.png";
+import plant from "../assets/plant.jpg";
+import sun from "../assets/sun.jpg";
+import earth from "../assets/earth.jpg";
 import auroville from "../assets/auroville.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
@@ -59,17 +64,22 @@ const {
   breadcrumbSchemaData,
 } = seoData;
 
+function onChange(a, b, c) {
+  console.log(a, b, c);
+}
+
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageWrapper = css({
+  marginBottom: 60,
+
   "& h1": {
     textTransform: "uppercase",
-    fontStyle: "italic",
 
     "& span": {
-      fontSize: "125%",
+      fontSize: "110%",
     },
   },
 
@@ -77,18 +87,23 @@ const pageWrapper = css({
     fontWeight: "200 !important",
 
     "& span": {
-      fontSize: "105%",
+      fontSize: "90%",
     },
   },
 
   "& h3": {
     fontWeight: "700 !important",
-    fontStyle: "italic",
   },
 
   "& .joke": {
-    padding: "0em 0.625em",
+    padding: "0em 1.25em",
     marginBottom: 30,
+  },
+
+  "& hr": {
+    border: "none",
+    borderTop: "3px solid #B43808",
+    marginBottom: 20,
   },
 
   "& .kale": {
@@ -96,13 +111,7 @@ const pageWrapper = css({
 
     "& > div": {
       flexBasis: 0,
-      padding: "0em 0.625em",
-
-      "& hr": {
-        border: "none",
-        borderTop: "3px solid #B43808",
-        marginBottom: 20,
-      },
+      padding: "0em 1.25em",
 
       "&:nth-child(1)": {
         flexGrow: 62,
@@ -112,11 +121,13 @@ const pageWrapper = css({
 
           "& > div": {
             "&:nth-child(1)": {
+              flexBasis: 0,
               flexGrow: 50,
-              paddingRight: "0.625em",
+              paddingRight: "1.25em",
             },
 
             "&:nth-child(2)": {
+              flexBasis: 0,
               flexGrow: 50,
             },
           },
@@ -250,94 +261,208 @@ class IndexPage extends React.Component {
           <div className="kale">
             <div>
               <hr />
-              <p>
-                With our main focus on Nonviolence, we organize workshops,
-                residential programs and practice groups on Nonviolent
-                Communication (NVC) and Restorative Circles (RC). We are also
-                available for community support, mediations, and personal
-                coaching.
-              </p>
-              <p>
-                <i>
-                  “My optimism rests on my belief in the infinite possibilities
-                  of the individual to develop nonviolence. The more you develop
-                  it in your own heart, the more infectious it becomes, till it
-                  overwhelms your surroundings and, by and by, might oversweep
-                  the world.”
-                </i>{" "}
-                - Gandhi
-              </p>
-              <Image
-                src={nvcPhoto}
-                rawWidth={1440}
-                rawHeight={900}
+              <div
                 style={{
-                  height: "auto",
-                  width: "100%",
-                  border: 0,
-                  background: "transparent",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: 30,
                 }}
-                loader="gradient"
-                className="mask-p"
-              />
-              <div className="hope">
-                <div>
-                  <hr />
-                  <h3 className="mask-p">Vision</h3>
-                  <p>something something...</p>
+              >
+                <div style={{ flexGrow: 15, flexBasis: 0 }}>
+                  <Image
+                    src={sun}
+                    rawWidth={900}
+                    rawHeight={900}
+                    style={{
+                      width: 45,
+                      height: 45,
+                      border: 0,
+                      background: "transparent",
+                      display: "block",
+                      margin: "auto",
+                    }}
+                  />
+                  <h3
+                    className="mask-p"
+                    style={{ textAlign: "center", marginBottom: 0 }}
+                  >
+                    Vision
+                  </h3>
                 </div>
-                <div>
-                  <hr />
-                  <h3 className="mask-p">Mission</h3>
-                  <p>something something...</p>
-                </div>
+                <p style={{ flexGrow: 80, flexBasis: 0, marginBottom: 0 }}>
+                  We envision a world where everyone’s needs matter, and where
+                  we live in a consciousness of trust and abundance, knowing
+                  that each one of us inherently belongs, and that together we
+                  are more powerful than apart.
+                </p>
               </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: 30,
+                }}
+              >
+                <div style={{ flexGrow: 15, flexBasis: 0 }}>
+                  <Image
+                    src={plant}
+                    rawWidth={900}
+                    rawHeight={900}
+                    style={{
+                      width: 45,
+                      height: 45,
+                      border: 0,
+                      background: "transparent",
+                      display: "block",
+                      margin: "auto",
+                    }}
+                  />
+                  <h3
+                    className="mask-p"
+                    style={{ textAlign: "center", marginBottom: 0 }}
+                  >
+                    Mission
+                  </h3>
+                </div>
+                <p style={{ flexGrow: 80, flexBasis: 0, marginBottom: 0 }}>
+                  Our mission is to live and share the principles of
+                  Nonviolence, both in terms of an individual practice and way
+                  of life, but also in its application to social structures, be
+                  it in our families, schools, and organizations.
+                </p>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: 48,
+                }}
+              >
+                <div style={{ flexGrow: 15, flexBasis: 0 }}>
+                  <Image
+                    src={earth}
+                    rawWidth={900}
+                    rawHeight={900}
+                    style={{
+                      width: 45,
+                      height: 45,
+                      border: 0,
+                      background: "transparent",
+                      display: "block",
+                      margin: "auto",
+                    }}
+                  />
+                  <h3
+                    className="mask-p"
+                    style={{ textAlign: "center", marginBottom: 0 }}
+                  >
+                    About
+                  </h3>
+                </div>
+                <p style={{ flexGrow: 80, flexBasis: 0, marginBottom: 0 }}>
+                  Joy Living Learning is situated in Auroville, an international
+                  community in south India that aims to actualize human unity.
+                  We are surrounded by opportunities for growth, learning and
+                  exploration.
+                </p>
+              </div>
+              <Carousel afterChange={onChange} autoplay>
+                <div>
+                  <Image
+                    src={nvcPhoto}
+                    rawWidth={1440}
+                    rawHeight={900}
+                    style={{
+                      width: 600,
+                      height: 375,
+                      border: 0,
+                      background: "transparent",
+                    }}
+                    loader="gradient"
+                    className="mask-p"
+                  />
+                </div>
+                <div>
+                  <Image
+                    src="https://images.unsplash.com/photo-1495835788122-ca48931258be?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=acc48b0187b28f7a221362b843f15755&auto=format&fit=crop&w=1440&q=80&h=900"
+                    rawWidth={1440}
+                    rawHeight={900}
+                    style={{
+                      width: 600,
+                      height: 375,
+                      border: 0,
+                      background: "transparent",
+                    }}
+                    loader="gradient"
+                    className="mask-p"
+                  />
+                </div>
+                <div>
+                  <Image
+                    src="https://images.unsplash.com/photo-1504532472068-9ae844337da7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6e76ebffebd8e3c65985875554e36f35&auto=format&fit=crop&w=1440&q=80&h=900"
+                    rawWidth={1440}
+                    rawHeight={900}
+                    style={{
+                      width: 600,
+                      height: 375,
+                      border: 0,
+                      background: "transparent",
+                    }}
+                    loader="gradient"
+                    className="mask-p"
+                  />
+                </div>
+              </Carousel>
               <br />
-              <hr />
+              <br />
               <LearnMore />
             </div>
             <div>
               <hr />
-              <h3 className="mask-p">About The Center</h3>
+              <h3 className="mask-p" style={{ marginBottom: 0 }}>
+                Upcoming Events
+              </h3>
+              <MiniCalendar
+                data={postEdges}
+                location={this.props.location}
+                givenTags={{
+                  all: "All Events",
+                  nvc: "NVC Events",
+                  rc: "RC Events",
+                  featured: "Featured Events",
+                }}
+              />
+              <hr />
+              <h3 className="mask-p">Living Nonviolence</h3>
+              <p
+                style={{
+                  fontFamily: "futura-pt, sans-serif",
+                  fontWeight: 200,
+                  marginBottom: 30,
+                }}
+              >
+                <span style={{ fontSize: "125%" }}>
+                  <i>
+                    “My optimism rests on my belief in the infinite
+                    possibilities of the individual to develop nonviolence. The
+                    more you develop it in your own heart, the more infectious
+                    it becomes, till it overwhelms your surroundings and, by and
+                    by, might oversweep the world.”
+                  </i>{" "}
+                  ~ <strong>Gandhi</strong>
+                </span>
+              </p>
+              <hr />
+              <h3 className="mask-p">Affiliations</h3>
               <p>
-                We are situated in Auroville, an international community in
-                south India, and with its purpose being to actualize human
-                unity, we’re surrounded by opportunities for growth, learning
-                and exploration.
+                Joy Living Learning is a Unit of the Auroville Foundation, and
+                L'aura Joy is a Certified Trainer with the Center for Nonviolent
+                Communication.
               </p>
-              <p className="text-center">
-                <i>Joy Living Learning is a Unit of Auroville Foundation</i>
-              </p>
-              <div className="mask-p">
-                <OutLink to="http://www.cnvc.org/" style={{ marginLeft: 17 }}>
-                  <Image
-                    src={cnvc}
-                    rawWidth={450}
-                    rawHeight={450}
-                    style={{
-                      display: "inline-block",
-                      border: "none",
-                      background: "none",
-                      height: 90,
-                      width: 90,
-                      marginRight: 15,
-                    }}
-                  />
-                </OutLink>
-                <Link to="/">
-                  <Image
-                    src={logo}
-                    rawWidth={450}
-                    rawHeight={450}
-                    style={{
-                      display: "inline-block",
-                      border: "none",
-                      background: "none",
-                      height: 75,
-                      width: 75,
-                    }}
-                  />
-                </Link>
+              <div className="mask-p" style={{ marginBottom: 30 }}>
                 <OutLink to="https://www.auroville.org/">
                   <Image
                     src={auroville}
@@ -349,58 +474,33 @@ class IndexPage extends React.Component {
                       background: "none",
                       height: 90,
                       width: 90,
+                      marginRight: 2,
+                    }}
+                  />
+                </OutLink>
+                <OutLink to="http://www.cnvc.org/" style={{ marginLeft: 17 }}>
+                  <Image
+                    src={cnvc}
+                    rawWidth={450}
+                    rawHeight={450}
+                    style={{
+                      display: "inline-block",
+                      border: "none",
+                      background: "none",
+                      height: 90,
+                      width: 90,
                     }}
                   />
                 </OutLink>
               </div>
               <hr />
-              <h3 className="mask-p">Upcoming Events</h3>
-              <p style={{ marginBottom: 20 }}>something something...</p>
-              <Collapse>
-                {_.map(filtered, ({ node }) => {
-                  const { frontmatter } = node;
-                  const { fromTime, toTime } = frontmatter;
-                  const { fields } = node;
-                  const { route, elapsed, humanDate } = fields;
-
-                  return (
-                    <Panel
-                      header={
-                        <p style={{ marginBottom: 0 }}>
-                          {frontmatter.title} ({elapsed})
-                        </p>
-                      }
-                      key={route}
-                    >
-                      <Link to={`/${route}`}>
-                        <Article>
-                          <p className="abstract">
-                            <small className="date">
-                              <i>{humanDate}</i>
-                            </small>
-                            <br />
-                            <small className="time">
-                              <i>
-                                {fromTime} - {toTime}
-                              </i>
-                            </small>
-                            <br />
-                            <br />
-                            {frontmatter.abstract}
-                            <br />
-                            <br />
-                            <i className="link" style={{ color: "#0000FF" }}>
-                              Click to read more…
-                            </i>
-                          </p>
-                        </Article>
-                      </Link>
-                    </Panel>
-                  );
-                })}
-              </Collapse>
-              <br />
-              <Link to="/upcoming-events?filter=all">All events ⇝</Link>
+              <h3 className="mask-p">Find us on Facebook -</h3>
+              <FacebookProvider appId="218604115574634">
+                <FBPage
+                  href="https://www.facebook.com/JoyLivingLearning"
+                  tabs="timeline,events,messages"
+                />
+              </FacebookProvider>
             </div>
           </div>
         </Page>
@@ -434,6 +534,7 @@ export const pageQuery = graphql`
           frontmatter {
             abstract
             title
+            subTitle
             cover
             date
             startDate

@@ -10,8 +10,8 @@ import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link, { withPrefix } from "gatsby-link";
-import { Tag } from "antd";
-import { OutLink, Image } from "@bodhi-project/components";
+import FacebookProvider, { Like as FBLike } from "react-facebook";
+import { Image } from "@bodhi-project/components";
 import {
   Page,
   // Section,
@@ -161,9 +161,6 @@ class EventTemplate extends React.Component {
       whichSide = "workshop";
     }
 
-    console.log(tags);
-    console.log(whichSide);
-
     // Make banner
     let eventBanner = null;
     if (cover === "fallback") {
@@ -261,6 +258,30 @@ class EventTemplate extends React.Component {
                     {fromTime} - {toTime}
                   </i>
                 </Paragraph>
+                <br />
+                <div style={{ position: "relative" }}>
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 99,
+                      backgroundColor: "#f8f2e6",
+                      zIndex: 10,
+                      height: 20,
+                      width: "calc(100% - 98px)",
+                    }}
+                  />
+                  <div style={{ maxWidth: 98 }}>
+                    <FacebookProvider appId="218604115574634">
+                      <FBLike
+                        href={`http://localhost:8000/${route}`}
+                        colorScheme="dark"
+                        showFaces
+                        share
+                      />
+                    </FacebookProvider>
+                  </div>
+                </div>
               </div>
             </Header>
             <hr />
@@ -280,7 +301,7 @@ class EventTemplate extends React.Component {
             <Footer
               style={{ borderTop: "1px solid #4a4a4a", paddingTop: "1em" }}
             >
-              <H1 mask="h4">More like this…</H1>
+              <H1 mask="h4">More like this</H1>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div>
                   {!_.isNull(prev) && (

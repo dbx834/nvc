@@ -12,14 +12,12 @@
     "type": "git",
     "url": "git@github.com:bodhi-project/launch-kit.git"
   },
-  "keywords": [
-    "gatsby"
-  ],
+  "keywords": ["gatsby"],
   "data": {
     "websiteName": "Launch Kit",
     "websiteCreator": "Bodhi Project",
-    "websiteUrl": "https://launch-kit.bodhiproject.org/",
-    "nakedWebsiteUrl": "https://launch-kit.bodhiproject.org",
+    "websiteUrl": "https://reverent-allen-901c55.netlify.com/",
+    "nakedWebsiteUrl": "https://reverent-allen-901c55.netlify.com",
     "devUrl": "http://localhost:8000/",
     "nakedDevUrl": "http://localhost:8000",
     "websiteKeywords": "GatsbyJS, React, Netlify",
@@ -31,11 +29,7 @@
       "url": "https://www.bodhiproject.org",
       "logo": "/logo.png",
       "foundingDate": "2017-01-01",
-      "founders": [
-        "Pranav Kumar",
-        "Brijesh Kumar",
-        "Mangal Varshney"
-      ]
+      "founders": ["Pranav Kumar", "Brijesh Kumar", "Mangal Varshney"]
     },
     "orgLocation": {
       "streetAddress": "Street #123",
@@ -48,9 +42,7 @@
     },
     "orgContact": {
       "email": "hello@bodhiproject.org",
-      "telephone": [
-        "na"
-      ]
+      "telephone": ["na"]
     },
     "orgSocialMediaProfiles": [
       "http://instagram.com/bodhisystems",
@@ -112,6 +104,7 @@
     "prop-types": "^15.6.1",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
+    "react-facebook": "^5.0.3",
     "react-iframe": "^1.1.0",
     "remark-parse": "^5.0.0",
     "twix": "^1.2.1",
@@ -136,8 +129,6 @@
     "write-good": "^0.11.3"
   },
   "remarkConfig": {
-    "plugins": [
-      "remark-preset-lint-recommended"
-    ]
+    "plugins": ["remark-preset-lint-recommended"]
   }
 }

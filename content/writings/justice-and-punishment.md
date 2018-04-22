@@ -6,7 +6,7 @@ abstract: I think the main difference here between punitive and restorative just
 date: 2015-11-01
 type: post
 tags:
-  - some tag
+  - highlight
 ---
 
 In response to John's question:

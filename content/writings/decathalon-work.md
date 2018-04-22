@@ -6,7 +6,7 @@ abstract: Something something…
 date: 2018-03-28
 type: post
 tags:
-  - some tag
+  - highlight
 ---
 
 Something something…

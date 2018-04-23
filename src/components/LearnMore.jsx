@@ -105,9 +105,9 @@ class LearnMore extends React.Component {
       <div className={pageStyleClass}>
         <TetraGrid>
           <THex className="hex">
-            <Link to="/mediation">
+            <Link to="/writings/decathalon-work">
               <Image
-                src={""}
+                src="https://images.unsplash.com/photo-1448743133657-f67644da3008?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=405241651e3c3b181a41f515c2b34799&auto=format&fit=crop&w=900&w=900&q=80"
                 rawWidth={900}
                 rawHeight={900}
                 style={{
@@ -117,13 +117,13 @@ class LearnMore extends React.Component {
                   background: "#4a4a4a",
                 }}
               />
-              <H3 style={{ lineHeight: 1 }}>Something 1</H3>
+              <H3 style={{ lineHeight: 1 }}>Decathalon Work</H3>
             </Link>
           </THex>
           <THex className="hex">
-            <Link to="/mediation">
+            <Link to="/writings/celebrations-and-gratitude">
               <Image
-                src={""}
+                src="/content-assets/covers/celebrations-and-gratitude.jpg"
                 rawWidth={900}
                 rawHeight={900}
                 style={{
@@ -133,13 +133,13 @@ class LearnMore extends React.Component {
                   background: "#4a4a4a",
                 }}
               />
-              <H3 style={{ lineHeight: 1 }}>Something 2</H3>
+              <H3 style={{ lineHeight: 1 }}>Celebrations & Gratitude</H3>
             </Link>
           </THex>
           <THex className="hex">
-            <Link to="/mediation">
+            <Link to="/writings/justice-and-punishment">
               <Image
-                src={""}
+                src="https://images.unsplash.com/photo-1507184915978-447ac6ab3ecb?ixlib=rb-0.3.5&s=e1f0e60b77167b3ab7383ad81e2e3435&auto=format&fit=crop&w=900&h=900"
                 rawWidth={900}
                 rawHeight={900}
                 style={{
@@ -149,13 +149,13 @@ class LearnMore extends React.Component {
                   background: "#4a4a4a",
                 }}
               />
-              <H3 style={{ lineHeight: 1 }}>Something 3</H3>
+              <H3 style={{ lineHeight: 1 }}>Justince & Punishment</H3>
             </Link>
           </THex>
           <THex className="hex">
-            <Link to="/mediation">
+            <Link to="/writings/what-does-nvc-mean-to-you">
               <Image
-                src={""}
+                src="https://images.unsplash.com/photo-1518983498539-c6e66c62f6b3?ixlib=rb-0.3.5&s=580f065422952f086541ba61e8ae5304&auto=format&fit=crop&w=900&h=900"
                 rawWidth={900}
                 rawHeight={900}
                 style={{
@@ -165,7 +165,7 @@ class LearnMore extends React.Component {
                   background: "#4a4a4a",
                 }}
               />
-              <H3 style={{ lineHeight: 1 }}>Something 4</H3>
+              <H3 style={{ lineHeight: 1 }}>What does NVC mean to you?</H3>
             </Link>
           </THex>
         </TetraGrid>

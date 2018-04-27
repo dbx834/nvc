@@ -40,9 +40,67 @@ import sun from "../assets/sun.jpg";
 import earth from "../assets/earth.jpg";
 import auroville from "../assets/auroville.png";
 
+import slide1S2 from "../assets/slider/slide1.jpg";
+import slide2S2 from "../assets/slider/slide2.jpg";
+import slide3S2 from "../assets/slider/slide3.jpg";
+import slide4S2 from "../assets/slider/slide4.jpg";
+import slide5S2 from "../assets/slider/slide5.jpg";
+import slide6S2 from "../assets/slider/slide6.jpg";
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
 const { Panel } = Collapse;
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------- Data
+// ----------------------------------------------------------------------------
+const landingData = [
+  {
+    image: sun,
+    title: "Vision",
+    lead:
+      "We envision a world where everyone’s needs matter, and where we live in a consciousness of trust and abundance, knowing that each one of us inherently belongs, and that together we are more powerful than apart.",
+  },
+  {
+    image: plant,
+    title: "Mission",
+    lead:
+      "Our mission is to live and share the principles of Nonviolence, both in terms of an individual practice and way of life, but also in its application to social structures, be it in our families, schools, and organizations.",
+  },
+  {
+    image: sun,
+    title: "Aim",
+    lead:
+      "In our exploration of this paradigm shift and living in integrity with our values, we offer workshops, retreats and practice groups in Nonviolent Communication, Restorative Circles, and more. We also offer coaching and mediation, as well as community support and opportunities for apprenticeship programs.",
+  },
+  {
+    image: earth,
+    title: "About",
+    lead:
+      "Joy Living Learning is situated in Auroville, an international community in south India that aims to actualize human unity. We are surrounded by opportunities for growth, learning and exploration.",
+  },
+];
+
+const sliderData = [
+  {
+    image: slide1S2,
+  },
+  {
+    image: slide2S2,
+  },
+  {
+    image: slide3S2,
+  },
+  {
+    image: slide4S2,
+  },
+  {
+    image: slide5S2,
+  },
+  {
+    image: slide6S2,
+  },
+];
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
@@ -63,10 +121,6 @@ const {
   webpageSchemaData,
   breadcrumbSchemaData,
 } = seoData;
-
-function onChange(a, b, c) {
-  console.log(a, b, c);
-}
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
@@ -261,160 +315,70 @@ class IndexPage extends React.Component {
           <div className="kale">
             <div>
               <hr />
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: 30,
-                }}
-              >
-                <div style={{ flexGrow: 15, flexBasis: 0 }}>
-                  <Image
-                    src={sun}
-                    rawWidth={900}
-                    rawHeight={900}
+              {_.map(landingData, (dataBit, index) => {
+                const { image, title, lead } = dataBit;
+
+                return (
+                  <div
                     style={{
-                      width: 45,
-                      height: 45,
-                      border: 0,
-                      background: "transparent",
-                      display: "block",
-                      margin: "auto",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginBottom: 30,
                     }}
-                  />
-                  <h3
-                    className="mask-p"
-                    style={{ textAlign: "center", marginBottom: 0 }}
+                    key={`bit-${index}`}
                   >
-                    Vision
-                  </h3>
-                </div>
-                <p style={{ flexGrow: 80, flexBasis: 0, marginBottom: 0 }}>
-                  We envision a world where everyone’s needs matter, and where
-                  we live in a consciousness of trust and abundance, knowing
-                  that each one of us inherently belongs, and that together we
-                  are more powerful than apart.
-                </p>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: 30,
-                }}
-              >
-                <div style={{ flexGrow: 15, flexBasis: 0 }}>
-                  <Image
-                    src={plant}
-                    rawWidth={900}
-                    rawHeight={900}
-                    style={{
-                      width: 45,
-                      height: 45,
-                      border: 0,
-                      background: "transparent",
-                      display: "block",
-                      margin: "auto",
-                    }}
-                  />
-                  <h3
-                    className="mask-p"
-                    style={{ textAlign: "center", marginBottom: 0 }}
-                  >
-                    Mission
-                  </h3>
-                </div>
-                <p style={{ flexGrow: 80, flexBasis: 0, marginBottom: 0 }}>
-                  Our mission is to live and share the principles of
-                  Nonviolence, both in terms of an individual practice and way
-                  of life, but also in its application to social structures, be
-                  it in our families, schools, and organizations.
-                </p>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  marginBottom: 48,
-                }}
-              >
-                <div style={{ flexGrow: 15, flexBasis: 0 }}>
-                  <Image
-                    src={earth}
-                    rawWidth={900}
-                    rawHeight={900}
-                    style={{
-                      width: 45,
-                      height: 45,
-                      border: 0,
-                      background: "transparent",
-                      display: "block",
-                      margin: "auto",
-                    }}
-                  />
-                  <h3
-                    className="mask-p"
-                    style={{ textAlign: "center", marginBottom: 0 }}
-                  >
-                    About
-                  </h3>
-                </div>
-                <p style={{ flexGrow: 80, flexBasis: 0, marginBottom: 0 }}>
-                  Joy Living Learning is situated in Auroville, an international
-                  community in south India that aims to actualize human unity.
-                  We are surrounded by opportunities for growth, learning and
-                  exploration.
-                </p>
-              </div>
-              <Carousel afterChange={onChange} autoplay>
-                <div>
-                  <Image
-                    src={nvcPhoto}
-                    rawWidth={1440}
-                    rawHeight={900}
-                    style={{
-                      width: 600,
-                      height: 375,
-                      border: 0,
-                      background: "transparent",
-                    }}
-                    loader="gradient"
-                    className="mask-p"
-                  />
-                </div>
-                <div>
-                  <Image
-                    src="https://images.unsplash.com/photo-1495835788122-ca48931258be?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=acc48b0187b28f7a221362b843f15755&auto=format&fit=crop&w=1440&q=80&h=900"
-                    rawWidth={1440}
-                    rawHeight={900}
-                    style={{
-                      width: 600,
-                      height: 375,
-                      border: 0,
-                      background: "transparent",
-                    }}
-                    loader="gradient"
-                    className="mask-p"
-                  />
-                </div>
-                <div>
-                  <Image
-                    src="https://images.unsplash.com/photo-1504532472068-9ae844337da7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6e76ebffebd8e3c65985875554e36f35&auto=format&fit=crop&w=1440&q=80&h=900"
-                    rawWidth={1440}
-                    rawHeight={900}
-                    style={{
-                      width: 600,
-                      height: 375,
-                      border: 0,
-                      background: "transparent",
-                    }}
-                    loader="gradient"
-                    className="mask-p"
-                  />
-                </div>
+                    <div style={{ flexGrow: 15, flexBasis: 0 }}>
+                      <Image
+                        src={image}
+                        rawWidth={900}
+                        rawHeight={900}
+                        style={{
+                          width: 45,
+                          height: 45,
+                          border: 0,
+                          background: "transparent",
+                          display: "block",
+                          margin: "auto",
+                        }}
+                      />
+                      <h3
+                        className="mask-p"
+                        style={{ textAlign: "center", marginBottom: 0 }}
+                      >
+                        {title}
+                      </h3>
+                    </div>
+                    <p style={{ flexGrow: 80, flexBasis: 0, marginBottom: 0 }}>
+                      {lead}
+                    </p>
+                  </div>
+                );
+              })}
+              <br />
+              <br />
+              <Carousel autoplay>
+                {_.map(sliderData, (slide, index) => {
+                  const { image } = slide;
+
+                  return (
+                    <div key={`slide-${index}`}>
+                      <Image
+                        src={image}
+                        rawWidth={1440}
+                        rawHeight={900}
+                        style={{
+                          width: 600,
+                          height: 375,
+                          border: 0,
+                          background: "transparent",
+                        }}
+                        loader="gradient"
+                        className="mask-p"
+                      />
+                    </div>
+                  );
+                })}
               </Carousel>
               <br />
               <br />

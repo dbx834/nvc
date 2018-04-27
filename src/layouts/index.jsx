@@ -199,6 +199,15 @@ class TemplateWrapper extends React.Component {
     super(props);
   }
 
+  /** after mount */
+  componentDidMount() {
+    if (!_.isUndefined(document)) {
+      const htmlElement = document.documentElement;
+      htmlElement.classList.toggle("lk-loading");
+      htmlElement.classList.toggle("lk-active");
+    }
+  }
+
   /** on mount */
   componentDidUpdate() {
     if (!_.isUndefined(window)) {

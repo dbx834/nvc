@@ -1,45 +1,43 @@
 /* ------------------------------------------------------------------------- */
-/* --------------------------------------------------------------- Loading Font
+/* ------------------------------------------------------ Hide while loading
 /* ------------------------------------------------------------------------- */
-.wf-loading * {
-  /*
-  first things first, we need to hide everything,
-  but bear in mind that this will only take effect
-  once the loading script has taken effect.
-  here we're hiding all content within
-  the <html> once it has the class "wf-loading"
-  */
+/*
+first things first, we need to hide everything,
+but bear in mind that this will only take effect
+once the loading script has taken effect.
+here we're hiding all content within
+the <html> once it has the class "wf-loading"
+*/
+html.lk-loading * {
   opacity: 0;
 }
 
-.wf-loading {
-    /*
-    here's a background image (at a meer 723bytes)
-    to indicate something's happening
-    */
-    background: url('/ajax-loader.gif') no-repeat center center;
-     
-    /*
-    just to make sure the <html>
-    element shares the same dimensions as
-    the browser window when loading
-    (and not the potentially elongated page)
-    */ 
-    height: 100%;
-    overflow: hidden;
+/*
+just to make sure the <html>
+element shares the same dimensions as
+the browser window when loading
+(and not the potentially elongated page)
+*/ 
+html.lk-loading {
+  background-image: url('/loader.gif'), linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
 }
 
-.wf-active *, 
-.wf-inactive * {
-    /*
-    add some transitional effects
-    to reintroduce the content
-    gradually once fonts are loaded
-    */
-    -webkit-transition: opacity 0.5s ease-out;  
-    -moz-transition: opacity 0.5s ease-out; 
-    -o-transition: opacity 0.5s ease-out;  
-    transition: opacity 0.5s ease-out;  
+/*
+add some transitional effects
+to reintroduce the content
+gradually once fonts are loaded
+*/
+html.lk-active.wf-active *, 
+html.lk-active.wf-inactive * {
+  -webkit-transition: opacity 0.5s ease-out;
+  -moz-transition: opacity 0.5s ease-out;
+  -o-transition: opacity 0.5s ease-out;
+  transition: opacity 0.5s ease-out;
 }
 
 /* ----------------------------------------------------------------- */

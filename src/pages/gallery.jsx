@@ -80,6 +80,16 @@ import nvcX42 from "../assets/gallery/nvcX42.jpg";
 import nvcX43 from "../assets/gallery/nvcX43.jpg";
 import nvcX44 from "../assets/gallery/nvcX44.jpg";
 import nvcX45 from "../assets/gallery/nvcX45.jpg";
+import nvcX46 from "../assets/gallery/nvcX46.jpg";
+import nvcX47 from "../assets/gallery/nvcX47.jpg";
+import nvcX48 from "../assets/gallery/nvcX48.jpg";
+import nvcX49 from "../assets/gallery/nvcX49.jpg";
+import nvcX50 from "../assets/gallery/nvcX50.jpg";
+import nvcX51 from "../assets/gallery/nvcX51.jpg";
+import nvcX52 from "../assets/gallery/nvcX52.jpg";
+import nvcX53 from "../assets/gallery/nvcX53.jpg";
+import nvcX54 from "../assets/gallery/nvcX54.jpg";
+import nvcX55 from "../assets/gallery/nvcX55.jpg";
 
 const photos = [
   { src: nvcX1, width: 600, height: 450 },
@@ -125,6 +135,16 @@ const photos = [
   { src: nvcX43, width: 600, height: 450 },
   { src: nvcX44, width: 600, height: 461 },
   { src: nvcX45, width: 600, height: 800 },
+  { src: nvcX46, width: 600, height: 459 },
+  { src: nvcX47, width: 600, height: 613 },
+  { src: nvcX48, width: 600, height: 431 },
+  { src: nvcX49, width: 600, height: 448 },
+  { src: nvcX50, width: 600, height: 448 },
+  { src: nvcX51, width: 600, height: 450 },
+  { src: nvcX52, width: 600, height: 450 },
+  { src: nvcX53, width: 600, height: 455 },
+  { src: nvcX54, width: 600, height: 1295 },
+  { src: nvcX55, width: 600, height: 899 },
 ];
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstract stuff

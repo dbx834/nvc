@@ -38,6 +38,7 @@ import logo from "../assets/logo.png";
 import plant from "../assets/plant.jpg";
 import sun from "../assets/sun.jpg";
 import earth from "../assets/earth.jpg";
+import flower from "../assets/flower.jpg";
 import auroville from "../assets/auroville.png";
 
 import slide1S2 from "../assets/slider/slide1.jpg";
@@ -68,7 +69,7 @@ const landingData = [
       "Our mission is to live and share the principles of Nonviolence, both in terms of an individual practice and way of life, but also in its application to social structures, be it in our families, schools, and organizations.",
   },
   {
-    image: sun,
+    image: flower,
     title: "Aim",
     lead:
       "In our exploration of this paradigm shift and living in integrity with our values, we offer workshops, retreats and practice groups in Nonviolent Communication, Restorative Circles, and more. We also offer coaching and mediation, as well as community support and opportunities for apprenticeship programs.",
@@ -99,6 +100,32 @@ const sliderData = [
   },
   {
     image: slide6S2,
+  },
+];
+
+const learnMoreData = [
+  {
+    linkTo: "/writings/decathalon-work",
+    title: "Decathalon Work",
+    image:
+      "https://images.unsplash.com/photo-1448743133657-f67644da3008?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=405241651e3c3b181a41f515c2b34799&auto=format&fit=crop&w=1440&w=900&q=80",
+  },
+  {
+    linkTo: "/writings/celebrations-and-gratitude",
+    title: "Celebrations & Gratitude",
+    image: "/content-assets/covers/celebrations-and-gratitude.jpg",
+  },
+  {
+    linkTo: "/writings/justice-and-punishment",
+    title: "Justince & Punishment",
+    image:
+      "https://images.unsplash.com/photo-1507184915978-447ac6ab3ecb?ixlib=rb-0.3.5&s=e1f0e60b77167b3ab7383ad81e2e3435&auto=format&fit=crop&w=1440&h=900",
+  },
+  {
+    linkTo: "/writings/what-does-nvc-mean-to-you",
+    title: "What does NVC mean to you?",
+    image:
+      "https://images.unsplash.com/photo-1518983498539-c6e66c62f6b3?ixlib=rb-0.3.5&s=580f065422952f086541ba61e8ae5304&auto=format&fit=crop&w=1440&h=900",
   },
 ];
 
@@ -149,9 +176,8 @@ const pageWrapper = css({
     fontWeight: "700 !important",
   },
 
-  "& .joke": {
+  "& .jke": {
     padding: "0em 1.25em",
-    marginBottom: 30,
   },
 
   "& hr": {
@@ -301,7 +327,7 @@ class IndexPage extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={`${pageStyleClass}`}>
-          <div className="joke">
+          <div className="jke">
             <h1 style={{ marginBottom: 10 }}>
               <span>Joy Living Learning</span>
             </h1>
@@ -382,7 +408,8 @@ class IndexPage extends React.Component {
               </Carousel>
               <br />
               <br />
-              <LearnMore />
+              <br />
+              <LearnMore data={learnMoreData} />
             </div>
             <div>
               <hr />

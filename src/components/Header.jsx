@@ -74,8 +74,8 @@ const menu = [
         ],
       },
       {
-        title: "Mediation / Facilitation / Coaching",
-        link: "/mediation-facilitation-coaching",
+        title: "Facilitated Spaces",
+        link: "/facilitated-spaces",
       },
     ],
   },

@@ -13,6 +13,7 @@ import Link from "gatsby-link";
 import FacebookProvider, { Page as FBPage } from "react-facebook";
 import { Image, OutLink } from "@bodhi-project/components";
 import { Collapse, Carousel } from "antd";
+import ContainerDimensions from "react-container-dimensions";
 import { Page, Article } from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
@@ -39,7 +40,7 @@ import plant from "../assets/plant.jpg";
 import sun from "../assets/sun.jpg";
 import earth from "../assets/earth.jpg";
 import flower from "../assets/flower.jpg";
-import auroville from "../assets/auroville.png";
+import avLogo from "../assets/avLogo.png";
 
 import slide1S2 from "../assets/slider/slide1.jpg";
 import slide2S2 from "../assets/slider/slide2.jpg";
@@ -74,32 +75,32 @@ const landingData = [
     lead:
       "In our exploration of this paradigm shift and living in integrity with our values, we offer workshops, retreats and practice groups in Nonviolent Communication, Restorative Circles, and more. We also offer coaching and mediation, as well as community support and opportunities for apprenticeship programs.",
   },
-  {
-    image: earth,
-    title: "About",
-    lead:
-      "Joy Living Learning is situated in Auroville, an international community in south India that aims to actualize human unity. We are surrounded by opportunities for growth, learning and exploration.",
-  },
 ];
 
 const sliderData = [
   {
     image: slide1S2,
+    text: "something something1 …",
   },
   {
     image: slide2S2,
+    text: "something something2 …",
   },
   {
     image: slide3S2,
+    text: "something something3 …",
   },
   {
     image: slide4S2,
+    text: "something something4 …",
   },
   {
     image: slide5S2,
+    text: "something something5 …",
   },
   {
     image: slide6S2,
+    text: "something something6 …",
   },
 ];
 
@@ -383,35 +384,106 @@ class IndexPage extends React.Component {
               })}
               <br />
               <br />
-              <Carousel autoplay>
-                {_.map(sliderData, (slide, index) => {
-                  const { image } = slide;
-
-                  return (
-                    <div key={`slide-${index}`}>
-                      <Image
-                        src={image}
-                        rawWidth={1440}
-                        rawHeight={900}
+              <div
+                style={{
+                  display: "block",
+                  marginBottom: 10,
+                }}
+              >
+                <ContainerDimensions>
+                  {({ width }) => {
+                    const carouselWidth = width;
+                    const carouselHeight = width * 0.625;
+                    return (
+                      <div
                         style={{
-                          width: 600,
-                          height: 375,
-                          border: 0,
-                          background: "transparent",
+                          width: carouselWidth,
+                          height: "auto",
                         }}
-                        loader="gradient"
-                        className="mask-p"
-                      />
-                    </div>
-                  );
-                })}
-              </Carousel>
+                      >
+                        <Carousel autoplay>
+                          {_.map(sliderData, (slide, index) => {
+                            const { image, text } = slide;
+
+                            return (
+                              <div key={`slide-${index}`}>
+                                <Image
+                                  src={image}
+                                  rawWidth={1440}
+                                  rawHeight={900}
+                                  style={{
+                                    width: carouselWidth,
+                                    height: carouselHeight,
+                                    border: 0,
+                                    background: "transparent",
+                                    marginBottom: 20,
+                                  }}
+                                  loader="gradient"
+                                />
+                                <p>{text}</p>
+                              </div>
+                            );
+                          })}
+                        </Carousel>
+                      </div>
+                    );
+                  }}
+                </ContainerDimensions>
+              </div>
               <br />
               <br />
               <br />
               <LearnMore data={learnMoreData} />
             </div>
             <div>
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+              <hr />
+              <h3 className="mask-p">About</h3>
+              <p>
+                Joy Living Learning is situated in Auroville, an international
+                community in south India that aims to actualize human unity. So
+                we are surrounded by opportunities for growth, learning and
+                exploration.
+              </p>
+              <p>
+                Joy Living Learning is a Unit of the Auroville Foundation, and
+                L'aura Joy is a Certified Trainer with the Center for Nonviolent
+                Communication.
+              </p>
+              <div className="mask-p" style={{ marginBottom: 20 }}>
+                <OutLink to="https://www.auroville.org/">
+                  <Image
+                    src={avLogo}
+                    rawWidth={450}
+                    rawHeight={450}
+                    style={{
+                      display: "inline-block",
+                      border: "none",
+                      background: "none",
+                      height: 55,
+                      width: 55,
+                      marginRight: 2,
+                    }}
+                  />
+                </OutLink>
+                <OutLink to="http://www.cnvc.org/" style={{ marginLeft: 17 }}>
+                  <Image
+                    src={cnvc}
+                    rawWidth={1233}
+                    rawHeight={734}
+                    style={{
+                      display: "inline-block",
+                      border: "none",
+                      background: "none",
+                      height: 47,
+                      marginBottom: 4,
+                      width: "auto",
+                    }}
+                  />
+                </OutLink>
+              </div>
+
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
               <h3 className="mask-p" style={{ marginBottom: 0 }}>
                 Upcoming Events
@@ -426,6 +498,8 @@ class IndexPage extends React.Component {
                   featured: "Featured Events",
                 }}
               />
+
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
               <h3 className="mask-p">Living Nonviolence</h3>
               <p
@@ -442,48 +516,13 @@ class IndexPage extends React.Component {
                     more you develop it in your own heart, the more infectious
                     it becomes, till it overwhelms your surroundings and, by and
                     by, might oversweep the world.”
-                  </i>{" "}
-                  ~ <strong>Gandhi</strong>
+                  </i>
+                  <br />
+                  ~ <strong>Mahatma Gandhi</strong>
                 </span>
               </p>
-              <hr />
-              <h3 className="mask-p">Affiliations</h3>
-              <p>
-                Joy Living Learning is a Unit of the Auroville Foundation, and
-                L'aura Joy is a Certified Trainer with the Center for Nonviolent
-                Communication.
-              </p>
-              <div className="mask-p" style={{ marginBottom: 30 }}>
-                <OutLink to="https://www.auroville.org/">
-                  <Image
-                    src={auroville}
-                    rawWidth={450}
-                    rawHeight={450}
-                    style={{
-                      display: "inline-block",
-                      border: "none",
-                      background: "none",
-                      height: 90,
-                      width: 90,
-                      marginRight: 2,
-                    }}
-                  />
-                </OutLink>
-                <OutLink to="http://www.cnvc.org/" style={{ marginLeft: 17 }}>
-                  <Image
-                    src={cnvc}
-                    rawWidth={450}
-                    rawHeight={450}
-                    style={{
-                      display: "inline-block",
-                      border: "none",
-                      background: "none",
-                      height: 90,
-                      width: 90,
-                    }}
-                  />
-                </OutLink>
-              </div>
+
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
               <h3 className="mask-p">Find us on Facebook -</h3>
               <FacebookProvider appId="218604115574634">

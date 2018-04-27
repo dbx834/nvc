@@ -56,7 +56,7 @@ const learnMoreData = [
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
 const pageData = {
-  pageTitle: "Nonviolent Communication",
+  pageTitle: "Restorative Circles",
   nakedPageSlug: "",
   pageAbstract: "Page abstract.",
 };
@@ -158,63 +158,63 @@ class NVCPage extends React.PureComponent {
         <Page className={`${pageStyleClass}`}>
           <div className="jke">
             <h1 style={{ marginBottom: 10 }}>
-              <span>Nonviolent Communication</span>
+              <span>Restorative Circles</span>
             </h1>
           </div>
           <div className="kale">
             <div>
               <hr />
               <p>
-                Nonviolent Communication contains nothing new. It is based on
-                historical principles of nonviolence – the natural state of
-                compassion when no violence is present in the heart. NVC reminds
-                us what we already instinctively know about how good it feels to
-                authentically connect to another human being.
+                A Restorative Circle is a community process designed to hold
+                space for those in conflict. It brings together the three
+                parties in a conflict – those who acted, those directly
+                impacted, and the wider community – within an intentional
+                systemic context, to dialogue as equals. Participants invite
+                each other and attend voluntarily. The dialogue process used is
+                shared openly with all participants, and facilitated by a
+                community member. The process ends when actions have been found
+                that bring mutual benefit and nurture the inherent integrity of
+                all those involved in the conflict.
               </p>
               <p>
-                With NVC we learn to hear our own deeper needs and those of
-                others. Through its emphasis on deep listening to ourselves as
-                well as others NVC helps us discover the depth of our own
-                compassion. This language reveals the awareness that all human
-                beings are only trying to honor universal values and needs,
-                every minute, every day.
+                Restorative Circles are facilitated in 3 stages, and are
+                designed to identify the key factors in the conflict, reach
+                agreements on next steps, and evaluate the results. As Circles
+                form, they invite shared power, mutual understanding,
+                self-responsibility and effective action within the community.
               </p>
               <p>
-                NVC can be seen as both a spiritual practice that helps us see
-                our common humanity, using our power in a way that honors
-                everyone’s needs, and a concrete set of skills which help us
-                create life-serving families and communities.
-              </p>
-              <p>The form is simple, yet powerfully transformative.</p>
-              <p>
-                Through the practice of NVC, we can learn to clarify what we are
-                observing, what emotions we are feeling, what values we want to
-                live by, and what we want to ask of ourselves and others. We
-                will no longer need to use the language of blame, judgment or
-                domination. We can experience the deep pleasure of contributing
-                to each other’s well being.
-              </p>
-              <p>
-                NVC creates a path for healing and reconciliation in its many
-                applications, ranging from intimate relationships, work
-                settings, health care, social services, police, prison staff and
-                inmates, to governments, schools and social change
-                organizations.
+                Restorative Circles are a specific restorative practice whose
+                development began with the work of Dominic Barker in the favelas
+                in Rio de Janeiro in the mid 1990s and continues with a growing
+                community both in Brazil and internationally.
               </p>
               <p>
                 [Source:{" "}
-                <OutLink to="http://www.cnvc.org/">
-                  Marshall Rosenberg and CNVC
+                <OutLink to="http://www.restorativecircles.org/">
+                  Dominic Barter and Restorative Circles
                 </OutLink>]
               </p>
-              <br />
+              <Image
+                src="/content-assets/restorative-circles/rc_800X561.jpg"
+                rawWidth={800}
+                rawHeight={561}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  border: 0,
+                  background: "transparent",
+                  display: "block",
+                  marginBottom: 30,
+                }}
+              />
               <LearnMore data={learnMoreData} />
             </div>
             <div>
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
               <h3 className="mask-p" style={{ marginBottom: 10 }}>
-                Why Learn NVC?
+                On Justice In Auroville
               </h3>
               <div
                 style={{
@@ -234,7 +234,7 @@ class NVCPage extends React.PureComponent {
                         }}
                       >
                         <ReactPlayer
-                          url="https://www.youtube.com/watch?v=w0xrRihEK6A"
+                          url="https://www.youtube.com/watch?v=kqBM5Xr5VfI"
                           className={videoClass}
                           width="inherit"
                           height="inherit"
@@ -267,14 +267,32 @@ class NVCPage extends React.PureComponent {
               >
                 <span style={{ fontSize: "125%" }}>
                   <i>
-                    "All that has been integrated into NVC has been known for
-                    centuries about consciousness, language, communication
-                    skills, and use of power that enable us to maintain a
-                    perspective of empathy for ourselves and others, even under
-                    trying conditions."
+                    "Conflict is not a problem that needs solving, but a
+                    phenomenon that needs understanding."
+                  </i>{" "}
+                  ~ <strong>Dominic Barter</strong>
+                </span>
+              </p>
+
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+              <hr />
+              <p
+                style={{
+                  fontFamily: "futura-pt, sans-serif",
+                  fontWeight: 200,
+                  marginBottom: 30,
+                }}
+              >
+                <span style={{ fontSize: "125%" }}>
+                  <i>
+                    "Power without love is reckless and abusive, and love
+                    without power is sentimental and anemic. Power at its best
+                    is love implementing the demands of justice, and justice at
+                    its best is power correcting everything that stands against
+                    love."
                   </i>
                   <br />
-                  ~ <strong>Marshall B. Rosenberg, Phd</strong>
+                  ~ <strong>Martin Luther King Jr.</strong>
                 </span>
               </p>
 
@@ -290,12 +308,13 @@ class NVCPage extends React.PureComponent {
               >
                 <span style={{ fontSize: "125%" }}>
                   <i>
-                    "… Thank you for all you have done and all that you are --
-                    grounded, free flowing, demanding, accepting, caring,
-                    patient, happy, unhappy, an expert, a learner and super
-                    fun!"
+                    "Recently I attended a workshop with L'aura. It was an
+                    amazing eye-opener, because it showed the possibility of how
+                    the whole community can get involved and learn to hold
+                    conflict, and to take responsibility for one's actions,
+                    without being crucified for one's so-called 'mistakes.'"
                   </i>{" "}
-                  ~ <strong>Sonali, 2014</strong>
+                  ~ <strong>Vikram, 2015</strong>
                 </span>
               </p>
               <div style={{ width: "100%", height: 18, marginBottom: 30 }}>

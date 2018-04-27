@@ -68,6 +68,13 @@ const pageStyle = css({
   "& .ant-fullcalendar": {
     ...applyType("ltb1ekq"),
 
+    "& .ant-fullcalendar-today": {
+      "& div.date-block": {
+        backgroundColor: "#fff0b4 !important",
+        color: "#B43808",
+      },
+    },
+
     "& .ant-fullcalendar-calendar-body": {
       padding: 0,
       width: "fit-content",

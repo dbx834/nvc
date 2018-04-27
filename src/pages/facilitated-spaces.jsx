@@ -4,7 +4,7 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
 import PropTypes from "prop-types";
-// import _ from "lodash";
+import _ from "lodash";
 import { css } from "glamor";
 // import moment from "moment";
 
@@ -32,23 +32,36 @@ import {
 import seoHelper from "../helpers/seoHelper";
 import LearnMore from "../components/LearnMore";
 
+import plant from "../assets/plant.jpg";
+import sun from "../assets/sun.jpg";
+import flower from "../assets/flower.jpg";
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------- Data
 // ----------------------------------------------------------------------------
-const learnMoreData = [
+const offeringsData = [
   {
-    linkTo: "/writings/what-does-nvc-mean-to-you",
-    title: "What does NVC mean to you…?",
-    image:
-      "https://images.unsplash.com/photo-1518983498539-c6e66c62f6b3?ixlib=rb-0.3.5&s=580f065422952f086541ba61e8ae5304&auto=format&fit=crop&w=1440&h=900",
+    image: sun,
+    title1: "Mediation",
+    lead:
+      "We offer mediation and facilitated conversations for those seeking support to dialogue with a friend, colleague or family member.",
   },
   {
-    linkTo: "/writings/nonviolent-communication-auroville-radio",
-    title: "Nonviolent Communication (Auroville Radio)",
-    image: "/content-assets/covers/nvcavradio.jpg",
+    image: plant,
+    title1: "Group",
+    title2: "Facilitation",
+    lead:
+      "We offer group facilitation for groups seeking support with team dynamics, or to reconnect with the group’s purpose and to clarify next steps for forward movement.",
+  },
+  {
+    image: flower,
+    title1: "Individual",
+    title2: "Coaching",
+    lead:
+      "We offer individual coaching for those seeking support to work through challenges, to gain more self-understanding, and to access one’s own capacity to shift into a dynamic that feels more life-serving.",
   },
 ];
 
@@ -56,7 +69,7 @@ const learnMoreData = [
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
 const pageData = {
-  pageTitle: "Nonviolent Communication",
+  pageTitle: "Restorative Circles",
   nakedPageSlug: "",
   pageAbstract: "Page abstract.",
 };
@@ -158,63 +171,82 @@ class NVCPage extends React.PureComponent {
         <Page className={`${pageStyleClass}`}>
           <div className="jke">
             <h1 style={{ marginBottom: 10 }}>
-              <span>Nonviolent Communication</span>
+              <span>Facilitated Spaces</span>
             </h1>
           </div>
           <div className="kale">
             <div>
               <hr />
               <p>
-                Nonviolent Communication contains nothing new. It is based on
-                historical principles of nonviolence – the natural state of
-                compassion when no violence is present in the heart. NVC reminds
-                us what we already instinctively know about how good it feels to
-                authentically connect to another human being.
+                We hold space based primarily on the principles of Nonviolent
+                Communication. And in addition, we may use practices from
+                <OutLink to="https://www.wikiwand.com/en/Sociocracy">
+                  Sociocracy
+                </OutLink>{" "}
+                (shared-power governance) and{" "}
+                <OutLink to="https://selfleadership.org/">
+                  Internal Family Systems
+                </OutLink>
+                &nbsp;(uncovering our inner parts), both of which complement NVC
+                beautifully.
               </p>
-              <p>
-                With NVC we learn to hear our own deeper needs and those of
-                others. Through its emphasis on deep listening to ourselves as
-                well as others NVC helps us discover the depth of our own
-                compassion. This language reveals the awareness that all human
-                beings are only trying to honor universal values and needs,
-                every minute, every day.
-              </p>
-              <p>
-                NVC can be seen as both a spiritual practice that helps us see
-                our common humanity, using our power in a way that honors
-                everyone’s needs, and a concrete set of skills which help us
-                create life-serving families and communities.
-              </p>
-              <p>The form is simple, yet powerfully transformative.</p>
-              <p>
-                Through the practice of NVC, we can learn to clarify what we are
-                observing, what emotions we are feeling, what values we want to
-                live by, and what we want to ask of ourselves and others. We
-                will no longer need to use the language of blame, judgment or
-                domination. We can experience the deep pleasure of contributing
-                to each other’s well being.
-              </p>
-              <p>
-                NVC creates a path for healing and reconciliation in its many
-                applications, ranging from intimate relationships, work
-                settings, health care, social services, police, prison staff and
-                inmates, to governments, schools and social change
-                organizations.
-              </p>
-              <p>
-                [Source:{" "}
-                <OutLink to="http://www.cnvc.org/">
-                  Marshall Rosenberg and CNVC
-                </OutLink>]
-              </p>
-              <br />
-              <LearnMore data={learnMoreData} />
+              <h2>
+                <span>Offerings</span>
+              </h2>
+              {_.map(offeringsData, (dataBit, index) => {
+                const { image, title1, title2, lead } = dataBit;
+
+                return (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      marginBottom: 30,
+                    }}
+                    key={`bit-${index}`}
+                  >
+                    <div style={{ flexGrow: 25, flexBasis: 0 }}>
+                      <Image
+                        src={image}
+                        rawWidth={900}
+                        rawHeight={900}
+                        style={{
+                          width: 45,
+                          height: 45,
+                          border: 0,
+                          background: "transparent",
+                          display: "block",
+                          margin: "auto",
+                        }}
+                      />
+                      <h3
+                        className="mask-p"
+                        style={{ textAlign: "center", marginBottom: 0 }}
+                      >
+                        {!_.isUndefined(title1) && (
+                          <Fragment>{title1}</Fragment>
+                        )}
+                        {!_.isUndefined(title2) && (
+                          <Fragment>
+                            <br />
+                            {title2}
+                          </Fragment>
+                        )}
+                      </h3>
+                    </div>
+                    <p style={{ flexGrow: 75, flexBasis: 0, marginBottom: 0 }}>
+                      {lead}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
             <div>
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
               <h3 className="mask-p" style={{ marginBottom: 10 }}>
-                Why Learn NVC?
+                No Title
               </h3>
               <div
                 style={{
@@ -225,7 +257,7 @@ class NVCPage extends React.PureComponent {
                 <ContainerDimensions>
                   {({ width }) => {
                     const playerWidth = width;
-                    const playerHeight = width * 0.62;
+                    const playerHeight = width * 0.625;
                     return (
                       <div
                         style={{
@@ -233,11 +265,17 @@ class NVCPage extends React.PureComponent {
                           height: playerHeight,
                         }}
                       >
-                        <ReactPlayer
-                          url="https://www.youtube.com/watch?v=w0xrRihEK6A"
-                          className={videoClass}
-                          width="inherit"
-                          height="inherit"
+                        <Image
+                          src={""}
+                          rawWidth={1440}
+                          rawHeight={900}
+                          style={{
+                            width: "inherit",
+                            height: "inherit",
+                            border: 0,
+                            background: "blue",
+                            display: "block",
+                          }}
                         />
                       </div>
                     );
@@ -258,6 +296,7 @@ class NVCPage extends React.PureComponent {
 
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
+              <h3 className="mask-p">A Participant Shares...</h3>
               <p
                 style={{
                   fontFamily: "futura-pt, sans-serif",
@@ -267,14 +306,19 @@ class NVCPage extends React.PureComponent {
               >
                 <span style={{ fontSize: "125%" }}>
                   <i>
-                    "All that has been integrated into NVC has been known for
-                    centuries about consciousness, language, communication
-                    skills, and use of power that enable us to maintain a
-                    perspective of empathy for ourselves and others, even under
-                    trying conditions."
+                    "The training was very insightful. It helped me to take NVC
+                    to a much deeper level and feel a commitment to using it in
+                    my life. The training also helped us to bond as a group, to
+                    understand the issues we face in working as a team, and how
+                    we can use NVC to resolve our issues. L'aura has a way of
+                    creating an environment where we feel very comfortable to
+                    share, to look within ourselves and participate from the
+                    heart. I felt very satisfied with the methodologies used for
+                    learning and also learned a lot about facilitation, which
+                    will help me in the groups I facilitate."
                   </i>
                   <br />
-                  ~ <strong>Marshall B. Rosenberg, Phd</strong>
+                  ~ <strong>Kesang, 2010</strong>
                 </span>
               </p>
 
@@ -290,12 +334,13 @@ class NVCPage extends React.PureComponent {
               >
                 <span style={{ fontSize: "125%" }}>
                   <i>
-                    "… Thank you for all you have done and all that you are --
-                    grounded, free flowing, demanding, accepting, caring,
-                    patient, happy, unhappy, an expert, a learner and super
-                    fun!"
+                    "Recently I attended a workshop with L'aura. It was an
+                    amazing eye-opener, because it showed the possibility of how
+                    the whole community can get involved and learn to hold
+                    conflict, and to take responsibility for one's actions,
+                    without being crucified for one's so-called 'mistakes.'"
                   </i>{" "}
-                  ~ <strong>Sonali, 2014</strong>
+                  ~ <strong>Vikram, 2015</strong>
                 </span>
               </p>
               <div style={{ width: "100%", height: 18, marginBottom: 30 }}>

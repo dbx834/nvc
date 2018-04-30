@@ -81,7 +81,7 @@
     "@bodhi-project/semantic-webflow": "0.0.10",
     "@bodhi-project/seo": "0.0.4",
     "@bodhi-project/typography": "0.0.37",
-    "antd": "^3.4.3",
+    "antd": "^3.4.4",
     "babel-plugin-lodash": "^3.3.2",
     "form-serialize": "^0.7.2",
     "gatsby": "^1.9.255",

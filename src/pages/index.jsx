@@ -355,24 +355,27 @@ class IndexPage extends React.Component {
                     }}
                     key={`bit-${index}`}
                   >
-                    <div style={{ flexGrow: 15, flexBasis: 0 }}>
+                    <div
+                      style={{
+                        flexGrow: 10,
+                        flexBasis: 0,
+                        paddingRight: "1.5em",
+                      }}
+                    >
                       <Image
                         src={image}
                         rawWidth={900}
                         rawHeight={900}
                         style={{
-                          width: 45,
-                          height: 45,
+                          width: 53,
+                          height: 53,
                           border: 0,
                           background: "transparent",
                           display: "block",
-                          margin: "auto",
+                          marginBottom: 10,
                         }}
                       />
-                      <h3
-                        className="mask-p"
-                        style={{ textAlign: "center", marginBottom: 0 }}
-                      >
+                      <h3 className="mask-p" style={{ marginBottom: 0 }}>
                         {title}
                       </h3>
                     </div>

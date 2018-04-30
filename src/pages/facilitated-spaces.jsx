@@ -30,11 +30,10 @@ import {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
-import LearnMore from "../components/LearnMore";
 
-import plant from "../assets/plant.jpg";
-import sun from "../assets/sun.jpg";
-import flower from "../assets/flower.jpg";
+import groupFacilitation from "../assets/groupFacilitation.png";
+import individualCoaching from "../assets/individualCoaching.png";
+import mediation from "../assets/mediation.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -44,20 +43,20 @@ const { Fragment } = React;
 // ----------------------------------------------------------------------------
 const offeringsData = [
   {
-    image: sun,
+    image: mediation,
     title1: "Mediation",
     lead:
       "We offer mediation and facilitated conversations for those seeking support to dialogue with a friend, colleague or family member.",
   },
   {
-    image: plant,
+    image: groupFacilitation,
     title1: "Group",
     title2: "Facilitation",
     lead:
       "We offer group facilitation for groups seeking support with team dynamics, or to reconnect with the group’s purpose and to clarify next steps for forward movement.",
   },
   {
-    image: flower,
+    image: individualCoaching,
     title1: "Individual",
     title2: "Coaching",
     lead:
@@ -191,7 +190,7 @@ class NVCPage extends React.PureComponent {
                 beautifully.
               </p>
               <h2>
-                <span>Offerings</span>
+                <span>Offers</span>
               </h2>
               {_.map(offeringsData, (dataBit, index) => {
                 const { image, title1, title2, lead } = dataBit;
@@ -206,24 +205,27 @@ class NVCPage extends React.PureComponent {
                     }}
                     key={`bit-${index}`}
                   >
-                    <div style={{ flexGrow: 25, flexBasis: 0 }}>
+                    <div
+                      style={{
+                        flexGrow: 10,
+                        flexBasis: 0,
+                        paddingRight: "1.5em",
+                      }}
+                    >
                       <Image
                         src={image}
                         rawWidth={900}
                         rawHeight={900}
                         style={{
-                          width: 45,
-                          height: 45,
+                          width: 53,
+                          height: 53,
                           border: 0,
                           background: "transparent",
                           display: "block",
-                          margin: "auto",
+                          marginBottom: 10,
                         }}
                       />
-                      <h3
-                        className="mask-p"
-                        style={{ textAlign: "center", marginBottom: 0 }}
-                      >
+                      <h3 className="mask-p" style={{ marginBottom: 0 }}>
                         {!_.isUndefined(title1) && (
                           <Fragment>{title1}</Fragment>
                         )}
@@ -235,7 +237,7 @@ class NVCPage extends React.PureComponent {
                         )}
                       </h3>
                     </div>
-                    <p style={{ flexGrow: 75, flexBasis: 0, marginBottom: 0 }}>
+                    <p style={{ flexGrow: 80, flexBasis: 0, marginBottom: 0 }}>
                       {lead}
                     </p>
                   </div>
@@ -306,16 +308,12 @@ class NVCPage extends React.PureComponent {
               >
                 <span style={{ fontSize: "125%" }}>
                   <i>
-                    "The training was very insightful. It helped me to take NVC
-                    to a much deeper level and feel a commitment to using it in
-                    my life. The training also helped us to bond as a group, to
-                    understand the issues we face in working as a team, and how
-                    we can use NVC to resolve our issues. L'aura has a way of
-                    creating an environment where we feel very comfortable to
-                    share, to look within ourselves and participate from the
-                    heart. I felt very satisfied with the methodologies used for
-                    learning and also learned a lot about facilitation, which
-                    will help me in the groups I facilitate."
+                    "The training was very insightful. It helped us to bond as a
+                    group, to understand the issues we face working as a team,
+                    and how we can use NVC to resolve our issues. L'aura has a
+                    way of creating an environment where we feel very
+                    comfortable to share, to look within ourselves and
+                    participate from the heart.
                   </i>
                   <br />
                   ~ <strong>Kesang, 2010</strong>

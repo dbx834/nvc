@@ -3,10 +3,10 @@
 // ------------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
-// import PropTypes from "prop-types";
-import _ from "lodash";
 import { css } from "glamor";
-// import moment from "moment";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import isNull from "lodash/isNull";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
@@ -238,7 +238,7 @@ class IndexPage extends React.Component {
           visible={this.state.visible}
           onCancel={this.hideModal}
         >
-          {!_.isNull(this.state.modalData) && (
+          {!isNull(this.state.modalData) && (
             <div className="av-page">
               <Iframe
                 url="https://www.auroville.com/donations/"

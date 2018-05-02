@@ -2,8 +2,10 @@
 // -------------------------------------------------------------------- Imports
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import _ from "lodash";
 import { css } from "glamor";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import merge from "lodash/merge";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import { applyType, applyRhythm } from "@bodhi-project/typography";
@@ -17,7 +19,7 @@ const formStyle = css({
   flexWrap: "wrap !important",
   color: "inherit !important",
 
-  "& .ant-form-item": _.merge(
+  "& .ant-form-item": merge(
     {
       display: "flex !important",
       width: "100%",
@@ -62,7 +64,7 @@ const formStyle = css({
         marginTop: "unset",
       },
 
-      "& .ant-select-arrow": _.merge(
+      "& .ant-select-arrow": merge(
         {
           color: "#363636",
           right: 0,
@@ -129,7 +131,7 @@ const formStyle = css({
   },
 
   // Submit button
-  "& .ant-btn-primary": _.merge(
+  "& .ant-btn-primary": merge(
     {
       fontSize: "inherit",
       borderRadius: 0,

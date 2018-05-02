@@ -6,7 +6,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { css } from "glamor";
 import moment from "moment";
-import _ from "lodash";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import merge from "lodash/merge";
+import isUndefined from "lodash/isUndefined";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import { Container } from "@bodhi-project/components";
@@ -93,7 +96,7 @@ const wrapperStyles = css({
     },
   },
 
-  "& #content": _.merge(
+  "& #content": merge(
     {
       marginLeft: 0,
     },
@@ -124,55 +127,6 @@ const wrapperStyles = css({
 });
 const wrapperStylesClass = wrapperStyles.toString();
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mobile
-const mobileHeader = css({
-  paddingBottom: 20,
-});
-const mobileHeaderClass = mobileHeader.toString();
-
-const mobileMenu = css({
-  backgroundColor: "#fcfcfc",
-  "& .bm-item-list": {
-    padding: "1em",
-
-    "& a": {
-      fontFamily: "futura-pt, sans-serif !important",
-      color: "#4a4a4a",
-      borderBottom: "1.625px solid transparent",
-      transition: "0.125s",
-      textTransform: "uppercase",
-      letterSpacing: "0.08775ex",
-      display: "block",
-      marginBottom: "0.9em",
-      fontSize: "115%",
-
-      "&:hover": {
-        color: "#4a4a4a",
-        borderBottom: "1.625px solid transparent",
-      },
-    },
-
-    "& a.active": {
-      color: "#0000FF",
-    },
-
-    "& span.header": {
-      display: "block",
-      fontWeight: 700,
-      fontSize: "95%",
-      letterSpacing: "-0.08775ex",
-      textTransform: "uppercase",
-      marginTop: "2.7em",
-      marginBottom: "0.9em",
-    },
-
-    "& span.header:first-child": {
-      marginTop: "1.3em",
-    },
-  },
-});
-const mobileMenuClass = mobileMenu.toString();
-
 globalWithMediaQueries(".ant-modal", {
   height: "90vh !important",
   width: "90vw !important",
@@ -201,7 +155,7 @@ class TemplateWrapper extends React.Component {
 
   /** after mount */
   componentDidMount() {
-    if (!_.isUndefined(document)) {
+    if (!isUndefined(document)) {
       const htmlElement = document.documentElement;
       htmlElement.classList.toggle("lk-loading");
       htmlElement.classList.toggle("lk-active");
@@ -210,7 +164,7 @@ class TemplateWrapper extends React.Component {
 
   /** on mount */
   componentDidUpdate() {
-    if (!_.isUndefined(window)) {
+    if (!isUndefined(window)) {
       const element = document.getElementById("contentWrapper");
       element.scrollTop = 0;
     }

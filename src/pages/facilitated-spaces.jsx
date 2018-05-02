@@ -4,16 +4,16 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
 import PropTypes from "prop-types";
-import _ from "lodash";
 import { css } from "glamor";
-// import moment from "moment";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import map from "lodash/map";
+import isUndefined from "lodash/isUndefined";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-// import FacebookProvider, { Page as FBPage } from "react-facebook";
 import { Image, OutLink } from "@bodhi-project/components";
 import ContainerDimensions from "react-container-dimensions";
-import ReactPlayer from "react-player";
 import { Page } from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
@@ -144,11 +144,6 @@ const pageWrapper = css({
 });
 const pageStyleClass = pageWrapper.toString();
 
-const video = css({
-  marginBottom: 20,
-});
-const videoClass = video.toString();
-
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
@@ -192,7 +187,7 @@ class NVCPage extends React.PureComponent {
               <h2>
                 <span>Offers</span>
               </h2>
-              {_.map(offeringsData, (dataBit, index) => {
+              {map(offeringsData, (dataBit, index) => {
                 const { image, title1, title2, lead } = dataBit;
 
                 return (
@@ -226,10 +221,8 @@ class NVCPage extends React.PureComponent {
                         }}
                       />
                       <h3 className="mask-p" style={{ marginBottom: 0 }}>
-                        {!_.isUndefined(title1) && (
-                          <Fragment>{title1}</Fragment>
-                        )}
-                        {!_.isUndefined(title2) && (
+                        {!isUndefined(title1) && <Fragment>{title1}</Fragment>}
+                        {!isUndefined(title2) && (
                           <Fragment>
                             <br />
                             {title2}

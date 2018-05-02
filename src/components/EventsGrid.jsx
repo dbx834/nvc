@@ -4,8 +4,13 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
 import { css } from "glamor";
-import _ from "lodash";
 import moment from "moment";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import indexOf from "lodash/indexOf";
+import isNull from "lodash/isNull";
+import filter from "lodash/filter";
+import map from "lodash/map";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
@@ -30,6 +35,7 @@ import dummy1 from "../assets/dummy1.jpg";
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { HexaGrid, Hex } = HexaGridX;
 const { Paragraph } = Elements;
+const filterF = filter;
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Functions
@@ -37,7 +43,7 @@ const { Paragraph } = Elements;
 /** inArray */
 const inArray = (array, value) => {
   let rx = false;
-  if (_.indexOf(array, value) >= 0) {
+  if (indexOf(array, value) >= 0) {
     rx = true;
   }
   return rx;
@@ -128,11 +134,11 @@ class EventsGrid extends React.Component {
     const todayInt = parseInt(moment().format("YYYYMMDD"), 10);
 
     let filteredRecords = 1;
-    const filtered = _.filter(data, ({ node }) => {
+    const filtered = filterF(data, ({ node }) => {
       let includeThis = false;
       const { frontmatter } = node;
       const { tags, date, startDate } = frontmatter;
-      const mDate = moment(!_.isNull(date) ? date : startDate);
+      const mDate = moment(!isNull(date) ? date : startDate);
       const xDate = parseInt(mDate.format("YYYYMMDD"), 10);
 
       const inTheFuture = todayInt <= xDate;
@@ -149,7 +155,7 @@ class EventsGrid extends React.Component {
     return (
       <div className={componentStyleClass}>
         <HexaGrid>
-          {_.map(filtered, ({ node }, index) => {
+          {map(filtered, ({ node }, index) => {
             const { frontmatter } = node;
             const { tags, fromTime, toTime, cover } = frontmatter;
             const { fields } = node;

@@ -4,9 +4,10 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
 import PropTypes from "prop-types";
-import _ from "lodash";
 import { css } from "glamor";
-import moment from "moment";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import startsWith from "lodash/startsWith";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
@@ -71,7 +72,7 @@ class PageTemplate extends React.Component {
     const { frontmatter } = pathContext;
     const { markdownAst } = pathContext;
     const { route, humanDate, elapsed } = pathContext;
-    const checkedRoute = _.startsWith(route, "/") ? route : `/${route}`;
+    const checkedRoute = startsWith(route, "/") ? route : `/${route}`;
     const nakedRoute = checkedRoute.substr(1);
 
     // -------------------------------------------------------------------- SEO

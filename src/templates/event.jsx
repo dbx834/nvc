@@ -4,9 +4,17 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
 import PropTypes from "prop-types";
-import _ from "lodash";
 import { css } from "glamor";
 import moment from "moment";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import isNull from "lodash/isNull";
+import join from "lodash/join";
+import startsWith from "lodash/startsWith";
+import trim from "lodash/trim";
+import split from "lodash/split";
+import last from "lodash/last";
+import indexOf from "lodash/indexOf";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link, { withPrefix } from "gatsby-link";
@@ -97,7 +105,7 @@ const pageStyleClass = pageStyle.toString();
 /** inArray */
 const inArray = (array, value) => {
   let rx = false;
-  if (_.indexOf(array, value) >= 0) {
+  if (indexOf(array, value) >= 0) {
     rx = true;
   }
   return rx;
@@ -129,18 +137,18 @@ class EventTemplate extends React.Component {
     } = frontmatter;
     const { markdownAst, next, prev } = pathContext;
     const { route, humanDate, elapsed } = pathContext;
-    const checkedRoute = _.startsWith(route, "/") ? route : `/${route}`;
+    const checkedRoute = startsWith(route, "/") ? route : `/${route}`;
     const nakedRoute = checkedRoute.substr(1);
 
     // Date stuff
-    const begins = moment(!_.isNull(startDate) ? startDate : date);
+    const begins = moment(!isNull(startDate) ? startDate : date);
     const ends = moment(
-      !_.isNull(finishDate) ? finishDate : begins.clone().add(23, "hours"),
+      !isNull(finishDate) ? finishDate : begins.clone().add(23, "hours"),
     );
 
     const { orgLocation } = data;
 
-    let catString = _.trim(_.last(_.split(frontmatter.category, ".")));
+    let catString = trim(last(split(frontmatter.category, ".")));
     switch (catString) {
       case "NVC":
         catString = "Nonviolent Communication";
@@ -164,7 +172,7 @@ class EventTemplate extends React.Component {
     // Make banner
     let eventBanner = null;
     if (cover === "fallback") {
-      const coverHint = _.join(tags, "-");
+      const coverHint = join(tags, "-");
       eventBanner = withPrefix(
         `/content-assets/event-fallbacks/${coverHint}.jpg`,
       );
@@ -304,12 +312,12 @@ class EventTemplate extends React.Component {
               <H1 mask="h4">More like this</H1>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div>
-                  {!_.isNull(prev) && (
+                  {!isNull(prev) && (
                     <Link to={`/${prev.fields.route}`}>⇜ Previous</Link>
                   )}
                 </div>
                 <div>
-                  {!_.isNull(next) && (
+                  {!isNull(next) && (
                     <Link to={`/${next.fields.route}`}>Next ⇝</Link>
                   )}
                 </div>
@@ -325,21 +333,21 @@ class EventTemplate extends React.Component {
 
           {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Side */}
           <div className="right">
-            {!_.isNull(whichSide) &&
+            {!isNull(whichSide) &&
               whichSide === "rc-practice-group" && (
                 <RCPracticeGroupSide
                   data={frontmatter}
                   pathContext={pathContext}
                 />
               )}
-            {!_.isNull(whichSide) &&
+            {!isNull(whichSide) &&
               whichSide === "nvc-practice-group" && (
                 <NVCPracticeGroupSide
                   data={frontmatter}
                   pathContext={pathContext}
                 />
               )}
-            {!_.isNull(whichSide) &&
+            {!isNull(whichSide) &&
               whichSide === "workshop" && (
                 <WorkshopSide data={frontmatter} pathContext={pathContext} />
               )}

@@ -4,8 +4,13 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
 import PropTypes from "prop-types";
-import _ from "lodash";
 import { css } from "glamor";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import map from "lodash/map";
+import isUndefined from "lodash/isUndefined";
+import startsWith from "lodash/startsWith";
+import split from "lodash/split";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
@@ -67,22 +72,22 @@ class MobileNav extends React.Component {
         </Link>
         <nav style={{ marginTop: 20 }}>
           <Ul>
-            {_.map(this.props.menu, topLevel => {
+            {map(this.props.menu, topLevel => {
               const { title, menu } = topLevel;
               return (
                 <Fragment>
                   <li className="header" key={title}>
                     <span>{title}</span>
                   </li>
-                  {_.map(menu, subMenu => {
+                  {map(menu, subMenu => {
                     const subTitle = subMenu.title;
                     const popMenu = subMenu.menu;
                     const { link, menuPopoverLocation } = subMenu;
-                    const isOutLink = _.startsWith(link, "http");
+                    const isOutLink = startsWith(link, "http");
 
                     return (
                       <Fragment>
-                        {_.isUndefined(popMenu) && (
+                        {isUndefined(popMenu) && (
                           <li key={link}>
                             {isOutLink === true && (
                               <OutLink to={link}>
@@ -93,7 +98,7 @@ class MobileNav extends React.Component {
                               <Link
                                 to={link}
                                 className={
-                                  pathname === _.split(link, "?", 1)[0]
+                                  pathname === split(link, "?", 1)[0]
                                     ? "active"
                                     : ""
                                 }
@@ -103,7 +108,7 @@ class MobileNav extends React.Component {
                             )}
                           </li>
                         )}
-                        {!_.isUndefined(popMenu) && (
+                        {!isUndefined(popMenu) && (
                           <li key={subTitle}>
                             >
                             {isOutLink === true && (
@@ -113,7 +118,7 @@ class MobileNav extends React.Component {
                               <Link
                                 to={link}
                                 className={
-                                  pathname === _.split(link, "?", 1)[0]
+                                  pathname === split(link, "?", 1)[0]
                                     ? "active"
                                     : ""
                                 }

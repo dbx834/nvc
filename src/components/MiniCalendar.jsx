@@ -4,9 +4,19 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
 import PropTypes from "prop-types";
-import _ from "lodash";
 import { css } from "glamor";
 import moment from "moment";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import merge from "lodash/merge";
+import indexOf from "lodash/indexOf";
+import keys from "lodash/keys";
+import isEmpty from "lodash/isEmpty";
+import isNull from "lodash/isNull";
+import filter from "lodash/filter";
+import isUndefined from "lodash/isUndefined";
+import map from "lodash/map";
+import isEqual from "lodash/isEqual";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
@@ -38,6 +48,7 @@ import end from "../assets/end.png";
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
 const enGB = en_GB;
+const filterF = filter;
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
@@ -216,7 +227,7 @@ const pageStyle = css({
     },
   }, // B43808
 
-  "& .ant-btn": _.merge(
+  "& .ant-btn": merge(
     { ...applyType("ltb1ekq") },
     {
       fontWeight: 700,
@@ -264,7 +275,7 @@ const pageStyleClass = pageStyle.toString();
 /** inArray */
 const inArray = (array, value) => {
   let rx = false;
-  if (_.indexOf(array, value) >= 0) {
+  if (indexOf(array, value) >= 0) {
     rx = true;
   }
   return rx;
@@ -329,12 +340,12 @@ const getStandardData = ({ node }) => {
   } = frontmatter;
   const { route, humanDate } = fields;
 
-  const begins = moment(!_.isNull(startDate) ? startDate : date);
+  const begins = moment(!isNull(startDate) ? startDate : date);
   const ends = moment(
-    !_.isNull(finishDate) ? finishDate : begins.clone().add(23, "hours"),
+    !isNull(finishDate) ? finishDate : begins.clone().add(23, "hours"),
   );
   const beginDateInt = parseInt(begins.format("YYYYMMDD"), 10);
-  const diff = !_.isNull(finishDate)
+  const diff = !isNull(finishDate)
     ? moment.duration(ends.diff(begins)).asDays()
     : 0;
 
@@ -583,7 +594,7 @@ class CalendarX extends React.Component {
     const nextQuery = parseQueryString(
       nextProps.location ? nextProps.location.search : null,
     );
-    if (!_.isEqual(nextQuery, this.state.query)) {
+    if (!isEqual(nextQuery, this.state.query)) {
       this.setState({ query: nextQuery });
     }
   }
@@ -608,7 +619,7 @@ class CalendarX extends React.Component {
     const selectedMonth = moment().format("M");
     const urlQuery = parseQueryString(this.props.location.search);
 
-    const thatMonth = _.isNull(this.state.currentMonth)
+    const thatMonth = isNull(this.state.currentMonth)
       ? moment()
       : this.state.currentMonth;
     const thatMonthF = thatMonth.format("YYYYMM");
@@ -630,32 +641,30 @@ class CalendarX extends React.Component {
       .endOf("year");
 
     // Get all unique tags
-    if (_.isEmpty(givenTags)) {
-      _.map(data, ({ node }) => {
+    if (isEmpty(givenTags)) {
+      map(data, ({ node }) => {
         const { frontmatter } = node;
         const { tags } = frontmatter;
-        _.map(tags, tag => {
+        map(tags, tag => {
           if (!inArray(uniqueTags, tag)) {
             uniqueTags.push(tag);
           }
         });
       });
     } else {
-      uniqueTags = _.keys(givenTags);
+      uniqueTags = keys(givenTags);
     }
 
-    if (!_.isEmpty(givenTags)) {
+    if (!isEmpty(givenTags)) {
       displayTagsAs = givenTags;
     }
 
-    const query = _.isNull(this.state.query.filter)
-      ? urlQuery
-      : this.state.query;
+    const query = isNull(this.state.query.filter) ? urlQuery : this.state.query;
     const { filter } = query;
     // Filter data by tag
     if (filter) {
       activeFilter = filter;
-      filteredData = _.filter(data, ({ node }) => {
+      filteredData = filterF(data, ({ node }) => {
         let displayThis = false;
         if (activeFilter === "all") {
           displayThis = true;
@@ -664,7 +673,7 @@ class CalendarX extends React.Component {
         }
         if (displayThis === true) {
           const { date, startDate } = node.frontmatter;
-          const begins = moment(!_.isNull(startDate) ? startDate : date);
+          const begins = moment(!isNull(startDate) ? startDate : date);
           const thisEventMonth = begins.format("YYYYMM");
           if (inArray(monthFilter, thisEventMonth)) {
             displayThis = true;
@@ -721,12 +730,12 @@ class CalendarX extends React.Component {
           multiDayEvent = {};
           multiDay = false;
         }
-      } else if (!_.isNull(filteredData)) {
-        record = _.filter(filteredData, ({ node }) => {
+      } else if (!isNull(filteredData)) {
+        record = filterF(filteredData, ({ node }) => {
           let filterThis = false;
           const { frontmatter } = node;
           const { date, startDate } = frontmatter;
-          const begins = moment(!_.isNull(startDate) ? startDate : date);
+          const begins = moment(!isNull(startDate) ? startDate : date);
           const beginDateInt = parseInt(begins.format("YYYYMMDD"), 10);
           if (thisDate === beginDateInt) {
             filterThis = true;
@@ -735,7 +744,7 @@ class CalendarX extends React.Component {
         });
         record = record[0];
 
-        if (!_.isUndefined(record)) {
+        if (!isUndefined(record)) {
           const standardData = getStandardData(record);
           const { diff } = standardData;
 

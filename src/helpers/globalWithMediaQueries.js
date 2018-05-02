@@ -1,5 +1,9 @@
 import { css } from "glamor";
-import _ from "lodash";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import map from "lodash/map";
+import kebabCase from "lodash/kebabCase";
+import endsWith from "lodash/endsWith";
 
 /** globalWithMediaQueries */
 const globalWithMediaQueries = (selector, styles, appendImportant = false) => {
@@ -11,8 +15,8 @@ const globalWithMediaQueries = (selector, styles, appendImportant = false) => {
       const mediaStyle = styles[key];
       let styleString = "";
 
-      _.map(mediaStyle, (style, prop) => {
-        styleString += `${_.kebabCase(prop)}:${style}${
+      map(mediaStyle, (style, prop) => {
+        styleString += `${kebabCase(prop)}:${style}${
           appendImportant === true ? " !important" : ""
         };`;
       });
@@ -20,7 +24,7 @@ const globalWithMediaQueries = (selector, styles, appendImportant = false) => {
       postPush.push(`${key}{ ${selector} { ${styleString} }}`);
     } else {
       plainStyles[key] = `${styles[key]}${
-        !_.endsWith(styles[key], "!important") && appendImportant === true
+        !endsWith(styles[key], "!important") && appendImportant === true
           ? " !important"
           : ""
       }`;
@@ -29,7 +33,7 @@ const globalWithMediaQueries = (selector, styles, appendImportant = false) => {
 
   // For specificity
   css.global(selector, plainStyles);
-  _.map(postPush, item => {
+  map(postPush, item => {
     css.insert(item);
   });
 };

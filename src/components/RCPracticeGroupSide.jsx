@@ -4,9 +4,11 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
 import PropTypes from "prop-types";
-import _ from "lodash";
 import { css } from "glamor";
 import moment from "moment";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import isNull from "lodash/isNull";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import { Elements } from "@bodhi-project/typography";
@@ -172,7 +174,7 @@ class RCPracticeGroupSide extends React.Component {
 
     const key = `${data.title} @ ${humanDate}`;
     const todayInt = parseInt(moment().format("YYYYMMDD"), 10);
-    const begins = moment(!_.isNull(startDate) ? startDate : date);
+    const begins = moment(!isNull(startDate) ? startDate : date);
     const beginDateInt = parseInt(begins.format("YYYYMMDD"), 10);
     let eventStatus = null;
 

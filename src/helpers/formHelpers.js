@@ -1,7 +1,11 @@
 // ----------------------------------------------------------------------------
 // -------------------------------------------------------------------- Imports
 // ----------------------------------------------------------------------------
-import _ from "lodash";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import isEmpty from "lodash/isEmpty";
+import replace from "lodash/replace";
+
 import isEmail from "validator/lib/isEmail";
 import isAlpha from "validator/lib/isAlphanumeric";
 
@@ -14,7 +18,7 @@ const hasErrors = fieldsError =>
 
 /** Check email is valid */
 const validateEmail = (rule, value, callback) => {
-  if (_.isEmpty(value)) {
+  if (isEmpty(value)) {
     callback("Please fill in your email.");
   } else {
     if (!isEmail(value)) {
@@ -28,45 +32,45 @@ const validateEmail = (rule, value, callback) => {
 /** Check email is valid */
 const validateMobile = (rule, value, callback) => {
   callback();
-  // if (_.isEmpty(value)) {
+  // if (isEmpty(value)) {
   //   callback("Please fill in these details.");
   // }
 };
 
 const validateCountry = (rule, value, callback) => {
   callback();
-  // if (_.isEmpty(value)) {
+  // if (isEmpty(value)) {
   //   callback("Please fill in these details.");
   // }
 };
 
 const validateCurrentLocation = (rule, value, callback) => {
   callback();
-  // if (_.isEmpty(value)) {
+  // if (isEmpty(value)) {
   //   callback("Please fill in these details.");
   // }
 };
 
 const validateWhatDrawsYou = (rule, value, callback) => {
   callback();
-  // if (_.isEmpty(value)) {
+  // if (isEmpty(value)) {
   //   callback("Please fill in these details.");
   // }
 };
 
 const validateComment = (rule, value, callback) => {
   callback();
-  // if (_.isEmpty(value)) {
+  // if (isEmpty(value)) {
   //   callback("Please fill in these details.");
   // }
 };
 
 /** Check name is valid */
 const validateName = (rule, value, callback) => {
-  if (_.isEmpty(value)) {
+  if (isEmpty(value)) {
     callback("Please fill in your name.");
   } else {
-    if (!isAlpha(_.replace(value, " ", ""))) {
+    if (!isAlpha(replace(value, " ", ""))) {
       callback("A name can have only characters (a-z, A-Z).");
     } else {
       callback();

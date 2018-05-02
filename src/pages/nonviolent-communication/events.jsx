@@ -4,8 +4,11 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
 import PropTypes from "prop-types";
-import _ from "lodash";
 import { css } from "glamor";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import map from "lodash/map";
+import indexOf from "lodash/indexOf";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import "moment/locale/en-gb";
@@ -74,7 +77,7 @@ const pageStyleClass = pageStyle.toString();
 /** inArray */
 const inArray = (array, value) => {
   let rx = false;
-  if (_.indexOf(array, value) >= 0) {
+  if (indexOf(array, value) >= 0) {
     rx = true;
   }
   return rx;
@@ -95,7 +98,7 @@ class EventsAndCalendar extends React.Component {
     const postEdges = this.props.data.allMarkdownRemark.edges;
     // get only events
     const nvcNodes = [];
-    _.map(postEdges, ({ node }) => {
+    map(postEdges, ({ node }) => {
       if (inArray(node.frontmatter.tags, "nvc")) {
         nvcNodes.push({ node });
       }

@@ -2,7 +2,8 @@
 // -------------------------------------------------------------------- Imports
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import _ from "lodash";
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import startsWith from "lodash/startsWith";
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------- Function
@@ -12,8 +13,8 @@ const withUrl = (checkThis, data) => {
   const { websiteUrl, nakedWebsiteUrl } = data;
   let returnString = "";
 
-  if (!_.startsWith(checkThis, "http")) {
-    if (_.startsWith(checkThis, "/")) {
+  if (!startsWith(checkThis, "http")) {
+    if (startsWith(checkThis, "/")) {
       returnString = `${nakedWebsiteUrl}${checkThis}`;
     } else {
       returnString = `${websiteUrl}${checkThis}`;

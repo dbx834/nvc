@@ -5,7 +5,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { css } from "glamor";
-import _ from "lodash";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import merge from "lodash/merge";
+import map from "lodash/map";
+import startsWith from "lodash/startsWith";
+import isUndefined from "lodash/isUndefined";
+import split from "lodash/split";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
@@ -26,7 +32,7 @@ const { Ul } = Elements;
 
 globalWithMediaQueries(
   ".ant-popover-inner-content",
-  _.merge({ ...applyType("ltb1ekq") }),
+  merge({ ...applyType("ltb1ekq") }),
   true,
 );
 
@@ -118,22 +124,22 @@ class DesktopNav extends React.Component {
         </Link>
         <nav>
           <Ul>
-            {_.map(this.props.menu, topLevel => {
+            {map(this.props.menu, topLevel => {
               const { title, menu } = topLevel;
               return (
                 <Fragment>
                   <li className="header" key={title}>
                     <span>{title}</span>
                   </li>
-                  {_.map(menu, subMenu => {
+                  {map(menu, subMenu => {
                     const subTitle = subMenu.title;
                     const popMenu = subMenu.menu;
                     const { link, menuPopoverLocation } = subMenu;
-                    const isOutLink = _.startsWith(link, "http");
+                    const isOutLink = startsWith(link, "http");
 
                     return (
                       <Fragment>
-                        {_.isUndefined(popMenu) && (
+                        {isUndefined(popMenu) && (
                           <li key={link}>
                             {isOutLink === true && (
                               <OutLink to={link}>
@@ -144,7 +150,7 @@ class DesktopNav extends React.Component {
                               <Link
                                 to={link}
                                 className={
-                                  pathname === _.split(link, "?", 1)[0]
+                                  pathname === split(link, "?", 1)[0]
                                     ? "active"
                                     : ""
                                 }
@@ -154,17 +160,17 @@ class DesktopNav extends React.Component {
                             )}
                           </li>
                         )}
-                        {!_.isUndefined(popMenu) && (
+                        {!isUndefined(popMenu) && (
                           <li key={subTitle}>
                             <Popover
                               placement={menuPopoverLocation}
                               content={
                                 <div className="menu-tip">
                                   <ul>
-                                    {_.map(popMenu, popMenuItem => {
+                                    {map(popMenu, popMenuItem => {
                                       const itemTitle = popMenuItem.title;
                                       const itemLink = popMenuItem.link;
-                                      const isItemLinkOutLink = _.startsWith(
+                                      const isItemLinkOutLink = startsWith(
                                         itemLink,
                                         "http",
                                       );
@@ -180,7 +186,7 @@ class DesktopNav extends React.Component {
                                               to={itemLink}
                                               className={
                                                 pathname ===
-                                                _.split(itemLink, "?", 1)[0]
+                                                split(itemLink, "?", 1)[0]
                                                   ? "active"
                                                   : ""
                                               }
@@ -202,7 +208,7 @@ class DesktopNav extends React.Component {
                                 <Link
                                   to={link}
                                   className={
-                                    pathname === _.split(link, "?", 1)[0]
+                                    pathname === split(link, "?", 1)[0]
                                       ? "active"
                                       : ""
                                   }

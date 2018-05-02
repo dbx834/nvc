@@ -4,7 +4,9 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
 import { css } from "glamor";
-import _ from "lodash";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import map from "lodash/map";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
@@ -95,7 +97,7 @@ class LearnMore extends React.Component {
           Further Links
         </h3>
         <TetraGrid>
-          {_.map(data, ({ linkTo, title, image }, index) => {
+          {map(data, ({ linkTo, title, image }, index) => {
             return (
               <THex className={hexClass} key={`${linkTo}-${index}`}>
                 <Link to={linkTo}>

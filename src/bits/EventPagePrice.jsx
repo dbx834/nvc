@@ -4,7 +4,13 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
 import { css } from "glamor";
-import _ from "lodash";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import isString from "lodash/isString";
+import capitalize from "lodash/capitalize";
+import startsWith from "lodash/startsWith";
+import trim from "lodash/trim";
+import replace from "lodash/replace";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 // import Link from "gatsby-link";
@@ -41,18 +47,18 @@ class Price extends React.Component {
     let isDollar = false;
     let amount = null;
 
-    if (_.isString(cost)) {
-      costDisplay = _.capitalize(cost);
+    if (isString(cost)) {
+      costDisplay = capitalize(cost);
     }
 
-    if (_.startsWith(cost, "₹")) {
+    if (startsWith(cost, "₹")) {
       isRupee = true;
-      amount = _.trim(_.replace(cost, "₹", ""));
+      amount = trim(replace(cost, "₹", ""));
     }
 
-    if (_.startsWith(cost, "$")) {
+    if (startsWith(cost, "$")) {
       isRupee = true;
-      amount = _.trim(_.replace(cost, "$", ""));
+      amount = trim(replace(cost, "$", ""));
     }
 
     return (

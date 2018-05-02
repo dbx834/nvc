@@ -4,9 +4,23 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
 import PropTypes from "prop-types";
-import _ from "lodash";
 import { css } from "glamor";
 import moment from "moment";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import isEqual from "lodash/isEqual";
+import isNull from "lodash/isNull";
+import filter from "lodash/filter";
+import startsWith from "lodash/startsWith";
+import trim from "lodash/trim";
+import replace from "lodash/replace";
+import lowerCase from "lodash/lowerCase";
+import split from "lodash/split";
+import uniq from "lodash/uniq";
+import last from "lodash/last";
+import kebabCase from "lodash/kebabCase";
+import toLower from "lodash/toLower";
+import map from "lodash/map";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
@@ -36,6 +50,7 @@ import seoHelper from "../helpers/seoHelper";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
+const filterF = filter;
 const { CheckableTag } = Tag;
 const { H1, H2, H3, Paragraph } = Elements;
 
@@ -171,7 +186,7 @@ class Blog extends React.Component {
     const nextQuery = parseQueryString(
       nextProps.location ? nextProps.location.search : null,
     );
-    if (!_.isEqual(nextQuery, this.state.query)) {
+    if (!isEqual(nextQuery, this.state.query)) {
       this.setState({ query: nextQuery });
     }
   }
@@ -188,20 +203,18 @@ class Blog extends React.Component {
     let allCategories = [];
     let activeFilter = null;
     const urlQuery = parseQueryString(this.props.location.search);
-    const query = _.isNull(this.state.query.filter)
-      ? urlQuery
-      : this.state.query;
+    const query = isNull(this.state.query.filter) ? urlQuery : this.state.query;
     const { filter } = query;
 
     let filteredData = null;
     if (filter) {
       activeFilter = filter;
-      filteredData = _.filter(postEdges, ({ node }) => {
+      filteredData = filterF(postEdges, ({ node }) => {
         let displayThis = false;
-        if (_.startsWith(_.trim(node.fields.route), "writings") === true) {
+        if (startsWith(trim(node.fields.route), "writings") === true) {
           allCategories.push(node.frontmatter.category);
-          const cat = _.replace(
-            _.lowercase(_.split(node.frontmatter.category, ".")[1]),
+          const cat = replace(
+            lowerCase(split(node.frontmatter.category, ".")[1]),
             " ",
             "-",
           );
@@ -219,9 +232,9 @@ class Blog extends React.Component {
       filteredData = postEdges;
     }
 
-    accessibleCategories = _.uniq(accessibleCategories);
+    accessibleCategories = uniq(accessibleCategories);
 
-    allCategories = _.uniq(allCategories);
+    allCategories = uniq(allCategories);
     const sortedCategories = allCategories.sort((a, b) => {
       if (a < b) return -1;
       if (a > b) return 1;
@@ -292,9 +305,9 @@ class Blog extends React.Component {
               All posts
             </Tag>
           )}
-          {_.map(sortedCategories, category => {
-            let displayAs = _.trim(_.last(_.split(category, ".")));
-            const tagKey = _.kebabCase(_.toLower(displayAs));
+          {map(sortedCategories, category => {
+            let displayAs = trim(last(split(category, ".")));
+            const tagKey = kebabCase(toLower(displayAs));
 
             switch (displayAs) {
               case "NVC":
@@ -332,9 +345,9 @@ class Blog extends React.Component {
               </Fragment>
             );
           })}
-          {_.map(categories, category => {
-            let catString = _.trim(_.last(_.split(category, ".")));
-            const catId = _.kebabCase(_.toLower(catString));
+          {map(categories, category => {
+            let catString = trim(last(split(category, ".")));
+            const catId = kebabCase(toLower(catString));
             switch (catString) {
               case "NVC":
                 catString = "Nonviolent Communication";
@@ -363,7 +376,7 @@ class Blog extends React.Component {
                     <br />
                   </Fragment>
                 )}
-                {_.map(filteredData, ({ node }) => {
+                {map(filteredData, ({ node }) => {
                   const { date, title, abstract, cover } = node.frontmatter;
                   const { route } = node.fields;
                   const dateStr = moment(date).format("dddd, MMMM D, YYYY");

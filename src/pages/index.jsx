@@ -4,9 +4,16 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
 import PropTypes from "prop-types";
-import _ from "lodash";
 import { css } from "glamor";
 import moment from "moment";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import map from "lodash/map";
+import startsWith from "lodash/startsWith";
+import trim from "lodash/trim";
+import filter from "lodash/filter";
+import isNull from "lodash/isNull";
+import indexOf from "lodash/indexOf";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 // import Link from "gatsby-link";
@@ -30,6 +37,9 @@ import {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Carousel from "antd/lib/carousel";
 import "antd/lib/carousel/style/css";
+
+import Icon from "antd/lib/icon";
+import "antd/lib/icon/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
@@ -269,10 +279,38 @@ const pageStyleClass = pageWrapper.toString();
 /** inArray */
 const inArray = (array, value) => {
   let rx = false;
-  if (_.indexOf(array, value) >= 0) {
+  if (indexOf(array, value) >= 0) {
     rx = true;
   }
   return rx;
+};
+
+/** Carousel next arrow */
+const NextArrow = props => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "red" }}
+      onClick={onClick}
+    >
+      <Icon type="arrow-right" />
+    </div>
+  );
+};
+
+/** Carousel prev arrow */
+const PrevArrow = props => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, display: "block", background: "green" }}
+      onClick={onClick}
+    >
+      <Icon type="arrow-left" />
+    </div>
+  );
 };
 
 // ----------------------------------------------------------------------------
@@ -290,18 +328,18 @@ class IndexPage extends React.Component {
 
     // get only events
     const eventNodes = [];
-    _.map(postEdges, ({ node }) => {
-      if (_.startsWith(_.trim(node.fields.route), "events") === true) {
+    map(postEdges, ({ node }) => {
+      if (startsWith(trim(node.fields.route), "events") === true) {
         eventNodes.push({ node });
       }
     });
 
     // filter it
-    const filtered = _.filter(postEdges, ({ node }) => {
+    const filtered = filter(postEdges, ({ node }) => {
       let includeThis = false;
       const { frontmatter } = node;
       const { tags, date, startDate } = frontmatter;
-      const mDate = moment(!_.isNull(date) ? date : startDate);
+      const mDate = moment(!isNull(date) ? date : startDate);
       const xDate = parseInt(mDate.format("YYYYMMDD"), 10);
 
       const inTheFuture = todayInt <= xDate;
@@ -341,7 +379,7 @@ class IndexPage extends React.Component {
           <div className="kale">
             <div>
               <hr />
-              {_.map(landingData, (dataBit, index) => {
+              {map(landingData, (dataBit, index) => {
                 const { image, title, lead } = dataBit;
 
                 return (
@@ -403,8 +441,13 @@ class IndexPage extends React.Component {
                           height: "auto",
                         }}
                       >
-                        <Carousel autoplay>
-                          {_.map(sliderData, (slide, index) => {
+                        <Carousel
+                          autoplay
+                          arrows
+                          nextArrow={<NextArrow />}
+                          prevArrow={<PrevArrow />}
+                        >
+                          {map(sliderData, (slide, index) => {
                             const { image, text } = slide;
 
                             return (

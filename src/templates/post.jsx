@@ -4,9 +4,15 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
 import PropTypes from "prop-types";
-import _ from "lodash";
 import { css } from "glamor";
 import moment from "moment";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import trim from "lodash/trim";
+import last from "lodash/last";
+import split from "lodash/split";
+import isNull from "lodash/isNull";
+import startsWith from "lodash/startsWith";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
@@ -97,7 +103,7 @@ class BlogPostTemplate extends React.Component {
     // const { toc } = pathContext;
     const { markdownAst, next, prev } = pathContext;
     const { route, humanDate, elapsed } = pathContext;
-    const checkedRoute = _.startsWith(route, "/") ? route : `/${route}`;
+    const checkedRoute = startsWith(route, "/") ? route : `/${route}`;
     const nakedRoute = checkedRoute.substr(1);
 
     // Date stuff
@@ -107,7 +113,7 @@ class BlogPostTemplate extends React.Component {
     const dateStr = moment(mDate).format("ddd, MMMM D, YYYY");
     const when = moment(mDate).fromNow();
 
-    let catString = _.trim(_.last(_.split(frontmatter.category, ".")));
+    let catString = trim(last(split(frontmatter.category, ".")));
     switch (catString) {
       case "NVC":
         catString = "Nonviolent Communication";
@@ -236,12 +242,12 @@ class BlogPostTemplate extends React.Component {
               <H1 mask="h4">More like this…</H1>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div>
-                  {!_.isNull(prev) && (
+                  {!isNull(prev) && (
                     <Link to={`/${prev.fields.route}`}>⇜ Previous</Link>
                   )}
                 </div>
                 <div>
-                  {!_.isNull(next) && (
+                  {!isNull(next) && (
                     <Link to={`/${next.fields.route}`}>Next ⇝</Link>
                   )}
                 </div>

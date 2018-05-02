@@ -10,7 +10,6 @@ import { css } from "glamor";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-import { Modal, Tooltip } from "antd";
 import { Image, OutLink } from "@bodhi-project/components";
 import { Elements, applyRhythm } from "@bodhi-project/typography";
 import Iframe from "react-iframe";
@@ -28,9 +27,15 @@ import {
   BreadcrumbSchema,
 } from "@bodhi-project/seo";
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
+import Modal from "antd/lib/modal";
+import "antd/lib/modal/style/css";
+
+import Tooltip from "antd/lib/tooltip";
+import "antd/lib/tooltip/style/css";
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
-import globalWithMediaQueries from "../helpers/globalWithMediaQueries";
 import domestic from "../assets/domestic.png";
 import international from "../assets/international.png";
 

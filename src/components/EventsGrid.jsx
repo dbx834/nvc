@@ -9,10 +9,13 @@ import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-import { Tooltip } from "antd";
 import { Image, HexaGrid as HexaGridX } from "@bodhi-project/components";
 import { Elements } from "@bodhi-project/typography";
 import { Article } from "@bodhi-project/semantic-webflow";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
+import Tooltip from "antd/lib/tooltip";
+import "antd/lib/tooltip/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import deepening from "../assets/deepening.png";

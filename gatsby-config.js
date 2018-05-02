@@ -2,12 +2,12 @@
 // -------------------------------------------------------------------- Imports
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-const packageJson = require('./package.json');
+const packageJson = require("./package.json");
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { data } = packageJson;
-const themeColor = '#FFD801';
-const backgroundColor = '#FFD801';
+const themeColor = "#FFD801";
+const backgroundColor = "#FFD801";
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
@@ -27,53 +27,40 @@ module.exports = {
     },
   },
   plugins: [
-    'gatsby-plugin-lodash',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-antd',
-    'gatsby-plugin-less',
+    // {
+    //   resolve: "gatsby-plugin-webpack-bundle-analyzer",
+    //   options: {
+    //     analyzerPort: 3000,
+    //     production: true,
+    //   },
+    // },
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-less",
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: 'posts',
+        name: "posts",
         path: `${__dirname}/content/`,
       },
     },
+    "gatsby-transformer-remark",
     {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [
-          {
-            resolve: 'gatsby-remark-images',
-            options: {
-              maxWidth: 690,
-            },
-          },
-          {
-            resolve: 'gatsby-remark-responsive-iframe',
-          },
-          'gatsby-remark-prismjs',
-          'gatsby-remark-copy-linked-files',
-          'gatsby-remark-autolink-headers',
-        ],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: "gatsby-plugin-google-analytics",
       options: {
         trackingId: data.googleAnalyticsID,
       },
     },
     {
-      resolve: 'gatsby-plugin-nprogress',
+      resolve: "gatsby-plugin-nprogress",
       options: {
         color: themeColor,
       },
     },
-    'gatsby-plugin-sharp',
-    'gatsby-plugin-catch-links',
-    'gatsby-plugin-sitemap',
+    "gatsby-plugin-sharp",
+    "gatsby-plugin-catch-links",
+    "gatsby-plugin-sitemap",
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: "gatsby-plugin-manifest",
       options: {
         name: data.websiteName,
         short_name: data.websiteName,
@@ -81,29 +68,29 @@ module.exports = {
         start_url: data.pathPrefix,
         background_color: backgroundColor,
         theme_color: themeColor,
-        display: 'standalone',
+        display: "standalone",
         icons: [
           {
-            src: '/android-chrome-192x192.png',
-            sizes: '192x192',
-            type: 'image/png',
+            src: "/android-chrome-192x192.png",
+            sizes: "192x192",
+            type: "image/png",
           },
           {
-            src: '/android-chrome-512x512.png',
-            sizes: '512x512',
-            type: 'image/png',
+            src: "/android-chrome-512x512.png",
+            sizes: "512x512",
+            type: "image/png",
           },
         ],
       },
     },
-    'gatsby-plugin-offline',
+    "gatsby-plugin-offline",
     {
-      resolve: 'gatsby-plugin-feed',
+      resolve: "gatsby-plugin-feed",
       options: {
         setup(ref) {
           const ret = ref.query.site.siteMetadata.rssMetadata;
           ret.allMarkdownRemark = ref.query.allMarkdownRemark;
-          ret.generator = 'GatsbyJS Material Starter';
+          ret.generator = "GatsbyJS Material Starter";
           return ret;
         },
         query: `
@@ -135,7 +122,7 @@ module.exports = {
                 author: rssMetadata.author,
                 url: rssMetadata.site_url + edge.node.fields.route,
                 guid: rssMetadata.site_url + edge.node.fields.route,
-                custom_elements: [{ 'content:encoded': edge.node.html }],
+                custom_elements: [{ "content:encoded": edge.node.html }],
               }));
             },
             query: `

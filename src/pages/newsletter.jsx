@@ -4,16 +4,15 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
 // import PropTypes from 'prop-types';
-import _ from "lodash";
+// import _ from "lodash";
 import { css } from "glamor";
-import serialize from "form-serialize";
+// import serialize from "form-serialize";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link from "gatsby-link";
-import { Form, Select, Input, Button } from "antd";
-import isEmail from "validator/lib/isEmail";
-import { Image, OutLink } from "@bodhi-project/components";
-import { Elements, applyType, applyRhythm } from "@bodhi-project/typography";
+// import Link from "gatsby-link";
+// import isEmail from "validator/lib/isEmail";
+// import { Image, OutLink } from "@bodhi-project/components";
+import { Elements, applyRhythm } from "@bodhi-project/typography";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -26,30 +25,27 @@ import {
   WebpageSchema,
   BreadcrumbSchema,
 } from "@bodhi-project/seo";
-import {
-  Page as SemanticPage,
-  // Section,
-  Article,
-  Header,
-  Footer,
-} from "@bodhi-project/semantic-webflow";
+import { Page as SemanticPage } from "@bodhi-project/semantic-webflow";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
+import Form from "antd/lib/form";
+import "antd/lib/form/style/css";
+
+import Input from "antd/lib/input";
+import "antd/lib/input/style/css";
+
+import Button from "antd/lib/button";
+import "antd/lib/button/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import {
-  hasErrors,
-  validateEmail,
-  validateName,
-  validateComment,
-} from "../helpers/formHelpers";
+import { hasErrors, validateEmail, validateName } from "../helpers/formHelpers";
 import { formStyleClass } from "../helpers/defaultFormStyles";
 import seoHelper from "../helpers/seoHelper";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
 const FormItem = Form.Item;
-const { Option } = Select;
-const { TextArea } = Input;
-const { H1, H2, Paragraph } = Elements;
+const { H1, Paragraph } = Elements;
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO

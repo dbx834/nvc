@@ -10,11 +10,24 @@ import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-import { LocaleProvider, Calendar, Popover, Tag } from "antd";
-import en_GB from "antd/lib/locale-provider/en_GB";
-import "moment/locale/en-gb";
 import { Image } from "@bodhi-project/components";
 import { Elements, applyRhythm, applyType } from "@bodhi-project/typography";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
+import LocaleProvider from "antd/lib/locale-provider";
+import "antd/lib/locale-provider/style/css";
+
+import Calendar from "antd/lib/calendar";
+import "antd/lib/calendar/style/css";
+
+import Popover from "antd/lib/popover";
+import "antd/lib/popover/style/css";
+
+import Tag from "antd/lib/tag";
+import "antd/lib/tag/style/css";
+
+import en_GB from "antd/lib/locale-provider/en_GB";
+import "moment/locale/en-gb";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import nvc from "../assets/nvc.png";

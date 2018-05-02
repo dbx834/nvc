@@ -9,9 +9,12 @@ import _ from "lodash";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-import { Popover } from "antd";
 import { Container, OutLink, Image } from "@bodhi-project/components";
 import { Elements, applyType, applyRhythm } from "@bodhi-project/typography";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
+import Popover from "antd/lib/popover";
+import "antd/lib/popover/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import logo from "../assets/logo.png";
@@ -119,7 +122,7 @@ class DesktopNav extends React.Component {
               const { title, menu } = topLevel;
               return (
                 <Fragment>
-                  <li className="header">
+                  <li className="header" key={title}>
                     <span>{title}</span>
                   </li>
                   {_.map(menu, subMenu => {
@@ -131,7 +134,7 @@ class DesktopNav extends React.Component {
                     return (
                       <Fragment>
                         {_.isUndefined(popMenu) && (
-                          <li>
+                          <li key={link}>
                             {isOutLink === true && (
                               <OutLink to={link}>
                                 <span>{subTitle}</span>
@@ -152,7 +155,7 @@ class DesktopNav extends React.Component {
                           </li>
                         )}
                         {!_.isUndefined(popMenu) && (
-                          <li>
+                          <li key={subTitle}>
                             <Popover
                               placement={menuPopoverLocation}
                               content={
@@ -166,7 +169,7 @@ class DesktopNav extends React.Component {
                                         "http",
                                       );
                                       return (
-                                        <li>
+                                        <li key={itemLink}>
                                           {isItemLinkOutLink === true && (
                                             <OutLink to={itemLink}>
                                               <span>{itemTitle}</span>
@@ -228,7 +231,7 @@ class DesktopNav extends React.Component {
 
 DesktopNav.propTypes = {
   location: PropTypes.object, // eslint-disable-line react/forbid-prop-types
-  menu: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  menu: PropTypes.array, // eslint-disable-line react/forbid-prop-types
 };
 
 // --------------------------------------------------------------------- Export

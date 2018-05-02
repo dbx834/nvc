@@ -10,7 +10,7 @@ import _ from "lodash";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import { Container } from "@bodhi-project/components";
-import { Type, applyRhythm, applyType } from "@bodhi-project/typography";
+import { Type, applyRhythm } from "@bodhi-project/typography";
 import {
   InitializeMeta,
   UpdateTitle,

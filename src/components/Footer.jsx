@@ -7,10 +7,19 @@ import PropTypes from "prop-types";
 import { css } from "glamor";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import { Row, Col, Icon } from "antd";
 import { Container, Image, OutLink } from "@bodhi-project/components";
 import { Elements, applyRhythm } from "@bodhi-project/typography";
 import { Footer as SemanticFooter } from "@bodhi-project/semantic-webflow";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
+import Row from "antd/lib/row";
+import "antd/lib/row/style/css";
+
+import Col from "antd/lib/col";
+import "antd/lib/col/style/css";
+
+import Icon from "antd/lib/icon";
+import "antd/lib/icon/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import packageJson from "../../package.json";

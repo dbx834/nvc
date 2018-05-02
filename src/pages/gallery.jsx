@@ -9,7 +9,6 @@ import { css } from "glamor";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 // import Link from 'gatsby-link';
-// import { Row, Col } from 'antd';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import { Images } from "@bodhi-project/components";

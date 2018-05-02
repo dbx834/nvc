@@ -4,12 +4,24 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
 // import PropTypes from 'prop-types';
-import _ from "lodash";
-import moment from "moment";
+// import _ from "lodash";
+// import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import { Form, Select, Input, Button } from "antd";
-import { Elements, applyType, applyRhythm } from "@bodhi-project/typography";
+import { Elements } from "@bodhi-project/typography";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
+import Form from "antd/lib/form";
+import "antd/lib/form/style/css";
+
+import Select from "antd/lib/select";
+import "antd/lib/select/style/css";
+
+import Input from "antd/lib/input";
+import "antd/lib/input/style/css";
+
+import Button from "antd/lib/button";
+import "antd/lib/button/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import {

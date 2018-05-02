@@ -93,7 +93,18 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
       }
     }
 
+    const isoDate = begins.format();
+    const beginHumanDate = begins.format("ddd, MMMM D, YYYY");
+    const beginIsoDate = begins.format();
+    const endHumanDate = ends.format("ddd, MMMM D, YYYY");
+    const endIsoDate = ends.format();
+
     createNodeField({ node, name: "elapsed", value: elapsed });
+    createNodeField({ node, name: "isoDate", value: isoDate });
+    createNodeField({ node, name: "beginHumanDate", value: beginHumanDate });
+    createNodeField({ node, name: "beginIsoDate", value: beginIsoDate });
+    createNodeField({ node, name: "endHumanDate", value: endHumanDate });
+    createNodeField({ node, name: "endIsoDate", value: endIsoDate });
     createNodeField({ node, name: "humanDate", value: humanDate });
     createNodeField({ node, name: "route", value: route });
     createNodeField({ node, name: "rawContent", value: node.internal.content });
@@ -142,6 +153,11 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                     rawContent
                     elapsed
                     humanDate
+                    isoDate
+                    beginHumanDate
+                    beginIsoDate
+                    endHumanDate
+                    endIsoDate
                   }
                 }
               }

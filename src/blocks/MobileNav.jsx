@@ -71,18 +71,19 @@ class MobileNav extends React.Component {
               const { title, menu } = topLevel;
               return (
                 <Fragment>
-                  <li className="mob-header">
+                  <li className="header" key={title}>
                     <span>{title}</span>
                   </li>
                   {_.map(menu, subMenu => {
                     const subTitle = subMenu.title;
                     const popMenu = subMenu.menu;
-                    const { link } = subMenu;
+                    const { link, menuPopoverLocation } = subMenu;
                     const isOutLink = _.startsWith(link, "http");
+
                     return (
                       <Fragment>
                         {_.isUndefined(popMenu) && (
-                          <li>
+                          <li key={link}>
                             {isOutLink === true && (
                               <OutLink to={link}>
                                 <span>{subTitle}</span>
@@ -91,7 +92,11 @@ class MobileNav extends React.Component {
                             {isOutLink === false && (
                               <Link
                                 to={link}
-                                className={pathname === link ? "active" : ""}
+                                className={
+                                  pathname === _.split(link, "?", 1)[0]
+                                    ? "active"
+                                    : ""
+                                }
                               >
                                 <span>{subTitle}</span>
                               </Link>
@@ -99,47 +104,22 @@ class MobileNav extends React.Component {
                           </li>
                         )}
                         {!_.isUndefined(popMenu) && (
-                          <li>
+                          <li key={subTitle}>
+                            >
                             {isOutLink === true && (
                               <OutLink to={link}>{subTitle}</OutLink>
                             )}
                             {isOutLink === false && (
                               <Link
                                 to={link}
-                                className={pathname === link ? "active" : ""}
+                                className={
+                                  pathname === _.split(link, "?", 1)[0]
+                                    ? "active"
+                                    : ""
+                                }
                               >
-                                <span>{subTitle}&nbsp;⁜</span>
-                                <ul>
-                                  {_.map(popMenu, popMenuItem => {
-                                    const itemTitle = popMenuItem.title;
-                                    const itemLink = popMenuItem.link;
-                                    const isItemLinkOutLink = _.startsWith(
-                                      itemLink,
-                                      "http",
-                                    );
-                                    return (
-                                      <li>
-                                        {isOutLink === true && (
-                                          <OutLink to={isItemLinkOutLink}>
-                                            <span>{itemTitle}</span>
-                                          </OutLink>
-                                        )}
-                                        {isOutLink === false && (
-                                          <Link
-                                            to={itemLink}
-                                            className={
-                                              pathname === itemLink
-                                                ? "active"
-                                                : ""
-                                            }
-                                          >
-                                            <span>{itemTitle}</span>
-                                          </Link>
-                                        )}
-                                      </li>
-                                    );
-                                  })}
-                                </ul>
+                                <span>{subTitle}</span>
+                                <span style={{ fontSize: "88%" }}>&nbsp;»</span>
                               </Link>
                             )}
                           </li>
@@ -158,7 +138,7 @@ class MobileNav extends React.Component {
 }
 
 MobileNav.propTypes = {
-  menu: PropTypes.object, // eslint-disable-line react/forbid-prop-types
+  menu: PropTypes.array, // eslint-disable-line react/forbid-prop-types
 };
 
 // --------------------------------------------------------------------- Export

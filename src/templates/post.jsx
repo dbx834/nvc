@@ -11,7 +11,6 @@ import moment from "moment";
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
 import FacebookProvider, { Like as FBLike } from "react-facebook";
-import { Tag } from "antd";
 import {
   Page,
   // Section,
@@ -35,6 +34,10 @@ import {
   BreadcrumbSchema,
   BlogPostSchema,
 } from "@bodhi-project/seo";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
+import Tag from "antd/lib/tag";
+import "antd/lib/tag/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";

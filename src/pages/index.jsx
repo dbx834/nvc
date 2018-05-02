@@ -9,12 +9,11 @@ import { css } from "glamor";
 import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link from "gatsby-link";
+// import Link from "gatsby-link";
 import FacebookProvider, { Page as FBPage } from "react-facebook";
 import { Image, OutLink } from "@bodhi-project/components";
-import { Collapse, Carousel } from "antd";
 import ContainerDimensions from "react-container-dimensions";
-import { Page, Article } from "@bodhi-project/semantic-webflow";
+import { Page } from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -28,17 +27,18 @@ import {
   BreadcrumbSchema,
 } from "@bodhi-project/seo";
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
+import Carousel from "antd/lib/carousel";
+import "antd/lib/carousel/style/css";
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
 import LearnMore from "../components/LearnMore";
 import MiniCalendar from "../components/MiniCalendar";
 
-import nvcPhoto from "../assets/nvc-in-progress.jpg";
 import cnvc from "../assets/cnvc.png";
-import logo from "../assets/logo.png";
 import plant from "../assets/plant.jpg";
 import sun from "../assets/sun.jpg";
-import earth from "../assets/earth.jpg";
 import flower from "../assets/flower.jpg";
 import avLogo from "../assets/avLogo.png";
 
@@ -51,7 +51,6 @@ import slide6S2 from "../assets/slider/slide6.jpg";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
-const { Panel } = Collapse;
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------- Data

@@ -10,7 +10,6 @@ import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-import { Tag } from "antd";
 import { Image } from "@bodhi-project/components";
 import { Elements, applyRhythm } from "@bodhi-project/typography";
 import { Page, Article, Header } from "@bodhi-project/semantic-webflow";
@@ -27,6 +26,10 @@ import {
   WebpageSchema,
   BreadcrumbSchema,
 } from "@bodhi-project/seo";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
+import Tag from "antd/lib/tag";
+import "antd/lib/tag/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";

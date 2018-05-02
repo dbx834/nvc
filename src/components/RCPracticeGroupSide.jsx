@@ -9,9 +9,24 @@ import { css } from "glamor";
 import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import { Form, Select, Input, Button, Tooltip } from "antd";
 import { Elements } from "@bodhi-project/typography";
 import { Image, OutLink } from "@bodhi-project/components";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
+import Tooltip from "antd/lib/tooltip";
+import "antd/lib/tooltip/style/css";
+
+import Form from "antd/lib/form";
+import "antd/lib/form/style/css";
+
+import Select from "antd/lib/select";
+import "antd/lib/select/style/css";
+
+import Input from "antd/lib/input";
+import "antd/lib/input/style/css";
+
+import Button from "antd/lib/button";
+import "antd/lib/button/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import {

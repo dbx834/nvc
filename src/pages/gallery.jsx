@@ -89,8 +89,16 @@ import nvcX52 from "../assets/gallery/nvcX52.jpg";
 import nvcX53 from "../assets/gallery/nvcX53.jpg";
 import nvcX54 from "../assets/gallery/nvcX54.jpg";
 import nvcX55 from "../assets/gallery/nvcX55.jpg";
+import nvcX56 from "../assets/gallery/nvcX56.jpg";
+import nvcX57 from "../assets/gallery/nvcX57.jpeg";
+import nvcX58 from "../assets/gallery/nvcX58.jpeg";
+import nvcX59 from "../assets/gallery/nvcX59.jpg";
 
 const photos = [
+  { src: nvcX56, width: 600, height: 214 },
+  { src: nvcX57, width: 600, height: 400 },
+  { src: nvcX58, width: 600, height: 400 },
+  { src: nvcX59, width: 600, height: 400 },
   { src: nvcX1, width: 600, height: 450 },
   { src: nvcX2, width: 600, height: 353 },
   { src: nvcX4, width: 600, height: 800 },

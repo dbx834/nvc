@@ -76,17 +76,17 @@
     "format:js": "prettier '**/*.{js,jsx}' --write"
   },
   "dependencies": {
-    "@bodhi-project/components": "0.0.75",
+    "@bodhi-project/components": "0.0.76",
     "@bodhi-project/markdown-to-react": "0.0.48",
     "@bodhi-project/semantic-webflow": "0.0.11",
     "@bodhi-project/seo": "0.0.5",
     "@bodhi-project/typography": "0.0.40",
-    "antd": "^3.4.4",
+    "antd": "^3.5.0",
     "babel-plugin-lodash": "^3.3.2",
     "form-serialize": "^0.7.2",
-    "gatsby": "^1.9.256",
-    "gatsby-link": "^1.6.41",
-    "gatsby-plugin-catch-links": "^1.0.19",
+    "gatsby": "^1.9.259",
+    "gatsby-link": "^1.6.44",
+    "gatsby-plugin-catch-links": "^1.0.22",
     "gatsby-plugin-feed": "^1.3.21",
     "gatsby-plugin-google-analytics": "^1.0.31",
     "gatsby-plugin-less": "^1.1.8",
@@ -98,7 +98,7 @@
     "gatsby-plugin-sharp": "^1.6.44",
     "gatsby-plugin-sitemap": "^1.2.23",
     "gatsby-plugin-webpack-bundle-analyzer": "^0.1.1",
-    "gatsby-remark-autolink-headers": "^1.4.17",
+    "gatsby-remark-autolink-headers": "^1.4.18",
     "gatsby-remark-copy-linked-files": "^1.5.32",
     "gatsby-remark-images": "^1.5.63",
     "gatsby-remark-prismjs": "^2.0.2",
@@ -119,7 +119,7 @@
     "remark-parse": "^5.0.0",
     "twix": "^1.2.1",
     "unified": "^6.2.0",
-    "validator": "^9.4.1"
+    "validator": "^10.0.0"
   },
   "devDependencies": {
     "cli-glob": "^0.1.0",

@@ -58,13 +58,57 @@ const {
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageStyle = css({
-  ...applyRhythm({ maxWidth: "40X" }),
-  "& .blank": {
-    visibility: "hidden",
+  marginBottom: 60,
+  display: "block",
+  position: "relative",
+
+  "& h3": {
+    fontWeight: "700 !important",
   },
 
-  "& .cover": {
-    zIndex: -1,
+  "& hr": {
+    border: "none",
+    borderTop: "3px solid #B43808",
+    marginBottom: 20,
+  },
+
+  "& .jke": {
+    padding: "0em 1.25em",
+  },
+
+  "& .kale": {
+    display: "flex",
+
+    "& > div": {
+      padding: "0em 1.25em",
+
+      "&:nth-child(1)": {
+        flexBasis: 0,
+        flexGrow: 62,
+
+        "& .hope": {
+          display: "flex",
+
+          "& > div": {
+            "&:nth-child(1)": {
+              flexBasis: 0,
+              flexGrow: 50,
+              paddingRight: "1.25em",
+            },
+
+            "&:nth-child(2)": {
+              flexBasis: 0,
+              flexGrow: 50,
+            },
+          },
+        },
+      },
+
+      "&:nth-child(2)": {
+        flexBasis: 0,
+        flexGrow: 38,
+      },
+    },
   },
 });
 const pageStyleClass = pageStyle.toString();
@@ -95,22 +139,34 @@ class EventsAndCalendar extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={pageStyleClass}>
-          <H1>Events Calendar</H1>
-          <Calendar
-            data={postEdges}
-            location={this.props.location}
-            givenTags={{
-              all: "All Events",
-              nvc: "NVC Events",
-              rc: "RC Events",
-              featured: "Featured Events",
-            }}
-          />
-          <br />
-          <br />
-          <br />
-          <H1>Featured Events</H1>
-          <EventsGrid data={postEdges} totalEvents={6} featured={true} />
+          <div className="jke">
+            <h1 style={{ marginBottom: 10 }}>
+              <span>Events Calendar</span>
+            </h1>
+          </div>
+          <div className="kale">
+            <div>
+              <hr />
+              <Calendar
+                data={postEdges}
+                location={this.props.location}
+                givenTags={{
+                  all: "All Events",
+                  nvc: "NVC Events",
+                  rc: "RC Events",
+                  featured: "Featured Events",
+                }}
+              />
+            </div>
+            <div>
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+              <hr />
+              <h3 className="mask-p" style={{ marginBottom: 10 }}>
+                Featured Events…
+              </h3>
+              <EventsGrid data={postEdges} totalEvents={4} featured={true} />
+            </div>
+          </div>
         </Page>
       </Fragment>
     );

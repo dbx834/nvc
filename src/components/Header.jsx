@@ -46,6 +46,10 @@ const menu = [
         menuPopoverLocation: "rightTop",
         menu: [
           {
+            title: "Nonviolent Communication",
+            link: "/nonviolent-communication",
+          },
+          {
             title: "Workshops",
             link: "/nonviolent-communication/events?filter=workshop",
           },
@@ -61,6 +65,10 @@ const menu = [
         link: "/restorative-circles",
         menuPopoverLocation: "rightTop",
         menu: [
+          {
+            title: "Restorative Circles",
+            link: "/restorative-circles",
+          },
           {
             title: "Workshops",
             link: "/restorative-circles/events?filter=workshop",

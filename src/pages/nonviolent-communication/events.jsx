@@ -60,13 +60,57 @@ const {
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageStyle = css({
-  ...applyRhythm({ maxWidth: "40X" }),
-  "& .blank": {
-    visibility: "hidden",
+  marginBottom: 60,
+  display: "block",
+  position: "relative",
+
+  "& h3": {
+    fontWeight: "700 !important",
   },
 
-  "& .cover": {
-    zIndex: -1,
+  "& hr": {
+    border: "none",
+    borderTop: "3px solid #B43808",
+    marginBottom: 20,
+  },
+
+  "& .jke": {
+    padding: "0em 1.25em",
+  },
+
+  "& .kale": {
+    display: "flex",
+
+    "& > div": {
+      padding: "0em 1.25em",
+
+      "&:nth-child(1)": {
+        flexBasis: 0,
+        flexGrow: 62,
+
+        "& .hope": {
+          display: "flex",
+
+          "& > div": {
+            "&:nth-child(1)": {
+              flexBasis: 0,
+              flexGrow: 50,
+              paddingRight: "1.25em",
+            },
+
+            "&:nth-child(2)": {
+              flexBasis: 0,
+              flexGrow: 50,
+            },
+          },
+        },
+      },
+
+      "&:nth-child(2)": {
+        flexBasis: 0,
+        flexGrow: 38,
+      },
+    },
   },
 });
 const pageStyleClass = pageStyle.toString();
@@ -116,16 +160,30 @@ class EventsAndCalendar extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={pageStyleClass}>
-          <H1>Event Calendar</H1>
-          <Calendar
-            data={nvcNodes}
-            location={this.props.location}
-            givenTags={{
-              all: "All NVC Events",
-              workshop: "Workshops",
-              "practice-group": "Practice Group",
-            }}
-          />
+          <div className="jke">
+            <h1 style={{ marginBottom: 10 }}>
+              <span>NVC Events</span>
+            </h1>
+          </div>
+          <div className="kale">
+            <div>
+              <hr />
+              <Calendar
+                data={nvcNodes}
+                location={this.props.location}
+                givenTags={{
+                  all: "All RC Events",
+                  workshop: "Workshops",
+                  "practice-group": "Practice Group",
+                  featured: "Featured Events",
+                }}
+              />
+            </div>
+            <div>
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+              &nbsp;
+            </div>
+          </div>
         </Page>
       </Fragment>
     );

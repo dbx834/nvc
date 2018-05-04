@@ -440,42 +440,44 @@ const makeFrag = ({
         <Link to={`/${route}`}>
           {day}
           <br />
-          {inArray(tags, "nvc") && (
-            <Image
-              src={nvc}
-              rawHeight={450}
-              rawWidth={450}
-              className="icon"
-              style={{
-                height: 28,
-                width: 28,
-                position: "absolute",
-                background: "transparent",
-                border: 0,
-                right: 31,
-                top: 31,
-                zIndex: 2,
-              }}
-            />
-          )}
-          {inArray(tags, "rc") && (
-            <Image
-              src={rc}
-              rawHeight={450}
-              rawWidth={450}
-              className="icon"
-              style={{
-                height: 28,
-                width: 28,
-                position: "absolute",
-                background: "transparent",
-                border: 0,
-                right: 31,
-                top: 31,
-                zIndex: 2,
-              }}
-            />
-          )}
+          {inArray(tags, "nvc") &&
+            !inArray(tags, "featured") && (
+              <Image
+                src={nvc}
+                rawHeight={450}
+                rawWidth={450}
+                className="icon"
+                style={{
+                  height: 28,
+                  width: 28,
+                  position: "absolute",
+                  background: "transparent",
+                  border: 0,
+                  right: 31,
+                  top: 31,
+                  zIndex: 2,
+                }}
+              />
+            )}
+          {inArray(tags, "rc") &&
+            !inArray(tags, "featured") && (
+              <Image
+                src={rc}
+                rawHeight={450}
+                rawWidth={450}
+                className="icon"
+                style={{
+                  height: 28,
+                  width: 28,
+                  position: "absolute",
+                  background: "transparent",
+                  border: 0,
+                  right: 31,
+                  top: 31,
+                  zIndex: 2,
+                }}
+              />
+            )}
           {inArray(tags, "featured") && (
             <Image
               src={featured}

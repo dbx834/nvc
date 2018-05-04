@@ -34,6 +34,7 @@ import seoHelper from "../helpers/seoHelper";
 import groupFacilitation from "../assets/groupFacilitation.png";
 import individualCoaching from "../assets/individualCoaching.png";
 import mediation from "../assets/mediation.png";
+import threeGiraffes from "../assets/threeGiraffes.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -46,21 +47,30 @@ const offeringsData = [
     image: mediation,
     title1: "Mediation",
     lead:
-      "We offer mediation and facilitated conversations for those seeking support to dialogue with a friend, colleague or family member.",
+      "Are you seeking support to dialogue with a friend, colleague or family member? If so, you might consider asking for a mediation or facilitated dialogue, where we hold space for both parties to express themselves and to hear the other, and where we end with mutually beneficial agreements that support forward movement.",
   },
   {
     image: groupFacilitation,
     title1: "Group",
     title2: "Facilitation",
     lead:
-      "We offer group facilitation for groups seeking support with team dynamics, or to reconnect with the group’s purpose and to clarify next steps for forward movement.",
+      "Is your team struggling with internal dynamics, such that it's getting in the way of being able to fulfil your group's purpose? Would you like support to reconnect to your project's vision and to clarify next steps as a team?",
   },
   {
     image: individualCoaching,
     title1: "Individual",
     title2: "Coaching",
     lead:
-      "We offer individual coaching for those seeking support to work through challenges, to gain more self-understanding, and to access one’s own capacity to shift into a dynamic that feels more life-serving.",
+      "Are you struggling with internal challenges? Would you like support to work through the stress or confusion, and to gain more self-understanding? If so, a coaching session may offer you the space to reconnect with yourself, and to make choices that feel more in alignment with your present needs.",
+  },
+  {
+    image: individualCoaching,
+    title1: "Restorative",
+    title2: "Circle",
+    lead:
+      "Are you impacted by an issue that involves several people from different parts of your community or network? You could initiate a Restorative Circle, which is a process designed to hold space for conflict within the context of community.",
+    linkText: "Click for more information",
+    link: "/call-a-circle",
   },
 ];
 
@@ -172,23 +182,21 @@ class NVCPage extends React.PureComponent {
             <div>
               <hr />
               <p>
-                We hold space based primarily on the principles of Nonviolent
-                Communication. And in addition, we may use practices from
+                We facilitate meetings and hold space based primarily on the
+                principles of Nonviolent Communication and Restorative Circles.
+                In addition, we use practices from{" "}
                 <OutLink to="https://www.wikiwand.com/en/Sociocracy">
                   Sociocracy
                 </OutLink>{" "}
                 (shared-power governance) and{" "}
                 <OutLink to="https://selfleadership.org/">
                   Internal Family Systems
-                </OutLink>
-                &nbsp;(uncovering our inner parts), both of which complement NVC
-                beautifully.
+                </OutLink>{" "}
+                (learning to recognize our inner parts and their messages), both
+                of which offer powerful modalities for group and inner work.
               </p>
-              <h2>
-                <span>Offers</span>
-              </h2>
               {map(offeringsData, (dataBit, index) => {
-                const { image, title1, title2, lead } = dataBit;
+                const { image, title1, title2, lead, linkText, link } = dataBit;
 
                 return (
                   <div
@@ -212,8 +220,8 @@ class NVCPage extends React.PureComponent {
                         rawWidth={900}
                         rawHeight={900}
                         style={{
-                          width: 53,
-                          height: 53,
+                          width: 55,
+                          height: 55,
                           border: 0,
                           background: "transparent",
                           display: "block",
@@ -231,7 +239,11 @@ class NVCPage extends React.PureComponent {
                       </h3>
                     </div>
                     <p style={{ flexGrow: 80, flexBasis: 0, marginBottom: 0 }}>
-                      {lead}
+                      {lead}&nbsp;{!isUndefined(linkText) && (
+                        <Fragment>
+                          <Link to={link}>{linkText}</Link>.
+                        </Fragment>
+                      )}
                     </p>
                   </div>
                 );
@@ -325,13 +337,16 @@ class NVCPage extends React.PureComponent {
               >
                 <span style={{ fontSize: "125%" }}>
                   <i>
-                    "Recently I attended a workshop with L'aura. It was an
-                    amazing eye-opener, because it showed the possibility of how
-                    the whole community can get involved and learn to hold
-                    conflict, and to take responsibility for one's actions,
-                    without being crucified for one's so-called 'mistakes.'"
+                    “I contacted L’aura to hold a safe space for truth. I was
+                    moved by her ability to catch our hidden needs, by the way
+                    she connected us to our true, vulnerable and honest
+                    expression, and the beauty of our needs and intention. She
+                    has the NVC gift, the gift of unveiling our real essence:
+                    translating our wounded expression into its true message of
+                    care, love and peace, for ourselves and for others!”
                   </i>{" "}
-                  ~ <strong>Vikram, 2015</strong>
+                  <br />
+                  ~ <strong>Michelle, 2015</strong>
                 </span>
               </p>
               <div style={{ width: "100%", height: 18, marginBottom: 30 }}>

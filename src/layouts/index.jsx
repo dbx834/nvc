@@ -68,9 +68,6 @@ const organisationSchemaData = {
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const wrapperStyles = css({
-  // margin: 30,
-  backgroundColor: "#f8f2e6 !important",
-  background: "#f8f2e6 !important",
   position: "relative",
 
   "& h1, h2, h3, h4, h5, h6, p, li": {
@@ -105,22 +102,28 @@ const wrapperStyles = css({
 
   "& #appWrapper": {
     display: "block",
+    backgroundImage: "linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)",
+
     "@media(min-width: 768px)": {
       display: "flex",
 
       "& #menuWrapper": {
         flexGrow: "22",
         flexBasis: 0,
-        background: "#fafafa",
         height: "100vh",
       },
 
       "& #contentWrapper": {
+        backgroundColor: "#f8f2e6",
+        background: "#f8f2e6",
+        boxShadow: "0 0 25px rgba(0,0,0,.11)",
         flexGrow: "78",
         flexBasis: 0,
         maxHeight: "100vh",
         overflowX: "hidden",
         overflowY: "scroll",
+        marginTop: 16,
+        borderTopLeft: 8,
       },
     },
   },

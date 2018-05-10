@@ -15,8 +15,12 @@ import split from "lodash/split";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-import { Container, OutLink, Image } from "@bodhi-project/components";
 import { Elements, applyType, applyRhythm } from "@bodhi-project/typography";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
+import OutLink from "@bodhi-project/components/lib/OutLink";
+import Container from "@bodhi-project/components/lib/Container";
+import Image from "@bodhi-project/components/lib/Image";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Popover from "antd/lib/popover";

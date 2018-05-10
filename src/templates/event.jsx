@@ -19,7 +19,6 @@ import indexOf from "lodash/indexOf";
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link, { withPrefix } from "gatsby-link";
 import FacebookProvider, { Like as FBLike } from "react-facebook";
-import { Image } from "@bodhi-project/components";
 import {
   Page,
   // Section,
@@ -42,6 +41,9 @@ import {
   BreadcrumbSchema,
   EventSchema,
 } from "@bodhi-project/seo";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
+import Image from "@bodhi-project/components/lib/Image";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";

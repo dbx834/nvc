@@ -10,7 +10,6 @@ import isNull from "lodash/isNull";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-import { Image, OutLink } from "@bodhi-project/components";
 import { Elements, applyRhythm } from "@bodhi-project/typography";
 import Iframe from "react-iframe";
 import { Page } from "@bodhi-project/semantic-webflow";
@@ -26,6 +25,10 @@ import {
   WebpageSchema,
   BreadcrumbSchema,
 } from "@bodhi-project/seo";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
+import Image from "@bodhi-project/components/lib/Image";
+import OutLink from "@bodhi-project/components/lib/OutLink";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Modal from "antd/lib/modal";
@@ -69,7 +72,9 @@ const {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageWrapper = css({
   "& .constrain": {
-    ...applyRhythm({ maxWidth: "27X" }),
+    "@media(min-width: 768px)": {
+      ...applyRhythm({ maxWidth: "27X" }),
+    },
   },
   "& .hover": {
     borderBottom: "1.625px solid transparent",
@@ -81,6 +86,22 @@ const pageWrapper = css({
   },
 });
 const pageStyleClass = pageWrapper.toString();
+
+// globalWithMediaQueries(".ant-modal", {
+//   height: "90vh !important",
+//   width: "90vw !important",
+//   padding: "0em !important",
+//   top: "20px !important",
+// });
+
+// globalWithMediaQueries(".ant-modal-body", {
+//   padding: "0em !important",
+// });
+
+// globalWithMediaQueries(".ant-modal-content", {
+//   minHeight: "90vh !important",
+//   minWidth: "90vw !important",
+// });
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component

@@ -7,13 +7,12 @@ import PropTypes from "prop-types";
 import { css } from "glamor";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
-import map from "lodash/map";
-import isUndefined from "lodash/isUndefined";
+// import map from "lodash/map";
+// import isUndefined from "lodash/isUndefined";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link from "gatsby-link";
-import { Image, OutLink } from "@bodhi-project/components";
-import ContainerDimensions from "react-container-dimensions";
+// import Link from "gatsby-link";
+// import ContainerDimensions from "react-container-dimensions";
 import { Page } from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
@@ -28,13 +27,12 @@ import {
   BreadcrumbSchema,
 } from "@bodhi-project/seo";
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
+import Image from "@bodhi-project/components/lib/Image";
+// import OutLink from "@bodhi-project/components/lib/OutLink";
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
-
-import groupFacilitation from "../assets/groupFacilitation.png";
-import individualCoaching from "../assets/individualCoaching.png";
-import mediation from "../assets/mediation.png";
-import threeGiraffes from "../assets/threeGiraffes.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -42,28 +40,6 @@ const { Fragment } = React;
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------- Data
 // ----------------------------------------------------------------------------
-const offeringsData = [
-  {
-    image: mediation,
-    title1: "Mediation",
-    lead:
-      "We offer mediation and facilitated conversations for those seeking support to dialogue with a friend, colleague or family member.",
-  },
-  {
-    image: groupFacilitation,
-    title1: "Group",
-    title2: "Facilitation",
-    lead:
-      "We offer group facilitation for groups seeking support with team dynamics, or to reconnect with the group’s purpose and to clarify next steps for forward movement.",
-  },
-  {
-    image: individualCoaching,
-    title1: "Individual",
-    title2: "Coaching",
-    lead:
-      "We offer individual coaching for those seeking support to work through challenges, to gain more self-understanding, and to access one’s own capacity to shift into a dynamic that feels more life-serving.",
-  },
-];
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
@@ -109,6 +85,10 @@ const pageWrapper = css({
   },
 
   "& .kale": {
+    "@media(max-width: 768px)": {
+      display: "block",
+    },
+
     display: "flex",
 
     "& > div": {

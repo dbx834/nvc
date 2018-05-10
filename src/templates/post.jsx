@@ -24,7 +24,6 @@ import {
   Header,
   Footer,
 } from "@bodhi-project/semantic-webflow";
-import { Image } from "@bodhi-project/components";
 import { Elements, applyRhythm } from "@bodhi-project/typography";
 import { treeCodeParser } from "@bodhi-project/markdown-to-react";
 import {
@@ -44,6 +43,9 @@ import {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Tag from "antd/lib/tag";
 import "antd/lib/tag/style/css";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
+import Image from "@bodhi-project/components/lib/Image";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";

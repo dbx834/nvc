@@ -6,9 +6,6 @@ import React from "react";
 import { css } from "glamor";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-// import Link from "gatsby-link";
-// import isEmail from "validator/lib/isEmail";
-// import { Image, OutLink } from "@bodhi-project/components";
 import { Elements, applyRhythm } from "@bodhi-project/typography";
 import {
   // --------------- Basic
@@ -69,13 +66,13 @@ const {
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageWrapper = css({
-  ...applyRhythm({ maxWidth: "27X" }),
-
   "& .ant-form-item": {
     width: "100% !important",
   },
 
   "@media(min-width: 768px)": {
+    ...applyRhythm({ maxWidth: "27X" }),
+
     "& .ant-form-item:nth-child(1)": {
       marginRight: "0px !important",
     },

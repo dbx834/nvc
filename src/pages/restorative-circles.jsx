@@ -8,8 +8,6 @@ import { css } from "glamor";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-// import FacebookProvider, { Page as FBPage } from "react-facebook";
-import { Image, OutLink } from "@bodhi-project/components";
 import ContainerDimensions from "react-container-dimensions";
 import ReactPlayer from "react-player";
 import { Page } from "@bodhi-project/semantic-webflow";
@@ -25,6 +23,10 @@ import {
   WebpageSchema,
   BreadcrumbSchema,
 } from "@bodhi-project/seo";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
+import Image from "@bodhi-project/components/lib/Image";
+import OutLink from "@bodhi-project/components/lib/OutLink";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
@@ -94,6 +96,10 @@ const pageWrapper = css({
   },
 
   "& .kale": {
+    "@media(max-width: 768px)": {
+      display: "block",
+    },
+
     display: "flex",
 
     "& > div": {

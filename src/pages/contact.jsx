@@ -6,8 +6,6 @@ import React from "react";
 import { css } from "glamor";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-// import Link from "gatsby-link";
-// import { Image, OutLink } from "@bodhi-project/components";
 import { Elements, applyRhythm } from "@bodhi-project/typography";
 import {
   // --------------- Basic
@@ -78,7 +76,9 @@ const {
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageWrapper = css({
-  ...applyRhythm({ maxWidth: "27X" }),
+  "@media(min-width: 768px)": {
+    ...applyRhythm({ maxWidth: "27X" }),
+  },
 });
 const pageWrapperClass = pageWrapper.toString();
 

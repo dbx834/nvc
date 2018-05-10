@@ -12,7 +12,6 @@ import merge from "lodash/merge";
 import isUndefined from "lodash/isUndefined";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import { Container } from "@bodhi-project/components";
 import { Type, applyRhythm } from "@bodhi-project/typography";
 import {
   InitializeMeta,
@@ -20,6 +19,9 @@ import {
   WebsiteSchema,
   OrganisationSchema,
 } from "@bodhi-project/seo";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
+import Container from "@bodhi-project/components/lib/Container";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import "../styles/index.less";
@@ -104,6 +106,12 @@ const wrapperStyles = css({
     display: "block",
     backgroundImage: "linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)",
 
+    "& #contentWrapper": {
+      backgroundColor: "#f8f2e6",
+      background: "#f8f2e6",
+      minHeight: "100vh",
+    },
+
     "@media(min-width: 768px)": {
       display: "flex",
 
@@ -114,8 +122,6 @@ const wrapperStyles = css({
       },
 
       "& #contentWrapper": {
-        backgroundColor: "#f8f2e6",
-        background: "#f8f2e6",
         boxShadow: "0 0 25px rgba(0,0,0,.11)",
         flexGrow: "78",
         flexBasis: 0,
@@ -129,22 +135,6 @@ const wrapperStyles = css({
   },
 });
 const wrapperStylesClass = wrapperStyles.toString();
-
-globalWithMediaQueries(".ant-modal", {
-  height: "90vh !important",
-  width: "90vw !important",
-  padding: "0em !important",
-  top: "20px !important",
-});
-
-globalWithMediaQueries(".ant-modal-body", {
-  padding: "0em !important",
-});
-
-globalWithMediaQueries(".ant-modal-content", {
-  minHeight: "90vh !important",
-  minWidth: "90vw !important",
-});
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
@@ -160,8 +150,12 @@ class TemplateWrapper extends React.Component {
   componentDidMount() {
     if (!isUndefined(document)) {
       const htmlElement = document.documentElement;
-      htmlElement.classList.toggle("lk-loading");
-      htmlElement.classList.toggle("lk-active");
+      if (htmlElement.classList.contains("lk-loading")) {
+        htmlElement.classList.toggle("lk-loading");
+      }
+      if (!htmlElement.classList.contains("lk-active")) {
+        htmlElement.classList.toggle("lk-active");
+      }
     }
   }
 
@@ -180,6 +174,7 @@ class TemplateWrapper extends React.Component {
         kit="dkc2ilk"
         style={{ minHeight: "100vh" }}
         className={wrapperStylesClass}
+        options={{ range: [12, 21] }}
       >
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
         <InitializeMeta data={{ titleTemplate: "%s | Joy Living Learning" }} />

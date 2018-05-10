@@ -12,7 +12,6 @@ import isUndefined from "lodash/isUndefined";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-import { Image, OutLink } from "@bodhi-project/components";
 import ContainerDimensions from "react-container-dimensions";
 import { Page } from "@bodhi-project/semantic-webflow";
 import {
@@ -28,13 +27,16 @@ import {
   BreadcrumbSchema,
 } from "@bodhi-project/seo";
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
+import Image from "@bodhi-project/components/lib/Image";
+import OutLink from "@bodhi-project/components/lib/OutLink";
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
 
 import groupFacilitation from "../assets/groupFacilitation.png";
 import individualCoaching from "../assets/individualCoaching.png";
 import mediation from "../assets/mediation.png";
-import threeGiraffes from "../assets/threeGiraffes.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -118,6 +120,10 @@ const pageWrapper = css({
   },
 
   "& .kale": {
+    "@media(max-width: 768px)": {
+      display: "block",
+    },
+
     display: "flex",
 
     "& > div": {

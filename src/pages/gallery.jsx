@@ -11,15 +11,8 @@ import { css } from "glamor";
 // import Link from 'gatsby-link';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import { Images } from "@bodhi-project/components";
 import { Elements } from "@bodhi-project/typography";
-import {
-  Page as SemanticPage,
-  // Section,
-  // Article,
-  // Header,
-  // Footer,
-} from "@bodhi-project/semantic-webflow";
+import { Page as SemanticPage } from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -32,6 +25,9 @@ import {
   WebpageSchema,
   BreadcrumbSchema,
 } from "@bodhi-project/seo";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
+import Images from "@bodhi-project/components/lib/Images";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Images
 import seoHelper from "../helpers/seoHelper";

@@ -14,11 +14,10 @@ import split from "lodash/split";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-import { Image, OutLink } from "@bodhi-project/components";
+import OutLink from "@bodhi-project/components/lib/OutLink";
 import { Elements } from "@bodhi-project/typography";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import mobileLogo from "../assets/mobileLogo.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -30,8 +29,34 @@ const { Ul } = Elements;
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Desktop
 const mobileNavStyles = css({
   height: "inherit",
-  backgroundImage: "linear-gradient(to top, #dfe9f3 0%, white 100%)",
   padding: "0em",
+
+  "& nav": {
+    "& ul": {
+      listStyle: "none",
+      padding: 0,
+
+      "& ul": {
+        listStyle: "none",
+        paddingLeft: 20,
+        marginBottom: 15,
+      },
+
+      "& li": {
+        marginBottom: 2,
+      },
+
+      "& li.header": {
+        "& span": {
+          fontWeight: 700,
+        },
+
+        ":not(:first-child)": {
+          marginTop: 25,
+        },
+      },
+    },
+  },
 });
 const mobileNavStylesClass = mobileNavStyles.toString();
 
@@ -51,26 +76,7 @@ class MobileNav extends React.Component {
 
     return (
       <div className={mobileNavStylesClass}>
-        <Link
-          to="/"
-          style={{
-            display: "block",
-            boxShadow: "0px 3px 5px 0px rgba(30,30,30,0.2)",
-          }}
-        >
-          <Image
-            src={mobileLogo}
-            style={{
-              height: 45,
-              width: "auto",
-              display: "block",
-              border: "none",
-              background: "transparent",
-              marginTop: 7,
-            }}
-          />
-        </Link>
-        <nav style={{ marginTop: 20 }}>
+        <nav style={{ marginTop: 20, height: "100%" }}>
           <Ul>
             {map(this.props.menu, topLevel => {
               const { title, menu } = topLevel;
@@ -82,7 +88,7 @@ class MobileNav extends React.Component {
                   {map(menu, subMenu => {
                     const subTitle = subMenu.title;
                     const popMenu = subMenu.menu;
-                    const { link, menuPopoverLocation } = subMenu;
+                    const { link } = subMenu;
                     const isOutLink = startsWith(link, "http");
 
                     return (
@@ -110,22 +116,46 @@ class MobileNav extends React.Component {
                         )}
                         {!isUndefined(popMenu) && (
                           <li key={subTitle}>
-                            >
                             {isOutLink === true && (
                               <OutLink to={link}>{subTitle}</OutLink>
                             )}
                             {isOutLink === false && (
-                              <Link
-                                to={link}
-                                className={
-                                  pathname === split(link, "?", 1)[0]
-                                    ? "active"
-                                    : ""
-                                }
-                              >
+                              <Fragment>
                                 <span>{subTitle}</span>
                                 <span style={{ fontSize: "88%" }}>&nbsp;»</span>
-                              </Link>
+                                <ul>
+                                  {map(popMenu, popMenuItem => {
+                                    const itemTitle = popMenuItem.title;
+                                    const itemLink = popMenuItem.link;
+                                    const isItemLinkOutLink = startsWith(
+                                      itemLink,
+                                      "http",
+                                    );
+                                    return (
+                                      <li key={itemLink}>
+                                        {isItemLinkOutLink === true && (
+                                          <OutLink to={itemLink}>
+                                            <span>{itemTitle}</span>
+                                          </OutLink>
+                                        )}
+                                        {isItemLinkOutLink === false && (
+                                          <Link
+                                            to={itemLink}
+                                            className={
+                                              pathname ===
+                                              split(itemLink, "?", 1)[0]
+                                                ? "active"
+                                                : ""
+                                            }
+                                          >
+                                            <span>{itemTitle}</span>
+                                          </Link>
+                                        )}
+                                      </li>
+                                    );
+                                  })}
+                                </ul>
+                              </Fragment>
                             )}
                           </li>
                         )}

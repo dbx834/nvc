@@ -3,7 +3,7 @@
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import { css } from "glamor";
 import moment from "moment";
 
@@ -12,7 +12,10 @@ import isNull from "lodash/isNull";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import { Elements } from "@bodhi-project/typography";
-import { Image, OutLink } from "@bodhi-project/components";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
+import OutLink from "@bodhi-project/components/lib/OutLink";
+import Image from "@bodhi-project/components/lib/Image";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Tooltip from "antd/lib/tooltip";

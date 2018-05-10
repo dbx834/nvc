@@ -24,7 +24,6 @@ import map from "lodash/map";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-import { Image } from "@bodhi-project/components";
 import { Elements, applyRhythm } from "@bodhi-project/typography";
 import { Page, Article, Header } from "@bodhi-project/semantic-webflow";
 
@@ -40,6 +39,9 @@ import {
   WebpageSchema,
   BreadcrumbSchema,
 } from "@bodhi-project/seo";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
+import Image from "@bodhi-project/components/lib/Image";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Tag from "antd/lib/tag";

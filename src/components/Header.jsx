@@ -7,8 +7,10 @@ import PropTypes from "prop-types";
 import { css } from "glamor";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import { CompositeHeader } from "@bodhi-project/components";
 import { Header as SemanticHeader } from "@bodhi-project/semantic-webflow";
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
+import CompositeHeader from "@bodhi-project/components/lib/CompositeHeader";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import mobileLogo from "../assets/mobileLogo.png";

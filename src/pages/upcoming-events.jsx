@@ -77,6 +77,10 @@ const pageStyle = css({
   },
 
   "& .kale": {
+    "@media(max-width: 768px)": {
+      display: "block",
+    },
+
     display: "flex",
 
     "& > div": {

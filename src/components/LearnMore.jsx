@@ -62,20 +62,20 @@ const hexStyle = css({
     overflow: "hidden",
   },
 
-  "& h3": {
+  "& h4": {
     position: "absolute",
-    width: "100%",
-    margin: "0px !important",
+    width: "96%",
+    margin: "0px 2% !important",
     textAlign: "center",
-    background: "rgba(180, 56, 8, 0.85)",
-    color: "#ffffff !important",
+    background: "rgba(248, 242, 230, 0.8)",
+    color: "#4a4a4a !important",
     bottom: 10,
     left: 0,
     padding: 10,
-    fontWeight: "200 !important",
+    fontWeight: "500 !important",
 
     "& span": {
-      fontSize: "80%",
+      fontSize: "90%",
     },
   },
 });
@@ -115,9 +115,9 @@ class LearnMore extends React.Component {
                       background: "#4a4a4a",
                     }}
                   />
-                  <h3 style={{ lineHeight: 1 }}>
+                  <h4 style={{ lineHeight: 1 }}>
                     <span>{title}</span>
-                  </h3>
+                  </h4>
                 </Link>
               </THex>
             );

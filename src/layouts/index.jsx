@@ -27,7 +27,6 @@ import Container from "@bodhi-project/components/lib/Container";
 import "../styles/index.less";
 import indexImage from "../assets/launch.jpg";
 import packageJson from "../../package.json";
-import globalWithMediaQueries from "../helpers/globalWithMediaQueries";
 
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -116,20 +115,20 @@ const wrapperStyles = css({
       display: "flex",
 
       "& #menuWrapper": {
-        flexGrow: "22",
+        flexGrow: "19",
         flexBasis: 0,
         height: "100vh",
       },
 
       "& #contentWrapper": {
         boxShadow: "0 0 25px rgba(0,0,0,.11)",
-        flexGrow: "78",
+        flexGrow: "81",
         flexBasis: 0,
         maxHeight: "100vh",
         overflowX: "hidden",
         overflowY: "scroll",
         marginTop: 16,
-        borderTopLeft: 8,
+        borderTopLeftRadius: 16,
       },
     },
   },

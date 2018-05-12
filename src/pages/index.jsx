@@ -55,12 +55,13 @@ import sun from "../assets/sun.jpg";
 import flower from "../assets/flower.jpg";
 import avLogo from "../assets/avLogo.png";
 
-import slide1S2 from "../assets/slider/slide1.jpg";
-import slide2S2 from "../assets/slider/slide2.jpg";
-import slide3S2 from "../assets/slider/slide3.jpg";
-import slide4S2 from "../assets/slider/slide4.jpg";
-import slide5S2 from "../assets/slider/slide5.jpg";
-import slide6S2 from "../assets/slider/slide6.jpg";
+import slide1 from "../assets/slider/slide1.jpg";
+import slide2 from "../assets/slider/slide2.jpg";
+import slide3 from "../assets/slider/slide3.jpg";
+import slide4 from "../assets/slider/slide4.jpg";
+import slide5 from "../assets/slider/slide5.jpg";
+
+import cover1X from "../assets/cover1X.jpg";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -73,46 +74,47 @@ const landingData = [
     image: sun,
     title: "Vision",
     lead:
-      "We envision a world where everyone’s needs matter, and where we live in a consciousness of trust and abundance, knowing that each one of us inherently belongs, and that together we are more powerful than apart.",
+      "We envision a world where everyone’s needs matter, where we live in a consciousness of trust and abundance, knowing that each one of us inherently belongs, and that together we are more powerful than apart.",
   },
   {
     image: plant,
     title: "Mission",
     lead:
-      "Our mission is to live and share the principles of Nonviolence, both in terms of an individual practice and way of life, but also in its application to social structures, be it in our families, schools, and organizations.",
+      "Our mission is to live and share the principles of Nonviolence, not only in terms of an individual practice and way of life, but also in its application to social structures, such as in our families, schools, and organizations.",
   },
   {
     image: flower,
-    title: "Aim",
+    title: "Aims",
     lead:
-      "In our exploration of this paradigm shift and living in integrity with our values, we offer workshops, retreats and practice groups in Nonviolent Communication, Restorative Circles, and more. We also offer coaching and mediation, as well as community support and opportunities for apprenticeship programs.",
+      "We offer learning opportunities through workshops and practice groups on Nonviolent Communication and Restorative Circles. We are also available for individual coaching and mediation, and we are happy to consult with community-based projects that are seeking to shift paradigms.",
   },
 ];
 
 const sliderData = [
   {
-    image: slide1S2,
-    text: "something something1 …",
+    image: slide1,
+    text:
+      "L’aura sharing her passion and giraffe ears with a youth program in Auroville, as they explored the applications of nonviolence in community (2018).",
   },
   {
-    image: slide2S2,
-    text: "something something2 …",
+    image: slide2,
+    text:
+      "L’aura teaching during an NVC Leadership Program in Mumbai, where participants journey through an intense 4-month program together (2014).",
   },
   {
-    image: slide3S2,
-    text: "something something3 …",
+    image: slide3,
+    text:
+      "An array of feelings and needs cards, as we deepen into our body’s wisdom and hear its message.",
   },
   {
-    image: slide4S2,
-    text: "something something4 …",
+    image: slide4,
+    text:
+      "A moment of connection after having explored our dream response to conflict and the principles and practice behind Restorative Circles, in Auroville (2017).",
   },
   {
-    image: slide5S2,
-    text: "something something5 …",
-  },
-  {
-    image: slide6S2,
-    text: "something something6 …",
+    image: slide5,
+    text:
+      "Preparing for our Cross-Cultural Dialogue on Discrimination, in Auroville (2018).",
   },
 ];
 
@@ -127,6 +129,18 @@ const learnMoreData = [
     linkTo: "/writings/celebrations-and-gratitude",
     title: "Celebrations & Gratitude",
     image: "/content-assets/covers/celebrations-and-gratitude.jpg",
+  },
+  {
+    linkTo: "/writings/justice-and-punishment",
+    title: "Justince & Punishment",
+    image:
+      "https://images.unsplash.com/photo-1507184915978-447ac6ab3ecb?ixlib=rb-0.3.5&s=e1f0e60b77167b3ab7383ad81e2e3435&auto=format&fit=crop&w=1440&h=900",
+  },
+  {
+    linkTo: "/writings/what-does-nvc-mean-to-you",
+    title: "What does NVC mean to you?",
+    image:
+      "https://images.unsplash.com/photo-1518983498539-c6e66c62f6b3?ixlib=rb-0.3.5&s=580f065422952f086541ba61e8ae5304&auto=format&fit=crop&w=1440&h=900",
   },
   {
     linkTo: "/writings/justice-and-punishment",
@@ -168,6 +182,24 @@ const {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageWrapper = css({
   marginBottom: 60,
+
+  "& .xCover": {
+    background: "transparent !important",
+    border: "none !important",
+    position: "absolute",
+    height: "99px !important",
+    width: "132px !important",
+    right: 34,
+    zIndex: 1,
+    top: -82,
+
+    "@media(min-width: 768px)": {
+      height: "125px !important",
+      width: "170px !important",
+      zIndex: 1,
+      top: -118,
+    },
+  },
 
   "& h1": {
     textTransform: "uppercase",
@@ -298,10 +330,20 @@ const NextArrow = props => {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", background: "red" }}
+      style={{ ...style, display: "block" }}
       onClick={onClick}
     >
-      <Icon type="arrow-right" />
+      <span style={{ fontSize: "250%" }}>
+        <Icon
+          type="right"
+          style={{
+            height: "inherit",
+            width: "inherit",
+            color: "#b43808",
+            fontWeight: 700,
+          }}
+        />
+      </span>
     </div>
   );
 };
@@ -312,10 +354,20 @@ const PrevArrow = props => {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block", background: "green" }}
+      style={{ ...style, display: "block" }}
       onClick={onClick}
     >
-      <Icon type="arrow-left" />
+      <span style={{ fontSize: "250%" }}>
+        <Icon
+          type="left"
+          style={{
+            height: "inherit",
+            width: "inherit",
+            color: "#b43808",
+            fontWeight: 700,
+          }}
+        />
+      </span>
     </div>
   );
 };
@@ -378,7 +430,7 @@ class IndexPage extends React.Component {
             </h1>
             <h2 style={{ marginBottom: 10 }}>
               <span>
-                Nonviolent Communication & Restorative Circles in Auroville &
+                Nonviolent Communication & Restorative Circles in Auroville,
                 India
               </span>
             </h2>
@@ -488,19 +540,20 @@ class IndexPage extends React.Component {
               <LearnMore data={learnMoreData} />
             </div>
             <div>
+              <Image src={cover1X} className="xCover" />
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
               <h3 className="mask-p">About</h3>
               <p>
                 Joy Living Learning is situated in Auroville, an international
-                community in south India that aims to actualize human unity. So
-                we are surrounded by opportunities for growth, learning and
-                exploration.
+                community in south India that aims to actualize human unity.
+                Given this enviornment, we are surrounded by opportunities for
+                growth, learning and exploration.
               </p>
               <p>
                 Joy Living Learning is a Unit of the Auroville Foundation, and
                 L'aura Joy is a Certified Trainer with the Center for Nonviolent
-                Communication.
+                Communication (USA).
               </p>
               <div className="mask-p" style={{ marginBottom: 20 }}>
                 <OutLink to="https://www.auroville.org/">
@@ -576,7 +629,7 @@ class IndexPage extends React.Component {
 
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
-              <h3 className="mask-p">Find us on Facebook -</h3>
+              <h3 className="mask-p">Find us on Facebook</h3>
               <FacebookProvider appId="218604115574634">
                 <FBPage
                   href="https://www.facebook.com/JoyLivingLearning"

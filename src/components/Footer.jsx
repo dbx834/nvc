@@ -119,8 +119,8 @@ class Header extends React.Component {
                 <br />
                 <strong>
                   <i>
-                    Nonviolent Communication & Restorative Circles in Auroville
-                    & India
+                    Nonviolent Communication & Restorative Circles in Auroville,
+                    India
                   </i>
                 </strong>
                 <br />

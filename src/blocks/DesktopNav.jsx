@@ -57,7 +57,8 @@ const desktopNavStyle = css({
     },
 
     "& li.header": {
-      fontWeight: 700,
+      fontWeight: "500 !important",
+      color: "#b43808 !important",
 
       "& span": {
         fontSize: "90%",
@@ -87,7 +88,7 @@ const desktopNavStyle = css({
     },
 
     "& a.active": {
-      color: "#B43808",
+      color: "#BA6B02",
     },
   },
 });

@@ -38,6 +38,18 @@ import "antd/lib/popover/style/css";
 import Tag from "antd/lib/tag";
 import "antd/lib/tag/style/css";
 
+import Table from "antd/lib/table";
+import "antd/lib/table/style/css";
+
+// import Pagination from "antd/lib/pagination";
+import "antd/lib/pagination/style/css";
+
+import Icon from "antd/lib/icon";
+import "antd/lib/icon/style/css";
+
+import Tooltip from "antd/lib/tooltip";
+import "antd/lib/tooltip/style/css";
+
 import en_GB from "antd/lib/locale-provider/en_GB";
 import "moment/locale/en-gb";
 
@@ -62,6 +74,8 @@ const filterF = filter;
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageStyle = css({
+  position: "relative",
+
   "& .ant-fullcalendar-fullscreen": {
     "& .ant-fullcalendar-header": {
       width: 90 * 7,
@@ -267,6 +281,22 @@ const pageStyle = css({
       backgroundColor: "#B43808 !important",
       transform: "scale(1.05)",
     },
+  },
+
+  "& .ant-table": merge(
+    { ...applyType("ltb1ekq") },
+    {
+      "& .ant-table-thead": {
+        display: "none",
+        // "& th": {
+        //   backgroundColor: "#fff0b4",
+        // },
+      },
+    },
+  ),
+
+  "& .ant-pagination-next": {
+    marginBottom: "0px !important",
   },
 });
 const pageStyleClass = pageStyle.toString();
@@ -607,6 +637,22 @@ const makeMultiFrag = ({
   return frag;
 };
 
+const columns = [
+  {
+    title: "row",
+    key: "date",
+    render: (text, { node }, index) => {
+      return (
+        <div key={`${index}-${node.fields.route}`}>
+          <span style={{ fontSize: "80%" }}>{node.frontmatter.title}</span>
+          <br />
+          <span style={{ fontSize: "80%" }}>{node.fields.humanDate}</span>
+        </div>
+      );
+    },
+  },
+];
+
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
@@ -618,9 +664,11 @@ class CalendarX extends React.Component {
     this.state = {
       currentMonth: null,
       query: { filter: null },
+      view: null,
     };
     this.onChange = this.onChange.bind(this);
     this.applyFilter = this.applyFilter.bind(this);
+    this.changeView = this.changeView.bind(this);
   }
 
   /** componentWillReceiveProps - set current date */
@@ -641,6 +689,11 @@ class CalendarX extends React.Component {
   /** applyFilter */
   applyFilter(filter) {
     this.setState({ query: { filter: filter } });
+  }
+
+  /** changeView */
+  changeView(view) {
+    this.setState({ view });
   }
 
   /** standard renderer */
@@ -693,7 +746,11 @@ class CalendarX extends React.Component {
       displayTagsAs = givenTags;
     }
 
-    const query = isNull(this.state.query.filter) ? urlQuery : this.state.query;
+    let query = isNull(this.state.query.filter) ? urlQuery : this.state.query;
+    query =
+      isEmpty(query) && !isNull(this.props.defaultSelected)
+        ? { filter: this.props.defaultSelected }
+        : query;
     const { filter } = query;
     // Filter data by tag
     if (filter) {
@@ -799,30 +856,77 @@ class CalendarX extends React.Component {
       return frag;
     };
 
+    const viewTags = {
+      list: "View as a list",
+      calendar: "View as a calendar",
+    };
+    const activeView = isNull(this.state.view)
+      ? isNull(this.props.defaultView)
+        ? "calendar"
+        : this.props.defaultView
+      : this.state.view;
+
     return (
-      <div className={pageStyleClass}>
-        {map(displayTagsAs, (tag, key) => {
-          return (
-            <Fragment>
-              {activeFilter === key ? (
-                <CheckableTag checked onClick={() => this.applyFilter(key)}>
-                  {tag}
-                </CheckableTag>
-              ) : (
-                <Tag onClick={() => this.applyFilter(key)}>{tag}</Tag>
-              )}
-            </Fragment>
-          );
-        })}
-        <LocaleProvider locale={enGB}>
-          <Calendar
-            dateFullCellRender={dateFullCellRender}
-            onSelect={this.onSelect}
-            onPanelChange={this.onChange}
-            defaultValue={this.state.selectedDate}
-            validRange={[thisYear, nextYear]}
-          />
-        </LocaleProvider>
+      <div className={pageStyleClass} style={{ ...this.props.style }}>
+        <h3 style={{ marginBottom: 20 }} className="view-filter">
+          <span style={{ marginRight: 10 }}>{this.props.title}</span>
+          {map(viewTags, (tag, key) => {
+            return (
+              <Fragment>
+                {activeView === key ? (
+                  <CheckableTag checked onClick={() => this.changeView(key)}>
+                    <Tooltip title={tag}>
+                      <Icon type={key === "list" ? "bars" : "calendar"} />
+                    </Tooltip>
+                  </CheckableTag>
+                ) : (
+                  <Tag onClick={() => this.changeView(key)}>
+                    <Tooltip title={tag}>
+                      <Icon type={key === "list" ? "bars" : "calendar"} />
+                    </Tooltip>
+                  </Tag>
+                )}
+              </Fragment>
+            );
+          })}
+        </h3>
+        <div className="event-filter">
+          {map(displayTagsAs, (tag, key) => {
+            return (
+              <Fragment>
+                {activeFilter === key ? (
+                  <CheckableTag checked onClick={() => this.applyFilter(key)}>
+                    {tag}
+                  </CheckableTag>
+                ) : (
+                  <Tag onClick={() => this.applyFilter(key)}>{tag}</Tag>
+                )}
+              </Fragment>
+            );
+          })}
+        </div>
+        {activeView === "calendar" && (
+          <Fragment>
+            <LocaleProvider locale={enGB}>
+              <Calendar
+                dateFullCellRender={dateFullCellRender}
+                onSelect={this.onSelect}
+                onPanelChange={this.onChange}
+                defaultValue={this.state.selectedDate}
+                validRange={[thisYear, nextYear]}
+              />
+            </LocaleProvider>
+          </Fragment>
+        )}
+        {activeView === "list" && (
+          <Fragment>
+            <Table
+              dataSource={filteredData}
+              columns={columns}
+              pagination={{ pageSize: 5, size: "small" }}
+            />
+          </Fragment>
+        )}
       </div>
     );
   }
@@ -835,6 +939,9 @@ CalendarX.propTypes = {
 
 CalendarX.defaultProps = {
   givenTags: [],
+  style: {},
+  defaultSelected: null,
+  defaultView: null,
 };
 
 // ----------------------------------------------------------------------------

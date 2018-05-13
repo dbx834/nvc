@@ -6,6 +6,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { css } from "glamor";
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import map from "lodash/map";
+import indexOf from "lodash/indexOf";
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
 import ContainerDimensions from "react-container-dimensions";
@@ -31,6 +35,8 @@ import OutLink from "@bodhi-project/components/lib/OutLink";
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
 import LearnMore from "../components/LearnMore";
+import Calendar from "../components/Calendar";
+import EventsGrid from "../components/EventsGrid";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -142,12 +148,33 @@ const video = css({
 const videoClass = video.toString();
 
 // ----------------------------------------------------------------------------
+// ------------------------------------------------------------------ Functions
+// ----------------------------------------------------------------------------
+/** inArray */
+const inArray = (array, value) => {
+  let rx = false;
+  if (indexOf(array, value) >= 0) {
+    rx = true;
+  }
+  return rx;
+};
+
+// ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
 /** NVCPage */
 class NVCPage extends React.PureComponent {
   /** standard renderer */
   render() {
+    const postEdges = this.props.data.allMarkdownRemark.edges;
+    // get only events
+    const nvcNodes = [];
+    map(postEdges, ({ node }) => {
+      if (inArray(node.frontmatter.tags, "nvc")) {
+        nvcNodes.push({ node });
+      }
+    });
+
     return (
       <Fragment>
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
@@ -205,14 +232,33 @@ class NVCPage extends React.PureComponent {
                 inmates, to governments, schools and social change
                 organizations.
               </p>
-              <p>
+              <p style={{ marginBottom: 40 }}>
                 [Source:{" "}
                 <OutLink to="http://www.cnvc.org/">
                   Marshall Rosenberg and CNVC
                 </OutLink>]
               </p>
-              <br />
+              <Calendar
+                data={nvcNodes}
+                location={this.props.location}
+                givenTags={{
+                  all: "All NVC Events",
+                  workshop: "Workshops",
+                  "practice-group": "Practice Group",
+                  featured: "Featured Events",
+                }}
+                defaultSelected="all"
+                defaultView="list"
+                title="NVC Events"
+                style={{ marginBottom: 40 }}
+              />
+              <h3 style={{ marginBottom: 20 }}>
+                <span>Learn More</span>
+              </h3>
               <LearnMore data={learnMoreData} />
+              <p>
+                <Link to="/blog">Read more…</Link>
+              </p>
             </div>
             <div>
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
@@ -298,7 +344,8 @@ class NVCPage extends React.PureComponent {
                     grounded, free flowing, demanding, accepting, caring,
                     patient, happy, unhappy, an expert, a learner and super
                     fun!"
-                  </i>{" "}
+                  </i>
+                  <br />
                   ~ <strong>Sonali, 2014</strong>
                 </span>
               </p>
@@ -313,6 +360,12 @@ class NVCPage extends React.PureComponent {
                   More Celebrations & Gratitude ⋗
                 </Link>
               </div>
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+              <hr />
+              <h3 className="mask-p" style={{ marginBottom: 10 }}>
+                Featured NVC Events…
+              </h3>
+              <EventsGrid data={nvcNodes} totalEvents={4} featured={true} />
             </div>
           </div>
         </Page>
@@ -324,6 +377,45 @@ class NVCPage extends React.PureComponent {
 NVCPage.propTypes = {
   data: PropTypes.object,
 };
+
+// ----------------------------------------------------------------------------
+// ---------------------------------------------------------------------- Query
+// ----------------------------------------------------------------------------
+/* eslint-disable no-undef */
+export const pageQuery = graphql`
+  query NVCEventsQuery {
+    allMarkdownRemark(
+      limit: 365
+      sort: { fields: [frontmatter___date], order: ASC }
+      filter: { frontmatter: { type: { eq: "event" } } }
+    ) {
+      edges {
+        node {
+          fields {
+            route
+            humanDate
+            elapsed
+          }
+          frontmatter {
+            abstract
+            title
+            subTitle
+            cover
+            date
+            startDate
+            finishDate
+            fromTime
+            toTime
+            category
+            tags
+            type
+          }
+        }
+      }
+    }
+  }
+`;
+/* eslint-enable no-undef */
 
 // ----------------------------------------------------------------------------
 // -------------------------------------------------------------------- Exports

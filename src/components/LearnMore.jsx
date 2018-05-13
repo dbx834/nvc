@@ -96,9 +96,6 @@ class LearnMore extends React.Component {
 
     return (
       <Fragment>
-        <h3 className="mask-p" style={{ marginBottom: 10 }}>
-          Further Links
-        </h3>
         <TetraGrid>
           {map(data, ({ linkTo, title, image }, index) => {
             return (

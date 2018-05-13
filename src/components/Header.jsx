@@ -45,43 +45,10 @@ const menu = [
       {
         title: "Nonviolent Communication",
         link: "/nonviolent-communication",
-        menuPopoverLocation: "rightTop",
-        menu: [
-          {
-            title: "Nonviolent Communication",
-            link: "/nonviolent-communication",
-          },
-          {
-            title: "Workshops",
-            link: "/nonviolent-communication/events?filter=workshop",
-          },
-          {
-            title: "Practice Groups",
-            link: "/nonviolent-communication/events?filter=practice-group",
-          },
-          { title: "Articles", link: "/writings?filter=nvc" },
-        ],
       },
       {
         title: "Restorative Circles",
         link: "/restorative-circles",
-        menuPopoverLocation: "rightTop",
-        menu: [
-          {
-            title: "Restorative Circles",
-            link: "/restorative-circles",
-          },
-          {
-            title: "Workshops",
-            link: "/restorative-circles/events?filter=workshop",
-          },
-          {
-            title: "Practice Groups",
-            link: "/restorative-circles/events?filter=practice-group",
-          },
-          { title: "Call a Circle", link: "/call-a-circle" },
-          { title: "Articles", link: "/writings?filter=rc" },
-        ],
       },
       {
         title: "Facilitated Spaces",

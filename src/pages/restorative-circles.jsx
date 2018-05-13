@@ -6,6 +6,10 @@ import React from "react";
 import PropTypes from "prop-types";
 import { css } from "glamor";
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import map from "lodash/map";
+import indexOf from "lodash/indexOf";
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
 import ContainerDimensions from "react-container-dimensions";
@@ -31,6 +35,8 @@ import OutLink from "@bodhi-project/components/lib/OutLink";
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
 import LearnMore from "../components/LearnMore";
+import Calendar from "../components/Calendar";
+import EventsGrid from "../components/EventsGrid";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -142,12 +148,33 @@ const video = css({
 const videoClass = video.toString();
 
 // ----------------------------------------------------------------------------
+// ------------------------------------------------------------------ Functions
+// ----------------------------------------------------------------------------
+/** inArray */
+const inArray = (array, value) => {
+  let rx = false;
+  if (indexOf(array, value) >= 0) {
+    rx = true;
+  }
+  return rx;
+};
+
+// ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
 /** NVCPage */
 class NVCPage extends React.PureComponent {
   /** standard renderer */
   render() {
+    const postEdges = this.props.data.allMarkdownRemark.edges;
+    // get only events
+    const rcNodes = [];
+    map(postEdges, ({ node }) => {
+      if (inArray(node.frontmatter.tags, "rc")) {
+        rcNodes.push({ node });
+      }
+    });
+
     return (
       <Fragment>
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
@@ -200,7 +227,7 @@ class NVCPage extends React.PureComponent {
                 </OutLink>]
               </p>
               <Image
-                src="/content-assets/restorative-circles/rc_800X561.jpg"
+                src="/content-assets/restorative-circles/rc_800X561.png"
                 rawWidth={800}
                 rawHeight={561}
                 style={{
@@ -212,7 +239,27 @@ class NVCPage extends React.PureComponent {
                   marginBottom: 30,
                 }}
               />
+              <Calendar
+                data={rcNodes}
+                location={this.props.location}
+                givenTags={{
+                  all: "All NVC Events",
+                  workshop: "Workshops",
+                  "practice-group": "Practice Group",
+                  featured: "Featured Events",
+                }}
+                defaultSelected="all"
+                defaultView="list"
+                title="RC Events"
+                style={{ marginBottom: 40 }}
+              />
+              <h3 style={{ marginBottom: 20 }}>
+                <span>Learn More</span>
+              </h3>
               <LearnMore data={learnMoreData} />
+              <p>
+                <Link to="/blog">Read more…</Link>
+              </p>
             </div>
             <div>
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
@@ -273,7 +320,8 @@ class NVCPage extends React.PureComponent {
                   <i>
                     "Conflict is not a problem that needs solving, but a
                     phenomenon that needs understanding."
-                  </i>{" "}
+                  </i>
+                  <br />
                   ~ <strong>Dominic Barter</strong>
                 </span>
               </p>
@@ -317,7 +365,8 @@ class NVCPage extends React.PureComponent {
                     the whole community can get involved and learn to hold
                     conflict, and to take responsibility for one's actions,
                     without being crucified for one's so-called 'mistakes.'"
-                  </i>{" "}
+                  </i>
+                  <br />
                   ~ <strong>Vikram, 2015</strong>
                 </span>
               </p>
@@ -332,6 +381,13 @@ class NVCPage extends React.PureComponent {
                   More Celebrations & Gratitude ⋗
                 </Link>
               </div>
+
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+              <hr />
+              <h3 className="mask-p" style={{ marginBottom: 10 }}>
+                Featured RC Events…
+              </h3>
+              <EventsGrid data={rcNodes} totalEvents={4} featured={true} />
             </div>
           </div>
         </Page>
@@ -343,6 +399,43 @@ class NVCPage extends React.PureComponent {
 NVCPage.propTypes = {
   data: PropTypes.object,
 };
+
+// ----------------------------------------------------------------------------
+// ---------------------------------------------------------------------- Query
+// ----------------------------------------------------------------------------
+/* eslint-disable no-undef */
+export const pageQuery = graphql`
+  query RCEventsQuery {
+    allMarkdownRemark(
+      limit: 365
+      sort: { fields: [frontmatter___date], order: ASC }
+      filter: { frontmatter: { type: { eq: "event" } } }
+    ) {
+      edges {
+        node {
+          fields {
+            route
+          }
+          frontmatter {
+            abstract
+            title
+            subTitle
+            cover
+            date
+            startDate
+            finishDate
+            fromTime
+            toTime
+            category
+            tags
+            type
+          }
+        }
+      }
+    }
+  }
+`;
+/* eslint-enable no-undef */
 
 // ----------------------------------------------------------------------------
 // -------------------------------------------------------------------- Exports

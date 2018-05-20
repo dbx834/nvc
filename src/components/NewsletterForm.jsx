@@ -19,14 +19,11 @@ import {
   WebpageSchema,
   BreadcrumbSchema,
 } from "@bodhi-project/seo";
-import { Page } from "@bodhi-project/semantic-webflow";
+import { Page as SemanticPage } from "@bodhi-project/semantic-webflow";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Form from "antd/lib/form";
 import "antd/lib/form/style/css";
-
-import Select from "antd/lib/select";
-import "antd/lib/select/style/css";
 
 import Input from "antd/lib/input";
 import "antd/lib/input/style/css";
@@ -35,28 +32,21 @@ import Button from "antd/lib/button";
 import "antd/lib/button/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import {
-  hasErrors,
-  validateEmail,
-  validateName,
-  validateComment,
-} from "../helpers/formHelpers";
+import { hasErrors, validateEmail, validateName } from "../helpers/formHelpers";
 import { formStyleClass } from "../helpers/defaultFormStyles";
 import seoHelper from "../helpers/seoHelper";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
 const FormItem = Form.Item;
-const { Option } = Select;
-const { TextArea } = Input;
-const { H1, H2, Paragraph } = Elements;
+const { H1, Paragraph } = Elements;
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
 const pageData = {
-  pageTitle: "Contact Us",
-  nakedPageSlug: "contact",
+  pageTitle: "Newsletter",
+  nakedPageSlug: "newsletter",
   pageAbstract: "Page abstract.",
 };
 
@@ -76,8 +66,18 @@ const {
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageWrapper = css({
+  "& .ant-form-item": {
+    width: "100% !important",
+  },
+
   "@media(min-width: 768px)": {
-    ...applyRhythm({ maxWidth: "27X" }),
+    "& .ant-form-item:nth-child(1)": {
+      marginRight: "0px !important",
+    },
+
+    "& .ant-form-item:nth-child(2)": {
+      marginLeft: "0px !important",
+    },
   },
 });
 const pageWrapperClass = pageWrapper.toString();
@@ -86,11 +86,10 @@ const pageWrapperClass = pageWrapper.toString();
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
 /** Page */
-class IndexPage extends React.Component {
+class Page extends React.Component {
   /** standard constructor. */
   constructor(props) {
     super(props);
-
     this.state = {
       loader: null,
       formSent: false,
@@ -99,11 +98,12 @@ class IndexPage extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  /** handleSubmit - Post to google spreadsheet. */
+  /** componentDidMount - Disable submit button at the beginning. */
   componentDidMount() {
     this.props.form.validateFields();
   }
 
+  /** handleSubmit - Post to google spreadsheet. */
   handleSubmit(e) {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -114,12 +114,12 @@ class IndexPage extends React.Component {
           loader: true,
         });
 
-        const { name, email, comment } = values;
+        const { email } = values;
 
         // Mock some delay
         setTimeout(() => {
           fetch(
-            `https://script.google.com/macros/s/AKfycbxapf3fZy2Jafdoc_-wB7FXa_OPI30iPcRZK8rNc8wyUQ52cEvT/exec?email=${email}&name=${name}&comment=${comment}&callback=?`,
+            `https://script.google.com/macros/s/AKfycbx6xNPY__NC6jrneaGeH1NPLkjdrNSc3NMUV-oHAWnWln2WDWZL/exec?email=${email}&callback=?`,
             {
               method: "GET",
               mode: "no-cors",
@@ -150,9 +150,8 @@ class IndexPage extends React.Component {
       isFieldTouched,
     } = this.props.form;
     // Only show error after a field is touched.
-    const nameError = isFieldTouched("name") && getFieldError("name");
     const emailError = isFieldTouched("email") && getFieldError("email");
-    const commentError = isFieldTouched("comment") && getFieldError("comment");
+    const nameError = isFieldTouched("name") && getFieldError("name");
 
     return (
       <Fragment>
@@ -165,10 +164,14 @@ class IndexPage extends React.Component {
         <BreadcrumbSchema data={breadcrumbSchemaData} />
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
-        <Page className={pageWrapperClass}>
+        <SemanticPage className={pageWrapperClass}>
           {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Form */}
           <div>
-            <H1>Contact</H1>
+            <H1>Newsletter</H1>
+            <Paragraph>
+              If you'd like to receive updates about our programs, please sign
+              up for our newsletter.
+            </Paragraph>
             {this.state.formSent === false && (
               <Form onSubmit={this.handleSubmit} className={formStyleClass}>
                 {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Name */}
@@ -191,21 +194,6 @@ class IndexPage extends React.Component {
                     rules: [{ validator: validateEmail }],
                   })(<Input placeholder="Email" />)}
                 </FormItem>
-                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment */}
-                <FormItem
-                  validateStatus={commentError ? "error" : ""}
-                  help={commentError || ""}
-                >
-                  {getFieldDecorator("comment", {
-                    validateTrigger: ["onChange", "onBlur"],
-                    rules: [{ validator: validateComment }],
-                  })(
-                    <TextArea
-                      placeholder="Your questions / comments…"
-                      autosize={{ minRows: 1, maxRows: 6 }}
-                    />,
-                  )}
-                </FormItem>
                 {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Submit */}
                 <FormItem>
                   <Button
@@ -222,19 +210,19 @@ class IndexPage extends React.Component {
             {/* On-sent message */}
             {this.state.formSent === true && (
               <Paragraph className="home" style={{ textIndent: 0 }}>
-                We recieved your message. We'll get back to you shortly.
+                Thanks! We've added your email to our list.
               </Paragraph>
             )}
           </div>
-        </Page>
+        </SemanticPage>
       </Fragment>
     );
   }
 }
 
-const WrappedForm = Form.create()(IndexPage);
+const WrappedPage = Form.create()(Page);
 
 // ----------------------------------------------------------------------------
 // -------------------------------------------------------------------- Exports
 // ----------------------------------------------------------------------------
-export default WrappedForm;
+export default WrappedPage;

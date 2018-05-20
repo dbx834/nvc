@@ -196,8 +196,8 @@ class NVCPage extends React.PureComponent {
             <div>
               <hr />
               <p>
-                Nonviolent Communication contains nothing new. It is based on
-                historical principles of nonviolence – the natural state of
+                Nonviolent Communication (NVC) contains nothing new. It is based
+                on historical principles of nonviolence – the natural state of
                 compassion when no violence is present in the heart. NVC reminds
                 us what we already instinctively know about how good it feels to
                 authentically connect to another human being.
@@ -205,7 +205,7 @@ class NVCPage extends React.PureComponent {
               <p>
                 With NVC we learn to hear our own deeper needs and those of
                 others. Through its emphasis on deep listening to ourselves as
-                well as others NVC helps us discover the depth of our own
+                well as others, NVC helps us discover the depth of our own
                 compassion. This language reveals the awareness that all human
                 beings are only trying to honor universal values and needs,
                 every minute, every day.
@@ -363,7 +363,7 @@ class NVCPage extends React.PureComponent {
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
               <h3 className="mask-p" style={{ marginBottom: 10 }}>
-                Featured NVC Events…
+                Upcoming Events…
               </h3>
               <EventsGrid data={nvcNodes} totalEvents={4} featured={true} />
             </div>

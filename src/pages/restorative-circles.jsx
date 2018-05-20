@@ -196,8 +196,8 @@ class NVCPage extends React.PureComponent {
             <div>
               <hr />
               <p>
-                A Restorative Circle is a community process designed to hold
-                space for those in conflict. It brings together the three
+                A Restorative Circle (RC) is a community process designed to
+                hold space for those in conflict. It brings together the three
                 parties in a conflict – those who acted, those directly
                 impacted, and the wider community – within an intentional
                 systemic context, to dialogue as equals. Participants invite
@@ -385,7 +385,7 @@ class NVCPage extends React.PureComponent {
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
               <h3 className="mask-p" style={{ marginBottom: 10 }}>
-                Featured RC Events…
+                Upcoming Events…
               </h3>
               <EventsGrid data={rcNodes} totalEvents={4} featured={true} />
             </div>

@@ -1,13 +1,17 @@
 ---
-title: Restoring Connection (Auroville Today)
+title: Restoring Connection
 cover: /content-assets/covers/restoring-connection.jpg
 category: 2.RC
-abstract: In October, there was a film festival in Cinema Paradiso and dialogue sessions on the theme of 'Restoring Connection' as related to the restorative justice movement. The organizing team talk about the response, as well as their ongoing plans to raise awareness about restorative justice in the community.
+abstract: In October, there was a film festival in Cinema Paradiso and dialogue sessions on the theme of 'Restoring Connection' as related to the restorative justice movement. 
 date: 2016-12-01
 type: post
 tags:
   - some tag
 ---
+
+Published in “Auroville Today”.
+
+In October, there was a film festival in Cinema Paradiso and dialogue sessions on the theme of 'Restoring Connection' as related to the restorative justice movement. The organizing team talk about the response, as well as their ongoing plans to raise awareness about restorative justice in the community.
 
 _Auroville Today: Why a film festival on the theme of restoring connection?_
 

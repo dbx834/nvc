@@ -8,7 +8,7 @@ once the loading script has taken effect.
 here we're hiding all content within
 the <html> once it has the class "wf-loading"
 */
-html.lk-loading * {
+html.lk-loading body {
   opacity: 0;
 }
 
@@ -32,12 +32,26 @@ add some transitional effects
 to reintroduce the content
 gradually once fonts are loaded
 */
-html.lk-active.wf-active *, 
-html.lk-active.wf-inactive * {
+html.lk-active.wf-active body, 
+html.lk-active.wf-inactive body {
   -webkit-transition: opacity 0.5s ease-out;
   -moz-transition: opacity 0.5s ease-out;
   -o-transition: opacity 0.5s ease-out;
   transition: opacity 0.5s ease-out;
+}
+
+.ant-modal-footer {
+  display: none;
+}
+
+.example-appear {
+  transform: scale(0.2);
+}
+
+.example-appear.example-appear-active {
+  transform: scale(1);
+  transform-origin: 50% 50%;
+  transition: all .5s ease-in;
 }
 
 /* ----------------------------------------------------------------- */

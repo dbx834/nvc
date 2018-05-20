@@ -1,8 +1,8 @@
 ---
-title: Nonviolent Communication (Auroville Radio)
+title: Laura speaks with Auroville Radio
 cover: /content-assets/covers/nvcavradio.jpg
 category: 1.NVC
-abstract: Get this! NVC out of the closet! NVC in public! NVC in Auroville’s Town Hall!
+abstract: We strive to have meaningful communication with others, but sometimes what we achieve are arguments or misunderstandings, especially with the people we care about most.
 date: 2011-01-21
 type: post
 tags:

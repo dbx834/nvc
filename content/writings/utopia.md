@@ -1,7 +1,7 @@
 ---
 title: Utopia
 cover: /content-assets/covers/utopia.jpg
-category: 5.Published Articles
+category: 6.Journal
 abstract: Samata shared an Alanis song, “Utopia” with our practice group. She added the text and some images…
 date: 2010-02-04
 type: post

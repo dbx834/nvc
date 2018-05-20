@@ -26,9 +26,15 @@ import Image from "@bodhi-project/components/lib/Image";
 import Popover from "antd/lib/popover";
 import "antd/lib/popover/style/css";
 
+import Modal from "antd/lib/modal";
+import "antd/lib/modal/style/css";
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import logo from "../assets/logo.png";
 import globalWithMediaQueries from "../helpers/globalWithMediaQueries";
+
+import ContactForm from "../components/ContactForm";
+import NewsletterForm from "../components/NewsletterForm";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -102,6 +108,35 @@ class DesktopNav extends React.Component {
   /** standard constructor */
   constructor(props) {
     super(props);
+
+    this.state = {
+      modalVisible: false,
+      modalRoute: null,
+    };
+
+    this.showModal = this.showModal.bind(this);
+    this.hideModal = this.hideModal.bind(this);
+  }
+
+  /** showModal */
+  showModal(e, modalRoute) {
+    if (!isUndefined(e)) {
+      e.preventDefault();
+    }
+    this.setState({
+      modalVisible: true,
+      modalRoute,
+    });
+  }
+
+  /** hideModal */
+  hideModal(e) {
+    if (!isUndefined(e)) {
+      e.preventDefault();
+    }
+    this.setState({
+      modalVisible: false,
+    });
   }
 
   /** standard renderer */
@@ -132,41 +167,72 @@ class DesktopNav extends React.Component {
             {map(this.props.menu, topLevel => {
               const { title, menu } = topLevel;
               return (
-                <Fragment>
-                  <li className="header" key={title}>
+                <Fragment key={title}>
+                  <li className="header">
                     <span>{title}</span>
                   </li>
                   {map(menu, subMenu => {
                     const subTitle = subMenu.title;
                     const popMenu = subMenu.menu;
-                    const { link, menuPopoverLocation } = subMenu;
+                    const {
+                      link,
+                      menuPopoverLocation,
+                      renderInModal,
+                    } = subMenu;
                     const isOutLink = startsWith(link, "http");
+                    const asModal = renderInModal === true;
 
                     return (
-                      <Fragment>
+                      <Fragment key={link}>
                         {isUndefined(popMenu) && (
-                          <li key={link}>
+                          <li>
                             {isOutLink === true && (
-                              <OutLink to={link}>
-                                <span>{subTitle}</span>
-                              </OutLink>
+                              <Fragment>
+                                {asModal ? (
+                                  <OutLink
+                                    to={link}
+                                    onClick={e => {
+                                      this.showModal(e, link);
+                                    }}
+                                  >
+                                    <span>{subTitle}</span>
+                                  </OutLink>
+                                ) : (
+                                  <OutLink to={link}>
+                                    <span>{subTitle}</span>
+                                  </OutLink>
+                                )}
+                              </Fragment>
                             )}
                             {isOutLink === false && (
-                              <Link
-                                to={link}
-                                className={
-                                  pathname === split(link, "?", 1)[0]
-                                    ? "active"
-                                    : ""
-                                }
-                              >
-                                <span>{subTitle}</span>
-                              </Link>
+                              <Fragment>
+                                {asModal ? (
+                                  <Link
+                                    to={link}
+                                    onClick={e => {
+                                      this.showModal(e, link);
+                                    }}
+                                  >
+                                    <span>{subTitle}</span>
+                                  </Link>
+                                ) : (
+                                  <Link
+                                    to={link}
+                                    className={
+                                      pathname === split(link, "?", 1)[0]
+                                        ? "active"
+                                        : ""
+                                    }
+                                  >
+                                    <span>{subTitle}</span>
+                                  </Link>
+                                )}
+                              </Fragment>
                             )}
                           </li>
                         )}
                         {!isUndefined(popMenu) && (
-                          <li key={subTitle}>
+                          <li>
                             <Popover
                               placement={menuPopoverLocation}
                               content={
@@ -235,6 +301,54 @@ class DesktopNav extends React.Component {
             })}
           </Ul>
         </nav>
+        <Modal
+          visible={this.state.modalVisible}
+          bodyStyle={{
+            minWidth: "640px",
+            minHeight: "480px",
+            padding: 0,
+          }}
+          style={{
+            minWidth: "640px",
+            minHeight: "480px",
+            top: 30,
+            padding: 0,
+            borderRadius: 8,
+          }}
+          title={null}
+          closable={false}
+          footer={[null, null]}
+        >
+          <div
+            style={{
+              position: "absolute",
+              display: "inline-block",
+              top: 10,
+              right: 10,
+              zIndex: 10,
+            }}
+          >
+            <a
+              href="#"
+              onClick={e => {
+                this.hideModal(e);
+              }}
+            >
+              Close
+            </a>
+          </div>
+          <div
+            style={{
+              minWidth: "640px",
+              minHeight: "480px",
+              padding: "1em",
+              backgroundColor: "#f8f2e6",
+            }}
+          >
+            {this.state.modalRoute === "/contact" && <ContactForm />}
+            {this.state.modalRoute === "/newsletter" && <NewsletterForm />}
+          </div>
+        </Modal>
       </Container>
     );
   }

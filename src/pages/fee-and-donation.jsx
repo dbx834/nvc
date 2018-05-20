@@ -34,6 +34,9 @@ import OutLink from "@bodhi-project/components/lib/OutLink";
 import Modal from "antd/lib/modal";
 import "antd/lib/modal/style/css";
 
+import Button from "antd/lib/button";
+import "antd/lib/button/style/css";
+
 import Tooltip from "antd/lib/tooltip";
 import "antd/lib/tooltip/style/css";
 
@@ -227,11 +230,11 @@ class IndexPage extends React.Component {
               payment gateway page, and you will be able to receive a tax
               exemption.
             </Paragraph>
-            <Paragraph>
-              <a href="#" onClick={e => this.showModal(e)}>
-                click!
-              </a>
-            </Paragraph>
+            <div className="mask-p">
+              <Button type="primary" onClick={e => this.showModal(e)}>
+                Donate Now
+              </Button>
+            </div>
             <Paragraph>
               Please email{" "}
               <OutLink to="mailto:joylivinglearning@gmail.com">
@@ -255,10 +258,40 @@ class IndexPage extends React.Component {
           </div>
         </Page>
         <Modal
-          footer={null}
+          style={{
+            minWidth: "90vw",
+            minHeight: "90vh",
+            top: 20,
+            padding: 0,
+          }}
+          bodyStyle={{
+            minWidth: "90vw",
+            minHeight: "90vh",
+            padding: 0,
+          }}
+          title={null}
+          closable={false}
+          footer={[null, null]}
           visible={this.state.visible}
-          onCancel={this.hideModal}
         >
+          <div
+            style={{
+              position: "absolute",
+              display: "inline-block",
+              top: 10,
+              right: 10,
+              zIndex: 10,
+            }}
+          >
+            <a
+              href="#"
+              onClick={e => {
+                this.hideModal(e);
+              }}
+            >
+              Close
+            </a>
+          </div>
           {!isNull(this.state.modalData) && (
             <div className="av-page">
               <Iframe
@@ -267,6 +300,10 @@ class IndexPage extends React.Component {
                 display="initial"
                 position="relative"
                 allowFullScreen
+                styles={{
+                  minWidth: "90vw",
+                  minHeight: "90vh",
+                }}
               />
             </div>
           )}

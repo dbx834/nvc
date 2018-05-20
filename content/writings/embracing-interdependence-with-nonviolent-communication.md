@@ -1,7 +1,7 @@
 ---
 title: Embracing Interdependence with Nonviolent Communication
 cover: /content-assets/covers/embracing-interdependence-with-nonviolent-communication.jpg
-category: 5.Published Articles
+category: 1.NVC
 abstract: Yay, an article I’m writing for Lifelong Learning Foundation’s brochure…
 date: 2012-12-17
 type: post

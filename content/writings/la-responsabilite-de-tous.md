@@ -1,13 +1,15 @@
 ---
-title: La responsabilité de tous (La Revue D’Auroville)
+title: La responsabilité de tous
 cover: /content-assets/covers/la-responsabilite-de-tous.jpg
 category: 2.RC
-abstract: something something...
+abstract: J’ai été profondément émue par ce travail et par Dominic Barter, le père des Cercles restauratifs. J’ai vraiment senti que c’était la CNV appliquée aux conflits dans le cadre d’une communauté.
 date: 2016-05-01
 type: post
 tags:
   - some tag
 ---
+
+Published in “La Revue D’Auroville.”
 
 **Revue d’Auroville** - _L'aura, comment est né ton intérêt pour la résolution de conflits ?_
 
@@ -69,4 +71,4 @@ Et puis nous n’avons pas encore vraiment compris que nous avons la responsabil
 
 Nous avons des valeurs très hautes mais au niveau des conflits nous sommes encore très immatures.
 
-_interview recueillie par Hamsini_
+_Interview recueillie par Hamsini_

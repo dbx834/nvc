@@ -2,12 +2,14 @@
 title: Justice & Punishment (published on Auronet)
 cover: https://images.unsplash.com/photo-1507184915978-447ac6ab3ecb?ixlib=rb-0.3.5&s=e1f0e60b77167b3ab7383ad81e2e3435&auto=format&fit=crop&w=1440&h=900
 category: 2.RC
-abstract: I think the main difference here between punitive and restorative justice is the approach. I think both forms of justice acknowledge that some of our human behaviour can disrupt the harmonious functioning of society, and as a result, both forms of justice attempt to put structures and processes in place that will hopefully support to create and maintain a just, harmonious, and safe society.
+abstract: I think the main difference here between punitive and restorative justice is the approach.
 date: 2015-11-01
 type: post
 tags:
   - highlight
 ---
+
+Published on Auronet.
 
 In response to John's question:
 
@@ -45,18 +47,18 @@ I think I can be quite critical of the punitive system, yes, because for me it h
 
 And John, when you point out our present situation in Auroville and its disfunctionality, I fully agree...  And I'm guessing you would love to see us figure it out for once and for all, and come up with a construtive wholesome way of responding to conflict, ya...?  Am I getting you?  Me too, I'd love this...!
 
-I agree that the two systems can run in parallel (as in Janet's example in Brazil), but the challenge is that at present we have neither in Auroville - or at least not functioning in full capacity.
+I agree that the two systems can run in parallel (as in Janet's example in Brazil), but the challenge is that at present we have neither in Auroville – or at least not functioning in full capacity.
 
 And this is our paradox.
 
 So if we had punishment in Auroville (or "improved" our present punishments), what would it look like?  How would we punish people (what exactly would be the punishment)?  How would we decide, and who would decide, who should be punished and how?  And would this punishment be enforceable?  How?  And would it give us the desired results?  A community with more harmony, integrity, trust, safety...?
 
-Personally, I'm not convinced.  I'd prefer to take a different approach altogether - to find a way of going deeper and looking at what separated us in the first place, where we started to lose trust in each other, and how we can start to rebuild this trust.  I believe this is a more sustainable approach, something that will invite more long-lasting, genuine change - but of course it's very likely a much slower process and may not bring about any immediate "visible" results of "law and order."  (But what would...?)
+Personally, I'm not convinced. I'd prefer to take a different approach altogether – to find a way of going deeper and looking at what separated us in the first place, where we started to lose trust in each other, and how we can start to rebuild this trust.  I believe this is a more sustainable approach, something that will invite more long-lasting, genuine change – but of course it's very likely a much slower process and may not bring about any immediate "visible" results of "law and order."  (But what would...?)
 
-For me, punishment is a band-aid, and it's a band-aid that doesn't always work - ie. restore a sense of balance and harmony in society and among individuals.  Instead, I think what might work better would be to look at the wound itself and look at ways to restore what has been broken.  Why is this person acting this way?  Was he harmed in any way prior to his "wrongful act"?  What is he desperately trying to say and be heard for?  Isn't he, in his limited and desperate way, also trying to restore balance (even if his choices are obviously poor ones)?  Let's look at his plea, his plight and respond to that, instead of simply trying to deal with the external manifestation (crime to society) of his present inner human complexity.
+For me, punishment is a band-aid, and it's a band-aid that doesn't always work – ie. restore a sense of balance and harmony in society and among individuals.  Instead, I think what might work better would be to look at the wound itself and look at ways to restore what has been broken.  Why is this person acting this way?  Was he harmed in any way prior to his "wrongful act"?  What is he desperately trying to say and be heard for?  Isn't he, in his limited and desperate way, also trying to restore balance (even if his choices are obviously poor ones)?  Let's look at his plea, his plight and respond to that, instead of simply trying to deal with the external manifestation (crime to society) of his present inner human complexity.
 
-This, for me, is the deterring power (maybe not with 100% success, but so far, what is?) of restorative justice.  When we shift our focus instead to our shared humanity, we are touched and want to change (all of us, not just the “bad" ones).  In the long term, I think knowing that we belong, that we matter, that we’re loved, that we trust each other as a community, is much more of an incentive to living in harmony (or a “deterrent” to “bad behaviour”) than simply creating rules and attempting to enforce punishments.  What practices can we put into place that reconnect us with our biggest human need, that is, to contribute to the well-being of one another?  And from here, with all this in consideration, to come up with an action plan – that, by the way, might be just as “harsh” as a punishment, but the intention and method for coming to this place is totally different.  An action plan might be that someone needs to leave the community for one year - but the difference is that this decision comes from a larger group process, including the "wrong-doer" and their best intentions, and the intention is to restore trust, community, safety - not to punish.
+This, for me, is the deterring power (maybe not with 100% success, but so far, what is?) of restorative justice.  When we shift our focus instead to our shared humanity, we are touched and want to change (all of us, not just the “bad" ones).  In the long term, I think knowing that we belong, that we matter, that we’re loved, that we trust each other as a community, is much more of an incentive to living in harmony (or a “deterrent” to “bad behaviour”) than simply creating rules and attempting to enforce punishments.  What practices can we put into place that reconnect us with our biggest human need, that is, to contribute to the well-being of one another?  And from here, with all this in consideration, to come up with an action plan – that, by the way, might be just as “harsh” as a punishment, but the intention and method for coming to this place is totally different.  An action plan might be that someone needs to leave the community for one year – but the difference is that this decision comes from a larger group process, including the "wrong-doer" and their best intentions, and the intention is to restore trust, community, safety – not to punish.
 
 So here I go again...  Sharing a lot, and with a lot of energy.  I'm sorry if it comes across as too one-sided...  I'm actually just longing to find a REAL way forward in Auroville, one that works and that we can apply and that gets us where we want to go...  I imagine you want this too...?
 
-And this is not to say that I think we should take a laissez-faire attitude.  Let's really get down to figuring this out and having real, serious dialogue about these issues in Auroville - that we desperately lack a justice system.
+And this is not to say that I think we should take a laissez-faire attitude.  Let's really get down to figuring this out and having real, serious dialogue about these issues in Auroville – that we desperately lack a justice system.

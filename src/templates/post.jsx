@@ -46,6 +46,7 @@ import "antd/lib/tag/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
 import Image from "@bodhi-project/components/lib/Image";
+import Container from "@bodhi-project/components/lib/Container";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
@@ -61,7 +62,7 @@ const { H1, Paragraph } = Elements;
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 const pageStyle = css({
-  display: "flex",
+  display: "block",
   position: "relative",
 
   "& h3": {
@@ -215,122 +216,92 @@ class BlogPostTemplate extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={`${markdownStylesClass} ${pageStyleClass}`}>
-          <div className="kale">
-            <div>
-              <Header className="headings">
-                <div className="banner">
-                  <Image
-                    src={frontmatter.cover}
-                    rawWidth={1440}
-                    rawHeight={900}
-                    loader="gradient"
-                    style={{ border: 0 }}
-                  />
-                </div>
-                <div className="abstract">
-                  <H1 className="mask-h3" style={{ marginBottom: 5 }}>
-                    {frontmatter.title}
-                  </H1>
-                  <Tag>{catString}</Tag>
-                  <Paragraph style={{ marginBottom: 0 }}>
-                    <small>
-                      <i>
-                        {dateStr}&nbsp;({when})
-                      </i>
-                    </small>
-                    <br />
-                    <br />
-                    {frontmatter.abstract}
-                  </Paragraph>
-                  <br />
-                  <div style={{ position: "relative" }}>
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 99,
-                        backgroundColor: "#f8f2e6",
-                        zIndex: 10,
-                        height: 20,
-                        width: "calc(100% - 98px)",
-                      }}
-                    />
-                    <div style={{ maxWidth: 98 }}>
-                      <FacebookProvider appId="218604115574634">
-                        <FBLike
-                          href={`http://localhost:8000/${route}`}
-                          colorScheme="dark"
-                          showFaces
-                          share
-                        />
-                      </FacebookProvider>
-                    </div>
-                  </div>
-                </div>
-              </Header>
-              <hr />
+          <Header className="headings">
+            <div className="banner">
+              <Image
+                src={frontmatter.cover}
+                rawWidth={1440}
+                rawHeight={900}
+                loader="gradient"
+                style={{ border: 0, height: "auto !important" }}
+              />
+            </div>
+            <div className="abstract">
+              <H1 className="mask-h3" style={{ marginBottom: 5 }}>
+                {frontmatter.title}
+              </H1>
+              <Tag>{catString}</Tag>
+              <Paragraph style={{ marginBottom: 0 }}>
+                <small>
+                  <i>
+                    {dateStr}&nbsp;({when})
+                  </i>
+                </small>
+                <br />
+                <br />
+                {frontmatter.abstract}
+              </Paragraph>
               <br />
-              <Article>
-                {treeCodeParser(
-                  markdownAst,
-                  {
-                    localLink: Link,
-                    linkHeaders: false,
-                    trackHeaders: false,
-                    nestHeaders: false,
-                  },
-                  {},
-                )}
-              </Article>
-              <Footer>
-                <H1 mask="h4">More like this…</H1>
+              <div style={{ position: "relative" }}>
                 <div
-                  style={{ display: "flex", justifyContent: "space-between" }}
-                >
-                  <div>
-                    {!isNull(prev) && (
-                      <Link to={`/${prev.fields.route}`}>⇜ Previous</Link>
-                    )}
-                  </div>
-                  <div>
-                    {!isNull(next) && (
-                      <Link to={`/${next.fields.route}`}>Next ⇝</Link>
-                    )}
-                  </div>
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 99,
+                    backgroundColor: "#f8f2e6",
+                    zIndex: 10,
+                    height: 20,
+                    width: "calc(100% - 98px)",
+                  }}
+                />
+                <div style={{ maxWidth: 98 }}>
+                  <FacebookProvider appId="218604115574634">
+                    <FBLike
+                      href={`http://localhost:8000/${route}`}
+                      colorScheme="dark"
+                      showFaces
+                      share
+                    />
+                  </FacebookProvider>
                 </div>
-                <Paragraph className="stash">
-                  {data.copyright}
-                  <br />
-                  <br />
-                  Published on {humanDate} ({elapsed}).
-                </Paragraph>
-              </Footer>
+              </div>
             </div>
-            <div>
-              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
-              <hr />
-              <h3 className="mask-p" style={{ marginBottom: 10 }}>
-                Most read…
-              </h3>
-              <ul style={{ listStyle: "none", padding: 0 }}>
-                <li>
-                  <Link to="/">Some page</Link>
-                </li>
-                <li>
-                  <Link to="/">Some other page</Link>
-                </li>
-                <li>
-                  <Link to="/">Random page</Link>
-                </li>
-                <li>
-                  <Link to="/">Yet another page</Link>
-                </li>
-                <li>
-                  <Link to="/">Just another page</Link>
-                </li>
-              </ul>
+          </Header>
+          <hr />
+          <br />
+          <Article>
+            {treeCodeParser(
+              markdownAst,
+              {
+                localLink: Link,
+                linkHeaders: false,
+                trackHeaders: false,
+                nestHeaders: false,
+              },
+              {},
+            )}
+          </Article>
+          <Footer>
+            <H1 mask="h4">More like this…</H1>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <div>
+                {!isNull(prev) && (
+                  <Link to={`/${prev.fields.route}`}>⇜ Previous</Link>
+                )}
+              </div>
+              <div>
+                {!isNull(next) && (
+                  <Link to={`/${next.fields.route}`}>Next ⇝</Link>
+                )}
+              </div>
             </div>
-          </div>
+            <Paragraph className="stash">
+              {data.copyright}
+              <br />
+              <br />
+              Published on {humanDate} ({elapsed}).
+            </Paragraph>
+          </Footer>
         </Page>
       </Fragment>
     );

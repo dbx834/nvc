@@ -56,6 +56,8 @@ const filterF = filter;
 const { CheckableTag } = Tag;
 const { H1, H2, H3, Paragraph } = Elements;
 
+const colors = ["#f8e6ec", "#e6ecf8", "#f2e6f8", "#e6f8f2"];
+
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
@@ -81,74 +83,47 @@ const {
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageStyle = css({
-  ...applyRhythm({ maxWidth: "40X" }),
-  "& .top-link": {
-    color: "inherit",
-    "&:hover": {
-      color: "#6D00FF",
-      borderBottom: "1.625px solid #6D00FF",
-    },
-  },
-
-  "& h2": {
-    marginTop: "50px !important",
-    marginBottom: "50px !important",
-    textTransform: "uppercase",
-    fontStyle: "italic",
-    borderTop: "3px solid #B43808",
-    color: "#B43808",
-
-    "& span": {
-      fontSize: "70%",
-    },
-  },
-
-  "& div.category": {
-    ...applyRhythm({ marginBottom: "3X" }),
-  },
-
-  "& article": {
+  "& .articles": {
     display: "flex",
-    flexFlow: "row wrap",
-    alignItems: "flex-start",
-    ...applyRhythm({ marginBottom: "1.86X" }),
+    flexWrap: "wrap",
 
-    "& .banner": {
-      flex: "7 1 0%",
+    "& article": {
+      flex: "0 0 30%",
+      margin: "20px 1%",
+      transition: "box-shadow 0.1s ease-in-out, border 0.5s ease-in-out",
+      borderRadius: 6,
+      border: "1px solid rgba(74, 74, 74, 0.25)",
+
+      "&:hover": {
+        boxShadow: "0 0 25px rgba(0,0,0,.11)",
+        border: "1px solid rgba(74, 74, 74, 0.75)",
+      },
 
       "& a": {
-        borderBottom: "none",
+        borderBottom: "1.625px solid transparent",
 
         "&:hover": {
-          borderBottom: "none",
+          color: "#6D00FF",
+          borderBottom: "1.625px solid transparent",
         },
       },
-    },
 
-    "& .abstract": {
-      flex: "12 1 0%",
-      ...applyRhythm({ paddingLeft: "0.6882X" }),
-
-      "& h3": {
-        marginTop: 0,
-        marginBottom: 5,
-      },
-    },
-  },
-
-  "& article:last-child": {
-    border: "0 !important",
-  },
-
-  "@media(max-width: 768px)": {
-    "& .display": {
-      display: "block",
-      "& .banner": {
-        display: "block",
-      },
       "& .abstract": {
-        display: "block",
-        padding: "0px",
+        padding: "16px 10px",
+
+        "& h3": {
+          fontFamily: "adobe-garamond-pro, serif",
+        },
+
+        "& hr": {
+          border: "none",
+          borderTop: "1px solid #B43808",
+          marginBottom: 20,
+          marginLeft: 0,
+          width: "37.5%",
+        },
+
+        "& .article-category": {},
       },
     },
   },
@@ -265,7 +240,7 @@ class Blog extends React.Component {
         displayFilterAs = "Journal";
         break;
       case "corporate":
-        displayFilterAs = "Corporate Work";
+        displayFilterAs = "Corporate";
         break;
       case "published-articles":
         displayFilterAs = "Published Articles";
@@ -290,7 +265,6 @@ class Blog extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={pageStyleClass}>
-          <H1 className="mask-h2">Blog&nbsp;›&nbsp;{displayFilterAs}</H1>
           {activeFilter === "all" ? (
             <CheckableTag
               checked
@@ -322,12 +296,14 @@ class Blog extends React.Component {
                 displayAs = "Journal";
                 break;
               case "Corporate":
-                displayAs = "Corporate Work";
+                displayAs = "Corporate";
+                break;
+              default:
                 break;
             }
 
             return (
-              <Fragment>
+              <Fragment key={tagKey}>
                 {activeFilter === tagKey ? (
                   <CheckableTag
                     checked
@@ -347,83 +323,86 @@ class Blog extends React.Component {
               </Fragment>
             );
           })}
-          {map(categories, category => {
-            let catString = trim(last(split(category, ".")));
-            const catId = kebabCase(toLower(catString));
-            switch (catString) {
-              case "NVC":
-                catString = "Nonviolent Communication";
-                break;
-              case "RC":
-                catString = "Restorative Circles";
-                break;
-              case "Journal":
-                catString = "Journal";
-                break;
-              case "Corporate":
-                catString = "Corporate Work";
-                break;
-            }
+          <div className="articles">
+            {map(categories, category => {
+              let catString = trim(last(split(category, ".")));
+              const catId = kebabCase(toLower(catString));
+              switch (catString) {
+                case "NVC":
+                  catString = "Nonviolent Communication";
+                  break;
+                case "RC":
+                  catString = "Restorative Circles";
+                  break;
+                case "Journal":
+                  catString = "Journal";
+                  break;
+                case "Corporate":
+                  catString = "Corporate";
+                  break;
+                default:
+                  break;
+              }
 
-            return (
-              <div className="category" key={catId}>
-                {activeFilter === "all" && (
-                  <H2 className="mask-h3" id={catId}>
-                    <span>{catString}</span>
-                  </H2>
-                )}
-                {activeFilter !== "all" && (
-                  <Fragment>
-                    <br />
-                    <br />
-                  </Fragment>
-                )}
-                {map(filteredData, ({ node }) => {
-                  const { date, title, abstract, cover } = node.frontmatter;
-                  const { route } = node.fields;
-                  const dateStr = moment(date).format("dddd, MMMM D, YYYY");
-                  const when = moment(date).fromNow();
+              return (
+                <Fragment key={catId}>
+                  {map(filteredData, ({ node }) => {
+                    const { date, title, abstract, cover } = node.frontmatter;
+                    const { route } = node.fields;
+                    const dateStr = moment(date).format("dddd, MMMM D, YYYY");
+                    const when = moment(date).fromNow();
+                    const randomColor =
+                      colors[Math.floor(Math.random() * colors.length)];
 
-                  return (
-                    <Fragment key={route}>
-                      {node.frontmatter.category === category && (
-                        <Article key={route}>
-                          <div className="banner">
-                            <Link style={{ display: "block" }} to={route}>
-                              <Image
-                                src={cover}
-                                rawWidth={1440}
-                                rawHeight={900}
-                                loader="gradient"
-                                style={{ border: 0 }}
-                              />
-                            </Link>
-                          </div>
-                          <div className="abstract">
-                            <Header>
-                              <Link to={route}>
-                                <H3 className="mask-h4">{title}</H3>
-                                <Paragraph style={{ marginBottom: 20 }}>
-                                  <small>
-                                    <i>
-                                      {dateStr}&nbsp;({when})
-                                    </i>
-                                  </small>
-                                  <br />
-                                  <br />
-                                  {abstract}
-                                </Paragraph>
+                    return (
+                      <Fragment key={route}>
+                        {node.frontmatter.category === category && (
+                          <Article
+                            key={route}
+                            // style={{ background: randomColor }}
+                          >
+                            <div className="banner">
+                              <Link style={{ display: "block" }} to={route}>
+                                <Image
+                                  src={cover}
+                                  rawWidth={1440}
+                                  rawHeight={900}
+                                  loader="gradient"
+                                  style={{
+                                    border: 0,
+                                    borderTopLeftRadius: 6,
+                                    borderTopRightRadius: 6,
+                                  }}
+                                />
                               </Link>
-                            </Header>
-                          </div>
-                        </Article>
-                      )}
-                    </Fragment>
-                  );
-                })}
-              </div>
-            );
-          })}
+                            </div>
+                            <div className="abstract">
+                              <Header>
+                                <Link to={route}>
+                                  <h3>{title}</h3>
+                                  <hr />
+                                  <Paragraph style={{ marginBottom: 20 }}>
+                                    <small>
+                                      <i>
+                                        {dateStr}&nbsp;({when})
+                                      </i>
+                                    </small>
+                                    <br />
+                                    <br />
+                                    {abstract}
+                                  </Paragraph>
+                                </Link>
+                              </Header>
+                            </div>
+                          </Article>
+                        )}
+                      </Fragment>
+                    );
+                  })}
+                </Fragment>
+              );
+            })}
+          </div>
         </Page>
       </Fragment>
     );

@@ -125,7 +125,7 @@ class Header extends React.Component {
                 </strong>
                 <br />
               </Paragraph>
-              <Paragraph className="hidden-sm">
+              <div className="mask-p hidden-sm">
                 <OutLink to="https://www.facebook.com/JoyLivingLearning/">
                   <Image
                     src={facebook}
@@ -240,7 +240,7 @@ class Header extends React.Component {
                     height="1"
                   />
                 </form>
-              </Paragraph>
+              </div>
               <Paragraph style={{ marginBottom: 20 }}>
                 Made with{" "}
                 <Icon

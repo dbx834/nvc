@@ -65,9 +65,9 @@ const menu = [
     menu: [
       { title: "Blog", link: "/writings?filter=all" },
       { title: "Gallery", link: "/gallery" },
-      { title: "Newsletter", link: "/newsletter" },
+      { title: "Newsletter", link: "/newsletter", renderInModal: true },
       { title: "Fee & Donation", link: "/fee-and-donation" },
-      { title: "Contact", link: "/contact" },
+      { title: "Contact", link: "/contact", renderInModal: true },
       {
         title: "Further Links",
         link: "/#",

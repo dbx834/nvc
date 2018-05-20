@@ -112,10 +112,11 @@ class EventsGrid extends React.Component {
       const { tags, date, startDate } = frontmatter;
       const mDate = moment(!isNull(date) ? date : startDate);
       const xDate = parseInt(mDate.format("YYYYMMDD"), 10);
-
       const inTheFuture = todayInt <= xDate;
       const belowMax = totalEvents >= filteredRecords;
       const isFeatured = featured === true ? inArray(tags, "featured") : true;
+
+      console.log(mDate, tags, inTheFuture);
 
       if (inTheFuture && belowMax && isFeatured) {
         includeThis = true;
@@ -123,6 +124,8 @@ class EventsGrid extends React.Component {
       }
       return includeThis;
     });
+
+    console.log(filtered);
 
     return (
       <div className={componentStyleClass}>

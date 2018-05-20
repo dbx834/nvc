@@ -1,7 +1,7 @@
 ---
 title: Word Play
 cover: /content-assets/covers/wordplay.jpg
-category: 5.Published Articles
+category: 1.NVC
 abstract: “Word Play” by Parul Bajaj
 date: 2011-07-08
 type: post

@@ -11,7 +11,7 @@ import startsWith from "lodash/startsWith";
 /** withUrl */
 const withUrl = (checkThis, data) => {
   const { websiteUrl, nakedWebsiteUrl } = data;
-  let returnString = "";
+  let returnString = checkThis;
 
   if (!startsWith(checkThis, "http")) {
     if (startsWith(checkThis, "/")) {

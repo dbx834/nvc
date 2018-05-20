@@ -137,12 +137,12 @@ const formStyle = css({
       borderRadius: 0,
       backgroundColor: "#0000FF",
       borderColor: "#0000FF",
+      marginTop: 30,
 
       "& span": {
         fontSize: "80%",
       },
     },
-    ...applyRhythm({ height: "1X" }),
     ...applyRhythm({ padding: "0X 0.625X" }),
   ),
 

@@ -1,13 +1,15 @@
 ---
-title: Our Justice System (published on Auronet)
-cover: https://images.unsplash.com/photo-1507184915978-447ac6ab3ecb?ixlib=rb-0.3.5&s=e1f0e60b77167b3ab7383ad81e2e3435&auto=format&fit=crop&w=1440&h=900
+title: Our Justice System
+cover: /content-assets/covers/our-justice-system.jpg
 category: 2.RC
-abstract: For me, all the talk about the feedback relating to the proposed WC/AVC members is connected to a much larger issue - our Justice System.
+abstract: For me, all the talk about the feedback relating to the proposed WC/AVC members is connected to a much larger issue – our Justice System.
 date: 2014-06-26
 type: post
 tags:
   - some tag
 ---
+
+Published on Auronet.
 
 For me, all the talk about the feedback relating to the proposed WC/AVC members is connected to a much larger issue - our Justice System.
 

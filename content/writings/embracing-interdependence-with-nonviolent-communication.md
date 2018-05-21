@@ -2,12 +2,14 @@
 title: Embracing Interdependence with Nonviolent Communication
 cover: /content-assets/covers/embracing-interdependence-with-nonviolent-communication.jpg
 category: 1.NVC
-abstract: Yay, an article I’m writing for Lifelong Learning Foundation’s brochure…
+abstract: What does walking a path of Nonviolence actually mean? From my experience, it is so much more than I had ever expected, both in terms of the willingness and commitment it requires from my side, as well as what it offers in return and how much it can enrich my life as a result.
 date: 2012-12-17
 type: post
 tags:
   - some tag
 ---
+
+Published in Lifelong Learning Foundation’s brochure.
 
 What does walking a path of Nonviolence actually mean? From my experience, it is so much more than I had ever expected, both in terms of the willingness and commitment it requires from my side, as well as what it offers in return and how much it can enrich my life as a result. It is not new that “No man is an island” – we are interdependent and need each other more than we might want to accept. As humans, we’ve created complex systems, from families and schools to trade and commerce to justice and law enforcement, all of which keep us in a variety of interdependent relationships with each other. Now living Nonviolence may look relatively easy with loved ones or within apparently harmonious systems, where it’s clear that my intentions are to show care and respect and to generally create an atmosphere of mutual benefit. But what about living Nonviolence when my relationships are less than harmonious or even apparently violent and disrespectful? Or what about when I forget our interdependence and think that the other doesn’t really matter, that he or she has no impact on me, that our paths will never cross again, or that he or she doesn’t deserve to be acknowledged?
 
@@ -23,6 +25,4 @@ Once I have this clarity about what’s going on for me and the curiosity for wh
 
 Although choosing to live Nonviolence invites us to reconsider the way we think and behave and in that light can take us on a deep life journey, it also offers some basic key distinctions and tangible steps to support us as we deepen this practice. So the beginner and advanced practitioner alike can walk through the steps and move from disconnection towards connection, thereby increasing our willingness and ability to co-exist together on this planet.
 
-– by L’aura Joy
-
-CNVC Certified Trainer
+_Written by L’aura Joy, CNVC Certified Trainer_

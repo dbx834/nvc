@@ -66,6 +66,12 @@ const pageStyle = css({
   position: "relative",
   marginBottom: 60,
 
+  "& hr": {
+    border: "none",
+    borderTop: "3px solid #B43808",
+    marginBottom: 20,
+  },
+
   "& .left": {
     flexGrow: 10,
     flexBasis: 0,
@@ -308,9 +314,7 @@ class EventTemplate extends React.Component {
                 {},
               )}
             </Article>
-            <Footer
-              style={{ borderTop: "1px solid #4a4a4a", paddingTop: "1em" }}
-            >
+            <Footer>
               <H1 mask="h4">More like this</H1>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div>

@@ -32,12 +32,18 @@ import Button from "antd/lib/button";
 import "antd/lib/button/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import { hasErrors, validateEmail, validateName } from "../helpers/formHelpers";
+import {
+  hasErrors,
+  validateEmail,
+  validateName,
+  validateComment,
+} from "../helpers/formHelpers";
 import { formStyleClass } from "../helpers/defaultFormStyles";
 import seoHelper from "../helpers/seoHelper";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
+const { TextArea } = Input;
 const FormItem = Form.Item;
 const { H1, Paragraph } = Elements;
 
@@ -114,12 +120,12 @@ class Page extends React.Component {
           loader: true,
         });
 
-        const { email } = values;
+        const { name, email, comment } = values;
 
         // Mock some delay
         setTimeout(() => {
           fetch(
-            `https://script.google.com/macros/s/AKfycbx6xNPY__NC6jrneaGeH1NPLkjdrNSc3NMUV-oHAWnWln2WDWZL/exec?email=${email}&callback=?`,
+            `https://script.google.com/macros/s/AKfycbx6xNPY__NC6jrneaGeH1NPLkjdrNSc3NMUV-oHAWnWln2WDWZL/exec?email=${email}&name=${name}&comment=${comment}&callback=?`,
             {
               method: "GET",
               mode: "no-cors",
@@ -152,6 +158,7 @@ class Page extends React.Component {
     // Only show error after a field is touched.
     const emailError = isFieldTouched("email") && getFieldError("email");
     const nameError = isFieldTouched("name") && getFieldError("name");
+    const commentError = isFieldTouched("comment") && getFieldError("comment");
 
     return (
       <Fragment>
@@ -193,6 +200,21 @@ class Page extends React.Component {
                     validateTrigger: ["onChange", "onBlur"],
                     rules: [{ validator: validateEmail }],
                   })(<Input placeholder="Email" />)}
+                </FormItem>
+                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment */}
+                <FormItem
+                  validateStatus={commentError ? "error" : ""}
+                  help={commentError || ""}
+                >
+                  {getFieldDecorator("comment", {
+                    validateTrigger: ["onChange", "onBlur"],
+                    rules: [{ validator: validateComment }],
+                  })(
+                    <TextArea
+                      placeholder="What is your area of interest? What sort of information would you enjoy receiving?"
+                      autosize={{ minRows: 1, maxRows: 6 }}
+                    />,
+                  )}
                 </FormItem>
                 {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Submit */}
                 <FormItem>

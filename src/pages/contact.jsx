@@ -30,7 +30,7 @@ import {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Images
 
-import NewsletterForm from "../components/NewsletterForm";
+import ContactForm from "../components/ContactForm";
 import seoHelper from "../helpers/seoHelper";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstract stuff
@@ -97,7 +97,7 @@ class Page extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <SemanticPage className={pageWrapperClass}>
-          <NewsletterForm />
+          <ContactForm />
         </SemanticPage>
       </Fragment>
     );

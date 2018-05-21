@@ -71,7 +71,7 @@ const menu = [
       {
         title: "Further Links",
         link: "/#",
-        menuPopoverLocation: "rightBottom",
+        menuPopoverLocation: "right",
         menu: [
           {
             title: "Restorative Auroville",

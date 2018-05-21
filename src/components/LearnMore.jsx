@@ -96,6 +96,7 @@ class LearnMore extends React.Component {
 
     return (
       <Fragment>
+        <h3>Further Links…</h3>
         <TetraGrid>
           {map(data, ({ linkTo, title, image }, index) => {
             return (

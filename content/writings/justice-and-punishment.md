@@ -1,6 +1,6 @@
 ---
-title: Justice & Punishment (published on Auronet)
-cover: https://images.unsplash.com/photo-1507184915978-447ac6ab3ecb?ixlib=rb-0.3.5&s=e1f0e60b77167b3ab7383ad81e2e3435&auto=format&fit=crop&w=1440&h=900
+title: Justice & Punishment
+cover: /content-assets/covers/justice-and-punishment.jpg
 category: 2.RC
 abstract: I think the main difference here between punitive and restorative justice is the approach.
 date: 2015-11-01
@@ -11,8 +11,8 @@ tags:
 
 Published on Auronet.
 
-In response to John's question:
-
+> _In response to John's question:_
+>  
 > _I'm missing a reference to the deterring effect of punishments. An important reason to go for punitive justice is deterrence, how is that in restorative systems?_
 
 I love this question. It really invites for reflection...
@@ -36,6 +36,8 @@ With a restorative approach, I might very well be angry and shocked and embarras
 At the ARA meeting last week, Jaya shared a statistic that I liked very much.  I hope I understood it correctly - that 3% of our human population doesn’t abide by "acceptable" social conduct, 12% can cause minor disturbances, and the rest of us are just going about life doing the best we can to live in peace and harmony.  So rules and punishments are created as a fire-fighting response to the behaviour of the 3% (but applied to everyone), as an attempt to regain control and reestablish perceived social normalcy. But for me the question is: Does it work? Does it actually deter the 3% from acting out in painful ways? I don’t think so, as we still have so much crime. Maybe it works on the rest of us (ie. the other 97% of us don’t commit crime because we’re afraid of punishment), or we just have a sense of belonging and co-responbility in creating a harmonious society. This, in my opinion, is the deterrence – we’ve developed an inner consciousness and choose to act in alignment with our values. So, for me, the focus should be on how we can re-ignite this inner consciousness in the hearts and souls of the 3% (for whom punishment doesn’t seem to work anyway).
 
 Let’s begin to look at what it takes to restore what’s broken, and from here (re-)create the society we’re all longing for – one of trust, safety, belonging, togetherness, integrity, and higher aspiration…
+
+> _John responds again, and I clarify my point._
 
 Thanks for your response, John.
 

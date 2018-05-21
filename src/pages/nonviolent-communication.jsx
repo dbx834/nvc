@@ -46,15 +46,16 @@ const { Fragment } = React;
 // ----------------------------------------------------------------------------
 const learnMoreData = [
   {
+    linkTo: "/writings/embracing-interdependence-with-nonviolent-communication",
+    title: "Embracing Interdependence with Nonviolent Communication",
+    image:
+      "/content-assets/covers/embracing-interdependence-with-nonviolent-communication.jpg",
+  },
+  {
     linkTo: "/writings/what-does-nvc-mean-to-you",
     title: "What does NVC mean to you…?",
     image:
       "https://images.unsplash.com/photo-1518983498539-c6e66c62f6b3?ixlib=rb-0.3.5&s=580f065422952f086541ba61e8ae5304&auto=format&fit=crop&w=1440&h=900",
-  },
-  {
-    linkTo: "/writings/nonviolent-communication-auroville-radio",
-    title: "Nonviolent Communication (Auroville Radio)",
-    image: "/content-assets/covers/nvcavradio.jpg",
   },
 ];
 
@@ -252,9 +253,6 @@ class NVCPage extends React.PureComponent {
                 title="NVC Events"
                 style={{ marginBottom: 40 }}
               />
-              <h3 style={{ marginBottom: 20 }}>
-                <span>Learn More</span>
-              </h3>
               <LearnMore data={learnMoreData} />
               <p>
                 <Link to="/blog">Read more…</Link>

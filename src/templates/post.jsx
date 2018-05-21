@@ -53,6 +53,14 @@ import seoHelper from "../helpers/seoHelper";
 import packageJson from "../../package.json";
 import markdownStylesClass from "../styles/markdownStyles";
 
+import Block1 from "../components/random-blocks/Block1";
+import Block2 from "../components/random-blocks/Block2";
+import Block3 from "../components/random-blocks/Block3";
+import Block4 from "../components/random-blocks/Block4";
+import Block5 from "../components/random-blocks/Block5";
+import Block6 from "../components/random-blocks/Block6";
+import Block7 from "../components/random-blocks/Block7";
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 // const { Fragment } = React;
 const { data } = packageJson;
@@ -65,6 +73,12 @@ const pageStyle = css({
   display: "block",
   position: "relative",
 
+  "& h1": {
+    "& span": {
+      fontSize: "90%",
+    },
+  },
+
   "& h3": {
     fontWeight: "700 !important",
   },
@@ -73,6 +87,45 @@ const pageStyle = css({
     border: "none",
     borderTop: "3px solid #B43808",
     marginBottom: 20,
+  },
+
+  "& .kale": {
+    "@media(max-width: 768px)": {
+      display: "block",
+    },
+
+    display: "flex",
+
+    "& > div": {
+      padding: "0em 1.25em",
+
+      "&:nth-child(1)": {
+        flexBasis: 0,
+        flexGrow: 62,
+
+        "& .hope": {
+          display: "flex",
+
+          "& > div": {
+            "&:nth-child(1)": {
+              flexBasis: 0,
+              flexGrow: 50,
+              paddingRight: "1.25em",
+            },
+
+            "&:nth-child(2)": {
+              flexBasis: 0,
+              flexGrow: 50,
+            },
+          },
+        },
+      },
+
+      "&:nth-child(2)": {
+        flexBasis: 0,
+        flexGrow: 38,
+      },
+    },
   },
 
   "& .headings": {
@@ -164,6 +217,8 @@ class BlogPostTemplate extends React.Component {
       publisher: data.org.name,
     };
 
+    const randomBlock = Math.floor(Math.random() * 7) + 1;
+
     return (
       <div className={pageStyleClass}>
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
@@ -178,99 +233,112 @@ class BlogPostTemplate extends React.Component {
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <div>
           <Container block bleed>
-            <Page>
-              <Header className="headings">
-                <div className="banner">
-                  <Image
-                    src={frontmatter.cover}
-                    rawWidth={1440}
-                    rawHeight={900}
-                    loader="gradient"
-                    style={{ border: 0, height: "auto !important" }}
-                  />
-                </div>
-                <div className="abstract">
-                  <H1 className="mask-h3" style={{ marginBottom: 5 }}>
-                    {frontmatter.title}
-                  </H1>
-                  <Tag>{catString}</Tag>
-                  <Paragraph style={{ marginBottom: 0 }}>
-                    <small>
-                      <i>
-                        {dateStr}&nbsp;({when})
-                      </i>
-                    </small>
-                    <br />
-                    <br />
-                    {frontmatter.abstract}
-                  </Paragraph>
-                  <br />
-                  <div style={{ position: "relative" }}>
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 99,
-                        backgroundColor: "#f8f2e6",
-                        zIndex: 10,
-                        height: 20,
-                        width: "calc(100% - 98px)",
-                      }}
+            <div className="kale">
+              <div>
+                <Header className="headings">
+                  <div className="banner">
+                    <Image
+                      src={frontmatter.cover}
+                      rawWidth={1440}
+                      rawHeight={900}
+                      loader="gradient"
+                      style={{ border: 0, height: "auto !important" }}
                     />
-                    <div style={{ maxWidth: 98 }}>
-                      <FacebookProvider appId="218604115574634">
-                        <FBLike
-                          href={`http://localhost:8000/${route}`}
-                          colorScheme="dark"
-                          showFaces
-                          share
-                        />
-                      </FacebookProvider>
+                  </div>
+                  <div className="abstract">
+                    <H1 className="mask-h3" style={{ marginBottom: 5 }}>
+                      {frontmatter.title}
+                    </H1>
+                    <Tag>{catString}</Tag>
+                    <Paragraph style={{ marginBottom: 0 }}>
+                      <small>
+                        <i>
+                          {dateStr}&nbsp;({when})
+                        </i>
+                      </small>
+                      <br />
+                      <br />
+                      {frontmatter.abstract}
+                    </Paragraph>
+                    <br />
+                    <div style={{ position: "relative" }}>
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: 0,
+                          left: 99,
+                          backgroundColor: "#f8f2e6",
+                          zIndex: 10,
+                          height: 20,
+                          width: "calc(100% - 98px)",
+                        }}
+                      />
+                      <div style={{ maxWidth: 98 }}>
+                        <FacebookProvider appId="218604115574634">
+                          <FBLike
+                            href={`http://localhost:8000/${route}`}
+                            colorScheme="dark"
+                            showFaces
+                            share
+                          />
+                        </FacebookProvider>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </Header>
-              <hr />
-              <br />
-              <Article className={markdownStylesClass}>
-                {treeCodeParser(
-                  markdownAst,
-                  {
-                    localLink: Link,
-                    linkHeaders: false,
-                    trackHeaders: false,
-                    nestHeaders: false,
-                  },
-                  {},
-                )}
-              </Article>
-              <Footer>
-                <H1 mask="h4">More like this…</H1>
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <div>
-                    {!isNull(prev) && (
-                      <Link to={`/${prev.fields.route}`}>⇜ Previous</Link>
+                </Header>
+                <hr />
+                <Page>
+                  <Article className={markdownStylesClass}>
+                    {treeCodeParser(
+                      markdownAst,
+                      {
+                        localLink: Link,
+                        linkHeaders: false,
+                        trackHeaders: false,
+                        nestHeaders: false,
+                      },
+                      {},
                     )}
-                  </div>
-                  <div>
-                    {!isNull(next) && (
-                      <Link to={`/${next.fields.route}`}>Next ⇝</Link>
-                    )}
-                  </div>
-                </div>
-                <Paragraph className="stash">
-                  {data.copyright}
-                  <br />
-                  <br />
-                  Published on {humanDate} ({elapsed}).
-                </Paragraph>
-              </Footer>
-            </Page>
+                  </Article>
+                  <Footer>
+                    <H1 mask="h4">More like this…</H1>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <div>
+                        {!isNull(prev) && (
+                          <Link to={`/${prev.fields.route}`}>⇜ Previous</Link>
+                        )}
+                      </div>
+                      <div>
+                        {!isNull(next) && (
+                          <Link to={`/${next.fields.route}`}>Next ⇝</Link>
+                        )}
+                      </div>
+                    </div>
+                    <Paragraph className="stash">
+                      {data.copyright}
+                      <br />
+                      <br />
+                      Published on {humanDate} ({elapsed}).
+                    </Paragraph>
+                  </Footer>
+                </Page>
+              </div>
+              <div>
+                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+                {randomBlock === 1 && <Block1 />}
+                {randomBlock === 2 && <Block2 />}
+                {randomBlock === 3 && <Block3 />}
+                {randomBlock === 4 && <Block4 />}
+                {randomBlock === 5 && <Block5 />}
+                {randomBlock === 6 && <Block6 />}
+                {randomBlock === 7 && <Block7 />}
+              </div>
+            </div>
           </Container>
         </div>
       </div>

@@ -1,15 +1,17 @@
 ---
-title: Dealing with conflict in Restorative Circles (Auroville Today)
+title: Dealing with conflict in Restorative Circles
 cover: /content-assets/covers/dealing-with-conflict-in-restorative-circles.jpg
 category: 2.RC
-abstract: something something...
+abstract: On July 13th at the Town Hall a presentation on the principles and practice of Restorative Circles was offered by L’aura and Jason, followed by a question and answer session. 
 date: 2011-08-01
 type: post
 tags:
   - some tag
 ---
 
-> "_... (We start) from the premise that conflict is natural, normal, and recurrent in community life. When conflict occurs, it doesn’t mean anyone has failed. In fact, we need both community and conflict to reach our full potential as human beings. Much as we value individual choice, we are formed in community and work out the ramifications of our individuality in relation to others. And though we may resent it when our preferences, practices, or beliefs are challenged, we would never grow without conflict._" - Ron Kraybill & Evelyn Wright
+Published in “Auroville Today.”
+
+> "_... (We start) from the premise that conflict is natural, normal, and recurrent in community life. When conflict occurs, it doesn’t mean anyone has failed. In fact, we need both community and conflict to reach our full potential as human beings. Much as we value individual choice, we are formed in community and work out the ramifications of our individuality in relation to others. And though we may resent it when our preferences, practices, or beliefs are challenged, we would never grow without conflict._" – Ron Kraybill & Evelyn Wright
 
 On July 13th at the Town Hall a presentation on the principles and practice of Restorative Circles was offered by L’aura and Jason, followed by a question and answer session. Over the years they have been excited about living nonviolence and learning about processes that help communities create cooperation and harmony. So last November they attended a Restorative Circles workshop in the US, and spending time with Dominic Barter, the founder of the process, was rich and rewarding. They returned both moved and impressed, and are now motivated to share the practice with Auroville and interested people in India. A group of Aurovilians is meeting weekly to practice the skills with the possible intention of one day creating a restorative justice system in Auroville. 
 
@@ -19,7 +21,7 @@ Also, the way most people perceive conflict is overly simplistic: one victim and
 
 **So, how does it work?**
 
-A Restorative Circle brings together the three parties in a conflict – those who have acted, those directly impacted, and the wider community – within a specific context to dialogue as equals. The first step is for a person experiencing conflict to contact a facilitator. The facilitator then holds a Pre-Circle with that person to identify the act in question and to understand how the person feels about it now. The facilitator then makes sure that the person understands the Circle process and asks if he or she wants to go ahead. If yes, the facilitator asks who else needs to be present in the Circle. He or she then proceeds to have Pre-Circles with all of the other parties, and invites them to describe the conflict and how it impacted them, and asks them who they think should participate in the Circle. Finally, the facilitator invites everybody to the Restorative Circle, where they get the chance to share how they feel about the conflict. From here, the focus of the dialogue shifts to understanding the underlying causes of people’s actions. The Circle ends when the participants reach a practical, time-framed action plan which they believe will start to restore trust and meet the needs of every- body involved.
+A Restorative Circle brings together the three parties in a conflict – those who have acted, those directly impacted, and the wider community – within a specific context to dialogue as equals. The first step is for a person experiencing conflict to contact a facilitator. The facilitator then holds a Pre-Circle with that person to identify the act in question and to understand how the person feels about it now. The facilitator then makes sure that the person understands the Circle process and asks if he or she wants to go ahead. If yes, the facilitator asks who else needs to be present in the Circle. He or she then proceeds to have Pre-Circles with all of the other parties, and invites them to describe the conflict and how it impacted them, and asks them who they think should participate in the Circle. Finally, the facilitator invites everybody to the Restorative Circle, where they get the chance to share how they feel about the conflict. From here, the focus of the dialogue shifts to understanding the underlying causes of people’s actions. The Circle ends when the participants reach a practical, time-framed action plan which they believe will start to restore trust and meet the needs of everybody involved.
 
 A Post-Circle is scheduled after the action plan’s completion date, and the parties get a chance to discuss how these actions impacted their wellbeing. If needs have been met they can be celebrated and if there are still unmet needs, new actions can be agreed upon. Dominic describes the intended outcome of the Circle as each participant being more willing to co-exist with the others than before they entered the Circle.
 

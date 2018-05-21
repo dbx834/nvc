@@ -53,7 +53,7 @@ const pageStyle = css({
 
     "& article": {
       flex: "0 0 30%",
-      margin: "20px 1%",
+      margin: "5px 1%",
       transition: "box-shadow 0.1s ease-in-out, border 0.5s ease-in-out",
       borderRadius: 6,
       border: "1px solid rgba(74, 74, 74, 0.25)",
@@ -305,14 +305,12 @@ class BlogListing extends React.Component {
                       <Link to={route}>
                         <h3>{title}</h3>
                         <hr />
-                        <Paragraph style={{ marginBottom: 20 }}>
-                          <small>
+                        <Paragraph style={{ marginBottom: 2 }}>
+                          <small style={{ marginBottom: 10, display: "block" }}>
                             <i>
                               {dateStr}&nbsp;({when})
                             </i>
                           </small>
-                          <br />
-                          <br />
                           {abstract}
                         </Paragraph>
                       </Link>

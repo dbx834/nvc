@@ -120,39 +120,37 @@ const sliderData = [
 
 const learnMoreData = [
   {
-    linkTo: "/writings/decathalon-work",
-    title: "Decathalon Work",
+    linkTo: "/writings/nonviolent-communication-and-restorative-circles",
+    title: "Nonviolent Communication & Restorative Circles",
     image:
-      "https://images.unsplash.com/photo-1448743133657-f67644da3008?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=405241651e3c3b181a41f515c2b34799&auto=format&fit=crop&w=1440&w=900&q=80",
+      "/content-assets/covers/nonviolent-communication-and-restorative-circles.jpg",
   },
   {
-    linkTo: "/writings/celebrations-and-gratitude",
-    title: "Celebrations & Gratitude",
-    image: "/content-assets/covers/celebrations-and-gratitude.jpg",
+    linkTo: "/writings/embracing-interdependence-with-nonviolent-communication",
+    title: "Embracing Interdependence with Nonviolent Communication",
+    image:
+      "/content-assets/covers/embracing-interdependence-with-nonviolent-communication.jpg",
   },
   {
-    linkTo: "/writings/justice-and-punishment",
-    title: "Justince & Punishment",
-    image:
-      "https://images.unsplash.com/photo-1507184915978-447ac6ab3ecb?ixlib=rb-0.3.5&s=e1f0e60b77167b3ab7383ad81e2e3435&auto=format&fit=crop&w=1440&h=900",
+    linkTo: "/writings/our-justice-system",
+    title: "Our Justice System",
+    image: "/content-assets/covers/our-justice-system.jpg",
   },
   {
-    linkTo: "/writings/what-does-nvc-mean-to-you",
-    title: "What does NVC mean to you?",
-    image:
-      "https://images.unsplash.com/photo-1518983498539-c6e66c62f6b3?ixlib=rb-0.3.5&s=580f065422952f086541ba61e8ae5304&auto=format&fit=crop&w=1440&h=900",
+    linkTo: "/writings/cross-cultural-dialogue",
+    title: "Cross-Cultural Dialogue",
+    image: "/content-assets/covers/cross-cultural-dialogue.jpg",
   },
   {
-    linkTo: "/writings/justice-and-punishment",
-    title: "Justince & Punishment",
+    linkTo: "/writings/passivity-on-the-plane",
+    title: "Passivity on the Plane",
     image:
-      "https://images.unsplash.com/photo-1507184915978-447ac6ab3ecb?ixlib=rb-0.3.5&s=e1f0e60b77167b3ab7383ad81e2e3435&auto=format&fit=crop&w=1440&h=900",
+      "https://images.unsplash.com/photo-1453825517242-1a1527bf0a39?ixlib=rb-0.3.5&s=c97b93f170796ae2e043e971633901f1&auto=format&fit=crop&w=1440&h=900",
   },
   {
-    linkTo: "/writings/what-does-nvc-mean-to-you",
-    title: "What does NVC mean to you?",
-    image:
-      "https://images.unsplash.com/photo-1518983498539-c6e66c62f6b3?ixlib=rb-0.3.5&s=580f065422952f086541ba61e8ae5304&auto=format&fit=crop&w=1440&h=900",
+    linkTo: "/writings/ego",
+    title: "ego",
+    image: "/content-assets/covers/ego.jpg",
   },
 ];
 

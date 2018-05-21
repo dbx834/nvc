@@ -2,7 +2,7 @@
 title: ego
 cover: /content-assets/covers/ego.jpg
 category: 6.Journal
-abstract: lately, nvc participants have been asking about ego – ya, but aren’t we just giving the ego some gratification when we talk about our/someone else’s feelings and needs…? what do we do when we can see that it’s an ego need, and maybe not what the person really needs…?
+abstract: lately, nvc participants have been asking about ego – ya, but aren’t we just giving the ego some gratification when we talk about our/someone else’s feelings and needs…?
 date: 2012-08-05
 type: post
 tags:

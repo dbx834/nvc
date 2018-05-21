@@ -13,6 +13,7 @@ import isUndefined from "lodash/isUndefined";
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
 import ContainerDimensions from "react-container-dimensions";
+import ReactPlayer from "react-player";
 import { Page } from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
@@ -160,6 +161,11 @@ const pageWrapper = css({
 });
 const pageStyleClass = pageWrapper.toString();
 
+const video = css({
+  marginBottom: 20,
+});
+const videoClass = video.toString();
+
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
@@ -210,7 +216,7 @@ class NVCPage extends React.PureComponent {
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      marginBottom: 30,
+                      marginBottom: 50,
                     }}
                     key={`bit-${index}`}
                   >
@@ -259,7 +265,7 @@ class NVCPage extends React.PureComponent {
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
               <h3 className="mask-p" style={{ marginBottom: 10 }}>
-                No Title
+                Surya Shares Her Experience…
               </h3>
               <div
                 style={{
@@ -270,7 +276,7 @@ class NVCPage extends React.PureComponent {
                 <ContainerDimensions>
                   {({ width }) => {
                     const playerWidth = width;
-                    const playerHeight = width * 0.625;
+                    const playerHeight = width * 0.62;
                     return (
                       <div
                         style={{
@@ -278,17 +284,11 @@ class NVCPage extends React.PureComponent {
                           height: playerHeight,
                         }}
                       >
-                        <Image
-                          src={""}
-                          rawWidth={1440}
-                          rawHeight={900}
-                          style={{
-                            width: "inherit",
-                            height: "inherit",
-                            border: 0,
-                            background: "blue",
-                            display: "block",
-                          }}
+                        <ReactPlayer
+                          url="https://www.youtube.com/watch?v=uIyY6TDbnSQ"
+                          className={videoClass}
+                          width="inherit"
+                          height="inherit"
                         />
                       </div>
                     );
@@ -306,30 +306,6 @@ class NVCPage extends React.PureComponent {
                   More Videos ⋗
                 </OutLink>
               </div>
-
-              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
-              <hr />
-              <h3 className="mask-p">A Participant Shares...</h3>
-              <p
-                style={{
-                  fontFamily: "futura-pt, sans-serif",
-                  fontWeight: 200,
-                  marginBottom: 30,
-                }}
-              >
-                <span style={{ fontSize: "125%" }}>
-                  <i>
-                    "The training was very insightful. It helped us to bond as a
-                    group, to understand the issues we face working as a team,
-                    and how we can use NVC to resolve our issues. L'aura has a
-                    way of creating an environment where we feel very
-                    comfortable to share, to look within ourselves and
-                    participate from the heart.
-                  </i>
-                  <br />
-                  ~ <strong>Kesang, 2010</strong>
-                </span>
-              </p>
 
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
@@ -366,6 +342,30 @@ class NVCPage extends React.PureComponent {
                   More Celebrations & Gratitude ⋗
                 </Link>
               </div>
+
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+              <hr />
+              <h3 className="mask-p">A Participant Shares...</h3>
+              <p
+                style={{
+                  fontFamily: "futura-pt, sans-serif",
+                  fontWeight: 200,
+                  marginBottom: 30,
+                }}
+              >
+                <span style={{ fontSize: "125%" }}>
+                  <i>
+                    "The training was very insightful. It helped us to bond as a
+                    group, to understand the issues we face working as a team,
+                    and how we can use NVC to resolve our issues. L'aura has a
+                    way of creating an environment where we feel very
+                    comfortable to share, to look within ourselves and
+                    participate from the heart.
+                  </i>
+                  <br />
+                  ~ <strong>Kesang, 2010</strong>
+                </span>
+              </p>
             </div>
           </div>
         </Page>

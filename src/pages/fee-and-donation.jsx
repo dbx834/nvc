@@ -74,6 +74,12 @@ const {
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageWrapper = css({
+  "& hr": {
+    border: "none",
+    borderTop: "3px solid #B43808",
+    marginBottom: 20,
+  },
+
   "& .constrain": {
     "@media(min-width: 768px)": {
       ...applyRhythm({ maxWidth: "27X" }),
@@ -158,8 +164,8 @@ class IndexPage extends React.Component {
           <div className="constrain">
             <H1>Fee Payment</H1>
             <Paragraph>
-              You may pay your fees here, or directly on the page on the event
-              you’re registering for.
+              You may pay your fees here, or directly on the event page you’re
+              registering for.
               <br />
               <br />
               Select the Domestic option for Indian bank/credit cards, or the
@@ -223,6 +229,7 @@ class IndexPage extends React.Component {
                 />
               </form>
             </div>
+            <hr />
             <H1>Donation</H1>
             <Paragraph>
               If you’d like to make a donation to Joy Living Learning, you may

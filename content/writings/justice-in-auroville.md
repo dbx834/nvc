@@ -1,13 +1,15 @@
 ---
-title: Justice in Auroville (published on Auronet)
-cover: https://images.unsplash.com/photo-1507184915978-447ac6ab3ecb?ixlib=rb-0.3.5&s=e1f0e60b77167b3ab7383ad81e2e3435&auto=format&fit=crop&w=1440&h=900
+title: Justice in Auroville
+cover: /content-assets/covers/justice-in-auroville.jpg
 category: 2.RC
-abstract: In dealing with the criminal, the most advanced societies are no longer altogether satisfied with regarding him as a law-breaker to be punished, imprisoned, terrified, hanged or else tortured physically and morally, whether as a revenge for his revolt or as an example to others; there is a growing attempt to understand him, to make allowance for his heredity, environment and inner deficiencies and to change him from within rather than crush him from without.
+abstract: “In dealing with the criminal, the most advanced societies are no longer altogether satisfied with regarding him as a law-breaker to be punished […].”
 date: 2015-10-23
 type: post
 tags:
   - some tag
 ---
+
+Published on Auronet.
 
 In response to Aryadeep…
 
@@ -21,7 +23,7 @@ I also really appreciate that you’ve added these quotes from The Mother and Sr
 
 I must admit that I have not read or studied Mother’s and Sri Aurobindo’s work in any depth – although I also don’t think that my being born in AV and having lived here most of my life doesn’t count for nothing :-). I personally don’t see any contradiction between what I read here in your quotes and my understanding of RC.
 
-> _"In dealing with the criminal, the most advanced societies are no longer altogether satisfied with regarding him as a law-breaker to be punished, imprisoned, terrified, hanged or else tortured physically and morally, whether as a revenge for his revolt or as an example to others; there is a growing attempt to understand him, to make allowance for his heredity, environment and inner deficiencies and to change him from within rather than crush him from without."_ (The Human Cycle - Chapter V, True and False Subjectivism)
+> _"In dealing with the criminal, the most advanced societies are no longer altogether satisfied with regarding him as a law-breaker to be punished, imprisoned, terrified, hanged or else tortured physically and morally, whether as a revenge for his revolt or as an example to others; there is a growing attempt to understand him, to make allowance for his heredity, environment and inner deficiencies and to change him from within rather than crush him from without."_ (Sri Aurobindo, The Human Cycle, Chapter V, True and False Subjectivism)
 
 Exactly!  In my understanding and experience, this is what RC is aiming at…
 

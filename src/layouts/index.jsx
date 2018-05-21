@@ -10,7 +10,6 @@ import moment from "moment";
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
 import merge from "lodash/merge";
 import isUndefined from "lodash/isUndefined";
-import startsWith from "lodash/startsWith";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import { Type, applyRhythm } from "@bodhi-project/typography";
@@ -20,7 +19,6 @@ import {
   WebsiteSchema,
   OrganisationSchema,
 } from "@bodhi-project/seo";
-import { CSSTransitionGroup } from "react-transition-group";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
 import Container from "@bodhi-project/components/lib/Container";
@@ -103,29 +101,13 @@ const wrapperStyles = css({
     ...applyRhythm({ padding: "1X 1X 4.8X 1X" }),
   ),
 
-  "& #modalWrapper": {
-    display: "block",
-    background: "rgba(0, 0, 0, .65)",
-
-    "& .modalContentWrapper": {
-      boxShadow: "0 0 25px rgba(0,0,0,.11)",
-      maxHeight: "100vh",
-      overflowX: "hidden",
-      overflowY: "scroll",
-    },
-
-    "& #modalContent": {
-      backgroundColor: "#f8f2e6",
-      marginTop: 20,
-      ...applyRhythm({ padding: "2X 0.5X" }),
-    },
-  },
-
   "& #appWrapper": {
     display: "block",
     backgroundImage: "linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)",
 
-    "& .appContentWrapper": {
+    "& #contentWrapper": {
+      backgroundColor: "#f8f2e6",
+      background: "#f8f2e6",
       minHeight: "100vh",
     },
 
@@ -138,35 +120,20 @@ const wrapperStyles = css({
         height: "100vh",
       },
 
-      "& .appContentWrapper": {
-        backgroundColor: "#f8f2e6",
+      "& #contentWrapper": {
         boxShadow: "0 0 25px rgba(0,0,0,.11)",
         flexGrow: "81",
         flexBasis: 0,
         maxHeight: "100vh",
         overflowX: "hidden",
         overflowY: "scroll",
-        borderTopLeftRadius: 16,
         marginTop: 16,
+        borderTopLeftRadius: 16,
       },
     },
   },
 });
 const wrapperStylesClass = wrapperStyles.toString();
-
-// ----------------------------------------------------------------------------
-// ------------------------------------------------------------------ Functions
-// ----------------------------------------------------------------------------
-/** parseQueryString */
-const parseQueryString = string => {
-  const objURL = {};
-
-  string.replace(new RegExp("([^?=&]+)(=([^&]*))?", "g"), ($0, $1, $2, $3) => {
-    objURL[$1] = $3;
-  });
-
-  return objURL;
-};
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
@@ -194,59 +161,40 @@ class TemplateWrapper extends React.Component {
   /** on mount */
   componentDidUpdate() {
     if (!isUndefined(window)) {
-      const element = document.getElementById("scrollAnchor");
+      const element = document.getElementById("contentWrapper");
       element.scrollTop = 0;
     }
   }
 
   /** standard renderer */
   render() {
-    const urlQuery = parseQueryString(this.props.location.search);
-    const inModal = startsWith(this.props.location.pathname, "/writings/");
-    console.log(inModal);
-
     return (
       <Type
         kit="dkc2ilk"
         style={{ minHeight: "100vh" }}
         className={wrapperStylesClass}
-        options={{ range: !inModal ? [12, 21] : [21, 21] }}
+        options={{ range: [12, 21] }}
       >
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
         <InitializeMeta data={{ titleTemplate: "%s | Joy Living Learning" }} />
         <UpdateTitle title="Loading..." />
         <WebsiteSchema data={websiteSchemaData} />
         <OrganisationSchema data={organisationSchemaData} />
+        <div id="appWrapper">
+          <div id="menuWrapper">
+            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Header */}
+            <Header {...this.props} />
+          </div>
+          <div id="contentWrapper">
+            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
+            <Container noFade block id="content">
+              {this.props.children()}
+            </Container>
 
-        {inModal ? (
-          <div id="modalWrapper">
-            <CSSTransitionGroup
-              transitionName="example"
-              transitionAppear={true}
-              transitionAppearTimeout={500}
-              transitionEnter={false}
-              transitionLeave={false}
-            >
-              <div id="scrollAnchor" className="modalContentWrapper">
-                <Container block goldenMajor id="modalContent">
-                  {this.props.children()}
-                </Container>
-              </div>
-            </CSSTransitionGroup>
+            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Footer */}
+            <Footer />
           </div>
-        ) : (
-          <div id="appWrapper">
-            <div id="menuWrapper">
-              <Header {...this.props} />
-            </div>
-            <div id="scrollAnchor" className="appContentWrapper">
-              <Container bleed block id="content">
-                {this.props.children()}
-              </Container>
-              <Footer />
-            </div>
-          </div>
-        )}
+        </div>
       </Type>
     );
   }

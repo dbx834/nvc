@@ -209,6 +209,31 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               context,
             });
           } else if (_.startsWith(trimmedRoute, "writings")) {
+            const onlyBlogPosts = [];
+            _.map(edges, ({ node }) => {
+              if (
+                _.startsWith(_.trim(node.fields.route), "writings") === true
+              ) {
+                onlyBlogPosts.push({ node });
+              }
+            });
+
+            onlyBlogPosts.sort((a, b) => {
+              const aNode = a.node.frontmatter;
+              const bNode = b.node.frontmatter;
+              const A = !_.isNull(aNode.startDate)
+                ? aNode.startDate
+                : aNode.date;
+              const B = !_.isNull(bNode.startDate)
+                ? bNode.startDate
+                : bNode.date;
+              const dateA = new Date(A);
+              const dateB = new Date(B);
+              return dateA - dateB;
+            });
+
+            context.otherPosts = onlyBlogPosts;
+
             createPage({
               path: pathX,
               component: post,

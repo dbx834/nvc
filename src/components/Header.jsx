@@ -63,7 +63,7 @@ const menu = [
   {
     title: "More",
     menu: [
-      { title: "Blog", link: "/writings?filter=all" },
+      { title: "Blog", link: "/writings" },
       { title: "Gallery", link: "/gallery" },
       { title: "Newsletter", link: "/newsletter", renderInModal: true },
       { title: "Fee & Donation", link: "/fee-and-donation" },

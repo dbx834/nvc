@@ -39,6 +39,7 @@ import {
   BreadcrumbSchema,
   BlogPostSchema,
 } from "@bodhi-project/seo";
+import { CSSTransitionGroup } from "react-transition-group";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Tag from "antd/lib/tag";
@@ -52,6 +53,8 @@ import Container from "@bodhi-project/components/lib/Container";
 import seoHelper from "../helpers/seoHelper";
 import packageJson from "../../package.json";
 import markdownStylesClass from "../styles/markdownStyles";
+
+import BlogListing from "../components/BlogListing";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -75,45 +78,6 @@ const pageStyle = css({
     marginBottom: 20,
   },
 
-  "& .kale": {
-    "@media(max-width: 768px)": {
-      display: "block",
-    },
-
-    display: "flex",
-
-    "& > div": {
-      padding: "0em 1.25em",
-
-      "&:nth-child(1)": {
-        flexBasis: 0,
-        flexGrow: 62,
-
-        "& .hope": {
-          display: "flex",
-
-          "& > div": {
-            "&:nth-child(1)": {
-              flexBasis: 0,
-              flexGrow: 50,
-              paddingRight: "1.25em",
-            },
-
-            "&:nth-child(2)": {
-              flexBasis: 0,
-              flexGrow: 50,
-            },
-          },
-        },
-      },
-
-      "&:nth-child(2)": {
-        flexBasis: 0,
-        flexGrow: 38,
-      },
-    },
-  },
-
   "& .headings": {
     display: "flex",
     flexFlow: "row wrap",
@@ -132,6 +96,29 @@ const pageStyle = css({
         marginTop: 0,
         marginBottom: 5,
       },
+    },
+  },
+
+  "& #modal-mask": {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    background: "rgba(0, 0, 0, .65)",
+    zIndex: 100,
+    minHeight: "100vh",
+    minWidth: "100vw",
+
+    "& .modalContentWrapper": {
+      boxShadow: "0 0 25px rgba(0,0,0,.11)",
+      maxHeight: "100vh",
+      overflowX: "hidden",
+      overflowY: "scroll",
+    },
+
+    "& #modalContent": {
+      backgroundColor: "#f8f2e6",
+      marginTop: 20,
+      ...applyRhythm({ padding: "2X 0.5X" }),
     },
   },
 });
@@ -153,7 +140,7 @@ class BlogPostTemplate extends React.Component {
     const { pathContext } = this.props;
     const { frontmatter } = pathContext;
     // const { toc } = pathContext;
-    const { markdownAst, next, prev } = pathContext;
+    const { markdownAst, next, prev, otherPosts } = pathContext;
     const { route, humanDate, elapsed } = pathContext;
     const checkedRoute = startsWith(route, "/") ? route : `/${route}`;
     const nakedRoute = checkedRoute.substr(1);
@@ -204,7 +191,7 @@ class BlogPostTemplate extends React.Component {
     };
 
     return (
-      <Fragment>
+      <div className={pageStyleClass}>
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
         <UpdateTitle title={pageTitle} />
         <GeneralMeta data={generalMetaData} />
@@ -215,95 +202,117 @@ class BlogPostTemplate extends React.Component {
         <BlogPostSchema data={blogPageSchemaData} />
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
-        <Page className={`${markdownStylesClass} ${pageStyleClass}`}>
-          <Header className="headings">
-            <div className="banner">
-              <Image
-                src={frontmatter.cover}
-                rawWidth={1440}
-                rawHeight={900}
-                loader="gradient"
-                style={{ border: 0, height: "auto !important" }}
-              />
+        <div>
+          <BlogListing nodes={otherPosts} {...this.props} />
+        </div>
+        <div id="modal-mask">
+          <CSSTransitionGroup
+            transitionName="example"
+            transitionAppear={true}
+            transitionAppearTimeout={300}
+            transitionEnter={false}
+            transitionLeave={false}
+          >
+            <div className="modalContentWrapper">
+              <Container block goldenMajor id="modalContent">
+                <Page>
+                  <Header className="headings">
+                    <div className="banner">
+                      <Image
+                        src={frontmatter.cover}
+                        rawWidth={1440}
+                        rawHeight={900}
+                        loader="gradient"
+                        style={{ border: 0, height: "auto !important" }}
+                      />
+                    </div>
+                    <div className="abstract">
+                      <H1 className="mask-h3" style={{ marginBottom: 5 }}>
+                        {frontmatter.title}
+                      </H1>
+                      <Tag>{catString}</Tag>
+                      <Paragraph style={{ marginBottom: 0 }}>
+                        <small>
+                          <i>
+                            {dateStr}&nbsp;({when})
+                          </i>
+                        </small>
+                        <br />
+                        <br />
+                        {frontmatter.abstract}
+                      </Paragraph>
+                      <br />
+                      <div style={{ position: "relative" }}>
+                        <div
+                          style={{
+                            position: "absolute",
+                            top: 0,
+                            left: 99,
+                            backgroundColor: "#f8f2e6",
+                            zIndex: 10,
+                            height: 20,
+                            width: "calc(100% - 98px)",
+                          }}
+                        />
+                        <div style={{ maxWidth: 98 }}>
+                          <FacebookProvider appId="218604115574634">
+                            <FBLike
+                              href={`http://localhost:8000/${route}`}
+                              colorScheme="dark"
+                              showFaces
+                              share
+                            />
+                          </FacebookProvider>
+                        </div>
+                      </div>
+                    </div>
+                  </Header>
+                  <hr />
+                  <br />
+                  <Article className={markdownStylesClass}>
+                    {treeCodeParser(
+                      markdownAst,
+                      {
+                        localLink: Link,
+                        linkHeaders: false,
+                        trackHeaders: false,
+                        nestHeaders: false,
+                      },
+                      {},
+                    )}
+                  </Article>
+                  <Footer>
+                    <H1 mask="h4">More like this…</H1>
+                    <div
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <div>
+                        {!isNull(prev) && (
+                          <Link to={`/${prev.fields.route}`}>⇜ Previous</Link>
+                        )}
+                      </div>
+                      <div>
+                        {!isNull(next) && (
+                          <Link to={`/${next.fields.route}`}>Next ⇝</Link>
+                        )}
+                      </div>
+                    </div>
+                    <Paragraph className="stash">
+                      {data.copyright}
+                      <br />
+                      <br />
+                      Published on {humanDate} ({elapsed}).
+                    </Paragraph>
+                  </Footer>
+                </Page>
+              </Container>
             </div>
-            <div className="abstract">
-              <H1 className="mask-h3" style={{ marginBottom: 5 }}>
-                {frontmatter.title}
-              </H1>
-              <Tag>{catString}</Tag>
-              <Paragraph style={{ marginBottom: 0 }}>
-                <small>
-                  <i>
-                    {dateStr}&nbsp;({when})
-                  </i>
-                </small>
-                <br />
-                <br />
-                {frontmatter.abstract}
-              </Paragraph>
-              <br />
-              <div style={{ position: "relative" }}>
-                <div
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 99,
-                    backgroundColor: "#f8f2e6",
-                    zIndex: 10,
-                    height: 20,
-                    width: "calc(100% - 98px)",
-                  }}
-                />
-                <div style={{ maxWidth: 98 }}>
-                  <FacebookProvider appId="218604115574634">
-                    <FBLike
-                      href={`http://localhost:8000/${route}`}
-                      colorScheme="dark"
-                      showFaces
-                      share
-                    />
-                  </FacebookProvider>
-                </div>
-              </div>
-            </div>
-          </Header>
-          <hr />
-          <br />
-          <Article>
-            {treeCodeParser(
-              markdownAst,
-              {
-                localLink: Link,
-                linkHeaders: false,
-                trackHeaders: false,
-                nestHeaders: false,
-              },
-              {},
-            )}
-          </Article>
-          <Footer>
-            <H1 mask="h4">More like this…</H1>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
-              <div>
-                {!isNull(prev) && (
-                  <Link to={`/${prev.fields.route}`}>⇜ Previous</Link>
-                )}
-              </div>
-              <div>
-                {!isNull(next) && (
-                  <Link to={`/${next.fields.route}`}>Next ⇝</Link>
-                )}
-              </div>
-            </div>
-            <Paragraph className="stash">
-              {data.copyright}
-              <br />
-              <br />
-              Published on {humanDate} ({elapsed}).
-            </Paragraph>
-          </Footer>
-        </Page>
-      </Fragment>
+          </CSSTransitionGroup>
+        </div>
+      </div>
     );
   }
 }

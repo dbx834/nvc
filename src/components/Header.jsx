@@ -79,7 +79,7 @@ const menu = [
         menu: [
           {
             title: "Restorative Auroville",
-            link: "https://restorativeauroville.org/",
+            link: "https://www.restorativeauroville.org/",
           },
           {
             title: "India NVC",

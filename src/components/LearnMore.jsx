@@ -95,8 +95,10 @@ class LearnMore extends React.Component {
     const { data } = this.props;
 
     return (
-      <Fragment>
-        <h3>Further Links…</h3>
+      <div>
+        <h3 className="mask-p" style={{ marginBottom: 20 }}>
+          Further Links…
+        </h3>
         <TetraGrid>
           {map(data, ({ linkTo, title, image }, index) => {
             return (
@@ -121,7 +123,7 @@ class LearnMore extends React.Component {
             );
           })}
         </TetraGrid>
-      </Fragment>
+      </div>
     );
   }
 }

@@ -238,20 +238,6 @@ class NVCPage extends React.PureComponent {
                   marginBottom: 30,
                 }}
               />
-              <Calendar
-                data={rcNodes}
-                location={this.props.location}
-                givenTags={{
-                  all: "All NVC Events",
-                  workshop: "Workshops",
-                  "practice-group": "Practice Group",
-                  featured: "Featured Events",
-                }}
-                defaultSelected="all"
-                defaultView="list"
-                title="RC Events"
-                style={{ marginBottom: 40 }}
-              />
               <LearnMore data={learnMoreData} />
               <p>
                 <Link to="/blog">Read more…</Link>
@@ -377,13 +363,6 @@ class NVCPage extends React.PureComponent {
                   More Celebrations & Gratitude ⋗
                 </Link>
               </div>
-
-              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
-              <hr />
-              <h3 className="mask-p" style={{ marginBottom: 10 }}>
-                Upcoming Events…
-              </h3>
-              <EventsGrid data={rcNodes} totalEvents={4} featured={true} />
             </div>
           </div>
         </Page>

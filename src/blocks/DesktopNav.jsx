@@ -35,6 +35,7 @@ import globalWithMediaQueries from "../helpers/globalWithMediaQueries";
 
 import ContactForm from "../components/ContactForm";
 import NewsletterForm from "../components/NewsletterForm";
+import DonateBlock from "../components/DonateBlock";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -347,6 +348,7 @@ class DesktopNav extends React.Component {
           >
             {this.state.modalRoute === "/contact" && <ContactForm />}
             {this.state.modalRoute === "/newsletter" && <NewsletterForm />}
+            {this.state.modalRoute === "/fee-and-donation" && <DonateBlock />}
           </div>
         </Modal>
       </Container>

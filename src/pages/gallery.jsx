@@ -146,7 +146,7 @@ const photos = [
   { src: nvcX51, width: 600, height: 450 },
   { src: nvcX52, width: 600, height: 450 },
   { src: nvcX53, width: 600, height: 455 },
-  { src: nvcX54, width: 600, height: 1295 },
+  { src: nvcX54, width: 600, height: 497 },
   { src: nvcX55, width: 600, height: 899 },
 ];
 

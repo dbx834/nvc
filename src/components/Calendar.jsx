@@ -868,28 +868,6 @@ class CalendarX extends React.Component {
 
     return (
       <div className={pageStyleClass} style={{ ...this.props.style }}>
-        <h3 style={{ marginBottom: 20 }} className="view-filter">
-          <span style={{ marginRight: 10 }}>{this.props.title}</span>
-          {map(viewTags, (tag, key) => {
-            return (
-              <Fragment>
-                {activeView === key ? (
-                  <CheckableTag checked onClick={() => this.changeView(key)}>
-                    <Tooltip title={tag}>
-                      <Icon type={key === "list" ? "bars" : "calendar"} />
-                    </Tooltip>
-                  </CheckableTag>
-                ) : (
-                  <Tag onClick={() => this.changeView(key)}>
-                    <Tooltip title={tag}>
-                      <Icon type={key === "list" ? "bars" : "calendar"} />
-                    </Tooltip>
-                  </Tag>
-                )}
-              </Fragment>
-            );
-          })}
-        </h3>
         <div className="event-filter">
           {map(displayTagsAs, (tag, key) => {
             return (
@@ -916,15 +894,6 @@ class CalendarX extends React.Component {
                 validRange={[thisYear, nextYear]}
               />
             </LocaleProvider>
-          </Fragment>
-        )}
-        {activeView === "list" && (
-          <Fragment>
-            <Table
-              dataSource={filteredData}
-              columns={columns}
-              pagination={{ pageSize: 5, size: "small" }}
-            />
           </Fragment>
         )}
       </div>

@@ -38,7 +38,7 @@ const Block = props => (
   <div>
     <hr />
     <h3 className="mask-p" style={{ marginBottom: 10 }}>
-      Some inspiration…
+      Some Inspiration…
     </h3>
     <div
       style={{

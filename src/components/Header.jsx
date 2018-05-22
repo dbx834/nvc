@@ -66,7 +66,11 @@ const menu = [
       { title: "Blog", link: "/writings" },
       { title: "Gallery", link: "/gallery" },
       { title: "Newsletter", link: "/newsletter", renderInModal: true },
-      { title: "Fee & Donation", link: "/fee-and-donation" },
+      {
+        title: "Fee & Donation",
+        link: "/fee-and-donation",
+        renderInModal: true,
+      },
       { title: "Contact", link: "/contact", renderInModal: true },
       {
         title: "Further Links",

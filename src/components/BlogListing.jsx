@@ -217,64 +217,66 @@ class BlogListing extends React.Component {
       <Fragment>
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <div className={pageStyleClass}>
-          {filter === "all" ? (
-            <CheckableTag
-              checked
-              onClick={() => this.applyFilter("all")}
-              style={{ marginBottom: 10 }}
-            >
-              All posts
-            </CheckableTag>
-          ) : (
-            <Tag
-              onClick={() => this.applyFilter("all")}
-              style={{ marginBottom: 10 }}
-            >
-              All posts
-            </Tag>
-          )}
-          {map(sortedCategories, category => {
-            let displayAs = trim(last(split(category, ".")));
-            const tagKey = kebabCase(toLower(displayAs));
+          <div style={{ padding: "0em 1em" }}>
+            {filter === "all" ? (
+              <CheckableTag
+                checked
+                onClick={() => this.applyFilter("all")}
+                style={{ marginBottom: 10 }}
+              >
+                All posts
+              </CheckableTag>
+            ) : (
+              <Tag
+                onClick={() => this.applyFilter("all")}
+                style={{ marginBottom: 10 }}
+              >
+                All posts
+              </Tag>
+            )}
+            {map(sortedCategories, category => {
+              let displayAs = trim(last(split(category, ".")));
+              const tagKey = kebabCase(toLower(displayAs));
 
-            switch (displayAs) {
-              case "NVC":
-                displayAs = "Nonviolent Communication";
-                break;
-              case "RC":
-                displayAs = "Restorative Circles";
-                break;
-              case "Journal":
-                displayAs = "Journal";
-                break;
-              case "Corporate":
-                displayAs = "Corporate";
-                break;
-              default:
-                break;
-            }
+              switch (displayAs) {
+                case "NVC":
+                  displayAs = "Nonviolent Communication";
+                  break;
+                case "RC":
+                  displayAs = "Restorative Circles";
+                  break;
+                case "Journal":
+                  displayAs = "Journal";
+                  break;
+                case "Corporate":
+                  displayAs = "Corporate";
+                  break;
+                default:
+                  break;
+              }
 
-            return (
-              <Fragment key={tagKey}>
-                {filter === tagKey ? (
-                  <CheckableTag
-                    checked
-                    onClick={() => this.applyFilter(tagKey)}
-                    style={{ marginBottom: 10 }}
-                  >
-                    {displayAs}
-                  </CheckableTag>
-                ) : (
-                  <Tag
-                    onClick={() => this.applyFilter(tagKey)}
-                    style={{ marginBottom: 10 }}
-                  >
-                    {displayAs}
-                  </Tag>
-                )}
-              </Fragment>
-            );
-          })}
+              return (
+                <Fragment key={tagKey}>
+                  {filter === tagKey ? (
+                    <CheckableTag
+                      checked
+                      onClick={() => this.applyFilter(tagKey)}
+                      style={{ marginBottom: 10 }}
+                    >
+                      {displayAs}
+                    </CheckableTag>
+                  ) : (
+                    <Tag
+                      onClick={() => this.applyFilter(tagKey)}
+                      style={{ marginBottom: 10 }}
+                    >
+                      {displayAs}
+                    </Tag>
+                  )}
+                </Fragment>
+              );
+            })}
+          </div>
 
           <div className="articles">
             {map(filteredData, ({ node }) => {

@@ -1,64 +1,58 @@
 {
-  "name": "@bodhi-project/web-template",
-  "description": "Gatsbyjs website template with advanced features.",
+  "name": "@dbx834/nvc",
+  "description":
+    "Nonviolent Communication & Restorative Circles in Auroville, India – We offer learning opportunities through workshops and practice groups on Nonviolent Communication and Restorative Circles.",
   "version": "1.0.1",
   "author": {
     "name": "Bodhi Project",
     "email": "hello@bodhiproject.org",
     "url": "https://www.bodhiproject.org/"
   },
-  "homepage": "https://launch-kit.bodhiproject.org/",
+  "homepage": "https://github.com/dbx834/nvc",
   "repository": {
     "type": "git",
     "url": "git@github.com:bodhi-project/launch-kit.git"
   },
   "keywords": [
-    "gatsby"
+    "Nonviolent Communication, Restorative Circles, Restorative Justice, Auroville, Nonviolence, Peace, Sociocracy, Internal Family System, IFS, Mediation, NVC, RC, NVC India, RC India, L'aura Joy"
   ],
   "data": {
-    "websiteName": "Launch Kit",
-    "websiteCreator": "Bodhi Project",
-    "websiteUrl": "https://reverent-allen-901c55.netlify.com/",
-    "nakedWebsiteUrl": "https://reverent-allen-901c55.netlify.com",
+    "websiteName": "Joy Living Learning",
+    "websiteCreator": "Joy Living Learning",
+    "websiteUrl": "https://joylivinglearning.org/",
+    "nakedWebsiteUrl": "https://joylivinglearning.org",
     "devUrl": "http://localhost:8000/",
     "nakedDevUrl": "http://localhost:8000",
-    "websiteKeywords": "GatsbyJS, React, Netlify",
-    "websiteDescription": "Launch Kit is an opionated GatsbyJS Starter kit.",
+    "websiteKeywords":
+      "Nonviolent Communication, Restorative Circles, Restorative Justice, Auroville, Nonviolence, Peace, Sociocracy, Internal Family System, IFS, Mediation, NVC, RC, NVC India, RC India, L'aura Joy",
+    "websiteDescription":
+      "Nonviolent Communication & Restorative Circles in Auroville, India – We offer learning opportunities through workshops and practice groups on Nonviolent Communication and Restorative Circles.",
     "rssUrl": "/rss.xml",
     "org": {
-      "name": "Bodhi Project",
-      "legalName": "Bodhi Project Inc.",
-      "url": "https://www.bodhiproject.org",
+      "name": "Joy Living Learning",
+      "legalName": "Auroville Foundation",
+      "url": "http://joylivinglearning.org",
       "logo": "/logo.png",
-      "foundingDate": "2017-01-01",
-      "founders": [
-        "Pranav Kumar",
-        "Brijesh Kumar",
-        "Mangal Varshney"
-      ]
+      "foundingDate": "2008-01-01",
+      "founders": ["L'aura Joy"]
     },
     "orgLocation": {
-      "streetAddress": "Street #123",
-      "addressLocality": "Kotagiri",
-      "addressRegion": "Tamil Nadu",
-      "postalCode": "643217",
+      "streetAddress": "House #1",
+      "addressLocality": "Center Field",
+      "addressRegion": "Auroville",
+      "postalCode": "605101",
       "addressCountry": "India",
-      "locationName": "Kotagiri",
-      "locationUrl": "https://en.wikipedia.org/wiki/Kotagiri"
+      "locationName": "Auroville",
+      "locationUrl": "https://en.wikipedia.org/wiki/Auroville"
     },
     "orgContact": {
-      "email": "hello@bodhiproject.org",
-      "telephone": [
-        "na"
-      ]
+      "email": "joylivinglearning@gmail.com",
+      "telephone": ["+914132622539"]
     },
-    "orgSocialMediaProfiles": [
-      "http://instagram.com/bodhisystems",
-      "https://twitter.com/_dmi_systems"
-    ],
+    "orgSocialMediaProfiles": ["http://www.facebook.com/JoyLivingLearning"],
     "pathPrefix": "/",
     "copyright": "Copyright © 2018 L’aura Joy & Joy Living Learning",
-    "googleAnalyticsID": "GA-ABC"
+    "googleAnalyticsID": "UA-109854711-7"
   },
   "license": "MIT",
   "main": "n/a",
@@ -140,8 +134,6 @@
     "write-good": "^0.11.3"
   },
   "remarkConfig": {
-    "plugins": [
-      "remark-preset-lint-recommended"
-    ]
+    "plugins": ["remark-preset-lint-recommended"]
   }
 }

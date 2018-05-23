@@ -25,7 +25,7 @@ import Container from "@bodhi-project/components/lib/Container";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import "../styles/index.less";
-import indexImage from "../assets/launch.jpg";
+import indexImage from "../assets/twitterSummaryX.jpg";
 import packageJson from "../../package.json";
 
 import Footer from "../components/Footer";

@@ -326,7 +326,15 @@ const parseQueryString = string => {
 
 /** popContent */
 const popContent = standardData => {
-  const { title, humanDate, fromTime, toTime, abstract, route } = standardData;
+  const {
+    title,
+    humanDate,
+    fromTime,
+    toTime,
+    abstract,
+    route,
+    tags,
+  } = standardData;
 
   return (
     <div style={{ maxWidth: 300, padding: "0.5em" }}>
@@ -362,16 +370,18 @@ const popContent = standardData => {
             {fromTime} - {toTime}
           </i>
         </small>
-        <span
-          style={{
-            display: "block",
-            fontSize: "80%",
-            marginTop: 10,
-          }}
-          className="abstract"
-        >
-          {abstract}
-        </span>
+        {!inArray(tags, "practice-group") && (
+          <span
+            style={{
+              display: "block",
+              fontSize: "80%",
+              marginTop: 10,
+            }}
+            className="abstract"
+          >
+            {abstract}
+          </span>
+        )}
         <small
           style={{
             display: "block",
@@ -472,47 +482,27 @@ const makeFrag = ({
         <Link to={`/${route}`}>
           {day}
           <br />
-          {inArray(tags, "nvc") &&
-            !inArray(tags, "featured") && (
-              <Image
-                src={nvc}
-                rawHeight={450}
-                rawWidth={450}
-                className="icon"
-                style={{
-                  height: 28,
-                  width: 28,
-                  position: "absolute",
-                  background: "transparent",
-                  border: 0,
-                  right: 31,
-                  top: 31,
-                  zIndex: 2,
-                }}
-              />
-            )}
-          {inArray(tags, "rc") &&
-            !inArray(tags, "featured") && (
-              <Image
-                src={rc}
-                rawHeight={450}
-                rawWidth={450}
-                className="icon"
-                style={{
-                  height: 28,
-                  width: 28,
-                  position: "absolute",
-                  background: "transparent",
-                  border: 0,
-                  right: 31,
-                  top: 31,
-                  zIndex: 2,
-                }}
-              />
-            )}
-          {inArray(tags, "featured") && (
+          {inArray(tags, "nvc") && (
             <Image
-              src={featured}
+              src={nvc}
+              rawHeight={450}
+              rawWidth={450}
+              className="icon"
+              style={{
+                height: 28,
+                width: 28,
+                position: "absolute",
+                background: "transparent",
+                border: 0,
+                right: 31,
+                top: 31,
+                zIndex: 2,
+              }}
+            />
+          )}
+          {inArray(tags, "rc") && (
+            <Image
+              src={rc}
               rawHeight={450}
               rawWidth={450}
               className="icon"

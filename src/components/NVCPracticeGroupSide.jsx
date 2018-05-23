@@ -192,7 +192,7 @@ class NVCPracticeGroupSide extends React.Component {
         {eventStatus === "future" && (
           <Fragment>
             <H1 mask="h4">
-              <span>Fees</span>
+              <span>Fee</span>
             </H1>
             <Paragraph style={{ marginBottom: 30 }}>
               <strong>

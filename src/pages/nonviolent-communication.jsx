@@ -240,9 +240,6 @@ class NVCPage extends React.PureComponent {
                 </OutLink>]
               </p>
               <LearnMore data={learnMoreData} />
-              <p>
-                <Link to="/blog">Read more…</Link>
-              </p>
             </div>
             <div>
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}

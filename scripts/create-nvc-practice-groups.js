@@ -59,7 +59,7 @@ const template = `
 ---
 title: NVC Practice Group
 subTitle: Every Wednesday
-cover: https://unsplash.it/400/300/?random?AngelsofMist
+cover: fallback
 category: 1.NVC
 abstract: Page abstract.
 date: %date%
@@ -80,7 +80,7 @@ This practice group is for those who already have some background in NVC. And we
 
 ![image](/content-assets/nvc-practice-group/nvc-practice-group-4_1105X500.jpg)
 
-If you don’t have any experience with NVC, please attend an [Introduction to NVC Workshop](/nonviolent-communication/events?filter=workshop) first.
+If you don’t have any experience with NVC, please attend an Introduction to NVC Workshop first.
 
 Register to confirm your attendance, and to receive additional details like venue, availability, etc.
 `;

@@ -47,6 +47,8 @@ const { Paragraph } = Elements;
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageStyle = css({
+  marginBottom: 60,
+
   "& .articles": {
     display: "flex",
     flexWrap: "wrap",

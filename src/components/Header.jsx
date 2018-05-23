@@ -58,7 +58,14 @@ const menu = [
   },
   {
     title: "Learn",
-    menu: [{ title: "Upcoming Events", link: "/upcoming-events?filter=all" }],
+    menu: [
+      { title: "Upcoming Events", link: "/upcoming-events?filter=all" },
+      {
+        title: "Pay Fee",
+        link: "/pay-fee",
+        renderInModal: true,
+      },
+    ],
   },
   {
     title: "More",
@@ -66,12 +73,12 @@ const menu = [
       { title: "Blog", link: "/writings" },
       { title: "Gallery", link: "/gallery" },
       { title: "Newsletter", link: "/newsletter", renderInModal: true },
+      { title: "Contact Us", link: "/contact-us", renderInModal: true },
       {
-        title: "Fee & Donation",
-        link: "/fee-and-donation",
+        title: "Donate",
+        link: "/donate",
         renderInModal: true,
       },
-      { title: "Contact", link: "/contact", renderInModal: true },
       {
         title: "Further Links",
         link: "/#",

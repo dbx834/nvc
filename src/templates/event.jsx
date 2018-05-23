@@ -188,6 +188,8 @@ class EventTemplate extends React.Component {
       eventBanner = withPrefix(cover);
     }
 
+    console.log(eventBanner);
+
     // -------------------------------------------------------------------- SEO
     const pageData = {
       pageTitle: frontmatter.title,

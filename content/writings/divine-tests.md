@@ -2,7 +2,7 @@
 title: divine tests
 cover: https://images.unsplash.com/photo-1519226146411-fcad2a627c32?ixlib=rb-0.3.5&s=7e12daabb5865c009402bee4c985cfad&auto=format&fit=crop&w=1440&h=900
 category: 6.Journal
-abstract: opened mother’s agenda, somehow trusting that no matter which page i landed upon, it’d be the right one… after a few entries, i get to this...
+abstract: i know i’m being tested all the time, that i’m given loads of opportunities every day to put my practice to the test, to really live the complexities of my values, sometimes seemingly paradoxical…
 date: 2012-08-10
 type: post
 tags:

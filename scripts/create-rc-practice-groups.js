@@ -59,7 +59,7 @@ const template = `
 ---
 title: RC Practice Group
 subTitle: Every Thursday
-cover: https://unsplash.it/400/300/?random?AngelsofMist
+cover: fallback
 category: 1.RC
 abstract: Page abstract.
 date: %date%
@@ -80,7 +80,7 @@ This is a drop-in practice group, so you may come sometimes or all the time! We 
 
 ![image](/content-assets/rc-practice-group/rc-practice-group-2_1600X900.jpg)
 
-You may also call-in online, via Zoom (online video conference).
+You may also call in online, via Zoom (online video conference).
 
 If it's your first time, please register to confirm your attendance, and to receive additional details like venue, Zoom ID, etc.
 `;

@@ -2,7 +2,7 @@
 title: Cross-Cultural Dialogue
 cover: /content-assets/covers/cross-cultural-dialogue.jpg
 category: 2.RC
-abstract: We want to explore and understand this question; Are we divided in Auroville, as local Tamil Aurovilians and non-local Aurovilians?
+abstract: "We want to explore and understand this question: Are we divided in Auroville, as local Tamil Aurovilians and non-local Aurovilians?"
 date: 2016-09-16
 type: post
 tags:

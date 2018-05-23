@@ -4,9 +4,9 @@ subTitle: na
 cover: fallback
 category: 3.Featured
 abstract: Restorative Circles (RC) offer ways for individuals and communities to establish connection, discover meaning and recover power on profound levels. They create forums for reaching agreements that help sustain effective and nurturing relationships both personally and collectively.
-date: 2018-05-11
-startDate: 2018-05-11
-finishDate: 2018-05-12
+date: 2018-07-06
+startDate: 2018-07-06
+finishDate: 2018-07-07
 fromTime: 9am
 toTime: 5pm
 type: event

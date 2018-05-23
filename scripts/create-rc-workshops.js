@@ -59,7 +59,7 @@ const template = `
 ---
 title: RC Workshop
 subTitle: na
-cover: https://unsplash.it/400/300/?random?AngelsofMist
+cover: fallback
 category: 1.RC
 abstract: Page abstract.
 date: %date%

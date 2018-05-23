@@ -116,16 +116,12 @@ class EventsGrid extends React.Component {
       const belowMax = totalEvents >= filteredRecords;
       const isFeatured = featured === true ? inArray(tags, "featured") : true;
 
-      console.log(mDate, tags, inTheFuture);
-
       if (inTheFuture && belowMax && isFeatured) {
         includeThis = true;
         filteredRecords += 1;
       }
       return includeThis;
     });
-
-    console.log(filtered);
 
     return (
       <div className={componentStyleClass}>

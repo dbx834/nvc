@@ -77,10 +77,10 @@
   },
   "dependencies": {
     "@bodhi-project/components": "0.0.77",
-    "@bodhi-project/markdown-to-react": "0.0.48",
+    "@bodhi-project/markdown-to-react": "0.0.52",
     "@bodhi-project/semantic-webflow": "0.0.11",
     "@bodhi-project/seo": "0.0.5",
-    "@bodhi-project/typography": "0.0.42",
+    "@bodhi-project/typography": "0.0.44",
     "antd": "^3.5.1",
     "babel-plugin-lodash": "^3.3.2",
     "form-serialize": "^0.7.2",

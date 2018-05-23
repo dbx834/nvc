@@ -36,6 +36,7 @@ import globalWithMediaQueries from "../helpers/globalWithMediaQueries";
 import ContactForm from "../components/ContactForm";
 import NewsletterForm from "../components/NewsletterForm";
 import DonateBlock from "../components/DonateBlock";
+import PayFeeBlock from "../components/PayFeeBlock";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -100,6 +101,11 @@ const desktopNavStyle = css({
   },
 });
 const desktopNavStyleClass = desktopNavStyle.toString();
+
+const modalStyle = css({
+  ...applyType("dkc2ilk"),
+});
+const modalStyles = modalStyle.toString();
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
@@ -345,10 +351,12 @@ class DesktopNav extends React.Component {
               padding: "1em",
               backgroundColor: "#f8f2e6",
             }}
+            className={modalStyles}
           >
-            {this.state.modalRoute === "/contact" && <ContactForm />}
+            {this.state.modalRoute === "/contact-us" && <ContactForm />}
             {this.state.modalRoute === "/newsletter" && <NewsletterForm />}
-            {this.state.modalRoute === "/fee-and-donation" && <DonateBlock />}
+            {this.state.modalRoute === "/pay-fee" && <PayFeeBlock />}
+            {this.state.modalRoute === "/donate" && <DonateBlock />}
           </div>
         </Modal>
       </Container>

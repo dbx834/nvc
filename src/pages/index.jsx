@@ -598,7 +598,6 @@ class IndexPage extends React.Component {
                   all: "All Events",
                   nvc: "NVC Events",
                   rc: "RC Events",
-                  featured: "Featured Events",
                 }}
               />
 

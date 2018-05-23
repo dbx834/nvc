@@ -192,7 +192,7 @@ class NVCPracticeGroupSide extends React.Component {
         {eventStatus === "future" && (
           <Fragment>
             <H1 mask="h4">
-              <span>Fees</span>
+              <span>Fee</span>
             </H1>
             <Paragraph style={{ marginBottom: 30 }}>
               <strong>
@@ -333,7 +333,7 @@ class NVCPracticeGroupSide extends React.Component {
                     rules: [{ validator: validateWhatDrawsYou }],
                   })(
                     <TextArea
-                      placeholder="What draws you to this practice group?"
+                      placeholder="What draws you to this workshop?"
                       autosize={{ minRows: 4, maxRows: 6 }}
                     />,
                   )}

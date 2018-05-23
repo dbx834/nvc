@@ -204,8 +204,8 @@ class RCPracticeGroupSide extends React.Component {
               <span>Donate</span>
             </H1>
             <Paragraph style={{ marginBottom: 30 }}>
-              There is no required fee, although you may make a donation if
-              you’d like.
+              There is no required fee, although we'd appreciate any donation
+              you'd like to make.
               <br />
               <br />
               Select the Domestic option for Indian bank/credit cards, or the

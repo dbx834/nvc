@@ -72,8 +72,6 @@ const offeringsData = [
     title2: "Circle",
     lead:
       "Are you impacted by an issue that involves several people from different parts of your community or network? You could initiate a Restorative Circle, which is a process designed to hold space for conflict within the context of community.",
-    linkText: "Click for more information",
-    link: "/call-a-circle",
   },
 ];
 

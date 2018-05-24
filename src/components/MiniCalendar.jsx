@@ -70,7 +70,7 @@ const pageStyle = css({
   },
 
   "& .ant-fullcalendar-year-select": {
-    ...applyType("ltb1ekq"),
+    ...applyType("dkc2ilk"),
     "& .ant-select-selection": {
       fontSize: "80%",
       backgroundColor: "transparent",
@@ -79,7 +79,7 @@ const pageStyle = css({
   },
 
   "& .ant-fullcalendar-month-select": {
-    ...applyType("ltb1ekq"),
+    ...applyType("dkc2ilk"),
     "& .ant-select-selection": {
       fontSize: "80%",
       backgroundColor: "transparent",
@@ -88,7 +88,7 @@ const pageStyle = css({
   },
 
   "& .ant-fullcalendar": {
-    ...applyType("ltb1ekq"),
+    ...applyType("dkc2ilk"),
 
     "& .ant-fullcalendar-today": {
       "& div.date-block": {

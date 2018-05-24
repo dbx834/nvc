@@ -70,10 +70,10 @@ const formStyle = css({
           right: 0,
           marginTop: -16,
         },
-        ...applyType("ltb1ekq"),
+        ...applyType("dkc2ilk"),
       ),
     },
-    ...applyType("ltb1ekq"),
+    ...applyType("dkc2ilk"),
     ...applyRhythm({ marginBottom: "1X" }),
   ),
 

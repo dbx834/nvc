@@ -11,9 +11,10 @@ import indexOf from "lodash/indexOf";
 import isNull from "lodash/isNull";
 import filter from "lodash/filter";
 import map from "lodash/map";
+import join from "lodash/join";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link from "gatsby-link";
+import Link, { withPrefix } from "gatsby-link";
 import { Article } from "@bodhi-project/semantic-webflow";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
@@ -63,10 +64,10 @@ const componentStyle = css({
     marginBottom: 45,
 
     "@media (min-width: 768px)": {
-      flex: "0 0 49%",
-      maxWidth: "49%",
-      WebkitFlex: "0 0 49%",
-      marginRight: "1%",
+      flex: "0 0 46%",
+      maxWidth: "46%",
+      WebkitFlex: "0 0 46%",
+      marginRight: "3%",
     },
 
     "& .abstract": {
@@ -126,11 +127,23 @@ class EventsGrid extends React.Component {
     return (
       <div className={componentStyleClass}>
         <HexaGrid>
-          {map(filtered, ({ node }, index) => {
+          {map(filtered, ({ node }) => {
             const { frontmatter } = node;
-            const { fromTime, toTime, cover } = frontmatter;
+            const { fromTime, toTime, cover, tags } = frontmatter;
             const { fields } = node;
-            const { route, elapsed, humanDate } = fields;
+            const { route, humanDate } = fields;
+            let eventBanner = null;
+
+            if (cover === "fallback") {
+              const coverHint = join(tags, "-");
+              eventBanner = withPrefix(
+                `/content-assets/event-fallbacks/${coverHint}.jpg`,
+              );
+            } else {
+              eventBanner = withPrefix(cover);
+            }
+
+            console.log(eventBanner);
 
             const content = (
               <div style={{ maxWidth: 300, padding: "0.5em" }}>
@@ -154,7 +167,7 @@ class EventsGrid extends React.Component {
                   <Link to={`/${route}`}>
                     <Article>
                       <Image
-                        src={cover !== "fallback" ? cover : dummy1}
+                        src={eventBanner}
                         rawHeight={900}
                         rawWidth={1440}
                         className="cover"

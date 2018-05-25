@@ -79,9 +79,10 @@ const offeringsData = [
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
 const pageData = {
-  pageTitle: "Restorative Circles",
-  nakedPageSlug: "",
-  pageAbstract: "Page abstract.",
+  pageTitle: "Facilitated Spaces",
+  nakedPageSlug: "/facilitated-spaces",
+  pageAbstract:
+    "We facilitate meetings and hold space based primarily on the principles of Nonviolent Communication and Restorative Circles. In addition, we use practices from Sociocracy (shared-power governance) and Internal Family Systems (learning to recognize our inner parts and their messages), both of which offer powerful modalities for group and inner work.",
 };
 
 const seoData = seoHelper(pageData);

@@ -30,7 +30,7 @@ import {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Images
 
-import NewsletterForm from "../components/NewsletterForm";
+import ContactForm from "../components/ContactForm";
 import seoHelper from "../helpers/seoHelper";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstract stuff
@@ -41,10 +41,9 @@ const { H1 } = Elements;
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
 const pageData = {
-  pageTitle: "Newsletter",
-  nakedPageSlug: "newsletter",
-  pageAbstract:
-    "If you'd like to receive updates about our programs, please sign up for our newsletter.",
+  pageTitle: "Contact Us",
+  nakedPageSlug: "contact-us",
+  pageAbstract: "Write to us at joylivinglearning@gmail.com.",
 };
 
 const seoData = seoHelper(pageData);
@@ -98,7 +97,7 @@ class Page extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <SemanticPage className={pageWrapperClass}>
-          <NewsletterForm />
+          <ContactForm />
         </SemanticPage>
       </Fragment>
     );

@@ -103,7 +103,7 @@ const desktopNavStyle = css({
 const desktopNavStyleClass = desktopNavStyle.toString();
 
 const modalStyle = css({
-  ...applyType("dkc2ilk"),
+  // ...applyType("dkc2ilk"),
 });
 const modalStyles = modalStyle.toString();
 

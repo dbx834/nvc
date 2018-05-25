@@ -46,8 +46,9 @@ const { Fragment } = React;
 // ----------------------------------------------------------------------------
 const pageData = {
   pageTitle: "L'aura Joy",
-  nakedPageSlug: "",
-  pageAbstract: "Page abstract.",
+  nakedPageSlug: "laura-joy",
+  pageAbstract:
+    "L’aura Joy is a Certified Trainer in Nonviolent Communication (CNVC, USA), and since 2007 she has been working in the fields of communication, conflict resolution, peace and justice, healing, and decision-making and leadership.",
 };
 
 const seoData = seoHelper(pageData);

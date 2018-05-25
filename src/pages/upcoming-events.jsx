@@ -38,8 +38,9 @@ const { H1 } = Elements;
 // ----------------------------------------------------------------------------
 const pageData = {
   pageTitle: "Events",
-  nakedPageSlug: "events",
-  pageAbstract: "Page abstract.",
+  nakedPageSlug: "upcoming-events",
+  pageAbstract:
+    "We offer learning opportunities through workshops and practice groups on Nonviolent Communication and Restorative Circles. We are also available for individual coaching and mediation, and we are happy to consult with community-based projects that are seeking to shift paradigms.",
 };
 
 const seoData = seoHelper(pageData);

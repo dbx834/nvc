@@ -158,9 +158,10 @@ const learnMoreData = [
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
 const pageData = {
-  pageTitle: "Homepage",
+  pageTitle: "NVC & RC in Auroville, India",
   nakedPageSlug: "",
-  pageAbstract: "Page abstract.",
+  pageAbstract:
+    "Nonviolent Communication & Restorative Circles in Auroville, India – We offer learning opportunities through workshops and practice groups on Nonviolent Communication and Restorative Circles.",
 };
 
 const seoData = seoHelper(pageData);

@@ -59,7 +59,7 @@ const menu = [
   {
     title: "Learn",
     menu: [
-      { title: "Upcoming Events", link: "/upcoming-events?filter=all" },
+      { title: "Upcoming Events", link: "/upcoming-events" },
       {
         title: "Pay Fee",
         link: "/pay-fee",

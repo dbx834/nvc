@@ -160,7 +160,8 @@ const { H1 } = Elements;
 const pageData = {
   pageTitle: "Gallery",
   nakedPageSlug: "gallery",
-  pageAbstract: "Page abstract.",
+  pageAbstract:
+    "Joy Living Learning is situated in Auroville, an international community in south India that aims to actualize human unity. Given this enviornment, we are surrounded by opportunities for growth, learning and exploration.",
 };
 
 const seoData = seoHelper(pageData);

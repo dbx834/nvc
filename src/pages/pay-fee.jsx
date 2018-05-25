@@ -30,7 +30,7 @@ import {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Images
 
-import ContactForm from "../components/ContactForm";
+import PayFeeBlock from "../components/PayFeeBlock";
 import seoHelper from "../helpers/seoHelper";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstract stuff
@@ -41,9 +41,10 @@ const { H1 } = Elements;
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
 const pageData = {
-  pageTitle: "Gallery",
-  nakedPageSlug: "gallery",
-  pageAbstract: "Page abstract.",
+  pageTitle: "Pay Fee",
+  nakedPageSlug: "pay-fee",
+  pageAbstract:
+    "You may pay your fees here, or directly on the event page you’re registering for.",
 };
 
 const seoData = seoHelper(pageData);
@@ -97,7 +98,7 @@ class Page extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <SemanticPage className={pageWrapperClass}>
-          <ContactForm />
+          <PayFeeBlock />
         </SemanticPage>
       </Fragment>
     );

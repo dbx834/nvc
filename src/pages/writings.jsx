@@ -38,9 +38,10 @@ const { Fragment } = React;
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
 const pageData = {
-  pageTitle: "Blog",
-  nakedPageSlug: "",
-  pageAbstract: "Blog.",
+  pageTitle: "Writings",
+  nakedPageSlug: "writings",
+  pageAbstract:
+    "Our mission is to live and share the principles of Nonviolence, not only in terms of an individual practice and way of life, but also in its application to social structures, such as in our families, schools, and organizations.",
 };
 
 const seoData = seoHelper(pageData);

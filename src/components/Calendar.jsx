@@ -72,8 +72,224 @@ const filterF = filter;
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
-const pageStyle = css({
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mini style
+const miniStyles = css({
+  position: "relative",
+  marginBottom: 30,
+
+  "& .ant-fullcalendar-header": {
+    // width: 90 * 7,
+    padding: "11px 0px",
+
+    "& .ant-radio-group": {
+      display: "none",
+    },
+  },
+
+  "& .ant-fullcalendar-year-select": {
+    ...applyType("dkc2ilk"),
+    "& .ant-select-selection": {
+      fontSize: "80%",
+      backgroundColor: "transparent",
+      border: "none",
+    },
+  },
+
+  "& .ant-fullcalendar-month-select": {
+    ...applyType("dkc2ilk"),
+    "& .ant-select-selection": {
+      fontSize: "80%",
+      backgroundColor: "transparent",
+      border: "none",
+    },
+  },
+
+  "& .ant-fullcalendar": {
+    ...applyType("dkc2ilk"),
+
+    "& .ant-fullcalendar-today": {
+      "& div.date-block": {
+        backgroundColor: "#fff0b4 !important",
+
+        "& span": {
+          color: "#B43808",
+        },
+      },
+    },
+
+    "& .ant-fullcalendar-calendar-body": {
+      padding: 0,
+      width: "100%",
+      maxWidth: "100%",
+
+      "& table": {
+        "& thead": {
+          borderTop: "1px solid #4a4a4a",
+          borderBottom: "1px solid #4a4a4a",
+
+          "& .ant-fullcalendar-column-header": {
+            textAlign: "left",
+            paddingTop: 6,
+            paddingBottom: 6,
+            "& span": {
+              fontSize: "80%",
+              fontWeight: 700,
+              fontStyle: "italic",
+            },
+          },
+        },
+      },
+    },
+
+    "& table": {
+      width: "100%",
+      maxWidth: "100%",
+    },
+
+    "& tbody": {
+      "& .ant-fullcalendar-cell": {
+        position: "relative",
+        width: "calc(100% / 7)",
+        height: 50,
+      },
+
+      "& div.date-block": {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: 49,
+        WebkitTransition: "all 300ms cubic-bezier(0.78, 0.14, 0.15, 0.86)",
+        transition: "all 300ms cubic-bezier(0.78, 0.14, 0.15, 0.86)",
+
+        "&:hover": {
+          backgroundColor: "#FFDA9A",
+        },
+
+        "& > span": {
+          display: "block",
+          width: "100%",
+          height: 49,
+        },
+
+        "& .ant-badge": {
+          fontFamily: "inherit",
+          fontSize: "inherit",
+          "& .ant-badge-dot": {
+            top: 4,
+            height: 8,
+            width: 8,
+            transform: "translateX(-10%)",
+          },
+        },
+
+        "& a": {
+          display: "block",
+          width: "100%",
+          height: 49,
+          color: "inherit",
+
+          "&:hover": {
+            color: "inherit",
+            borderBottom: "1.625px solid transparent",
+          },
+        },
+      },
+
+      "& div.this-month": {
+        backgroundColor: "#fff5cd",
+      },
+
+      "& div.that-month": {
+        backgroundColor: "#F6F4FE",
+      },
+
+      "& tr": {
+        "& td": {
+          "& div.date-block": {
+            backgroundImage:
+              "linear-gradient(to right, #4a4a4a 30%, rgba(74, 74, 74, 0) 0%), linear-gradient(to bottom, #4a4a4a 30%, rgba(74, 74, 74, 0) 0%)",
+            backgroundPosition: "bottom, right",
+            backgroundSize: "4.45px 1px, 1px 4.45px",
+            backgroundRepeat: "repeat-x, repeat-y",
+          },
+        },
+
+        "& td:last-child": {
+          "& div.date-block": {
+            backgroundImage:
+              "linear-gradient(to right, #4a4a4a 30%, rgba(74, 74, 74, 0) 0%)",
+            backgroundPosition: "bottom",
+            backgroundSize: "4.45px 1px",
+            backgroundRepeat: "repeat-x",
+          },
+        },
+      },
+
+      "& tr:last-child": {
+        "& td": {
+          "& div.date-block": {
+            backgroundImage:
+              "linear-gradient(to bottom, #4a4a4a 30%, rgba(74, 74, 74, 0) 0%)",
+            backgroundPosition: "right",
+            backgroundSize: "1px 4.45px",
+            backgroundRepeat: "repeat-y",
+          },
+        },
+
+        "& td:last-child": {
+          "& div.date-block": {
+            backgroundImage: "none",
+          },
+        },
+      },
+    },
+  }, // B43808
+
+  "& .ant-btn": merge(
+    { ...applyType("ltb1ekq") },
+    {
+      fontWeight: 700,
+      fontStyle: "italic",
+      borderRadius: 0,
+      backgroundColor: "#FFFFFF",
+      borderColor: "#B43808",
+      color: "#B43808 !important",
+      height: "auto",
+      transition: "all 200ms cubic-bezier(0.78, 0.14, 0.15, 0.86)",
+      "&:not(:last-child)": {
+        marginRight: "10px",
+      },
+
+      "&:hover": {
+        backgroundColor: "#B43808 !important",
+        color: "#FFFFFF !important",
+        borderColor: "transparent",
+        transform: "scale(1.1)",
+      },
+
+      "& span": {
+        fontSize: "90%",
+      },
+    },
+    ...applyRhythm({ padding: "0X 0.65X" }),
+  ),
+
+  "& .ant-btn-primary": {
+    backgroundColor: "#B43808",
+    color: "#FFFFFF !important",
+    borderColor: "transparent",
+
+    "&:hover": {
+      backgroundColor: "#B43808 !important",
+      transform: "scale(1.05)",
+    },
+  },
+});
+const miniStyle = miniStyles.toString();
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Default style
+const defaultStyles = css({
   position: "relative",
 
   "& .ant-fullcalendar-fullscreen": {
@@ -299,7 +515,7 @@ const pageStyle = css({
     marginBottom: "0px !important",
   },
 });
-const pageStyleClass = pageStyle.toString();
+const defaultStyle = defaultStyles.toString();
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Functions
@@ -655,10 +871,20 @@ class CalendarX extends React.Component {
       currentMonth: null,
       query: { filter: null },
       view: null,
+      width: 769,
     };
     this.onChange = this.onChange.bind(this);
     this.applyFilter = this.applyFilter.bind(this);
     this.changeView = this.changeView.bind(this);
+    this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+  }
+
+  /** componentDidMount */
+  componentDidMount() {
+    if (!isUndefined(window)) {
+      this.updateWindowDimensions();
+      window.addEventListener("resize", this.updateWindowDimensions);
+    }
   }
 
   /** componentWillReceiveProps - set current date */
@@ -668,6 +894,20 @@ class CalendarX extends React.Component {
     );
     if (!isEqual(nextQuery, this.state.query)) {
       this.setState({ query: nextQuery });
+    }
+  }
+
+  /** componentWillUnmount */
+  componentWillUnmount() {
+    if (!isUndefined(window)) {
+      window.removeEventListener("resize", this.updateWindowDimensions);
+    }
+  }
+
+  /** componentWillUnmount */
+  updateWindowDimensions() {
+    if (!isUndefined(window)) {
+      this.setState({ width: window.innerWidth });
     }
   }
 
@@ -857,11 +1097,14 @@ class CalendarX extends React.Component {
       : this.state.view;
 
     return (
-      <div className={pageStyleClass} style={{ ...this.props.style }}>
+      <div
+        className={this.state.width >= 768 ? defaultStyle : miniStyle}
+        style={{ ...this.props.style }}
+      >
         <div className="event-filter">
           {map(displayTagsAs, (tag, key) => {
             return (
-              <Fragment>
+              <Fragment key={key}>
                 {activeFilter === key ? (
                   <CheckableTag checked onClick={() => this.applyFilter(key)}>
                     {tag}
@@ -876,13 +1119,16 @@ class CalendarX extends React.Component {
         {activeView === "calendar" && (
           <Fragment>
             <LocaleProvider locale={enGB}>
-              <Calendar
-                dateFullCellRender={dateFullCellRender}
-                onSelect={this.onSelect}
-                onPanelChange={this.onChange}
-                defaultValue={this.state.selectedDate}
-                validRange={[thisYear, nextYear]}
-              />
+              <div>
+                <Calendar
+                  dateFullCellRender={dateFullCellRender}
+                  onSelect={this.onSelect}
+                  onPanelChange={this.onChange}
+                  defaultValue={this.state.selectedDate}
+                  validRange={[thisYear, nextYear]}
+                  fullscreen={this.state.width >= 768}
+                />
+              </div>
             </LocaleProvider>
           </Fragment>
         )}
@@ -892,7 +1138,7 @@ class CalendarX extends React.Component {
 }
 
 CalendarX.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   givenTags: PropTypes.object,
 };
 

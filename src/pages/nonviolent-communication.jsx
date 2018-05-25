@@ -64,8 +64,9 @@ const learnMoreData = [
 // ----------------------------------------------------------------------------
 const pageData = {
   pageTitle: "Nonviolent Communication",
-  nakedPageSlug: "",
-  pageAbstract: "Page abstract.",
+  nakedPageSlug: "nonviolent-communication",
+  pageAbstract:
+    "Nonviolent Communication (NVC) contains nothing new. It is based on historical principles of nonviolence – the natural state of compassion when no violence is present in the heart. NVC reminds us what we already instinctively know about how good it feels to authentically connect to another human being.",
 };
 
 const seoData = seoHelper(pageData);

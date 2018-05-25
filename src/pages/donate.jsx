@@ -3,13 +3,16 @@
 // ------------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from "react";
+// import PropTypes from 'prop-types';
+// import _ from 'lodash';
 import { css } from "glamor";
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
-// import isNull from "lodash/isNull";
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import { Page } from "@bodhi-project/semantic-webflow";
+// import Link from 'gatsby-link';
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
+import { Elements, applyRhythm } from "@bodhi-project/typography";
+import { Page as SemanticPage } from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -24,25 +27,24 @@ import {
 } from "@bodhi-project/seo";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
-// import Image from "@bodhi-project/components/lib/Image";
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import seoHelper from "../helpers/seoHelper";
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Images
 
 import DonateBlock from "../components/DonateBlock";
+import seoHelper from "../helpers/seoHelper";
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstract stuff
 const { Fragment } = React;
+const { H1 } = Elements;
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
 const pageData = {
-  pageTitle: "Fee and Donation",
-  nakedPageSlug: "fee-and-donation",
-  pageAbstract: "Page abstract.",
+  pageTitle: "Donate",
+  nakedPageSlug: "donate",
+  pageAbstract:
+    "Joy Living Learning is a Unit under the Auroville Foundation, which is a Charitable Trust under the Ministry of Human Resources (Indian Government). Your donation will support Joy Living Learning in its mission to share the principles of applied nonviolence in different communities and sectors, such as education, governance, and the corporate world.",
 };
 
 const seoData = seoHelper(pageData);
@@ -56,23 +58,32 @@ const {
   breadcrumbSchemaData,
 } = seoData;
 
-// ----------------------------------------------------------------------------
-// --------------------------------------------------------------------- Styles
-// ----------------------------------------------------------------------------
+// ------------------------------------------------------------------------------
+// ----------------------------------------------------------------------- Styles
+// ------------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
-const pageWrapper = css({});
-const pageStyleClass = pageWrapper.toString();
+const pageWrapper = css({
+  "& .ant-form-item": {
+    width: "100% !important",
+  },
 
-// ----------------------------------------------------------------------------
-// ------------------------------------------------------------------ Component
-// ----------------------------------------------------------------------------
-/** IndexPage */
-class IndexPage extends React.Component {
-  /** standard constructor */
-  constructor(props) {
-    super(props);
-  }
+  "@media(min-width: 768px)": {
+    ...applyRhythm({ maxWidth: "27X" }),
 
+    "& .ant-form-item:nth-child(1)": {
+      marginRight: "0px !important",
+    },
+
+    "& .ant-form-item:nth-child(2)": {
+      marginLeft: "0px !important",
+    },
+  },
+});
+const pageWrapperClass = pageWrapper.toString();
+
+// ----------------------------------------------------------------------- Component
+/** Page */
+class Page extends React.Component {
   /** standard renderer */
   render() {
     return (
@@ -86,17 +97,15 @@ class IndexPage extends React.Component {
         <BreadcrumbSchema data={breadcrumbSchemaData} />
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
-        <Page className={`${pageStyleClass}`}>
+        <SemanticPage className={pageWrapperClass}>
           <DonateBlock />
-        </Page>
+        </SemanticPage>
       </Fragment>
     );
   }
 }
 
-IndexPage.propTypes = {};
+Page.propTypes = {};
 
-// ----------------------------------------------------------------------------
-// -------------------------------------------------------------------- Exports
-// ----------------------------------------------------------------------------
-export default IndexPage;
+// ----------------------------------------------------------------------- Export
+export default Page;

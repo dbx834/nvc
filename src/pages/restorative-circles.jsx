@@ -62,8 +62,9 @@ const learnMoreData = [
 // ----------------------------------------------------------------------------
 const pageData = {
   pageTitle: "Restorative Circles",
-  nakedPageSlug: "",
-  pageAbstract: "Page abstract.",
+  nakedPageSlug: "restorative-circles",
+  pageAbstract:
+    "A Restorative Circle (RC) is a community process designed to hold space for those in conflict. It brings together the three parties in a conflict – those who acted, those directly impacted, and the wider community – within an intentional systemic context, to dialogue as equals. Participants invite each other and attend voluntarily.",
 };
 
 const seoData = seoHelper(pageData);

@@ -12,6 +12,7 @@ toTime: 5pm
 type: event
 cost: to be confirmed
 tags:
+  - rc
   - workshop
   - featured
 ---

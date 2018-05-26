@@ -168,7 +168,7 @@ class EventsAndCalendar extends React.Component {
               <h3 className="mask-p" style={{ marginBottom: 10 }}>
                 Featured Events…
               </h3>
-              <EventsGrid data={postEdges} totalEvents={12} featured={true} />
+              <EventsGrid data={postEdges} totalEvents={30} featured={true} />
             </div>
           </div>
         </Page>

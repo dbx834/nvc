@@ -267,143 +267,147 @@ class RCPracticeGroupSide extends React.Component {
                 height="1"
               />
             </form>
-            <br />
-            <br />
-            <br />
-            <br />
-            <H1 mask="h4">
-              <span>Register</span>
-            </H1>
-            <br />
-            <br />
-            {this.state.formSent === false && (
-              <Form onSubmit={this.handleSubmit} className={formStyleClass}>
-                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Name */}
-                <FormItem
-                  validateStatus={nameError ? "error" : ""}
-                  help={nameError || ""}
-                >
-                  {getFieldDecorator("name", {
-                    validateTrigger: ["onChange", "onBlur"],
-                    rules: [{ validator: validateName }],
-                  })(<Input placeholder="Name" />)}
-                </FormItem>
-                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
-                <FormItem
-                  validateStatus={emailError ? "error" : ""}
-                  help={emailError || ""}
-                >
-                  {getFieldDecorator("email", {
-                    validateTrigger: ["onChange", "onBlur"],
-                    rules: [{ validator: validateEmail }],
-                  })(<Input placeholder="Email" />)}
-                </FormItem>
-                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mobile */}
-                <FormItem
-                  validateStatus={mobileError ? "error" : ""}
-                  help={mobileError || ""}
-                >
-                  {getFieldDecorator("mobile", {
-                    validateTrigger: ["onChange", "onBlur"],
-                    rules: [{ validator: validateMobile }],
-                  })(<Input placeholder="Mobile / Whatsapp" />)}
-                </FormItem>
-                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Country Selection */}
-                <FormItem
-                  validateStatus={countryError ? "error" : ""}
-                  help={countryError || ""}
-                >
-                  {getFieldDecorator("country", {
-                    validateTrigger: ["onChange", "onBlur"],
-                    rules: [{ validator: validateCountry }],
-                  })(<Input placeholder="What's your country of origin?" />)}
-                </FormItem>
-                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Location */}
-                <FormItem
-                  validateStatus={currentLocationError ? "error" : ""}
-                  help={currentLocationError || ""}
-                >
-                  {getFieldDecorator("currentLocation", {
-                    validateTrigger: ["onChange", "onBlur"],
-                    rules: [{ validator: validateCurrentLocation }],
-                  })(<Input placeholder="Where are you living presently?" />)}
-                </FormItem>
-                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ What Draws You */}
-                <FormItem
-                  validateStatus={whatDrawsYouError ? "error" : ""}
-                  help={whatDrawsYouError || ""}
-                >
-                  {getFieldDecorator("whatDrawsYou", {
-                    validateTrigger: ["onChange", "onBlur"],
-                    rules: [{ validator: validateWhatDrawsYou }],
-                  })(
-                    <TextArea
-                      placeholder="What draws you to this practice group?"
-                      autosize={{ minRows: 4, maxRows: 6 }}
-                    />,
-                  )}
-                </FormItem>
-                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment */}
-                <FormItem
-                  validateStatus={commentError ? "error" : ""}
-                  help={commentError || ""}
-                >
-                  {getFieldDecorator("comment", {
-                    validateTrigger: ["onChange", "onBlur"],
-                    rules: [{ validator: validateComment }],
-                  })(
-                    <TextArea
-                      placeholder="Any other comments / questions?"
-                      autosize={{ minRows: 4, maxRows: 6 }}
-                    />,
-                  )}
-                </FormItem>
-                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Event Selection */}
-                <div style={{ display: "none" }}>
-                  <FormItem
-                    validateStatus={eventError ? "error" : ""}
-                    help={eventError || ""}
-                  >
-                    {getFieldDecorator("event", {
-                      initialValue: key,
-                      rules: [
-                        {
-                          required: true,
-                          message:
-                            "Please select an event from the dropdown...",
-                        },
-                      ],
-                    })(
-                      <Select
-                        placeholder="Select an event from the dropdown..."
-                        disabled
+            {this.props.showRegister === true && 
+              <Fragment>
+                <br />
+                <br />
+                <br />
+                <br />
+                <H1 mask="h4">
+                  <span>Register</span>
+                </H1>
+                <br />
+                <br />
+                {this.state.formSent === false && (
+                  <Form onSubmit={this.handleSubmit} className={formStyleClass}>
+                    {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Name */}
+                    <FormItem
+                      validateStatus={nameError ? "error" : ""}
+                      help={nameError || ""}
+                    >
+                      {getFieldDecorator("name", {
+                        validateTrigger: ["onChange", "onBlur"],
+                        rules: [{ validator: validateName }],
+                      })(<Input placeholder="Name" />)}
+                    </FormItem>
+                    {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
+                    <FormItem
+                      validateStatus={emailError ? "error" : ""}
+                      help={emailError || ""}
+                    >
+                      {getFieldDecorator("email", {
+                        validateTrigger: ["onChange", "onBlur"],
+                        rules: [{ validator: validateEmail }],
+                      })(<Input placeholder="Email" />)}
+                    </FormItem>
+                    {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mobile */}
+                    <FormItem
+                      validateStatus={mobileError ? "error" : ""}
+                      help={mobileError || ""}
+                    >
+                      {getFieldDecorator("mobile", {
+                        validateTrigger: ["onChange", "onBlur"],
+                        rules: [{ validator: validateMobile }],
+                      })(<Input placeholder="Mobile / Whatsapp" />)}
+                    </FormItem>
+                    {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Country Selection */}
+                    <FormItem
+                      validateStatus={countryError ? "error" : ""}
+                      help={countryError || ""}
+                    >
+                      {getFieldDecorator("country", {
+                        validateTrigger: ["onChange", "onBlur"],
+                        rules: [{ validator: validateCountry }],
+                      })(<Input placeholder="What's your country of origin?" />)}
+                    </FormItem>
+                    {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Location */}
+                    <FormItem
+                      validateStatus={currentLocationError ? "error" : ""}
+                      help={currentLocationError || ""}
+                    >
+                      {getFieldDecorator("currentLocation", {
+                        validateTrigger: ["onChange", "onBlur"],
+                        rules: [{ validator: validateCurrentLocation }],
+                      })(<Input placeholder="Where are you living presently?" />)}
+                    </FormItem>
+                    {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ What Draws You */}
+                    <FormItem
+                      validateStatus={whatDrawsYouError ? "error" : ""}
+                      help={whatDrawsYouError || ""}
+                    >
+                      {getFieldDecorator("whatDrawsYou", {
+                        validateTrigger: ["onChange", "onBlur"],
+                        rules: [{ validator: validateWhatDrawsYou }],
+                      })(
+                        <TextArea
+                          placeholder="What draws you to this practice group?"
+                          autosize={{ minRows: 4, maxRows: 6 }}
+                        />,
+                      )}
+                    </FormItem>
+                    {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment */}
+                    <FormItem
+                      validateStatus={commentError ? "error" : ""}
+                      help={commentError || ""}
+                    >
+                      {getFieldDecorator("comment", {
+                        validateTrigger: ["onChange", "onBlur"],
+                        rules: [{ validator: validateComment }],
+                      })(
+                        <TextArea
+                          placeholder="Any other comments / questions?"
+                          autosize={{ minRows: 4, maxRows: 6 }}
+                        />,
+                      )}
+                    </FormItem>
+                    {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Event Selection */}
+                    <div style={{ display: "none" }}>
+                      <FormItem
+                        validateStatus={eventError ? "error" : ""}
+                        help={eventError || ""}
                       >
-                        <Option key={key} value={key}>
-                          {key}
-                        </Option>
-                      </Select>,
-                    )}
-                  </FormItem>
-                </div>
-                {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Submit */}
-                <FormItem>
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    disabled={hasErrors(getFieldsError())}
-                    loading={this.state.loader}
-                  >
-                    Submit
-                  </Button>
-                </FormItem>
-              </Form>
-            )}
-            {/* On-sent message */}
-            {this.state.formSent === true && (
-              <Paragraph className="home" style={{ textIndent: 0 }}>
-                Thank you for registering! We'll get back to you shortly.
-              </Paragraph>
-            )}
+                        {getFieldDecorator("event", {
+                          initialValue: key,
+                          rules: [
+                            {
+                              required: true,
+                              message:
+                                "Please select an event from the dropdown...",
+                            },
+                          ],
+                        })(
+                          <Select
+                            placeholder="Select an event from the dropdown..."
+                            disabled
+                          >
+                            <Option key={key} value={key}>
+                              {key}
+                            </Option>
+                          </Select>,
+                        )}
+                      </FormItem>
+                    </div>
+                    {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Submit */}
+                    <FormItem>
+                      <Button
+                        type="primary"
+                        htmlType="submit"
+                        disabled={hasErrors(getFieldsError())}
+                        loading={this.state.loader}
+                      >
+                        Submit
+                      </Button>
+                    </FormItem>
+                  </Form>
+                )}
+                {/* On-sent message */}
+                {this.state.formSent === true && (
+                  <Paragraph className="home" style={{ textIndent: 0 }}>
+                    Thank you for registering! We'll get back to you shortly.
+                  </Paragraph>
+                )}
+              </Fragment>
+            }
           </Fragment>
         )}
       </div>

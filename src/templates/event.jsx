@@ -119,6 +119,18 @@ const inArray = (array, value) => {
   return rx;
 };
 
+/** remove */
+function removeA(arr) {
+    var what, a = arguments, L = a.length, ax;
+    while (L > 1 && arr.length) {
+        what = a[--L];
+        while ((ax= arr.indexOf(what)) !== -1) {
+            arr.splice(ax, 1);
+        }
+    }
+    return arr;
+}
+
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
@@ -177,6 +189,12 @@ class EventTemplate extends React.Component {
       whichSide = "workshop";
     }
 
+    let showRegister = true;
+    if (inArray(tags, "unregister")) {
+      showRegister = false;
+      removeA(tags, "unregister");
+    }
+
     // Make banner
     let eventBanner = null;
     if (cover === "fallback") {
@@ -187,8 +205,6 @@ class EventTemplate extends React.Component {
     } else {
       eventBanner = withPrefix(cover);
     }
-
-    console.log(eventBanner);
 
     // -------------------------------------------------------------------- SEO
     const pageData = {
@@ -346,6 +362,7 @@ class EventTemplate extends React.Component {
                 <RCPracticeGroupSide
                   data={frontmatter}
                   pathContext={pathContext}
+                  showRegister={showRegister}
                 />
               )}
             {!isNull(whichSide) &&
@@ -353,11 +370,12 @@ class EventTemplate extends React.Component {
                 <NVCPracticeGroupSide
                   data={frontmatter}
                   pathContext={pathContext}
+                  showRegister={showRegister}
                 />
               )}
             {!isNull(whichSide) &&
               whichSide === "workshop" && (
-                <WorkshopSide data={frontmatter} pathContext={pathContext} />
+                <WorkshopSide data={frontmatter} pathContext={pathContext} showRegister={showRegister} />
               )}
           </div>
         </Page>

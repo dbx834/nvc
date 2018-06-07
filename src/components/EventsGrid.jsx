@@ -44,6 +44,18 @@ const inArray = (array, value) => {
   return rx;
 };
 
+/** remove */
+function removeA(arr) {
+    var what, a = arguments, L = a.length, ax;
+    while (L > 1 && arr.length) {
+        what = a[--L];
+        while ((ax= arr.indexOf(what)) !== -1) {
+            arr.splice(ax, 1);
+        }
+    }
+    return arr;
+}
+
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
@@ -135,6 +147,9 @@ class EventsGrid extends React.Component {
             let eventBanner = null;
 
             if (cover === "fallback") {
+              if (inArray(tags, "unregister")) {
+                removeA(tags, "unregister");
+              }
               const coverHint = join(tags, "-");
               eventBanner = withPrefix(
                 `/content-assets/event-fallbacks/${coverHint}.jpg`,
@@ -142,8 +157,6 @@ class EventsGrid extends React.Component {
             } else {
               eventBanner = withPrefix(cover);
             }
-
-            console.log(eventBanner);
 
             const content = (
               <div style={{ maxWidth: 300, padding: "0.5em" }}>

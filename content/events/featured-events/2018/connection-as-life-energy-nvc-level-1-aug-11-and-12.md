@@ -1,7 +1,7 @@
 ---
 title: Connection as Life Energy - NVC Level 1
 subTitle: na
-cover: fallback
+cover: /content-assets/2018-events/nvc-pune.jpeg
 category: 3.Featured
 abstract: Coming Soon.
 date: 2018-08-11

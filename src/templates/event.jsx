@@ -24,7 +24,7 @@ import {
   // Section,
   Article,
   Header,
-  Footer,
+  Footer
 } from "@bodhi-project/semantic-webflow";
 import { Elements, applyRhythm } from "@bodhi-project/typography";
 import { treeCodeParser } from "@bodhi-project/markdown-to-react";
@@ -39,7 +39,7 @@ import {
   // --------------- Schema.org JSON-LD
   WebpageSchema,
   BreadcrumbSchema,
-  EventSchema,
+  EventSchema
 } from "@bodhi-project/seo";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
@@ -69,7 +69,7 @@ const pageStyle = css({
   "& hr": {
     border: "none",
     borderTop: "3px solid #B43808",
-    marginBottom: 20,
+    marginBottom: 20
   },
 
   "& .left": {
@@ -84,7 +84,7 @@ const pageStyle = css({
       ...applyRhythm({ marginBottom: "1.86X" }),
 
       "& .banner": {
-        flex: "7 1 0%",
+        flex: "7 1 0%"
       },
 
       "& .abstract": {
@@ -93,17 +93,17 @@ const pageStyle = css({
 
         "& h3": {
           marginTop: 0,
-          marginBottom: 5,
-        },
-      },
-    },
+          marginBottom: 5
+        }
+      }
+    }
   },
 
   "& .right": {
     flexGrow: 5,
     flexBasis: 0,
-    padding: "0em 1em",
-  },
+    padding: "0em 1em"
+  }
 });
 const pageStyleClass = pageStyle.toString();
 
@@ -121,14 +121,17 @@ const inArray = (array, value) => {
 
 /** remove */
 function removeA(arr) {
-    var what, a = arguments, L = a.length, ax;
-    while (L > 1 && arr.length) {
-        what = a[--L];
-        while ((ax= arr.indexOf(what)) !== -1) {
-            arr.splice(ax, 1);
-        }
+  var what,
+    a = arguments,
+    L = a.length,
+    ax;
+  while (L > 1 && arr.length) {
+    what = a[--L];
+    while ((ax = arr.indexOf(what)) !== -1) {
+      arr.splice(ax, 1);
     }
-    return arr;
+  }
+  return arr;
 }
 
 // ----------------------------------------------------------------------------
@@ -153,7 +156,7 @@ class EventTemplate extends React.Component {
       date,
       startDate,
       finishDate,
-      cover,
+      cover
     } = frontmatter;
     const { markdownAst, next, prev } = pathContext;
     const { route, humanDate, elapsed } = pathContext;
@@ -163,7 +166,7 @@ class EventTemplate extends React.Component {
     // Date stuff
     const begins = moment(!isNull(startDate) ? startDate : date);
     const ends = moment(
-      !isNull(finishDate) ? finishDate : begins.clone().add(23, "hours"),
+      !isNull(finishDate) ? finishDate : begins.clone().add(23, "hours")
     );
 
     const { orgLocation } = data;
@@ -200,7 +203,7 @@ class EventTemplate extends React.Component {
     if (cover === "fallback") {
       const coverHint = join(tags, "-");
       eventBanner = withPrefix(
-        `/content-assets/event-fallbacks/${coverHint}.jpg`,
+        `/content-assets/event-fallbacks/${coverHint}.jpg`
       );
     } else {
       eventBanner = withPrefix(cover);
@@ -210,7 +213,7 @@ class EventTemplate extends React.Component {
     const pageData = {
       pageTitle: frontmatter.title,
       nakedPageSlug: nakedRoute,
-      pageAbstract: frontmatter.abstract,
+      pageAbstract: frontmatter.abstract
     };
 
     const seoData = seoHelper(pageData);
@@ -222,7 +225,7 @@ class EventTemplate extends React.Component {
       twitterSummaryCardData,
       openGraphSummaryData,
       webpageSchemaData,
-      breadcrumbSchemaData,
+      breadcrumbSchemaData
     } = seoData;
 
     const eventSchemaData = {
@@ -238,7 +241,7 @@ class EventTemplate extends React.Component {
       addressRegion: orgLocation.addressRegion,
       postalCode: orgLocation.postalCode,
       addressCountry: orgLocation.addressCountry,
-      image: twitterSummaryX,
+      image: twitterSummaryX
     };
 
     return (
@@ -302,7 +305,7 @@ class EventTemplate extends React.Component {
                       backgroundColor: "#f8f2e6",
                       zIndex: 10,
                       height: 20,
-                      width: "calc(100% - 98px)",
+                      width: "calc(100% - 98px)"
                     }}
                   />
                   <div style={{ maxWidth: 98 }}>
@@ -327,9 +330,9 @@ class EventTemplate extends React.Component {
                   localLink: Link,
                   linkHeaders: false,
                   trackHeaders: false,
-                  nestHeaders: false,
+                  nestHeaders: false
                 },
-                {},
+                {}
               )}
             </Article>
             <Footer>
@@ -375,7 +378,11 @@ class EventTemplate extends React.Component {
               )}
             {!isNull(whichSide) &&
               whichSide === "workshop" && (
-                <WorkshopSide data={frontmatter} pathContext={pathContext} showRegister={showRegister} />
+                <WorkshopSide
+                  data={frontmatter}
+                  pathContext={pathContext}
+                  showRegister={showRegister}
+                />
               )}
           </div>
         </Page>
@@ -385,7 +392,7 @@ class EventTemplate extends React.Component {
 }
 
 EventTemplate.propTypes = {
-  pathContext: PropTypes.object,
+  pathContext: PropTypes.object
 };
 
 // ----------------------------------------------------------------------------

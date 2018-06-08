@@ -248,7 +248,7 @@ class EventTemplate extends React.Component {
       addressRegion: orgLocation.addressRegion,
       postalCode: orgLocation.postalCode,
       addressCountry: orgLocation.addressCountry,
-      image: twitterSummaryX
+      image: eventBanner
     };
 
     return (

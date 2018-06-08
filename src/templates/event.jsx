@@ -193,21 +193,17 @@ class EventTemplate extends React.Component {
       whichSide = "workshop";
     }
 
-    console.log(tags);
-
     let showRegister = true;
     if (inArray(tags, "unregister")) {
       showRegister = false;
-      tags.splice(findIndex(tags, "unregister"), 1, null);
+      tags.splice(findIndex(tags, "unregister"), 0, null);
     }
 
     let showPay = true;
     if (inArray(tags, "unpay")) {
       showPay = false;
-      tags.splice(findIndex(tags, "unpay"), 1, null);
+      tags.splice(findIndex(tags, "unpay"), 0, null);
     }
-
-    console.log(showRegister, showPay, tags);
 
     // Make banner
     let eventBanner = null;

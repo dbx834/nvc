@@ -46,14 +46,17 @@ const inArray = (array, value) => {
 
 /** remove */
 function removeA(arr) {
-    var what, a = arguments, L = a.length, ax;
-    while (L > 1 && arr.length) {
-        what = a[--L];
-        while ((ax= arr.indexOf(what)) !== -1) {
-            arr.splice(ax, 1);
-        }
+  var what,
+    a = arguments,
+    L = a.length,
+    ax;
+  while (L > 1 && arr.length) {
+    what = a[--L];
+    while ((ax = arr.indexOf(what)) !== -1) {
+      arr.splice(ax, 1);
     }
-    return arr;
+  }
+  return arr;
 }
 
 // ----------------------------------------------------------------------------
@@ -62,11 +65,11 @@ function removeA(arr) {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const componentStyle = css({
   "& .blank": {
-    display: "none",
+    display: "none"
   },
 
   "& > div": {
-    justifyContent: "flex-start !important",
+    justifyContent: "flex-start !important"
   },
 
   "& .hex": {
@@ -79,7 +82,7 @@ const componentStyle = css({
       flex: "0 0 46%",
       maxWidth: "46%",
       WebkitFlex: "0 0 46%",
-      marginRight: "3%",
+      marginRight: "3%"
     },
 
     "& .abstract": {
@@ -89,18 +92,18 @@ const componentStyle = css({
       "& .title": {
         fontFamily: "futura-pt, sans-serif !important",
         fontWeight: 700,
-        letterSpacing: "-0.08775ex",
+        letterSpacing: "-0.08775ex"
       },
 
       "& .date": {
-        fontFamily: "futura-pt, sans-serif !important",
+        fontFamily: "futura-pt, sans-serif !important"
       },
 
       "& .time": {
-        fontFamily: "futura-pt, sans-serif !important",
-      },
-    },
-  },
+        fontFamily: "futura-pt, sans-serif !important"
+      }
+    }
+  }
 });
 const componentStyleClass = componentStyle.toString();
 
@@ -150,9 +153,12 @@ class EventsGrid extends React.Component {
               if (inArray(tags, "unregister")) {
                 removeA(tags, "unregister");
               }
+              if (inArray(tags, "unpay")) {
+                removeA(tags, "unpay");
+              }
               const coverHint = join(tags, "-");
               eventBanner = withPrefix(
-                `/content-assets/event-fallbacks/${coverHint}.jpg`,
+                `/content-assets/event-fallbacks/${coverHint}.jpg`
               );
             } else {
               eventBanner = withPrefix(cover);
@@ -188,7 +194,7 @@ class EventsGrid extends React.Component {
                           height: "auto",
                           width: "100%",
                           border: 0,
-                          borderRadius: 8,
+                          borderRadius: 8
                         }}
                         loader="gradient"
                       />

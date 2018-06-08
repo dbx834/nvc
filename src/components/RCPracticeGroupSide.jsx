@@ -42,7 +42,7 @@ import {
   validateCountry,
   validateCurrentLocation,
   validateWhatDrawsYou,
-  validateComment,
+  validateComment
 } from "../helpers/formHelpers";
 import { formStyleClass } from "../helpers/defaultFormStyles";
 import domestic from "../assets/domestic.png";
@@ -66,8 +66,8 @@ const style = css({
 
     "&:hover": {
       color: "#6D00FF",
-      borderBottom: "1.625px solid #6D00FF",
-    },
+      borderBottom: "1.625px solid #6D00FF"
+    }
   },
 
   "& h1": {
@@ -76,9 +76,9 @@ const style = css({
     borderTop: "3px solid #B43808",
 
     "& span": {
-      fontSize: "90%",
-    },
-  },
+      fontSize: "90%"
+    }
+  }
 });
 const styleClass = style.toString();
 
@@ -93,7 +93,7 @@ class RCPracticeGroupSide extends React.Component {
 
     this.state = {
       loader: null,
-      formSent: false,
+      formSent: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -112,7 +112,7 @@ class RCPracticeGroupSide extends React.Component {
         // console.log('Received values of form: ', values);
         this.setState({
           // Show loader and reset errors if any.
-          loader: true,
+          loader: true
         });
 
         const {
@@ -123,7 +123,7 @@ class RCPracticeGroupSide extends React.Component {
           country,
           whatDrawsYou,
           currentLocation,
-          comment,
+          comment
         } = values;
 
         setTimeout(() => {
@@ -132,18 +132,18 @@ class RCPracticeGroupSide extends React.Component {
             `https://script.google.com/macros/s/AKfycbxe5KaEdHtLH5JVpf-yntF5LZYAszQTwHHQ4tEjvBT4DyykpRtZ/exec?name=${name}&email=${email}&event=${event}&mobile=${mobile}&country=${country}&whatDrawsYou=${whatDrawsYou}&comment=${comment}&currentLocation=${currentLocation}&callback=?`,
             {
               method: "GET",
-              mode: "no-cors",
-            },
+              mode: "no-cors"
+            }
           )
             .then(response => {
               this.setState({
                 loader: false,
-                formSent: true,
+                formSent: true
               });
             })
             .catch(error => {
               this.setState({
-                loader: false,
+                loader: false
               });
             });
         }, 1500);
@@ -158,7 +158,7 @@ class RCPracticeGroupSide extends React.Component {
       getFieldDecorator,
       getFieldsError,
       getFieldError,
-      isFieldTouched,
+      isFieldTouched
     } = this.props.form;
     // Only show error after a field is touched.
     const nameError = isFieldTouched("name") && getFieldError("name");
@@ -203,71 +203,80 @@ class RCPracticeGroupSide extends React.Component {
             <H1 mask="h4">
               <span>Donate</span>
             </H1>
-            <Paragraph style={{ marginBottom: 30 }}>
-              There is no required fee, although we'd appreciate any donation
-              you'd like to make.
-              <br />
-              <br />
-              Select the Domestic option for Indian bank/credit cards, or the
-              International option for foreign bank/credit cards.
+            <Paragraph style={{ marginBottom: 10 }}>
+              <strong>
+                <i>{data.cost}</i>
+              </strong>
             </Paragraph>
-            <OutLink
-              to="https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD"
-              style={{ marginRight: 17 }}
-            >
-              <Tooltip title="Indian Card">
-                <div style={{ display: "inline-block" }}>
-                  <Image
-                    src={domestic}
-                    rawHeight={450}
-                    rawWidth={450}
-                    className="icon"
-                    style={{
-                      height: 65,
-                      width: 65,
-                      display: "inline-block",
-                      background: "transparent",
-                      border: "unset",
-                    }}
+            {this.props.showPay === true && (
+              <Fragment>
+                <br />
+                <Paragraph>
+                  Please make your payment to confirm your seat.
+                  <br />
+                  <br />
+                  Select the Domestic option for Indian bank/credit cards, or
+                  the International option for foreign bank/credit cards.
+                </Paragraph>
+                <OutLink
+                  to="https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD"
+                  style={{ marginRight: 17 }}
+                >
+                  <Tooltip title="Indian Card">
+                    <div style={{ display: "inline-block" }}>
+                      <Image
+                        src={domestic}
+                        rawHeight={450}
+                        rawWidth={450}
+                        className="icon"
+                        style={{
+                          height: 65,
+                          width: 65,
+                          display: "inline-block",
+                          background: "transparent",
+                          border: "unset"
+                        }}
+                      />
+                    </div>
+                  </Tooltip>
+                </OutLink>
+                <form
+                  action="https://www.paypal.com/cgi-bin/webscr"
+                  method="post"
+                  target="_blank"
+                  style={{ display: "inline-block" }}
+                  className="hover"
+                >
+                  <input type="hidden" name="cmd" value="_s-xclick" />
+                  <input
+                    type="hidden"
+                    name="hosted_button_id"
+                    value="WFXM5RNDGBXL4"
                   />
-                </div>
-              </Tooltip>
-            </OutLink>
-            <form
-              action="https://www.paypal.com/cgi-bin/webscr"
-              method="post"
-              target="_blank"
-              style={{ display: "inline-block" }}
-              className="hover"
-            >
-              <input type="hidden" name="cmd" value="_s-xclick" />
-              <input
-                type="hidden"
-                name="hosted_button_id"
-                value="WFXM5RNDGBXL4"
-              />
-              <Tooltip title="International Card">
-                <input
-                  type="image"
-                  src={international}
-                  border="0"
-                  name="submit"
-                  alt="PayPal – The safer, easier way to pay online!"
-                  style={{
-                    height: 65,
-                    width: 65,
-                  }}
-                />
-              </Tooltip>
-              <img
-                alt=""
-                border="0"
-                src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif"
-                width="1"
-                height="1"
-              />
-            </form>
-            {this.props.showRegister === true && 
+                  <Tooltip title="International Card">
+                    <input
+                      type="image"
+                      src={international}
+                      border="0"
+                      name="submit"
+                      alt="PayPal – The safer, easier way to pay online!"
+                      style={{
+                        height: 65,
+                        width: 65
+                      }}
+                    />
+                  </Tooltip>
+                  <img
+                    alt=""
+                    border="0"
+                    src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif"
+                    width="1"
+                    height="1"
+                  />
+                </form>
+              </Fragment>
+            )}
+            {this.props.showRegister === true && (
               <Fragment>
                 <br />
                 <br />
@@ -287,7 +296,7 @@ class RCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("name", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateName }],
+                        rules: [{ validator: validateName }]
                       })(<Input placeholder="Name" />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
@@ -297,7 +306,7 @@ class RCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("email", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateEmail }],
+                        rules: [{ validator: validateEmail }]
                       })(<Input placeholder="Email" />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mobile */}
@@ -307,7 +316,7 @@ class RCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("mobile", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateMobile }],
+                        rules: [{ validator: validateMobile }]
                       })(<Input placeholder="Mobile / Whatsapp" />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Country Selection */}
@@ -317,8 +326,10 @@ class RCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("country", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateCountry }],
-                      })(<Input placeholder="What's your country of origin?" />)}
+                        rules: [{ validator: validateCountry }]
+                      })(
+                        <Input placeholder="What's your country of origin?" />
+                      )}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Location */}
                     <FormItem
@@ -327,8 +338,10 @@ class RCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("currentLocation", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateCurrentLocation }],
-                      })(<Input placeholder="Where are you living presently?" />)}
+                        rules: [{ validator: validateCurrentLocation }]
+                      })(
+                        <Input placeholder="Where are you living presently?" />
+                      )}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ What Draws You */}
                     <FormItem
@@ -337,12 +350,12 @@ class RCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("whatDrawsYou", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateWhatDrawsYou }],
+                        rules: [{ validator: validateWhatDrawsYou }]
                       })(
                         <TextArea
                           placeholder="What draws you to this practice group?"
                           autosize={{ minRows: 4, maxRows: 6 }}
-                        />,
+                        />
                       )}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment */}
@@ -352,12 +365,12 @@ class RCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("comment", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateComment }],
+                        rules: [{ validator: validateComment }]
                       })(
                         <TextArea
                           placeholder="Any other comments / questions?"
                           autosize={{ minRows: 4, maxRows: 6 }}
-                        />,
+                        />
                       )}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Event Selection */}
@@ -372,9 +385,9 @@ class RCPracticeGroupSide extends React.Component {
                             {
                               required: true,
                               message:
-                                "Please select an event from the dropdown...",
-                            },
-                          ],
+                                "Please select an event from the dropdown..."
+                            }
+                          ]
                         })(
                           <Select
                             placeholder="Select an event from the dropdown..."
@@ -383,7 +396,7 @@ class RCPracticeGroupSide extends React.Component {
                             <Option key={key} value={key}>
                               {key}
                             </Option>
-                          </Select>,
+                          </Select>
                         )}
                       </FormItem>
                     </div>
@@ -407,7 +420,7 @@ class RCPracticeGroupSide extends React.Component {
                   </Paragraph>
                 )}
               </Fragment>
-            }
+            )}
           </Fragment>
         )}
       </div>

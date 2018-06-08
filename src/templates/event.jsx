@@ -15,6 +15,7 @@ import trim from "lodash/trim";
 import split from "lodash/split";
 import last from "lodash/last";
 import indexOf from "lodash/indexOf";
+import findIndex from "lodash/findIndex";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link, { withPrefix } from "gatsby-link";
@@ -120,19 +121,19 @@ const inArray = (array, value) => {
 };
 
 /** remove */
-function removeA(arr) {
-  var what,
-    a = arguments,
-    L = a.length,
-    ax;
-  while (L > 1 && arr.length) {
-    what = a[--L];
-    while ((ax = arr.indexOf(what)) !== -1) {
-      arr.splice(ax, 1);
-    }
-  }
-  return arr;
-}
+// function removeA(arr) {
+//   var what,
+//     a = arguments,
+//     L = a.length,
+//     ax;
+//   while (L > 1 && arr.length) {
+//     what = a[--L];
+//     while ((ax = arr.indexOf(what)) !== -1) {
+//       arr.splice(ax, 1);
+//     }
+//   }
+//   return arr;
+// }
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
@@ -192,11 +193,21 @@ class EventTemplate extends React.Component {
       whichSide = "workshop";
     }
 
+    console.log(tags);
+
     let showRegister = true;
     if (inArray(tags, "unregister")) {
       showRegister = false;
-      removeA(tags, "unregister");
+      tags.splice(findIndex(tags, "unregister"), 1, null);
     }
+
+    let showPay = true;
+    if (inArray(tags, "unpay")) {
+      showPay = false;
+      tags.splice(findIndex(tags, "unpay"), 1, null);
+    }
+
+    console.log(showRegister, showPay, tags);
 
     // Make banner
     let eventBanner = null;
@@ -274,9 +285,8 @@ class EventTemplate extends React.Component {
                   {frontmatter.title}
                 </H1>
                 <Paragraph style={{ marginBottom: 0 }}>
-                  {((inArray(tags, "rc") && inArray(tags, "practice-group")) ||
-                    (inArray(tags, "nvc") &&
-                      inArray(tags, "practice-group"))) && (
+                  {(inArray(tags, "rc") && inArray(tags, "practice-group")) ||
+                  (inArray(tags, "nvc") && inArray(tags, "practice-group")) ? (
                     <Fragment>
                       <strong>
                         {frontmatter.subTitle}
@@ -285,6 +295,16 @@ class EventTemplate extends React.Component {
                       </strong>
                       <br />
                       <br />
+                    </Fragment>
+                  ) : (
+                    <Fragment>
+                      {frontmatter.subTitle !== "na" && (
+                        <Fragment>
+                          <strong>{frontmatter.subTitle}</strong>
+                          <br />
+                          <br />
+                        </Fragment>
+                      )}
                     </Fragment>
                   )}
                   <i>
@@ -366,6 +386,7 @@ class EventTemplate extends React.Component {
                   data={frontmatter}
                   pathContext={pathContext}
                   showRegister={showRegister}
+                  showPay={showPay}
                 />
               )}
             {!isNull(whichSide) &&
@@ -374,6 +395,7 @@ class EventTemplate extends React.Component {
                   data={frontmatter}
                   pathContext={pathContext}
                   showRegister={showRegister}
+                  showPay={showPay}
                 />
               )}
             {!isNull(whichSide) &&
@@ -382,6 +404,7 @@ class EventTemplate extends React.Component {
                   data={frontmatter}
                   pathContext={pathContext}
                   showRegister={showRegister}
+                  showPay={showPay}
                 />
               )}
           </div>

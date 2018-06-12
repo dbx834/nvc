@@ -1,5 +1,5 @@
 ---
-title: Restorative Circles Webinar Series
+title: Restorative Circles Webinar Series (Online)
 subTitle: Every other Tuesday; July 10 thru November 13
 cover: /content-assets/2018-events/onlinerc.png
 category: 3.Featured
@@ -8,16 +8,48 @@ date: 2018-07-10
 fromTime: 7pm
 toTime: 9pm
 type: event
-cost: ₹10,000 (India, Sri Lanka and Nepal); ₹20,000 (living abroad)
+cost: ₹10,000 (India, Sri Lanka and Nepal); $300 (living abroad)
 tags:
-  - nvc
+  - rc
   - workshop
   - featured
 ---
 
-**More information coming soon...**
-
 ![{"height": "60vh", "width": "auto", "display": "inline-block", "background": "transparent"}](/content-assets/2018-events/RCWebinar_800X1200.png)
+
+&nbsp;
+
+**Details**:
+
+* 10 sessions
+* Every other Tuesday
+* Starts on July 10; ends on November 13
+* 7-9pm [Indian Standard Time (UTC +5:30)]
+* On Zoom (details to follow)
+
+**During the calls, we'll be exploring**:
+
+* The practice and steps of the Restorative Circle
+* The underlying principles of a restorative approach
+* What justice means to us and our communities
+* How to go about setting up Restorative Systems
+
+**Each call will offer**:
+
+* Inspiration for the journey
+* Theory and exploring the principles
+* Discussion
+* Practice
+* Q&A
+* Stories from my own RC journey
+
+**Highlights**:
+
+* Learning in and building community
+* Support and exchange
+* Facebook Group for off-line interaction
+* Handouts
+* Call recordings
 
 **Building a Compassionate Justice System**
 

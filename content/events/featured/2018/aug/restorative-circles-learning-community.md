@@ -1,5 +1,5 @@
 ---
-title: Restorative Circles Learning Community
+title: Restorative Circles Learning Community (Pune)
 subTitle: na
 cover: /content-assets/2018-events/punerc.png
 category: 3.Featured
@@ -12,7 +12,7 @@ toTime: 6pm
 type: event
 cost: ₹ 11,800 (inclusive of GST)
 tags:
-  - nvc
+  - rc
   - workshop
   - featured
 ---

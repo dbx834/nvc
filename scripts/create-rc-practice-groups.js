@@ -66,7 +66,7 @@ date: %date%
 fromTime: 4.30pm
 toTime: 6.30pm
 type: event
-cost: Free
+cost: On donation
 tags:
   - rc
   - practice-group

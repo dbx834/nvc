@@ -15,11 +15,15 @@ tags:
   - rc
   - workshop
   - featured
+  - unregister
+  - unpay
 ---
 
-**More information coming soon...**
-
 ![{"height": "60vh", "width": "auto", "display": "inline-block", "background": "transparent"}](/content-assets/2018-events/RCPune_800X1200.png)
+
+**Limited spaces. Register now!**
+
+Register here: [https://www.tiny.cc/cle-nvc-apply](https://www.tiny.cc/cle-nvc-apply)
 
 **Building a Compassionate Justice System**
 
@@ -32,3 +36,8 @@ Conflict is an inevitable part of the diversity of life. Yet few of us individua
 The RC process offers a way to create community spaces for conflict that are safe and constructive, not destructive. It has been described as a straightforward problem-solving and nonviolent restoration method that demonstrates how community members can resolve their own conflicts when provided with a constructive forum to do so.
 
 The establishment of a restorative system empowers communities to consciously choose how they would like to respond to conflict before it occurs – a form of proactive, preventative conflict transformation. It enables them to choose a nonviolent response to conflict that involves  the whole community in discovering their own sustainable strategies by addressing immediate as well as underlying long term causes.
+
+**For more info, contact Siddharth**
+
+nvc@paradigmsunlimited.in 
++91 9820401300

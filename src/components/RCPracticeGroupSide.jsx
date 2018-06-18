@@ -42,7 +42,7 @@ import {
   validateCountry,
   validateCurrentLocation,
   validateWhatDrawsYou,
-  validateComment
+  validateComment,
 } from "../helpers/formHelpers";
 import { formStyleClass } from "../helpers/defaultFormStyles";
 import domestic from "../assets/domestic.png";
@@ -66,8 +66,8 @@ const style = css({
 
     "&:hover": {
       color: "#6D00FF",
-      borderBottom: "1.625px solid #6D00FF"
-    }
+      borderBottom: "1.625px solid #6D00FF",
+    },
   },
 
   "& h1": {
@@ -76,9 +76,9 @@ const style = css({
     borderTop: "3px solid #B43808",
 
     "& span": {
-      fontSize: "90%"
-    }
-  }
+      fontSize: "90%",
+    },
+  },
 });
 const styleClass = style.toString();
 
@@ -93,7 +93,7 @@ class RCPracticeGroupSide extends React.Component {
 
     this.state = {
       loader: null,
-      formSent: false
+      formSent: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -112,7 +112,7 @@ class RCPracticeGroupSide extends React.Component {
         // console.log('Received values of form: ', values);
         this.setState({
           // Show loader and reset errors if any.
-          loader: true
+          loader: true,
         });
 
         const {
@@ -123,7 +123,7 @@ class RCPracticeGroupSide extends React.Component {
           country,
           whatDrawsYou,
           currentLocation,
-          comment
+          comment,
         } = values;
 
         setTimeout(() => {
@@ -132,18 +132,18 @@ class RCPracticeGroupSide extends React.Component {
             `https://script.google.com/macros/s/AKfycbxe5KaEdHtLH5JVpf-yntF5LZYAszQTwHHQ4tEjvBT4DyykpRtZ/exec?name=${name}&email=${email}&event=${event}&mobile=${mobile}&country=${country}&whatDrawsYou=${whatDrawsYou}&comment=${comment}&currentLocation=${currentLocation}&callback=?`,
             {
               method: "GET",
-              mode: "no-cors"
-            }
+              mode: "no-cors",
+            },
           )
             .then(response => {
               this.setState({
                 loader: false,
-                formSent: true
+                formSent: true,
               });
             })
             .catch(error => {
               this.setState({
-                loader: false
+                loader: false,
               });
             });
         }, 1500);
@@ -158,7 +158,7 @@ class RCPracticeGroupSide extends React.Component {
       getFieldDecorator,
       getFieldsError,
       getFieldError,
-      isFieldTouched
+      isFieldTouched,
     } = this.props.form;
     // Only show error after a field is touched.
     const nameError = isFieldTouched("name") && getFieldError("name");
@@ -212,7 +212,10 @@ class RCPracticeGroupSide extends React.Component {
               <Fragment>
                 <br />
                 <Paragraph>
-                  Please make your payment to confirm your seat.
+                  You may join this practice group free of charge, as we offer
+                  this space as a service to the community. And we also welcome
+                  any contribution you'd like to make, so as to support our
+                  work.
                   <br />
                   <br />
                   Select the Domestic option for Indian bank/credit cards, or
@@ -234,7 +237,7 @@ class RCPracticeGroupSide extends React.Component {
                           width: 65,
                           display: "inline-block",
                           background: "transparent",
-                          border: "unset"
+                          border: "unset",
                         }}
                       />
                     </div>
@@ -262,7 +265,7 @@ class RCPracticeGroupSide extends React.Component {
                       alt="PayPal – The safer, easier way to pay online!"
                       style={{
                         height: 65,
-                        width: 65
+                        width: 65,
                       }}
                     />
                   </Tooltip>
@@ -296,7 +299,7 @@ class RCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("name", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateName }]
+                        rules: [{ validator: validateName }],
                       })(<Input placeholder="Name" />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
@@ -306,7 +309,7 @@ class RCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("email", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateEmail }]
+                        rules: [{ validator: validateEmail }],
                       })(<Input placeholder="Email" />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mobile */}
@@ -316,7 +319,7 @@ class RCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("mobile", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateMobile }]
+                        rules: [{ validator: validateMobile }],
                       })(<Input placeholder="Mobile / Whatsapp" />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Country Selection */}
@@ -326,9 +329,9 @@ class RCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("country", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateCountry }]
+                        rules: [{ validator: validateCountry }],
                       })(
-                        <Input placeholder="What's your country of origin?" />
+                        <Input placeholder="What's your country of origin?" />,
                       )}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Location */}
@@ -338,9 +341,9 @@ class RCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("currentLocation", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateCurrentLocation }]
+                        rules: [{ validator: validateCurrentLocation }],
                       })(
-                        <Input placeholder="Where are you living presently?" />
+                        <Input placeholder="Where are you living presently?" />,
                       )}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ What Draws You */}
@@ -350,12 +353,12 @@ class RCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("whatDrawsYou", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateWhatDrawsYou }]
+                        rules: [{ validator: validateWhatDrawsYou }],
                       })(
                         <TextArea
                           placeholder="What draws you to this practice group?"
                           autosize={{ minRows: 4, maxRows: 6 }}
-                        />
+                        />,
                       )}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment */}
@@ -365,12 +368,12 @@ class RCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("comment", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateComment }]
+                        rules: [{ validator: validateComment }],
                       })(
                         <TextArea
                           placeholder="Any other comments / questions?"
                           autosize={{ minRows: 4, maxRows: 6 }}
-                        />
+                        />,
                       )}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Event Selection */}
@@ -385,9 +388,9 @@ class RCPracticeGroupSide extends React.Component {
                             {
                               required: true,
                               message:
-                                "Please select an event from the dropdown..."
-                            }
-                          ]
+                                "Please select an event from the dropdown...",
+                            },
+                          ],
                         })(
                           <Select
                             placeholder="Select an event from the dropdown..."
@@ -396,7 +399,7 @@ class RCPracticeGroupSide extends React.Component {
                             <Option key={key} value={key}>
                               {key}
                             </Option>
-                          </Select>
+                          </Select>,
                         )}
                       </FormItem>
                     </div>

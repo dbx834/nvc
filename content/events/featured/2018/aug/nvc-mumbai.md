@@ -31,7 +31,7 @@ tags:
 
 **The workshop balances theory and practice.** We'll develop an understanding of NVC, and learn to embody these principles in our lives, moment-to-moment. Ideal for participants at beginner level (no prior training in NVC), but also suitable for those at intermediate level (5-10 days of NVC training) who are wanting to deepen their NVC.
 
-**L'aura Joy** is one of only four Nonviolent Communication' (CNVC) certified trainers in India and has been a practitioner and teacher of NVC since 2007.
+**L'aura Joy** is one of only four Nonviolent Communication (CNVC) certified trainers in India and has been a practitioner and teacher of NVC since 2007.
 
 **More links:** <br /> [About L'aura Joy](/laura-joy) <br /> [About NVC](/nonviolent-communication)
   

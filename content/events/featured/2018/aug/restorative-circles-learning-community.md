@@ -21,13 +21,11 @@ tags:
 
 ![{"height": "60vh", "width": "auto", "display": "inline-block", "background": "transparent"}](/content-assets/2018-events/RCPune_800X1200.png)
 
-**Limited spaces. Register now!**
+&nbsp;
 
-Register here: [https://www.tiny.cc/cle-nvc-apply](https://www.tiny.cc/cle-nvc-apply)
+**Limited spaces. Register now!** <br /> Register here: [https://www.tiny.cc/cle-nvc-apply](https://www.tiny.cc/cle-nvc-apply)
 
-**Building a Compassionate Justice System**
-
-Restorative Circles (RC) offer ways for individuals and communities to establish connection, discover meaning and recover power on profound levels. They create forums for reaching agreements that help sustain effective and nurturing relationships both personally and collectively.
+**Building a Compassionate Justice System** <br /> Restorative Circles (RC) offer ways for individuals and communities to establish connection, discover meaning and recover power on profound levels. They create forums for reaching agreements that help sustain effective and nurturing relationships both personally and collectively.
 
 This Circle process has developed within the Restorative Justice (RJ) movement, which in recent decades has rediscovered and adapted ways for communities to promote responsibility and healing. Rethinking justice, and engaging with the challenge of consciously building whole system responses to community well-being, has opened up revolutionary possibilities for furthering a culture of peace.
 
@@ -37,7 +35,4 @@ The RC process offers a way to create community spaces for conflict that are saf
 
 The establishment of a restorative system empowers communities to consciously choose how they would like to respond to conflict before it occurs – a form of proactive, preventative conflict transformation. It enables them to choose a nonviolent response to conflict that involves  the whole community in discovering their own sustainable strategies by addressing immediate as well as underlying long term causes.
 
-**For more info, contact Siddharth**
-
-nvc@paradigmsunlimited.in 
-+91 9820401300
+**For more info, contact Siddharth:** <br /> nvc@paradigmsunlimited.in <br /> +91 9820401300

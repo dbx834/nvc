@@ -383,9 +383,6 @@ class IndexPage extends React.Component {
   /** standard renderer */
   render() {
     let windowWidth = 1440;
-    if (!isUndefined(window)) {
-      windowWidth = window.innerWidth;
-    }
 
     const postEdges = this.props.data.allMarkdownRemark.edges;
     const todayInt = parseInt(moment().format("YYYYMMDD"), 10);

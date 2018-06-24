@@ -333,9 +333,6 @@ class EventsAndCalendar extends React.Component {
     };
 
     let windowWidth = 1440;
-    if (!isUndefined(window)) {
-      windowWidth = window.innerWidth;
-    }
 
     return (
       <Fragment>

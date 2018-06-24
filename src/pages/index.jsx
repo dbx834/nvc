@@ -5,19 +5,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { css } from "glamor";
-import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
 import map from "lodash/map";
-import startsWith from "lodash/startsWith";
-import trim from "lodash/trim";
-import filter from "lodash/filter";
-import isNull from "lodash/isNull";
 import indexOf from "lodash/indexOf";
-import isUndefined from "lodash/isUndefined";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-// import Link from "gatsby-link";
+import withSizes from "react-sizes";
+import Link from "gatsby-link";
 import FacebookProvider, { Page as FBPage } from "react-facebook";
 import ContainerDimensions from "react-container-dimensions";
 import { Page } from "@bodhi-project/semantic-webflow";
@@ -38,6 +33,8 @@ import {
 import Image from "@bodhi-project/components/lib/Image";
 import OutLink from "@bodhi-project/components/lib/OutLink";
 
+import SectionHalley from "@bodhi-project/blocks/lib/SectionHalley";
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Carousel from "antd/lib/carousel";
 import "antd/lib/carousel/style/css";
@@ -47,6 +44,8 @@ import "antd/lib/icon/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
+import categoriseEvents from "../helpers/categoriseEvents";
+
 import LearnMore from "../components/LearnMore";
 import MiniCalendar from "../components/MiniCalendar";
 
@@ -63,6 +62,9 @@ import slide4 from "../assets/slider/slide4.jpg";
 import slide5 from "../assets/slider/slide5.jpg";
 
 import cover1X from "../assets/cover1X.jpg";
+
+import nvc from "../assets/nvc.png";
+import rc from "../assets/rc.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -182,6 +184,10 @@ const {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageWrapper = css({
   marginBottom: 60,
+
+  "& .block-pandora": {
+    padding: 0,
+  },
 
   "& .xCover": {
     background: "transparent !important",
@@ -372,9 +378,6 @@ const PrevArrow = props => {
   );
 };
 
-/** Swap */
-const Swap = () => <div />;
-
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
@@ -382,40 +385,34 @@ const Swap = () => <div />;
 class IndexPage extends React.Component {
   /** standard renderer */
   render() {
-    let windowWidth = 1440;
-
+    const { isMobile } = this.props;
     const postEdges = this.props.data.allMarkdownRemark.edges;
-    const todayInt = parseInt(moment().format("YYYYMMDD"), 10);
-    let filteredRecords = 1;
-    const totalEvents = 6;
-    const featured = false;
+    const events = categoriseEvents(postEdges, 3, 2);
 
-    // get only events
-    const eventNodes = [];
-    map(postEdges, ({ node }) => {
-      if (startsWith(trim(node.fields.route), "events") === true) {
-        eventNodes.push({ node });
-      }
-    });
+    const pandoraData1 = {
+      cards: events.featuredEvents,
+      components: {
+        localLink: Link,
+      },
+      tagMap: {
+        nvc,
+        rc,
+      },
+    };
 
-    // filter it
-    const filtered = filter(postEdges, ({ node }) => {
-      let includeThis = false;
-      const { frontmatter } = node;
-      const { tags, date, startDate } = frontmatter;
-      const mDate = moment(!isNull(date) ? date : startDate);
-      const xDate = parseInt(mDate.format("YYYYMMDD"), 10);
+    const pandoraData2 = {
+      cards: events.NVCEvents,
+      components: {
+        localLink: Link,
+      },
+    };
 
-      const inTheFuture = todayInt <= xDate;
-      const belowMax = totalEvents >= filteredRecords;
-      const isFeatured = featured === true ? inArray(tags, "featured") : true;
-
-      if (inTheFuture && belowMax && isFeatured) {
-        includeThis = true;
-        filteredRecords += 1;
-      }
-      return includeThis;
-    });
+    const pandoraData3 = {
+      cards: events.RCEvents,
+      components: {
+        localLink: Link,
+      },
+    };
 
     return (
       <Fragment>
@@ -540,7 +537,7 @@ class IndexPage extends React.Component {
               <br />
               <br />
               <br />
-              {windowWidth >= 768 && <LearnMore data={learnMoreData} />}
+              {!isMobile && <LearnMore data={learnMoreData} />}
             </div>
             <div>
               <Image src={cover1X} className="xCover is-hidden-mobile" />
@@ -594,17 +591,37 @@ class IndexPage extends React.Component {
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
               <h3 className="mask-p" style={{ marginBottom: 0 }}>
-                Upcoming Events
+                Workshops & Events
               </h3>
-              <MiniCalendar
-                data={postEdges}
-                location={this.props.location}
-                givenTags={{
-                  all: "All Events",
-                  nvc: "NVC Events",
-                  rc: "RC Events",
-                }}
-              />
+              <SectionHalley data={pandoraData1} />
+              <br />
+              <p style={{ marginBottom: 20 }}>
+                <Link to="workshops-and-events">
+                  See more workshops & events ⇝
+                </Link>
+              </p>
+
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+              <hr />
+              <h3 className="mask-p" style={{ marginBottom: 10 }}>
+                NVC Practice Group
+              </h3>
+              <SectionHalley data={pandoraData2} />
+              <br />
+              <p style={{ marginBottom: 20 }}>
+                <Link to="calendar">See calendar ⇝</Link>
+              </p>
+
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+              <hr />
+              <h3 className="mask-p" style={{ marginBottom: 10 }}>
+                RC Practice Group
+              </h3>
+              <SectionHalley data={pandoraData3} />
+              <br />
+              <p style={{ marginBottom: 20 }}>
+                <Link to="calendar">See calendar ⇝</Link>
+              </p>
 
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
@@ -639,7 +656,8 @@ class IndexPage extends React.Component {
                 />
               </FacebookProvider>
 
-              {windowWidth < 768 && (
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+              {isMobile && (
                 <Fragment>
                   <hr />
                   <LearnMore data={learnMoreData} />
@@ -696,7 +714,12 @@ export const pageQuery = graphql`
 `;
 /* eslint-enable no-undef */
 
+/** mapSizesToProps */
+const mapSizesToProps = ({ width }) => ({
+  isMobile: width <= 768,
+});
+
 // ----------------------------------------------------------------------------
 // -------------------------------------------------------------------- Exports
 // ----------------------------------------------------------------------------
-export default IndexPage;
+export default withSizes(mapSizesToProps)(IndexPage);

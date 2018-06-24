@@ -302,7 +302,7 @@ class NVCPage extends React.PureComponent {
                   }}
                   to="https://www.youtube.com/user/laurajoyful/videos"
                 >
-                  More Videos ⋗
+                  More Videos ⇝
                 </OutLink>
               </div>
 
@@ -338,7 +338,7 @@ class NVCPage extends React.PureComponent {
                   }}
                   to="/writings/celebrations-and-gratitude"
                 >
-                  More Celebrations & Gratitude ⋗
+                  More Celebrations & Gratitude ⇝
                 </Link>
               </div>
 

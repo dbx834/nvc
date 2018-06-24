@@ -105,7 +105,7 @@ class LearnMore extends React.Component {
         </Paragraph>
         <Paragraph>
           If you would like more detailed information about our projects,{" "}
-          <Link to="/contact">contact us</Link>.
+          <Link to="/contact-us">contact us</Link>.
         </Paragraph>
       </div>
     );

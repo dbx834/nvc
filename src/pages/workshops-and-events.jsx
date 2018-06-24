@@ -5,22 +5,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { css } from "glamor";
-import moment from "moment";
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
-import map from "lodash/map";
-import indexOf from "lodash/indexOf";
-import isNull from "lodash/isNull";
-import isUndefined from "lodash/isUndefined";
-import join from "lodash/join";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link, { withPrefix } from "gatsby-link";
+import withSizes from "react-sizes";
+import Link from "gatsby-link";
 import "moment/locale/en-gb";
 import { Page } from "@bodhi-project/semantic-webflow";
-import ContainerDimensions from "react-container-dimensions";
-
-import { Elements, applyRhythm } from "@bodhi-project/typography";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -42,25 +32,10 @@ import SectionHalley from "@bodhi-project/blocks/lib/SectionHalley";
 import nvc from "../assets/nvc.png";
 import rc from "../assets/rc.png";
 import seoHelper from "../helpers/seoHelper";
-
-import EventsGrid from "../components/EventsGrid";
-import Calendar from "../components/Calendar";
+import categoriseEvents from "../helpers/categoriseEvents";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
-const { H1 } = Elements;
-
-// ----------------------------------------------------------------------------
-// ------------------------------------------------------------------ Functions
-// ----------------------------------------------------------------------------
-/** inArray */
-const inArray = (array, value) => {
-  let rx = false;
-  if (indexOf(array, value) >= 0) {
-    rx = true;
-  }
-  return rx;
-};
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
@@ -188,113 +163,12 @@ class EventsAndCalendar extends React.Component {
 
   /** standard renderer */
   render() {
+    const { isMobile } = this.props;
     const postEdges = this.props.data.allMarkdownRemark.edges;
-    const featuredEvents = [];
-    const NVCEvents = [];
-    const RCEvents = [];
-    const todayInt = parseInt(moment().format("YYYYMMDD"), 10);
-    let filteredFeaturedRecords = 1;
-    let filteredNVCRecords = 1;
-    let filteredRCRecords = 1;
-    const totalFeaturedEvents = 16;
-    const totalPracticeGroups = 4;
-
-    map(postEdges, ({ node }) => {
-      const { date, startDate } = node.frontmatter;
-      const mDate = moment(!isNull(date) ? date : startDate);
-      const xDate = parseInt(mDate.format("YYYYMMDD"), 10);
-      const inTheFuture = todayInt <= xDate;
-
-      const belowFeaturedMax = totalFeaturedEvents >= filteredFeaturedRecords;
-      const isFeatured = inArray(node.frontmatter.tags, "featured");
-
-      // Make banner
-      let eventBanner = null;
-      if (node.frontmatter.cover === "fallback") {
-        const coverHint = join(node.frontmatter.tags, "-");
-        eventBanner = withPrefix(
-          `/content-assets/event-fallbacks/${coverHint}.jpg`,
-        );
-      } else {
-        eventBanner = withPrefix(node.frontmatter.cover);
-      }
-
-      if (inTheFuture && belowFeaturedMax && isFeatured) {
-        featuredEvents.push({
-          route: node.fields.route,
-          humanDate: node.fields.humanDate,
-          elapsed: node.fields.elapsed,
-          abstract: node.frontmatter.abstract,
-          title: node.frontmatter.title,
-          subTitle: node.frontmatter.subTitle,
-          cover: eventBanner,
-          date: node.frontmatter.date,
-          startDate: node.frontmatter.startDate,
-          finishDate: node.frontmatter.finishDate,
-          fromTime: node.frontmatter.fromTime,
-          toTime: node.frontmatter.toTime,
-          category: node.frontmatter.category,
-          tags: node.frontmatter.tags,
-          type: node.frontmatter.type,
-        });
-        filteredFeaturedRecords += 1;
-      } else {
-        const belowNVCMax = totalPracticeGroups >= filteredNVCRecords;
-        const isNVCPracticeGroup =
-          inArray(node.frontmatter.tags, "nvc") &&
-          inArray(node.frontmatter.tags, "practice-group");
-
-        const belowRCMax = totalPracticeGroups >= filteredRCRecords;
-        const isRCPracticeGroup =
-          inArray(node.frontmatter.tags, "rc") &&
-          inArray(node.frontmatter.tags, "practice-group");
-
-        if (inTheFuture && belowNVCMax && isNVCPracticeGroup) {
-          NVCEvents.push({
-            route: node.fields.route,
-            humanDate: node.fields.humanDate,
-            elapsed: node.fields.elapsed,
-            abstract: node.frontmatter.abstract,
-            title: node.frontmatter.title,
-            subTitle: node.frontmatter.subTitle,
-            cover: eventBanner,
-            date: node.frontmatter.date,
-            startDate: node.frontmatter.startDate,
-            finishDate: node.frontmatter.finishDate,
-            fromTime: node.frontmatter.fromTime,
-            toTime: node.frontmatter.toTime,
-            category: node.frontmatter.category,
-            tags: node.frontmatter.tags,
-            type: node.frontmatter.type,
-          });
-          filteredNVCRecords += 1;
-        }
-
-        if (inTheFuture && belowRCMax && isRCPracticeGroup) {
-          RCEvents.push({
-            route: node.fields.route,
-            humanDate: node.fields.humanDate,
-            elapsed: node.fields.elapsed,
-            abstract: node.frontmatter.abstract,
-            title: node.frontmatter.title,
-            subTitle: node.frontmatter.subTitle,
-            cover: eventBanner,
-            date: node.frontmatter.date,
-            startDate: node.frontmatter.startDate,
-            finishDate: node.frontmatter.finishDate,
-            fromTime: node.frontmatter.fromTime,
-            toTime: node.frontmatter.toTime,
-            category: node.frontmatter.category,
-            tags: node.frontmatter.tags,
-            type: node.frontmatter.type,
-          });
-          filteredRCRecords += 1;
-        }
-      }
-    });
+    const events = categoriseEvents(postEdges);
 
     const opheliaData = {
-      cards: featuredEvents,
+      cards: events.featuredEvents,
       components: {
         localLink: Link,
       },
@@ -308,7 +182,7 @@ class EventsAndCalendar extends React.Component {
     };
 
     const pandoraData1 = {
-      cards: featuredEvents,
+      cards: events.featuredEvents,
       components: {
         localLink: Link,
       },
@@ -319,20 +193,18 @@ class EventsAndCalendar extends React.Component {
     };
 
     const pandoraData2 = {
-      cards: NVCEvents,
+      cards: events.NVCEvents,
       components: {
         localLink: Link,
       },
     };
 
     const pandoraData3 = {
-      cards: RCEvents,
+      cards: events.RCEvents,
       components: {
         localLink: Link,
       },
     };
-
-    let windowWidth = 1440;
 
     return (
       <Fragment>
@@ -354,7 +226,7 @@ class EventsAndCalendar extends React.Component {
           <div className="kale">
             <div>
               <hr />
-              {windowWidth >= 768 ? (
+              {!isMobile ? (
                 <SectionOphelia data={opheliaData} />
               ) : (
                 <SectionHalley data={pandoraData1} />
@@ -368,8 +240,8 @@ class EventsAndCalendar extends React.Component {
               </h3>
               <SectionHalley data={pandoraData2} />
               <br />
-              <p>
-                <Link to="events-calendar">See calendar ⇝</Link>
+              <p style={{ marginBottom: 20 }}>
+                <Link to="calendar">See calendar ⇝</Link>
               </p>
 
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
@@ -379,8 +251,8 @@ class EventsAndCalendar extends React.Component {
               </h3>
               <SectionHalley data={pandoraData3} />
               <br />
-              <p>
-                <Link to="events-calendar">See calendar ⇝</Link>
+              <p style={{ marginBottom: 20 }}>
+                <Link to="calendar">See calendar ⇝</Link>
               </p>
             </div>
           </div>
@@ -433,7 +305,12 @@ export const pageQuery = graphql`
 `;
 /* eslint-enable no-undef */
 
+/** mapSizesToProps */
+const mapSizesToProps = ({ width }) => ({
+  isMobile: width <= 768,
+});
+
 // ----------------------------------------------------------------------------
 // -------------------------------------------------------------------- Exports
 // ----------------------------------------------------------------------------
-export default EventsAndCalendar;
+export default withSizes(mapSizesToProps)(EventsAndCalendar);

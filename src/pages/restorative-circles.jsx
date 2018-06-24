@@ -11,6 +11,7 @@ import map from "lodash/map";
 import indexOf from "lodash/indexOf";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
+import withSizes from "react-sizes";
 import Link from "gatsby-link";
 import ContainerDimensions from "react-container-dimensions";
 import ReactPlayer from "react-player";
@@ -167,6 +168,7 @@ class NVCPage extends React.PureComponent {
   /** standard renderer */
   render() {
     const postEdges = this.props.data.allMarkdownRemark.edges;
+    const { isMobile } = this.props;
     // get only events
     const rcNodes = [];
     map(postEdges, ({ node }) => {
@@ -239,7 +241,7 @@ class NVCPage extends React.PureComponent {
                   marginBottom: 30,
                 }}
               />
-              <LearnMore data={learnMoreData} />
+              {!isMobile && <LearnMore data={learnMoreData} />}
             </div>
             <div>
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
@@ -283,7 +285,7 @@ class NVCPage extends React.PureComponent {
                   }}
                   to="https://www.youtube.com/user/laurajoyful/videos"
                 >
-                  More Videos ⋗
+                  More Videos ⇝
                 </OutLink>
               </div>
 
@@ -358,9 +360,17 @@ class NVCPage extends React.PureComponent {
                   }}
                   to="/writings/celebrations-and-gratitude"
                 >
-                  More Celebrations & Gratitude ⋗
+                  More Celebrations & Gratitude ⇝
                 </Link>
               </div>
+
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
+              {isMobile && (
+                <Fragment>
+                  <hr />
+                  <LearnMore data={learnMoreData} />
+                </Fragment>
+              )}
             </div>
           </div>
         </Page>
@@ -410,7 +420,12 @@ export const pageQuery = graphql`
 `;
 /* eslint-enable no-undef */
 
+/** mapSizesToProps */
+const mapSizesToProps = ({ width }) => ({
+  isMobile: width <= 768,
+});
+
 // ----------------------------------------------------------------------------
 // -------------------------------------------------------------------- Exports
 // ----------------------------------------------------------------------------
-export default NVCPage;
+export default withSizes(mapSizesToProps)(NVCPage);

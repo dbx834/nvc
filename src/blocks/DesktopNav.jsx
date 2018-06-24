@@ -43,7 +43,7 @@ const { Fragment } = React;
 const { Ul } = Elements;
 
 globalWithMediaQueries(
-  ".ant-popover-inner-content",
+  ".ant-popover-inner-content .menu-tip",
   merge({ ...applyType("ltb1ekq") }),
   true,
 );

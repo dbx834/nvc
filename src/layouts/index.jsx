@@ -11,6 +11,7 @@ import moment from "moment";
 import isUndefined from "lodash/isUndefined";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
+import { SizesProvider } from "react-sizes";
 import { Type } from "@bodhi-project/typography";
 import {
   InitializeMeta,
@@ -32,6 +33,18 @@ import Header from "../components/Header";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { data } = packageJson;
+
+// ----------------------------------------------------------------------------
+// ------------------------------------------------------------------ Functions
+// ----------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------- Data
+// ----------------------------------------------------------------------------
+const sizesConfig = {
+  fallbackWidth: 1280,
+  fallbackHeight: 700,
+};
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------- Global SEO
@@ -181,21 +194,23 @@ class TemplateWrapper extends React.Component {
         <UpdateTitle title="Loading..." />
         <WebsiteSchema data={websiteSchemaData} />
         <OrganisationSchema data={organisationSchemaData} />
-        <div id="appWrapper">
-          <div id="menuWrapper">
-            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Header */}
-            <Header {...this.props} />
-          </div>
-          <div id="contentWrapper">
-            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
-            <Container noFade block id="content">
-              {this.props.children()}
-            </Container>
+        <SizesProvider config={sizesConfig}>
+          <div id="appWrapper">
+            <div id="menuWrapper">
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Header */}
+              <Header {...this.props} />
+            </div>
+            <div id="contentWrapper">
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
+              <Container noFade block id="content">
+                {this.props.children()}
+              </Container>
 
-            {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Footer */}
-            <Footer />
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Footer */}
+              <Footer />
+            </div>
           </div>
-        </div>
+        </SizesProvider>
       </Type>
     );
   }

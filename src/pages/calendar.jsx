@@ -6,15 +6,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import { css } from "glamor";
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import indexOf from "lodash/indexOf";
 import map from "lodash/map";
 import join from "lodash/join";
-
-import Link, { withPrefix } from "gatsby-link";
+import merge from "lodash/merge";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
+import Link, { withPrefix } from "gatsby-link";
 import "moment/locale/en-gb";
 import { Page } from "@bodhi-project/semantic-webflow";
-import { Elements, applyRhythm } from "@bodhi-project/typography";
+import { Elements, applyType } from "@bodhi-project/typography";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -30,6 +32,7 @@ import {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
+import globalWithMediaQueries from "../helpers/globalWithMediaQueries";
 
 import EventsGrid from "../components/EventsGrid";
 import Calendar from "../components/Calendar";
@@ -45,6 +48,21 @@ import end from "../assets/end.png";
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
 const { H1 } = Elements;
+
+globalWithMediaQueries(
+  ".ant-popover-inner-content .phoebe-popcontent",
+  merge({ ...applyType("dkc2ilk", { range: [12, 21] }) }),
+  true,
+);
+
+/** inArray */
+const inArray = (array, value) => {
+  let rx = false;
+  if (indexOf(array, value) >= 0) {
+    rx = true;
+  }
+  return rx;
+};
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
@@ -168,7 +186,9 @@ class EventsAndCalendar extends React.Component {
         elapsed: node.fields.elapsed,
         beginDateInt: node.fields.beginDateInt,
         diff: node.fields.diff,
-        abstract: node.frontmatter.abstract,
+        abstract: inArray(node.frontmatter.tags, "practice-group")
+          ? null
+          : node.frontmatter.abstract,
         title: node.frontmatter.title,
         subTitle: node.frontmatter.subTitle,
         cover: eventBanner,
@@ -228,10 +248,51 @@ class EventsAndCalendar extends React.Component {
             <div>
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
-              <h3 className="mask-p" style={{ marginBottom: 10 }}>
-                Featured Events…
-              </h3>
-              <EventsGrid data={postEdges} totalEvents={30} featured={true} />
+              <p>
+                <strong>How Joy Living Learning came to be...</strong>
+              </p>
+              <p>
+                In the winter of 2008-09, L'aura along with Jason Stewart, had a
+                dream of hosting a 3-week international NVC camp in her garden.
+                In order to fundraise and sponsor 3 Ladakhi participants, plus a
+                young man from Koot Road village (near Auroville) who was
+                volunteering with them, they needed to set up a financial entity
+                -- and that was the birth of Joy Living Learning.
+              </p>
+              <p>
+                That camp was a wild success, with other 200 participants and 12
+                international trainers, staggered over the 3 weeks.
+              </p>
+              <p>
+                A short while later, L'aura joined Saleem Ebrahim and Aniruddha
+                Gadankush in setting up the Charitable Trust, "Institute of
+                Nonviolent Communication in India," and together they hosted the
+                first few annual International NVC Conventions in India.
+              </p>
+              <p>
+                In addition, Joy Living Learning has organized many other events
+                with international trainers, such as NVC Mediation with Kay Rung
+                and Liv Larsson, NVC & Aikido with Saleem Ebrahim, Compassionate
+                Living with Robert Gonzales, NVC & Internal Family Systems (IFS)
+                with Caroline Ader-Lamy and Saleem Ebrahim, NVC Certification
+                Mentoring & Assessment with Catherine Singer and Gina Lawrie,
+                and more...
+              </p>
+              <p>
+                <strong>Today...</strong>
+              </p>
+              <p>
+                Joy Living Learning continues to offer regular NVC workshops in
+                Auroville and other cities in the country, plus a weekly
+                practice group in Auroville. In addition to NVC, we also offer
+                Restorative Circles (RC) trainings and practice groups.
+              </p>
+              <p>
+                Joy Living Learning has incorporated Restorative Circles (RC)
+                into Auroville's conflict resolution policy, and we are working
+                towards building an alternative justice system in Auroville
+                based on the principles that underly the NVC movement.
+              </p>
             </div>
           </div>
         </Page>

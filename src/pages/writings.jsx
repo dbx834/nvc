@@ -68,6 +68,31 @@ const pageStyle = css({
     borderTop: "3px solid #B43808",
     marginBottom: 20,
   },
+
+  "& .oa-card": {
+    "& .oa-card-details": {
+      "& p:last-child": {
+        "& span": {
+          color: "#0000FF !important",
+          borderBottom: "1.625px solid transparent",
+
+          "&:hover": {
+            color: "#6D00FF",
+            borderBottom: "1.625px solid #6D00FF",
+          },
+          "&:visited": {
+            textDecoration: "none",
+          },
+          "&:link": {
+            textDecoration: "none",
+          },
+          "&:active": {
+            textDecoration: "none",
+          },
+        },
+      },
+    },
+  },
 });
 const pageStyleClass = pageStyle.toString();
 

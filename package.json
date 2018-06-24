@@ -73,12 +73,12 @@
     "format:js": "prettier '**/*.{js,jsx}' --write"
   },
   "dependencies": {
-    "@bodhi-project/blocks": "0.0.53",
+    "@bodhi-project/blocks": "0.0.55",
     "@bodhi-project/components": "0.0.79",
     "@bodhi-project/markdown-to-react": "0.0.53",
     "@bodhi-project/semantic-webflow": "0.0.11",
     "@bodhi-project/seo": "0.0.5",
-    "@bodhi-project/typography": "0.0.46",
+    "@bodhi-project/typography": "0.0.48",
     "antd": "^3.6.3",
     "babel-plugin-lodash": "^3.3.4",
     "form-serialize": "^0.7.2",
@@ -114,6 +114,7 @@
     "react-facebook": "^5.0.3",
     "react-iframe": "^1.1.1",
     "react-player": "^1.6.4",
+    "react-sizes": "^1.0.4",
     "react-transition-group": "^1.2.1",
     "remark-parse": "^5.0.0",
     "twix": "^1.2.1",

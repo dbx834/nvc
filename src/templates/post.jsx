@@ -194,6 +194,7 @@ class BlogPostTemplate extends React.Component {
       pageTitle: frontmatter.title,
       nakedPageSlug: nakedRoute,
       pageAbstract: frontmatter.abstract,
+      pageBanner: frontmatter.cover,
     };
 
     const seoData = seoHelper(pageData);

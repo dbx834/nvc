@@ -11,7 +11,6 @@ import { css } from "glamor";
 // import Link from 'gatsby-link';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import { Elements } from "@bodhi-project/typography";
 import { Page as SemanticPage } from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
@@ -152,7 +151,6 @@ const photos = [
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstract stuff
 const { Fragment } = React;
-const { H1 } = Elements;
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
@@ -181,6 +179,12 @@ const {
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageStyle = css({
   marginBottom: 40,
+
+  "& hr": {
+    border: "none",
+    borderTop: "3px solid #B43808",
+    marginBottom: 20,
+  },
 });
 const pageStyleClass = pageStyle.toString();
 
@@ -201,7 +205,8 @@ class Page extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <SemanticPage className={`${pageStyleClass}`}>
-          <H1>Gallery</H1>
+          <h1 style={{ marginBottom: 10 }}>Gallery</h1>
+          <hr />
           <Images photos={photos} loader="gradient" />
         </SemanticPage>
       </Fragment>

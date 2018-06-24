@@ -6,6 +6,11 @@ import React from "react";
 import PropTypes from "prop-types";
 import { css } from "glamor";
 
+import map from "lodash/map";
+import join from "lodash/join";
+
+import Link, { withPrefix } from "gatsby-link";
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import "moment/locale/en-gb";
 import { Page } from "@bodhi-project/semantic-webflow";
@@ -28,6 +33,14 @@ import seoHelper from "../helpers/seoHelper";
 
 import EventsGrid from "../components/EventsGrid";
 import Calendar from "../components/Calendar";
+import SectionPhoebe from "@bodhi-project/blocks/lib/SectionPhoebe";
+
+import nvc from "../assets/nvc.png";
+import rc from "../assets/rc.png";
+
+import start from "../assets/start.png";
+import middle from "../assets/middle.png";
+import end from "../assets/end.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -78,6 +91,10 @@ const pageStyle = css({
   },
 
   "& .kale": {
+    "& section": {
+      padding: 0,
+    },
+
     "@media(max-width: 768px)": {
       display: "block",
     },
@@ -131,6 +148,58 @@ class EventsAndCalendar extends React.Component {
   /** standard renderer */
   render() {
     const postEdges = this.props.data.allMarkdownRemark.edges;
+    const events = [];
+
+    map(postEdges, ({ node }) => {
+      // Make banner
+      let eventBanner = null;
+      if (node.frontmatter.cover === "fallback") {
+        const coverHint = join(node.frontmatter.tags, "-");
+        eventBanner = withPrefix(
+          `/content-assets/event-fallbacks/${coverHint}.jpg`,
+        );
+      } else {
+        eventBanner = withPrefix(node.frontmatter.cover);
+      }
+
+      events.push({
+        route: node.fields.route,
+        humanDate: node.fields.humanDate,
+        elapsed: node.fields.elapsed,
+        beginDateInt: node.fields.beginDateInt,
+        diff: node.fields.diff,
+        abstract: node.frontmatter.abstract,
+        title: node.frontmatter.title,
+        subTitle: node.frontmatter.subTitle,
+        cover: eventBanner,
+        date: node.frontmatter.date,
+        startDate: node.frontmatter.startDate,
+        finishDate: node.frontmatter.finishDate,
+        fromTime: node.frontmatter.fromTime,
+        toTime: node.frontmatter.toTime,
+        category: node.frontmatter.category,
+        tags: node.frontmatter.tags,
+        type: node.frontmatter.type,
+      });
+    });
+
+    const phoebeData = {
+      events,
+      components: {
+        localLink: Link,
+      },
+      tagMap: {
+        nvc,
+        rc,
+      },
+      conf: {
+        multiDay: {
+          start,
+          middle,
+          end,
+        },
+      },
+    };
 
     return (
       <Fragment>
@@ -146,21 +215,15 @@ class EventsAndCalendar extends React.Component {
         <Page className={pageStyleClass}>
           <div className="jke">
             <h1 style={{ marginBottom: 10 }}>
-              <span>Events Calendar</span>
+              <span>Calendar</span>
             </h1>
           </div>
           <div className="kale">
             <div>
               <hr />
-              <Calendar
-                data={postEdges}
-                location={this.props.location}
-                givenTags={{
-                  all: "All Events",
-                  nvc: "NVC Events",
-                  rc: "RC Events",
-                }}
-              />
+              <div className="mask-p">
+                <SectionPhoebe data={phoebeData} />
+              </div>
             </div>
             <div>
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
@@ -198,6 +261,8 @@ export const pageQuery = graphql`
             route
             humanDate
             elapsed
+            beginDateInt
+            diff
           }
           frontmatter {
             abstract

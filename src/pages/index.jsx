@@ -14,6 +14,7 @@ import trim from "lodash/trim";
 import filter from "lodash/filter";
 import isNull from "lodash/isNull";
 import indexOf from "lodash/indexOf";
+import isUndefined from "lodash/isUndefined";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 // import Link from "gatsby-link";
@@ -371,6 +372,9 @@ const PrevArrow = props => {
   );
 };
 
+/** Swap */
+const Swap = () => <div />;
+
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
@@ -378,6 +382,11 @@ const PrevArrow = props => {
 class IndexPage extends React.Component {
   /** standard renderer */
   render() {
+    let windowWidth = 1440;
+    if (!isUndefined(window)) {
+      windowWidth = window.innerWidth;
+    }
+
     const postEdges = this.props.data.allMarkdownRemark.edges;
     const todayInt = parseInt(moment().format("YYYYMMDD"), 10);
     let filteredRecords = 1;
@@ -480,8 +489,6 @@ class IndexPage extends React.Component {
                   </div>
                 );
               })}
-              <br />
-              <br />
               <div
                 style={{
                   display: "block",
@@ -536,10 +543,10 @@ class IndexPage extends React.Component {
               <br />
               <br />
               <br />
-              <LearnMore data={learnMoreData} />
+              {windowWidth >= 768 && <LearnMore data={learnMoreData} />}
             </div>
             <div>
-              <Image src={cover1X} className="xCover" />
+              <Image src={cover1X} className="xCover is-hidden-mobile" />
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
               <h3 className="mask-p">About</h3>
@@ -634,6 +641,13 @@ class IndexPage extends React.Component {
                   tabs="timeline,events,messages"
                 />
               </FacebookProvider>
+
+              {windowWidth < 768 && (
+                <Fragment>
+                  <hr />
+                  <LearnMore data={learnMoreData} />
+                </Fragment>
+              )}
             </div>
           </div>
         </Page>

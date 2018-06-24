@@ -54,10 +54,117 @@ html.lk-active.wf-inactive body {
   transition: all 300ms cubic-bezier(0.78, 0.14, 0.15, 0.86);
 }
 
+/* ----------------------------------------------------------------------------
+/* ---------------------------------------------------- Responsively hide stuff
+/* ------------------------------------------------------------------------- */
+.is-hidden {
+  display: none !important;
+}
+
+@media screen and (max-width: 768px) {
+  .is-hidden-mobile {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 769px), print {
+  .is-hidden-tablet {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+  .is-hidden-tablet-only {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .is-hidden-touch {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .is-hidden-desktop {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1215px) {
+  .is-hidden-desktop-only {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 1216px) {
+  .is-hidden-widescreen {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 1216px) and (max-width: 1407px) {
+  .is-hidden-widescreen-only {
+    display: none !important;
+  }
+}
+
+@media screen and (min-width: 1408px) {
+  .is-hidden-fullhd {
+    display: none !important;
+  }
+}
+
+/* ----------------------------------------------------------------- */
+/* --------------------------------------------------------- Globals
+/* ----------------------------------------------------------------- */
+.ant-fullcalendar {
+  font-family: "adobe-garamond-pro, serif" !important;
+  font-size: inherit !important;
+}
+
+.ant-fullcalendar, .ant-fullcalendar-year-select, .ant-fullcalendar-month-select, .ant-fullcalendar {
+  font-family: "adobe-garamond-pro, serif" !important;
+  font-size: inherit !important; 
+}
+
+.ant-btn {
+  font-family: "futura-pt, sans-serif";
+  font-size: inherit;
+}
+
+.ant-fullcalendar-column-header-inner,
+.ant-fullcalendar-column-header,
+.ant-fullcalendar tr,
+.ant-fullcalendar thead,
+.ant-fullcalendar th,
+.ant-fullcalendar table,
+.ant-fullcalendar-calendar-body,
+.ant-fullcalendar-header,
+.ant-fullcalendar-fullscreen,
+.ant-fullcalendar-year-select,
+.ant-fullcalendar-month-select,
+.ant-select-selection,
+.ant-select-selection-selected-value,
+.ant-select-dropdown-menu-item,
+.ant-select-selection__rendered,
+.ant-fullcalendar-header .ant-select-dropdown,
+.ant-fullcalendar-header .ant-select-dropdown-menu,
+.ant-fullcalendar-header .ant-select-dropdown-menu li {
+  font-family: inherit !important;
+  font-size: inherit !important;
+}
+
+#nprogress .spinner {
+  top: 25px;
+  right: 25px;
+}
+
 /* ----------------------------------------------------------------- */
 /* --------------------------------------------------------- Globals
 /* ----------------------------------------------------------------- */
 body {
+  font-family: "adobe-garamond-pro, serif" !important;
   color: #4a4a4a !important;
   line-height: unset !important;
 }
@@ -145,11 +252,11 @@ li, p, h1, h2, h3, h4, h5, h6 {
   border-radius: 8px;
 }
 
-.ant-select-dropdown-menu li {
-  margin-bottom: 0px !important;
-  font-family: "futura-pt", sans-serif !important;
-  font-size: 110% !important;
-}
+// .ant-select-dropdown-menu li {
+//   margin-bottom: 0px !important;
+//   font-family: "futura-pt", sans-serif !important;
+//   font-size: 110% !important;
+// }
 
 .ant-carousel {
   width: inherit;
@@ -185,6 +292,19 @@ li, p, h1, h2, h3, h4, h5, h6 {
 
 .ant-carousel .slick-dots {
   bottom: 32px !important;
+}
+
+@media (min-width: 992px) {
+  .ant-carousel .slick-dots {
+    bottom: 15px !important;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .ant-carousel .slick-dots {
+    bottom: 5px !important;
+  }
 }
 
 /* ----------------------------------------------------------------------------------- */

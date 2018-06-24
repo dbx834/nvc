@@ -59,8 +59,8 @@ const menu = [
   {
     title: "Learn",
     menu: [
-      { title: "Upcoming Events", link: "/upcoming-events" },
-      // { title: "Featured Events", link: "/featured-events" },
+      { title: "Workshops & Events", link: "/workshops-and-events" },
+      { title: "Calendar", link: "/calendar" },
       {
         title: "Pay Fee",
         link: "/pay-fee",

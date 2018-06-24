@@ -94,12 +94,14 @@ const wrapperStyles = css({
     },
   },
 
-  "& #content": merge(
-    {
-      marginLeft: 0,
+  "& #content": {
+    marginLeft: 0,
+    padding: "1.5em 0.5em 2.5em 0.5em",
+
+    "@media(min-width: 768px)": {
+      padding: "1.5em 1.5em 7.5em 1.5em",
     },
-    ...applyRhythm({ padding: "1X 1X 4.8X 1X" }),
-  ),
+  },
 
   "& #appWrapper": {
     display: "block",

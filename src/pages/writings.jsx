@@ -6,8 +6,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import { css } from "glamor";
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import map from "lodash/map";
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import { Page } from "@bodhi-project/semantic-webflow";
+import Link from "gatsby-link";
 
 import {
   // --------------- Basic
@@ -23,13 +27,12 @@ import {
 } from "@bodhi-project/seo";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
+import SectionAstrid from "@bodhi-project/blocks/lib/SectionAstrid";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
-
-import BlogListing from "../components/BlogListing";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -60,49 +63,10 @@ const {
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageStyle = css({
-  "& .articles": {
-    display: "flex",
-    flexWrap: "wrap",
-
-    "& article": {
-      flex: "0 0 30%",
-      margin: "20px 1%",
-      transition: "box-shadow 0.1s ease-in-out, border 0.5s ease-in-out",
-      borderRadius: 6,
-      border: "1px solid rgba(74, 74, 74, 0.25)",
-
-      "&:hover": {
-        boxShadow: "0 0 25px rgba(0,0,0,.11)",
-        border: "1px solid rgba(74, 74, 74, 0.75)",
-      },
-
-      "& a": {
-        borderBottom: "1.625px solid transparent",
-
-        "&:hover": {
-          color: "#6D00FF",
-          borderBottom: "1.625px solid transparent",
-        },
-      },
-
-      "& .abstract": {
-        padding: "16px 10px",
-
-        "& h3": {
-          fontFamily: "adobe-garamond-pro, serif",
-        },
-
-        "& hr": {
-          border: "none",
-          borderTop: "1px solid #B43808",
-          marginBottom: 20,
-          marginLeft: 0,
-          width: "37.5%",
-        },
-
-        "& .article-category": {},
-      },
-    },
+  "& hr": {
+    border: "none",
+    borderTop: "3px solid #B43808",
+    marginBottom: 20,
   },
 });
 const pageStyleClass = pageStyle.toString();
@@ -120,6 +84,37 @@ class Blog extends React.Component {
   /** standard renderer */
   render() {
     const postEdges = this.props.data.allMarkdownRemark.edges;
+    const cards = [];
+
+    map(postEdges, ({ node }) => {
+      cards.push({
+        route: node.fields.route,
+        humanDate: node.fields.humanDate,
+        elapsed: node.fields.elapsed,
+        abstract: node.frontmatter.abstract,
+        title: node.frontmatter.title,
+        cover: node.frontmatter.cover,
+        date: node.frontmatter.date,
+        category: node.frontmatter.category,
+      });
+    });
+
+    const astridData = {
+      cards,
+      components: {
+        localLink: Link,
+      },
+      conf: {
+        image: {
+          rawCoverWidth: 1440,
+          rawCoverHeight: 900,
+        },
+      },
+      categoryMap: {
+        NVC: "Nonviolent Communication",
+        RC: "Restorative Circles",
+      },
+    };
 
     return (
       <Fragment>
@@ -133,7 +128,9 @@ class Blog extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={pageStyleClass}>
-          <BlogListing nodes={postEdges} {...this.props} />
+          <h1 style={{ marginBottom: 10 }}>Blog</h1>
+          <hr />
+          <SectionAstrid data={astridData} />
         </Page>
       </Fragment>
     );
@@ -141,7 +138,7 @@ class Blog extends React.Component {
 }
 
 Blog.propTypes = {
-  data: PropTypes.object,
+  data: PropTypes.object, // eslint-disable-line react/forbid-prop-types
 };
 
 // ----------------------------------------------------------------------------
@@ -159,6 +156,8 @@ export const pageQuery = graphql`
         node {
           fields {
             route
+            humanDate
+            elapsed
           }
           frontmatter {
             abstract

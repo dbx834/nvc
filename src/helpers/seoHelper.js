@@ -3,6 +3,9 @@
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import isUndefined from "lodash/isUndefined";
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import ogX from "../assets/ogX.jpg";
 import twitterSummaryX from "../assets/twitterSummaryX.jpg";
@@ -20,28 +23,34 @@ const twitterSummaryY = withUrl(twitterSummaryX, data);
 // ----------------------------------------------------------------------------
 /** seoHelper */
 const seoHelper = pageData => {
-  // console.log(ogX);
+  const { pageBanner } = pageData;
+  let pageBannerX = undefined;
+
+  if (!isUndefined(pageBanner)) {
+    pageBannerX = withUrl(pageBanner, data);
+  }
+
   const returnObject = {
     pageTitle: pageData.pageTitle,
-    twitterSummaryX: twitterSummaryY,
+    twitterSummaryX: isUndefined(twitterSummaryY) ? ogY : pageBannerX,
     generalMetaData: {
       description: pageData.pageAbstract,
       keywords: data.websiteKeywords,
-      image: ogY,
+      image: isUndefined(pageBanner) ? ogY : pageBannerX,
     },
     twitterSummaryCardData: {
       site: data.websiteName,
       creator: data.org.name,
       title: pageData.pageTitle,
       description: pageData.pageAbstract,
-      image: twitterSummaryY,
+      image: isUndefined(pageBanner) ? twitterSummaryY : pageBannerX,
     },
     openGraphSummaryData: {
       siteName: data.websiteName,
       url: `${data.websiteUrl}${pageData.nakedPageSlug}`,
       title: pageData.pageTitle,
       description: pageData.pageAbstract,
-      image: ogY,
+      image: isUndefined(ogY) ? twitterSummaryY : pageBannerX,
     },
     webpageSchemaData: {
       url: `${data.websiteUrl}${pageData.nakedPageSlug}`,
@@ -49,7 +58,7 @@ const seoHelper = pageData => {
       description: pageData.pageAbstract,
       author: data.org.name,
       publisher: data.org.name,
-      image: ogY,
+      image: isUndefined(ogY) ? twitterSummaryY : pageBannerX,
     },
     breadcrumbSchemaData: {
       breadcrumbs: [

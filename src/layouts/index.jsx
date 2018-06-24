@@ -8,11 +8,10 @@ import { css } from "glamor";
 import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
-import merge from "lodash/merge";
 import isUndefined from "lodash/isUndefined";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import { Type, applyRhythm } from "@bodhi-project/typography";
+import { Type } from "@bodhi-project/typography";
 import {
   InitializeMeta,
   UpdateTitle,

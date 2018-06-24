@@ -53,7 +53,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-nprogress",
       options: {
-        color: themeColor,
+        color: "#b43808",
       },
     },
     "gatsby-plugin-sharp",

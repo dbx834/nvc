@@ -13,6 +13,7 @@ import join from "lodash/join";
 import merge from "lodash/merge";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
+import withSizes from "react-sizes";
 import Link, { withPrefix } from "gatsby-link";
 import "moment/locale/en-gb";
 import { Page } from "@bodhi-project/semantic-webflow";
@@ -30,13 +31,13 @@ import {
   BreadcrumbSchema,
 } from "@bodhi-project/seo";
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/blocks
+import SectionPhoebe from "@bodhi-project/blocks/lib/SectionPhoebe";
+import SectionHalleyAlt from "@bodhi-project/blocks/lib/SectionHalleyAlt";
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
 import globalWithMediaQueries from "../helpers/globalWithMediaQueries";
-
-import EventsGrid from "../components/EventsGrid";
-import Calendar from "../components/Calendar";
-import SectionPhoebe from "@bodhi-project/blocks/lib/SectionPhoebe";
 
 import nvc from "../assets/nvc.png";
 import rc from "../assets/rc.png";
@@ -165,6 +166,7 @@ class EventsAndCalendar extends React.Component {
 
   /** standard renderer */
   render() {
+    const { isMobile } = this.props;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     const events = [];
 
@@ -221,6 +223,14 @@ class EventsAndCalendar extends React.Component {
       },
     };
 
+    const altHalleyData = {
+      cards: events,
+      components: {
+        localLink: Link,
+      },
+      show: 4,
+    };
+
     return (
       <Fragment>
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
@@ -241,9 +251,18 @@ class EventsAndCalendar extends React.Component {
           <div className="kale">
             <div>
               <hr />
-              <div className="mask-p">
-                <SectionPhoebe data={phoebeData} />
-              </div>
+              {!isMobile ? (
+                <div className="mask-p">
+                  <SectionPhoebe data={phoebeData} />
+                </div>
+              ) : (
+                <div className="mask-p">
+                  <SectionHalleyAlt
+                    data={altHalleyData}
+                    style={{ padding: 0 }}
+                  />
+                </div>
+              )}
             </div>
             <div>
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
@@ -346,7 +365,12 @@ export const pageQuery = graphql`
 `;
 /* eslint-enable no-undef */
 
+/** mapSizesToProps */
+const mapSizesToProps = ({ width }) => ({
+  isMobile: width <= 768,
+});
+
 // ----------------------------------------------------------------------------
 // -------------------------------------------------------------------- Exports
 // ----------------------------------------------------------------------------
-export default EventsAndCalendar;
+export default withSizes(mapSizesToProps)(EventsAndCalendar);

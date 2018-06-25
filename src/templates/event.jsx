@@ -45,8 +45,10 @@ import {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
 import Image from "@bodhi-project/components/lib/Image";
+import Container from "@bodhi-project/components/lib/Container";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
+import withUrl from "../helpers/withUrl";
 import seoHelper from "../helpers/seoHelper";
 import packageJson from "../../package.json";
 import markdownStylesClass from "../styles/markdownStyles";
@@ -63,9 +65,18 @@ const { H1, H2, Paragraph } = Elements;
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 const pageStyle = css({
-  display: "flex",
+  display: "block",
   position: "relative",
-  marginBottom: 60,
+
+  "& h1": {
+    "& span": {
+      fontSize: "90%",
+    },
+  },
+
+  "& h3": {
+    fontWeight: "700 !important",
+  },
 
   "& hr": {
     border: "none",
@@ -73,37 +84,72 @@ const pageStyle = css({
     marginBottom: 20,
   },
 
-  "& .left": {
-    flexGrow: 10,
-    flexBasis: 0,
-    padding: "0em 1em",
+  "& .kale": {
+    "@media(max-width: 768px)": {
+      display: "block",
+    },
 
-    "& .headings": {
-      display: "flex",
-      flexFlow: "row wrap",
-      alignItems: "flex-start",
-      ...applyRhythm({ marginBottom: "1.86X" }),
+    display: "flex",
 
-      "& .banner": {
-        flex: "7 1 0%",
+    "& > div": {
+      padding: "0em 1.25em",
+
+      "&:nth-child(1)": {
+        flexBasis: 0,
+        flexGrow: 62,
+
+        "& .hope": {
+          display: "flex",
+
+          "& > div": {
+            "&:nth-child(1)": {
+              flexBasis: 0,
+              flexGrow: 50,
+              paddingRight: "1.25em",
+            },
+
+            "&:nth-child(2)": {
+              flexBasis: 0,
+              flexGrow: 50,
+            },
+          },
+        },
       },
 
-      "& .abstract": {
-        flex: "12 1 0%",
-        ...applyRhythm({ paddingLeft: "0.6882X" }),
-
-        "& h3": {
-          marginTop: 0,
-          marginBottom: 5,
-        },
+      "&:nth-child(2)": {
+        flexBasis: 0,
+        flexGrow: 38,
       },
     },
   },
 
-  "& .right": {
-    flexGrow: 5,
-    flexBasis: 0,
-    padding: "0em 1em",
+  "& .headings": {
+    "@media(max-width: 768px)": {
+      display: "block",
+    },
+
+    display: "flex",
+    flexFlow: "row wrap",
+    alignItems: "flex-start",
+    ...applyRhythm({ marginBottom: "1.86X" }),
+
+    "& .banner": {
+      flex: "7 1 0%",
+
+      "@media(max-width: 768px)": {
+        marginBottom: 10,
+      },
+    },
+
+    "& .abstract": {
+      flex: "12 1 0%",
+      ...applyRhythm({ paddingLeft: "0.6882X" }),
+
+      "& h3": {
+        marginTop: 0,
+        marginBottom: 5,
+      },
+    },
   },
 });
 const pageStyleClass = pageStyle.toString();
@@ -265,146 +311,156 @@ class EventTemplate extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={`${markdownStylesClass} ${pageStyleClass}`}>
-          {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Main */}
-          <div className="left">
-            <Header className="headings">
-              <div className="banner">
-                <Image
-                  src={eventBanner}
-                  rawWidth={1440}
-                  rawHeight={900}
-                  loader="gradient"
-                  style={{ border: 0 }}
-                />
-              </div>
-              <div className="abstract">
-                <H1 className="mask-h3" style={{ marginBottom: 5 }}>
-                  {frontmatter.title}
-                </H1>
-                <Paragraph style={{ marginBottom: 0 }}>
-                  {(inArray(tags, "rc") && inArray(tags, "practice-group")) ||
-                  (inArray(tags, "nvc") && inArray(tags, "practice-group")) ? (
-                    <Fragment>
-                      <strong>
-                        {frontmatter.subTitle}
-                        &nbsp; • &nbsp;
-                        {fromTime} – {toTime}
-                      </strong>
-                      <br />
-                      <br />
-                    </Fragment>
-                  ) : (
-                    <Fragment>
-                      {frontmatter.subTitle !== "na" && (
+          <Container block bleed>
+            <div className="kale">
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Main */}
+              <div>
+                <Header className="headings">
+                  <div className="banner">
+                    <Image
+                      src={eventBanner}
+                      rawWidth={1440}
+                      rawHeight={900}
+                      loader="gradient"
+                      style={{ border: 0 }}
+                    />
+                  </div>
+                  <div className="abstract">
+                    <H1 className="mask-h3" style={{ marginBottom: 5 }}>
+                      {frontmatter.title}
+                    </H1>
+                    <Paragraph style={{ marginBottom: 0 }}>
+                      {(inArray(tags, "rc") &&
+                        inArray(tags, "practice-group")) ||
+                      (inArray(tags, "nvc") &&
+                        inArray(tags, "practice-group")) ? (
                         <Fragment>
-                          <strong>{frontmatter.subTitle}</strong>
+                          <strong>
+                            {frontmatter.subTitle}
+                            &nbsp; • &nbsp;
+                            {fromTime} – {toTime}
+                          </strong>
                           <br />
                           <br />
                         </Fragment>
+                      ) : (
+                        <Fragment>
+                          {frontmatter.subTitle !== "na" && (
+                            <Fragment>
+                              <strong>{frontmatter.subTitle}</strong>
+                              <br />
+                              <br />
+                            </Fragment>
+                          )}
+                        </Fragment>
                       )}
-                    </Fragment>
-                  )}
-                  <i>
-                    {humanDate}&nbsp;({elapsed})
-                  </i>
-                  <br />
-                  <i>
-                    {fromTime} - {toTime}
-                  </i>
-                </Paragraph>
-                <br />
-                <div style={{ position: "relative" }}>
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 99,
-                      backgroundColor: "#f8f2e6",
-                      zIndex: 10,
-                      height: 20,
-                      width: "calc(100% - 98px)",
-                    }}
-                  />
-                  <div style={{ maxWidth: 98 }}>
-                    <FacebookProvider appId="218604115574634">
-                      <FBLike
-                        href={`http://localhost:8000/${route}`}
-                        colorScheme="dark"
-                        showFaces
-                        share
+                      <i>
+                        {humanDate}&nbsp;({elapsed})
+                      </i>
+                      <br />
+                      <i>
+                        {fromTime} - {toTime}
+                      </i>
+                    </Paragraph>
+                    <br />
+                    <div style={{ position: "relative" }}>
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: 0,
+                          left: 99,
+                          backgroundColor: "#f8f2e6",
+                          zIndex: 10,
+                          height: 20,
+                          width: "calc(100% - 98px)",
+                        }}
                       />
-                    </FacebookProvider>
+                      <div style={{ maxWidth: 98 }}>
+                        <FacebookProvider appId="218604115574634">
+                          <FBLike
+                            href={withUrl(route, data)}
+                            colorScheme="dark"
+                            showFaces
+                            share
+                          />
+                        </FacebookProvider>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </Header>
-            <hr />
-            <br />
-            <Article>
-              {treeCodeParser(
-                markdownAst,
-                {
-                  localLink: Link,
-                  linkHeaders: false,
-                  trackHeaders: false,
-                  nestHeaders: false,
-                },
-                {},
-              )}
-            </Article>
-            <Footer>
-              <H1 mask="h4">More like this</H1>
-              <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <div>
-                  {!isNull(prev) && (
-                    <Link to={`/${prev.fields.route}`}>⇜ Previous</Link>
+                </Header>
+                <hr />
+                <br />
+                <Article>
+                  {treeCodeParser(
+                    markdownAst,
+                    {
+                      localLink: Link,
+                      linkHeaders: false,
+                      trackHeaders: false,
+                      nestHeaders: false,
+                    },
+                    {},
                   )}
-                </div>
-                <div>
-                  {!isNull(next) && (
-                    <Link to={`/${next.fields.route}`}>Next ⇝</Link>
-                  )}
-                </div>
-              </div>
-              <Paragraph className="stash">
-                {data.copyright}
+                </Article>
+                <Footer>
+                  <H1 mask="h4">More like this</H1>
+                  <div
+                    style={{ display: "flex", justifyContent: "space-between" }}
+                  >
+                    <div>
+                      {!isNull(prev) && (
+                        <Link to={`/${prev.fields.route}`}>⇜ Previous</Link>
+                      )}
+                    </div>
+                    <div>
+                      {!isNull(next) && (
+                        <Link to={`/${next.fields.route}`}>Next ⇝</Link>
+                      )}
+                    </div>
+                  </div>
+                  <Paragraph className="stash">
+                    {data.copyright}
+                    <br />
+                    <br />
+                    Published on {humanDate} ({elapsed}).
+                  </Paragraph>
+                </Footer>
                 <br />
                 <br />
-                Published on {humanDate} ({elapsed}).
-              </Paragraph>
-            </Footer>
-          </div>
+              </div>
 
-          {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Side */}
-          <div className="right">
-            {!isNull(whichSide) &&
-              whichSide === "rc-practice-group" && (
-                <RCPracticeGroupSide
-                  data={frontmatter}
-                  pathContext={pathContext}
-                  showRegister={showRegister}
-                  showPay={showPay}
-                />
-              )}
-            {!isNull(whichSide) &&
-              whichSide === "nvc-practice-group" && (
-                <NVCPracticeGroupSide
-                  data={frontmatter}
-                  pathContext={pathContext}
-                  showRegister={showRegister}
-                  showPay={showPay}
-                />
-              )}
-            {!isNull(whichSide) &&
-              whichSide === "workshop" && (
-                <WorkshopSide
-                  data={frontmatter}
-                  pathContext={pathContext}
-                  showRegister={showRegister}
-                  showPay={showPay}
-                />
-              )}
-          </div>
+              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Side */}
+              <div>
+                {!isNull(whichSide) &&
+                  whichSide === "rc-practice-group" && (
+                    <RCPracticeGroupSide
+                      data={frontmatter}
+                      pathContext={pathContext}
+                      showRegister={showRegister}
+                      showPay={showPay}
+                    />
+                  )}
+                {!isNull(whichSide) &&
+                  whichSide === "nvc-practice-group" && (
+                    <NVCPracticeGroupSide
+                      data={frontmatter}
+                      pathContext={pathContext}
+                      showRegister={showRegister}
+                      showPay={showPay}
+                    />
+                  )}
+                {!isNull(whichSide) &&
+                  whichSide === "workshop" && (
+                    <WorkshopSide
+                      data={frontmatter}
+                      pathContext={pathContext}
+                      showRegister={showRegister}
+                      showPay={showPay}
+                    />
+                  )}
+              </div>
+            </div>
+          </Container>
         </Page>
       </Fragment>
     );

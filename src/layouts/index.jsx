@@ -187,7 +187,7 @@ class TemplateWrapper extends React.Component {
         kit="dkc2ilk"
         style={{ minHeight: "100vh" }}
         className={wrapperStylesClass}
-        options={{ range: [12, 21] }}
+        options={{ range: [15, 21] }}
       >
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
         <InitializeMeta data={{ titleTemplate: "%s | Joy Living Learning" }} />

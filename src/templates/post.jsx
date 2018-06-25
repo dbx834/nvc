@@ -49,6 +49,7 @@ import Image from "@bodhi-project/components/lib/Image";
 import Container from "@bodhi-project/components/lib/Container";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
+import withUrl from "../helpers/withUrl";
 import seoHelper from "../helpers/seoHelper";
 import packageJson from "../../package.json";
 import markdownStylesClass from "../styles/markdownStyles";
@@ -129,6 +130,10 @@ const pageStyle = css({
   },
 
   "& .headings": {
+    "@media(max-width: 768px)": {
+      display: "block",
+    },
+
     display: "flex",
     flexFlow: "row wrap",
     alignItems: "flex-start",
@@ -136,6 +141,10 @@ const pageStyle = css({
 
     "& .banner": {
       flex: "7 1 0%",
+
+      "@media(max-width: 768px)": {
+        marginBottom: 10,
+      },
     },
 
     "& .abstract": {
@@ -277,7 +286,7 @@ class BlogPostTemplate extends React.Component {
                       <div style={{ maxWidth: 98 }}>
                         <FacebookProvider appId="218604115574634">
                           <FBLike
-                            href={`http://localhost:8000/${route}`}
+                            href={withUrl(route, data)}
                             colorScheme="dark"
                             showFaces
                             share

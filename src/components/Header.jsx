@@ -150,13 +150,25 @@ class Header extends React.Component {
               id="menu"
               alt="menu icon"
               src={mobileBurger}
-              style={{ height: 45, width: 45, top: 18, right: 13 }}
+              style={{
+                height: 38,
+                width: 38,
+                top: 20,
+                right: 7,
+                position: "absolute",
+              }}
             />
             <img
               id="cross"
               alt="close menu icon"
               src={mobileCross}
-              style={{ height: 37, width: 37 }}
+              style={{
+                height: 38,
+                width: 38,
+                top: 44,
+                right: 24,
+                position: "absolute",
+              }}
             />
           </MobileHeader>
           <MobileMenu>

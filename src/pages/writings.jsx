@@ -10,6 +10,7 @@ import { css } from "glamor";
 import map from "lodash/map";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
+import withSizes from "react-sizes";
 import { Page } from "@bodhi-project/semantic-webflow";
 import Link from "gatsby-link";
 
@@ -28,6 +29,7 @@ import {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
 import SectionAstrid from "@bodhi-project/blocks/lib/SectionAstrid";
+import SectionSaros from "@bodhi-project/blocks/lib/SectionSaros";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 
@@ -108,6 +110,7 @@ class Blog extends React.Component {
 
   /** standard renderer */
   render() {
+    const { isMobile } = this.props;
     const postEdges = this.props.data.allMarkdownRemark.edges;
     const cards = [];
 
@@ -141,6 +144,14 @@ class Blog extends React.Component {
       },
     };
 
+    const sarosData = {
+      cards,
+      components: {
+        localLink: Link,
+      },
+      show: 5,
+    };
+
     return (
       <Fragment>
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
@@ -155,7 +166,14 @@ class Blog extends React.Component {
         <Page className={pageStyleClass}>
           <h1 style={{ marginBottom: 10 }}>Blog</h1>
           <hr />
-          <SectionAstrid data={astridData} />
+          {!isMobile ? (
+            <SectionAstrid data={astridData} />
+          ) : (
+            <SectionSaros
+              data={sarosData}
+              style={{ padding: 0, marginBottom: 60 }}
+            />
+          )}
         </Page>
       </Fragment>
     );
@@ -198,7 +216,12 @@ export const pageQuery = graphql`
 `;
 /* eslint-enable no-undef */
 
+/** mapSizesToProps */
+const mapSizesToProps = ({ width }) => ({
+  isMobile: width <= 768,
+});
+
 // ----------------------------------------------------------------------------
 // -------------------------------------------------------------------- Exports
 // ----------------------------------------------------------------------------
-export default Blog;
+export default withSizes(mapSizesToProps)(Blog);

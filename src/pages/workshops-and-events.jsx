@@ -190,6 +190,7 @@ class EventsAndCalendar extends React.Component {
         nvc,
         rc,
       },
+      show: 3,
     };
 
     const pandoraData2 = {

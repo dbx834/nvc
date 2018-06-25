@@ -394,10 +394,6 @@ class IndexPage extends React.Component {
       components: {
         localLink: Link,
       },
-      tagMap: {
-        nvc,
-        rc,
-      },
     };
 
     const pandoraData2 = {

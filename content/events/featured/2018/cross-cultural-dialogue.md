@@ -14,6 +14,7 @@ cost: to be confirmed
 tags:
   - workshop
   - featured
+  - star
 ---
 
 _We welcome all Aurovilians and Newcomers who would like to join this 2-day Cross-Cultural Dialogue. Please register as soon as possible, so as to confirm your seat._

@@ -1,13 +1,15 @@
 ---
 title: Can we talk about discrimination in Auroville?
 cover: /content-assets/covers/can-we-talk-about-discrimination-in-auroville.jpg
-category: 6.Journal
+category: 2.RC
 abstract: Although I can connect with the discomfort that many Aurovilians felt with regards to the recent claim of discrimination being published on Auronet, I’m actually celebrating the courage and clarity that it took to name it, and to do so this publicly.
 date: 2018-05-25
 type: post
 tags:
   - highlight
 ---
+
+Published in “Auroville Today.”
 
 **`[Feelings of discrimination surfaced after two Tamil members of the Working Committee were not given proximity passes for the Prime Minister's visit on February 24th. This led to a rift within the Working Committee, and the debate spilled over into the larger community. The Auroville Council, asked by many members of the community to look into the matter of feelings of discrimination, called for a Restorative Circle to support the Working Committee to work through some of their internal dynamics. In addition, Restorative Auroville also organized a Cross-Cultural Dialogue on the topic of discrimination. L'aura reports.]`**
 

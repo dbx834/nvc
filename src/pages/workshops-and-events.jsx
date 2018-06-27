@@ -198,12 +198,20 @@ class EventsAndCalendar extends React.Component {
       components: {
         localLink: Link,
       },
+      tagMap: {
+        nvc,
+        rc,
+      },
     };
 
     const pandoraData3 = {
       cards: events.RCEvents,
       components: {
         localLink: Link,
+      },
+      tagMap: {
+        nvc,
+        rc,
       },
     };
 
@@ -236,25 +244,45 @@ class EventsAndCalendar extends React.Component {
             <div>
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
-              <h3 className="mask-p" style={{ marginBottom: 10 }}>
-                NVC Practice Group
-              </h3>
-              <SectionHalley data={pandoraData2} />
-              <br />
-              <p style={{ marginBottom: 20 }}>
-                <Link to="calendar">See calendar ⇝</Link>
-              </p>
+              <div style={{ position: "relative" }}>
+                <h3 className="mask-p" style={{ marginBottom: 0 }}>
+                  NVC Practice Group
+                </h3>
+                <p
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    right: 0,
+                    display: "inline-block",
+                    margin: 0,
+                    marginTop: -3,
+                  }}
+                >
+                  <Link to="/calendar">See calendar ⇝</Link>
+                </p>
+              </div>
+              <SectionHalley data={pandoraData2} style={{ marginTop: -5 }} />
 
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
-              <h3 className="mask-p" style={{ marginBottom: 10 }}>
-                RC Practice Group
-              </h3>
-              <SectionHalley data={pandoraData3} />
-              <br />
-              <p style={{ marginBottom: 20 }}>
-                <Link to="calendar">See calendar ⇝</Link>
-              </p>
+              <div style={{ position: "relative" }}>
+                <h3 className="mask-p" style={{ marginBottom: 0 }}>
+                  RC Practice Group
+                </h3>
+                <p
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    right: 0,
+                    display: "inline-block",
+                    margin: 0,
+                    marginTop: -3,
+                  }}
+                >
+                  <Link to="/calendar">See calendar ⇝</Link>
+                </p>
+              </div>
+              <SectionHalley data={pandoraData3} style={{ marginTop: -5 }} />
             </div>
           </div>
         </Page>

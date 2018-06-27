@@ -73,7 +73,7 @@
     "format:js": "prettier '**/*.{js,jsx}' --write"
   },
   "dependencies": {
-    "@bodhi-project/blocks": "0.0.64",
+    "@bodhi-project/blocks": "0.0.70",
     "@bodhi-project/components": "0.0.79",
     "@bodhi-project/markdown-to-react": "0.0.53",
     "@bodhi-project/semantic-webflow": "0.0.11",

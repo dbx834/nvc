@@ -9,8 +9,7 @@ import { css } from "glamor";
 import map from "lodash/map";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link from "gatsby-link";
-import { Elements, applyRhythm } from "@bodhi-project/typography";
+import { Elements } from "@bodhi-project/typography";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
 import Image from "@bodhi-project/components/lib/Image";
@@ -20,16 +19,13 @@ import OutLink from "@bodhi-project/components/lib/OutLink";
 import Tooltip from "antd/lib/tooltip";
 import "antd/lib/tooltip/style/css";
 
-import Button from "antd/lib/button";
-import "antd/lib/button/style/css";
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import domestic from "../assets/domestic.png";
 import international from "../assets/international.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 // const { Fragment } = React;
-const { H1, H2, Paragraph } = Elements;
+const { Paragraph } = Elements;
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
@@ -77,7 +73,7 @@ class LearnMore extends React.Component {
     return (
       <div className={pageStyleClass}>
         <div className="constrain">
-          <h2>Fee Payment</h2>
+          <h1>Fee Payment</h1>
           <hr />
           <Paragraph>
             You may pay your fees here, or directly on the event page you’re

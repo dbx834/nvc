@@ -308,12 +308,15 @@ class NVCPage extends React.PureComponent {
 
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
-              <h3 className="mask-p">A Participant Shares...</h3>
+              <h3 className="mask-p" style={{ marginBottom: 5 }}>
+                A Participant Shares...
+              </h3>
               <p
                 style={{
                   fontFamily: "futura-pt, sans-serif",
                   fontWeight: 200,
-                  marginBottom: 30,
+                  marginBottom: 20,
+                  marginTop: 0,
                 }}
               >
                 <span style={{ fontSize: "125%" }}>
@@ -344,12 +347,15 @@ class NVCPage extends React.PureComponent {
 
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
-              <h3 className="mask-p">A Participant Shares...</h3>
+              <h3 className="mask-p" style={{ marginBottom: 5 }}>
+                A Participant Shares...
+              </h3>
               <p
                 style={{
                   fontFamily: "futura-pt, sans-serif",
                   fontWeight: 200,
-                  marginBottom: 30,
+                  marginBottom: 20,
+                  marginTop: 0,
                 }}
               >
                 <span style={{ fontSize: "125%" }}>

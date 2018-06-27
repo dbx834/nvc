@@ -60,6 +60,18 @@ const mobileNavStyles = css({
 });
 const mobileNavStylesClass = mobileNavStyles.toString();
 
+const mobileMenu = css({
+  "& .bm-item-list": {
+    padding: "1em",
+    "& a": {
+      display: "block",
+      fontSize: "150%",
+      marginBottom: "1em",
+    },
+  },
+});
+const mobileMenuClass = mobileMenu.toString();
+
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------

@@ -74,6 +74,22 @@ const pageStyle = css({
   display: "block",
   position: "relative",
 
+  "& #fb": {
+    "& > div": {
+      "& > div": {
+        "& > span": {
+          width: "98px !important",
+          overflow: "hidden !important",
+
+          "& > iframe": {
+            width: "98px !important",
+            overflow: "hidden !important",
+          },
+        },
+      },
+    },
+  },
+
   "& h1": {
     "& span": {
       fontSize: "90%",
@@ -283,7 +299,7 @@ class BlogPostTemplate extends React.Component {
                           width: "calc(100% - 98px)",
                         }}
                       />
-                      <div style={{ maxWidth: 98 }}>
+                      <div style={{ maxWidth: 98 }} id="fb">
                         <FacebookProvider appId="218604115574634">
                           <FBLike
                             href={withUrl(route, data)}
@@ -311,7 +327,7 @@ class BlogPostTemplate extends React.Component {
                     )}
                   </Article>
                   <Footer>
-                    <H1 mask="h4">More like this…</H1>
+                    <H1 mask="h4">More posts…</H1>
                     <div
                       style={{
                         display: "flex",

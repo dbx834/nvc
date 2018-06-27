@@ -187,6 +187,7 @@ const pageWrapper = css({
 
   "& .block-pandora": {
     padding: 0,
+    marginTop: -5,
   },
 
   "& .xCover": {
@@ -387,7 +388,7 @@ class IndexPage extends React.Component {
   render() {
     const { isMobile } = this.props;
     const postEdges = this.props.data.allMarkdownRemark.edges;
-    const events = categoriseEvents(postEdges, 3, 2);
+    const events = categoriseEvents(postEdges, 3, 1);
 
     const pandoraData1 = {
       cards: events.featuredEvents,
@@ -530,20 +531,19 @@ class IndexPage extends React.Component {
                   }}
                 </ContainerDimensions>
               </div>
-              <br />
-              <br />
-              <br />
               {!isMobile && <LearnMore data={learnMoreData} />}
             </div>
             <div>
               <Image src={cover1X} className="xCover is-hidden-mobile" />
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
-              <h3 className="mask-p">About</h3>
-              <p>
+              <h3 className="mask-p" style={{ marginBottom: 6 }}>
+                About
+              </h3>
+              <p style={{ marginTop: 0 }}>
                 Joy Living Learning is situated in Auroville, an international
                 community in south India that aims to actualize human unity.
-                Given this enviornment, we are surrounded by opportunities for
+                Given this environment, we are surrounded by opportunities for
                 growth, learning and exploration.
               </p>
               <p>
@@ -586,47 +586,78 @@ class IndexPage extends React.Component {
 
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
-              <h3 className="mask-p" style={{ marginBottom: 0 }}>
-                Workshops & Events
-              </h3>
+              <div style={{ position: "relative" }}>
+                <h3 className="mask-p" style={{ marginBottom: 0 }}>
+                  Upcoming Events
+                </h3>
+                <p
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    right: 0,
+                    display: "inline-block",
+                    margin: 0,
+                    marginTop: -3,
+                  }}
+                >
+                  <Link to="/workshops-and-events">See more ⇝</Link>
+                </p>
+              </div>
               <SectionHalley data={pandoraData1} />
-              <br />
-              <p style={{ marginBottom: 20 }}>
-                <Link to="workshops-and-events">
-                  See more workshops & events ⇝
-                </Link>
-              </p>
 
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
-              <h3 className="mask-p" style={{ marginBottom: 10 }}>
-                NVC Practice Group
-              </h3>
+              <div style={{ position: "relative" }}>
+                <h3 className="mask-p" style={{ marginBottom: 0 }}>
+                  NVC Practice Group
+                </h3>
+                <p
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    right: 0,
+                    display: "inline-block",
+                    margin: 0,
+                    marginTop: -3,
+                  }}
+                >
+                  <Link to="/calendar">See calendar ⇝</Link>
+                </p>
+              </div>
               <SectionHalley data={pandoraData2} />
-              <br />
-              <p style={{ marginBottom: 20 }}>
-                <Link to="calendar">See calendar ⇝</Link>
-              </p>
 
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
-              <h3 className="mask-p" style={{ marginBottom: 10 }}>
-                RC Practice Group
-              </h3>
+              <div style={{ position: "relative" }}>
+                <h3 className="mask-p" style={{ marginBottom: 0 }}>
+                  RC Practice Group
+                </h3>
+                <p
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    right: 0,
+                    display: "inline-block",
+                    margin: 0,
+                    marginTop: -3,
+                  }}
+                >
+                  <Link to="/calendar">See calendar ⇝</Link>
+                </p>
+              </div>
               <SectionHalley data={pandoraData3} />
-              <br />
-              <p style={{ marginBottom: 20 }}>
-                <Link to="calendar">See calendar ⇝</Link>
-              </p>
 
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
-              <h3 className="mask-p">Living Nonviolence</h3>
+              <h3 className="mask-p" style={{ marginBottom: 5 }}>
+                Living Nonviolence
+              </h3>
               <p
                 style={{
                   fontFamily: "futura-pt, sans-serif",
                   fontWeight: 200,
-                  marginBottom: 30,
+                  marginBottom: 20,
+                  marginTop: 0,
                 }}
               >
                 <span style={{ fontSize: "125%" }}>
@@ -644,7 +675,9 @@ class IndexPage extends React.Component {
 
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
-              <h3 className="mask-p">Find us on Facebook</h3>
+              <h3 className="mask-p" style={{ marginBottom: 13 }}>
+                Find us on Facebook
+              </h3>
               <FacebookProvider appId="218604115574634">
                 <FBPage
                   href="https://www.facebook.com/JoyLivingLearning"

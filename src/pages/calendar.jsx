@@ -41,6 +41,7 @@ import globalWithMediaQueries from "../helpers/globalWithMediaQueries";
 
 import nvc from "../assets/nvc.png";
 import rc from "../assets/rc.png";
+import goldStar from "../assets/goldStar.png";
 
 import start from "../assets/start.png";
 import middle from "../assets/middle.png";
@@ -52,7 +53,49 @@ const { H1 } = Elements;
 
 globalWithMediaQueries(
   ".ant-popover-inner-content .phoebe-popcontent",
-  merge({ ...applyType("dkc2ilk", { range: [12, 21] }) }),
+  { ...applyType("dkc2ilk", { range: [12, 21] }) },
+  true,
+);
+
+globalWithMediaQueries(
+  ".ant-popover-inner-content .phoebe-popcontent a",
+  {
+    color: "#0000FF",
+    borderBottom: "1.625px solid transparent",
+  },
+  true,
+);
+
+globalWithMediaQueries(
+  ".ant-popover-inner-content .phoebe-popcontent a:hover",
+  {
+    color: "#6D00FF",
+    borderBottom: "1.625px solid #6D00FF",
+  },
+  true,
+);
+
+globalWithMediaQueries(
+  ".ant-popover-inner-content .phoebe-popcontent a:visited",
+  {
+    textDecoration: "none",
+  },
+  true,
+);
+
+globalWithMediaQueries(
+  ".ant-popover-inner-content .phoebe-popcontent a:link",
+  {
+    textDecoration: "none",
+  },
+  true,
+);
+
+globalWithMediaQueries(
+  ".ant-popover-inner-content .phoebe-popcontent a:active",
+  {
+    textDecoration: "none",
+  },
   true,
 );
 
@@ -210,16 +253,17 @@ class EventsAndCalendar extends React.Component {
       components: {
         localLink: Link,
       },
-      tagMap: {
-        nvc,
-        rc,
-      },
       conf: {
         multiDay: {
           start,
           middle,
           end,
         },
+      },
+      tagMap: {
+        nvc,
+        rc,
+        goldStar,
       },
     };
 
@@ -271,31 +315,34 @@ class EventsAndCalendar extends React.Component {
                 <strong>How Joy Living Learning came to be...</strong>
               </p>
               <p>
-                In the winter of 2008-09, L'aura along with Jason Stewart, had a
-                dream of hosting a 3-week international NVC camp in her garden.
+                In the winter of 2008-09, L'aura along with Jason Stewart had a
+                dream of hosting a 3-week international NVC Camp in her garden.
                 In order to fundraise and sponsor 3 Ladakhi participants, plus a
                 young man from Koot Road village (near Auroville) who was
                 volunteering with them, they needed to set up a financial entity
-                -- and that was the birth of Joy Living Learning.
+                – and that was the birth of Joy Living Learning.
               </p>
               <p>
-                That camp was a wild success, with other 200 participants and 12
-                international trainers, staggered over the 3 weeks.
+                That Camp was a wild success, with other 200 participants and 12
+                international trainers, and events staggered over the 3 weeks.
               </p>
               <p>
                 A short while later, L'aura joined Saleem Ebrahim and Aniruddha
                 Gadankush in setting up the Charitable Trust, "Institute of
-                Nonviolent Communication in India," and together they hosted the
-                first few annual International NVC Conventions in India.
+                Nonviolent Communication (in India)," and together they hosted
+                the first few annual International NVC Conventions in India.
               </p>
               <p>
                 In addition, Joy Living Learning has organized many other events
-                with international trainers, such as NVC Mediation with Kay Rung
-                and Liv Larsson, NVC & Aikido with Saleem Ebrahim, Compassionate
-                Living with Robert Gonzales, NVC & Internal Family Systems (IFS)
-                with Caroline Ader-Lamy and Saleem Ebrahim, NVC Certification
-                Mentoring & Assessment with Catherine Singer and Gina Lawrie,
-                and more...
+                with international trainers, such as <i>NVC Mediation</i> with
+                Kay Rung and Liv Larsson, <i>NVC & Aikido</i> with Saleem
+                Ebrahim,{" "}
+                <i>Compassionate Living (Embodied Spirituality of NVC)</i> with
+                Robert Gonzales, <i>NVC & Internal Family Systems (IFS)</i> with
+                Caroline Ader-Lamy and Saleem Ebrahim,{" "}
+                <i>NVC Certification Mentoring & Assessment</i> with Katherine
+                Singer and Gina Lawrie, and{" "}
+                <i>International Intesive Training (IIT)</i>, and more...
               </p>
               <p>
                 <strong>Today...</strong>
@@ -307,10 +354,10 @@ class EventsAndCalendar extends React.Component {
                 Restorative Circles (RC) trainings and practice groups.
               </p>
               <p>
-                Joy Living Learning has incorporated Restorative Circles (RC)
-                into Auroville's conflict resolution policy, and we are working
-                towards building an alternative justice system in Auroville
-                based on the principles that underly the NVC movement.
+                Joy Living Learning has incorporated RC into Auroville's
+                conflict resolution policy, and is are working towards building
+                an alternative justice system in Auroville based on the
+                principles that underly the NVC movement.
               </p>
             </div>
           </div>

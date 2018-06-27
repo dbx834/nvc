@@ -9,7 +9,7 @@ tags:
   - some tag
 ---
 
-Published in “Auroville Today”.
+Published in “Auroville Today.”
 
 In October, there was a film festival in Cinema Paradiso and dialogue sessions on the theme of 'Restoring Connection' as related to the restorative justice movement. The organizing team talk about the response, as well as their ongoing plans to raise awareness about restorative justice in the community.
 

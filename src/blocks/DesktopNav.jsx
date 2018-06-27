@@ -35,7 +35,7 @@ import globalWithMediaQueries from "../helpers/globalWithMediaQueries";
 
 import ContactForm from "../components/ContactForm";
 import NewsletterForm from "../components/NewsletterForm";
-import DonateBlock from "../components/DonateBlock";
+import DonateModal from "../components/DonateModal";
 import PayFeeBlock from "../components/PayFeeBlock";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
@@ -48,12 +48,24 @@ globalWithMediaQueries(
   true,
 );
 
+globalWithMediaQueries(
+  ".ant-modal-body a",
+  {
+    color: "#0000FF",
+    borderBottom: "1.625px solid transparent",
+  },
+  true,
+);
+
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Desktop
 const desktopNavStyle = css({
   padding: 0,
+  maxHeight: "100vh",
+  overflowY: "scroll",
+  overflowX: "hidden",
 
   "& ul": {
     listStyle: "none",
@@ -102,9 +114,36 @@ const desktopNavStyle = css({
 });
 const desktopNavStyleClass = desktopNavStyle.toString();
 
-const modalStyle = css({
-  // ...applyType("dkc2ilk"),
-});
+const modalStyle = css(
+  merge(
+    {
+      "& h1": {
+        fontFamily: "futura-pt, sans-serif !important",
+        fontWeight: 700,
+      },
+
+      "& a": {
+        color: "#0000FF",
+        borderBottom: "1.625px solid transparent",
+
+        "&:hover": {
+          color: "#6D00FF",
+          borderBottom: "1.625px solid #6D00FF",
+        },
+        "&:visited": {
+          textDecoration: "none",
+        },
+        "&:link": {
+          textDecoration: "none",
+        },
+        "&:active": {
+          textDecoration: "none",
+        },
+      },
+    },
+    { ...applyType("dkc2ilk", { range: [12, 21] }) },
+  ),
+);
 const modalStyles = modalStyle.toString();
 
 // ----------------------------------------------------------------------------
@@ -328,24 +367,6 @@ class DesktopNav extends React.Component {
         >
           <div
             style={{
-              position: "absolute",
-              display: "inline-block",
-              top: 10,
-              right: 10,
-              zIndex: 10,
-            }}
-          >
-            <a
-              href="#"
-              onClick={e => {
-                this.hideModal(e);
-              }}
-            >
-              Close
-            </a>
-          </div>
-          <div
-            style={{
               minWidth: "640px",
               minHeight: "480px",
               padding: "1em",
@@ -353,10 +374,28 @@ class DesktopNav extends React.Component {
             }}
             className={modalStyles}
           >
+            <div
+              style={{
+                position: "absolute",
+                display: "inline-block",
+                top: 30,
+                right: "1em",
+                zIndex: 10,
+              }}
+            >
+              <a
+                href="#"
+                onClick={e => {
+                  this.hideModal(e);
+                }}
+              >
+                Close
+              </a>
+            </div>
             {this.state.modalRoute === "/contact-us" && <ContactForm />}
             {this.state.modalRoute === "/newsletter" && <NewsletterForm />}
             {this.state.modalRoute === "/pay-fee" && <PayFeeBlock />}
-            {this.state.modalRoute === "/donate" && <DonateBlock />}
+            {this.state.modalRoute === "/donate" && <DonateModal />}
           </div>
         </Modal>
       </Container>

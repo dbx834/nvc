@@ -60,7 +60,7 @@ const menu = [
     title: "Learn",
     menu: [
       { title: "Workshops & Events", link: "/workshops-and-events" },
-      { title: "Calendar", link: "/calendar" },
+      { title: "Calendar View", link: "/calendar" },
       {
         title: "Pay Fee",
         link: "/pay-fee",
@@ -98,7 +98,7 @@ const menu = [
             link: "http://www.cnvc.org/",
           },
           {
-            title: "Restorative Circles",
+            title: "Restorative Circles & Dominic Barter",
             link: "http://www.restorativecircles.org/",
           },
           { title: "Auroville", link: "https://www.auroville.org/" },

@@ -54,6 +54,10 @@ html.lk-active.wf-inactive body {
   transition: all 300ms cubic-bezier(0.78, 0.14, 0.15, 0.86);
 }
 
+.ant-spin-dot i {
+  background-color: #b43808;
+}
+
 /* ----------------------------------------------------------------------------
 /* ---------------------------------------------------- Responsively hide stuff
 /* ------------------------------------------------------------------------- */
@@ -259,6 +263,11 @@ li, p, h1, h2, h3, h4, h5, h6 {
 
 .ant-popover-inner-content {
   padding: 0px !important;
+  padding-top: 3px !important;
+}
+
+.ant-popover-inner-content p:last-child {
+  margin-bottom: 0px !important;
 }
 
 .ant-popover-inner {
@@ -358,7 +367,7 @@ li, p, h1, h2, h3, h4, h5, h6 {
   margin: -1px !important;
   padding: 0 !important;
   height: 1px !important;
-  width: 100% !important;
+  width: 10% !important;
   overflow: hidden !important;
   border: 0 !important;
   margin: 0 !important;

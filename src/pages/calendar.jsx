@@ -138,6 +138,10 @@ const pageStyle = css({
   display: "block",
   position: "relative",
 
+  "& .ant-fullcalendar-header": {
+    paddingTop: "0px !important",
+  },
+
   "& h3": {
     fontWeight: "700 !important",
   },
@@ -263,7 +267,13 @@ class EventsAndCalendar extends React.Component {
       tagMap: {
         nvc,
         rc,
-        goldStar,
+      },
+      nullTag: goldStar,
+      categoryMap: {
+        nvc: "Nonviolent Communication",
+        rc: "Restorative Circles",
+        practiceGroup: "Practice Group",
+        workshop: "Workshop",
       },
     };
 

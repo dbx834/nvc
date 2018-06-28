@@ -78,11 +78,11 @@ const pageStyle = css({
     "& > div": {
       "& > div": {
         "& > span": {
-          width: "98px !important",
+          width: "96px !important",
           overflow: "hidden !important",
 
           "& > iframe": {
-            width: "98px !important",
+            width: "96px !important",
             overflow: "hidden !important",
           },
         },
@@ -296,10 +296,10 @@ class BlogPostTemplate extends React.Component {
                           backgroundColor: "#f8f2e6",
                           zIndex: 10,
                           height: 20,
-                          width: "calc(100% - 98px)",
+                          width: "calc(100% - 96px)",
                         }}
                       />
-                      <div style={{ maxWidth: 98 }} id="fb">
+                      <div style={{ maxWidth: 96 }} id="fb">
                         <FacebookProvider appId="218604115574634">
                           <FBLike
                             href={withUrl(route, data)}

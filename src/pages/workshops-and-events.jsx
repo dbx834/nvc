@@ -25,7 +25,7 @@ import {
 } from "@bodhi-project/seo";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/blocks
-import SectionOphelia from "@bodhi-project/blocks/lib/SectionOphelia";
+import SectionOpheliaAlt from "@bodhi-project/blocks/lib/SectionOpheliaAlt";
 import SectionHalley from "@bodhi-project/blocks/lib/SectionHalley";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
@@ -179,6 +179,10 @@ class EventsAndCalendar extends React.Component {
         },
         columnWidth: "49%",
       },
+      categoryMap: {
+        nvc: "Nonviolent Communication",
+        rc: "Restorative Circles",
+      },
     };
 
     const pandoraData1 = {
@@ -236,7 +240,7 @@ class EventsAndCalendar extends React.Component {
             <div>
               <hr />
               {!isMobile ? (
-                <SectionOphelia data={opheliaData} />
+                <SectionOpheliaAlt data={opheliaData} />
               ) : (
                 <SectionHalley data={pandoraData1} />
               )}

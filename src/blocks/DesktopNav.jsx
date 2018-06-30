@@ -225,7 +225,6 @@ class DesktopNav extends React.Component {
                     const isOutLink = startsWith(link, "http");
                     const asModal = renderInModal === true;
                     const hashLink = isUndefined(link);
-                    console.log(link);
 
                     return (
                       <Fragment key={link}>

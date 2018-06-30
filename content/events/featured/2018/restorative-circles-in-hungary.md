@@ -1,5 +1,5 @@
 ---
-title: Restorative Circles in Hungary
+title: Restorative Circles in Hungary (to be confirmed)
 subTitle: na
 cover: /content-assets/featured-events/2018/hungary-rc.jpg
 category: 3.Featured

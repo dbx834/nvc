@@ -7,6 +7,8 @@ import PropTypes from "prop-types";
 import { css } from "glamor";
 import moment from "moment";
 
+import "whatwg-fetch";
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
 import isUndefined from "lodash/isUndefined";
 

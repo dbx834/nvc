@@ -220,13 +220,12 @@ class DesktopNav extends React.Component {
                   {map(menu, subMenu => {
                     const subTitle = subMenu.title;
                     const popMenu = subMenu.menu;
-                    const {
-                      link,
-                      menuPopoverLocation,
-                      renderInModal,
-                    } = subMenu;
+                    let { link } = subMenu;
+                    const { menuPopoverLocation, renderInModal } = subMenu;
                     const isOutLink = startsWith(link, "http");
                     const asModal = renderInModal === true;
+                    const hashLink = isUndefined(link);
+                    console.log(link);
 
                     return (
                       <Fragment key={link}>
@@ -322,19 +321,37 @@ class DesktopNav extends React.Component {
                                 <OutLink to={link}>{subTitle}</OutLink>
                               )}
                               {isOutLink === false && (
-                                <Link
-                                  to={link}
-                                  className={
-                                    pathname === split(link, "?", 1)[0]
-                                      ? "active"
-                                      : ""
-                                  }
-                                >
-                                  <span>{subTitle}</span>
-                                  <span style={{ fontSize: "88%" }}>
-                                    &nbsp;»
-                                  </span>
-                                </Link>
+                                <Fragment>
+                                  {hashLink === true ? (
+                                    <a
+                                      href="#"
+                                      className={
+                                        pathname === split(link, "?", 1)[0]
+                                          ? "active"
+                                          : ""
+                                      }
+                                    >
+                                      <span>{subTitle}</span>
+                                      <span style={{ fontSize: "88%" }}>
+                                        &nbsp;»
+                                      </span>
+                                    </a>
+                                  ) : (
+                                    <Link
+                                      to={link}
+                                      className={
+                                        pathname === split(link, "?", 1)[0]
+                                          ? "active"
+                                          : ""
+                                      }
+                                    >
+                                      <span>{subTitle}</span>
+                                      <span style={{ fontSize: "88%" }}>
+                                        &nbsp;»
+                                      </span>
+                                    </Link>
+                                  )}
+                                </Fragment>
                               )}
                             </Popover>
                           </li>

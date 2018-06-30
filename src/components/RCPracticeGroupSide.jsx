@@ -9,6 +9,7 @@ import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
 import isNull from "lodash/isNull";
+import isUndefined from "lodash/isUndefined";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import { Elements } from "@bodhi-project/typography";
@@ -115,7 +116,7 @@ class RCPracticeGroupSide extends React.Component {
           loader: true,
         });
 
-        const {
+        let {
           name,
           email,
           event,
@@ -126,10 +127,20 @@ class RCPracticeGroupSide extends React.Component {
           comment,
         } = values;
 
+        name = isUndefined(name) ? " " : name;
+        email = isUndefined(email) ? " " : email;
+        event = isUndefined(event) ? " " : event;
+        mobile = isUndefined(mobile) ? " " : mobile;
+        country = isUndefined(country) ? " " : country;
+        whatDrawsYou = isUndefined(whatDrawsYou) ? " " : whatDrawsYou;
+        currentLocation = isUndefined(currentLocation) ? " " : currentLocation;
+        comment = isUndefined(comment) ? " " : comment;
+        const note = " ";
+
         setTimeout(() => {
           // Mock some delay
           fetch(
-            `https://script.google.com/macros/s/AKfycbxe5KaEdHtLH5JVpf-yntF5LZYAszQTwHHQ4tEjvBT4DyykpRtZ/exec?name=${name}&email=${email}&event=${event}&mobile=${mobile}&country=${country}&whatDrawsYou=${whatDrawsYou}&comment=${comment}&currentLocation=${currentLocation}&callback=?`,
+            `https://script.google.com/macros/s/AKfycbxe5KaEdHtLH5JVpf-yntF5LZYAszQTwHHQ4tEjvBT4DyykpRtZ/exec?name=${name}&email=${email}&event=${event}&mobile=${mobile}&country=${country}&whatDrawsYou=${whatDrawsYou}&comment=${comment}&currentLocation=${currentLocation}&note=${note}&callback=?`,
             {
               method: "GET",
               mode: "no-cors",

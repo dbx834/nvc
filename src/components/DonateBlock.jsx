@@ -36,6 +36,8 @@ const { H1, H2, Paragraph } = Elements;
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageWrapper = css({
+  marginBottom: 60,
+
   "& .ant-btn-primary": {
     backgroundColor: "#ffffff",
     borderColor: "#b43808",

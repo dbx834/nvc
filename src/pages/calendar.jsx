@@ -134,7 +134,6 @@ const {
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageStyle = css({
-  marginBottom: 60,
   display: "block",
   position: "relative",
 
@@ -273,7 +272,6 @@ class EventsAndCalendar extends React.Component {
         nvc: "Nonviolent Communication",
         rc: "Restorative Circles",
         practiceGroup: "Practice Group",
-        workshop: "Workshop",
       },
     };
 
@@ -283,6 +281,11 @@ class EventsAndCalendar extends React.Component {
         localLink: Link,
       },
       show: 4,
+      tagMap: {
+        nvc,
+        rc,
+        star: goldStar,
+      },
     };
 
     return (
@@ -333,8 +336,9 @@ class EventsAndCalendar extends React.Component {
                 – and that was the birth of Joy Living Learning.
               </p>
               <p>
-                That Camp was a wild success, with other 200 participants and 12
-                international trainers, and events staggered over the 3 weeks.
+                That Camp was a wild success, with over 200 participants and 12
+                international trainers, and non-stop events staggered over the 3
+                weeks.
               </p>
               <p>
                 A short while later, L'aura joined Saleem Ebrahim and Aniruddha
@@ -351,23 +355,22 @@ class EventsAndCalendar extends React.Component {
                 Robert Gonzales, <i>NVC & Internal Family Systems (IFS)</i> with
                 Caroline Ader-Lamy and Saleem Ebrahim,{" "}
                 <i>NVC Certification Mentoring & Assessment</i> with Katherine
-                Singer and Gina Lawrie, and{" "}
-                <i>International Intesive Training (IIT)</i>, and more...
+                Singer and Gina Lawrie, &{" "}
+                <i>International Intensive Training (IIT)</i>, and more...
               </p>
               <p>
                 <strong>Today...</strong>
               </p>
               <p>
-                Joy Living Learning continues to offer regular NVC workshops in
-                Auroville and other cities in the country, plus a weekly
-                practice group in Auroville. In addition to NVC, we also offer
-                Restorative Circles (RC) trainings and practice groups.
+                Joy Living Learning continues to offer regular NVC & RC
+                workshops in Auroville and other cities in the country, plus
+                weekly practice groups in Auroville.
               </p>
               <p>
-                Joy Living Learning has incorporated RC into Auroville's
-                conflict resolution policy, and is are working towards building
-                an alternative justice system in Auroville based on the
-                principles that underly the NVC movement.
+                Joy Living Learning has also incorporated RC into Auroville's
+                conflict resolution policy and is working towards building an
+                alternative justice system in Auroville based on the principles
+                that underly the NVC movement.
               </p>
             </div>
           </div>

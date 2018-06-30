@@ -32,12 +32,6 @@ const { Paragraph } = Elements;
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageWrapper = css({
-  "& hr": {
-    border: "none",
-    borderTop: "3px solid #B43808",
-    marginBottom: 20,
-  },
-
   "& .hover": {
     borderBottom: "1.625px solid transparent",
 
@@ -74,7 +68,6 @@ class LearnMore extends React.Component {
       <div className={pageStyleClass}>
         <div className="constrain">
           <h1>Fee Payment</h1>
-          <hr />
           <Paragraph>
             You may pay your fees here, or directly on the event page you’re
             registering for.

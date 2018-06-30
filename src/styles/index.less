@@ -55,7 +55,7 @@ html.lk-active.wf-inactive body {
 }
 
 .ant-spin-dot i {
-  background-color: #b43808;
+  background-color: #b43808 !important;
 }
 
 /* ----------------------------------------------------------------------------
@@ -172,16 +172,16 @@ html.lk-active.wf-inactive body {
   font-family: "adobe-garamond-pro, serif" !important;
 }
 
-
-@media (max-width: 768px) {
-  #nprogress .spinner {
-    display: none;
-  }
-}
-
 #nprogress .spinner {
   top: 25px !important;
   right: 25px !important;
+}
+
+@media (max-width: 768px) {
+  #nprogress .spinner {
+    top: 25px !important;
+    right: 35px !important;
+  }
 }
 
 /* ----------------------------------------------------------------- */

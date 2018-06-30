@@ -395,6 +395,10 @@ class IndexPage extends React.Component {
       components: {
         localLink: Link,
       },
+      tagMap: {
+        nvc,
+        rc,
+      },
     };
 
     const pandoraData2 = {
@@ -402,12 +406,20 @@ class IndexPage extends React.Component {
       components: {
         localLink: Link,
       },
+      tagMap: {
+        nvc,
+        rc,
+      },
     };
 
     const pandoraData3 = {
       cards: events.RCEvents,
       components: {
         localLink: Link,
+      },
+      tagMap: {
+        nvc,
+        rc,
       },
     };
 
@@ -656,7 +668,7 @@ class IndexPage extends React.Component {
                 style={{
                   fontFamily: "futura-pt, sans-serif",
                   fontWeight: 200,
-                  marginBottom: 20,
+                  marginBottom: 17,
                   marginTop: 0,
                 }}
               >

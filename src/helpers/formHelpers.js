@@ -85,6 +85,10 @@ const exportThis = {
   hasErrors,
   validateEmail,
   validateName,
+  validateMobile,
+  validateCountry,
+  validateCurrentLocation,
+  validateWhatDrawsYou,
   validateComment,
 };
 

@@ -332,7 +332,9 @@ class BlogPostTemplate extends React.Component {
                       style={{
                         display: "flex",
                         justifyContent: "space-between",
+                        marginBottom: 0,
                       }}
+                      className="mask-p"
                     >
                       <div>
                         {!isNull(prev) && (

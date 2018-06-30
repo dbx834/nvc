@@ -37,14 +37,8 @@ const { H1, H2, Paragraph } = Elements;
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageWrapper = css({
   "& .ant-btn-primary": {
-    fontWeight: 700,
-    fontStyle: "italic",
-    borderRadius: 0,
-    backgroundColor: "#FFFFFF",
-    borderColor: "#B43808",
-    color: "#B43808 !important",
-    height: "auto",
-    transition: "all 200ms cubic-bezier(0.78, 0.14, 0.15, 0.86)",
+    backgroundColor: "#ffffff",
+    borderColor: "#b43808",
 
     "& a": {
       color: "#b43808 !important",
@@ -66,10 +60,8 @@ const pageWrapper = css({
     },
 
     "&:hover": {
-      backgroundColor: "#B43808 !important",
-      color: "#FFFFFF !important",
-      borderColor: "transparent",
-      transform: "scale(1.1)",
+      backgroundColor: "#b43808",
+      borderColor: "#ffffff",
 
       "& a": {
         color: "#ffffff !important",

@@ -421,7 +421,12 @@ class EventTemplate extends React.Component {
                 <Footer>
                   <H1 mask="h4">More events</H1>
                   <div
-                    style={{ display: "flex", justifyContent: "space-between" }}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      marginBottom: 0,
+                    }}
+                    className="mask-p"
                   >
                     <div>
                       {!isNull(prev) && (

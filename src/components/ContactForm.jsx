@@ -5,6 +5,9 @@
 import React from "react";
 import { css } from "glamor";
 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
+import isUndefined from "lodash/isUndefined";
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import { Elements, applyRhythm } from "@bodhi-project/typography";
 import {
@@ -110,7 +113,11 @@ class IndexPage extends React.Component {
           loader: true,
         });
 
-        const { name, email, comment } = values;
+        let { name, email, comment } = values;
+
+        name = isUndefined(name) ? " " : name;
+        email = isUndefined(email) ? " " : email;
+        comment = isUndefined(comment) ? " " : comment;
 
         // Mock some delay
         setTimeout(() => {

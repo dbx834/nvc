@@ -295,7 +295,7 @@ class NVCPage extends React.PureComponent {
                 style={{
                   fontFamily: "futura-pt, sans-serif",
                   fontWeight: 200,
-                  marginBottom: 30,
+                  marginBottom: 17,
                 }}
               >
                 <span style={{ fontSize: "125%" }}>
@@ -314,7 +314,7 @@ class NVCPage extends React.PureComponent {
                 style={{
                   fontFamily: "futura-pt, sans-serif",
                   fontWeight: 200,
-                  marginBottom: 30,
+                  marginBottom: 17,
                 }}
               >
                 <span style={{ fontSize: "125%" }}>

@@ -315,7 +315,7 @@ class NVCPage extends React.PureComponent {
                 style={{
                   fontFamily: "futura-pt, sans-serif",
                   fontWeight: 200,
-                  marginBottom: 20,
+                  marginBottom: 17,
                   marginTop: 0,
                 }}
               >
@@ -333,17 +333,6 @@ class NVCPage extends React.PureComponent {
                   ~ <strong>Michelle, 2015</strong>
                 </span>
               </p>
-              <div style={{ width: "100%", height: 18, marginBottom: 30 }}>
-                <Link
-                  style={{
-                    display: "inline-block",
-                    float: "right",
-                  }}
-                  to="/writings/celebrations-and-gratitude"
-                >
-                  More Celebrations & Gratitude ⇝
-                </Link>
-              </div>
 
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
@@ -371,6 +360,17 @@ class NVCPage extends React.PureComponent {
                   ~ <strong>Kesang, 2010</strong>
                 </span>
               </p>
+              <div style={{ width: "100%", height: 18, marginBottom: 30 }}>
+                <Link
+                  style={{
+                    display: "inline-block",
+                    float: "right",
+                  }}
+                  to="/writings/celebrations-and-gratitude"
+                >
+                  More Celebrations & Gratitude ⇝
+                </Link>
+              </div>
             </div>
           </div>
         </Page>

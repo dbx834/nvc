@@ -9,6 +9,7 @@ import moment from "moment";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
 import isNull from "lodash/isNull";
+import isUndefined from "lodash/isUndefined";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import { Elements } from "@bodhi-project/typography";
@@ -42,7 +43,7 @@ import {
   validateCountry,
   validateCurrentLocation,
   validateWhatDrawsYou,
-  validateComment
+  validateComment,
 } from "../helpers/formHelpers";
 import { formStyleClass } from "../helpers/defaultFormStyles";
 import domestic from "../assets/domestic.png";
@@ -67,9 +68,9 @@ const style = css({
     borderTop: "3px solid #B43808",
 
     "& span": {
-      fontSize: "90%"
-    }
-  }
+      fontSize: "90%",
+    },
+  },
 });
 const styleClass = style.toString();
 
@@ -84,7 +85,7 @@ class NVCPracticeGroupSide extends React.Component {
 
     this.state = {
       loader: null,
-      formSent: false
+      formSent: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -103,10 +104,10 @@ class NVCPracticeGroupSide extends React.Component {
         // console.log('Received values of form: ', values);
         this.setState({
           // Show loader and reset errors if any.
-          loader: true
+          loader: true,
         });
 
-        const {
+        let {
           name,
           email,
           event,
@@ -114,27 +115,37 @@ class NVCPracticeGroupSide extends React.Component {
           country,
           whatDrawsYou,
           currentLocation,
-          comment
+          comment,
         } = values;
+
+        name = isUndefined(name) ? " " : name;
+        email = isUndefined(email) ? " " : email;
+        event = isUndefined(event) ? " " : event;
+        mobile = isUndefined(mobile) ? " " : mobile;
+        country = isUndefined(country) ? " " : country;
+        whatDrawsYou = isUndefined(whatDrawsYou) ? " " : whatDrawsYou;
+        currentLocation = isUndefined(currentLocation) ? " " : currentLocation;
+        comment = isUndefined(comment) ? " " : comment;
+        const note = " ";
 
         setTimeout(() => {
           // Mock some delay
           fetch(
-            `https://script.google.com/macros/s/AKfycbxe5KaEdHtLH5JVpf-yntF5LZYAszQTwHHQ4tEjvBT4DyykpRtZ/exec?name=${name}&email=${email}&event=${event}&mobile=${mobile}&country=${country}&whatDrawsYou=${whatDrawsYou}&comment=${comment}&currentLocation=${currentLocation}&callback=?`,
+            `https://script.google.com/macros/s/AKfycbxe5KaEdHtLH5JVpf-yntF5LZYAszQTwHHQ4tEjvBT4DyykpRtZ/exec?name=${name}&email=${email}&event=${event}&mobile=${mobile}&country=${country}&whatDrawsYou=${whatDrawsYou}&comment=${comment}&currentLocation=${currentLocation}&note=${note}&callback=?`,
             {
               method: "GET",
-              mode: "no-cors"
-            }
+              mode: "no-cors",
+            },
           )
             .then(response => {
               this.setState({
                 loader: false,
-                formSent: true
+                formSent: true,
               });
             })
             .catch(error => {
               this.setState({
-                loader: false
+                loader: false,
               });
             });
         }, 1500);
@@ -149,7 +160,7 @@ class NVCPracticeGroupSide extends React.Component {
       getFieldDecorator,
       getFieldsError,
       getFieldError,
-      isFieldTouched
+      isFieldTouched,
     } = this.props.form;
     // Only show error after a field is touched.
     const nameError = isFieldTouched("name") && getFieldError("name");
@@ -225,7 +236,7 @@ class NVCPracticeGroupSide extends React.Component {
                           width: 65,
                           display: "inline-block",
                           background: "transparent",
-                          border: "unset"
+                          border: "unset",
                         }}
                       />
                     </div>
@@ -253,7 +264,7 @@ class NVCPracticeGroupSide extends React.Component {
                       alt="PayPal – The safer, easier way to pay online!"
                       style={{
                         height: 65,
-                        width: 65
+                        width: 65,
                       }}
                     />
                   </Tooltip>
@@ -287,7 +298,7 @@ class NVCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("name", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateName }]
+                        rules: [{ validator: validateName }],
                       })(<Input placeholder="Name" />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
@@ -297,7 +308,7 @@ class NVCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("email", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateEmail }]
+                        rules: [{ validator: validateEmail }],
                       })(<Input placeholder="Email" />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mobile */}
@@ -307,7 +318,7 @@ class NVCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("mobile", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateMobile }]
+                        rules: [{ validator: validateMobile }],
                       })(<Input placeholder="Mobile / Whatsapp" />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Country Selection */}
@@ -317,9 +328,9 @@ class NVCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("country", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateCountry }]
+                        rules: [{ validator: validateCountry }],
                       })(
-                        <Input placeholder="What's your country of origin?" />
+                        <Input placeholder="What's your country of origin?" />,
                       )}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Location */}
@@ -329,9 +340,9 @@ class NVCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("currentLocation", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateCurrentLocation }]
+                        rules: [{ validator: validateCurrentLocation }],
                       })(
-                        <Input placeholder="Where are you living presently?" />
+                        <Input placeholder="Where are you living presently?" />,
                       )}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ What Draws You */}
@@ -341,12 +352,12 @@ class NVCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("whatDrawsYou", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateWhatDrawsYou }]
+                        rules: [{ validator: validateWhatDrawsYou }],
                       })(
                         <TextArea
                           placeholder="What draws you to this practice group?"
                           autosize={{ minRows: 4, maxRows: 6 }}
-                        />
+                        />,
                       )}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment */}
@@ -356,12 +367,12 @@ class NVCPracticeGroupSide extends React.Component {
                     >
                       {getFieldDecorator("comment", {
                         validateTrigger: ["onChange", "onBlur"],
-                        rules: [{ validator: validateComment }]
+                        rules: [{ validator: validateComment }],
                       })(
                         <TextArea
                           placeholder="Any other comments / questions?"
                           autosize={{ minRows: 4, maxRows: 6 }}
-                        />
+                        />,
                       )}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Event Selection */}
@@ -376,9 +387,9 @@ class NVCPracticeGroupSide extends React.Component {
                             {
                               required: true,
                               message:
-                                "Please select an event from the dropdown..."
-                            }
-                          ]
+                                "Please select an event from the dropdown...",
+                            },
+                          ],
                         })(
                           <Select
                             placeholder="Select an event from the dropdown..."
@@ -387,7 +398,7 @@ class NVCPracticeGroupSide extends React.Component {
                             <Option key={key} value={key}>
                               {key}
                             </Option>
-                          </Select>
+                          </Select>,
                         )}
                       </FormItem>
                     </div>

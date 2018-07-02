@@ -609,10 +609,12 @@ class IndexPage extends React.Component {
                     right: 0,
                     display: "inline-block",
                     margin: 0,
-                    marginTop: -3,
+                    marginTop: 0,
                   }}
                 >
-                  <Link to="/workshops-and-events">See more ⇝</Link>
+                  <small>
+                    <Link to="/workshops-and-events">See more ⇝</Link>
+                  </small>
                 </p>
               </div>
               <SectionHalley data={pandoraData1} />
@@ -630,10 +632,12 @@ class IndexPage extends React.Component {
                     right: 0,
                     display: "inline-block",
                     margin: 0,
-                    marginTop: -3,
+                    marginTop: 0,
                   }}
                 >
-                  <Link to="/calendar">See calendar ⇝</Link>
+                  <small>
+                    <Link to="/calendar">See calendar ⇝</Link>
+                  </small>
                 </p>
               </div>
               <SectionHalley data={pandoraData2} />
@@ -651,10 +655,12 @@ class IndexPage extends React.Component {
                     right: 0,
                     display: "inline-block",
                     margin: 0,
-                    marginTop: -3,
+                    marginTop: 0,
                   }}
                 >
-                  <Link to="/calendar">See calendar ⇝</Link>
+                  <small>
+                    <Link to="/calendar">See calendar ⇝</Link>
+                  </small>
                 </p>
               </div>
               <SectionHalley data={pandoraData3} />

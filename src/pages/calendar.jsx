@@ -134,8 +134,13 @@ const {
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageStyle = css({
+  marginBottom: 60,
   display: "block",
   position: "relative",
+
+  "& .ant-btn": {
+    color: "#ffffff !important",
+  },
 
   "& .ant-fullcalendar-header": {
     paddingTop: "0px !important",
@@ -355,14 +360,14 @@ class EventsAndCalendar extends React.Component {
                 Robert Gonzales, <i>NVC & Internal Family Systems (IFS)</i> with
                 Caroline Ader-Lamy and Saleem Ebrahim,{" "}
                 <i>NVC Certification Mentoring & Assessment</i> with Katherine
-                Singer and Gina Lawrie, &{" "}
+                Singer and Gina Lawrie, an{" "}
                 <i>International Intensive Training (IIT)</i>, and more...
               </p>
               <p>
                 <strong>Today...</strong>
               </p>
               <p>
-                Joy Living Learning continues to offer regular NVC & RC
+                Joy Living Learning continues to offer regular NVC and RC
                 workshops in Auroville and other cities in the country, plus
                 weekly practice groups in Auroville.
               </p>

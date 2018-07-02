@@ -68,7 +68,7 @@ const {
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
 const pageWrapper = css({
-  marginBottom: 60,
+  marginBottom: 70,
   display: "block",
   position: "relative",
 

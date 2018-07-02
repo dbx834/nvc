@@ -279,15 +279,23 @@ class NVCPage extends React.PureComponent {
                 </ContainerDimensions>
               </div>
               <div style={{ width: "100%", height: 18, marginBottom: 16 }}>
-                <OutLink
+                <p
                   style={{
-                    display: "inline-block",
-                    float: "right",
+                    margin: 0,
                   }}
-                  to="https://www.youtube.com/user/laurajoyful/videos"
                 >
-                  More Videos ⇝
-                </OutLink>
+                  <small>
+                    <OutLink
+                      style={{
+                        display: "inline-block",
+                        float: "right",
+                      }}
+                      to="https://www.youtube.com/user/laurajoyful/videos"
+                    >
+                      More Videos ⇝
+                    </OutLink>
+                  </small>
+                </p>
               </div>
 
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
@@ -337,15 +345,23 @@ class NVCPage extends React.PureComponent {
                 </span>
               </p>
               <div style={{ width: "100%", height: 18, marginBottom: 30 }}>
-                <Link
+                <p
                   style={{
-                    display: "inline-block",
-                    float: "right",
+                    margin: 0,
                   }}
-                  to="/writings/celebrations-and-gratitude"
                 >
-                  More Celebrations & Gratitude ⇝
-                </Link>
+                  <small>
+                    <Link
+                      style={{
+                        display: "inline-block",
+                        float: "right",
+                      }}
+                      to="/writings/celebrations-and-gratitude"
+                    >
+                      More Celebrations & Gratitude ⇝
+                    </Link>
+                  </small>
+                </p>
               </div>
 
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}

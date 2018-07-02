@@ -28,14 +28,13 @@ import {
 import SectionOpheliaAlt from "@bodhi-project/blocks/lib/SectionOpheliaAlt";
 import SectionHalley from "@bodhi-project/blocks/lib/SectionHalley";
 
-import Tag from "antd/lib/tag";
-import "antd/lib/tag/style/css";
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import nvc from "../assets/nvc.png";
 import rc from "../assets/rc.png";
 import seoHelper from "../helpers/seoHelper";
-import categoriseEvents from "../helpers/categoriseEvents";
+import categoriseOldEvents from "../helpers/categoriseOldEvents";
+
+import goldStar from "../assets/goldStar.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -44,8 +43,8 @@ const { Fragment } = React;
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
 const pageData = {
-  pageTitle: "Events",
-  nakedPageSlug: "workshops-and-events",
+  pageTitle: "Events Archive",
+  nakedPageSlug: "events-archive",
   pageAbstract:
     "We offer learning opportunities through workshops and practice groups on Nonviolent Communication and Restorative Circles. We are also available for individual coaching and mediation, and we are happy to consult with community-based projects that are seeking to shift paradigms.",
 };
@@ -70,49 +69,8 @@ const pageStyle = css({
   display: "block",
   position: "relative",
 
-  "& .ant-btn": {
-    color: "#ffffff !important",
-  },
-
   "& .block-pandora": {
     padding: 0,
-  },
-
-  "& .top-link": {
-    display: "inline-block",
-    marginBottom: 0,
-    position: "absolute",
-    top: -35,
-    right: 10,
-
-    "@media(min-width: 768px)": {
-      top: 30,
-      right: 10,
-    },
-
-    "& .ant-tag": {
-      background: "#fdf2ed !important",
-      borderColor: "#b43808 !important",
-
-      "& a": {
-        color: "#b43808 !important",
-        borderBottom: "unset",
-
-        "&:hover": {
-          color: "#b43808 !important",
-          borderBottom: "unset",
-        },
-        "&:visited": {
-          textDecoration: "none",
-        },
-        "&:link": {
-          textDecoration: "none",
-        },
-        "&:active": {
-          textDecoration: "none",
-        },
-      },
-    },
   },
 
   "& .oa-card": {
@@ -149,50 +107,6 @@ const pageStyle = css({
     borderTop: "3px solid #B43808",
     marginBottom: 20,
   },
-
-  "& .jke": {
-    padding: "0em 1.25em",
-  },
-
-  "& .kale": {
-    "@media(max-width: 768px)": {
-      display: "block",
-    },
-
-    display: "flex",
-
-    "& > div": {
-      padding: "0em 1.25em",
-
-      "&:nth-child(1)": {
-        position: "relative",
-        flexBasis: 0,
-        flexGrow: 62,
-
-        "& .hope": {
-          display: "flex",
-
-          "& > div": {
-            "&:nth-child(1)": {
-              flexBasis: 0,
-              flexGrow: 50,
-              paddingRight: "1.25em",
-            },
-
-            "&:nth-child(2)": {
-              flexBasis: 0,
-              flexGrow: 50,
-            },
-          },
-        },
-      },
-
-      "&:nth-child(2)": {
-        flexBasis: 0,
-        flexGrow: 38,
-      },
-    },
-  },
 });
 const pageStyleClass = pageStyle.toString();
 
@@ -210,7 +124,7 @@ class EventsAndCalendar extends React.Component {
   render() {
     const { isMobile } = this.props;
     const postEdges = this.props.data.allMarkdownRemark.edges;
-    const events = categoriseEvents(postEdges);
+    const events = categoriseOldEvents(postEdges);
 
     const opheliaData = {
       cards: events.featuredEvents,
@@ -218,12 +132,12 @@ class EventsAndCalendar extends React.Component {
         localLink: Link,
       },
       conf: {
-        gutterHeight: 5,
+        gutterHeight: 12,
         image: {
           rawCoverWidth: 1440,
           rawCoverHeight: 900,
         },
-        columnWidth: "49%",
+        columnWidth: "24.5%",
       },
       categoryMap: {
         nvc: "Nonviolent Communication",
@@ -239,30 +153,9 @@ class EventsAndCalendar extends React.Component {
       tagMap: {
         nvc,
         rc,
+        star: goldStar,
       },
       show: 3,
-    };
-
-    const pandoraData2 = {
-      cards: events.NVCEvents,
-      components: {
-        localLink: Link,
-      },
-      tagMap: {
-        nvc,
-        rc,
-      },
-    };
-
-    const pandoraData3 = {
-      cards: events.RCEvents,
-      components: {
-        localLink: Link,
-      },
-      tagMap: {
-        nvc,
-        rc,
-      },
     };
 
     return (
@@ -277,73 +170,15 @@ class EventsAndCalendar extends React.Component {
 
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={pageStyleClass}>
-          <div className="jke">
-            <h1 style={{ marginBottom: 10 }}>
-              <span>Workshops & Events</span>
-            </h1>
-          </div>
-          <div className="kale">
-            <div>
-              <div className="mask-p top-link">
-                <Tag>
-                  <Link to="/events-archive">Events Archive</Link>
-                </Tag>
-              </div>
-              <hr />
-              {!isMobile ? (
-                <SectionOpheliaAlt data={opheliaData} />
-              ) : (
-                <SectionHalley data={pandoraData1} />
-              )}
-            </div>
-            <div>
-              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
-              <hr />
-              <div style={{ position: "relative" }}>
-                <h3 className="mask-p" style={{ marginBottom: 0 }}>
-                  NVC Practice Group
-                </h3>
-                <p
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    right: 0,
-                    display: "inline-block",
-                    margin: 0,
-                    marginTop: 0,
-                  }}
-                >
-                  <small>
-                    <Link to="/calendar">See calendar ⇝</Link>
-                  </small>
-                </p>
-              </div>
-              <SectionHalley data={pandoraData2} style={{ marginTop: -5 }} />
-
-              {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
-              <hr />
-              <div style={{ position: "relative" }}>
-                <h3 className="mask-p" style={{ marginBottom: 0 }}>
-                  RC Practice Group
-                </h3>
-                <p
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    right: 0,
-                    display: "inline-block",
-                    margin: 0,
-                    marginTop: 0,
-                  }}
-                >
-                  <small>
-                    <Link to="/calendar">See calendar ⇝</Link>
-                  </small>
-                </p>
-              </div>
-              <SectionHalley data={pandoraData3} style={{ marginTop: -5 }} />
-            </div>
-          </div>
+          <h1 style={{ marginBottom: 10 }}>
+            <span>Events Archive</span>
+          </h1>
+          <hr />
+          {!isMobile ? (
+            <SectionOpheliaAlt data={opheliaData} />
+          ) : (
+            <SectionHalley data={pandoraData1} />
+          )}
         </Page>
       </Fragment>
     );
@@ -359,7 +194,7 @@ EventsAndCalendar.propTypes = {
 // ----------------------------------------------------------------------------
 /* eslint-disable no-undef */
 export const pageQuery = graphql`
-  query FeaturedEventsQuery {
+  query PastEventsQuery {
     allMarkdownRemark(
       limit: 365
       sort: { fields: [frontmatter___date], order: ASC }

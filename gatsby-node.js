@@ -79,17 +79,8 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
 
     let humanDate = begins.format("ddd, MMMM D, YYYY");
     if (sameDay === false) {
-      const range = begins.twix(ends, { allDay: true });
-      const rangeX = range.format({
-        showDayOfWeek: true,
-        hideTime: true,
-        spaceBeforeMeridiem: false,
-        yearFormat: "YYYY",
-        monthFormat: "MMMM",
-        dayFormat: "D",
-        weekdayFormat: "ddd",
-        meridiemFormat: "A",
-      });
+      const range = begins.twix(ends, { allDay: false });
+      const rangeX = range.simpleFormat("ddd, MMMM D");
       const beginsYear = begins.format("YYYY");
       const endsYear = ends.format("YYYY");
       if (beginsYear === endsYear) {

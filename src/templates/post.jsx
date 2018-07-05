@@ -165,7 +165,10 @@ const pageStyle = css({
 
     "& .abstract": {
       flex: "12 1 0%",
-      ...applyRhythm({ paddingLeft: "0.6882X" }),
+
+      "@media(min-width: 768px)": {
+        paddingLeft: "1em",
+      },
 
       "& h3": {
         marginTop: 0,

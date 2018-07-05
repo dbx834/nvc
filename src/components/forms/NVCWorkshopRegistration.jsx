@@ -62,8 +62,8 @@ const { H1, Paragraph } = Elements;
 const RadioGroup = Radio.Group;
 const radioStyle = {
   display: "block",
-  height: "30px",
-  lineHeight: "30px",
+  height: "24px",
+  lineHeight: "24px",
 };
 
 // ----------------------------------------------------------------------------
@@ -309,9 +309,13 @@ class NVCPracticeGroupSide extends React.Component {
                   <span>Register</span>
                 </H1>
                 {this.state.formSent === false ? (
-                  <p>You are about to register for {key}.</p>
+                  <p>
+                    You are about to register for {data.title} on {humanDate}.
+                  </p>
                 ) : (
-                  <p>You registered for {key}.</p>
+                  <p>
+                    You registered for {data.title} on {humanDate}.
+                  </p>
                 )}
                 {this.state.formSent === false && (
                   <Form
@@ -346,7 +350,7 @@ class NVCPracticeGroupSide extends React.Component {
                       {getFieldDecorator("mobile", {
                         validateTrigger: ["onChange", "onBlur"],
                         rules: [{ validator: validateMobile }],
-                      })(<Input placeholder="Mobile / Whatsapp" />)}
+                      })(<Input placeholder="Mobile / WhatsApp" />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Country Selection */}
                     <FormItem
@@ -390,7 +394,7 @@ class NVCPracticeGroupSide extends React.Component {
 
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Experience Level */}
                     <span style={{ marginBottom: 8, display: "block" }}>
-                      What’s your level of NVC experience?
+                      Do you have any previous experience with NVC?
                     </span>
                     <FormItem
                       validateStatus={experienceError ? "error" : ""}
@@ -464,16 +468,16 @@ class NVCPracticeGroupSide extends React.Component {
                         <RadioGroup>
                           <Radio
                             style={radioStyle}
-                            value="Yes, I would like to receive some information every now and then."
+                            value="Yes, I'd like to receive information every now and then."
                           >
-                            Yes, I would like to receive some information every
-                            now and then.
+                            Yes, I'd like to receive information every now and
+                            then.
                           </Radio>
                           <Radio
                             style={radioStyle}
-                            value="No, I would not like to receive any information."
+                            value="No, I'd not like to receive information."
                           >
-                            No, I would not like to receive any information.
+                            No, I'd not like to receive information.
                           </Radio>
                         </RadioGroup>,
                       )}

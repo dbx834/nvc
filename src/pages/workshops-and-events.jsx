@@ -84,13 +84,13 @@ const pageStyle = css({
   },
 
   "& .top-link": {
-    display: "inline-block",
-    marginBottom: 0,
-    position: "absolute",
-    top: -35,
-    right: 10,
+    position: "relative",
+    display: "block",
 
     "@media(min-width: 768px)": {
+      display: "inline-block",
+      marginBottom: 0,
+      position: "absolute",
       top: 30,
       right: 10,
     },

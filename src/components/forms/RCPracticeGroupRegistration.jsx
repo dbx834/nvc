@@ -62,8 +62,8 @@ const { H1, Paragraph } = Elements;
 const RadioGroup = Radio.Group;
 const radioStyle = {
   display: "block",
-  height: "30px",
-  lineHeight: "30px",
+  height: "24px",
+  lineHeight: "24px",
 };
 
 // ----------------------------------------------------------------------------
@@ -311,9 +311,13 @@ class RCPracticeGroupSide extends React.Component {
                   <span>Register</span>
                 </H1>
                 {this.state.formSent === false ? (
-                  <p>You are about to register for {key}.</p>
+                  <p>
+                    You are about to register for {data.title} on {humanDate}.
+                  </p>
                 ) : (
-                  <p>You registered for {key}.</p>
+                  <p>
+                    You registered for {data.title} on {humanDate}.
+                  </p>
                 )}
                 {this.state.formSent === false && (
                   <Form
@@ -348,7 +352,7 @@ class RCPracticeGroupSide extends React.Component {
                       {getFieldDecorator("mobile", {
                         validateTrigger: ["onChange", "onBlur"],
                         rules: [{ validator: validateMobile }],
-                      })(<Input placeholder="Mobile / Whatsapp" />)}
+                      })(<Input placeholder="Mobile / WhatsApp" />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Country Selection */}
                     <FormItem
@@ -385,15 +389,15 @@ class RCPracticeGroupSide extends React.Component {
                       })(
                         <TextArea
                           placeholder="What draws you to this practice group?"
-                          autosize={{ minRows: 4, maxRows: 6 }}
+                          autosize={{ minRows: 3, maxRows: 5 }}
                         />,
                       )}
                     </FormItem>
 
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Experience Level */}
                     <span style={{ marginBottom: 8, display: "block" }}>
-                      What’s your level of NVC and/or RC (or Restorative
-                      Justice) experience
+                      Do you have any previous experience with NVC and/or RC (or
+                      Restorative Justice)?
                     </span>
                     <FormItem
                       validateStatus={experienceError ? "error" : ""}
@@ -467,16 +471,16 @@ class RCPracticeGroupSide extends React.Component {
                         <RadioGroup>
                           <Radio
                             style={radioStyle}
-                            value="Yes, I would like to receive some information every now and then."
+                            value="Yes, I'd like to receive information every now and then."
                           >
-                            Yes, I would like to receive some information every
-                            now and then.
+                            Yes, I'd like to receive information every now and
+                            then.
                           </Radio>
                           <Radio
                             style={radioStyle}
-                            value="No, I would not like to receive any information."
+                            value="No, I'd not like to receive information."
                           >
-                            No, I would not like to receive any information.
+                            No, I'd not like to receive information.
                           </Radio>
                         </RadioGroup>,
                       )}
@@ -493,7 +497,7 @@ class RCPracticeGroupSide extends React.Component {
                       })(
                         <TextArea
                           placeholder="Any other comments / questions?"
-                          autosize={{ minRows: 4, maxRows: 6 }}
+                          autosize={{ minRows: 3, maxRows: 5 }}
                         />,
                       )}
                     </FormItem>

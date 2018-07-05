@@ -82,12 +82,13 @@ const pageStyle = css({
     "& .oa-card-details": {
       "& p:last-child": {
         "& span": {
-          color: "#0000FF !important",
+          color: "#b43808",
           borderBottom: "1.625px solid transparent",
+          transition: "all .3s",
 
           "&:hover": {
-            color: "#6D00FF",
-            borderBottom: "1.625px solid #6D00FF",
+            color: "#BA6B02",
+            borderBottom: "1.625px solid #BA6B02",
           },
           "&:visited": {
             textDecoration: "none",
@@ -177,6 +178,7 @@ class EventsAndCalendar extends React.Component {
         <Page className={pageStyleClass}>
           <h1 style={{ marginBottom: 10 }}>
             <span>Events Archive</span>
+            &nbsp;<span style={{ fontSize: "60%" }}>(under construction…)</span>
           </h1>
           <hr />
           {!isMobile ? (

@@ -66,7 +66,7 @@ date: %date%
 fromTime: 4.30pm
 toTime: 6.30pm
 type: event
-cost: ₹600
+cost: ₹600 per month
 tags:
   - nvc
   - practice-group

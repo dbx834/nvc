@@ -15,9 +15,9 @@ const backgroundColor = "#FFD801";
 module.exports = {
   pathPrefix: data.pathPrefix,
   siteMetadata: {
-    siteUrl: data.websiteUrl,
+    siteUrl: data.nakedWebsiteUrl,
     rssMetadata: {
-      site_url: data.websiteUrl,
+      site_url: data.nakedWebsiteUrl,
       feed_url: `${data.nakedWebsiteUrl}${data.rssUrl}`,
       title: data.websiteName,
       description: data.websiteDescription,

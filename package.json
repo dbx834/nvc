@@ -1,6 +1,7 @@
 {
   "name": "@dbx834/nvc",
-  "description": "Nonviolent Communication & Restorative Circles in Auroville, India – We offer learning opportunities through workshops and practice groups on Nonviolent Communication and Restorative Circles.",
+  "description":
+    "Nonviolent Communication & Restorative Circles in Auroville, India – We offer learning opportunities through workshops and practice groups on Nonviolent Communication and Restorative Circles.",
   "version": "1.0.1",
   "author": {
     "name": "Bodhi Project",
@@ -18,12 +19,14 @@
   "data": {
     "websiteName": "Joy Living Learning",
     "websiteCreator": "Joy Living Learning",
-    "websiteUrl": "https://joylivinglearning.org/",
-    "nakedWebsiteUrl": "https://joylivinglearning.org",
+    "websiteUrl": "https://www.joylivinglearning.org/",
+    "nakedWebsiteUrl": "https://www.joylivinglearning.org",
     "devUrl": "http://localhost:8000/",
     "nakedDevUrl": "http://localhost:8000",
-    "websiteKeywords": "Nonviolent Communication, Restorative Circles, Restorative Justice, Auroville, Nonviolence, Peace, Sociocracy, Internal Family System, IFS, Mediation, NVC, RC, NVC India, RC India, L'aura Joy",
-    "websiteDescription": "Nonviolent Communication & Restorative Circles in Auroville, India – We offer learning opportunities through workshops and practice groups on Nonviolent Communication and Restorative Circles.",
+    "websiteKeywords":
+      "Nonviolent Communication, Restorative Circles, Restorative Justice, Auroville, Nonviolence, Peace, Sociocracy, Internal Family System, IFS, Mediation, NVC, RC, NVC India, RC India, L'aura Joy",
+    "websiteDescription":
+      "Nonviolent Communication & Restorative Circles in Auroville, India – We offer learning opportunities through workshops and practice groups on Nonviolent Communication and Restorative Circles.",
     "rssUrl": "/rss.xml",
     "org": {
       "name": "Joy Living Learning",
@@ -31,9 +34,7 @@
       "url": "http://joylivinglearning.org",
       "logo": "/logo.png",
       "foundingDate": "2008-01-01",
-      "founders": [
-        "L'aura Joy"
-      ]
+      "founders": ["L'aura Joy"]
     },
     "orgLocation": {
       "streetAddress": "House #1",
@@ -46,13 +47,9 @@
     },
     "orgContact": {
       "email": "joylivinglearning@gmail.com",
-      "telephone": [
-        "+914132622539"
-      ]
+      "telephone": ["+914132622539"]
     },
-    "orgSocialMediaProfiles": [
-      "http://www.facebook.com/JoyLivingLearning"
-    ],
+    "orgSocialMediaProfiles": ["http://www.facebook.com/JoyLivingLearning"],
     "pathPrefix": "/",
     "copyright": "Copyright © 2018 L’aura Joy & Joy Living Learning",
     "googleAnalyticsID": "UA-109854711-7"
@@ -141,8 +138,6 @@
     "write-good": "^0.13.0"
   },
   "remarkConfig": {
-    "plugins": [
-      "remark-preset-lint-recommended"
-    ]
+    "plugins": ["remark-preset-lint-recommended"]
   }
 }

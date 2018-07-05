@@ -24,38 +24,23 @@ import Image from "@bodhi-project/components/lib/Image";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Popover from "antd/lib/popover";
-import "antd/lib/popover/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/popover/style/css";
 
 import Modal from "antd/lib/modal";
-import "antd/lib/modal/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/modal/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import logo from "../assets/logo.png";
-import globalWithMediaQueries from "../helpers/globalWithMediaQueries";
+import logo from "../../assets/logo.png";
+import globalWithMediaQueries from "../../helpers/globalWithMediaQueries";
 
-import ContactForm from "../components/ContactForm";
-import NewsletterForm from "../components/NewsletterForm";
-import DonateModal from "../components/DonateModal";
-import PayFeeBlock from "../components/PayFeeBlock";
+import ContactForm from "../ContactForm";
+import NewsletterForm from "../NewsletterForm";
+import DonateModal from "../DonateModal";
+import PayFeeBlock from "../PayFeeBlock";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
 const { Ul } = Elements;
-
-globalWithMediaQueries(
-  ".ant-popover-inner-content .menu-tip",
-  merge({ ...applyType("ltb1ekq") }),
-  true,
-);
-
-globalWithMediaQueries(
-  ".ant-modal-body a",
-  {
-    color: "#0000FF",
-    borderBottom: "1.625px solid transparent",
-  },
-  true,
-);
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
@@ -120,25 +105,7 @@ const modalStyle = css(
       "& h1": {
         fontFamily: "futura-pt, sans-serif !important",
         fontWeight: 700,
-      },
-
-      "& a": {
-        color: "#0000FF",
-        borderBottom: "1.625px solid transparent",
-
-        "&:hover": {
-          color: "#6D00FF",
-          borderBottom: "1.625px solid #6D00FF",
-        },
-        "&:visited": {
-          textDecoration: "none",
-        },
-        "&:link": {
-          textDecoration: "none",
-        },
-        "&:active": {
-          textDecoration: "none",
-        },
+        marginTop: 0,
       },
     },
     { ...applyType("dkc2ilk", { range: [12, 21] }) },

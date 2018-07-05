@@ -26,16 +26,16 @@ import { Page } from "@bodhi-project/semantic-webflow";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Form from "antd/lib/form";
-import "antd/lib/form/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/form/style/css";
 
 import Select from "antd/lib/select";
-import "antd/lib/select/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/select/style/css";
 
 import Input from "antd/lib/input";
-import "antd/lib/input/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/input/style/css";
 
 import Button from "antd/lib/button";
-import "antd/lib/button/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/button/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import {
@@ -59,8 +59,8 @@ const { H1, H2, Paragraph } = Elements;
 // ----------------------------------------------------------------------------
 const pageData = {
   pageTitle: "Contact Us",
-  nakedPageSlug: "contact",
-  pageAbstract: "Page abstract.",
+  nakedPageSlug: "contact-us",
+  pageAbstract: "Write to us at joylivinglearning@gmail.com.",
 };
 
 const seoData = seoHelper(pageData);

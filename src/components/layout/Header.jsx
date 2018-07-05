@@ -11,13 +11,14 @@ import { Header as SemanticHeader } from "@bodhi-project/semantic-webflow";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
 import CompositeHeader from "@bodhi-project/components/lib/CompositeHeader";
+import "@bodhi-project/antrd/lib/nvc-website/modal/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import mobileLogo from "../assets/mobileLogo.png";
-import mobileBurger from "../assets/mobileBurger.png";
-import mobileCross from "../assets/mobileCross.png";
-import MobileNav from "../blocks/MobileNav";
-import DesktopNav from "../blocks/DesktopNav";
+import mobileLogo from "../../assets/mobileLogo.png";
+import mobileBurger from "../../assets/mobileBurger.png";
+import mobileCross from "../../assets/mobileCross.png";
+import MobileNav from "./MobileNav";
+import DesktopNav from "./DesktopNav";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 

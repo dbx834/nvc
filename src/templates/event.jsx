@@ -52,14 +52,17 @@ import withUrl from "../helpers/withUrl";
 import seoHelper from "../helpers/seoHelper";
 import packageJson from "../../package.json";
 import markdownStylesClass from "../styles/markdownStyles";
-import RCPracticeGroupSide from "../components/RCPracticeGroupSide";
-import NVCPracticeGroupSide from "../components/NVCPracticeGroupSide";
-import WorkshopSide from "../components/WorkshopSide";
+
+import NVCPracticeGroupRegistration from "../components/forms/NVCPracticeGroupRegistration";
+import NVCWorkshopRegistration from "../components/forms/NVCWorkshopRegistration";
+import RCPracticeGroupRegistration from "../components/forms/RCPracticeGroupRegistration";
+import RCWorkshopRegistration from "../components/forms/RCWorkshopRegistration";
+import WorkshopRegistration from "../components/forms/WorkshopRegistration";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
 const { data } = packageJson;
-const { H1, H2, Paragraph } = Elements;
+const { H1, Paragraph } = Elements;
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
@@ -182,21 +185,6 @@ const inArray = (array, value) => {
   return rx;
 };
 
-/** remove */
-// function removeA(arr) {
-//   var what,
-//     a = arguments,
-//     L = a.length,
-//     ax;
-//   while (L > 1 && arr.length) {
-//     what = a[--L];
-//     while ((ax = arr.indexOf(what)) !== -1) {
-//       arr.splice(ax, 1);
-//     }
-//   }
-//   return arr;
-// }
-
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
@@ -251,7 +239,17 @@ class EventTemplate extends React.Component {
     if (inArray(tags, "nvc") && inArray(tags, "practice-group")) {
       whichSide = "nvc-practice-group";
     }
-    if (inArray(tags, "workshop")) {
+    if (inArray(tags, "rc") && inArray(tags, "workshop")) {
+      whichSide = "rc-workshop";
+    }
+    if (inArray(tags, "nvc") && inArray(tags, "workshop")) {
+      whichSide = "nvc-workshop";
+    }
+    if (
+      inArray(tags, "workshop") &&
+      !inArray(tags, "nvc") &&
+      !inArray(tags, "rc")
+    ) {
       whichSide = "workshop";
     }
 
@@ -454,7 +452,7 @@ class EventTemplate extends React.Component {
               <div>
                 {!isNull(whichSide) &&
                   whichSide === "rc-practice-group" && (
-                    <RCPracticeGroupSide
+                    <RCPracticeGroupRegistration
                       data={frontmatter}
                       pathContext={pathContext}
                       showRegister={showRegister}
@@ -463,7 +461,25 @@ class EventTemplate extends React.Component {
                   )}
                 {!isNull(whichSide) &&
                   whichSide === "nvc-practice-group" && (
-                    <NVCPracticeGroupSide
+                    <NVCPracticeGroupRegistration
+                      data={frontmatter}
+                      pathContext={pathContext}
+                      showRegister={showRegister}
+                      showPay={showPay}
+                    />
+                  )}
+                {!isNull(whichSide) &&
+                  whichSide === "rc-workshop" && (
+                    <RCWorkshopRegistration
+                      data={frontmatter}
+                      pathContext={pathContext}
+                      showRegister={showRegister}
+                      showPay={showPay}
+                    />
+                  )}
+                {!isNull(whichSide) &&
+                  whichSide === "nvc-workshop" && (
+                    <NVCWorkshopRegistration
                       data={frontmatter}
                       pathContext={pathContext}
                       showRegister={showRegister}
@@ -472,7 +488,7 @@ class EventTemplate extends React.Component {
                   )}
                 {!isNull(whichSide) &&
                   whichSide === "workshop" && (
-                    <WorkshopSide
+                    <WorkshopRegistration
                       data={frontmatter}
                       pathContext={pathContext}
                       showRegister={showRegister}

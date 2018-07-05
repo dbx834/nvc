@@ -4,7 +4,6 @@
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
 import isEmpty from "lodash/isEmpty";
-import replace from "lodash/replace";
 
 import isEmail from "validator/lib/isEmail";
 import isAlpha from "validator/lib/isAlphanumeric";
@@ -70,12 +69,20 @@ const validateName = (rule, value, callback) => {
   if (isEmpty(value)) {
     callback("Please fill in your name.");
   } else {
-    if (!isAlpha(replace(value, " ", ""))) {
+    if (!isAlpha(value.split(" ").join(""))) {
       callback("A name can have only characters (a-z, A-Z).");
     } else {
       callback();
     }
   }
+};
+
+/** Check experience is valid */
+const validateExperience = (rule, value, callback) => {
+  callback();
+  // if (isEmpty(value)) {
+  //   callback("Please fill in these details.");
+  // }
 };
 
 // ----------------------------------------------------------------------------
@@ -90,6 +97,7 @@ const exportThis = {
   validateCurrentLocation,
   validateWhatDrawsYou,
   validateComment,
+  validateExperience,
 };
 
 export default exportThis;

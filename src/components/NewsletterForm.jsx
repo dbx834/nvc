@@ -9,7 +9,7 @@ import { css } from "glamor";
 import isUndefined from "lodash/isUndefined";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import { Elements, applyRhythm } from "@bodhi-project/typography";
+import { Elements } from "@bodhi-project/typography";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -26,13 +26,13 @@ import { Page as SemanticPage } from "@bodhi-project/semantic-webflow";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Form from "antd/lib/form";
-import "antd/lib/form/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/form/style/css";
 
 import Input from "antd/lib/input";
-import "antd/lib/input/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/input/style/css";
 
 import Button from "antd/lib/button";
-import "antd/lib/button/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/button/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import {
@@ -56,7 +56,8 @@ const { H1, Paragraph } = Elements;
 const pageData = {
   pageTitle: "Newsletter",
   nakedPageSlug: "newsletter",
-  pageAbstract: "Page abstract.",
+  pageAbstract:
+    "If you'd like to receive updates about our programs, please sign up for our newsletter.",
 };
 
 const seoData = seoHelper(pageData);

@@ -36,8 +36,6 @@ import OutLink from "@bodhi-project/components/lib/OutLink";
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
 import LearnMore from "../components/LearnMore";
-import Calendar from "../components/Calendar";
-import EventsGrid from "../components/EventsGrid";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;

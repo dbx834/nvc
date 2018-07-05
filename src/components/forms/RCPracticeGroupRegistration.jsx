@@ -20,19 +20,22 @@ import Image from "@bodhi-project/components/lib/Image";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Tooltip from "antd/lib/tooltip";
-import "antd/lib/tooltip/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/tooltip/style/css";
 
 import Form from "antd/lib/form";
-import "antd/lib/form/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/form/style/css";
 
 import Select from "antd/lib/select";
-import "antd/lib/select/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/select/style/css";
 
 import Input from "antd/lib/input";
-import "antd/lib/input/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/input/style/css";
 
 import Button from "antd/lib/button";
-import "antd/lib/button/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/button/style/css";
+
+import Radio from "antd/lib/radio";
+import "@bodhi-project/antrd/lib/nvc-website/radio/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import {
@@ -44,10 +47,11 @@ import {
   validateCurrentLocation,
   validateWhatDrawsYou,
   validateComment,
-} from "../helpers/formHelpers";
-import { formStyleClass } from "../helpers/defaultFormStyles";
-import domestic from "../assets/domestic.png";
-import international from "../assets/international.png";
+  validateExperience,
+} from "../../helpers/formHelpers";
+import { formStyleClass } from "../../helpers/defaultFormStyles";
+import domestic from "../../assets/domestic.png";
+import international from "../../assets/international.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -55,21 +59,18 @@ const FormItem = Form.Item;
 const { Option } = Select;
 const { TextArea } = Input;
 const { H1, Paragraph } = Elements;
+const RadioGroup = Radio.Group;
+const radioStyle = {
+  display: "block",
+  height: "30px",
+  lineHeight: "30px",
+};
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 const style = css({
   paddingBottom: "2em",
-
-  "& .hover": {
-    borderBottom: "1.625px solid transparent",
-
-    "&:hover": {
-      color: "#6D00FF",
-      borderBottom: "1.625px solid #6D00FF",
-    },
-  },
 
   "& h1": {
     textTransform: "uppercase",
@@ -125,6 +126,9 @@ class RCPracticeGroupSide extends React.Component {
           whatDrawsYou,
           currentLocation,
           comment,
+          experience,
+          journey,
+          wouldLikeInfo,
         } = values;
 
         name = isUndefined(name) ? " " : name;
@@ -135,12 +139,15 @@ class RCPracticeGroupSide extends React.Component {
         whatDrawsYou = isUndefined(whatDrawsYou) ? " " : whatDrawsYou;
         currentLocation = isUndefined(currentLocation) ? " " : currentLocation;
         comment = isUndefined(comment) ? " " : comment;
+        experience = isUndefined(experience) ? " " : experience;
+        journey = isUndefined(journey) ? " " : journey;
+        wouldLikeInfo = isUndefined(wouldLikeInfo) ? " " : wouldLikeInfo;
         const note = " ";
 
         setTimeout(() => {
           // Mock some delay
           fetch(
-            `https://script.google.com/macros/s/AKfycbxe5KaEdHtLH5JVpf-yntF5LZYAszQTwHHQ4tEjvBT4DyykpRtZ/exec?name=${name}&email=${email}&event=${event}&mobile=${mobile}&country=${country}&whatDrawsYou=${whatDrawsYou}&comment=${comment}&currentLocation=${currentLocation}&note=${note}&callback=?`,
+            `https://script.google.com/macros/s/AKfycbxe5KaEdHtLH5JVpf-yntF5LZYAszQTwHHQ4tEjvBT4DyykpRtZ/exec?name=${name}&email=${email}&event=${event}&mobile=${mobile}&country=${country}&whatDrawsYou=${whatDrawsYou}&comment=${comment}&currentLocation=${currentLocation}&experience=${experience}&journey=${journey}&wouldLikeInfo=${wouldLikeInfo}&note=${note}&callback=?`,
             {
               method: "GET",
               mode: "no-cors",
@@ -182,6 +189,11 @@ class RCPracticeGroupSide extends React.Component {
     const mobileError = isFieldTouched("mobile") && getFieldError("mobile");
     const currentLocationError =
       isFieldTouched("currentLocation") && getFieldError("currentLocation");
+    const experienceError =
+      isFieldTouched("experience") && getFieldError("experience");
+    const journeyError = isFieldTouched("journey") && getFieldError("journey");
+    const wouldLikeInfoError =
+      isFieldTouched("wouldLikeInfo") && getFieldError("wouldLikeInfo");
 
     const { date, startDate } = data;
     const { humanDate } = pathContext;
@@ -234,7 +246,7 @@ class RCPracticeGroupSide extends React.Component {
                 </Paragraph>
                 <OutLink
                   to="https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD"
-                  style={{ marginRight: 17 }}
+                  style={{ marginRight: 17, borderBottom: 0 }}
                 >
                   <Tooltip title="Indian Card">
                     <div style={{ display: "inline-block" }}>
@@ -259,7 +271,6 @@ class RCPracticeGroupSide extends React.Component {
                   method="post"
                   target="_blank"
                   style={{ display: "inline-block" }}
-                  className="hover"
                 >
                   <input type="hidden" name="cmd" value="_s-xclick" />
                   <input
@@ -299,10 +310,16 @@ class RCPracticeGroupSide extends React.Component {
                 <H1 mask="h4">
                   <span>Register</span>
                 </H1>
-                <br />
-                <br />
+                {this.state.formSent === false ? (
+                  <p>You are about to register for {key}.</p>
+                ) : (
+                  <p>You registered for {key}.</p>
+                )}
                 {this.state.formSent === false && (
-                  <Form onSubmit={this.handleSubmit} className={formStyleClass}>
+                  <Form
+                    onSubmit={this.handleSubmit}
+                    className={`${formStyleClass} mask-p`}
+                  >
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Name */}
                     <FormItem
                       validateStatus={nameError ? "error" : ""}
@@ -372,6 +389,99 @@ class RCPracticeGroupSide extends React.Component {
                         />,
                       )}
                     </FormItem>
+
+                    {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Experience Level */}
+                    <span style={{ marginBottom: 8, display: "block" }}>
+                      What’s your level of NVC and/or RC (or Restorative
+                      Justice) experience
+                    </span>
+                    <FormItem
+                      validateStatus={experienceError ? "error" : ""}
+                      help={experienceError || ""}
+                    >
+                      {getFieldDecorator("experience", {
+                        validateTrigger: ["onChange", "onBlur"],
+                        rules: [{ validator: validateExperience }],
+                      })(
+                        <RadioGroup>
+                          <Radio
+                            style={radioStyle}
+                            value="Beginner (0-5 days of NVC training)"
+                          >
+                            Beginner (0-5 days of NVC training)
+                          </Radio>
+                          <Radio
+                            style={radioStyle}
+                            value="Intermediate (5-10 days of NVC training)"
+                          >
+                            Intermediate (5-10 days of NVC training)
+                          </Radio>
+                          <Radio
+                            style={radioStyle}
+                            value="Advanced (over 10 days of NVC training)"
+                          >
+                            Advanced (over 10 days of NVC training)
+                          </Radio>
+                          <Radio
+                            style={radioStyle}
+                            value="NVC Certification Candidate"
+                          >
+                            NVC Certification Candidate
+                          </Radio>
+                          <Radio style={radioStyle} value="NVC Trainer">
+                            NVC Trainer
+                          </Radio>
+                        </RadioGroup>,
+                      )}
+                    </FormItem>
+
+                    {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Journey */}
+                    <FormItem
+                      validateStatus={journeyError ? "error" : ""}
+                      help={journeyError || ""}
+                    >
+                      {getFieldDecorator("journey", {
+                        validateTrigger: ["onChange", "onBlur"],
+                        rules: [{ validator: validateComment }],
+                      })(
+                        <TextArea
+                          placeholder="Please share a few sentences about your NVC and/or RC journey."
+                          autosize={{ minRows: 3, maxRows: 5 }}
+                        />,
+                      )}
+                    </FormItem>
+
+                    {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ More Info. */}
+                    <span style={{ marginBottom: 8, display: "block" }}>
+                      Would you be like to receive information about future NVC
+                      and/or RC events?
+                    </span>
+                    <FormItem
+                      validateStatus={wouldLikeInfoError ? "error" : ""}
+                      help={wouldLikeInfoError || ""}
+                    >
+                      {getFieldDecorator("wouldLikeInfo", {
+                        validateTrigger: ["onChange", "onBlur"],
+                        rules: [{ validator: validateExperience }],
+                      })(
+                        <RadioGroup>
+                          <Radio
+                            style={radioStyle}
+                            value="Yes, I would like to receive some information every now and then."
+                          >
+                            Yes, I would like to receive some information every
+                            now and then.
+                          </Radio>
+                          <Radio
+                            style={radioStyle}
+                            value="No, I would not like to receive any information."
+                          >
+                            No, I would not like to receive any information.
+                          </Radio>
+                        </RadioGroup>,
+                      )}
+                    </FormItem>
+
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment */}
                     <FormItem
                       validateStatus={commentError ? "error" : ""}

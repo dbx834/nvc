@@ -30,8 +30,8 @@ import "../styles/index.less";
 import indexImage from "../assets/twitterSummaryX.jpg";
 import packageJson from "../../package.json";
 
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import Footer from "../components/layout/Footer";
+import Header from "../components/layout/Header";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { data } = packageJson;
@@ -87,25 +87,6 @@ const wrapperStyles = css({
 
   "& h1, h2, h3, h4, h5, h6, p, li": {
     color: "#4a4a4a !important",
-  },
-
-  "& a": {
-    color: "#0000FF",
-    borderBottom: "1.625px solid transparent",
-
-    "&:hover": {
-      color: "#6D00FF",
-      borderBottom: "1.625px solid #6D00FF",
-    },
-    "&:visited": {
-      textDecoration: "none",
-    },
-    "&:link": {
-      textDecoration: "none",
-    },
-    "&:active": {
-      textDecoration: "none",
-    },
   },
 
   "& #content": {

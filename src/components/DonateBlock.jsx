@@ -6,26 +6,20 @@ import React from "react";
 import { css } from "glamor";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
-import map from "lodash/map";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Link from "gatsby-link";
-import { Elements, applyRhythm } from "@bodhi-project/typography";
+import { Elements } from "@bodhi-project/typography";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
-import Image from "@bodhi-project/components/lib/Image";
+// import Image from "@bodhi-project/components/lib/Image";
 import OutLink from "@bodhi-project/components/lib/OutLink";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
-import Tooltip from "antd/lib/tooltip";
-import "antd/lib/tooltip/style/css";
-
 import Button from "antd/lib/button";
-import "antd/lib/button/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/button/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import domestic from "../assets/domestic.png";
-import international from "../assets/international.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 // const { Fragment } = React;

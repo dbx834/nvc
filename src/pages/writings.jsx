@@ -29,7 +29,12 @@ import {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
 import SectionAstrid from "@bodhi-project/blocks/lib/SectionAstrid";
+import "@bodhi-project/antrd/lib/nvc-website/tag/style/css";
+
 import SectionSaros from "@bodhi-project/blocks/lib/SectionSaros";
+import "@bodhi-project/antrd/lib/nvc-website/collapse/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/spin/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/button/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 

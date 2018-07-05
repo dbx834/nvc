@@ -42,7 +42,7 @@ import {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Tag from "antd/lib/tag";
-import "antd/lib/tag/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/tag/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
 import Image from "@bodhi-project/components/lib/Image";

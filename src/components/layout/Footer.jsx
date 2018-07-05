@@ -17,24 +17,24 @@ import Image from "@bodhi-project/components/lib/Image";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Row from "antd/lib/row";
-import "antd/lib/row/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/row/style/css";
 
 import Col from "antd/lib/col";
-import "antd/lib/col/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/col/style/css";
 
 import Icon from "antd/lib/icon";
-import "antd/lib/icon/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/icon/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import packageJson from "../../package.json";
-import waves from "../assets/waves.png";
-import boat from "../assets/boat.png";
-import facebook from "../assets/facebook.png";
-import youtube from "../assets/youtube.png";
-import vimeo from "../assets/vimeo.png";
-import paypal from "../assets/paypal.png";
-import payu from "../assets/payu.png";
-import soundcloud from "../assets/soundcloud.png";
+import packageJson from "../../../package.json";
+import waves from "../../assets/waves.png";
+import boat from "../../assets/boat.png";
+import facebook from "../../assets/facebook.png";
+import youtube from "../../assets/youtube.png";
+import vimeo from "../../assets/vimeo.png";
+import paypal from "../../assets/paypal.png";
+import payu from "../../assets/payu.png";
+import soundcloud from "../../assets/soundcloud.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Paragraph } = Elements;

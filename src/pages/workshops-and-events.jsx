@@ -26,10 +26,15 @@ import {
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/blocks
 import SectionOpheliaAlt from "@bodhi-project/blocks/lib/SectionOpheliaAlt";
+import "@bodhi-project/antrd/lib/nvc-website/tag/style/css";
+
 import SectionHalley from "@bodhi-project/blocks/lib/SectionHalley";
+import "@bodhi-project/antrd/lib/nvc-website/list/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/spin/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/button/style/css";
 
 import Tag from "antd/lib/tag";
-import "antd/lib/tag/style/css";
+// import "@bodhi-project/antrd/lib/nvc-website/tag/style/css"; // already imported
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import nvc from "../assets/nvc.png";
@@ -119,12 +124,13 @@ const pageStyle = css({
     "& .oa-card-details": {
       "& p:last-child": {
         "& span": {
-          color: "#0000FF !important",
+          color: "#b43808",
           borderBottom: "1.625px solid transparent",
+          transition: "all .3s",
 
           "&:hover": {
-            color: "#6D00FF",
-            borderBottom: "1.625px solid #6D00FF",
+            color: "#BA6B02",
+            borderBottom: "1.625px solid #BA6B02",
           },
           "&:visited": {
             textDecoration: "none",

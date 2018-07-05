@@ -34,20 +34,22 @@ import Image from "@bodhi-project/components/lib/Image";
 import OutLink from "@bodhi-project/components/lib/OutLink";
 
 import SectionHalley from "@bodhi-project/blocks/lib/SectionHalley";
+import "@bodhi-project/antrd/lib/nvc-website/list/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/spin/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/button/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Carousel from "antd/lib/carousel";
-import "antd/lib/carousel/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/carousel/style/css";
 
 import Icon from "antd/lib/icon";
-import "antd/lib/icon/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/icon/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
 import categoriseEvents from "../helpers/categoriseEvents";
 
 import LearnMore from "../components/LearnMore";
-import MiniCalendar from "../components/MiniCalendar";
 
 import cnvc from "../assets/cnvc.png";
 import plant from "../assets/plant.jpg";

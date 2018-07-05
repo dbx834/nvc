@@ -17,7 +17,7 @@ import OutLink from "@bodhi-project/components/lib/OutLink";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Tooltip from "antd/lib/tooltip";
-import "antd/lib/tooltip/style/css";
+import "@bodhi-project/antrd/lib/nvc-website/tooltip/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import domestic from "../assets/domestic.png";

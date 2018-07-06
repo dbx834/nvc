@@ -280,7 +280,7 @@ class EventTemplate extends React.Component {
     const pageData = {
       pageTitle: frontmatter.title,
       nakedPageSlug: nakedRoute,
-      pageAbstract: frontmatter.abstract,
+      pageAbstract: `${frontmatter.abstract} On ${humanDate}.`,
       pageBanner: eventBanner,
     };
 
@@ -299,7 +299,7 @@ class EventTemplate extends React.Component {
     const eventSchemaData = {
       name: frontmatter.title,
       url: `${data.websiteUrl}${route}`,
-      description: frontmatter.abstract,
+      description: `${frontmatter.abstract} On ${humanDate}.`,
       startDate: begins,
       endDate: ends,
       locationName: orgLocation.locationName,

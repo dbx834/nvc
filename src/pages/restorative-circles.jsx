@@ -64,6 +64,7 @@ const pageData = {
   nakedPageSlug: "restorative-circles",
   pageAbstract:
     "A Restorative Circle (RC) is a community process designed to hold space for those in conflict. It brings together the three parties in a conflict – those who acted, those directly impacted, and the wider community – within an intentional systemic context, to dialogue as equals. Participants invite each other and attend voluntarily.",
+  pageBanner: "/content-assets/restorative-circles/rc_800X561.png",
 };
 
 const seoData = seoHelper(pageData);
@@ -222,23 +223,27 @@ class NVCPage extends React.PureComponent {
               </p>
               <p>
                 [Source:{" "}
-                <OutLink to="http://www.restorativecircles.org/">
+                <OutLink
+                  to="http://www.restorativecircles.org/"
+                  style={{ marginBottom: 10 }}
+                >
                   Dominic Barter and Restorative Circles
                 </OutLink>]
               </p>
-              <Image
-                src="/content-assets/restorative-circles/rc_800X561.png"
-                rawWidth={800}
-                rawHeight={561}
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  border: 0,
-                  background: "transparent",
-                  display: "block",
-                  marginBottom: 30,
-                }}
-              />
+              <div className="mask-p" style={{ paddingTop: 20 }}>
+                <Image
+                  src="/content-assets/restorative-circles/rc_800X561.png"
+                  rawWidth={800}
+                  rawHeight={561}
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    border: 0,
+                    background: "transparent",
+                    display: "block",
+                  }}
+                />
+              </div>
               {!isMobile && <LearnMore data={learnMoreData} />}
             </div>
             <div>

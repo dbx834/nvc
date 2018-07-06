@@ -38,6 +38,9 @@ import seoHelper from "../helpers/seoHelper";
 import groupFacilitation from "../assets/groupFacilitation.png";
 import individualCoaching from "../assets/individualCoaching.png";
 import mediation from "../assets/mediation.png";
+import restorativeCircles from "../assets/restorativeCircles.png";
+
+import ogXFacilitated from "../assets/covers/ogXFacilitated.jpg";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -67,7 +70,7 @@ const offeringsData = [
       "Are you struggling with internal challenges? Would you like support to work through the stress or confusion, and to gain more self-understanding? If so, a coaching session may offer you the space to reconnect with yourself, and to make choices that feel more in alignment with your present needs.",
   },
   {
-    image: individualCoaching,
+    image: restorativeCircles,
     title1: "Restorative",
     title2: "Circle",
     lead:
@@ -80,9 +83,10 @@ const offeringsData = [
 // ----------------------------------------------------------------------------
 const pageData = {
   pageTitle: "Facilitated Spaces",
-  nakedPageSlug: "/facilitated-spaces",
+  nakedPageSlug: "facilitated-spaces",
   pageAbstract:
     "We facilitate meetings and hold space based primarily on the principles of Nonviolent Communication and Restorative Circles. In addition, we use practices from Sociocracy (shared-power governance) and Internal Family Systems (learning to recognize our inner parts and their messages), both of which offer powerful modalities for group and inner work.",
+  pageBanner: ogXFacilitated,
 };
 
 const seoData = seoHelper(pageData);

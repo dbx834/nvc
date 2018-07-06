@@ -10,14 +10,13 @@ import { css } from "glamor";
 import indexOf from "lodash/indexOf";
 import map from "lodash/map";
 import join from "lodash/join";
-import merge from "lodash/merge";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import withSizes from "react-sizes";
 import Link, { withPrefix } from "gatsby-link";
 import "moment/locale/en-gb";
 import { Page } from "@bodhi-project/semantic-webflow";
-import { Elements, applyType } from "@bodhi-project/typography";
+import { applyType } from "@bodhi-project/typography";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -58,7 +57,6 @@ import end from "../assets/end.png";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
-const { H1 } = Elements;
 
 globalWithMediaQueries(
   ".ant-popover-inner-content .phoebe-popcontent",
@@ -67,46 +65,53 @@ globalWithMediaQueries(
 );
 
 globalWithMediaQueries(
-  ".ant-popover-inner-content .phoebe-popcontent a",
+  ".ant-popover-inner-content",
   {
-    color: "#0000FF",
-    borderBottom: "1.625px solid transparent",
+    padding: 0,
   },
   true,
 );
 
 globalWithMediaQueries(
-  ".ant-popover-inner-content .phoebe-popcontent a:hover",
+  ".ant-popover-inner-content p",
   {
-    color: "#6D00FF",
-    borderBottom: "1.625px solid #6D00FF",
+    margin: 0,
   },
   true,
 );
 
-globalWithMediaQueries(
-  ".ant-popover-inner-content .phoebe-popcontent a:visited",
-  {
-    textDecoration: "none",
-  },
-  true,
-);
+// globalWithMediaQueries(
+//   ".ant-popover-inner-content .phoebe-popcontent a:hover",
+//   {
+//     color: "#6D00FF",
+//     borderBottom: "1.625px solid #6D00FF",
+//   },
+//   true,
+// );
 
-globalWithMediaQueries(
-  ".ant-popover-inner-content .phoebe-popcontent a:link",
-  {
-    textDecoration: "none",
-  },
-  true,
-);
+// globalWithMediaQueries(
+//   ".ant-popover-inner-content .phoebe-popcontent a:visited",
+//   {
+//     textDecoration: "none",
+//   },
+//   true,
+// );
 
-globalWithMediaQueries(
-  ".ant-popover-inner-content .phoebe-popcontent a:active",
-  {
-    textDecoration: "none",
-  },
-  true,
-);
+// globalWithMediaQueries(
+//   ".ant-popover-inner-content .phoebe-popcontent a:link",
+//   {
+//     textDecoration: "none",
+//   },
+//   true,
+// );
+
+// globalWithMediaQueries(
+//   ".ant-popover-inner-content .phoebe-popcontent a:active",
+//   {
+//     textDecoration: "none",
+//   },
+//   true,
+// );
 
 /** inArray */
 const inArray = (array, value) => {
@@ -121,8 +126,8 @@ const inArray = (array, value) => {
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
 const pageData = {
-  pageTitle: "Events",
-  nakedPageSlug: "upcoming-events",
+  pageTitle: "Calendar Of Events",
+  nakedPageSlug: "calendar",
   pageAbstract:
     "We offer learning opportunities through workshops and practice groups on Nonviolent Communication and Restorative Circles. We are also available for individual coaching and mediation, and we are happy to consult with community-based projects that are seeking to shift paradigms.",
 };

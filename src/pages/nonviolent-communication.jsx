@@ -30,12 +30,14 @@ import {
 } from "@bodhi-project/seo";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
-// import Image from "@bodhi-project/components/lib/Image";
+import Image from "@bodhi-project/components/lib/Image";
 import OutLink from "@bodhi-project/components/lib/OutLink";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
 import LearnMore from "../components/LearnMore";
+
+import nvcTreeOfLife from "../assets/covers/nvcTreeOfLife.jpg";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React;
@@ -66,6 +68,7 @@ const pageData = {
   nakedPageSlug: "nonviolent-communication",
   pageAbstract:
     "Nonviolent Communication (NVC) contains nothing new. It is based on historical principles of nonviolence – the natural state of compassion when no violence is present in the heart. NVC reminds us what we already instinctively know about how good it feels to authentically connect to another human being.",
+  pageBanner: nvcTreeOfLife,
 };
 
 const seoData = seoHelper(pageData);
@@ -219,6 +222,19 @@ class NVCPage extends React.PureComponent {
                 create life-serving families and communities.
               </p>
               <p>The form is simple, yet powerfully transformative.</p>
+              <Image
+                src={nvcTreeOfLife}
+                rawWidth={1100}
+                rawHeight={1424}
+                style={{
+                  width: "80%",
+                  height: "auto",
+                  border: 0,
+                  background: "transparent",
+                  display: "block",
+                }}
+                className="mask-p"
+              />
               <p>
                 Through the practice of NVC, we can learn to clarify what we are
                 observing, what emotions we are feeling, what values we want to

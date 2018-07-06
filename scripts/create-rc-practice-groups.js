@@ -61,7 +61,7 @@ title: RC Practice Group
 subTitle: Every Thursday
 cover: fallback
 category: 1.RC
-abstract: Page abstract.
+abstract: Come and practice your RC facilitation skills!
 date: %date%
 fromTime: 4.30pm
 toTime: 6.30pm
@@ -72,7 +72,7 @@ tags:
   - practice-group
 ---
 
-Come and practice your RC facilitation skills! 
+Come and practice your RC facilitation skills!
 
 This is a drop-in practice group, so you may come sometimes or all the time! We request that you have some prior RC experience before joining this group.
 

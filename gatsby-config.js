@@ -34,6 +34,7 @@ module.exports = {
     //     production: true,
     //   },
     // },
+    "gatsby-plugin-remove-trailing-slashes",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-less",
     {

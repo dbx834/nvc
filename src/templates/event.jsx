@@ -57,6 +57,7 @@ import NVCPracticeGroupRegistration from "../components/forms/NVCPracticeGroupRe
 import NVCWorkshopRegistration from "../components/forms/NVCWorkshopRegistration";
 import RCPracticeGroupRegistration from "../components/forms/RCPracticeGroupRegistration";
 import RCWorkshopRegistration from "../components/forms/RCWorkshopRegistration";
+import RCWorkshopFeaturedRegistration from "../components/forms/RCWorkshopFeaturedRegistration";
 import WorkshopRegistration from "../components/forms/WorkshopRegistration";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
@@ -240,7 +241,11 @@ class EventTemplate extends React.Component {
       whichSide = "nvc-practice-group";
     }
     if (inArray(tags, "rc") && inArray(tags, "workshop")) {
-      whichSide = "rc-workshop";
+      if (inArray(tags, "featured")) {
+        whichSide = "rc-workshop-featured";
+      } else {
+        whichSide = "rc-workshop";
+      }
     }
     if (inArray(tags, "nvc") && inArray(tags, "workshop")) {
       whichSide = "nvc-workshop";
@@ -471,6 +476,15 @@ class EventTemplate extends React.Component {
                 {!isNull(whichSide) &&
                   whichSide === "rc-workshop" && (
                     <RCWorkshopRegistration
+                      data={frontmatter}
+                      pathContext={pathContext}
+                      showRegister={showRegister}
+                      showPay={showPay}
+                    />
+                  )}
+                {!isNull(whichSide) &&
+                  whichSide === "rc-workshop-featured" && (
+                    <RCWorkshopFeaturedRegistration
                       data={frontmatter}
                       pathContext={pathContext}
                       showRegister={showRegister}

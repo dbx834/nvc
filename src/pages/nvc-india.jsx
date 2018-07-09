@@ -45,10 +45,10 @@ const { Fragment } = React;
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
 const pageData = {
-  pageTitle: "Nonviolent Communication",
-  nakedPageSlug: "nonviolent-communication",
+  pageTitle: "NVC India - Nonviolent Communication in India",
+  nakedPageSlug: "nvc-india",
   pageAbstract:
-    "Nonviolent Communication (NVC) contains nothing new. It is based on historical principles of nonviolence – the natural state of compassion when no violence is present in the heart. NVC reminds us what we already instinctively know about how good it feels to authentically connect to another human being.",
+    "Our NVC community in India is a thriving one! We’ve had annual International NVC Conventions since 2010, plus so many other NVC events in India with trainers from all over the world.",
 };
 
 const seoData = seoHelper(pageData);

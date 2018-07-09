@@ -24,33 +24,35 @@ const twitterSummaryY = withUrl(twitterSummaryX, data);
 /** seoHelper */
 const seoHelper = pageData => {
   const { pageBanner } = pageData;
-  let pageBannerX = undefined;
+  let image = null;
 
-  if (!isUndefined(pageBanner)) {
-    pageBannerX = withUrl(pageBanner, data);
+  if (isUndefined(pageBanner)) {
+    image = ogY;
+  } else {
+    image = withUrl(pageBanner, data);
   }
 
   const returnObject = {
     pageTitle: pageData.pageTitle,
-    twitterSummaryX: isUndefined(twitterSummaryY) ? ogY : pageBannerX,
+    twitterSummaryX: twitterSummaryY,
     generalMetaData: {
       description: pageData.pageAbstract,
       keywords: data.websiteKeywords,
-      image: isUndefined(pageBanner) ? ogY : pageBannerX,
+      image,
     },
     twitterSummaryCardData: {
       site: data.websiteName,
       creator: data.org.name,
       title: pageData.pageTitle,
       description: pageData.pageAbstract,
-      image: isUndefined(pageBanner) ? twitterSummaryY : pageBannerX,
+      image,
     },
     openGraphSummaryData: {
       siteName: data.websiteName,
       url: `${data.websiteUrl}${pageData.nakedPageSlug}`,
       title: pageData.pageTitle,
       description: pageData.pageAbstract,
-      image: isUndefined(ogY) ? twitterSummaryY : pageBannerX,
+      image,
     },
     webpageSchemaData: {
       url: `${data.websiteUrl}${pageData.nakedPageSlug}`,
@@ -58,7 +60,7 @@ const seoHelper = pageData => {
       description: pageData.pageAbstract,
       author: data.org.name,
       publisher: data.org.name,
-      image: isUndefined(ogY) ? twitterSummaryY : pageBannerX,
+      image,
     },
     breadcrumbSchemaData: {
       breadcrumbs: [

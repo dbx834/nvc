@@ -7,12 +7,12 @@ import PropTypes from "prop-types";
 import { css } from "glamor";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
-import map from "lodash/map";
+// import map from "lodash/map";
 import indexOf from "lodash/indexOf";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import withSizes from "react-sizes";
-import Link from "gatsby-link";
+// import Link from "gatsby-link";
 import ContainerDimensions from "react-container-dimensions";
 import ReactPlayer from "react-player";
 import { Page } from "@bodhi-project/semantic-webflow";
@@ -35,7 +35,6 @@ import OutLink from "@bodhi-project/components/lib/OutLink";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import seoHelper from "../helpers/seoHelper";
-import LearnMore from "../components/LearnMore";
 
 import supergirls from "../assets/supergirls.jpg";
 

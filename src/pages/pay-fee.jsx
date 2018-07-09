@@ -11,7 +11,7 @@ import { css } from "glamor";
 // import Link from 'gatsby-link';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import { Elements, applyRhythm } from "@bodhi-project/typography";
+import { applyRhythm } from "@bodhi-project/typography";
 import { Page as SemanticPage } from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
@@ -35,7 +35,6 @@ import seoHelper from "../helpers/seoHelper";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstract stuff
 const { Fragment } = React;
-const { H1 } = Elements;
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO

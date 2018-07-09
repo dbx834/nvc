@@ -299,7 +299,9 @@ class EventsAndCalendar extends React.Component {
               {!isMobile ? (
                 <SectionOpheliaAlt data={opheliaData} />
               ) : (
-                <SectionHalley data={pandoraData1} />
+                <div className="mask-p">
+                  <SectionHalley data={pandoraData1} style={{ padding: 0 }} />
+                </div>
               )}
             </div>
             <div>
@@ -324,7 +326,9 @@ class EventsAndCalendar extends React.Component {
                   </small>
                 </p>
               </div>
-              <SectionHalley data={pandoraData2} style={{ marginTop: -5 }} />
+              <div className="mask-p">
+                <SectionHalley data={pandoraData2} style={{ marginTop: -5 }} />
+              </div>
 
               {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */}
               <hr />
@@ -347,7 +351,9 @@ class EventsAndCalendar extends React.Component {
                   </small>
                 </p>
               </div>
-              <SectionHalley data={pandoraData3} style={{ marginTop: -5 }} />
+              <div className="mask-p">
+                <SectionHalley data={pandoraData3} style={{ marginTop: -5 }} />
+              </div>
             </div>
           </div>
         </Page>

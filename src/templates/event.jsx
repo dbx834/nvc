@@ -373,9 +373,7 @@ class EventTemplate extends React.Component {
                           )}
                         </Fragment>
                       )}
-                      <i>
-                        {humanDate}&nbsp;({elapsed})
-                      </i>
+                      <i>{humanDate}</i>
                       <br />
                       <i>
                         {fromTime} - {toTime}

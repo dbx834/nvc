@@ -10,6 +10,7 @@ import moment from "moment";
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
 import isNull from "lodash/isNull";
 import isUndefined from "lodash/isUndefined";
+import indexOf from "lodash/indexOf";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import { Elements } from "@bodhi-project/typography";
@@ -64,6 +65,18 @@ const radioStyle = {
   display: "block",
   height: "24px",
   lineHeight: "24px",
+};
+
+// ----------------------------------------------------------------------------
+// ------------------------------------------------------------ Local Functions
+// ----------------------------------------------------------------------------
+/** inArray */
+const inArray = (array, value) => {
+  let rx = false;
+  if (indexOf(array, value) >= 0) {
+    rx = true;
+  }
+  return rx;
 };
 
 // ----------------------------------------------------------------------------
@@ -203,25 +216,33 @@ class RCPracticeGroupSide extends React.Component {
     const begins = moment(!isNull(startDate) ? startDate : date);
     const beginDateInt = parseInt(begins.format("YYYYMMDD"), 10);
     let eventStatus = null;
+    let showForm = null;
 
     if (todayInt > beginDateInt) {
       eventStatus = "past";
+      showForm = false;
     } else if (todayInt < beginDateInt) {
       eventStatus = "future";
+      showForm = true;
     } else {
       eventStatus = "present";
+      if (inArray(data.tags, "sameday")) {
+        showForm = true;
+      } else {
+        showForm = false;
+      }
     }
 
     return (
       <div className={styleClass}>
-        {(eventStatus === "past" || eventStatus === "present") && (
+        {showForm === false && (
           <Fragment>
             <H1 mask="h4">
               <span>Registration Closed</span>
             </H1>
           </Fragment>
         )}
-        {eventStatus === "future" && (
+        {showForm === true && (
           <Fragment>
             <H1 mask="h4">
               <span>FEE</span>

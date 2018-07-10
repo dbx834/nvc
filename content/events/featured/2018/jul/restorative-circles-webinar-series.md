@@ -13,7 +13,6 @@ tags:
   - rc
   - workshop
   - featured
-  - sameday
 ---
 
 ![{"height": "60vh", "width": "auto", "display": "inline-block", "background": "transparent"}](/content-assets/2018-events/RCWebinar_800X1200.png)

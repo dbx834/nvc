@@ -215,21 +215,21 @@ class RCPracticeGroupSide extends React.Component {
     const todayInt = parseInt(moment().format("YYYYMMDD"), 10);
     const begins = moment(!isNull(startDate) ? startDate : date);
     const beginDateInt = parseInt(begins.format("YYYYMMDD"), 10);
-    let eventStatus = null;
     let showForm = null;
 
-    if (todayInt > beginDateInt) {
-      eventStatus = "past";
-      showForm = false;
-    } else if (todayInt < beginDateInt) {
-      eventStatus = "future";
+    if (inArray(data.tags, "manualOpen")) {
       showForm = true;
     } else {
-      eventStatus = "present";
-      if (inArray(data.tags, "sameday")) {
+      if (todayInt > beginDateInt) {
+        showForm = false;
+      } else if (todayInt < beginDateInt) {
         showForm = true;
       } else {
-        showForm = false;
+        if (inArray(data.tags, "sameday")) {
+          showForm = true;
+        } else {
+          showForm = false;
+        }
       }
     }
 

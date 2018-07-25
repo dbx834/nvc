@@ -15,7 +15,10 @@ import join from "lodash/join";
 import withSizes from "react-sizes";
 import Link, { withPrefix } from "gatsby-link";
 import "moment/locale/en-gb";
-import { Page } from "@bodhi-project/semantic-webflow";
+import {
+  Page,
+  Header as SemanticHeader,
+} from "@bodhi-project/semantic-webflow";
 import { applyType } from "@bodhi-project/typography";
 import {
   // --------------- Basic

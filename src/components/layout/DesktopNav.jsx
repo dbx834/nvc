@@ -30,7 +30,7 @@ import Modal from "antd/lib/modal";
 import "@bodhi-project/antrd/lib/nvc-website/modal/style/css";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import logo from "../../assets/logo.png";
+import logo from "../../assets/rx/nvc-india.png";
 import globalWithMediaQueries from "../../helpers/globalWithMediaQueries";
 
 import ContactForm from "../ContactForm";
@@ -173,6 +173,7 @@ class DesktopNav extends React.Component {
               marginTop: 26,
             }}
             loader="gradient"
+            alt="NVC India"
           />
         </Link>
         <nav>

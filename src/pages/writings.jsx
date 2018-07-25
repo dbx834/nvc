@@ -11,7 +11,10 @@ import map from "lodash/map";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import withSizes from "react-sizes";
-import { Page } from "@bodhi-project/semantic-webflow";
+import {
+  Page,
+  Header as SemanticHeader,
+} from "@bodhi-project/semantic-webflow";
 import Link from "gatsby-link";
 
 import {

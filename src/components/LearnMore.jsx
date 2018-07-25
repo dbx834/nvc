@@ -112,6 +112,7 @@ class LearnMore extends React.Component {
                       border: 0,
                       background: "#4a4a4a",
                     }}
+                    alt={title}
                   />
                   <h4 style={{ lineHeight: 1 }}>
                     <span>{title}</span>

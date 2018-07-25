@@ -12,7 +12,10 @@ import { css } from "glamor";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import { Elements, applyRhythm } from "@bodhi-project/typography";
-import { Page as SemanticPage } from "@bodhi-project/semantic-webflow";
+import {
+  Page as SemanticPage,
+  Header as SemanticHeader,
+} from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
   UpdateTitle,

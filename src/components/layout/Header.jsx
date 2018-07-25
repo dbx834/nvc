@@ -139,7 +139,7 @@ class Header extends React.Component {
           <MobileHeader className={mobileHeaderClass}>
             <img
               id="logo"
-              alt="logo"
+              alt="NVC India"
               src={mobileLogo}
               style={{
                 height: 45,
@@ -149,7 +149,7 @@ class Header extends React.Component {
             />
             <img
               id="menu"
-              alt="menu icon"
+              alt="Open mobile menu"
               src={mobileBurger}
               style={{
                 height: 38,
@@ -161,7 +161,7 @@ class Header extends React.Component {
             />
             <img
               id="cross"
-              alt="close menu icon"
+              alt="Close mobile menu"
               src={mobileCross}
               style={{
                 height: 38,

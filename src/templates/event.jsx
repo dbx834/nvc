@@ -52,6 +52,7 @@ import withUrl from "../helpers/withUrl";
 import seoHelper from "../helpers/seoHelper";
 import packageJson from "../../package.json";
 import markdownStylesClass from "../styles/markdownStyles";
+import lauraPhoto from "../assets/rx/laura-joy-nvc-trainer-india.jpeg";
 
 import NVCPracticeGroupRegistration from "../components/forms/NVCPracticeGroupRegistration";
 import NVCWorkshopRegistration from "../components/forms/NVCWorkshopRegistration";
@@ -280,6 +281,7 @@ class EventTemplate extends React.Component {
     } else {
       eventBanner = withPrefix(cover);
     }
+    console.log(frontmatter);
 
     // -------------------------------------------------------------------- SEO
     const pageData = {
@@ -315,6 +317,16 @@ class EventTemplate extends React.Component {
       postalCode: orgLocation.postalCode,
       addressCountry: orgLocation.addressCountry,
       image: `${data.websiteUrl}${eventBanner}`,
+      performer: {
+        name: data.org.founders[0],
+        image: lauraPhoto,
+        sameAs: data.orgSocialMediaProfiles,
+      },
+      offers: {
+        price: frontmatter.cost,
+        priceCurrency: "INR",
+        url: `${data.websiteUrl}${route}`,
+      },
     };
 
     return (

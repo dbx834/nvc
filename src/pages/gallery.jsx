@@ -11,7 +11,10 @@ import { css } from "glamor";
 // import Link from 'gatsby-link';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import { Page as SemanticPage } from "@bodhi-project/semantic-webflow";
+import {
+  Page as SemanticPage,
+  Header as SemanticHeader,
+} from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
   UpdateTitle,

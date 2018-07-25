@@ -9,7 +9,7 @@ import { css } from "glamor";
 import isUndefined from "lodash/isUndefined";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import { Elements, applyRhythm } from "@bodhi-project/typography";
+import { Elements } from "@bodhi-project/typography";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -22,7 +22,10 @@ import {
   WebpageSchema,
   BreadcrumbSchema,
 } from "@bodhi-project/seo";
-import { Page } from "@bodhi-project/semantic-webflow";
+import {
+  Page,
+  Header as SemanticHeader,
+} from "@bodhi-project/semantic-webflow";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Form from "antd/lib/form";

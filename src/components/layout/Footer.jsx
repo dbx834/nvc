@@ -111,18 +111,17 @@ class Header extends React.Component {
               display: "block",
               zIndex: 2,
             }}
+            alt="NVC India"
           />
           <Image src={boat} className="boat" />
           <Row type="flex">
             <Col xs={23} sm={23} md={20} lg={17} xl={15}>
               <Paragraph>
                 <br />
-                <strong>
-                  <i>
-                    Nonviolent Communication & Restorative Circles in Auroville,
-                    India
-                  </i>
-                </strong>
+                <span className="strong italic">
+                  Nonviolent Communication & Restorative Circles in Auroville,
+                  India
+                </span>
                 <br />
               </Paragraph>
               <div className="mask-p hidden-sm">
@@ -138,6 +137,7 @@ class Header extends React.Component {
                       height: 45,
                       width: 45,
                     }}
+                    alt="Follow us on Facebook - https://www.facebook.com/JoyLivingLearning/"
                   />
                 </OutLink>
                 <OutLink
@@ -155,6 +155,7 @@ class Header extends React.Component {
                       height: 45,
                       width: 45,
                     }}
+                    alt="See more videos on YouTube - https://www.youtube.com/user/laurajoyful/videos"
                   />
                 </OutLink>
                 <OutLink
@@ -172,6 +173,7 @@ class Header extends React.Component {
                       height: 42,
                       width: 42,
                     }}
+                    alt="See more videos on Vimeo - https://vimeo.com/laurajoyful"
                   />
                 </OutLink>
                 <OutLink
@@ -189,6 +191,7 @@ class Header extends React.Component {
                       height: 42,
                       width: 42,
                     }}
+                    alt="Listen to our dialogues on Soundcloud - https://soundcloud.com/laura-joy-145472107"
                   />
                 </OutLink>
                 <OutLink
@@ -206,6 +209,7 @@ class Header extends React.Component {
                       height: 42,
                       width: 42,
                     }}
+                    alt="Donate or pay fees through PayU - https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD"
                   />
                 </OutLink>
                 <form

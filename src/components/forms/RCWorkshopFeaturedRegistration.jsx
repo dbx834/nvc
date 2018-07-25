@@ -429,21 +429,21 @@ class RCPracticeGroupSide extends React.Component {
                         <RadioGroup>
                           <Radio
                             style={radioStyle}
-                            value="Beginner (0-5 days of NVC training)"
+                            value="Beginner (0-5 days of NVC/RC/RJ training)"
                           >
-                            Beginner (0-5 days of NVC training)
+                            Beginner (0-5 days of NVC/RC/RJ training)
                           </Radio>
                           <Radio
                             style={radioStyle}
-                            value="Intermediate (5-10 days of NVC training)"
+                            value="Intermediate (5-10 days of NVC/RC/RJ training)"
                           >
-                            Intermediate (5-10 days of NVC training)
+                            Intermediate (5-10 days of NVC/RC/RJ training)
                           </Radio>
                           <Radio
                             style={radioStyle}
-                            value="Advanced (over 10 days of NVC training)"
+                            value="Advanced (over 10 days of NVC/RC/RJ training)"
                           >
-                            Advanced (over 10 days of NVC training)
+                            Advanced (over 10 days of NVC/RC/RJ training)
                           </Radio>
                           <Radio
                             style={radioStyle}

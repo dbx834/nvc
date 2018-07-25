@@ -14,7 +14,10 @@ import isUndefined from "lodash/isUndefined";
 import Link from "gatsby-link";
 import ContainerDimensions from "react-container-dimensions";
 import ReactPlayer from "react-player";
-import { Page } from "@bodhi-project/semantic-webflow";
+import {
+  Page,
+  Header as SemanticHeader,
+} from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
   UpdateTitle,

@@ -15,7 +15,10 @@ import withSizes from "react-sizes";
 import Link from "gatsby-link";
 import FacebookProvider, { Page as FBPage } from "react-facebook";
 import ContainerDimensions from "react-container-dimensions";
-import { Page } from "@bodhi-project/semantic-webflow";
+import {
+  Page,
+  Header as SemanticHeader,
+} from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -438,15 +441,25 @@ class IndexPage extends React.Component {
         {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
         <Page className={`${pageStyleClass}`}>
           <div className="jke">
-            <h1 style={{ marginBottom: 10 }}>
-              <span>Joy Living Learning</span>
-            </h1>
-            <h2 style={{ marginBottom: 10 }}>
-              <span>
-                Nonviolent Communication & Restorative Circles in Auroville,
-                India
-              </span>
-            </h2>
+            <SemanticHeader>
+              <h1 style={{ marginBottom: 10 }}>
+                <span>Joy Living Learning</span>
+              </h1>
+              <h2 style={{ marginBottom: 10 }}>
+                <span>
+                  Nonviolent Communication & Restorative Circles in Auroville,
+                  India<span className="stash">. NVC India.</span>
+                </span>
+              </h2>
+              <p className="stash">
+                <strong>
+                  We offer learning opportunities through workshops and practice
+                  groups on Nonviolent Communication and Restorative Circles. We
+                  are also available for individual coaching and mediation
+                  support.
+                </strong>
+              </p>
+            </SemanticHeader>
           </div>
           <div className="kale">
             <div>
@@ -483,6 +496,7 @@ class IndexPage extends React.Component {
                           display: "block",
                           marginBottom: 10,
                         }}
+                        alt={`${title} - ${lead}`}
                       />
                       <h3 className="mask-p" style={{ marginBottom: 0 }}>
                         {title}
@@ -534,6 +548,7 @@ class IndexPage extends React.Component {
                                     marginBottom: 20,
                                   }}
                                   loader="gradient"
+                                  alt={text}
                                 />
                                 <p>{text}</p>
                               </div>
@@ -689,7 +704,7 @@ class IndexPage extends React.Component {
                     by, might oversweep the world.”
                   </i>
                   <br />
-                  ~ <strong>Mahatma Gandhi</strong>
+                  ~ <span className="strong">Mahatma Gandhi</span>
                 </span>
               </p>
 

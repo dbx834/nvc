@@ -10,7 +10,10 @@ import { css } from "glamor";
 import withSizes from "react-sizes";
 import Link from "gatsby-link";
 import "moment/locale/en-gb";
-import { Page } from "@bodhi-project/semantic-webflow";
+import {
+  Page,
+  Header as SemanticHeader,
+} from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
   UpdateTitle,

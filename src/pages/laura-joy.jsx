@@ -13,7 +13,10 @@ import { css } from "glamor";
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 // import Link from "gatsby-link";
 // import ContainerDimensions from "react-container-dimensions";
-import { Page } from "@bodhi-project/semantic-webflow";
+import {
+  Page,
+  Header as SemanticHeader,
+} from "@bodhi-project/semantic-webflow";
 import {
   // --------------- Basic
   UpdateTitle,
@@ -154,12 +157,12 @@ class NVCPage extends React.PureComponent {
           <div className="kale">
             <div>
               <hr />
-              <p>
+              <h2 className="mask-p">
                 L’aura Joy is a Certified Trainer in Nonviolent Communication
                 (CNVC, USA), and since 2007 she has been working in the fields
                 of communication, conflict resolution, peace and justice,
                 healing, and decision-making and leadership.
-              </p>
+              </h2>
               <p>
                 Having grown up in Auroville, an international intentional
                 community in Tamil Nadu, India, L'aura is passionate about

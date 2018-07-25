@@ -22,7 +22,10 @@ import {
   WebpageSchema,
   BreadcrumbSchema,
 } from "@bodhi-project/seo";
-import { Page as SemanticPage } from "@bodhi-project/semantic-webflow";
+import {
+  Page as SemanticPage,
+  Header as SemanticHeader,
+} from "@bodhi-project/semantic-webflow";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
 import Form from "antd/lib/form";

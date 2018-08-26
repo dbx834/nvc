@@ -281,7 +281,6 @@ class EventTemplate extends React.Component {
     } else {
       eventBanner = withPrefix(cover);
     }
-    console.log(frontmatter);
 
     // -------------------------------------------------------------------- SEO
     const pageData = {

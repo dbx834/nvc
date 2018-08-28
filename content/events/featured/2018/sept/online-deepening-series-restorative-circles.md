@@ -6,7 +6,7 @@ category: 3.Featured
 abstract: Restorative Circles (RC) offer ways for individuals and communities to establish connection, discover meaning and recover power on profound levels.
 date: 2018-09-07
 fromTime: 7.00pm
-toTime: 8.30pm
+toTime: 9.00pm
 type: event
 cost: ₹ 5,000 (inclusive of GST)
 tags:

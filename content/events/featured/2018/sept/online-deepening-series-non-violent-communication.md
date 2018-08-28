@@ -6,7 +6,7 @@ category: 3.Featured
 abstract: A path of Nonviolence offers both a deeply-rooted consciousness of oneness, as well as very practical tools to live this more and more in our daily lives.
 date: 2018-09-08
 fromTime: 7.00pm
-toTime: 8.30pm
+toTime: 9.00pm
 type: event
 cost: ₹ 3,000 (inclusive of GST)
 tags:

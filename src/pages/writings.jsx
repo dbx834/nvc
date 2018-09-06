@@ -146,6 +146,7 @@ class Blog extends React.Component {
           rawCoverWidth: 1440,
           rawCoverHeight: 900,
         },
+        columnWidth: "30%",
       },
       categoryMap: {
         NVC: "Nonviolent Communication",
@@ -176,7 +177,7 @@ class Blog extends React.Component {
           <h1 style={{ marginBottom: 10 }}>Blog</h1>
           <hr />
           {!isMobile ? (
-            <SectionAstrid data={astridData} />
+            <SectionAstrid data={astridData} location={this.props.location} />
           ) : (
             <SectionSaros
               data={sarosData}

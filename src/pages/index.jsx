@@ -443,15 +443,15 @@ class IndexPage extends React.Component {
         <Page className={`${pageStyleClass}`}>
           <div className="jke">
             <SemanticHeader>
-              <h2 style={{ marginBottom: 10 }} className="mask-h1">
+              <h1 style={{ marginBottom: 10 }}>
                 <span>Joy Living Learning</span>
-              </h2>
-              <h1 style={{ marginBottom: 10 }} className="mask-h2">
+              </h1>
+              <h2 style={{ marginBottom: 10 }}>
                 <span>
                   Nonviolent Communication (NVC) & Restorative Circles (RC) in
                   India (Auroville)
                 </span>
-              </h1>
+              </h2>
               <p className="stash">
                 <strong>
                   We offer learning opportunities through workshops and practice

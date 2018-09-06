@@ -166,10 +166,11 @@ const learnMoreData = [
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
 const pageData = {
-  pageTitle: "NVC & RC in Auroville, India",
+  pageTitle:
+    "Nonviolent Communication (NVC) & Restorative Circles (RC) in India (Auroville)",
   nakedPageSlug: "",
   pageAbstract:
-    "We offer learning opportunities through workshops and practice groups on Nonviolent Communication and Restorative Circles. We are also available for individual coaching and mediation support.",
+    "NVC and RC in India - We offer learning opportunities through workshops and practice groups on Nonviolent Communication and Restorative Circles. We are also available for individual coaching and mediation support.",
 };
 
 const seoData = seoHelper(pageData);
@@ -442,15 +443,15 @@ class IndexPage extends React.Component {
         <Page className={`${pageStyleClass}`}>
           <div className="jke">
             <SemanticHeader>
-              <h1 style={{ marginBottom: 10 }}>
+              <h2 style={{ marginBottom: 10 }} className="mask-h1">
                 <span>Joy Living Learning</span>
-              </h1>
-              <h2 style={{ marginBottom: 10 }}>
-                <span>
-                  Nonviolent Communication & Restorative Circles in Auroville,
-                  India<span className="stash">. NVC India.</span>
-                </span>
               </h2>
+              <h1 style={{ marginBottom: 10 }} className="mask-h2">
+                <span>
+                  Nonviolent Communication (NVC) & Restorative Circles (RC) in
+                  India (Auroville)
+                </span>
+              </h1>
               <p className="stash">
                 <strong>
                   We offer learning opportunities through workshops and practice

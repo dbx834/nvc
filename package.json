@@ -18,7 +18,7 @@
   "license": "MIT",
   "scripts": {
     "start": "npm run dev",
-    "build": "gatsby build",
+    "build": "rm -rf public && rm -rf .cache && gatsby build",
     "serve": "gatsby serve",
     "develop": "rm -rf public && rm -rf .cache && gatsby develop",
     "dev": "npm run develop",

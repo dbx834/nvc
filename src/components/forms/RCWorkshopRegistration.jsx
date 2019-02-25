@@ -2,42 +2,37 @@
 // -------------------------------------------------------------------- Imports
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import React from "react";
-// import PropTypes from "prop-types";
-import { css } from "glamor";
-import moment from "moment";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { css } from 'glamor'
+import moment from 'moment'
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
-import isNull from "lodash/isNull";
-import isUndefined from "lodash/isUndefined";
+import isNull from 'lodash/isNull'
+import isUndefined from 'lodash/isUndefined'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import { Elements } from "@bodhi-project/typography";
+import Image from '@bodhi-project/components/lib/Image'
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
-import OutLink from "@bodhi-project/components/lib/OutLink";
-import Image from "@bodhi-project/components/lib/Image";
+import Tooltip from 'antd/lib/tooltip'
+import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/tooltip/style/css'
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
-import Tooltip from "antd/lib/tooltip";
-import "@bodhi-project/antrd/lib/nvc-website/tooltip/style/css";
+import Form from 'antd/lib/form'
+import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/form/style/css'
 
-import Form from "antd/lib/form";
-import "@bodhi-project/antrd/lib/nvc-website/form/style/css";
+import Select from 'antd/lib/select'
+import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/select/style/css'
 
-import Select from "antd/lib/select";
-import "@bodhi-project/antrd/lib/nvc-website/select/style/css";
+import Input from 'antd/lib/input'
+import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/input/style/css'
 
-import Input from "antd/lib/input";
-import "@bodhi-project/antrd/lib/nvc-website/input/style/css";
+import Button from 'antd/lib/button'
+import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/button/style/css'
 
-import Button from "antd/lib/button";
-import "@bodhi-project/antrd/lib/nvc-website/button/style/css";
-
-import Radio from "antd/lib/radio";
-import "@bodhi-project/antrd/lib/nvc-website/radio/style/css";
+import Radio from 'antd/lib/radio'
+import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/radio/style/css'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
+import Link from '../Link'
 import {
   hasErrors,
   validateEmail,
@@ -48,41 +43,30 @@ import {
   validateWhatDrawsYou,
   validateComment,
   validateExperience,
-} from "../../helpers/formHelpers";
-import { formStyleClass } from "../../helpers/defaultFormStyles";
-import domestic from "../../assets/domestic.png";
-import international from "../../assets/international.png";
+} from '../../methods/formHelpers'
+import { formStyle } from '../../methods/defaultFormStyles'
+import domestic from '../../assets/domestic.png'
+import international from '../../assets/international.png'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
-const { Fragment } = React;
-const FormItem = Form.Item;
-const { Option } = Select;
-const { TextArea } = Input;
-const { H1, Paragraph } = Elements;
-const RadioGroup = Radio.Group;
+const { Fragment } = React
+const FormItem = Form.Item
+const { Option } = Select
+const { TextArea } = Input
+const RadioGroup = Radio.Group
 const radioStyle = {
-  display: "block",
-  height: "24px",
-  lineHeight: "24px",
-};
+  display: 'block',
+  height: '24px',
+  lineHeight: '24px',
+}
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 const style = css({
-  paddingBottom: "2em",
-
-  "& h1": {
-    textTransform: "uppercase",
-    fontStyle: "italic",
-    borderTop: "3px solid #B43808",
-
-    "& span": {
-      fontSize: "90%",
-    },
-  },
-});
-const styleClass = style.toString();
+  paddingBottom: '4rem',
+})
+const styleClass = style.toString()
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
@@ -91,31 +75,33 @@ const styleClass = style.toString();
 class RCPracticeGroupSide extends React.Component {
   /** standard constructor */
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       loader: null,
       formSent: false,
-    };
+    }
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   /** componentDidMount - Disable submit button at the beginning. */
   componentDidMount() {
-    this.props.form.validateFields();
+    const { form } = this.props
+    form.validateFields()
   }
 
   /** handleSubmit - Post to google spreadsheet. */
   handleSubmit(e) {
-    e.preventDefault();
-    this.props.form.validateFields((err, values) => {
+    e.preventDefault()
+    const { form } = this.props
+    form.validateFields((err, values) => {
       if (!err) {
         // console.log('Received values of form: ', values);
         this.setState({
           // Show loader and reset errors if any.
           loader: true,
-        });
+        })
 
         let {
           name,
@@ -129,124 +115,124 @@ class RCPracticeGroupSide extends React.Component {
           experience,
           journey,
           wouldLikeInfo,
-        } = values;
+        } = values
 
-        name = isUndefined(name) ? " " : name;
-        email = isUndefined(email) ? " " : email;
-        event = isUndefined(event) ? " " : event;
-        mobile = isUndefined(mobile) ? " " : mobile;
-        country = isUndefined(country) ? " " : country;
-        whatDrawsYou = isUndefined(whatDrawsYou) ? " " : whatDrawsYou;
-        currentLocation = isUndefined(currentLocation) ? " " : currentLocation;
-        comment = isUndefined(comment) ? " " : comment;
-        experience = isUndefined(experience) ? " " : experience;
-        journey = isUndefined(journey) ? " " : journey;
-        wouldLikeInfo = isUndefined(wouldLikeInfo) ? " " : wouldLikeInfo;
-        const note = " ";
+        name = isUndefined(name) ? ' ' : name
+        email = isUndefined(email) ? ' ' : email
+        event = isUndefined(event) ? ' ' : event
+        mobile = isUndefined(mobile) ? ' ' : mobile
+        country = isUndefined(country) ? ' ' : country
+        whatDrawsYou = isUndefined(whatDrawsYou) ? ' ' : whatDrawsYou
+        currentLocation = isUndefined(currentLocation) ? ' ' : currentLocation
+        comment = isUndefined(comment) ? ' ' : comment
+        experience = isUndefined(experience) ? ' ' : experience
+        journey = isUndefined(journey) ? ' ' : journey
+        wouldLikeInfo = isUndefined(wouldLikeInfo) ? ' ' : wouldLikeInfo
+        const note = ' '
 
         setTimeout(() => {
           // Mock some delay
           fetch(
             `https://script.google.com/macros/s/AKfycbxe5KaEdHtLH5JVpf-yntF5LZYAszQTwHHQ4tEjvBT4DyykpRtZ/exec?name=${name}&email=${email}&event=${event}&mobile=${mobile}&country=${country}&whatDrawsYou=${whatDrawsYou}&comment=${comment}&currentLocation=${currentLocation}&experience=${experience}&journey=${journey}&wouldLikeInfo=${wouldLikeInfo}&note=${note}&callback=?`,
             {
-              method: "GET",
-              mode: "no-cors",
-            },
+              method: 'GET',
+              mode: 'no-cors',
+            }
           )
             .then(response => {
               this.setState({
                 loader: false,
                 formSent: true,
-              });
+              })
             })
             .catch(error => {
               this.setState({
                 loader: false,
-              });
-            });
-        }, 1500);
+              })
+            })
+        }, 1500)
       }
-    });
+    })
   }
 
   /** standard renderer */
   render() {
-    const { data, pathContext } = this.props;
+    const { data, pathContext } = this.props
     const {
       getFieldDecorator,
       getFieldsError,
       getFieldError,
       isFieldTouched,
-    } = this.props.form;
+    } = this.props.form
     // Only show error after a field is touched.
-    const nameError = isFieldTouched("name") && getFieldError("name");
-    const emailError = isFieldTouched("email") && getFieldError("email");
-    const eventError = isFieldTouched("event") && getFieldError("event");
-    const countryError = isFieldTouched("country") && getFieldError("country");
-    const commentError = isFieldTouched("comment") && getFieldError("comment");
+    const nameError = isFieldTouched('name') && getFieldError('name')
+    const emailError = isFieldTouched('email') && getFieldError('email')
+    const eventError = isFieldTouched('event') && getFieldError('event')
+    const countryError = isFieldTouched('country') && getFieldError('country')
+    const commentError = isFieldTouched('comment') && getFieldError('comment')
     const whatDrawsYouError =
-      isFieldTouched("whatDrawsYou") && getFieldError("whatDrawsYou");
-    const mobileError = isFieldTouched("mobile") && getFieldError("mobile");
+      isFieldTouched('whatDrawsYou') && getFieldError('whatDrawsYou')
+    const mobileError = isFieldTouched('mobile') && getFieldError('mobile')
     const currentLocationError =
-      isFieldTouched("currentLocation") && getFieldError("currentLocation");
+      isFieldTouched('currentLocation') && getFieldError('currentLocation')
     const experienceError =
-      isFieldTouched("experience") && getFieldError("experience");
-    const journeyError = isFieldTouched("journey") && getFieldError("journey");
+      isFieldTouched('experience') && getFieldError('experience')
+    const journeyError = isFieldTouched('journey') && getFieldError('journey')
     const wouldLikeInfoError =
-      isFieldTouched("wouldLikeInfo") && getFieldError("wouldLikeInfo");
+      isFieldTouched('wouldLikeInfo') && getFieldError('wouldLikeInfo')
 
-    const { date, startDate } = data;
-    const { humanDate } = pathContext;
+    const { date, startDate } = data
+    const { humanDate } = pathContext
 
-    const key = `${data.title} @ ${humanDate}`;
-    const todayInt = parseInt(moment().format("YYYYMMDD"), 10);
-    const begins = moment(!isNull(startDate) ? startDate : date);
-    const beginDateInt = parseInt(begins.format("YYYYMMDD"), 10);
-    let eventStatus = null;
+    const key = `${data.title} @ ${humanDate}`
+    const todayInt = parseInt(moment().format('YYYYMMDD'), 10)
+    const begins = moment(!isNull(startDate) ? startDate : date)
+    const beginDateInt = parseInt(begins.format('YYYYMMDD'), 10)
+    let eventStatus = null
 
     if (todayInt > beginDateInt) {
-      eventStatus = "past";
+      eventStatus = 'past'
     } else if (todayInt < beginDateInt) {
-      eventStatus = "future";
+      eventStatus = 'future'
     } else {
-      eventStatus = "present";
+      eventStatus = 'present'
     }
 
     return (
       <div className={styleClass}>
-        {(eventStatus === "past" || eventStatus === "present") && (
+        {(eventStatus === 'past' || eventStatus === 'present') && (
           <Fragment>
-            <H1 mask="h4">
+            <h1 className="mask-h4">
               <span>Registration Closed</span>
-            </H1>
+            </h1>
           </Fragment>
         )}
-        {eventStatus === "future" && (
+        {eventStatus === 'future' && (
           <Fragment>
-            <H1 mask="h4">
+            <h1 className="mask-h4">
               <span>FEE</span>
-            </H1>
-            <Paragraph style={{ marginBottom: 10 }}>
+            </h1>
+            <p style={{ marginTop: 10, marginBottom: 10 }}>
               <strong>
                 <i>{data.cost}</i>
               </strong>
-            </Paragraph>
+            </p>
             {this.props.showPay === true && (
               <Fragment>
                 <br />
-                <Paragraph>
+                <p>
                   Please make your payment to confirm your seat.
                   <br />
                   <br />
                   Select the Domestic option for Indian bank/credit cards, or
                   the International option for foreign bank/credit cards.
-                </Paragraph>
-                <OutLink
+                </p>
+                <Link
                   to="https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD"
                   style={{ marginRight: 17, borderBottom: 0 }}
                 >
                   <Tooltip title="Indian Card">
-                    <div style={{ display: "inline-block" }}>
+                    <div style={{ display: 'inline-block' }}>
                       <Image
                         src={domestic}
                         rawHeight={450}
@@ -255,19 +241,19 @@ class RCPracticeGroupSide extends React.Component {
                         style={{
                           height: 65,
                           width: 65,
-                          display: "inline-block",
-                          background: "transparent",
-                          border: "unset",
+                          display: 'inline-block',
+                          background: 'transparent',
+                          border: 'unset',
                         }}
                       />
                     </div>
                   </Tooltip>
-                </OutLink>
+                </Link>
                 <form
                   action="https://www.paypal.com/cgi-bin/webscr"
                   method="post"
                   target="_blank"
-                  style={{ display: "inline-block" }}
+                  style={{ display: 'inline-block' }}
                   className="hover"
                 >
                   <input type="hidden" name="cmd" value="_s-xclick" />
@@ -305,104 +291,105 @@ class RCPracticeGroupSide extends React.Component {
                 <br />
                 <br />
                 <br />
-                <H1 mask="h4">
+                <hr />
+                <h1 className="mask-h4">
                   <span>Register</span>
-                </H1>
+                </h1>
                 {this.state.formSent === false ? (
-                  <p>
+                  <p style={{ marginTop: 10 }}>
                     You are about to register for {data.title} on {humanDate}.
                   </p>
                 ) : (
-                  <p>
+                  <p style={{ marginTop: 10 }}>
                     You registered for {data.title} on {humanDate}.
                   </p>
                 )}
                 {this.state.formSent === false && (
                   <Form
                     onSubmit={this.handleSubmit}
-                    className={`${formStyleClass} mask-p`}
+                    className={`${formStyle} mask-p`}
                   >
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Name */}
                     <FormItem
-                      validateStatus={nameError ? "error" : ""}
-                      help={nameError || ""}
+                      validateStatus={nameError ? 'error' : ''}
+                      help={nameError || ''}
                     >
-                      {getFieldDecorator("name", {
-                        validateTrigger: ["onChange", "onBlur"],
+                      {getFieldDecorator('name', {
+                        validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateName }],
                       })(<Input placeholder="Name" />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
                     <FormItem
-                      validateStatus={emailError ? "error" : ""}
-                      help={emailError || ""}
+                      validateStatus={emailError ? 'error' : ''}
+                      help={emailError || ''}
                     >
-                      {getFieldDecorator("email", {
-                        validateTrigger: ["onChange", "onBlur"],
+                      {getFieldDecorator('email', {
+                        validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateEmail }],
                       })(<Input placeholder="Email" />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mobile */}
                     <FormItem
-                      validateStatus={mobileError ? "error" : ""}
-                      help={mobileError || ""}
+                      validateStatus={mobileError ? 'error' : ''}
+                      help={mobileError || ''}
                     >
-                      {getFieldDecorator("mobile", {
-                        validateTrigger: ["onChange", "onBlur"],
+                      {getFieldDecorator('mobile', {
+                        validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateMobile }],
                       })(<Input placeholder="Mobile / WhatsApp" />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Country Selection */}
                     <FormItem
-                      validateStatus={countryError ? "error" : ""}
-                      help={countryError || ""}
+                      validateStatus={countryError ? 'error' : ''}
+                      help={countryError || ''}
                     >
-                      {getFieldDecorator("country", {
-                        validateTrigger: ["onChange", "onBlur"],
+                      {getFieldDecorator('country', {
+                        validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateCountry }],
                       })(
-                        <Input placeholder="What's your country of origin?" />,
+                        <Input placeholder="What's your country of origin?" />
                       )}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Location */}
                     <FormItem
-                      validateStatus={currentLocationError ? "error" : ""}
-                      help={currentLocationError || ""}
+                      validateStatus={currentLocationError ? 'error' : ''}
+                      help={currentLocationError || ''}
                     >
-                      {getFieldDecorator("currentLocation", {
-                        validateTrigger: ["onChange", "onBlur"],
+                      {getFieldDecorator('currentLocation', {
+                        validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateCurrentLocation }],
                       })(
-                        <Input placeholder="Where are you living presently?" />,
+                        <Input placeholder="Where are you living presently?" />
                       )}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ What Draws You */}
                     <FormItem
-                      validateStatus={whatDrawsYouError ? "error" : ""}
-                      help={whatDrawsYouError || ""}
+                      validateStatus={whatDrawsYouError ? 'error' : ''}
+                      help={whatDrawsYouError || ''}
                     >
-                      {getFieldDecorator("whatDrawsYou", {
-                        validateTrigger: ["onChange", "onBlur"],
+                      {getFieldDecorator('whatDrawsYou', {
+                        validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateWhatDrawsYou }],
                       })(
                         <TextArea
                           placeholder="What draws you to this workshop?"
                           autosize={{ minRows: 3, maxRows: 5 }}
-                        />,
+                        />
                       )}
                     </FormItem>
 
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Experience Level */}
-                    <span style={{ marginBottom: 8, display: "block" }}>
+                    <span style={{ marginBottom: 8, display: 'block' }}>
                       Do you have any previous experience with NVC and/or RC (or
                       Restorative Justice)?
                     </span>
                     <FormItem
-                      validateStatus={experienceError ? "error" : ""}
-                      help={experienceError || ""}
+                      validateStatus={experienceError ? 'error' : ''}
+                      help={experienceError || ''}
                     >
-                      {getFieldDecorator("experience", {
-                        validateTrigger: ["onChange", "onBlur"],
+                      {getFieldDecorator('experience', {
+                        validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateExperience }],
                       })(
                         <RadioGroup>
@@ -433,37 +420,37 @@ class RCPracticeGroupSide extends React.Component {
                           <Radio style={radioStyle} value="NVC Trainer">
                             NVC Trainer
                           </Radio>
-                        </RadioGroup>,
+                        </RadioGroup>
                       )}
                     </FormItem>
 
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Journey */}
                     <FormItem
-                      validateStatus={journeyError ? "error" : ""}
-                      help={journeyError || ""}
+                      validateStatus={journeyError ? 'error' : ''}
+                      help={journeyError || ''}
                     >
-                      {getFieldDecorator("journey", {
-                        validateTrigger: ["onChange", "onBlur"],
+                      {getFieldDecorator('journey', {
+                        validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateComment }],
                       })(
                         <TextArea
                           placeholder="Please share a few sentences about your NVC and/or RC journey."
                           autosize={{ minRows: 3, maxRows: 5 }}
-                        />,
+                        />
                       )}
                     </FormItem>
 
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ More Info. */}
-                    <span style={{ marginBottom: 8, display: "block" }}>
+                    <span style={{ marginBottom: 8, display: 'block' }}>
                       Would you be like to receive information about future NVC
                       and/or RC events?
                     </span>
                     <FormItem
-                      validateStatus={wouldLikeInfoError ? "error" : ""}
-                      help={wouldLikeInfoError || ""}
+                      validateStatus={wouldLikeInfoError ? 'error' : ''}
+                      help={wouldLikeInfoError || ''}
                     >
-                      {getFieldDecorator("wouldLikeInfo", {
-                        validateTrigger: ["onChange", "onBlur"],
+                      {getFieldDecorator('wouldLikeInfo', {
+                        validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateExperience }],
                       })(
                         <RadioGroup>
@@ -480,38 +467,38 @@ class RCPracticeGroupSide extends React.Component {
                           >
                             No, I'd not like to receive information.
                           </Radio>
-                        </RadioGroup>,
+                        </RadioGroup>
                       )}
                     </FormItem>
 
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment */}
                     <FormItem
-                      validateStatus={commentError ? "error" : ""}
-                      help={commentError || ""}
+                      validateStatus={commentError ? 'error' : ''}
+                      help={commentError || ''}
                     >
-                      {getFieldDecorator("comment", {
-                        validateTrigger: ["onChange", "onBlur"],
+                      {getFieldDecorator('comment', {
+                        validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateComment }],
                       })(
                         <TextArea
                           placeholder="Any other comments / questions?"
                           autosize={{ minRows: 3, maxRows: 5 }}
-                        />,
+                        />
                       )}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Event Selection */}
-                    <div style={{ display: "none" }}>
+                    <div style={{ display: 'none' }}>
                       <FormItem
-                        validateStatus={eventError ? "error" : ""}
-                        help={eventError || ""}
+                        validateStatus={eventError ? 'error' : ''}
+                        help={eventError || ''}
                       >
-                        {getFieldDecorator("event", {
+                        {getFieldDecorator('event', {
                           initialValue: key,
                           rules: [
                             {
                               required: true,
                               message:
-                                "Please select an event from the dropdown...",
+                                'Please select an event from the dropdown...',
                             },
                           ],
                         })(
@@ -522,7 +509,7 @@ class RCPracticeGroupSide extends React.Component {
                             <Option key={key} value={key}>
                               {key}
                             </Option>
-                          </Select>,
+                          </Select>
                         )}
                       </FormItem>
                     </div>
@@ -541,22 +528,26 @@ class RCPracticeGroupSide extends React.Component {
                 )}
                 {/* On-sent message */}
                 {this.state.formSent === true && (
-                  <Paragraph className="home" style={{ textIndent: 0 }}>
+                  <p className="home" style={{ marginTop: 10 }}>
                     Thank you for registering! We'll get back to you shortly.
-                  </Paragraph>
+                  </p>
                 )}
               </Fragment>
             )}
           </Fragment>
         )}
       </div>
-    );
+    )
   }
 }
 
-const WrappedComponent = Form.create()(RCPracticeGroupSide);
+RCPracticeGroupSide.propTypes = {
+  form: PropTypes.object,
+}
+
+const WrappedComponent = Form.create()(RCPracticeGroupSide)
 
 // ----------------------------------------------------------------------------
 // -------------------------------------------------------------------- Exports
 // ----------------------------------------------------------------------------
-export default WrappedComponent;
+export default WrappedComponent

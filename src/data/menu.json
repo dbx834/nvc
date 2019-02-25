@@ -1,0 +1,56 @@
+[
+  {
+    "title": "About",
+    "menu": [
+      { "title": "Joy Living Learning", "link": "/" },
+      { "title": "L'aura Joy", "link": "/laura-joy" }
+    ]
+  },
+  {
+    "title": "Workshops & Facilitation",
+    "menu": [
+      {
+        "title": "Nonviolent Communication",
+        "link": "/nonviolent-communication"
+      },
+      {
+        "title": "Restorative Circles",
+        "link": "/restorative-circles"
+      },
+      {
+        "title": "Facilitated Spaces",
+        "link": "/facilitated-spaces"
+      }
+    ]
+  },
+  {
+    "title": "Learn",
+    "menu": [
+      {
+        "title": "NVC Workshops & Events",
+        "link": "/nvc-workshops-and-events"
+      },
+      { "title": "Calendar View", "link": "/calendar" },
+      {
+        "title": "Pay Fee",
+        "link": "/pay-fee",
+        "renderInModal": true
+      }
+    ]
+  },
+  {
+    "title": "More",
+    "menu": [
+      { "title": "Blog", "link": "/writings" },
+      { "title": "Gallery", "link": "/gallery" },
+      { "title": "Newsletter", "link": "/newsletter", "renderInModal": true },
+      { "title": "Contact Us", "link": "/contact-us", "renderInModal": true },
+      {
+        "title": "Donate",
+        "link": "/donate",
+        "renderInModal": true
+      },
+      { "title": "NVC In India", "link": "/nvc-india" }
+    ]
+  }
+]

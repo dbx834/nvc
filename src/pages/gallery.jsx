@@ -2,95 +2,79 @@
 // ---------------------------------------------------------------------- Imports
 // ------------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import React from "react";
+import React from 'react'
 // import PropTypes from 'prop-types';
 // import _ from 'lodash';
-import { css } from "glamor";
+import { css } from 'glamor'
+
+import pick from 'lodash/pick'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-// import Link from 'gatsby-link';
+import Images from '@bodhi-project/components/lib/Images'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import {
-  Page as SemanticPage,
-  Header as SemanticHeader,
-} from "@bodhi-project/semantic-webflow";
-import {
-  // --------------- Basic
-  UpdateTitle,
-  GeneralMeta,
-  // --------------- Twitter
-  TwitterSummaryCard,
-  // --------------- Open Graph
-  OpenGraphSummary,
-  // --------------- Schema.org JSON-LD
-  WebpageSchema,
-  BreadcrumbSchema,
-} from "@bodhi-project/seo";
+import StandardPage from '../components/wrappers/StandardPage'
+import PageHeader from '../components/PageHeader'
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
-import Images from "@bodhi-project/components/lib/Images";
+import seoHelper from '../methods/seoHelper'
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Images
-import seoHelper from "../helpers/seoHelper";
-
-import nvcX1 from "../assets/gallery/nvcX1.jpg";
-import nvcX2 from "../assets/gallery/nvcX2.jpg";
-import nvcX4 from "../assets/gallery/nvcX4.jpg";
-import nvcX5 from "../assets/gallery/nvcX5.jpg";
-import nvcX6 from "../assets/gallery/nvcX6.jpg";
-import nvcX7 from "../assets/gallery/nvcX7.jpg";
-import nvcX8 from "../assets/gallery/nvcX8.jpg";
-import nvcX9 from "../assets/gallery/nvcX9.jpg";
-import nvcX10 from "../assets/gallery/nvcX10.jpg";
-import nvcX11 from "../assets/gallery/nvcX11.jpg";
-import nvcX12 from "../assets/gallery/nvcX12.jpg";
-import nvcX13 from "../assets/gallery/nvcX13.jpg";
-import nvcX14 from "../assets/gallery/nvcX14.jpg";
-import nvcX15 from "../assets/gallery/nvcX15.jpg";
-import nvcX16 from "../assets/gallery/nvcX16.jpg";
-import nvcX17 from "../assets/gallery/nvcX17.jpg";
-import nvcX18 from "../assets/gallery/nvcX18.jpg";
-import nvcX19 from "../assets/gallery/nvcX19.jpg";
-import nvcX20 from "../assets/gallery/nvcX20.jpg";
-import nvcX21 from "../assets/gallery/nvcX21.jpg";
-import nvcX22 from "../assets/gallery/nvcX22.jpg";
-import nvcX23 from "../assets/gallery/nvcX23.jpg";
-import nvcX24 from "../assets/gallery/nvcX24.jpg";
-import nvcX25 from "../assets/gallery/nvcX25.jpg";
-import nvcX26 from "../assets/gallery/nvcX26.jpg";
-import nvcX27 from "../assets/gallery/nvcX27.jpg";
-import nvcX28 from "../assets/gallery/nvcX28.jpg";
-import nvcX29 from "../assets/gallery/nvcX29.jpg";
-import nvcX30 from "../assets/gallery/nvcX30.jpg";
-import nvcX32 from "../assets/gallery/nvcX32.jpg";
-import nvcX33 from "../assets/gallery/nvcX33.jpg";
-import nvcX34 from "../assets/gallery/nvcX34.jpg";
-import nvcX35 from "../assets/gallery/nvcX35.jpg";
-import nvcX36 from "../assets/gallery/nvcX36.jpg";
-import nvcX37 from "../assets/gallery/nvcX37.jpg";
-import nvcX38 from "../assets/gallery/nvcX38.jpg";
-import nvcX39 from "../assets/gallery/nvcX39.jpg";
-import nvcX40 from "../assets/gallery/nvcX40.jpg";
-import nvcX41 from "../assets/gallery/nvcX41.jpg";
-import nvcX42 from "../assets/gallery/nvcX42.jpg";
-import nvcX43 from "../assets/gallery/nvcX43.jpg";
-import nvcX44 from "../assets/gallery/nvcX44.jpg";
-import nvcX45 from "../assets/gallery/nvcX45.jpg";
-import nvcX46 from "../assets/gallery/nvcX46.jpg";
-import nvcX47 from "../assets/gallery/nvcX47.jpg";
-import nvcX48 from "../assets/gallery/nvcX48.jpg";
-import nvcX49 from "../assets/gallery/nvcX49.jpg";
-import nvcX50 from "../assets/gallery/nvcX50.jpg";
-import nvcX51 from "../assets/gallery/nvcX51.jpg";
-import nvcX52 from "../assets/gallery/nvcX52.jpg";
-import nvcX53 from "../assets/gallery/nvcX53.jpg";
-import nvcX54 from "../assets/gallery/nvcX54.jpg";
-import nvcX55 from "../assets/gallery/nvcX55.jpg";
-import nvcX56 from "../assets/gallery/nvcX56.jpg";
-import nvcX57 from "../assets/gallery/nvcX57.jpeg";
-import nvcX58 from "../assets/gallery/nvcX58.jpeg";
-import nvcX59 from "../assets/gallery/nvcX59.jpg";
+import nvcX1 from '../assets/gallery/nvcX1.jpg'
+import nvcX2 from '../assets/gallery/nvcX2.jpg'
+import nvcX4 from '../assets/gallery/nvcX4.jpg'
+import nvcX5 from '../assets/gallery/nvcX5.jpg'
+import nvcX6 from '../assets/gallery/nvcX6.jpg'
+import nvcX7 from '../assets/gallery/nvcX7.jpg'
+import nvcX8 from '../assets/gallery/nvcX8.jpg'
+import nvcX9 from '../assets/gallery/nvcX9.jpg'
+import nvcX10 from '../assets/gallery/nvcX10.jpg'
+import nvcX11 from '../assets/gallery/nvcX11.jpg'
+import nvcX12 from '../assets/gallery/nvcX12.jpg'
+import nvcX13 from '../assets/gallery/nvcX13.jpg'
+import nvcX14 from '../assets/gallery/nvcX14.jpg'
+import nvcX15 from '../assets/gallery/nvcX15.jpg'
+import nvcX16 from '../assets/gallery/nvcX16.jpg'
+import nvcX17 from '../assets/gallery/nvcX17.jpg'
+import nvcX18 from '../assets/gallery/nvcX18.jpg'
+import nvcX19 from '../assets/gallery/nvcX19.jpg'
+import nvcX20 from '../assets/gallery/nvcX20.jpg'
+import nvcX21 from '../assets/gallery/nvcX21.jpg'
+import nvcX22 from '../assets/gallery/nvcX22.jpg'
+import nvcX23 from '../assets/gallery/nvcX23.jpg'
+import nvcX24 from '../assets/gallery/nvcX24.jpg'
+import nvcX25 from '../assets/gallery/nvcX25.jpg'
+import nvcX26 from '../assets/gallery/nvcX26.jpg'
+import nvcX27 from '../assets/gallery/nvcX27.jpg'
+import nvcX28 from '../assets/gallery/nvcX28.jpg'
+import nvcX29 from '../assets/gallery/nvcX29.jpg'
+import nvcX30 from '../assets/gallery/nvcX30.jpg'
+import nvcX32 from '../assets/gallery/nvcX32.jpg'
+import nvcX33 from '../assets/gallery/nvcX33.jpg'
+import nvcX34 from '../assets/gallery/nvcX34.jpg'
+import nvcX35 from '../assets/gallery/nvcX35.jpg'
+import nvcX36 from '../assets/gallery/nvcX36.jpg'
+import nvcX37 from '../assets/gallery/nvcX37.jpg'
+import nvcX38 from '../assets/gallery/nvcX38.jpg'
+import nvcX39 from '../assets/gallery/nvcX39.jpg'
+import nvcX40 from '../assets/gallery/nvcX40.jpg'
+import nvcX41 from '../assets/gallery/nvcX41.jpg'
+import nvcX42 from '../assets/gallery/nvcX42.jpg'
+import nvcX43 from '../assets/gallery/nvcX43.jpg'
+import nvcX44 from '../assets/gallery/nvcX44.jpg'
+import nvcX45 from '../assets/gallery/nvcX45.jpg'
+import nvcX46 from '../assets/gallery/nvcX46.jpg'
+import nvcX47 from '../assets/gallery/nvcX47.jpg'
+import nvcX48 from '../assets/gallery/nvcX48.jpg'
+import nvcX49 from '../assets/gallery/nvcX49.jpg'
+import nvcX50 from '../assets/gallery/nvcX50.jpg'
+import nvcX51 from '../assets/gallery/nvcX51.jpg'
+import nvcX52 from '../assets/gallery/nvcX52.jpg'
+import nvcX53 from '../assets/gallery/nvcX53.jpg'
+import nvcX54 from '../assets/gallery/nvcX54.jpg'
+import nvcX55 from '../assets/gallery/nvcX55.jpg'
+import nvcX56 from '../assets/gallery/nvcX56.jpg'
+import nvcX57 from '../assets/gallery/nvcX57.jpeg'
+import nvcX58 from '../assets/gallery/nvcX58.jpeg'
+import nvcX59 from '../assets/gallery/nvcX59.jpg'
 
 const photos = [
   { src: nvcX56, width: 600, height: 214 },
@@ -150,74 +134,49 @@ const photos = [
   { src: nvcX53, width: 600, height: 455 },
   { src: nvcX54, width: 600, height: 497 },
   { src: nvcX55, width: 600, height: 899 },
-];
+]
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstract stuff
-const { Fragment } = React;
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
+// const { Fragment } = React
 
-// ----------------------------------------------------------------------------
-// ------------------------------------------------------------------------ SEO
-// ----------------------------------------------------------------------------
 const pageData = {
-  pageTitle: "Gallery",
-  nakedPageSlug: "gallery",
+  pageTitle: 'Gallery',
+  nakedPageSlug: 'gallery',
   pageAbstract:
-    "Joy Living Learning is situated in Auroville, an international community in south India that aims to actualize human unity. Given this enviornment, we are surrounded by opportunities for growth, learning and exploration.",
-};
+    'Joy Living Learning is situated in Auroville, an international community in south India that aims to actualize human unity. Given this enviornment, we are surrounded by opportunities for growth, learning and exploration.',
+}
 
-const seoData = seoHelper(pageData);
+const seoData = seoHelper(pageData)
 
-const {
-  pageTitle,
-  generalMetaData,
-  twitterSummaryCardData,
-  openGraphSummaryData,
-  webpageSchemaData,
-  breadcrumbSchemaData,
-} = seoData;
+// ----------------------------------------------------------------------------
+// --------------------------------------------------------------------- Styles
+// ----------------------------------------------------------------------------
+const pageStyle = css({}).toString()
 
-// ------------------------------------------------------------------------------
-// ----------------------------------------------------------------------- Styles
-// ------------------------------------------------------------------------------
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
-const pageStyle = css({
-  marginBottom: 60,
-
-  "& hr": {
-    border: "none",
-    borderTop: "3px solid #B43808",
-    marginBottom: 20,
-  },
-});
-const pageStyleClass = pageStyle.toString();
-
-// ----------------------------------------------------------------------- Component
+// ----------------------------------------------------------------------------
+// ------------------------------------------------------------------ Component
+// ----------------------------------------------------------------------------
 /** Page */
 class Page extends React.Component {
   /** standard renderer */
   render() {
     return (
-      <Fragment>
-        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
-        <UpdateTitle title={pageTitle} />
-        <GeneralMeta data={generalMetaData} />
-        <TwitterSummaryCard data={twitterSummaryCardData} />
-        <OpenGraphSummary data={openGraphSummaryData} />
-        <WebpageSchema data={webpageSchemaData} />
-        <BreadcrumbSchema data={breadcrumbSchemaData} />
-
-        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
-        <SemanticPage className={`${pageStyleClass}`}>
-          <h1 style={{ marginBottom: 10 }}>Gallery</h1>
-          <hr />
-          <Images photos={photos} loader="gradient" />
-        </SemanticPage>
-      </Fragment>
-    );
+      <StandardPage
+        className={pageStyle}
+        seoData={seoData}
+        {...pick(this.props, ['location'])}
+      >
+        <PageHeader title="Gallery" />
+        <hr />
+        <Images photos={photos} loader="gradient" />
+      </StandardPage>
+    )
   }
 }
 
-Page.propTypes = {};
+Page.propTypes = {}
 
-// ----------------------------------------------------------------------- Export
-export default Page;
+// ----------------------------------------------------------------------------
+// --------------------------------------------------------------------- Export
+// ----------------------------------------------------------------------------
+export default Page

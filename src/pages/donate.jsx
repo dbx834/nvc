@@ -2,113 +2,81 @@
 // ---------------------------------------------------------------------- Imports
 // ------------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import React from "react";
+import React from 'react'
 // import PropTypes from 'prop-types';
 // import _ from 'lodash';
-import { css } from "glamor";
+import { css } from 'glamor'
+import pick from 'lodash/pick'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-// import Link from 'gatsby-link';
+// import Link from '../components/Link';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import { Elements, applyRhythm } from "@bodhi-project/typography";
-import {
-  Page as SemanticPage,
-  Header as SemanticHeader,
-} from "@bodhi-project/semantic-webflow";
-import {
-  // --------------- Basic
-  UpdateTitle,
-  GeneralMeta,
-  // --------------- Twitter
-  TwitterSummaryCard,
-  // --------------- Open Graph
-  OpenGraphSummary,
-  // --------------- Schema.org JSON-LD
-  WebpageSchema,
-  BreadcrumbSchema,
-} from "@bodhi-project/seo";
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Images
+import StandardPage from '../components/wrappers/StandardPage'
+import Donate from '../components/blocks/donate/Donate'
+import seoHelper from '../methods/seoHelper'
 
-import DonateBlock from "../components/DonateBlock";
-import seoHelper from "../helpers/seoHelper";
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstract stuff
-const { Fragment } = React;
-const { H1 } = Elements;
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
+// const { Fragment } = React
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
 const pageData = {
-  pageTitle: "Donate",
-  nakedPageSlug: "donate",
+  pageTitle: 'Donate',
+  nakedPageSlug: 'donate',
   pageAbstract:
-    "Joy Living Learning is a Unit under the Auroville Foundation, which is a Charitable Trust under the Ministry of Human Resources (Indian Government). Your donation will support Joy Living Learning in its mission to share the principles of applied nonviolence in different communities and sectors, such as education, governance, and the corporate world.",
-};
+    'Joy Living Learning is a Unit under the Auroville Foundation, which is a Charitable Trust under the Ministry of Human Resources (Indian Government). Your donation will support Joy Living Learning in its mission to share the principles of applied nonviolence in different communities and sectors, such as education, governance, and the corporate world.',
+}
 
-const seoData = seoHelper(pageData);
+const seoData = seoHelper(pageData)
 
-const {
-  pageTitle,
-  generalMetaData,
-  twitterSummaryCardData,
-  openGraphSummaryData,
-  webpageSchemaData,
-  breadcrumbSchemaData,
-} = seoData;
+// ----------------------------------------------------------------------------
+// --------------------------------------------------------------------- Styles
+// ----------------------------------------------------------------------------
 
-// ------------------------------------------------------------------------------
-// ----------------------------------------------------------------------- Styles
-// ------------------------------------------------------------------------------
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
-const pageWrapper = css({
-  "& .ant-form-item": {
-    width: "100% !important",
+const pageStyle = css({
+  '& .ant-form-item': {
+    width: '100% !important',
   },
 
-  "@media(min-width: 768px)": {
-    ...applyRhythm({ maxWidth: "27X" }),
+  '@media(min-width: 768px)': {
+    maxWidth: '60em',
 
-    "& .ant-form-item:nth-child(1)": {
-      marginRight: "0px !important",
+    '& .ant-form-item:nth-child(1)': {
+      marginRight: '0px !important',
     },
 
-    "& .ant-form-item:nth-child(2)": {
-      marginLeft: "0px !important",
+    '& .ant-form-item:nth-child(2)': {
+      marginLeft: '0px !important',
     },
   },
-});
-const pageWrapperClass = pageWrapper.toString();
+}).toString()
 
-// ----------------------------------------------------------------------- Component
+// ----------------------------------------------------------------------------
+// ------------------------------------------------------------------ Component
+// ----------------------------------------------------------------------------
 /** Page */
 class Page extends React.Component {
   /** standard renderer */
   render() {
     return (
-      <Fragment>
-        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
-        <UpdateTitle title={pageTitle} />
-        <GeneralMeta data={generalMetaData} />
-        <TwitterSummaryCard data={twitterSummaryCardData} />
-        <OpenGraphSummary data={openGraphSummaryData} />
-        <WebpageSchema data={webpageSchemaData} />
-        <BreadcrumbSchema data={breadcrumbSchemaData} />
-
-        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
-        <SemanticPage className={pageWrapperClass}>
-          <DonateBlock />
-        </SemanticPage>
-      </Fragment>
-    );
+      <StandardPage
+        className={pageStyle}
+        seoData={seoData}
+        {...pick(this.props, ['location'])}
+      >
+        <Donate />
+      </StandardPage>
+    )
   }
 }
 
-Page.propTypes = {};
+Page.propTypes = {}
 
-// ----------------------------------------------------------------------- Export
-export default Page;
+// ----------------------------------------------------------------------------
+// --------------------------------------------------------------------- Export
+// ----------------------------------------------------------------------------
+export default Page

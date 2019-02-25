@@ -2,116 +2,104 @@
 // -------------------------------------------------------------------- Imports
 // ----------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import React from "react";
-import PropTypes from "prop-types";
-import { css } from "glamor";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { css } from 'glamor'
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Lodash
-import merge from "lodash/merge";
-import map from "lodash/map";
-import startsWith from "lodash/startsWith";
-import isUndefined from "lodash/isUndefined";
-import split from "lodash/split";
+import map from 'lodash/map'
+import startsWith from 'lodash/startsWith'
+import isUndefined from 'lodash/isUndefined'
+import split from 'lodash/split'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import Link from "gatsby-link";
-import { Elements, applyType, applyRhythm } from "@bodhi-project/typography";
+import Container from '@bodhi-project/components/lib/Container'
+import Image from '@bodhi-project/components/lib/Image'
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
-import OutLink from "@bodhi-project/components/lib/OutLink";
-import Container from "@bodhi-project/components/lib/Container";
-import Image from "@bodhi-project/components/lib/Image";
+import { Type } from '@bodhi-project/typography'
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ AntD Components
-import Popover from "antd/lib/popover";
-import "@bodhi-project/antrd/lib/nvc-website/popover/style/css";
+import Popover from 'antd/lib/popover'
+import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/popover/style/css'
 
-import Modal from "antd/lib/modal";
-import "@bodhi-project/antrd/lib/nvc-website/modal/style/css";
+import Modal from 'antd/lib/modal'
+import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/modal/style/css'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import logo from "../../assets/rx/nvc-india.png";
-import globalWithMediaQueries from "../../helpers/globalWithMediaQueries";
+import Link from '../Link'
+import keygen from '../../methods/keygen'
+import websiteMenu from '../../data/menu.json'
 
-import ContactForm from "../ContactForm";
-import NewsletterForm from "../NewsletterForm";
-import DonateModal from "../DonateModal";
-import PayFeeBlock from "../PayFeeBlock";
+import ContactForm from '../blocks/contact/ContactForm'
+import NewsletterForm from '../blocks/newsletter/NewsletterForm'
+import Donate from '../blocks/donate/Donate'
+import PayFee from '../blocks/pay-fee/PayFee'
+
+import logo from '../../assets/logo.png'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
-const { Fragment } = React;
-const { Ul } = Elements;
+const { Fragment } = React
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Desktop
-const desktopNavStyle = css({
-  padding: 0,
-  maxHeight: "100vh",
-  overflowY: "scroll",
-  overflowX: "hidden",
+// const style = css({
+//   padding: 0,
+//   maxHeight: '100vh',
+//   overflowY: 'scroll',
+//   overflowX: 'hidden',
 
-  "& ul": {
-    listStyle: "none",
-    paddingLeft: 40,
+//   '& ul': {
+//     listStyle: 'none',
+//     paddingLeft: 40,
 
-    "& li": {
-      fontFamily: "futura-pt, sans-serif !important",
-      marginBottom: "0px !important",
-    },
+//     '& li': {
+//       fontFamily: 'futura-pt, sans-serif !important',
+//       marginBottom: '0px !important',
+//     },
 
-    "& li.header": {
-      fontWeight: "500 !important",
-      color: "#b43808 !important",
+//     '& li.header': {
+//       fontWeight: '500 !important',
+//       color: '#b43808 !important',
 
-      "& span": {
-        fontSize: "90%",
-        letterSpacing: "-0.08775ex",
-      },
-    },
+//       '& span': {
+//         fontSize: '90%',
+//         letterSpacing: '-0.08775ex',
+//       },
+//     },
 
-    "& li.header:not(:first-child)": {
-      ...applyRhythm({ marginTop: "0.75X" }),
-    },
+//     '& li.header:not(:first-child)': {
+//       marginTop: 20,
+//     },
 
-    "& a": {
-      color: "#4a4a4a",
-      borderBottom: "1.625px solid transparent",
-      transition: "0.125s",
-      textTransform: "uppercase",
-      letterSpacing: "0.14625ex",
+//     '& a': {
+//       color: '#4a4a4a',
+//       borderBottom: '1.625px solid transparent',
+//       transition: '0.125s',
+//       textTransform: 'uppercase',
+//       letterSpacing: '0.14625ex',
 
-      "& span": {
-        fontSize: "66%",
-      },
+//       '& span': {
+//         fontSize: '66%',
+//       },
 
-      "&:hover": {
-        color: "#4a4a4a",
-        borderBottom: "1.625px solid #4a4a4a",
-      },
-    },
+//       '&:hover': {
+//         color: '#4a4a4a',
+//         borderBottom: '1.625px solid #4a4a4a',
+//       },
+//     },
 
-    "& a.active": {
-      color: "#BA6B02",
-    },
+//     '& a.active': {
+//       color: '#BA6B02',
+//     },
+//   },
+// }).toString()
+
+const modalStyle = css({
+  '& h1': {
+    fontFamily: 'futura-pt, sans-serif !important',
+    fontWeight: 700,
+    marginTop: 0,
   },
-});
-const desktopNavStyleClass = desktopNavStyle.toString();
-
-const modalStyle = css(
-  merge(
-    {
-      "& h1": {
-        fontFamily: "futura-pt, sans-serif !important",
-        fontWeight: 700,
-        marginTop: 0,
-      },
-    },
-    { ...applyType("dkc2ilk", { range: [12, 21] }) },
-  ),
-);
-const modalStyles = modalStyle.toString();
+}).toString()
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
@@ -120,277 +108,237 @@ const modalStyles = modalStyle.toString();
 class DesktopNav extends React.Component {
   /** standard constructor */
   constructor(props) {
-    super(props);
+    super(props)
 
     this.state = {
       modalVisible: false,
       modalRoute: null,
-    };
+    }
 
-    this.showModal = this.showModal.bind(this);
-    this.hideModal = this.hideModal.bind(this);
+    this.showModal = this.showModal.bind(this)
+    this.hideModal = this.hideModal.bind(this)
   }
 
   /** showModal */
   showModal(e, modalRoute) {
     if (!isUndefined(e)) {
-      e.preventDefault();
+      e.preventDefault()
     }
     this.setState({
       modalVisible: true,
       modalRoute,
-    });
+    })
   }
 
   /** hideModal */
   hideModal(e) {
     if (!isUndefined(e)) {
-      e.preventDefault();
+      e.preventDefault()
     }
     this.setState({
       modalVisible: false,
-    });
+    })
   }
 
   /** standard renderer */
   render() {
-    const { pathname } = this.props.location;
+    const {
+      location: { pathname },
+    } = this.props
+    const { modalRoute } = this.state
 
     return (
-      <Container bleed block noFade className={desktopNavStyleClass}>
-        <Link to="/">
-          <Image
-            src={logo}
-            rawWidth={842}
-            rawHeight={936}
-            style={{
-              height: 156,
-              width: 140,
-              border: 0,
-              background: "transparent",
-              marginLeft: 40,
-              marginBottom: 26,
-              marginTop: 26,
-            }}
-            loader="gradient"
-            alt="NVC India"
-          />
-        </Link>
-        <nav>
-          <Ul>
-            {map(this.props.menu, topLevel => {
-              const { title, menu } = topLevel;
-              return (
-                <Fragment key={title}>
-                  <li className="header">
-                    <span>{title}</span>
-                  </li>
-                  {map(menu, subMenu => {
-                    const subTitle = subMenu.title;
-                    const popMenu = subMenu.menu;
-                    let { link } = subMenu;
-                    const { menuPopoverLocation, renderInModal } = subMenu;
-                    const isOutLink = startsWith(link, "http");
-                    const asModal = renderInModal === true;
-                    const hashLink = isUndefined(link);
+      <header className="desktop-only desktop-nav">
+        <Container bleed block>
+          <h1 style={{ fontSize: 0, marginBottom: 0 }}>
+            <Link to="/" style={{ display: 'block' }}>
+              <Image
+                src={logo}
+                rawWidth={842}
+                rawHeight={936}
+                style={{
+                  height: 156,
+                  width: 140,
+                  border: 'unset',
+                  background: 'unset',
+                  marginLeft: 40,
+                  marginBottom: 26,
+                  marginTop: 26,
+                }}
+                loader="gradient"
+                alt="NVC India"
+              />
+            </Link>
+            Joy Living Learning
+          </h1>
+          <nav>
+            <ul>
+              {map(websiteMenu, topLevel => {
+                const { title, menu } = topLevel
+                return (
+                  <Fragment key={keygen()}>
+                    <li className="header">
+                      <span>{title}</span>
+                    </li>
+                    {map(menu, subMenu => {
+                      const subTitle = subMenu.title
+                      const popMenu = subMenu.menu
+                      const { link } = subMenu
+                      const { menuPopoverLocation, renderInModal } = subMenu
+                      const isOutLink = startsWith(link, 'http')
+                      const asModal = renderInModal === true
+                      const active =
+                        pathname === split(link, '?', 1)[0] ? 'active' : ''
 
-                    return (
-                      <Fragment key={link}>
-                        {isUndefined(popMenu) && (
-                          <li>
-                            {isOutLink === true && (
-                              <Fragment>
-                                {asModal ? (
-                                  <OutLink
-                                    to={link}
-                                    onClick={e => {
-                                      this.showModal(e, link);
-                                    }}
-                                  >
-                                    <span>{subTitle}</span>
-                                  </OutLink>
-                                ) : (
-                                  <OutLink to={link}>
-                                    <span>{subTitle}</span>
-                                  </OutLink>
-                                )}
-                              </Fragment>
-                            )}
-                            {isOutLink === false && (
-                              <Fragment>
-                                {asModal ? (
-                                  <Link
-                                    to={link}
-                                    onClick={e => {
-                                      this.showModal(e, link);
-                                    }}
-                                  >
-                                    <span>{subTitle}</span>
-                                  </Link>
-                                ) : (
-                                  <Link
-                                    to={link}
-                                    className={
-                                      pathname === split(link, "?", 1)[0]
-                                        ? "active"
-                                        : ""
-                                    }
-                                  >
-                                    <span>{subTitle}</span>
-                                  </Link>
-                                )}
-                              </Fragment>
-                            )}
-                          </li>
-                        )}
-                        {!isUndefined(popMenu) && (
-                          <li>
-                            <Popover
-                              placement={menuPopoverLocation}
-                              content={
-                                <div className="menu-tip">
-                                  <ul>
-                                    {map(popMenu, popMenuItem => {
-                                      const itemTitle = popMenuItem.title;
-                                      const itemLink = popMenuItem.link;
-                                      const isItemLinkOutLink = startsWith(
-                                        itemLink,
-                                        "http",
-                                      );
-                                      return (
-                                        <li key={itemLink}>
-                                          {isItemLinkOutLink === true && (
-                                            <OutLink to={itemLink}>
-                                              <span>{itemTitle}</span>
-                                            </OutLink>
-                                          )}
-                                          {isItemLinkOutLink === false && (
+                      return (
+                        <Fragment key={keygen()}>
+                          {isUndefined(popMenu) && (
+                            <li>
+                              {asModal === true ? (
+                                <Link
+                                  to={link}
+                                  onClick={e => {
+                                    this.showModal(e, link)
+                                  }}
+                                  className={active}
+                                >
+                                  <span>{subTitle}</span>
+                                </Link>
+                              ) : (
+                                <Link to={link} className={active}>
+                                  <span>{subTitle}</span>
+                                </Link>
+                              )}
+                            </li>
+                          )}
+                          {!isUndefined(popMenu) && (
+                            <li>
+                              <Popover
+                                placement={menuPopoverLocation}
+                                content={
+                                  <div className="menu-tip">
+                                    <ul>
+                                      {map(popMenu, popMenuItem => {
+                                        const itemTitle = popMenuItem.title
+                                        const itemLink = popMenuItem.link
+                                        const itemActive =
+                                          pathname ===
+                                          split(itemLink, '?', 1)[0]
+                                            ? 'active'
+                                            : ''
+
+                                        return (
+                                          <li key={keygen()}>
                                             <Link
                                               to={itemLink}
-                                              className={
-                                                pathname ===
-                                                split(itemLink, "?", 1)[0]
-                                                  ? "active"
-                                                  : ""
-                                              }
+                                              className={itemActive}
                                             >
                                               <span>{itemTitle}</span>
                                             </Link>
-                                          )}
-                                        </li>
-                                      );
-                                    })}
-                                  </ul>
-                                </div>
-                              }
-                            >
-                              {isOutLink === true && (
-                                <OutLink to={link}>{subTitle}</OutLink>
-                              )}
-                              {isOutLink === false && (
-                                <Fragment>
-                                  {hashLink === true ? (
-                                    <a
-                                      href="#"
-                                      className={
-                                        pathname === split(link, "?", 1)[0]
-                                          ? "active"
-                                          : ""
-                                      }
-                                    >
-                                      <span>{subTitle}</span>
-                                      <span style={{ fontSize: "88%" }}>
-                                        &nbsp;»
-                                      </span>
-                                    </a>
-                                  ) : (
-                                    <Link
-                                      to={link}
-                                      className={
-                                        pathname === split(link, "?", 1)[0]
-                                          ? "active"
-                                          : ""
-                                      }
-                                    >
-                                      <span>{subTitle}</span>
-                                      <span style={{ fontSize: "88%" }}>
-                                        &nbsp;»
-                                      </span>
-                                    </Link>
+                                          </li>
+                                        )
+                                      })}
+                                    </ul>
+                                  </div>
+                                }
+                              >
+                                <Link to={link} className={active}>
+                                  <span>{subTitle}</span>
+                                  {!isOutLink && (
+                                    <span style={{ fontSize: '88%' }}>
+                                      &nbsp;»
+                                    </span>
                                   )}
-                                </Fragment>
-                              )}
-                            </Popover>
-                          </li>
-                        )}
-                      </Fragment>
-                    );
-                  })}
-                </Fragment>
-              );
-            })}
-          </Ul>
-        </nav>
-        <Modal
-          visible={this.state.modalVisible}
-          bodyStyle={{
-            minWidth: "640px",
-            minHeight: "480px",
-            padding: 0,
-          }}
-          style={{
-            minWidth: "640px",
-            minHeight: "480px",
-            top: 30,
-            padding: 0,
-            borderRadius: 8,
-          }}
-          title={null}
-          closable={false}
-          footer={[null, null]}
-        >
-          <div
-            style={{
-              minWidth: "640px",
-              minHeight: "480px",
-              padding: "1em",
-              backgroundColor: "#f8f2e6",
+                                </Link>
+                              </Popover>
+                            </li>
+                          )}
+                        </Fragment>
+                      )
+                    })}
+                  </Fragment>
+                )
+              })}
+            </ul>
+          </nav>
+          <Modal
+            visible={this.state.modalVisible}
+            bodyStyle={{
+              minWidth: '640px',
+              minHeight: '480px',
+              padding: 0,
             }}
-            className={modalStyles}
+            style={{
+              minWidth: '640px',
+              minHeight: '480px',
+              top: 30,
+              padding: 0,
+              borderRadius: 8,
+            }}
+            title={null}
+            closable={false}
+            footer={[null, null]}
           >
-            <div
+            <Type
+              kit="dkc2ilk"
               style={{
-                position: "absolute",
-                display: "inline-block",
-                top: 30,
-                right: "1em",
-                zIndex: 10,
+                minWidth: '640px',
+                minHeight: '480px',
+              }}
+              className={modalStyle}
+              options={{
+                range: [15, 21], // Min and Max font-sizes
+                paragraphSpacingFactor: 1.2, // Greater for tighter paragraph-paragraph spacing
+                headingParagraphGapSpacingFactor: 0.95, // Greater for tighter header-paragraph spacing
+                indentParagraphs: false,
               }}
             >
-              <a
-                href="#"
-                onClick={e => {
-                  this.hideModal(e);
+              <main
+                style={{
+                  minWidth: '640px',
+                  minHeight: '480px',
+                  padding: '1.5rem',
+                  backgroundColor: '#f8f2e6',
+                  position: 'relative',
                 }}
               >
-                Close
-              </a>
-            </div>
-            {this.state.modalRoute === "/contact-us" && <ContactForm />}
-            {this.state.modalRoute === "/newsletter" && <NewsletterForm />}
-            {this.state.modalRoute === "/pay-fee" && <PayFeeBlock />}
-            {this.state.modalRoute === "/donate" && <DonateModal />}
-          </div>
-        </Modal>
-      </Container>
-    );
+                <div
+                  style={{
+                    position: 'absolute',
+                    display: 'inline-block',
+                    top: 30,
+                    right: '1.5rem',
+                    zIndex: 10,
+                    marginBottom: 0,
+                  }}
+                  className="mask-p"
+                >
+                  <a
+                    href="#"
+                    onClick={e => {
+                      this.hideModal(e)
+                    }}
+                  >
+                    Close
+                  </a>
+                </div>
+                {modalRoute === '/contact-us' && <ContactForm />}
+                {modalRoute === '/newsletter' && <NewsletterForm />}
+                {modalRoute === '/pay-fee' && <PayFee />}
+                {modalRoute === '/donate' && <Donate />}
+              </main>
+            </Type>
+          </Modal>
+        </Container>
+      </header>
+    )
   }
 }
 
 DesktopNav.propTypes = {
   location: PropTypes.object, // eslint-disable-line react/forbid-prop-types
   menu: PropTypes.array, // eslint-disable-line react/forbid-prop-types
-};
+}
 
 // --------------------------------------------------------------------- Export
-export default DesktopNav;
+export default DesktopNav

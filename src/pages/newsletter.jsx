@@ -2,111 +2,83 @@
 // ---------------------------------------------------------------------- Imports
 // ------------------------------------------------------------------------------
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
-import React from "react";
+import React from 'react'
 // import PropTypes from 'prop-types';
 // import _ from 'lodash';
-import { css } from "glamor";
+import { css } from 'glamor'
+
+import pick from 'lodash/pick'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-// import Link from 'gatsby-link';
+// import Link from '../components/Link';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-import { applyRhythm } from "@bodhi-project/typography";
-import {
-  Page as SemanticPage,
-  Header as SemanticHeader,
-} from "@bodhi-project/semantic-webflow";
-import {
-  // --------------- Basic
-  UpdateTitle,
-  GeneralMeta,
-  // --------------- Twitter
-  TwitterSummaryCard,
-  // --------------- Open Graph
-  OpenGraphSummary,
-  // --------------- Schema.org JSON-LD
-  WebpageSchema,
-  BreadcrumbSchema,
-} from "@bodhi-project/seo";
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ @bodhi-project/components
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Images
-import NewsletterForm from "../components/NewsletterForm";
-import seoHelper from "../helpers/seoHelper";
+import StandardPage from '../components/wrappers/StandardPage'
 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstract stuff
-const { Fragment } = React;
+import NewsletterForm from '../components/blocks/newsletter/NewsletterForm'
+import seoHelper from '../methods/seoHelper'
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
+// const { Fragment } = React
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
 const pageData = {
-  pageTitle: "Newsletter",
-  nakedPageSlug: "newsletter",
+  pageTitle: 'Newsletter',
+  nakedPageSlug: 'newsletter',
   pageAbstract:
     "If you'd like to receive updates about our programs, please sign up for our newsletter.",
-};
+}
 
-const seoData = seoHelper(pageData);
+const seoData = seoHelper(pageData)
 
-const {
-  pageTitle,
-  generalMetaData,
-  twitterSummaryCardData,
-  openGraphSummaryData,
-  webpageSchemaData,
-  breadcrumbSchemaData,
-} = seoData;
+// ----------------------------------------------------------------------------
+// --------------------------------------------------------------------- Styles
+// ----------------------------------------------------------------------------
 
-// ------------------------------------------------------------------------------
-// ----------------------------------------------------------------------- Styles
-// ------------------------------------------------------------------------------
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Page style
-const pageWrapper = css({
-  "& .ant-form-item": {
-    width: "100% !important",
+const pageStyle = css({
+  '& .ant-form-item': {
+    width: '100% !important',
   },
 
-  "@media(min-width: 768px)": {
-    ...applyRhythm({ maxWidth: "27X" }),
+  '@media(min-width: 768px)': {
+    maxWidth: '50rem',
 
-    "& .ant-form-item:nth-child(1)": {
-      marginRight: "0px !important",
+    '& .ant-form-item:nth-child(1)': {
+      marginRight: '0px !important',
     },
 
-    "& .ant-form-item:nth-child(2)": {
-      marginLeft: "0px !important",
+    '& .ant-form-item:nth-child(2)': {
+      marginLeft: '0px !important',
     },
   },
-});
-const pageWrapperClass = pageWrapper.toString();
+}).toString()
 
-// ----------------------------------------------------------------------- Component
+// ----------------------------------------------------------------------------
+// ------------------------------------------------------------------ Component
+// ----------------------------------------------------------------------------
 /** Page */
 class Page extends React.Component {
   /** standard renderer */
   render() {
     return (
-      <Fragment>
-        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
-        <UpdateTitle title={pageTitle} />
-        <GeneralMeta data={generalMetaData} />
-        <TwitterSummaryCard data={twitterSummaryCardData} />
-        <OpenGraphSummary data={openGraphSummaryData} />
-        <WebpageSchema data={webpageSchemaData} />
-        <BreadcrumbSchema data={breadcrumbSchemaData} />
-
-        {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
-        <SemanticPage className={pageWrapperClass}>
-          <NewsletterForm />
-        </SemanticPage>
-      </Fragment>
-    );
+      <StandardPage
+        className={pageStyle}
+        seoData={seoData}
+        {...pick(this.props, ['location'])}
+      >
+        <NewsletterForm />
+      </StandardPage>
+    )
   }
 }
 
-Page.propTypes = {};
+Page.propTypes = {}
 
-// ----------------------------------------------------------------------- Export
-export default Page;
+// ----------------------------------------------------------------------------
+// --------------------------------------------------------------------- Export
+// ----------------------------------------------------------------------------
+export default Page

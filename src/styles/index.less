@@ -17,7 +17,7 @@ just to make sure the <html>
 element shares the same dimensions as
 the browser window when loading
 (and not the potentially elongated page)
-*/ 
+*/
 html.lk-loading {
   background-image: url('/loader.gif');
   background-repeat: no-repeat;
@@ -32,7 +32,7 @@ add some transitional effects
 to reintroduce the content
 gradually once fonts are loaded
 */
-html.lk-active.wf-active body, 
+html.lk-active.wf-active body,
 html.lk-active.wf-inactive body {
   -webkit-transition: opacity 0.5s ease-out;
   -moz-transition: opacity 0.5s ease-out;
@@ -66,13 +66,16 @@ html.lk-active.wf-inactive body {
   font-style: italic;
 }
 
+input {
+  font-size: inherit !important;
+}
+
 /* ----------------------------------------------------------------- */
 /* --------------------------------------------------------- Globals
 /* ----------------------------------------------------------------- */
 
-
 .ant-btn {
-  font-family: "futura-pt, sans-serif";
+  font-family: 'futura-pt, sans-serif';
   font-size: inherit;
 }
 
@@ -100,15 +103,17 @@ html.lk-active.wf-inactive body {
 .block-halley-alt .ant-select,
 .block-halley-alt .ant-select-selection-selected-value,
 .block-halley-alt .ant-select-dropdown-menu-item,
-.block-halley-alt .ant-select-selection__rendered
-.block-halley-alt .ant-select-dropdown,
+.block-halley-alt
+  .ant-select-selection__rendered
+  .block-halley-alt
+  .ant-select-dropdown,
 .block-halley-alt .ant-select-dropdown-menu {
   font-family: inherit !important;
   font-size: inherit !important;
 }
 
 .ant-select-dropdown {
-  font-family: "adobe-garamond-pro, serif" !important;
+  font-family: 'adobe-garamond-pro, serif' !important;
 }
 
 #nprogress .spinner {
@@ -126,14 +131,25 @@ html.lk-active.wf-inactive body {
 /* ----------------------------------------------------------------- */
 /* --------------------------------------------------------- Globals
 /* ----------------------------------------------------------------- */
+html {
+  font-size: 14px !important;
+}
+
 body {
-  font-family: "adobe-garamond-pro, serif" !important;
+  font-family: 'adobe-garamond-pro, serif' !important;
   color: #4a4a4a !important;
   line-height: unset !important;
 }
 
-li, p, h1, h2, h3, h4, h5, h6 {
-  color: #4a4a4a !important;
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #4a4a4a;
 }
 
 @media (max-width: 768px) {
@@ -143,7 +159,7 @@ li, p, h1, h2, h3, h4, h5, h6 {
 }
 
 .ant-tag {
-  font-family: "futura-pt", sans-serif !important;
+  font-family: 'futura-pt', sans-serif !important;
   font-size: 14px !important;
 }
 
@@ -162,7 +178,7 @@ li, p, h1, h2, h3, h4, h5, h6 {
 }
 
 .view-filter .ant-tag-checkable-checked {
-  color: #0C4774 !important;
+  color: #0c4774 !important;
   background: #f8f2e6 !important;
   border-color: transparent !important;
 }
@@ -186,7 +202,7 @@ li, p, h1, h2, h3, h4, h5, h6 {
 }
 
 .menu-tip > ul > li {
-  font-family: "futura-pt", sans-serif !important;
+  font-family: 'futura-pt', sans-serif !important;
   margin-bottom: 0px !important;
 }
 
@@ -228,22 +244,23 @@ li, p, h1, h2, h3, h4, h5, h6 {
 
 .ant-carousel {
   width: inherit;
-  height: "auto";
+  height: 'auto';
   display: block;
   margin: auto !important;
 }
 
 .ant-carousel .slick-slide {
   text-align: center;
-  height: "auto";
+  height: 'auto';
   overflow: hidden;
 }
 
 .ant-carousel .slick-dots li button {
-  background: #B43808 !important;
+  background: #b43808 !important;
 }
 
-.ant-carousel .slick-prev, .ant-carousel .slick-next {
+.ant-carousel .slick-prev,
+.ant-carousel .slick-next {
   font-size: inherit !important;
   top: 36.5% !important;
 }
@@ -267,7 +284,6 @@ li, p, h1, h2, h3, h4, h5, h6 {
     bottom: 15px !important;
   }
 }
-
 
 @media (max-width: 768px) {
   .ant-carousel .slick-dots {
@@ -376,4 +392,59 @@ li, p, h1, h2, h3, h4, h5, h6 {
   100% {
     opacity: 1;
   }
+}
+
+.desktop-nav,
+[data-desktop-nav] {
+  padding: 0;
+  max-height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.desktop-nav ul,
+[data-desktop-nav] ul {
+  list-style: none;
+  padding-left: 40px;
+}
+.desktop-nav ul li,
+[data-desktop-nav] ul li {
+  font-family: futura-pt, sans-serif !important;
+  margin-bottom: 0px !important;
+}
+.desktop-nav ul li.header,
+[data-desktop-nav] ul li.header {
+  font-weight: 500 !important;
+  color: #b43808 !important;
+}
+.desktop-nav ul li.header span,
+[data-desktop-nav] ul li.header span {
+  font-size: 90%;
+  letter-spacing: -0.08775ex;
+}
+.desktop-nav ul li.header:not(:first-child),
+[data-desktop-nav] ul li.header:not(:first-child) {
+  margin-top: 18.5px;
+}
+.desktop-nav ul a,
+[data-desktop-nav] ul a {
+  color: #4a4a4a;
+  border-bottom: 1.625px solid transparent;
+  transition: 0.125s;
+  text-transform: uppercase;
+  letter-spacing: 0.14625ex;
+  -webkit-transition: 0.125s;
+  -moz-transition: 0.125s;
+}
+.desktop-nav ul a span,
+[data-desktop-nav] ul a span {
+  font-size: 66%;
+}
+.desktop-nav ul a:hover,
+[data-desktop-nav] ul a:hover {
+  color: #4a4a4a;
+  border-bottom: 1.625px solid #4a4a4a;
+}
+.desktop-nav ul a.active,
+[data-desktop-nav] ul a.active {
+  color: #ba6b02;
 }

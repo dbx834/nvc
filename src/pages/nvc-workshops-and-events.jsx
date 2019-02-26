@@ -30,13 +30,13 @@ import seoHelper from '../methods/seoHelper'
 import categoriseEvents from '../methods/categoriseEvents'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
-// const { Fragment } = React
+const { Fragment } = React
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------------ SEO
 // ----------------------------------------------------------------------------
 const pageData = {
-  pageTitle: 'NVC Workshops & Events',
+  pageTitle: 'Workshops & Events',
   nakedPageSlug: 'nvc-workshops-and-events',
   pageAbstract:
     'We offer learning opportunities through workshops and practice groups on Nonviolent Communication and Restorative Circles. We are also available for individual coaching and mediation, and we are happy to consult with community-based projects that are seeking to shift paradigms.',
@@ -143,7 +143,7 @@ class EventsAndCalendar extends React.Component {
         {...pick(this.props, ['location'])}
       >
         <PageHeader
-          title="NVC Workshops & Events"
+          title="Workshops & Events"
           subTitle="Nonviolent Communication and Restorative Circle Workshops and Events"
           stashSubTitle
           hero="We offer learning opportunities through workshops and practice groups on Nonviolent Communication and Restorative Circles. We are also available for individual coaching and mediation, and we are happy to consult with community-based projects that are seeking to shift paradigms."
@@ -157,6 +157,22 @@ class EventsAndCalendar extends React.Component {
             </div>
             <DesktopEventsArchive data={opheliaData} />
             <MobileEventsArchive data={pandoraData1} style={{ padding: 0 }} />
+            {events.featuredEvents.length === 0 && (
+              <Fragment>
+                <br />
+                <p
+                  style={{
+                    marginBottom: 0,
+                    color: '#989898',
+                    textAlign: 'left',
+                  }}
+                >
+                  <small>
+                    <i>Please check back later.</i>
+                  </small>
+                </p>
+              </Fragment>
+            )}
           </Copy>
           <Copy>
             <NVCEvents data={events.NVCEvents} />

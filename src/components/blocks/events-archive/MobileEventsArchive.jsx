@@ -12,6 +12,7 @@ import intersection from 'lodash/intersection'
 import isUndefined from 'lodash/isUndefined'
 import isNull from 'lodash/isNull'
 import slice from 'lodash/slice'
+import reverse from 'lodash/reverse'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Image from '@bodhi-project/components/lib/Image'
@@ -28,11 +29,11 @@ import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/button/style/css'
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
+const loReverse = reverse
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Desktop
 const blockStyle = css({
   '& .ant-list-item': {
     background: 'transparent',
@@ -62,6 +63,7 @@ class Block extends React.Component {
       show: 5,
       data: [],
       canSlice: true,
+      isReversed: false,
     }
 
     this.loadMore = this.loadMore.bind(this)
@@ -74,9 +76,15 @@ class Block extends React.Component {
       : this.props.fallback.show
     const nextIndex = this.state.currentIndex + show
     const canSlice = this.props.data.cards.length > nextIndex
-    const sliced = canSlice
+    let sliced = canSlice
       ? slice(this.props.data.cards, this.state.currentIndex, nextIndex)
       : this.props.data.cards
+
+    const { reverse = false } = this.props
+
+    if (reverse === true) {
+      sliced = loReverse(sliced)
+    }
 
     this.setState({
       loading: false,
@@ -113,15 +121,10 @@ class Block extends React.Component {
 
   /** standard renderer */
   render() {
-    const { data } = this.props
+    const { data, reverse = false } = this.props
     const { components, tagMap } = data
-    const {
-      data: xData,
-      loading,
-      loadingMore,
-      showLoadingMore,
-      canSlice,
-    } = this.state
+    const { loading, loadingMore, showLoadingMore, canSlice } = this.state
+    let { data: xData } = this.state
     const loadMore =
       canSlice && showLoadingMore ? (
         <div
@@ -175,7 +178,7 @@ class Block extends React.Component {
               <List.Item>
                 <List.Item.Meta
                   description={
-                    <components.localLink to={route}>
+                    <components.localLink to={`/${route}`}>
                       <div style={{ display: 'flex' }}>
                         {!isNull(thisImage) && (
                           <div>

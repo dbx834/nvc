@@ -37,6 +37,10 @@ import Link from '../../Link'
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 const style = css({
+  '& .ant-list-empty-text': {
+    paddingLeft: '0px !important',
+  },
+
   '& .ant-list-item': {
     marginTop: -5,
 
@@ -149,7 +153,7 @@ class EventList extends React.Component {
         loading={loading}
         locale={{
           emptyText: (
-            <p style={{ marginBottom: 0, color: '#989898' }}>
+            <p style={{ marginBottom: 0, color: '#989898', textAlign: 'left' }}>
               <small>
                 <i>Please check back later.</i>
               </small>

@@ -60,15 +60,19 @@ const About = () => {
         About
       </h2>
       <p style={{ marginTop: 0 }}>
-        Joy Living Learning is situated in Auroville, an international community
-        in south India that aims to actualize human unity. Given this
+        Joy Living Learning is situated in&nbsp;
+        <Link to="https://www.auroville.org/">Auroville</Link>, an international
+        community in south India that aims to actualize human unity. Given this
         environment, we are surrounded by opportunities for growth, learning and
         exploration.
       </p>
       <p>
         Joy Living Learning is a Unit of the Auroville Foundation, and L'aura
-        Joy is a Certified Trainer with the Center for Nonviolent Communication
-        (USA).
+        Joy is a Certified Trainer with the&nbsp;
+        <Link to="https://www.cnvc.org/">
+          Center for Nonviolent Communication (USA)
+        </Link>
+        .
       </p>
       <div className="mask-p" style={{ marginBottom: 20 }}>
         <Link to="https://www.auroville.org/">
@@ -86,7 +90,7 @@ const About = () => {
             }}
           />
         </Link>
-        <Link to="http://www.cnvc.org/" style={{ marginLeft: 17 }}>
+        <Link to="https://www.cnvc.org/" style={{ marginLeft: 17 }}>
           <Image
             src="/assets/homepage/about/cnvc-logo.png"
             rawWidth={1233}

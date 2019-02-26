@@ -80,7 +80,6 @@ const photos = [
   { src: nvcX56, width: 600, height: 214 },
   { src: nvcX57, width: 600, height: 400 },
   { src: nvcX58, width: 600, height: 400 },
-  { src: nvcX59, width: 600, height: 400 },
   { src: nvcX1, width: 600, height: 450 },
   { src: nvcX2, width: 600, height: 353 },
   { src: nvcX4, width: 600, height: 800 },
@@ -151,7 +150,31 @@ const seoData = seoHelper(pageData)
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
-const pageStyle = css({}).toString()
+const pageStyle = css({
+  '& hr': {
+    border: 'none',
+    borderTop: '3px solid #B43808',
+    marginBottom: 10,
+
+    '&:not(:first-child)': {
+      marginTop: 20,
+    },
+  },
+
+  '@media(max-width: 1200px)': {
+    '& hr': {
+      borderTop: '2.25px solid #B43808',
+      marginBottom: 8,
+    },
+  },
+
+  '@media(max-width: 768px)': {
+    '& hr': {
+      borderTop: '1.75px solid #B43808',
+      marginBottom: 4,
+    },
+  },
+}).toString()
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component

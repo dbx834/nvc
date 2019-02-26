@@ -15,13 +15,13 @@ Fabulous job of facilitating a group of facilitators! You lived the values and p
 
 &nbsp;
 
-Laura not just presented the concepts but lived the principles behind them in her interactions with the participants.
+L'aura not just presented the concepts but lived the principles behind them in her interactions with the participants.
 <br />
 – Veena, 2018
 
 &nbsp;
 
-It was a unique way to show us how we don’t know how to listen to each other.  I feel so blessed that we have Restorative Circles in Auroville.  May it spread more and more and become natural for all of us to bridge connections and not cathedrals.
+It was a unique way to show us how we don’t know how to listen to each other. I feel so blessed that we have Restorative Circles in Auroville. May it spread more and more and become natural for all of us to bridge connections and not cathedrals.
 <br />
 – Michelle, 2016
 
@@ -96,4 +96,3 @@ Sometimes words are not enough. In has been so rich, so colourful, at times inte
 Thank you, L’aura, for this training and your amazing giraffe abilities. You helped me get a lot of clarity, support and understanding, as well as acceptance and empathy in times when I was struggling a lot with myself.
 <br />
 – Jeff, 2008
-

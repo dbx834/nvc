@@ -250,7 +250,11 @@ const Calendar = props => {
               A short while later, L'aura joined Saleem Ebrahim and Aniruddha
               Gadankush in setting up the Charitable Trust, "Institute of
               Nonviolent Communication (in India)," and together they hosted the
-              first few annual International NVC Conventions in India.
+              first few&nbsp;
+              <Link to="/nvc-india-conventions">
+                annual International NVC Conventions in India
+              </Link>
+              .
             </p>
             <p>
               In addition, Joy Living Learning has organized many other events
@@ -258,10 +262,12 @@ const Calendar = props => {
               Rung and Liv Larsson, <i>NVC & Aikido</i> with Saleem Ebrahim,{' '}
               <i>Compassionate Living (Embodied Spirituality of NVC)</i> with
               Robert Gonzales, <i>NVC & Internal Family Systems (IFS)</i> with
-              Caroline Ader-Lamy and Saleem Ebrahim,{' '}
-              <i>NVC Certification Mentoring & Assessment</i> with Katherine
-              Singer and Gina Lawrie, an{' '}
-              <i>International Intensive Training (IIT)</i>, and more...
+              Caroline Ader-Lamy and Saleem Ebrahim,&nbsp;
+              <Link to="/nvc-certification">
+                <i>NVC Certification Mentoring & Assessment</i> with Katherine
+                Singer and Gina Lawrie
+              </Link>
+              , an <i>International Intensive Training (IIT)</i>, and more...
             </p>
             <p>
               <strong>Today...</strong>
@@ -273,9 +279,12 @@ const Calendar = props => {
             </p>
             <p>
               Joy Living Learning has also incorporated RC into Auroville's
-              conflict resolution policy and is working towards building an
-              alternative justice system in Auroville based on the principles
-              that underly the NVC movement.
+              conflict resolution policy and is working towards building
+              an&nbsp;
+              <Link to="https://www.restorativeauroville.org/">
+                alternative justice system in Auroville
+              </Link>
+              &nbsp;based on the principles that underlie the NVC movement.
             </p>
           </RightBlock>
         </Copy>

@@ -16,10 +16,14 @@ import pick from 'lodash/pick'
 
 // import Image from '@bodhi-project/components/lib/Image'
 // import OutLink from "@bodhi-project/components/lib/OutLink";
-import Video from '@bodhi-project/components/lib/Video'
+// import Video from '@bodhi-project/components/lib/Video'
+
+import Icon from 'antd/lib/icon'
+import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/icon/style/css'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import Link from '../components/Link'
+import FacebookGroup from '../components/FacebookGroup'
 
 import Copy from '../components/Copy'
 import PageHeader from '../components/PageHeader'
@@ -32,8 +36,8 @@ import seoHelper from '../methods/seoHelper'
 // const { Fragment } = React
 
 const pageData = {
-  pageTitle: 'NVC India Convention',
-  nakedPageSlug: 'nvc-india-convention',
+  pageTitle: 'NVC India Conventions',
+  nakedPageSlug: 'nvc-india-conventions',
   pageAbstract: 'NVC India Convention',
 }
 
@@ -57,32 +61,45 @@ class NVCPage extends React.PureComponent {
         seoData={seoData}
         {...pick(this.props, ['location'])}
       >
-        <PageHeader title="NVC India Convention" />
-        <StandardDiv>
+        <PageHeader
+          title="NVC India Conventions"
+          subTitle="NVC India Convention"
+          stashSubTitle
+        />
+        <StandardDiv rightLine={false}>
           <Copy>
             <p>
               In collaboration with the “Institute of Nonviolent Communication
               in India (INVCI),” L’aura and Joy Living Learning hosted the first
               several NVC India Conventions:
             </p>
-            <ol className="mask-p">
-              <li>2010: Rishikesh</li>
-              <li>2011: Pondicherry</li>
-              <li>2012: Orissa</li>
+            <ul
+              className="mask-p"
+              style={{ paddingLeft: 0, listStyle: 'none' }}
+            >
               <li>
-                2013: Kochi (in collaboration with Lifelong Learning Foundation,
-                Kochi)
+                <strong>2010</strong>: Rishikesh
               </li>
-            </ol>
+              <li>
+                <strong>2011</strong>: Pondicherry
+              </li>
+              <li>
+                <strong>2012</strong>: Orissa
+              </li>
+              <li>
+                <strong>2013</strong>: Kochi (in collaboration with Lifelong
+                Learning Foundation, Kochi)
+              </li>
+            </ul>
             <p>See some videos here:</p>
             <p>
               <Link to="https://www.youtube.com/playlist?list=PLQbEiEQu-L1aAVLwNAso3Ip3aoq8EL-O5">
-                https://www.youtube.com/playlist?list=PLQbEiEQu-L1aAVLwNAso3Ip3aoq8EL-O5
+                <Icon type="youtube" /> 2010 Rishikesh
               </Link>
             </p>
             <p>
               <Link to="https://www.youtube.com/user/infoinvci/videos">
-                https://www.youtube.com/user/infoinvci/videos
+                <Icon type="youtube" /> 2011 Pondicherry & 2012 Orissa
               </Link>
             </p>
             <p>
@@ -90,7 +107,12 @@ class NVCPage extends React.PureComponent {
               by the “Prep Team,” a group of NVC India Practitioners.
             </p>
           </Copy>
-          <Copy>&nbsp;</Copy>
+          <Copy>
+            <FacebookGroup
+              groupUrl="https://www.facebook.com/groups/nvc.india/"
+              title="NVC India group on Facebook"
+            />
+          </Copy>
         </StandardDiv>
       </StandardPage>
     )

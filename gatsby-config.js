@@ -149,7 +149,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-favicon`, // https://www.npmjs.com/package/gatsby-plugin-favicon
       options: {
-        logo: './src/assets/for-favicon.png',
+        logo: './src/assets/faviconAlpha.png',
         // WebApp Manifest Configuration
         appName: data.websiteName,
         appDescription: data.websiteDescription,

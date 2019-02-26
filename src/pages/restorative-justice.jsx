@@ -11,13 +11,14 @@ import { css } from 'glamor'
 import pick from 'lodash/pick'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-// import Link from "gatsby-link";
 // import ContainerDimensions from "react-container-dimensions";
+import FacebookWall from '../components/FacebookWall'
 
-import Image from '@bodhi-project/components/lib/Image'
+// import Image from '@bodhi-project/components/lib/Image'
 // import OutLink from "@bodhi-project/components/lib/OutLink";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
+import Link from '../components/Link'
 import Copy from '../components/Copy'
 import PageHeader from '../components/PageHeader'
 import StandardDiv from '../components/StandardDiv'
@@ -54,12 +55,40 @@ class NVCPage extends React.PureComponent {
         seoData={seoData}
         {...pick(this.props, ['location'])}
       >
-        <PageHeader title="Restorative Justice" />
-        <StandardDiv>
+        <PageHeader
+          title="Restorative Justice"
+          subTitle="An alternative justice system based on the principles that underlie NVC-consciousness"
+          stashSubTitle
+          hero="The Restorative Justice movement has been gaining more and more attention around the world as a credible and powerful response to conflict."
+        />
+        <StandardDiv rightLine={false}>
           <Copy>
-            <p>Coming soon…</p>
+            <p>
+              The Restorative Justice movement has been gaining more and more
+              attention around the world as a credible and powerful response to
+              conflict. And in our little way, we are working towards building
+              an alternative justice system in Auroville based on the principles
+              that underlie NVC-consciousness.
+            </p>
+            <p>
+              Our project,{' '}
+              <Link to="https://www.restorativeauroville.org/">
+                Restorative Auroville
+              </Link>
+              , aims to bring the practice of Restorative Circles, a holistic,
+              community-based form of conflict resolution, to Auroville, and to
+              explore what a consciously designed justice system could look like
+              here – one that reflects our ideals, but that is also effective
+              and has the power to bring about constructive change, both on the
+              individual and community levels.
+            </p>
           </Copy>
-          <Copy>&nbsp;</Copy>
+          <Copy>
+            <FacebookWall
+              url="https://www.facebook.com/RestorativeAuroville/"
+              title="Restorative Auroville on Facebook"
+            />
+          </Copy>
         </StandardDiv>
       </StandardPage>
     )

@@ -15,6 +15,7 @@ import kebabCase from 'lodash/kebabCase'
 import toLower from 'lodash/toLower'
 import map from 'lodash/map'
 import isUndefined from 'lodash/isUndefined'
+import reverse from 'lodash/reverse'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import StackGrid from 'react-stack-grid'
@@ -30,6 +31,7 @@ import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/tag/style/css'
 const { Fragment } = React
 const filterF = filter
 const { CheckableTag } = Tag
+const loReverse = reverse
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
@@ -118,7 +120,7 @@ class Block extends React.Component {
 
   /** standard renderer */
   render() {
-    const { data, fallback } = this.props
+    const { data, fallback, reverse = false } = this.props
     const { cards, components, conf, categoryMap } = data
     const gutterWidth = !isUndefined(conf.gutterWidth)
       ? conf.gutterWidth
@@ -160,6 +162,10 @@ class Block extends React.Component {
       if (a > b) return 1
       return 0
     })
+
+    if (reverse === true) {
+      filteredData = loReverse(filteredData)
+    }
 
     return (
       <div className={`${blockStyleClass} desktop-only`}>
@@ -239,7 +245,7 @@ class Block extends React.Component {
 
             return (
               <div className="oa-card" key={route}>
-                <components.localLink to={route}>
+                <components.localLink to={`/${route}`}>
                   <div className="oa-card-figure">
                     <Image
                       src={cover}

@@ -74,7 +74,7 @@ const NVCIndia = props => {
           </p>
           <p>
             And then we’ve had&nbsp;
-            <Link to="/nvc-india-convention">
+            <Link to="/nvc-india-conventions">
               annual International NVC Conventions
             </Link>
             &nbsp;since 2010, plus so many other events with trainers from all
@@ -82,7 +82,8 @@ const NVCIndia = props => {
           </p>
           <p>
             We have four&nbsp;
-            <Link to="/nvc-certification">CNVC Certified Trainers</Link>:
+            <Link to="https://www.nvc-india.org/">CNVC Certified Trainers</Link>
+            :
           </p>
           <ul className="mask-p">
             <li>L’aura Joy</li>
@@ -91,12 +92,16 @@ const NVCIndia = props => {
             <li>Sudha Shankar</li>
           </ul>
           <p>
-            and many more Certification Candidates preparing themselves to
-            become Trainers.
+            and many more&nbsp;
+            <Link to="/nvc-certification">
+              Certification Candidates preparing themselves to become Trainers
+            </Link>
+            .
           </p>
           <p style={{ marginBottom: 40 }}>
-            To know more about what’s happening in India, check out{' '}
-            <Link to="https://www.indianvc.org/">indianvc.org</Link> or join our{' '}
+            To know more about what’s happening in India, check out&nbsp;
+            <Link to="https://www.nvc-india.org/">www.nvc-india.org</Link> or
+            join our&nbsp;
             <Link to="https://www.facebook.com/groups/nvc.india/">
               Facebook Group
             </Link>

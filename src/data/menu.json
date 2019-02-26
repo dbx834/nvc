@@ -3,6 +3,7 @@
     "title": "About",
     "menu": [
       { "title": "Joy Living Learning", "link": "/" },
+      { "title": "Restorative Justice", "link": "/restorative-justice" },
       { "title": "L'aura Joy", "link": "/laura-joy" }
     ]
   },
@@ -27,7 +28,7 @@
     "title": "Learn",
     "menu": [
       {
-        "title": "NVC Workshops & Events",
+        "title": "Workshops & Events",
         "link": "/nvc-workshops-and-events"
       },
       { "title": "Calendar View", "link": "/calendar" },
@@ -50,7 +51,8 @@
         "link": "/donate",
         "renderInModal": true
       },
-      { "title": "NVC In India", "link": "/nvc-india" }
+      { "title": "NVC In India", "link": "/nvc-india" },
+      { "title": "NVC Certification Info", "link": "/nvc-certification" }
     ]
   }
 ]

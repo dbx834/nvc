@@ -86,14 +86,14 @@ export const formStyle = css({
     },
 
     '&:hover::-webkit-input-placeholder': {
-      color: '#0000FF',
+      color: '#b43808',
     },
 
     '&:hover': {
       border: 'none',
       boxShadow: 'none',
       borderBottom: '2px solid #646464',
-      color: '#0000FF',
+      color: '#b43808',
     },
     '&:visited': {
       border: 'none',
@@ -113,8 +113,8 @@ export const formStyle = css({
     '&:focus': {
       border: 'none',
       boxShadow: 'none',
-      borderBottom: '2px solid #0000FF',
-      color: '#0000FF',
+      borderBottom: '2px solid #b43808',
+      color: '#b43808',
     },
   },
 
@@ -123,8 +123,8 @@ export const formStyle = css({
     {
       fontSize: 'inherit',
       borderRadius: 0,
-      backgroundColor: '#0000FF',
-      borderColor: '#0000FF',
+      backgroundColor: '#b43808',
+      borderColor: '#b43808',
       marginTop: 30,
       padding: '0px 8px',
 

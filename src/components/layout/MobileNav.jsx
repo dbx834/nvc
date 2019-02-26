@@ -27,7 +27,6 @@ import keygen from '../../methods/keygen'
 
 import Link from '../Link'
 import websiteMenu from '../../data/menu.json'
-import logo from '../../assets/logo.png'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React
@@ -36,12 +35,7 @@ const { Fragment } = React
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 const style = css({
-  padding: '1em',
-  '& a': {
-    display: 'block',
-    fontSize: '150%',
-    marginBottom: '1em',
-  },
+  padding: '2rem',
 }).toString()
 
 // ----------------------------------------------------------------------------
@@ -87,34 +81,29 @@ class MobileNav extends React.Component {
         <div
           style={{
             display: 'flex',
-            paddingTop: 20,
-            paddingBottom: 20,
-            paddingLeft: 10,
-            paddingRight: 10,
             justifyContent: 'space-between',
           }}
         >
-          <Link
-            to="/"
+          <p
             style={{
-              display: 'block',
-              border: 'unset',
+              display: 'inline-block',
+              // lineHeight: '60px',
+              marginBottom: 0,
             }}
+            className="mask-h1"
           >
-            <Image
-              src={logo}
-              rawWidth={900}
-              rawHeight={900}
+            <Link
+              to="/"
               style={{
                 display: 'block',
-                height: 60,
-                width: 60,
+                border: 'unset',
+                marginBottom: 0,
               }}
-              loader="gradient"
-              alt="NVC India"
-            />
-          </Link>
-          <div style={{ paddingTop: 14 }}>
+            >
+              Joy Living Learning
+            </Link>
+          </p>
+          <div style={{ paddingTop: 7 }}>
             <Button type="primary" onClick={this.showDrawer}>
               <Icon type="menu-fold" theme="outlined" />
             </Button>

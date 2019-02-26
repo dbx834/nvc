@@ -128,8 +128,12 @@ class EventsAndCalendar extends React.Component {
           hero="We offer learning opportunities through workshops and practice groups on Nonviolent Communication and Restorative Circles. We are also available for individual coaching and mediation, and we are happy to consult with community-based projects that are seeking to shift paradigms."
         />
         <hr />
-        <DesktopEventsArchive data={opheliaData} />
-        <MobileEventsArchive data={pandoraData1} style={{ padding: 0 }} />
+        <DesktopEventsArchive data={opheliaData} reverse />
+        <MobileEventsArchive
+          data={pandoraData1}
+          reverse
+          style={{ padding: 0 }}
+        />
       </StandardPage>
     )
   }

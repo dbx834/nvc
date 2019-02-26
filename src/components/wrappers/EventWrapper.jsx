@@ -235,7 +235,7 @@ const EventWrapper = props => {
               <hr />
               {children}
               <aside>
-                <h1 className="mask-h4">More articles</h1>
+                <h1 className="mask-h4">More events</h1>
                 <PreviousNext prev={prevData} next={nextData} />
               </aside>
             </article>

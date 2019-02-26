@@ -60,7 +60,7 @@ const style = css({
       display: 'inline-block',
       marginBottom: 0,
       position: 'absolute',
-      top: 30,
+      // top: 30,
       right: 10,
     },
 
@@ -150,13 +150,22 @@ class EventsAndCalendar extends React.Component {
         />
         <StandardDiv rightLine={false}>
           <Copy>
-            <div className="mask-p top-link">
-              <Tag>
-                <Link to="/events-archive">Events Archive</Link>
-              </Tag>
+            <p style={{ marginTop: 0 }}>
+              Below you’ll find a listing of our upcoming NVC Workshops and RC
+              Workshops, as well as any other special events we host, in
+              Auroville and in other cities across India. Please register now if
+              you’d like to attend any of these events, or contact us to
+              organize an event in your city.
+            </p>
+            <div style={{ position: 'relative' }}>
+              <div className="mask-p top-link">
+                <Tag>
+                  <Link to="/events-archive">Events Archive</Link>
+                </Tag>
+              </div>
+              <DesktopEventsArchive data={opheliaData} />
+              <MobileEventsArchive data={pandoraData1} style={{ padding: 0 }} />
             </div>
-            <DesktopEventsArchive data={opheliaData} />
-            <MobileEventsArchive data={pandoraData1} style={{ padding: 0 }} />
             {events.featuredEvents.length === 0 && (
               <Fragment>
                 <br />

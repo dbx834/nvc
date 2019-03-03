@@ -6,12 +6,16 @@ import React from 'react'
 import { css } from 'glamor'
 import map from 'lodash/map'
 import pick from 'lodash/pick'
+import isUndefined from 'lodash/isUndefined'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Image from '@bodhi-project/components/lib/Image'
+import Video from '@bodhi-project/components/lib/Video'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import Link from '../Link'
+
+import keygen from '../../methods/keygen'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 // const { Fragment } = React
@@ -133,26 +137,30 @@ class LearnMore extends React.Component {
           Further Links…
         </p>
         <div id="learn-more" className={style}>
-          {map(data, ({ linkTo, title, image }, index) => {
+          {map(data, ({ linkTo, title, image, video }) => {
             return (
-              <div className="hex" key={`${linkTo}-${index}`}>
-                <Link to={linkTo}>
-                  <Image
-                    src={image}
-                    rawWidth={1440}
-                    rawHeight={900}
-                    style={{
-                      height: 'auto',
-                      width: '100%',
-                      border: 0,
-                      background: '#4a4a4a',
-                    }}
-                    alt={title}
-                  />
-                  <p>
-                    <span>{title}</span>
-                  </p>
-                </Link>
+              <div className="hex" key={keygen()}>
+                {isUndefined(video) ? (
+                  <Link to={linkTo}>
+                    <Image
+                      src={image}
+                      rawWidth={1440}
+                      rawHeight={900}
+                      style={{
+                        height: 'auto',
+                        width: '100%',
+                        border: 0,
+                        background: '#4a4a4a',
+                      }}
+                      alt={title}
+                    />
+                    <p>
+                      <span>{title}</span>
+                    </p>
+                  </Link>
+                ) : (
+                  <Video url={video} />
+                )}
               </div>
             )
           })}

@@ -154,8 +154,9 @@ class EventsAndCalendar extends React.Component {
               Below you’ll find a listing of our upcoming NVC Workshops and RC
               Workshops, as well as any other special events we host, in
               Auroville and in other cities across India. Please register now if
-              you’d like to attend any of these events, or contact us to
-              organize an event in your city.
+              you’d like to attend any of these events, or{' '}
+              <Link to="/contact-us">contact us</Link> to organize an event in
+              your city.
             </p>
             <div style={{ position: 'relative' }}>
               <div className="mask-p top-link">

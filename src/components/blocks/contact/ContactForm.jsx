@@ -122,7 +122,7 @@ class IndexPage extends React.Component {
 
     return (
       <div className={pageWrapperClass}>
-        <h1>Contact</h1>
+        <h1>Contact Us</h1>
         {this.state.formSent === false && (
           <Form
             onSubmit={this.handleSubmit}

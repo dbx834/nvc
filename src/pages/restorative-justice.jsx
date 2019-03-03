@@ -14,7 +14,7 @@ import pick from 'lodash/pick'
 // import ContainerDimensions from "react-container-dimensions";
 import FacebookWall from '../components/FacebookWall'
 
-// import Image from '@bodhi-project/components/lib/Image'
+import Image from '@bodhi-project/components/lib/Image'
 // import OutLink from "@bodhi-project/components/lib/OutLink";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
@@ -70,6 +70,22 @@ class NVCPage extends React.PureComponent {
               an alternative justice system in Auroville based on the principles
               that underlie NVC-consciousness.
             </p>
+            <div className="margin-p">
+              <Link
+                to="https://www.restorativeauroville.org/"
+                style={{ display: 'block' }}
+              >
+                <Image
+                  src="/assets/rc-banner.png"
+                  rawWidth={1440}
+                  rawHeight={900}
+                  style={{
+                    border: 'none',
+                    background: 'none',
+                  }}
+                />
+              </Link>
+            </div>
             <p>
               Our project,{' '}
               <Link to="https://www.restorativeauroville.org/">
@@ -85,7 +101,7 @@ class NVCPage extends React.PureComponent {
           </Copy>
           <Copy>
             <FacebookWall
-              url="https://www.facebook.com/RestorativeAuroville/"
+              wallUrl="https://www.facebook.com/RestorativeAuroville/"
               title="Restorative Auroville on Facebook"
             />
           </Copy>

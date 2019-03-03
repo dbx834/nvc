@@ -144,30 +144,21 @@ class IndexPage extends React.Component {
             style={{ marginTop: 0 }}
           >
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Name */}
-            <FormItem
-              validateStatus={nameError ? 'error' : ''}
-              help={nameError || ''}
-            >
+            <FormItem validateStatus={nameError ? 'error' : ''} help="">
               {getFieldDecorator('name', {
                 validateTrigger: ['onChange', 'onBlur'],
                 rules: [{ validator: validateName }],
               })(<Input placeholder="Name" />)}
             </FormItem>
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
-            <FormItem
-              validateStatus={emailError ? 'error' : ''}
-              help={emailError || ''}
-            >
+            <FormItem validateStatus={emailError ? 'error' : ''} help="">
               {getFieldDecorator('email', {
                 validateTrigger: ['onChange', 'onBlur'],
                 rules: [{ validator: validateEmail }],
               })(<Input placeholder="Email" />)}
             </FormItem>
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment */}
-            <FormItem
-              validateStatus={commentError ? 'error' : ''}
-              help={commentError || ''}
-            >
+            <FormItem validateStatus={commentError ? 'error' : ''} help="">
               {getFieldDecorator('comment', {
                 validateTrigger: ['onChange', 'onBlur'],
                 rules: [{ validator: validateComment }],

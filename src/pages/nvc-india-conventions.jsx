@@ -91,6 +91,7 @@ class NVCPage extends React.PureComponent {
                 Learning Foundation, Kochi)
               </li>
             </ul>
+            <br />
             <p>See some videos here:</p>
             <p>
               <Link to="https://www.youtube.com/playlist?list=PLQbEiEQu-L1aAVLwNAso3Ip3aoq8EL-O5">
@@ -102,6 +103,7 @@ class NVCPage extends React.PureComponent {
                 <Icon type="youtube" /> 2011 Pondicherry & 2012 Orissa
               </Link>
             </p>
+            <br />
             <p>
               From 2014 onwards, the NVC India Conventions have been organized
               by the “Prep Team,” a group of NVC India Practitioners.
@@ -110,7 +112,7 @@ class NVCPage extends React.PureComponent {
           <Copy>
             <FacebookGroup
               groupUrl="https://www.facebook.com/groups/nvc.india/"
-              title="NVC India group on Facebook"
+              title="NVC India Group on Facebook"
             />
           </Copy>
         </StandardDiv>

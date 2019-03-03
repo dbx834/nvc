@@ -58,8 +58,8 @@ const styles = css({
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
-/** LearnMore */
-class LearnMore extends React.Component {
+/** Donate */
+class Donate extends React.Component {
   /** standard renderer */
   render() {
     return (
@@ -100,9 +100,9 @@ class LearnMore extends React.Component {
   }
 }
 
-LearnMore.propTypes = {}
+Donate.propTypes = {}
 
 // ----------------------------------------------------------------------------
 // -------------------------------------------------------------------- Exports
 // ----------------------------------------------------------------------------
-export default LearnMore
+export default Donate

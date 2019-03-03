@@ -11,6 +11,7 @@ import pick from 'lodash/pick'
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Image from '@bodhi-project/components/lib/Image'
 import Video from '@bodhi-project/components/lib/Video'
+import FurtherLinks from '@bodhi-project/components/lib/FurtherLinks'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import Copy from '../components/Copy'
@@ -19,7 +20,6 @@ import StandardDiv from '../components/StandardDiv'
 import StandardPage from '../components/wrappers/StandardPage'
 
 import Link from '../components/Link'
-import LearnMore from '../components/blocks/LearnMore'
 
 import seoHelper from '../methods/seoHelper'
 
@@ -39,7 +39,7 @@ const seoData = seoHelper(pageData)
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------- Data
 // ----------------------------------------------------------------------------
-const learnMoreData = [
+const furtherLinksData = [
   {
     linkTo: '/writings/restorative-circles-in-auroville',
     title: 'Restorative Circles in Auroville',
@@ -124,7 +124,12 @@ const RCPage = props => {
               paddingTop: 20,
             }}
           />
-          <LearnMore data={learnMoreData} className="desktop-only" />
+          <FurtherLinks
+            data={furtherLinksData}
+            className="desktop-only"
+            title="Further Links"
+            titleClass="mask-h3"
+          />
         </Copy>
         <Copy>
           <h2 className="mask-p" style={{ marginBottom: 10 }}>
@@ -234,7 +239,12 @@ const RCPage = props => {
               </small>
             </p>
             <hr />
-            <LearnMore data={learnMoreData} className="mobile-only" />
+            <FurtherLinks
+              data={furtherLinksData}
+              className="mobile-only"
+              title="Further Links"
+              titleClass="mask-h3"
+            />
           </div>
         </Copy>
       </StandardDiv>

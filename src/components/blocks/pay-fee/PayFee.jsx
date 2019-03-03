@@ -48,8 +48,8 @@ const styles = css({
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
-/** LearnMore */
-class LearnMore extends React.Component {
+/** PayFee */
+class PayFee extends React.Component {
   /** standard renderer */
   render() {
     return (
@@ -128,9 +128,9 @@ class LearnMore extends React.Component {
   }
 }
 
-LearnMore.propTypes = {}
+PayFee.propTypes = {}
 
 // ----------------------------------------------------------------------------
 // -------------------------------------------------------------------- Exports
 // ----------------------------------------------------------------------------
-export default LearnMore
+export default PayFee

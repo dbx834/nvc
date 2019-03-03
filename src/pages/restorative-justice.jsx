@@ -66,9 +66,9 @@ class NVCPage extends React.PureComponent {
             <p>
               The Restorative Justice movement has been gaining more and more
               attention around the world as a credible and powerful response to
-              conflict. And in our little way, we are working towards building
-              an alternative justice system in Auroville based on the principles
-              that underlie NVC-consciousness.
+              conflict. And in our own little way, we are working towards
+              building an alternative justice system in Auroville based on the
+              principles that underlie NVC-consciousness.
             </p>
             <div className="margin-p">
               <Link

@@ -9,14 +9,15 @@ import { css } from 'glamor'
 import pick from 'lodash/pick'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
+import Image from '@bodhi-project/components/lib/Image'
+import FurtherLinks from '@bodhi-project/components/lib/FurtherLinks'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import HomePage from '../components/wrappers/HomePage'
 import Copy from '../components/Copy'
+import Link from '../components/Link'
 import PageHeader from '../components/PageHeader'
 import StandardDiv from '../components/StandardDiv'
-
-import LearnMore from '../components/blocks/LearnMore'
 
 import VisionMissionEtc from '../components/blocks/homepage/VisionMissionEtc'
 import Slider from '../components/blocks/homepage/Slider'
@@ -44,7 +45,7 @@ const pageData = {
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------- Data
 // ----------------------------------------------------------------------------
-const learnMoreData = [
+const furtherLinksData = [
   {
     linkTo: '/writings/nonviolent-communication-and-restorative-circles',
     title: 'Nonviolent Communication & Restorative Circles',
@@ -66,17 +67,6 @@ const learnMoreData = [
     linkTo: '/writings/cross-cultural-dialogue',
     title: 'Cross-Cultural Dialogue',
     image: '/content-assets/covers/cross-cultural-dialogue.jpg',
-  },
-  {
-    linkTo: '/writings/passivity-on-the-plane',
-    title: 'Passivity on the Plane',
-    image:
-      'https://images.unsplash.com/photo-1453825517242-1a1527bf0a39?ixlib=rb-0.3.5&s=c97b93f170796ae2e043e971633901f1&auto=format&fit=crop&w=1440&h=900',
-  },
-  {
-    linkTo: '/writings/ego',
-    title: 'ego',
-    image: '/content-assets/covers/ego.jpg',
   },
 ]
 
@@ -114,7 +104,45 @@ const IndexPage = props => {
         <Copy>
           <VisionMissionEtc />
           <Slider />
-          <LearnMore data={learnMoreData} className="desktop-only" />
+          <FurtherLinks
+            data={furtherLinksData}
+            className="desktop-only"
+            Link={Link}
+            title="Further Links"
+            titleClass="mask-h3"
+          />
+          <br />
+          <h2 className="mask-h3" style={{ marginTop: 0 }}>
+            Our Projects
+          </h2>
+          <div className="margin-p">
+            <Link
+              to="https://www.restorativeauroville.org/"
+              style={{ display: 'block' }}
+            >
+              <Image
+                src="/assets/rc-banner.png"
+                rawWidth={1440}
+                rawHeight={900}
+                style={{
+                  border: 'none',
+                  background: 'none',
+                }}
+              />
+            </Link>
+          </div>
+          <p>
+            Our project,{' '}
+            <Link to="https://www.restorativeauroville.org/">
+              Restorative Auroville
+            </Link>
+            , aims to bring the practice of Restorative Circles, a holistic,
+            community-based form of conflict resolution, to Auroville, and to
+            explore what a consciously designed justice system could look like
+            here – one that reflects our ideals, but that is also effective and
+            has the power to bring about constructive change, both on the
+            individual and community levels.
+          </p>
         </Copy>
         <Copy>
           <About />
@@ -125,7 +153,12 @@ const IndexPage = props => {
           <FacebookWall />
           <div className="mobile-only">
             <hr />
-            <LearnMore data={learnMoreData} />
+            <FurtherLinks
+              data={furtherLinksData}
+              Link={Link}
+              title="Further Links"
+              titleClass="mask-h3"
+            />
           </div>
         </Copy>
       </StandardDiv>

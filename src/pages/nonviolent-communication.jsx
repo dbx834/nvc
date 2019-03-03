@@ -11,6 +11,7 @@ import pick from 'lodash/pick'
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Image from '@bodhi-project/components/lib/Image'
 import Video from '@bodhi-project/components/lib/Video'
+import FurtherLinks from '@bodhi-project/components/lib/FurtherLinks'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import Copy from '../components/Copy'
@@ -20,7 +21,6 @@ import StandardPage from '../components/wrappers/StandardPage'
 
 import Link from '../components/Link'
 import seoHelper from '../methods/seoHelper'
-import LearnMore from '../components/blocks/LearnMore'
 
 import nvcTreeOfLife from '../assets/covers/nvcTreeOfLife.jpg'
 
@@ -30,7 +30,7 @@ import nvcTreeOfLife from '../assets/covers/nvcTreeOfLife.jpg'
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------- Data
 // ----------------------------------------------------------------------------
-const learnMoreData = [
+const furtherLinksData = [
   {
     linkTo: '/writings/embracing-interdependence-with-nonviolent-communication',
     title: 'Embracing Interdependence with Nonviolent Communication',
@@ -131,7 +131,12 @@ const NVCPage = props => {
             [Source:&nbsp;
             <Link to="http://www.cnvc.org/">Marshall Rosenberg and CNVC</Link>]
           </p>
-          <LearnMore data={learnMoreData} className="desktop-only" />
+          <FurtherLinks
+            data={furtherLinksData}
+            className="desktop-only"
+            title="Further Links"
+            titleClass="mask-h3"
+          />
         </Copy>
         <Copy>
           <h2 className="mask-p" style={{ marginBottom: 11 }}>

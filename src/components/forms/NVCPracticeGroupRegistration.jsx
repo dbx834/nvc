@@ -319,10 +319,7 @@ class NVCPracticeGroupSide extends React.Component {
                     className={`${formStyle} mask-p`}
                   >
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Name */}
-                    <FormItem
-                      validateStatus={nameError ? 'error' : ''}
-                      help={nameError || ''}
-                    >
+                    <FormItem validateStatus={nameError ? 'error' : ''} help="">
                       {getFieldDecorator('name', {
                         validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateName }],
@@ -331,7 +328,7 @@ class NVCPracticeGroupSide extends React.Component {
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
                     <FormItem
                       validateStatus={emailError ? 'error' : ''}
-                      help={emailError || ''}
+                      help=""
                     >
                       {getFieldDecorator('email', {
                         validateTrigger: ['onChange', 'onBlur'],
@@ -341,7 +338,7 @@ class NVCPracticeGroupSide extends React.Component {
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mobile */}
                     <FormItem
                       validateStatus={mobileError ? 'error' : ''}
-                      help={mobileError || ''}
+                      help=""
                     >
                       {getFieldDecorator('mobile', {
                         validateTrigger: ['onChange', 'onBlur'],
@@ -351,7 +348,7 @@ class NVCPracticeGroupSide extends React.Component {
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Country Selection */}
                     <FormItem
                       validateStatus={countryError ? 'error' : ''}
-                      help={countryError || ''}
+                      help=""
                     >
                       {getFieldDecorator('country', {
                         validateTrigger: ['onChange', 'onBlur'],
@@ -363,7 +360,7 @@ class NVCPracticeGroupSide extends React.Component {
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Location */}
                     <FormItem
                       validateStatus={currentLocationError ? 'error' : ''}
-                      help={currentLocationError || ''}
+                      help=""
                     >
                       {getFieldDecorator('currentLocation', {
                         validateTrigger: ['onChange', 'onBlur'],
@@ -375,7 +372,7 @@ class NVCPracticeGroupSide extends React.Component {
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ What Draws You */}
                     <FormItem
                       validateStatus={whatDrawsYouError ? 'error' : ''}
-                      help={whatDrawsYouError || ''}
+                      help=""
                     >
                       {getFieldDecorator('whatDrawsYou', {
                         validateTrigger: ['onChange', 'onBlur'],
@@ -394,7 +391,7 @@ class NVCPracticeGroupSide extends React.Component {
                     </span>
                     <FormItem
                       validateStatus={experienceError ? 'error' : ''}
-                      help={experienceError || ''}
+                      help=""
                     >
                       {getFieldDecorator('experience', {
                         validateTrigger: ['onChange', 'onBlur'],
@@ -435,7 +432,7 @@ class NVCPracticeGroupSide extends React.Component {
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Journey */}
                     <FormItem
                       validateStatus={journeyError ? 'error' : ''}
-                      help={journeyError || ''}
+                      help=""
                     >
                       {getFieldDecorator('journey', {
                         validateTrigger: ['onChange', 'onBlur'],
@@ -455,7 +452,7 @@ class NVCPracticeGroupSide extends React.Component {
                     </span>
                     <FormItem
                       validateStatus={wouldLikeInfoError ? 'error' : ''}
-                      help={wouldLikeInfoError || ''}
+                      help=""
                     >
                       {getFieldDecorator('wouldLikeInfo', {
                         validateTrigger: ['onChange', 'onBlur'],
@@ -482,7 +479,7 @@ class NVCPracticeGroupSide extends React.Component {
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment */}
                     <FormItem
                       validateStatus={commentError ? 'error' : ''}
-                      help={commentError || ''}
+                      help=""
                     >
                       {getFieldDecorator('comment', {
                         validateTrigger: ['onChange', 'onBlur'],
@@ -498,7 +495,7 @@ class NVCPracticeGroupSide extends React.Component {
                     <div style={{ display: 'none' }}>
                       <FormItem
                         validateStatus={eventError ? 'error' : ''}
-                        help={eventError || ''}
+                        help=""
                       >
                         {getFieldDecorator('event', {
                           initialValue: key,

@@ -130,40 +130,28 @@ class Component extends React.Component {
         {this.state.formSent === false && (
           <Form onSubmit={this.handleSubmit} className={formStyle}>
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Name */}
-            <FormItem
-              validateStatus={nameError ? 'error' : ''}
-              help={nameError || ''}
-            >
+            <FormItem validateStatus={nameError ? 'error' : ''} help="">
               {getFieldDecorator('name', {
                 validateTrigger: ['onChange', 'onBlur'],
                 rules: [{ validator: validateName }],
               })(<Input placeholder="Name" />)}
             </FormItem>
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
-            <FormItem
-              validateStatus={emailError ? 'error' : ''}
-              help={emailError || ''}
-            >
+            <FormItem validateStatus={emailError ? 'error' : ''} help="">
               {getFieldDecorator('email', {
                 validateTrigger: ['onChange', 'onBlur'],
                 rules: [{ validator: validateEmail }],
               })(<Input placeholder="Email" />)}
             </FormItem>
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mobile */}
-            <FormItem
-              validateStatus={mobileError ? 'error' : ''}
-              help={mobileError || ''}
-            >
+            <FormItem validateStatus={mobileError ? 'error' : ''} help="">
               {getFieldDecorator('mobile', {
                 validateTrigger: ['onChange', 'onBlur'],
                 rules: [{ validator: validateEmail }],
               })(<Input placeholder="Mobile / Whatsapp" />)}
             </FormItem>
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Country Selection */}
-            <FormItem
-              validateStatus={countryError ? 'error' : ''}
-              help={countryError || ''}
-            >
+            <FormItem validateStatus={countryError ? 'error' : ''} help="">
               {getFieldDecorator('country', {
                 validateTrigger: ['onChange', 'onBlur'],
                 rules: [{ validator: validateName }],
@@ -172,7 +160,7 @@ class Component extends React.Component {
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Location */}
             <FormItem
               validateStatus={currentLocationError ? 'error' : ''}
-              help={currentLocationError || ''}
+              help=""
             >
               {getFieldDecorator('currentLocation', {
                 validateTrigger: ['onChange', 'onBlur'],
@@ -180,10 +168,7 @@ class Component extends React.Component {
               })(<Input placeholder="Where are you living presently?" />)}
             </FormItem>
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment */}
-            <FormItem
-              validateStatus={commentError ? 'error' : ''}
-              help={commentError || ''}
-            >
+            <FormItem validateStatus={commentError ? 'error' : ''} help="">
               {getFieldDecorator('comment', {
                 validateTrigger: ['onChange', 'onBlur'],
                 rules: [{ validator: validateComment }],
@@ -195,10 +180,7 @@ class Component extends React.Component {
               )}
             </FormItem>
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ What Draws You */}
-            <FormItem
-              validateStatus={whatDrawsYouError ? 'error' : ''}
-              help={whatDrawsYouError || ''}
-            >
+            <FormItem validateStatus={whatDrawsYouError ? 'error' : ''} help="">
               {getFieldDecorator('whatDrawsYou', {
                 validateTrigger: ['onChange', 'onBlur'],
                 rules: [{ validator: validateComment }],
@@ -211,10 +193,7 @@ class Component extends React.Component {
             </FormItem>
             {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Event Selection */}
             <div style={{ display: 'none' }}>
-              <FormItem
-                validateStatus={eventError ? 'error' : ''}
-                help={eventError || ''}
-              >
+              <FormItem validateStatus={eventError ? 'error' : ''} help="">
                 {getFieldDecorator('event', {
                   initialValue: this.props.event.key,
                   rules: [

@@ -68,46 +68,50 @@ class NVCPage extends React.PureComponent {
         />
         <StandardDiv rightLine={false}>
           <Copy>
-            <p>
-              In collaboration with the “Institute of Nonviolent Communication
-              in India (INVCI),” L’aura and Joy Living Learning hosted the first
-              several NVC India Conventions:
-            </p>
-            <ul
-              className="mask-p"
-              style={{ paddingLeft: 0, listStyle: 'none' }}
-            >
-              <li>
-                <strong>2010</strong>: Rishikesh
-              </li>
-              <li>
-                <strong>2011</strong>: Pondicherry
-              </li>
-              <li>
-                <strong>2012</strong>: Orissa
-              </li>
-              <li>
-                <strong>2013</strong>: Kochi (in collaboration with Lifelong
-                Learning Foundation, Kochi)
-              </li>
-            </ul>
-            <br />
-            <p>See some videos here:</p>
-            <p>
-              <Link to="https://www.youtube.com/playlist?list=PLQbEiEQu-L1aAVLwNAso3Ip3aoq8EL-O5">
-                <Icon type="youtube" /> 2010 Rishikesh
-              </Link>
-            </p>
-            <p>
-              <Link to="https://www.youtube.com/user/infoinvci/videos">
-                <Icon type="youtube" /> 2011 Pondicherry & 2012 Orissa
-              </Link>
-            </p>
-            <br />
-            <p>
-              From 2014 onwards, the NVC India Conventions have been organized
-              by the “Prep Team,” a group of NVC India Practitioners.
-            </p>
+            <div>
+              <p>
+                In collaboration with the “Institute of Nonviolent Communication
+                in India (INVCI),” L’aura and Joy Living Learning hosted the
+                first several NVC India Conventions:
+              </p>
+              <ul
+                className="mask-p"
+                style={{ paddingLeft: 0, listStyle: 'none', marginBottom: 20 }}
+              >
+                <li>
+                  <strong>2010</strong>: Rishikesh
+                </li>
+                <li>
+                  <strong>2011</strong>: Pondicherry
+                </li>
+                <li>
+                  <strong>2012</strong>: Orissa
+                </li>
+                <li>
+                  <strong>2013</strong>: Kochi (in collaboration with Lifelong
+                  Learning Foundation, Kochi)
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p>See some videos here:</p>
+              <p>
+                <Link to="https://www.youtube.com/playlist?list=PLQbEiEQu-L1aAVLwNAso3Ip3aoq8EL-O5">
+                  <Icon type="youtube" /> 2010 Rishikesh
+                </Link>
+              </p>
+              <p style={{ marginBottom: 20 }}>
+                <Link to="https://www.youtube.com/user/infoinvci/videos">
+                  <Icon type="youtube" /> 2011 Pondicherry & 2012 Orissa
+                </Link>
+              </p>
+            </div>
+            <div>
+              <p style={{ marginBottom: 20 }}>
+                From 2014 onwards, the NVC India Conventions have been organized
+                by the “Prep Team,” a group of NVC India Practitioners.
+              </p>
+            </div>
           </Copy>
           <Copy>
             <FacebookGroup

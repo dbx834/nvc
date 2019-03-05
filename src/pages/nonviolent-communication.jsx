@@ -38,7 +38,10 @@ const furtherLinksData = [
       '/content-assets/covers/embracing-interdependence-with-nonviolent-communication.jpg',
   },
   {
-    video: 'https://www.youtube.com/watch?v=Kler8yy4OUc',
+    linkTo: '/writings/what-does-nvc-mean-to-you',
+    title: 'Embracing Interdependence with Nonviolent Communication',
+    image:
+      'https://images.unsplash.com/photo-1518983498539-c6e66c62f6b3?ixlib=rb-0.3.5&s=580f065422952f086541ba61e8ae5304&auto=format&fit=crop&w=1440&h=900',
   },
 ]
 
@@ -185,6 +188,16 @@ const NVCPage = props => {
               <br />~ <strong>Marshall B. Rosenberg, Phd</strong>
             </span>
           </p>
+          <hr />
+          <h2 className="mask-p" style={{ marginBottom: 11 }}>
+            Jonas shares about his experience with NVC…
+          </h2>
+          <Video
+            url="https://www.youtube.com/watch?v=Kler8yy4OUc"
+            style={{
+              marginBottom: 17,
+            }}
+          />
           <hr />
           <h2 className="mask-p" style={{ marginBottom: 5 }}>
             A Participant Shares...

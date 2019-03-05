@@ -10,6 +10,11 @@ import pick from 'lodash/pick'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Image from '@bodhi-project/components/lib/Image'
+
+import Division from '@bodhi-project/components/lib/Division'
+import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/row/style/css'
+import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/col/style/css'
+
 import FurtherLinks from '@bodhi-project/components/lib/FurtherLinks'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
@@ -112,37 +117,42 @@ const IndexPage = props => {
             titleClass="mask-h3"
           />
           <br />
+          <br />
           <h2 className="mask-h3" style={{ marginTop: 0 }}>
-            Our Projects
+            Applied NVC in Action
           </h2>
-          <div className="margin-p">
-            <Link
-              to="https://www.restorativeauroville.org/"
-              style={{ display: 'block' }}
-            >
-              <Image
-                src="/assets/rc-banner.png"
-                rawWidth={1440}
-                rawHeight={900}
-                style={{
-                  border: 'none',
-                  background: 'none',
-                }}
-              />
-            </Link>
-          </div>
-          <p>
-            Our project,{' '}
-            <Link to="https://www.restorativeauroville.org/">
-              Restorative Auroville
-            </Link>
-            , aims to bring the practice of Restorative Circles, a holistic,
-            community-based form of conflict resolution, to Auroville, and to
-            explore what a consciously designed justice system could look like
-            here – one that reflects our ideals, but that is also effective and
-            has the power to bring about constructive change, both on the
-            individual and community levels.
-          </p>
+          <Division golden>
+            <div>
+              <Link
+                to="https://www.restorativeauroville.org/"
+                style={{ display: 'block' }}
+              >
+                <Image
+                  src="/assets/rc-banner.png"
+                  rawWidth={1440}
+                  rawHeight={900}
+                  style={{
+                    border: 'none',
+                    background: 'none',
+                  }}
+                />
+              </Link>
+            </div>
+            <div>
+              <p>
+                We are working towards building an alternative justice system in
+                Auroville based on the principles that underlie
+                NVC-consciousness. Our project,
+                <Link to="https://www.restorativeauroville.org/">
+                  Restorative Auroville
+                </Link>
+                , aims to bring the practice of Restorative Circles, a holistic,
+                community-based form of conflict resolution, to Auroville, and
+                to explore what a consciously designed justice system could look
+                like.
+              </p>
+            </div>
+          </Division>
         </Copy>
         <Copy>
           <About />

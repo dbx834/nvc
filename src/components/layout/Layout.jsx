@@ -176,7 +176,7 @@ class Layout extends React.Component {
     return (
       <SizesProvider config={sizesConfig}>
         <Type
-          kit="dkc2ilk"
+          kit="jdd4npp"
           style={{ minHeight: '100vh' }}
           className={pageStyles}
           options={{

@@ -118,13 +118,17 @@ class MobileNav extends React.Component {
             padding: 0,
           }}
         >
-          <nav style={{ marginTop: 20, height: '100%' }}>
-            <ul>
+          <nav style={{ height: '100%' }}>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
               {map(websiteMenu, topLevel => {
                 const { title, menu } = topLevel
                 return (
                   <Fragment key={keygen()}>
-                    <li className="header" key={title}>
+                    <li
+                      className="header"
+                      key={title}
+                      style={{ marginTop: 10 }}
+                    >
                       <span>{title}</span>
                     </li>
                     {map(menu, subMenu => {

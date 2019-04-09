@@ -280,7 +280,7 @@ class DesktopNav extends React.Component {
             footer={[null, null]}
           >
             <Type
-              kit="dkc2ilk"
+              kit="jdd4npp"
               style={{
                 minWidth: '640px',
                 minHeight: '480px',

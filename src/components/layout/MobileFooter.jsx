@@ -59,7 +59,7 @@ const styles = css({
     zIndex: 1,
     top: -82,
 
-    '@media(min-width: 768px)': {
+    '@media(min-width: 992px)': {
       height: '120px !important',
       width: '120px !important',
       right: 54,

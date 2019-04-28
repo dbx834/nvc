@@ -79,8 +79,15 @@ const furtherLinksData = [
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 const style = css({
-  '& h1': {
+  '& main > header > h1': {
     textTransform: 'uppercase',
+
+    // '@media(min-width: 992px)': {
+    // },
+
+    '@media(max-width: 992px)': {
+      display: 'none',
+    },
   },
 }).toString()
 
@@ -161,15 +168,17 @@ const IndexPage = props => {
           <RCEvents data={events.RCEvents} />
           <Quotes />
           <FacebookWall />
-          <div className="mobile-only">
-            <hr />
-            <FurtherLinks
-              data={furtherLinksData}
-              Link={Link}
-              title="Further Links"
-              titleClass="mask-h3"
-            />
-          </div>
+          {/*
+            <div className="mobile-only">
+              <hr />
+              <FurtherLinks
+                data={furtherLinksData}
+                Link={Link}
+                title="Further Links"
+                titleClass="mask-h3"
+              />
+            </div>
+          */}
         </Copy>
       </StandardDiv>
     </HomePage>

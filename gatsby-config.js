@@ -42,6 +42,15 @@ module.exports = {
       resolve: `gatsby-plugin-offline`, // https://www.gatsbyjs.org/packages/gatsby-plugin-offline
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/images`,
+        name: 'images',
+      },
+    },
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    {
       resolve: `gatsby-plugin-webpack-bundle-analyzer`, // https://www.gatsbyjs.org/packages/gatsby-plugin-webpack-bundle-analyzer
       options: {
         // https://www.gatsbyjs.org/packages/gatsby-plugin-webpack-bundle-analyzer/?=#options

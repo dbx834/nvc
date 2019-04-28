@@ -60,7 +60,7 @@ const style = css({
     },
   },
 
-  '@media(max-width: 768px)': {
+  '@media(max-width: 992px)': {
     '& hr': {
       borderTop: '1.75px solid #B43808',
       marginBottom: 4,

@@ -49,14 +49,16 @@ const seoData = seoHelper(pageData)
 // ----------------------------------------------------------------------------
 const style = css({
   '& .ant-btn': {
-    color: '#ffffff !important',
+    backgroundColor: '#ffffff !important',
+    borderColor: '#ffffff !important',
+    color: '#b43808 !important',
   },
 
   '& .top-link': {
     position: 'relative',
     display: 'block',
 
-    '@media(min-width: 768px)': {
+    '@media(min-width: 992px)': {
       display: 'inline-block',
       marginBottom: 0,
       position: 'absolute',

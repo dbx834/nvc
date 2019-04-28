@@ -5,13 +5,10 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
 import { css } from 'glamor'
-
 import isNull from 'lodash/isNull'
-import pick from 'lodash/pick'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import { FacebookProvider, Like as FBLike } from 'react-facebook'
-import { Page } from '@bodhi-project/semantic-webflow'
 import {
   // --------------- Basic
   UpdateTitle,
@@ -75,7 +72,7 @@ const pageStyle = css({
   },
 
   '& .headings': {
-    '@media(max-width: 768px)': {
+    '@media(max-width: 992px)': {
       display: 'block',
     },
 
@@ -87,7 +84,7 @@ const pageStyle = css({
     '& .banner': {
       flex: '7 1 0%',
 
-      '@media(max-width: 768px)': {
+      '@media(max-width: 992px)': {
         marginBottom: 10,
       },
     },
@@ -142,7 +139,7 @@ const BlogPostWrapper = ({ pageData, className, children, ...props }) => {
     : { nakedPageSlug: prev.fields.route }
 
   return (
-    <Layout {...pick(props, ['location'])}>
+    <Layout {...props} className={`${pageStyles} ${className}`}>
       {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
       <UpdateTitle title={pageTitle} />
       <GeneralMeta data={generalMetaData} />
@@ -151,82 +148,78 @@ const BlogPostWrapper = ({ pageData, className, children, ...props }) => {
       <WebpageSchema data={webpageSchemaData} />
       <BreadcrumbSchema data={breadcrumbSchemaData} />
       <BlogPostSchema data={blogPageSchemaData} />
-
-      {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
-      <Page className={`${pageStyles} ${className}`}>
-        <StandardDiv leftLine={false} rightLine={false}>
-          <Copy>
-            <article>
-              <header className="headings">
-                <div className="banner">
-                  <Image
-                    src={frontmatter.cover}
-                    rawWidth={1440}
-                    rawHeight={900}
-                    loader="gradient"
-                    style={{ border: 0, height: 'auto !important' }}
-                  />
-                </div>
-                <div className="abstract">
-                  <h1 className="mask-h3" style={{ marginBottom: 5 }}>
-                    {frontmatter.title}
-                  </h1>
-                  <Tag>{catString}</Tag>
-                  <p style={{ marginBottom: 0 }}>
-                    <small>
-                      <i>
-                        {dateStr}&nbsp;({when})
-                      </i>
-                    </small>
-                    <br />
-                    <br />
-                    {frontmatter.abstract}
-                  </p>
+      <StandardDiv leftLine={false} rightLine={false}>
+        <Copy>
+          <article>
+            <header className="headings">
+              <div className="banner">
+                <Image
+                  src={frontmatter.cover}
+                  rawWidth={1440}
+                  rawHeight={900}
+                  loader="gradient"
+                  style={{ border: 0, height: 'auto !important' }}
+                />
+              </div>
+              <div className="abstract">
+                <h1 className="mask-h3" style={{ marginBottom: 5 }}>
+                  {frontmatter.title}
+                </h1>
+                <Tag>{catString}</Tag>
+                <p style={{ marginBottom: 0 }}>
+                  <small>
+                    <i>
+                      {dateStr}&nbsp;({when})
+                    </i>
+                  </small>
                   <br />
-                  <div style={{ position: 'relative' }}>
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 99,
-                        backgroundColor: '#f8f2e6',
-                        zIndex: 10,
-                        height: 20,
-                        width: 'calc(100% - 96px)',
-                      }}
-                    />
-                    <div style={{ maxWidth: 96 }} id="fb">
-                      <FacebookProvider appId="218604115574634">
-                        <FBLike
-                          href={withUrl(route, data)}
-                          colorScheme="dark"
-                          showFaces
-                          share
-                        />
-                      </FacebookProvider>
-                    </div>
+                  <br />
+                  {frontmatter.abstract}
+                </p>
+                <br />
+                <div style={{ position: 'relative' }}>
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 99,
+                      backgroundColor: '#f8f2e6',
+                      zIndex: 10,
+                      height: 20,
+                      width: 'calc(100% - 96px)',
+                    }}
+                  />
+                  <div style={{ maxWidth: 96 }} id="fb">
+                    <FacebookProvider appId="218604115574634">
+                      <FBLike
+                        href={withUrl(route, data)}
+                        colorScheme="dark"
+                        showFaces
+                        share
+                      />
+                    </FacebookProvider>
                   </div>
                 </div>
-              </header>
-              <hr />
-              {children}
-              <aside>
-                <h1 className="mask-h4">More articles</h1>
-                <PreviousNext prev={prevData} next={nextData} />
-              </aside>
-            </article>
-          </Copy>
-          <Copy>
-            {randomBlock === 1 && <Block1 />}
-            {randomBlock === 2 && <Block2 />}
-            {randomBlock === 3 && <Block3 />}
-            {randomBlock === 4 && <Block4 />}
-            {randomBlock === 5 && <Block5 />}
-            {randomBlock === 6 && <Block6 />}
-            {randomBlock === 7 && <Block7 />}
-          </Copy>
-        </StandardDiv>
-      </Page>
+              </div>
+            </header>
+            <hr />
+            {children}
+            <aside>
+              <h1 className="mask-h4">More articles</h1>
+              <PreviousNext prev={prevData} next={nextData} />
+            </aside>
+          </article>
+        </Copy>
+        <Copy>
+          {randomBlock === 1 && <Block1 />}
+          {randomBlock === 2 && <Block2 />}
+          {randomBlock === 3 && <Block3 />}
+          {randomBlock === 4 && <Block4 />}
+          {randomBlock === 5 && <Block5 />}
+          {randomBlock === 6 && <Block6 />}
+          {randomBlock === 7 && <Block7 />}
+        </Copy>
+      </StandardDiv>
     </Layout>
   )
 }

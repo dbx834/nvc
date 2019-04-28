@@ -1,58 +1,87 @@
 [
+  { "title": "Home", "link": "/", "mobileOnly": true },
   {
     "title": "About",
+    "mobileOnly": false,
     "menu": [
-      { "title": "Joy Living Learning", "link": "/" },
-      { "title": "Restorative Justice", "link": "/restorative-justice" },
-      { "title": "L'aura Joy", "link": "/laura-joy" }
+      { "title": "Joy Living Learning", "link": "/", "mobileOnly": false },
+      {
+        "title": "Restorative Justice",
+        "link": "/restorative-justice",
+        "mobileOnly": false
+      },
+      { "title": "L'aura Joy", "link": "/laura-joy", "mobileOnly": false }
     ]
   },
   {
     "title": "Workshops & Facilitation",
+    "mobileOnly": false,
     "menu": [
       {
         "title": "Nonviolent Communication",
-        "link": "/nonviolent-communication"
+        "link": "/nonviolent-communication",
+        "mobileOnly": false
       },
       {
         "title": "Restorative Circles",
-        "link": "/restorative-circles"
+        "link": "/restorative-circles",
+        "mobileOnly": false
       },
       {
         "title": "Facilitated Spaces",
-        "link": "/facilitated-spaces"
+        "link": "/facilitated-spaces",
+        "mobileOnly": false
       }
     ]
   },
   {
     "title": "Learn",
+    "mobileOnly": false,
     "menu": [
       {
         "title": "Workshops & Events",
+        "mobileOnly": false,
         "link": "/nvc-workshops-and-events"
       },
-      { "title": "Calendar View", "link": "/calendar" },
+      { "title": "Calendar View", "mobileOnly": false, "link": "/calendar" },
       {
         "title": "Pay Fee",
         "link": "/pay-fee",
+        "mobileOnly": false,
         "renderInModal": true
       }
     ]
   },
   {
     "title": "More",
+    "mobileOnly": false,
     "menu": [
-      { "title": "Blog", "link": "/writings" },
-      { "title": "Gallery", "link": "/gallery" },
-      { "title": "Newsletter", "link": "/newsletter", "renderInModal": true },
-      { "title": "Contact Us", "link": "/contact-us", "renderInModal": true },
+      { "title": "Blog", "link": "/writings", "mobileOnly": false },
+      { "title": "Gallery", "link": "/gallery", "mobileOnly": false },
+      {
+        "title": "Newsletter",
+        "link": "/newsletter",
+        "renderInModal": true,
+        "mobileOnly": false
+      },
+      {
+        "title": "Contact Us",
+        "link": "/contact-us",
+        "renderInModal": true,
+        "mobileOnly": false
+      },
       {
         "title": "Donate",
         "link": "/donate",
-        "renderInModal": true
+        "renderInModal": true,
+        "mobileOnly": false
       },
-      { "title": "NVC In India", "link": "/nvc-india" },
-      { "title": "NVC Certification Info", "link": "/nvc-certification" }
+      { "title": "NVC In India", "link": "/nvc-india", "mobileOnly": false },
+      {
+        "title": "NVC Certification Info",
+        "link": "/nvc-certification",
+        "mobileOnly": false
+      }
     ]
   }
 ]

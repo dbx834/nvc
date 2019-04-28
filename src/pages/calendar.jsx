@@ -123,7 +123,9 @@ const style = css({
   position: 'relative',
 
   '& .ant-btn': {
-    color: '#ffffff !important',
+    backgroundColor: '#ffffff !important',
+    borderColor: '#ffffff !important',
+    color: '#b43808 !important',
   },
 
   '& .ant-fullcalendar-header': {

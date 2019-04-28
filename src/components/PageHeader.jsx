@@ -10,7 +10,7 @@ import isUndefined from 'lodash/isUndefined'
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
-// const { Fragment } = React
+const { Fragment } = React
 
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
@@ -20,8 +20,7 @@ const style = css({
     // padding: '0em 1.25rem',
 
     '& h1': {
-      marginBottom: 10,
-      marginTop: 25,
+      marginBottom: -10,
 
       '& span.home': {
         fontSize: '110%',
@@ -60,9 +59,11 @@ const PageHeader = ({
   return (
     <header className={style} id="page-header">
       {!isUndefined(title) && (
-        <h1>
-          <span className={home === true ? 'home' : ''}>{title}</span>
-        </h1>
+        <Fragment>
+          <h1>
+            <span className={home === true ? 'home' : ''}>{title}</span>
+          </h1>
+        </Fragment>
       )}
       {!isUndefined(subTitle) && (
         <h2 className={stashSubTitle === true ? 'stash' : ''}>

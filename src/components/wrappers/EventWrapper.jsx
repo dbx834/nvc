@@ -5,13 +5,10 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
 import { css } from 'glamor'
-
 import isNull from 'lodash/isNull'
-import pick from 'lodash/pick'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import { FacebookProvider, Like as FBLike } from 'react-facebook'
-import { Page } from '@bodhi-project/semantic-webflow'
 import {
   // --------------- Basic
   UpdateTitle,
@@ -52,10 +49,9 @@ const { Fragment } = React
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
-const style = css({
+const pageStyles = css({
   display: 'block',
   position: 'relative',
-  marginBottom: 60,
 
   '& #fb': {
     '& > div': {
@@ -74,7 +70,7 @@ const style = css({
   },
 
   '& .headings': {
-    '@media(max-width: 768px)': {
+    '@media(max-width: 992px)': {
       display: 'block',
     },
 
@@ -86,7 +82,7 @@ const style = css({
     '& .banner': {
       flex: '7 1 0%',
 
-      '@media(max-width: 768px)': {
+      '@media(max-width: 992px)': {
         marginBottom: 10,
       },
     },
@@ -143,7 +139,7 @@ const EventWrapper = props => {
     : { nakedPageSlug: prev.fields.route }
 
   return (
-    <Layout {...pick(props, ['location'])}>
+    <Layout {...props} className={`${pageStyles} ${className}`}>
       {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
       <UpdateTitle title={pageTitle} />
       <GeneralMeta data={generalMetaData} />
@@ -153,145 +149,141 @@ const EventWrapper = props => {
       <BreadcrumbSchema data={breadcrumbSchemaData} />
       <EventSchema data={eventSchemaData} />
 
-      {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
-      <Page className={`${style} ${className}`}>
-        <StandardDiv leftLine={false}>
-          <Copy>
-            <article>
-              <header className="headings">
-                <div className="banner">
-                  <Image
-                    src={eventBanner}
-                    rawWidth={1440}
-                    rawHeight={900}
-                    loader="gradient"
-                    style={{ border: 0 }}
-                  />
-                </div>
-                <div className="abstract">
-                  <h1 className="mask-h3" style={{ marginBottom: 5 }}>
-                    {frontmatter.title}
-                  </h1>
-                  <p style={{ marginTop: 0, marginBottom: 0 }}>
-                    {(inArray(tags, 'rc') && inArray(tags, 'practice-group')) ||
-                    (inArray(tags, 'nvc') &&
-                      inArray(tags, 'practice-group')) ? (
-                      <Fragment>
-                        <strong>
-                          {frontmatter.subTitle}
-                          &nbsp; • &nbsp;
-                          {fromTime}
-                          &nbsp;–&nbsp;
-                          {toTime}
-                        </strong>
-                        <br />
-                        <br />
-                      </Fragment>
-                    ) : (
-                      <Fragment>
-                        {frontmatter.subTitle !== 'na' && (
-                          <Fragment>
-                            <strong>{frontmatter.subTitle}</strong>
-                            <br />
-                            <br />
-                          </Fragment>
-                        )}
-                      </Fragment>
-                    )}
-                    <i>{humanDate}</i>
-                    <br />
-                    <i>
-                      {fromTime}
-                      &nbsp;-&nbsp;
-                      {toTime}
-                    </i>
-                  </p>
+      <StandardDiv leftLine={false}>
+        <Copy>
+          <article>
+            <header className="headings">
+              <div className="banner">
+                <Image
+                  src={eventBanner}
+                  rawWidth={1440}
+                  rawHeight={900}
+                  loader="gradient"
+                  style={{ border: 0 }}
+                />
+              </div>
+              <div className="abstract">
+                <h1 className="mask-h3" style={{ marginBottom: 5 }}>
+                  {frontmatter.title}
+                </h1>
+                <p style={{ marginTop: 0, marginBottom: 0 }}>
+                  {(inArray(tags, 'rc') && inArray(tags, 'practice-group')) ||
+                  (inArray(tags, 'nvc') && inArray(tags, 'practice-group')) ? (
+                    <Fragment>
+                      <strong>
+                        {frontmatter.subTitle}
+                        &nbsp; • &nbsp;
+                        {fromTime}
+                        &nbsp;–&nbsp;
+                        {toTime}
+                      </strong>
+                      <br />
+                      <br />
+                    </Fragment>
+                  ) : (
+                    <Fragment>
+                      {frontmatter.subTitle !== 'na' && (
+                        <Fragment>
+                          <strong>{frontmatter.subTitle}</strong>
+                          <br />
+                          <br />
+                        </Fragment>
+                      )}
+                    </Fragment>
+                  )}
+                  <i>{humanDate}</i>
                   <br />
-                  <div style={{ position: 'relative' }}>
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 99,
-                        backgroundColor: '#f8f2e6',
-                        zIndex: 10,
-                        height: 20,
-                        width: 'calc(100% - 96px)',
-                      }}
-                    />
-                    <div style={{ maxWidth: 96 }} id="fb">
-                      <FacebookProvider appId="218604115574634">
-                        <FBLike
-                          href={withUrl(route, data)}
-                          colorScheme="dark"
-                          showFaces
-                          share
-                        />
-                      </FacebookProvider>
-                    </div>
+                  <i>
+                    {fromTime}
+                    &nbsp;-&nbsp;
+                    {toTime}
+                  </i>
+                </p>
+                <br />
+                <div style={{ position: 'relative' }}>
+                  <div
+                    style={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 99,
+                      backgroundColor: '#f8f2e6',
+                      zIndex: 10,
+                      height: 20,
+                      width: 'calc(100% - 96px)',
+                    }}
+                  />
+                  <div style={{ maxWidth: 96 }} id="fb">
+                    <FacebookProvider appId="218604115574634">
+                      <FBLike
+                        href={withUrl(route, data)}
+                        colorScheme="dark"
+                        showFaces
+                        share
+                      />
+                    </FacebookProvider>
                   </div>
                 </div>
-              </header>
-              <hr />
-              {children}
-              <aside>
-                <h1 className="mask-h4">More events</h1>
-                <PreviousNext prev={prevData} next={nextData} />
-              </aside>
-            </article>
-          </Copy>
-          <Copy>
-            {!isNull(whichSide) && whichSide === 'rc-practice-group' && (
-              <RCPracticeGroupRegistration
-                data={frontmatter}
-                pathContext={pathContext}
-                showRegister={showRegister}
-                showPay={showPay}
-              />
-            )}
-            {!isNull(whichSide) && whichSide === 'nvc-practice-group' && (
-              <NVCPracticeGroupRegistration
-                data={frontmatter}
-                pathContext={pathContext}
-                showRegister={showRegister}
-                showPay={showPay}
-              />
-            )}
-            {!isNull(whichSide) && whichSide === 'rc-workshop' && (
-              <RCWorkshopRegistration
-                data={frontmatter}
-                pathContext={pathContext}
-                showRegister={showRegister}
-                showPay={showPay}
-              />
-            )}
-            {!isNull(whichSide) && whichSide === 'rc-workshop-featured' && (
-              <RCWorkshopFeaturedRegistration
-                data={frontmatter}
-                pathContext={pathContext}
-                showRegister={showRegister}
-                showPay={showPay}
-              />
-            )}
-            {!isNull(whichSide) && whichSide === 'nvc-workshop' && (
-              <NVCWorkshopRegistration
-                data={frontmatter}
-                pathContext={pathContext}
-                showRegister={showRegister}
-                showPay={showPay}
-              />
-            )}
-            {!isNull(whichSide) && whichSide === 'workshop' && (
-              <WorkshopRegistration
-                data={frontmatter}
-                pathContext={pathContext}
-                showRegister={showRegister}
-                showPay={showPay}
-              />
-            )}
-          </Copy>
-        </StandardDiv>
-      </Page>
+              </div>
+            </header>
+            <hr />
+            {children}
+            <aside>
+              <h1 className="mask-h4">More events</h1>
+              <PreviousNext prev={prevData} next={nextData} />
+            </aside>
+          </article>
+        </Copy>
+        <Copy>
+          {!isNull(whichSide) && whichSide === 'rc-practice-group' && (
+            <RCPracticeGroupRegistration
+              data={frontmatter}
+              pathContext={pathContext}
+              showRegister={showRegister}
+              showPay={showPay}
+            />
+          )}
+          {!isNull(whichSide) && whichSide === 'nvc-practice-group' && (
+            <NVCPracticeGroupRegistration
+              data={frontmatter}
+              pathContext={pathContext}
+              showRegister={showRegister}
+              showPay={showPay}
+            />
+          )}
+          {!isNull(whichSide) && whichSide === 'rc-workshop' && (
+            <RCWorkshopRegistration
+              data={frontmatter}
+              pathContext={pathContext}
+              showRegister={showRegister}
+              showPay={showPay}
+            />
+          )}
+          {!isNull(whichSide) && whichSide === 'rc-workshop-featured' && (
+            <RCWorkshopFeaturedRegistration
+              data={frontmatter}
+              pathContext={pathContext}
+              showRegister={showRegister}
+              showPay={showPay}
+            />
+          )}
+          {!isNull(whichSide) && whichSide === 'nvc-workshop' && (
+            <NVCWorkshopRegistration
+              data={frontmatter}
+              pathContext={pathContext}
+              showRegister={showRegister}
+              showPay={showPay}
+            />
+          )}
+          {!isNull(whichSide) && whichSide === 'workshop' && (
+            <WorkshopRegistration
+              data={frontmatter}
+              pathContext={pathContext}
+              showRegister={showRegister}
+              showPay={showPay}
+            />
+          )}
+        </Copy>
+      </StandardDiv>
     </Layout>
   )
 }

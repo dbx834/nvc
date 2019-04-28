@@ -124,6 +124,7 @@ const RCPage = props => {
               paddingTop: 20,
             }}
           />
+
           <FurtherLinks
             data={furtherLinksData}
             className="desktop-only"
@@ -238,13 +239,15 @@ const RCPage = props => {
                 </Link>
               </small>
             </p>
-            <hr />
+            {/*
+                <hr />
             <FurtherLinks
               data={furtherLinksData}
               className="mobile-only"
               title="Further Links"
               titleClass="mask-h3"
             />
+              */}
           </div>
         </Copy>
       </StandardDiv>

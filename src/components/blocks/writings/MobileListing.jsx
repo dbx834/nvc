@@ -77,8 +77,9 @@ const style = css({
   },
 
   '& .ant-btn-primary, .ant-btn': {
-    backgroundColor: '#b43808',
-    borderColor: '#ffffff',
+    backgroundColor: '#ffffff !important',
+    borderColor: '#ffffff !important',
+    color: '#b43808 !important',
 
     '& a': {
       color: '#ffffff !important',

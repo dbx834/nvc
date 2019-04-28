@@ -4,11 +4,8 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Libraries
 import React from 'react'
 import { css } from 'glamor'
-// import map from "lodash/map";
-import pick from 'lodash/pick'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import { Page } from '@bodhi-project/semantic-webflow'
 import {
   // --------------- Basic
   UpdateTitle,
@@ -34,7 +31,6 @@ import Layout from '../layout/Layout'
 const pageStyle = css({
   display: 'block',
   position: 'relative',
-  marginBottom: 60,
 })
 const pageStyles = pageStyle.toString()
 
@@ -54,17 +50,14 @@ const StandardPage = props => {
   } = seoData
 
   return (
-    <Layout {...pick(props, ['location'])}>
-      {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
+    <Layout {...props} className={`${pageStyles} ${className}`}>
       <UpdateTitle title={pageTitle} />
       <GeneralMeta data={generalMetaData} />
       <TwitterSummaryCard data={twitterSummaryCardData} />
       <OpenGraphSummary data={openGraphSummaryData} />
       <WebpageSchema data={webpageSchemaData} />
       <BreadcrumbSchema data={breadcrumbSchemaData} />
-
-      {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Content */}
-      <Page className={`${pageStyles} ${className}`}>{children}</Page>
+      {children}
     </Layout>
   )
 }

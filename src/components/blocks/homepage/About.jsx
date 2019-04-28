@@ -32,7 +32,7 @@ const style = css({
     zIndex: 1,
     top: -82,
 
-    '@media(min-width: 768px)': {
+    '@media(min-width: 992px)': {
       height: '125px !important',
       width: '170px !important',
       zIndex: 1,

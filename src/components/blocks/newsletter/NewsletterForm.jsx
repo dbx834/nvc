@@ -40,7 +40,7 @@ const pageWrapper = css({
     width: '100% !important',
   },
 
-  '@media(min-width: 768px)': {
+  '@media(min-width: 992px)': {
     '& .ant-form-item:nth-child(1)': {
       marginRight: '0px !important',
     },

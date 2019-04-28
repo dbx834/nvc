@@ -42,15 +42,18 @@ const pageStyle = css({
     width: '100% !important',
   },
 
-  '@media(min-width: 768px)': {
-    maxWidth: '60em',
+  '& main': {
+    '@media(min-width: 992px)': {
+      maxWidth: '60rem',
+      marginLeft: 'unset !important',
 
-    '& .ant-form-item:nth-child(1)': {
-      marginRight: '0px !important',
-    },
+      '& .ant-form-item:nth-child(1)': {
+        marginRight: '0px !important',
+      },
 
-    '& .ant-form-item:nth-child(2)': {
-      marginLeft: '0px !important',
+      '& .ant-form-item:nth-child(2)': {
+        marginLeft: '0px !important',
+      },
     },
   },
 }).toString()

@@ -6,37 +6,45 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { css } from 'glamor'
 import moment from 'moment'
+import { graphql } from 'gatsby'
 
-import pick from 'lodash/pick'
 import isUndefined from 'lodash/isUndefined'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import { SizesProvider } from 'react-sizes'
-import { Type } from '@bodhi-project/typography'
+import MediaQuery from 'react-responsive'
+import Typekit from 'react-typekit'
+import typefn from '@bodhi-project/typography/lib/methods/type'
 import {
   InitializeMeta,
   UpdateTitle,
   WebsiteSchema,
   OrganisationSchema,
 } from '@bodhi-project/seo'
-
-import Container from '@bodhi-project/components/lib/Container'
+import container from '@bodhi-project/components/lib/methods/container'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import '../../styles/index.less'
 import indexImage from '../../assets/launch.jpg'
 import data from '../../data/website.json'
 
-import DesktopNav from './DesktopNav'
-import DesktopFooter from './DesktopFooter'
-import MobileNav from './MobileNav'
-import MobileFooter from './MobileFooter'
+import Header from './Header'
+import Footer from './Footer'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
-const sizesConfig = {
-  fallbackWidth: 1280,
-  fallbackHeight: 700,
-}
+const { Fragment } = React
+// export const defaultImage = graphql`
+//   fragment defaultImage on File {
+//     childImageSharp {
+//       fluid(
+//         maxWidth: 2400
+//         quality: 80
+//         srcSetBreakpoints: [200, 400, 600, 800, 1000, 1200, 1600, 2000, 2400]
+//       ) {
+//         ...GatsbyImageSharpFluid_withWebp_tracedSVG
+//       }
+//     }
+//   }
+// `
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------- Global SEO
@@ -71,58 +79,94 @@ const organisationSchemaData = {
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
+const style = css({
+  '&#layout': {
+    minHeight: '100vh',
 
-const pageStyle = css({
-  '&#appWrapper': {
-    position: 'relative',
+    '@media(max-width: 992px)': {
+      display: 'block',
 
-    '& h1, h2, h3, h4, h5, h6, p, li': {
-      color: '#4a4a4a',
-    },
-
-    '& #content': {
-      marginLeft: 0,
-      padding: '2rem 0.5rem 2rem 2rem',
-
-      '@media(min-width: 992px)': {
-        padding: '2rem 2rem 7.5rem 2rem',
+      '& main': {
+        paddingTop: '1rem',
+        paddingBottom: '1rem',
       },
-    },
 
-    display: 'block',
-    backgroundImage: 'linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)',
-
-    '& #contentWrapper': {
-      backgroundColor: '#f8f2e6',
-      background: '#f8f2e6',
-      minHeight: '100vh',
+      '& > div': {
+        boxShadow: '0 0 5px rgba(0,0,0,.20)',
+        backgroundColor: '#f8f2e6',
+        paddingLeft: '1rem',
+        paddingRight: '1rem',
+      },
     },
 
     '@media(min-width: 992px)': {
       display: 'flex',
 
-      '& #menuWrapper': {
-        flexGrow: '19',
+      '& > div': {
+        flexGrow: 81,
         flexBasis: 0,
-        height: '100vh',
-      },
-
-      '& #contentWrapper': {
         boxShadow: '0 0 25px rgba(0,0,0,.11)',
-        flexGrow: '81',
-        flexBasis: 0,
         maxHeight: '100vh',
         overflowX: 'hidden',
         overflowY: 'scroll',
-        marginTop: 16,
-        borderTopLeftRadius: 16,
+        marginTop: '1rem',
+        borderTopLeftRadius: '1rem',
+        backgroundColor: '#f8f2e6',
+        padding: '2rem',
       },
+
+      '& main': {
+        marginBottom: '1rem',
+      },
+    },
+
+    backgroundImage: 'linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)',
+  },
+
+  '& main': {
+    '& .copy': {
+      maxWidth: '60rem',
     },
   },
 
-  '& #menuWrapper': {
-    zIndex: 1000,
+  '& h1, h2, h3, h4, h5, h6, p, li': {
+    color: '#4a4a4a',
   },
+
+  // '&#appWrapper': {
+  //   position: 'relative',
+
+  //   '& #contentWrapper': {
+  //     backgroundColor: '#f8f2e6',
+  //     background: '#f8f2e6',
+  //     minHeight: '100vh',
+  //   },
+
+  //   '@media(min-width: 992px)': {
+  //     display: 'flex',
+
+  //     '& #menuWrapper': {
+  //       flexGrow: '19',
+  //       flexBasis: 0,
+  //       height: '100vh',
+  //     },
+
+  //     '& #contentWrapper': {
+  //       boxShadow: '0 0 25px rgba(0,0,0,.11)',
+  //       flexGrow: '81',
+  //       flexBasis: 0,
+  //       maxHeight: '100vh',
+  //       overflowX: 'hidden',
+  //       overflowY: 'scroll',
+  //       marginTop: 16,
+  //       borderTopLeftRadius: 16,
+  //     },
+  //   },
+  // },
+
+  // '& #menuWrapper': {
+  //   zIndex: 1000,
+  // },
 
   '@media(min-width: 992px)': {
     '& .mobile-only': {
@@ -135,8 +179,9 @@ const pageStyle = css({
       display: 'none',
     },
   },
-})
-const pageStyles = pageStyle.toString()
+}).toString()
+
+const bleedBlock = container({ bleed: true, block: true })
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
@@ -146,10 +191,26 @@ class Layout extends React.Component {
   /** standard constructor */
   constructor(props) {
     super(props)
+
+    const typeClass = typefn({
+      kit: 'jdd4npp',
+      options: {
+        range: [12, 20], // Min and Max font-sizes
+        paragraphSpacingFactor: 1.2, // Greater for tighter paragraph-paragraph spacing
+        headingParagraphGapSpacingFactor: 0, // Greater for tighter header-paragraph spacing
+        indentParagraphs: false,
+      },
+    })
+
+    this.state = {
+      typeClass,
+    }
   }
 
   /** after mount */
   componentDidMount() {
+    this.setState({ client: true })
+
     if (!isUndefined(document)) {
       const htmlElement = document.documentElement
       if (htmlElement.classList.contains('lk-loading')) {
@@ -164,49 +225,72 @@ class Layout extends React.Component {
   /** on mount */
   componentDidUpdate() {
     if (!isUndefined(window)) {
-      const element = document.getElementById('contentWrapper')
-      element.scrollTop = 0
+      if (this.state.client === true) {
+        const element = document.getElementById('layout')
+        element.scrollTop = 0
+      }
     }
   }
 
   /** standard renderer */
   render() {
-    const { children } = this.props
+    const { children, className = '' } = this.props
+    const { typeClass, client } = this.state
+    const classNameX = `${typeClass} ${style} ${className}`
 
     return (
-      <SizesProvider config={sizesConfig}>
-        <Type
-          kit="jdd4npp"
-          style={{ minHeight: '100vh' }}
-          className={pageStyles}
-          options={{
-            range: [15, 21], // Min and Max font-sizes
-            paragraphSpacingFactor: 1.2, // Greater for tighter paragraph-paragraph spacing
-            headingParagraphGapSpacingFactor: 0.95, // Greater for tighter header-paragraph spacing
-            indentParagraphs: false,
-          }}
-          id="appWrapper"
-        >
-          {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
-          <InitializeMeta
-            data={{ titleTemplate: `%s | ${data.websiteName}` }}
-          />
-          <UpdateTitle title="Loading..." />
-          <WebsiteSchema data={websiteSchemaData} />
-          <OrganisationSchema data={organisationSchemaData} />
-          <div id="menuWrapper">
-            <DesktopNav {...pick(this.props, ['location'])} />
-            <MobileNav />
-          </div>
-          <div id="contentWrapper">
-            <Container block id="content">
-              {children}
-            </Container>
-            <DesktopFooter />
-            <MobileFooter />
-          </div>
-        </Type>
-      </SizesProvider>
+      <Fragment>
+        {client === true && (
+          <Fragment>
+            <br style={{ display: 'none' }} />
+            <MediaQuery minWidth={992}>
+              {matches => (
+                <div className={classNameX} id="layout">
+                  <InitializeMeta
+                    data={{ titleTemplate: `%s | ${data.websiteName}` }}
+                  />
+                  <UpdateTitle title="Nonviolent Communication (NVC) & Restorative Circles (RC) in India (Auroville)" />
+                  <WebsiteSchema data={websiteSchemaData} />
+                  <OrganisationSchema data={organisationSchemaData} />
+                  <Header
+                    isDesktop={matches}
+                    typeClass={typeClass}
+                    {...this.props}
+                  />
+                  <div>
+                    <main role="main" className={bleedBlock}>
+                      {children}
+                    </main>
+                    <Footer isDesktop={matches} />
+                  </div>
+                  <Typekit kitId="jdd4npp" />
+                </div>
+              )}
+            </MediaQuery>
+            <br style={{ display: 'none' }} />
+          </Fragment>
+        )}
+        {client === false && (
+          <Fragment>
+            <div className={classNameX} id="layout">
+              <InitializeMeta
+                data={{ titleTemplate: `%s | ${data.websiteName}` }}
+              />
+              <UpdateTitle title="Nonviolent Communication (NVC) & Restorative Circles (RC) in India (Auroville)" />
+              <WebsiteSchema data={websiteSchemaData} />
+              <OrganisationSchema data={organisationSchemaData} />
+              <Header isDesktop typeClass={typeClass} {...this.props} />
+              <div>
+                <main role="main" className={bleedBlock}>
+                  {children}
+                </main>
+                <Footer isDesktop />
+              </div>
+              <Typekit kitId="jdd4npp" />
+            </div>
+          </Fragment>
+        )}
+      </Fragment>
     )
   }
 }

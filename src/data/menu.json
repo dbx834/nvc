@@ -1,5 +1,4 @@
 [
-  { "title": "Home", "link": "/", "mobileOnly": true },
   {
     "title": "About",
     "mobileOnly": false,

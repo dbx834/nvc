@@ -119,17 +119,19 @@ const seoData = seoHelper(pageData)
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 const style = css({
-  display: 'block',
-  position: 'relative',
+  '& main': {
+    display: 'block',
+    position: 'relative',
 
-  '& .ant-btn': {
-    backgroundColor: '#ffffff !important',
-    borderColor: '#ffffff !important',
-    color: '#b43808 !important',
-  },
+    '& .ant-btn': {
+      backgroundColor: '#ffffff !important',
+      borderColor: '#ffffff !important',
+      color: '#b43808 !important',
+    },
 
-  '& .ant-fullcalendar-header': {
-    paddingTop: '0px !important',
+    '& .ant-fullcalendar-header': {
+      paddingTop: '0px !important',
+    },
   },
 }).toString()
 

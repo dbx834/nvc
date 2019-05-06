@@ -25,22 +25,24 @@ import international from '../../../assets/international.png'
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 const styles = css({
-  '& .hover': {
-    borderBottom: '1.625px solid transparent',
+  '& main': {
+    '& .hover': {
+      borderBottom: '1.625px solid transparent',
 
-    '&:hover': {
-      color: '#b43808',
-      borderBottom: '1.625px solid #b43808',
+      '&:hover': {
+        color: '#b43808',
+        borderBottom: '1.625px solid #b43808',
+      },
     },
-  },
 
-  '& .ant-btn-primary': {
-    backgroundColor: '#b43808',
-    borderColor: '#b43808',
-
-    '&:hover': {
+    '& .ant-btn-primary': {
       backgroundColor: '#b43808',
       borderColor: '#b43808',
+
+      '&:hover': {
+        backgroundColor: '#b43808',
+        borderColor: '#b43808',
+      },
     },
   },
 }).toString()

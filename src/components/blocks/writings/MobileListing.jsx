@@ -76,45 +76,47 @@ const style = css({
     },
   },
 
-  '& .ant-btn-primary, .ant-btn': {
-    backgroundColor: '#ffffff !important',
-    borderColor: '#ffffff !important',
-    color: '#b43808 !important',
-
-    '& a': {
-      color: '#ffffff !important',
-      borderBottom: 'unset',
-
-      '&:hover': {
-        color: '#ffffff !important',
-        borderBottom: 'unset',
-      },
-      '&:visited': {
-        textDecoration: 'none',
-      },
-      '&:link': {
-        textDecoration: 'none',
-      },
-      '&:active': {
-        textDecoration: 'none',
-      },
-    },
-
-    '&:hover': {
-      backgroundColor: '#ffffff',
-      borderColor: '#b43808',
+  '& main': {
+    '& .ant-btn-primary, .ant-btn': {
+      backgroundColor: '#ffffff !important',
+      borderColor: '#ffffff !important',
+      color: '#b43808 !important',
 
       '& a': {
-        color: '#b43808 !important',
+        color: '#ffffff !important',
+        borderBottom: 'unset',
+
+        '&:hover': {
+          color: '#ffffff !important',
+          borderBottom: 'unset',
+        },
+        '&:visited': {
+          textDecoration: 'none',
+        },
+        '&:link': {
+          textDecoration: 'none',
+        },
+        '&:active': {
+          textDecoration: 'none',
+        },
       },
-    },
 
-    '&:not(:last-child)': {
-      marginRight: '10px',
-    },
+      '&:hover': {
+        backgroundColor: '#ffffff',
+        borderColor: '#b43808',
 
-    '& span': {
-      fontSize: '90%',
+        '& a': {
+          color: '#b43808 !important',
+        },
+      },
+
+      '&:not(:last-child)': {
+        marginRight: '10px',
+      },
+
+      '& span': {
+        fontSize: '90%',
+      },
     },
   },
 }).toString()

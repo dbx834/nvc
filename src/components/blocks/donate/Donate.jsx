@@ -19,37 +19,39 @@ import Link from '../../Link'
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 const styles = css({
-  marginBottom: 60,
+  '& main': {
+    marginBottom: 60,
 
-  '& .ant-btn-primary': {
-    backgroundColor: '#b43808',
-    borderColor: '#ffffff',
-
-    '& a': {
-      color: '#ffffff !important',
-      borderBottom: 'unset',
-
-      '&:hover': {
-        color: '#ffffff !important',
-        borderBottom: 'unset',
-      },
-      '&:visited': {
-        textDecoration: 'none',
-      },
-      '&:link': {
-        textDecoration: 'none',
-      },
-      '&:active': {
-        textDecoration: 'none',
-      },
-    },
-
-    '&:hover': {
-      backgroundColor: '#ffffff',
-      borderColor: '#b43808',
+    '& .ant-btn-primary': {
+      backgroundColor: '#b43808',
+      borderColor: '#ffffff',
 
       '& a': {
-        color: '#b43808 !important',
+        color: '#ffffff !important',
+        borderBottom: 'unset',
+
+        '&:hover': {
+          color: '#ffffff !important',
+          borderBottom: 'unset',
+        },
+        '&:visited': {
+          textDecoration: 'none',
+        },
+        '&:link': {
+          textDecoration: 'none',
+        },
+        '&:active': {
+          textDecoration: 'none',
+        },
+      },
+
+      '&:hover': {
+        backgroundColor: '#ffffff',
+        borderColor: '#b43808',
+
+        '& a': {
+          color: '#b43808 !important',
+        },
       },
     },
   },

@@ -48,44 +48,46 @@ const seoData = seoHelper(pageData)
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 const style = css({
-  '& .ant-btn': {
-    backgroundColor: '#ffffff !important',
-    borderColor: '#ffffff !important',
-    color: '#b43808 !important',
-  },
-
-  '& .top-link': {
-    position: 'relative',
-    display: 'block',
-
-    '@media(min-width: 992px)': {
-      display: 'inline-block',
-      marginBottom: 0,
-      position: 'absolute',
-      // top: 30,
-      right: 10,
+  '& main': {
+    '& .ant-btn': {
+      backgroundColor: '#ffffff !important',
+      borderColor: '#ffffff !important',
+      color: '#b43808 !important',
     },
 
-    '& .ant-tag': {
-      background: '#fdf2ed !important',
-      borderColor: '#b43808 !important',
+    '& .top-link': {
+      position: 'relative',
+      display: 'block',
 
-      '& a': {
-        color: '#b43808 !important',
-        borderBottom: 'unset',
+      '@media(min-width: 992px)': {
+        display: 'inline-block',
+        marginBottom: 0,
+        position: 'absolute',
+        // top: 30,
+        right: 10,
+      },
 
-        '&:hover': {
+      '& .ant-tag': {
+        background: '#fdf2ed !important',
+        borderColor: '#b43808 !important',
+
+        '& a': {
           color: '#b43808 !important',
           borderBottom: 'unset',
-        },
-        '&:visited': {
-          textDecoration: 'none',
-        },
-        '&:link': {
-          textDecoration: 'none',
-        },
-        '&:active': {
-          textDecoration: 'none',
+
+          '&:hover': {
+            color: '#b43808 !important',
+            borderBottom: 'unset',
+          },
+          '&:visited': {
+            textDecoration: 'none',
+          },
+          '&:link': {
+            textDecoration: 'none',
+          },
+          '&:active': {
+            textDecoration: 'none',
+          },
         },
       },
     },

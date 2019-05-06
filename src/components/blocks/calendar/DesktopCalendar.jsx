@@ -278,230 +278,232 @@ const blockStyleClass = blockStyle.toString()
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Default style
 const defaultStyles = css({
-  position: 'relative',
+  '& main': {
+    position: 'relative',
 
-  '& .ant-tag': {
-    color: '#b43808 !important',
-    background: '#fdf2ed !important',
-    borderColor: '#b43808 !important',
-  },
-
-  '& .ant-tag-checkable-checked': {
-    color: '#ffffff !important',
-    background: '#b43808 !important',
-    borderColor: '#ffffff !important',
-  },
-
-  '& .ant-fullcalendar-fullscreen': {
-    '& .ant-fullcalendar-header': {
-      width: 90 * 7,
-      padding: '11px 0px',
+    '& .ant-tag': {
+      color: '#b43808 !important',
+      background: '#fdf2ed !important',
+      borderColor: '#b43808 !important',
     },
 
-    '& .ant-fullcalendar-year-select': {
-      '& .ant-select-selection': {
-        fontSize: '80%',
-        backgroundColor: 'transparent',
-        border: 'none',
+    '& .ant-tag-checkable-checked': {
+      color: '#ffffff !important',
+      background: '#b43808 !important',
+      borderColor: '#ffffff !important',
+    },
+
+    '& .ant-fullcalendar-fullscreen': {
+      '& .ant-fullcalendar-header': {
+        width: 90 * 7,
+        padding: '11px 0px',
+      },
+
+      '& .ant-fullcalendar-year-select': {
+        '& .ant-select-selection': {
+          fontSize: '80%',
+          backgroundColor: 'transparent',
+          border: 'none',
+        },
+      },
+
+      '& .ant-fullcalendar-month-select': {
+        '& .ant-select-selection': {
+          fontSize: '80%',
+          backgroundColor: 'transparent',
+          border: 'none',
+        },
+      },
+
+      '& .ant-radio-group': {
+        display: 'none',
       },
     },
 
-    '& .ant-fullcalendar-month-select': {
-      '& .ant-select-selection': {
-        fontSize: '80%',
-        backgroundColor: 'transparent',
-        border: 'none',
+    '& .ant-fullcalendar': {
+      '& .ant-fullcalendar-today': {
+        '& div.date-block': {
+          backgroundColor: '#fff0b4 !important',
+          color: '#B43808',
+        },
       },
-    },
 
-    '& .ant-radio-group': {
-      display: 'none',
-    },
-  },
+      '& .ant-fullcalendar-calendar-body': {
+        padding: 0,
+        width: 'fit-content',
+        maxWidth: 'fit-content',
 
-  '& .ant-fullcalendar': {
-    '& .ant-fullcalendar-today': {
-      '& div.date-block': {
-        backgroundColor: '#fff0b4 !important',
-        color: '#B43808',
-      },
-    },
+        '& table': {
+          '& thead': {
+            borderTop: '1px solid #4a4a4a',
+            borderBottom: '1px solid #4a4a4a',
 
-    '& .ant-fullcalendar-calendar-body': {
-      padding: 0,
-      width: 'fit-content',
-      maxWidth: 'fit-content',
-
-      '& table': {
-        '& thead': {
-          borderTop: '1px solid #4a4a4a',
-          borderBottom: '1px solid #4a4a4a',
-
-          '& .ant-fullcalendar-column-header': {
-            textAlign: 'left',
-            paddingTop: 6,
-            paddingBottom: 6,
-            '& span': {
-              fontWeight: 700,
-              fontStyle: 'italic',
+            '& .ant-fullcalendar-column-header': {
+              textAlign: 'left',
+              paddingTop: 6,
+              paddingBottom: 6,
+              '& span': {
+                fontWeight: 700,
+                fontStyle: 'italic',
+              },
             },
           },
         },
       },
-    },
 
-    '& table': {
-      width: 'unset',
-      maxWidth: 'unset',
-    },
-
-    '& tbody': {
-      '& .ant-fullcalendar-cell': {
-        position: 'relative',
-        width: 90,
-        height: 90,
+      '& table': {
+        width: 'unset',
+        maxWidth: 'unset',
       },
 
-      '& div.date-block': {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: 89,
-        height: 89,
-        WebkitTransition: 'all 300ms cubic-bezier(0.78, 0.14, 0.15, 0.86)',
-        transition: 'all 300ms cubic-bezier(0.78, 0.14, 0.15, 0.86)',
-
-        '&:hover': {
-          backgroundColor: '#FFDA9A',
+      '& tbody': {
+        '& .ant-fullcalendar-cell': {
+          position: 'relative',
+          width: 90,
+          height: 90,
         },
 
-        '& > span': {
-          display: 'block',
-          width: 88,
-          height: 89,
-        },
-
-        '& .ant-badge': {
-          fontFamily: 'inherit',
-          fontSize: 'inherit',
-          '& .ant-badge-dot': {
-            top: 4,
-            height: 8,
-            width: 8,
-            transform: 'translateX(-10%)',
-          },
-        },
-
-        '& a': {
-          display: 'block',
-          height: 89,
+        '& div.date-block': {
+          position: 'absolute',
+          top: 0,
+          left: 0,
           width: 89,
-          color: 'inherit',
+          height: 89,
+          WebkitTransition: 'all 300ms cubic-bezier(0.78, 0.14, 0.15, 0.86)',
+          transition: 'all 300ms cubic-bezier(0.78, 0.14, 0.15, 0.86)',
 
           '&:hover': {
+            backgroundColor: '#FFDA9A',
+          },
+
+          '& > span': {
+            display: 'block',
+            width: 88,
+            height: 89,
+          },
+
+          '& .ant-badge': {
+            fontFamily: 'inherit',
+            fontSize: 'inherit',
+            '& .ant-badge-dot': {
+              top: 4,
+              height: 8,
+              width: 8,
+              transform: 'translateX(-10%)',
+            },
+          },
+
+          '& a': {
+            display: 'block',
+            height: 89,
+            width: 89,
             color: 'inherit',
-            borderBottom: '1.625px solid transparent',
+
+            '&:hover': {
+              color: 'inherit',
+              borderBottom: '1.625px solid transparent',
+            },
+          },
+        },
+
+        '& div.this-month': {
+          backgroundColor: '#fff5cd',
+        },
+
+        '& div.that-month': {
+          backgroundColor: '#F6F4FE',
+        },
+
+        '& tr': {
+          '& td': {
+            '& div.date-block': {
+              backgroundImage:
+                'linear-gradient(to right, #4a4a4a 30%, rgba(74, 74, 74, 0) 0%), linear-gradient(to bottom, #4a4a4a 30%, rgba(74, 74, 74, 0) 0%)',
+              backgroundPosition: 'bottom, right',
+              backgroundSize: '4.45px 1px, 1px 4.45px',
+              backgroundRepeat: 'repeat-x, repeat-y',
+            },
+          },
+
+          '& td:last-child': {
+            '& div.date-block': {
+              backgroundImage:
+                'linear-gradient(to right, #4a4a4a 30%, rgba(74, 74, 74, 0) 0%)',
+              backgroundPosition: 'bottom',
+              backgroundSize: '4.45px 1px',
+              backgroundRepeat: 'repeat-x',
+            },
+          },
+        },
+
+        '& tr:last-child': {
+          '& td': {
+            '& div.date-block': {
+              backgroundImage:
+                'linear-gradient(to bottom, #4a4a4a 30%, rgba(74, 74, 74, 0) 0%)',
+              backgroundPosition: 'right',
+              backgroundSize: '1px 4.45px',
+              backgroundRepeat: 'repeat-y',
+            },
+          },
+
+          '& td:last-child': {
+            '& div.date-block': {
+              backgroundImage: 'none',
+            },
           },
         },
       },
+    }, // B43808
 
-      '& div.this-month': {
-        backgroundColor: '#fff5cd',
+    '& .ant-btn': {
+      fontWeight: 700,
+      fontStyle: 'italic',
+      borderRadius: 0,
+      backgroundColor: '#FFFFFF',
+      borderColor: '#B43808',
+      color: '#B43808 !important',
+      height: 'auto',
+      transition: 'all 200ms cubic-bezier(0.78, 0.14, 0.15, 0.86)',
+      '&:not(:last-child)': {
+        marginRight: '10px',
       },
 
-      '& div.that-month': {
-        backgroundColor: '#F6F4FE',
+      '&:hover': {
+        backgroundColor: '#B43808 !important',
+        color: '#FFFFFF !important',
+        borderColor: 'transparent',
+        transform: 'scale(1.1)',
       },
 
-      '& tr': {
-        '& td': {
-          '& div.date-block': {
-            backgroundImage:
-              'linear-gradient(to right, #4a4a4a 30%, rgba(74, 74, 74, 0) 0%), linear-gradient(to bottom, #4a4a4a 30%, rgba(74, 74, 74, 0) 0%)',
-            backgroundPosition: 'bottom, right',
-            backgroundSize: '4.45px 1px, 1px 4.45px',
-            backgroundRepeat: 'repeat-x, repeat-y',
-          },
-        },
-
-        '& td:last-child': {
-          '& div.date-block': {
-            backgroundImage:
-              'linear-gradient(to right, #4a4a4a 30%, rgba(74, 74, 74, 0) 0%)',
-            backgroundPosition: 'bottom',
-            backgroundSize: '4.45px 1px',
-            backgroundRepeat: 'repeat-x',
-          },
-        },
-      },
-
-      '& tr:last-child': {
-        '& td': {
-          '& div.date-block': {
-            backgroundImage:
-              'linear-gradient(to bottom, #4a4a4a 30%, rgba(74, 74, 74, 0) 0%)',
-            backgroundPosition: 'right',
-            backgroundSize: '1px 4.45px',
-            backgroundRepeat: 'repeat-y',
-          },
-        },
-
-        '& td:last-child': {
-          '& div.date-block': {
-            backgroundImage: 'none',
-          },
-        },
+      '& span': {
+        fontSize: '90%',
       },
     },
-  }, // B43808
 
-  '& .ant-btn': {
-    fontWeight: 700,
-    fontStyle: 'italic',
-    borderRadius: 0,
-    backgroundColor: '#FFFFFF',
-    borderColor: '#B43808',
-    color: '#B43808 !important',
-    height: 'auto',
-    transition: 'all 200ms cubic-bezier(0.78, 0.14, 0.15, 0.86)',
-    '&:not(:last-child)': {
-      marginRight: '10px',
-    },
-
-    '&:hover': {
-      backgroundColor: '#B43808 !important',
+    '& .ant-btn-primary': {
+      backgroundColor: '#B43808',
       color: '#FFFFFF !important',
       borderColor: 'transparent',
-      transform: 'scale(1.1)',
+
+      '&:hover': {
+        backgroundColor: '#B43808 !important',
+        transform: 'scale(1.05)',
+      },
     },
 
-    '& span': {
-      fontSize: '90%',
+    '& .ant-table': {
+      '& .ant-table-thead': {
+        display: 'none',
+        // "& th": {
+        //   backgroundColor: "#fff0b4",
+        // },
+      },
     },
-  },
 
-  '& .ant-btn-primary': {
-    backgroundColor: '#B43808',
-    color: '#FFFFFF !important',
-    borderColor: 'transparent',
-
-    '&:hover': {
-      backgroundColor: '#B43808 !important',
-      transform: 'scale(1.05)',
+    '& .ant-pagination-next': {
+      marginBottom: '0px !important',
     },
-  },
-
-  '& .ant-table': {
-    '& .ant-table-thead': {
-      display: 'none',
-      // "& th": {
-      //   backgroundColor: "#fff0b4",
-      // },
-    },
-  },
-
-  '& .ant-pagination-next': {
-    marginBottom: '0px !important',
   },
 })
 const defaultStyle = defaultStyles.toString()

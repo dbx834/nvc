@@ -79,9 +79,22 @@ const styleX = css({
           height: 65,
           marginBottom: 0,
           flexBasis: 'auto',
-          paddingLeft: 65,
           textIndent: '-9999em',
-          width: 263,
+          backgroundRepeat: 'no-repeat',
+
+          // iPhone
+          width: 200,
+          paddingLeft: 45,
+          backgroundSize: '200px 45px',
+          backgroundPosition: '0% 10px',
+
+          // iPhone +
+          '@media(min-width: 340px)': {
+            width: 263,
+            paddingLeft: 60,
+            backgroundSize: '263px 60px',
+            backgroundPosition: '0% 0%',
+          },
         },
 
         '&:hover': {
@@ -403,10 +416,10 @@ class DesktopNav extends React.Component {
               <Link to="/" className="title">
                 <h1
                   style={{
-                    background: `url(${mobileLogo}) 0% 0% / 263px 60px no-repeat`,
+                    backgroundImage: `url(${mobileLogo})`,
                   }}
                 >
-                  <span>Restorative Auroville</span>
+                  <span>Joy Living Learning</span>
                 </h1>
               </Link>
               <div style={{ paddingTop: 14 }}>

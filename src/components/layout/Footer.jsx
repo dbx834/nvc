@@ -80,14 +80,23 @@ const styles = css({
         top: -85,
       },
 
+      '& .links': {
+        '& a': {
+          marginRight: 12,
+          height: '26px !important',
+          width: '26px !important',
+          display: 'inline-block',
+        },
+      },
+
       '& .img': {
-        height: '30px !important',
-        width: '30px !important',
+        height: '26px !important',
+        width: '26px !important',
       },
 
       '& .paypal-img': {
-        height: '30px !important',
-        width: '30px !important',
+        height: '26px !important',
+        width: '26px !important',
       },
     },
 
@@ -99,6 +108,15 @@ const styles = css({
         width: '120px !important',
         right: 54,
         top: -118,
+      },
+
+      '& .links': {
+        '& a': {
+          marginRight: 17,
+          height: '45px !important',
+          width: '45px !important',
+          display: 'inline-block',
+        },
       },
 
       '& .img': {
@@ -135,7 +153,7 @@ const DesktopFooter = props => {
         </span>
         <br />
       </p>
-      <div className="mask-p">
+      <div className="mask-p links">
         <Link to="https://www.facebook.com/JoyLivingLearning/">
           <Image
             src={facebook}
@@ -145,10 +163,7 @@ const DesktopFooter = props => {
             alt="Follow us on Facebook - https://www.facebook.com/JoyLivingLearning/"
           />
         </Link>
-        <Link
-          to="https://www.youtube.com/user/laurajoyful/videos"
-          style={{ marginLeft: 17 }}
-        >
+        <Link to="https://www.youtube.com/user/laurajoyful/videos">
           <Image
             src={youtube}
             rawWidth={450}
@@ -157,7 +172,7 @@ const DesktopFooter = props => {
             alt="See more videos on YouTube - https://www.youtube.com/user/laurajoyful/videos"
           />
         </Link>
-        <Link to="https://vimeo.com/laurajoyful" style={{ marginLeft: 17 }}>
+        <Link to="https://vimeo.com/laurajoyful">
           <Image
             src={vimeo}
             rawWidth={450}
@@ -166,10 +181,7 @@ const DesktopFooter = props => {
             alt="See more videos on Vimeo - https://vimeo.com/laurajoyful"
           />
         </Link>
-        <Link
-          to="https://soundcloud.com/laura-joy-145472107"
-          style={{ marginLeft: 17 }}
-        >
+        <Link to="https://soundcloud.com/laura-joy-145472107">
           <Image
             src={soundcloud}
             rawWidth={450}
@@ -178,10 +190,7 @@ const DesktopFooter = props => {
             alt="Listen to our dialogues on Soundcloud - https://soundcloud.com/laura-joy-145472107"
           />
         </Link>
-        <Link
-          to="https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD"
-          style={{ marginLeft: 17 }}
-        >
+        <Link to="https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD">
           <Image
             src={payu}
             rawWidth={450}
@@ -194,7 +203,7 @@ const DesktopFooter = props => {
           action="https://www.paypal.com/cgi-bin/webscr"
           method="post"
           target="_blank"
-          style={{ display: 'inline-block', marginLeft: 17 }}
+          style={{ display: 'inline-block' }}
           className="hover"
         >
           <input type="hidden" name="cmd" value="_s-xclick" />

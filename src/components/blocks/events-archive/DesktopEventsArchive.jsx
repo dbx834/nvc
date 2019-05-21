@@ -107,9 +107,13 @@ class Block extends React.Component {
     super(props)
 
     this.state = {
-      filter: 'all',
+      alreadyRendered: false,
+      filter: 'all1',
     }
 
+    this.grid = undefined
+
+    this.reRender = this.reRender.bind(this)
     this.applyFilter = this.applyFilter.bind(this)
   }
 
@@ -118,8 +122,22 @@ class Block extends React.Component {
     this.setState({ filter: f })
   }
 
+  /** reRender */
+  reRender() {
+    const { alreadyRendered } = this.state
+    if (alreadyRendered === false) {
+      this.setState({ alreadyRendered: true })
+      setTimeout(() => {
+        this.grid.updateLayout()
+        this.setState({ filter: 'all' })
+        // this.setState({ alreadyRendered: false })
+      }, 250)
+    }
+  }
+
   /** standard renderer */
   render() {
+    const { alreadyRendered } = this.state
     const { data, fallback, reverse = false } = this.props
     const { cards, components, conf, categoryMap } = data
     const gutterWidth = !isUndefined(conf.gutterWidth)
@@ -223,6 +241,8 @@ class Block extends React.Component {
           gutterWidth={gutterWidth}
           gutterHeight={gutterHeight}
           monitorImagesLoaded={true}
+          gridRef={grid => (this.grid = grid)}
+          onLayout={alreadyRendered === false && this.reRender}
         >
           {map(filteredData, (card, index) => {
             const {

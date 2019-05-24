@@ -211,6 +211,8 @@ const BlogPostWrapper = ({ pageData, className, children, ...props }) => {
               <PreviousNext prev={prevData} next={nextData} />
             </aside>
             <hr />
+            <br />
+            <br />
             <DisqusComments pageData={pageData} />
           </article>
         </Copy>

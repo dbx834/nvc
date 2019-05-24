@@ -129,7 +129,7 @@ const IndexPage = props => {
           <br />
           <br />
           <br />
-          <DisqusComments pageData={pageData} />
+          <DisqusComments pageData={pageData} collapsible={false} />
         </Copy>
         <Copy>
           <About />

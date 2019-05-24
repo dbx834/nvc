@@ -38,6 +38,26 @@ const style = css({
     zIndex: 100,
   },
 
+  '&.simple': {
+    '& aside': {
+      background: '#fef3ef !important',
+      paddingLeft: '16px !important',
+      paddingRight: '16px !important',
+      paddingTop: '8px !important',
+      // paddingBottom: '8px !important',
+      border: '1px solid #b43808 !important',
+      borderRadius: '8px !important',
+
+      '& > p:nth-child(1)': {
+        display: 'none',
+      },
+
+      '& > p:nth-child(2)': {
+        marginTop: '0px !important',
+      },
+    },
+  },
+
   '& .ant-collapse-borderless': {
     background: 'transparent !important',
     borderColor: 'transparent !important',
@@ -81,6 +101,7 @@ const style = css({
         paddingTop: '8px !important',
         paddingBottom: '8px !important',
         border: '1px solid #b43808 !important',
+        borderRadius: '8px !important',
 
         '& .ant-collapse-content-box': {
           padding: '0px !important',
@@ -108,9 +129,11 @@ const query = graphql`
  * [description]
  * @return {[type]} [description]
  */
-const DisqusCommentsX = ({ pageData }) => {
+const DisqusCommentsX = ({ pageData, collapsible = true }) => {
   return (
-    <div className={style}>
+    <div
+      className={`${collapsible === false ? 'simple' : 'collapse'} ${style}`}
+    >
       <StaticQuery
         query={query}
         render={data => (
@@ -128,6 +151,7 @@ const DisqusCommentsX = ({ pageData }) => {
         }}
         pageData={pageData}
         text="Please share your thoughts and inspiration."
+        collapsible={collapsible}
       />
     </div>
   )

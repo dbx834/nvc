@@ -30,7 +30,7 @@ const style = css({}).toString()
  */
 const About = () => {
   return (
-    <Fragment>
+    <div style={{ marginBottom: 20 }}>
       <hr />
       <h2 className="mask-p" style={{ marginBottom: 13 }}>
         Find us on Facebook
@@ -41,7 +41,7 @@ const About = () => {
           tabs="timeline,events,messages"
         />
       </FacebookProvider>
-    </Fragment>
+    </div>
   )
 }
 

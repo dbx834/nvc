@@ -126,6 +126,9 @@ const IndexPage = props => {
             title="Further Links"
             titleClass="mask-h3"
           />
+          <br />
+          <br />
+          <br />
           <DisqusComments pageData={pageData} />
         </Copy>
         <Copy>
@@ -146,7 +149,8 @@ const IndexPage = props => {
               />
             </div>
           */}
-          <h2 className="mask-h3" style={{ marginTop: 0 }}>
+          <hr />
+          <h2 className="mask-p" style={{ marginBottom: 13 }}>
             Applied NVC in Action
           </h2>
           <Link

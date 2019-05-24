@@ -55,6 +55,7 @@
     "title": "More",
     "mobileOnly": false,
     "menu": [
+      { "title": "Clients", "link": "/clients", "mobileOnly": false },
       { "title": "Blog", "link": "/writings", "mobileOnly": false },
       { "title": "Gallery", "link": "/gallery", "mobileOnly": false },
       {

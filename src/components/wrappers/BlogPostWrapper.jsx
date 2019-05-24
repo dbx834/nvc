@@ -48,6 +48,8 @@ import data from '../../data/website.json'
 import seoHelper from '../../methods/seoHelper'
 import withUrl from '../../methods/withUrl'
 
+import DisqusComments from '../DisqusComments'
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 // const { Fragment } = React
 
@@ -208,6 +210,8 @@ const BlogPostWrapper = ({ pageData, className, children, ...props }) => {
               <h1 className="mask-h4">More articles</h1>
               <PreviousNext prev={prevData} next={nextData} />
             </aside>
+            <hr />
+            <DisqusComments pageData={pageData} />
           </article>
         </Copy>
         <Copy>

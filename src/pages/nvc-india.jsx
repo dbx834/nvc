@@ -7,8 +7,11 @@ import PropTypes from 'prop-types'
 import { css } from 'glamor'
 
 import pick from 'lodash/pick'
+import { graphql } from 'gatsby'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
+import Img from 'gatsby-image'
+
 import Image from '@bodhi-project/components/lib/Image'
 import Video from '@bodhi-project/components/lib/Video'
 
@@ -39,6 +42,17 @@ const pageData = {
 const seoData = seoHelper(pageData)
 
 // ----------------------------------------------------------------------------
+// --------------------------------------------------------------------- Images
+// ----------------------------------------------------------------------------
+export const query = graphql`
+  query {
+    nvcIndiaHomepage: file(relativePath: { eq: "nvc-india-homepage.jpg" }) {
+      ...defaultImage
+    }
+  }
+`
+
+// ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 const style = css({}).toString()
@@ -62,11 +76,16 @@ const NVCIndia = props => {
       />
       <StandardDiv>
         <Copy>
-          <p>Our NVC community in India is a thriving one!</p>
           <p>
-            It’s incredible to see how we’ve grown and touched so many hundreds
-            of people over the past several years.
+            Our NVC community in India is a thriving one, and it’s incredible to
+            see how we’ve grown and how NVC has touched so many hundreds of
+            people over the past several years.
           </p>
+          <div className="mask-p">
+            <Link to="https://www.nvc-india.org/">
+              <Img fluid={props.data.nvcIndiaHomepage.childImageSharp.fluid} />
+            </Link>
+          </div>
           <p>
             Marshall Rosenberg first came to India in 2004, and offered an
             International Intensive Training (IIT) in Bangalore, and then

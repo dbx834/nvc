@@ -32,19 +32,19 @@ import Footer from './Footer'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
 const { Fragment } = React
-// export const defaultImage = graphql`
-//   fragment defaultImage on File {
-//     childImageSharp {
-//       fluid(
-//         maxWidth: 2400
-//         quality: 80
-//         srcSetBreakpoints: [200, 400, 600, 800, 1000, 1200, 1600, 2000, 2400]
-//       ) {
-//         ...GatsbyImageSharpFluid_withWebp_tracedSVG
-//       }
-//     }
-//   }
-// `
+export const defaultImage = graphql`
+  fragment defaultImage on File {
+    childImageSharp {
+      fluid(
+        maxWidth: 2400
+        quality: 80
+        srcSetBreakpoints: [200, 400, 600, 800, 1000, 1200, 1600, 2000, 2400]
+      ) {
+        ...GatsbyImageSharpFluid_withWebp_tracedSVG
+      }
+    }
+  }
+`
 
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------- Global SEO

@@ -36,7 +36,10 @@ import RCEvents from '../components/blocks/homepage/RCEvents'
 
 import categoriseEvents from '../methods/categoriseEvents'
 
+import DisqusComments from '../components/DisqusComments'
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
+
 // const { Fragment } = React
 
 const pageData = {
@@ -123,43 +126,6 @@ const IndexPage = props => {
             title="Further Links"
             titleClass="mask-h3"
           />
-          <br />
-          <br />
-          <h2 className="mask-h3" style={{ marginTop: 0 }}>
-            Applied NVC in Action
-          </h2>
-          <Division golden>
-            <div>
-              <Link
-                to="https://www.restorativeauroville.org/"
-                style={{ display: 'block' }}
-              >
-                <Image
-                  src="/assets/rc-banner.png"
-                  rawWidth={1440}
-                  rawHeight={900}
-                  style={{
-                    border: 'none',
-                    background: 'none',
-                  }}
-                />
-              </Link>
-            </div>
-            <div>
-              <p>
-                We are working towards building an alternative justice system in
-                Auroville based on the principles that underlie
-                NVC-consciousness. Our project,
-                <Link to="https://www.restorativeauroville.org/">
-                  Restorative Auroville
-                </Link>
-                , aims to bring the practice of Restorative Circles, a holistic,
-                community-based form of conflict resolution, to Auroville, and
-                to explore what a consciously designed justice system could look
-                like.
-              </p>
-            </div>
-          </Division>
         </Copy>
         <Copy>
           <About />
@@ -181,6 +147,45 @@ const IndexPage = props => {
           */}
         </Copy>
       </StandardDiv>
+      <h2 className="mask-h3" style={{ marginTop: 0 }}>
+        Applied NVC in Action
+      </h2>
+      <Division golden>
+        <div>
+          <Link
+            to="https://www.restorativeauroville.org/"
+            style={{ display: 'block' }}
+          >
+            <Image
+              src="/assets/rc-banner.png"
+              rawWidth={1440}
+              rawHeight={900}
+              style={{
+                border: 'none',
+                background: 'none',
+              }}
+            />
+          </Link>
+        </div>
+        <div>
+          <p>
+            We are working towards building an alternative justice system in
+            Auroville based on the principles that underlie NVC-consciousness.
+            Our project,&nbsp;
+            <Link to="https://www.restorativeauroville.org/">
+              Restorative Auroville
+            </Link>
+            , aims to bring the practice of Restorative Circles, a holistic,
+            community-based form of conflict resolution, to Auroville, and to
+            explore what a consciously designed justice system could look like.
+          </p>
+        </div>
+      </Division>
+      <br />
+      <DisqusComments pageData={pageData} />
+      <br />
+      <br />
+      <br />
     </HomePage>
   )
 }

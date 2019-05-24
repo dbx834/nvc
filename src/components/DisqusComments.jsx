@@ -127,6 +127,7 @@ const DisqusCommentsX = ({ pageData }) => {
           },
         }}
         pageData={pageData}
+        text="Please share your thoughts and inspiration."
       />
     </div>
   )

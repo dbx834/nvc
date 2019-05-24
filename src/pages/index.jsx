@@ -126,6 +126,7 @@ const IndexPage = props => {
             title="Further Links"
             titleClass="mask-h3"
           />
+          <DisqusComments pageData={pageData} />
         </Copy>
         <Copy>
           <About />
@@ -145,13 +146,9 @@ const IndexPage = props => {
               />
             </div>
           */}
-        </Copy>
-      </StandardDiv>
-      <h2 className="mask-h3" style={{ marginTop: 0 }}>
-        Applied NVC in Action
-      </h2>
-      <Division golden>
-        <div>
+          <h2 className="mask-h3" style={{ marginTop: 0 }}>
+            Applied NVC in Action
+          </h2>
           <Link
             to="https://www.restorativeauroville.org/"
             style={{ display: 'block' }}
@@ -166,8 +163,6 @@ const IndexPage = props => {
               }}
             />
           </Link>
-        </div>
-        <div>
           <p>
             We are working towards building an alternative justice system in
             Auroville based on the principles that underlie NVC-consciousness.
@@ -179,13 +174,8 @@ const IndexPage = props => {
             community-based form of conflict resolution, to Auroville, and to
             explore what a consciously designed justice system could look like.
           </p>
-        </div>
-      </Division>
-      <br />
-      <DisqusComments pageData={pageData} />
-      <br />
-      <br />
-      <br />
+        </Copy>
+      </StandardDiv>
     </HomePage>
   )
 }

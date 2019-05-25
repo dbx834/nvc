@@ -213,7 +213,7 @@ const BlogPostWrapper = ({ pageData, className, children, ...props }) => {
             <hr />
             <br />
             <br />
-            <DisqusComments pageData={pageData} />
+            <DisqusComments pageData={pageData} collapsible={false} />
           </article>
         </Copy>
         <Copy>

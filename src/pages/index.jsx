@@ -17,6 +17,8 @@ import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/col/style/css'
 
 import FurtherLinks from '@bodhi-project/components/lib/FurtherLinks'
 
+import MediaQuery from 'react-responsive'
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import HomePage from '../components/wrappers/HomePage'
 import Copy from '../components/Copy'
@@ -39,8 +41,7 @@ import categoriseEvents from '../methods/categoriseEvents'
 import DisqusComments from '../components/DisqusComments'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
-
-// const { Fragment } = React
+const { Fragment } = React
 
 const pageData = {
   pageTitle:
@@ -98,93 +99,225 @@ const style = css({
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
 /** IndexPage */
-const IndexPage = props => {
-  const { data } = props
-  const postEdges = data.allMarkdownRemark.edges
-  const events = categoriseEvents(postEdges, 3, 1)
+class IndexPage extends React.Component {
+  /** standard constructor */
+  constructor(props) {
+    super(props)
 
-  return (
-    <HomePage
-      className={style}
-      pageData={pageData}
-      {...pick(props, ['location'])}
-    >
-      <PageHeader
-        title="Joy Living Learning"
-        subTitle="Nonviolent Communication (NVC) & Restorative Circles (RC) in India (Auroville)"
-        hero="We offer learning opportunities through workshops and practicegroups on Nonviolent Communication and Restorative Circles. We are also available for individual coaching and mediation support."
-        home
-      />
-      <StandardDiv>
-        <Copy>
-          <VisionMissionEtc />
-          <Slider />
-          <FurtherLinks
-            data={furtherLinksData}
-            className="desktop-only"
-            Link={Link}
-            title="Further Links"
-            titleClass="mask-h3"
-          />
-          <br />
-          <br />
-          <br />
-          <DisqusComments pageData={pageData} collapsible={false} />
-        </Copy>
-        <Copy>
-          <About />
-          <UpcomingEvents data={events.featuredEvents} />
-          <NVCEvents data={events.NVCEvents} />
-          <RCEvents data={events.RCEvents} />
-          <Quotes />
-          <FacebookWall />
-          {/*
-            <div className="mobile-only">
-              <hr />
-              <FurtherLinks
-                data={furtherLinksData}
-                Link={Link}
-                title="Further Links"
-                titleClass="mask-h3"
+    this.state = {
+      client: false,
+    }
+  }
+
+  /** after mount */
+  componentDidMount() {
+    this.setState({ client: true })
+  }
+
+  /** standard renderer */
+  render() {
+    const { client } = this.state
+    const { data } = this.props
+    const postEdges = data.allMarkdownRemark.edges
+    const events = categoriseEvents(postEdges, 3, 1)
+
+    return (
+      <Fragment>
+        {client === true && (
+          <Fragment>
+            <br style={{ display: 'none' }} />
+            <MediaQuery minWidth={992}>
+              {matches => (
+                <HomePage
+                  className={style}
+                  pageData={pageData}
+                  {...pick(this.props, ['location'])}
+                >
+                  <PageHeader
+                    title="Joy Living Learning"
+                    subTitle="Nonviolent Communication (NVC) & Restorative Circles (RC) in India (Auroville)"
+                    hero="We offer learning opportunities through workshops and practicegroups on Nonviolent Communication and Restorative Circles. We are also available for individual coaching and mediation support."
+                    home
+                  />
+                  <StandardDiv>
+                    <Copy>
+                      <VisionMissionEtc />
+                      <Slider />
+                      <FurtherLinks
+                        data={furtherLinksData}
+                        className="desktop-only"
+                        Link={Link}
+                        title="Further Links"
+                        titleClass="mask-h3"
+                      />
+                      {matches === true && (
+                        <Fragment>
+                          <br />
+                          <br />
+                          <br />
+                          <DisqusComments
+                            pageData={pageData}
+                            collapsible={false}
+                          />
+                        </Fragment>
+                      )}
+                    </Copy>
+                    <Copy>
+                      <About />
+                      <UpcomingEvents data={events.featuredEvents} />
+                      <NVCEvents data={events.NVCEvents} />
+                      <RCEvents data={events.RCEvents} />
+                      <Quotes />
+                      <FacebookWall />
+                      {/*
+                        <div className="mobile-only">
+                          <hr />
+                          <FurtherLinks
+                            data={furtherLinksData}
+                            Link={Link}
+                            title="Further Links"
+                            titleClass="mask-h3"
+                          />
+                        </div>
+                      */}
+                      <hr />
+                      <h2 className="mask-p" style={{ marginBottom: 13 }}>
+                        Applied NVC in Action
+                      </h2>
+                      <Link
+                        to="https://www.restorativeauroville.org/"
+                        style={{ display: 'block' }}
+                      >
+                        <Image
+                          src="/assets/rc-banner.png"
+                          rawWidth={1440}
+                          rawHeight={900}
+                          style={{
+                            border: 'none',
+                            background: 'none',
+                          }}
+                        />
+                      </Link>
+                      <p style={matches === false ? { marginBottom: 20 } : {}}>
+                        We are working towards building an alternative justice
+                        system in Auroville based on the principles that
+                        underlie NVC-consciousness. Our project,&nbsp;
+                        <Link to="https://www.restorativeauroville.org/">
+                          Restorative Auroville
+                        </Link>
+                        , aims to bring the practice of Restorative Circles, a
+                        holistic, community-based form of conflict resolution,
+                        to Auroville, and to explore what a consciously designed
+                        justice system could look like.
+                      </p>
+                      {matches === false && (
+                        <Fragment>
+                          <hr />
+                          <h2 className="mask-p" style={{ marginBottom: 13 }}>
+                            Please share your thoughts and inspiration
+                          </h2>
+                          <br />
+                          <DisqusComments
+                            pageData={pageData}
+                            collapsible={false}
+                            text=" "
+                          />
+                        </Fragment>
+                      )}
+                    </Copy>
+                  </StandardDiv>
+                </HomePage>
+              )}
+            </MediaQuery>
+            <br style={{ display: 'none' }} />
+          </Fragment>
+        )}
+        {client === false && (
+          <Fragment>
+            <HomePage
+              className={style}
+              pageData={pageData}
+              {...pick(this.props, ['location'])}
+            >
+              <PageHeader
+                title="Joy Living Learning"
+                subTitle="Nonviolent Communication (NVC) & Restorative Circles (RC) in India (Auroville)"
+                hero="We offer learning opportunities through workshops and practicegroups on Nonviolent Communication and Restorative Circles. We are also available for individual coaching and mediation support."
+                home
               />
-            </div>
-          */}
-          <hr />
-          <h2 className="mask-p" style={{ marginBottom: 13 }}>
-            Applied NVC in Action
-          </h2>
-          <Link
-            to="https://www.restorativeauroville.org/"
-            style={{ display: 'block' }}
-          >
-            <Image
-              src="/assets/rc-banner.png"
-              rawWidth={1440}
-              rawHeight={900}
-              style={{
-                border: 'none',
-                background: 'none',
-              }}
-            />
-          </Link>
-          <p>
-            We are working towards building an alternative justice system in
-            Auroville based on the principles that underlie NVC-consciousness.
-            Our project,&nbsp;
-            <Link to="https://www.restorativeauroville.org/">
-              Restorative Auroville
-            </Link>
-            , aims to bring the practice of Restorative Circles, a holistic,
-            community-based form of conflict resolution, to Auroville, and to
-            explore what a consciously designed justice system could look like.
-          </p>
-        </Copy>
-      </StandardDiv>
-    </HomePage>
-  )
+              <StandardDiv>
+                <Copy>
+                  <VisionMissionEtc />
+                  <Slider />
+                  <FurtherLinks
+                    data={furtherLinksData}
+                    className="desktop-only"
+                    Link={Link}
+                    title="Further Links"
+                    titleClass="mask-h3"
+                  />
+                  <br />
+                  <br />
+                  <br />
+                  <DisqusComments pageData={pageData} collapsible={false} />
+                </Copy>
+                <Copy>
+                  <About />
+                  <UpcomingEvents data={events.featuredEvents} />
+                  <NVCEvents data={events.NVCEvents} />
+                  <RCEvents data={events.RCEvents} />
+                  <Quotes />
+                  <FacebookWall />
+                  {/*
+                    <div className="mobile-only">
+                      <hr />
+                      <FurtherLinks
+                        data={furtherLinksData}
+                        Link={Link}
+                        title="Further Links"
+                        titleClass="mask-h3"
+                      />
+                    </div>
+                  */}
+                  <hr />
+                  <h2 className="mask-p" style={{ marginBottom: 13 }}>
+                    Applied NVC in Action
+                  </h2>
+                  <Link
+                    to="https://www.restorativeauroville.org/"
+                    style={{ display: 'block' }}
+                  >
+                    <Image
+                      src="/assets/rc-banner.png"
+                      rawWidth={1440}
+                      rawHeight={900}
+                      style={{
+                        border: 'none',
+                        background: 'none',
+                      }}
+                    />
+                  </Link>
+                  <p>
+                    We are working towards building an alternative justice
+                    system in Auroville based on the principles that underlie
+                    NVC-consciousness. Our project,&nbsp;
+                    <Link to="https://www.restorativeauroville.org/">
+                      Restorative Auroville
+                    </Link>
+                    , aims to bring the practice of Restorative Circles, a
+                    holistic, community-based form of conflict resolution, to
+                    Auroville, and to explore what a consciously designed
+                    justice system could look like.
+                  </p>
+                </Copy>
+              </StandardDiv>
+            </HomePage>
+          </Fragment>
+        )}
+      </Fragment>
+    )
+  }
 }
-
-// IndexPage.propTypes = {}
 
 // ----------------------------------------------------------------------------
 // ---------------------------------------------------------------------- Query

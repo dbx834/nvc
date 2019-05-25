@@ -129,7 +129,11 @@ const query = graphql`
  * [description]
  * @return {[type]} [description]
  */
-const DisqusCommentsX = ({ pageData, collapsible = true }) => {
+const DisqusCommentsX = ({
+  pageData,
+  collapsible = true,
+  text = 'Please share your thoughts and inspiration.',
+}) => {
   return (
     <div
       className={`${collapsible === false ? 'simple' : 'collapse'} ${style}`}
@@ -150,7 +154,7 @@ const DisqusCommentsX = ({ pageData, collapsible = true }) => {
           },
         }}
         pageData={pageData}
-        text="Please share your thoughts and inspiration."
+        text={text}
         collapsible={collapsible}
       />
     </div>

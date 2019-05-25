@@ -204,6 +204,7 @@ class Layout extends React.Component {
 
     this.state = {
       typeClass,
+      client: false,
     }
   }
 

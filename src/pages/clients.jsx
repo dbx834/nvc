@@ -17,6 +17,8 @@ import Img from 'gatsby-image'
 import MultiCarousel from '@bodhi-project/components/lib/gatsby/MultiCarousel'
 import '@bodhi-project/antrd/lib/restorative-auroville/3.10.0/carousel/style/css'
 
+import Gallery from '@bodhi-project/components/lib/gatsby/Gallery'
+
 import Video from '@bodhi-project/components/lib/Video'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
@@ -105,6 +107,33 @@ export const query = graphql`
       ...defaultImage
     }
     client00020: file(relativePath: { eq: "clients/client00020.jpg" }) {
+      ...defaultImage
+    }
+    gallery00001: file(relativePath: { eq: "clients/gallery00001.jpeg" }) {
+      ...defaultImage
+    }
+    gallery00002: file(relativePath: { eq: "clients/gallery00002.jpeg" }) {
+      ...defaultImage
+    }
+    gallery00003: file(relativePath: { eq: "clients/gallery00003.jpeg" }) {
+      ...defaultImage
+    }
+    gallery00004: file(relativePath: { eq: "clients/gallery00004.jpeg" }) {
+      ...defaultImage
+    }
+    gallery00005: file(relativePath: { eq: "clients/gallery00005.jpeg" }) {
+      ...defaultImage
+    }
+    gallery00006: file(relativePath: { eq: "clients/gallery00006.jpeg" }) {
+      ...defaultImage
+    }
+    gallery00007: file(relativePath: { eq: "clients/gallery00007.jpeg" }) {
+      ...defaultImage
+    }
+    gallery00008: file(relativePath: { eq: "clients/gallery00008.jpeg" }) {
+      ...defaultImage
+    }
+    gallery00009: file(relativePath: { eq: "clients/gallery00009.jpeg" }) {
       ...defaultImage
     }
   }
@@ -253,6 +282,13 @@ class Page extends React.Component {
             <div className="mask-p">
               <MultiCarousel data={data} Img={Img} />
             </div>
+            <h2 className="mask-h3">From our events…</h2>
+            <Gallery
+              data={this.props.data}
+              lookup="gallery"
+              columns={{ min: 3, max: 3 }}
+              Img={Img}
+            />
           </Copy>
           <Copy>
             <h2 className="mask-p" style={{ marginBottom: 11 }}>

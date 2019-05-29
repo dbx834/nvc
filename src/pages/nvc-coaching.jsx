@@ -57,7 +57,7 @@ class NVCPage extends React.PureComponent {
         <PageHeader title="NVC Coaching" />
         <StandardDiv>
           <Copy>
-            <p>Coming soon…</p>
+            <p>Coming soon...</p>
           </Copy>
           <Copy>&nbsp;</Copy>
         </StandardDiv>

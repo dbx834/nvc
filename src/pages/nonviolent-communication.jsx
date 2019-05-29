@@ -189,16 +189,6 @@ const NVCPage = props => {
             </span>
           </p>
           <hr />
-          <h2 className="mask-p" style={{ marginBottom: 11 }}>
-            Jonas shares about his experience with NVC…
-          </h2>
-          <Video
-            url="https://www.youtube.com/watch?v=Kler8yy4OUc"
-            style={{
-              marginBottom: 17,
-            }}
-          />
-          <hr />
           <h2 className="mask-p" style={{ marginBottom: 5 }}>
             A Participant Shares...
           </h2>
@@ -212,14 +202,14 @@ const NVCPage = props => {
           >
             <span style={{ fontSize: '125%' }}>
               <i>
-                "… Thank you for all you have done and all that you are --
+                "Thank you for all you have done and all that you are –
                 grounded, free flowing, demanding, accepting, caring, patient,
                 happy, unhappy, an expert, a learner and super fun!"
               </i>
               <br />~ <strong>Sonali, 2014</strong>
             </span>
           </p>
-          <div style={{ width: '100%', height: 18, marginBottom: 30 }}>
+          <div style={{ width: '100%', height: 18, marginBottom: 16 }}>
             <p
               style={{
                 margin: 0,
@@ -234,6 +224,35 @@ const NVCPage = props => {
                   to="/writings/celebrations-and-gratitude"
                 >
                   More Celebrations & Gratitude ⇝
+                </Link>
+              </small>
+            </p>
+          </div>
+          <hr />
+          <h2 className="mask-p" style={{ marginBottom: 11 }}>
+            Jonas On His Experience With NVC...
+          </h2>
+          <Video
+            url="https://www.youtube.com/watch?v=Kler8yy4OUc"
+            style={{
+              marginBottom: 17,
+            }}
+          />
+          <div style={{ width: '100%', height: 18, marginBottom: 16 }}>
+            <p
+              style={{
+                margin: 0,
+              }}
+            >
+              <small>
+                <Link
+                  style={{
+                    display: 'inline-block',
+                    float: 'right',
+                  }}
+                  to="https://www.youtube.com/user/laurajoyful/videos"
+                >
+                  More Videos ⇝
                 </Link>
               </small>
             </p>

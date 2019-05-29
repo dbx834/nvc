@@ -14,6 +14,7 @@ import Img from 'gatsby-image'
 
 import Image from '@bodhi-project/components/lib/Image'
 import Video from '@bodhi-project/components/lib/Video'
+import Division from '@bodhi-project/components/lib/Division'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import Link from '../components/Link'
@@ -76,88 +77,63 @@ const NVCIndia = props => {
       />
       <StandardDiv>
         <Copy>
-          <p>
-            Our NVC community in India is a thriving one, and it’s incredible to
-            see how we’ve grown and how NVC has touched so many hundreds of
-            people over the past several years.
-          </p>
-          <div className="mask-p">
-            <Link to="https://www.nvc-india.org/">
-              <Img fluid={props.data.nvcIndiaHomepage.childImageSharp.fluid} />
-            </Link>
+          <div className="margin-p">
+            <Division golden>
+              <div>
+                <Link to="https://www.nvc-india.org/">
+                  <Img
+                    fluid={props.data.nvcIndiaHomepage.childImageSharp.fluid}
+                  />
+                  <p style={{ marginBottom: 9 }}>
+                    Visit&nbsp;
+                    <Link to="https://www.nvc-india.org/">
+                      www.nvc-india.org
+                    </Link>
+                    &nbsp;to know more...
+                  </p>
+                </Link>
+              </div>
+              <div>
+                <p>
+                  Our NVC community in India is a thriving one, and it’s
+                  incredible to see how we’ve grown and how NVC has touched so
+                  many hundreds of people over the past several years.
+                </p>
+                <p>CNVC Certified Trainers in India:</p>
+                <ul className="mask-p">
+                  <li>L’aura Joy</li>
+                  <li>Ranjitha Jeurkar</li>
+                  <li>Stefan Gebert</li>
+                  <li>Sudha Shankar</li>
+                </ul>
+              </div>
+            </Division>
           </div>
+          <h2 className="mask-h3">Where It All Began...</h2>
           <p>
             Marshall Rosenberg first came to India in 2004, and offered an
             International Intensive Training (IIT) in Bangalore, and then
-            another one in Pune in 2006.
-          </p>
-          <p>
-            And then we’ve had&nbsp;
+            another one in Pune in 2006. And since 2010 we’ve had&nbsp;
             <Link to="/nvc-india-conventions">
               annual International NVC Conventions
             </Link>
-            &nbsp;since 2010, plus so many other events with trainers from all
-            over the world.
+            , plus so many other events with trainers from all over the world.
           </p>
-          <p>
-            We have four&nbsp;
-            <Link to="https://www.nvc-india.org/">CNVC Certified Trainers</Link>
-            :
-          </p>
-          <ul className="mask-p">
-            <li>L’aura Joy</li>
-            <li>Ranjitha Jeurkar</li>
-            <li>Stefan Gebert</li>
-            <li>Sudha Shankar</li>
-          </ul>
-          <p>
-            and many more&nbsp;
-            <Link to="/nvc-certification">
-              Certification Candidates preparing themselves to become Trainers
-            </Link>
-            .
-          </p>
-          <p style={{ marginBottom: 40 }}>
-            To know more about what’s happening in India, check out&nbsp;
-            <Link to="https://www.nvc-india.org/">www.nvc-india.org</Link> or
-            join our&nbsp;
-            <Link to="https://www.facebook.com/groups/nvc.india/">
-              Facebook Group
-            </Link>
-            .
-          </p>
-        </Copy>
-        <Copy>
-          <h2 className="mask-p" style={{ marginBottom: 11 }}>
-            NVC India – an old fundraiser…
-          </h2>
-          <Video
-            url="https://www.youtube.com/watch?v=6UqhACynw0s"
+          <h2 className="mask-h3">NVC-India – an old fundraiser...</h2>
+          <div style={{ maxWidth: 640 }}>
+            <Video url="https://www.youtube.com/watch?v=6UqhACynw0s" />
+          </div>
+          <hr
+            className="mobile-only"
             style={{
-              marginBottom: 10,
+              marginTop: 0,
+              marginBottom: 22,
+              width: '100%',
+              borderTop: 'unset',
             }}
           />
-          <div style={{ width: '100%', height: 18, marginBottom: 16 }}>
-            <p
-              style={{
-                margin: 0,
-              }}
-            >
-              <small>
-                <Link
-                  style={{
-                    display: 'inline-block',
-                    float: 'right',
-                  }}
-                  to="https://www.youtube.com/user/laurajoyful/videos"
-                >
-                  More Videos ⇝
-                </Link>
-              </small>
-            </p>
-          </div>
-
-          <hr />
+        </Copy>
+        <Copy>
           <p
             style={{
               fontFamily: 'futura-pt, sans-serif',
@@ -189,6 +165,7 @@ const NVCIndia = props => {
             rawWidth={1235}
             rawHeight={1235}
             style={{
+              maxWidth: 360,
               width: '100%',
               height: 'auto',
               border: 0,

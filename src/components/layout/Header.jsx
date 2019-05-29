@@ -125,13 +125,27 @@ const styleX = css({
     '& #fix.ant-menu-root > .ant-menu-item': {
       '@media(max-width: 992px)': {
         '&:first-child': {
-          lineHeight: '24px !important',
-          height: '24px !important',
+          lineHeight: '19px !important',
+          height: '19px !important',
           margin: '0px',
           fontSize: 'inherit !important',
           fontWeight: '500 !important',
           color: '#b43808 !important',
           textTransform: 'unset !important',
+        },
+      },
+
+      '@media(min-width: 1192px)': {
+        '&:first-child': {
+          lineHeight: '21px !important',
+          height: '21px !important',
+        },
+      },
+
+      '@media(min-width: 1392px)': {
+        '&:first-child': {
+          lineHeight: '24px !important',
+          height: '24px !important',
         },
       },
     },
@@ -152,12 +166,22 @@ const styleX = css({
 
     '& .ant-menu-submenu-title': {
       cursor: 'default !important',
-      lineHeight: '24px !important',
-      height: '24px !important',
+      lineHeight: '19px !important',
+      height: '19px !important',
       margin: '0px',
       fontSize: 'inherit !important',
       fontWeight: '500 !important',
       color: '#b43808 !important',
+
+      '@media(min-width: 1192px)': {
+        lineHeight: '21px !important',
+        height: '21px !important',
+      },
+
+      '@media(min-width: 1392px)': {
+        lineHeight: '24px !important',
+        height: '24px !important',
+      },
 
       '@media(min-width: 992px)': {
         paddingLeft: '40px !important',
@@ -187,15 +211,27 @@ const styleX = css({
     },
 
     '& .ant-menu-item': {
-      lineHeight: '24px !important',
-      height: '24px !important',
+      lineHeight: '19px !important',
+      height: '19px !important',
       margin: '0px !important',
+
+      '@media(min-width: 1192px)': {
+        lineHeight: '21px !important',
+        height: '21px !important',
+      },
+
+      '@media(min-width: 1392px)': {
+        lineHeight: '24px !important',
+        height: '24px !important',
+      },
 
       '& a': {
         color: '#4a4a4a',
         transition: '0.125s',
         textTransform: 'uppercase',
         letterSpacing: '0.14625ex',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
 
         '& span': {
           fontSize: '88%',
@@ -247,8 +283,18 @@ const styleX = css({
 
       '& .ant-menu-sub.ant-menu-inline > .ant-menu-item': {
         paddingLeft: '36px !important',
-        lineHeight: '24px !important',
-        height: '24px !important',
+        lineHeight: '19px !important',
+        height: '19px !important',
+
+        '@media(max-width: 1192px)': {
+          lineHeight: '21px !important',
+          height: '21px !important',
+        },
+
+        '@media(max-width: 1392px)': {
+          lineHeight: '24px !important',
+          height: '24px !important',
+        },
         margin: '0px',
       },
 
@@ -385,7 +431,7 @@ class DesktopNav extends React.Component {
                             const { title: subTitle, link: thisLink } = subMenu
                             return (
                               <Menu.Item key={keygen()}>
-                                <Link to={thisLink}>
+                                <Link to={thisLink} title={subTitle}>
                                   <span>{subTitle}</span>
                                 </Link>
                               </Menu.Item>
@@ -396,7 +442,7 @@ class DesktopNav extends React.Component {
                     } else {
                       returnObj = (
                         <Menu.Item key={keygen()}>
-                          <Link to={link}>
+                          <Link to={link} title={title}>
                             <span>{title}</span>
                           </Link>
                         </Menu.Item>

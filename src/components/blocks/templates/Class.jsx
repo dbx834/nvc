@@ -94,7 +94,7 @@ class Banner extends React.Component {
               <p>
                 <span className="hero">
                   Evaluate accessibility needs, determine priorities, and chart
-                  a path to meet your goals…
+                  a path to meet your goals...
                 </span>
               </p>
               <ul className="mask-p">

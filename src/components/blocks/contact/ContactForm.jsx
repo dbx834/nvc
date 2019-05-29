@@ -18,6 +18,7 @@ import Button from 'antd/lib/button'
 import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/button/style/css'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
+import Link from '../../Link'
 import {
   hasErrors,
   validateEmail,
@@ -122,7 +123,13 @@ class IndexPage extends React.Component {
 
     return (
       <div className={pageWrapperClass}>
-        <h1>Contact Us</h1>
+        <p style={{ marginTop: 0 }}>
+          You can write to us at&nbsp;
+          <Link to="mailto:joylivinglearning@gmail.com">
+            joylivinglearning@gmail.com
+          </Link>
+          &nbsp;or fill in the form below.
+        </p>
         {this.state.formSent === false && (
           <Form
             onSubmit={this.handleSubmit}
@@ -150,7 +157,7 @@ class IndexPage extends React.Component {
                 rules: [{ validator: validateComment }],
               })(
                 <TextArea
-                  placeholder="Your questions / comments…"
+                  placeholder="Your questions / comments..."
                   autosize={{ minRows: 1, maxRows: 6 }}
                 />
               )}

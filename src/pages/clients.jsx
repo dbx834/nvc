@@ -282,17 +282,26 @@ class Page extends React.Component {
             <div className="mask-p">
               <MultiCarousel data={data} Img={Img} />
             </div>
-            <h2 className="mask-h3">From our events…</h2>
+            <h2 className="mask-h3">With Our Clients...</h2>
             <Gallery
               data={this.props.data}
               lookup="gallery"
               columns={{ min: 3, max: 3 }}
               Img={Img}
             />
+            <hr
+              className="mobile-only"
+              style={{
+                marginTop: 0,
+                marginBottom: 22,
+                width: '100%',
+                borderTop: 'unset',
+              }}
+            />
           </Copy>
           <Copy>
             <h2 className="mask-p" style={{ marginBottom: 11 }}>
-              Nonviolent Communication Presentation at Decathlon
+              "Nonviolent Communication" Presentation at Decathlon
             </h2>
             <Video
               url="https://www.youtube.com/watch?v=ABSqrsXK1HI"
@@ -300,9 +309,10 @@ class Page extends React.Component {
                 marginBottom: 17,
               }}
             />
+            <br className="desktop-only" />
             <hr />
             <h2 className="mask-p" style={{ marginBottom: 11 }}>
-              Restorative Circles Workshop with ISABS (Delhi)
+              "Restorative Circles" Workshop with ISABS (Delhi)
             </h2>
             <Video
               url="https://www.youtube.com/watch?v=B7sO2a5_KV8"

@@ -66,7 +66,7 @@ const style = css({
       borderBottom: 'none !important',
 
       '& .ant-collapse-content': {
-        borderTop: '1px solid #C14737',
+        borderBottom: '1px solid #C14737',
 
         '& .ant-collapse-content-box': {
           padding: 0,
@@ -175,7 +175,7 @@ class MobileListing extends React.Component {
         ? slice(data, currentIndex, nextIndex)
         : slice(data, currentIndex)
       const newData = data.concat(sliced)
-      console.log(newData)
+      // console.log(newData)
 
       this.setState({
         loadingMore: false,
@@ -279,7 +279,7 @@ class MobileListing extends React.Component {
                   />
                   <p>{abstract}</p>
                   <p style={{ marginBottom: 10 }}>
-                    <Link to={`/${route}`}>Read more…</Link>
+                    <Link to={`/${route}`}>Read more...</Link>
                   </p>
                 </div>
               </Panel>

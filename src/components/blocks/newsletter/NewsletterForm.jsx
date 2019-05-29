@@ -132,7 +132,6 @@ class IndexPage extends React.Component {
 
     return (
       <div className={pageWrapperClass}>
-        <h1>Newsletter</h1>
         <p style={{ marginTop: 0 }}>
           If you'd like to receive updates about our programs, please sign up
           for our newsletter.

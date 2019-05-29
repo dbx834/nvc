@@ -56,7 +56,6 @@ class PayFee extends React.Component {
   render() {
     return (
       <div className={styles}>
-        <h1>Fee Payment</h1>
         <p style={{ marginTop: 0 }}>
           You may pay your fees here, or directly on the event page you’re
           registering for.

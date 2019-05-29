@@ -8,6 +8,8 @@ import { css } from 'glamor'
 
 import map from 'lodash/map'
 import pick from 'lodash/pick'
+import replace from 'lodash/replace'
+import startCase from 'lodash/startCase'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 
@@ -81,6 +83,12 @@ const Writings = props => {
     })
   })
 
+  const {
+    location: { hash },
+  } = props
+
+  const preFilter = startCase(hash)
+
   return (
     <StandardPage
       className={pageStyle}
@@ -89,8 +97,8 @@ const Writings = props => {
     >
       <PageHeader title="Blog" />
       <hr />
-      <DesktopListing data={data2} />
-      <MobileListing data={data2} />
+      <DesktopListing data={data2} preFilter={preFilter} />
+      <MobileListing data={data2} preFilter={preFilter} />
     </StandardPage>
   )
 }

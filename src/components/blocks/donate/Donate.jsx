@@ -66,7 +66,6 @@ class Donate extends React.Component {
   render() {
     return (
       <div className={styles}>
-        <h1>Donate</h1>
         <p style={{ marginTop: 0 }}>
           If you’d like to make a donation to Joy Living Learning, you may do so
           below. This will link directly to the Auroville Foundation payment
@@ -82,7 +81,7 @@ class Donate extends React.Component {
           <Link to="mailto:joylivinglearning@gmail.com" outLink>
             joylivinglearning@gmail.com
           </Link>
-          &nbsp; to let us know that you have sent a donation, so that we can
+          &nbsp;to let us know that you have sent a donation, so that we can
           track it.
         </p>
         <p>

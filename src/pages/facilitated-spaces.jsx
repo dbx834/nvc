@@ -52,7 +52,7 @@ const offeringsData = [
     image: mediation,
     title1: 'Mediation',
     lead:
-      'Are you seeking support to dialogue with a friend, colleague or family member? If so, you might consider asking for a mediation or facilitated dialogue, where we hold space for both parties to express themselves and to hear the other, and where we end with mutually beneficial agreements that support forward movement.',
+      'Are you seeking support to dialogue with a friend, colleague or family member? If so, you might consider asking for a mediation or facilitated conversation, where we hold space for both parties to express themselves and to hear the other, and where we end with mutually beneficial agreements that support forward movement.',
   },
   {
     image: groupFacilitation,
@@ -72,8 +72,17 @@ const offeringsData = [
     image: restorativeCircles,
     title1: 'Restorative',
     title2: 'Circle',
-    lead:
-      'Are you impacted by an issue that involves several people from different parts of your community or network? You could initiate a Restorative Circle, which is a process designed to hold space for conflict within the context of community.',
+    lead: (
+      <Fragment>
+        Are you impacted by an issue that involves several people from different
+        parts of your community or network? You could initiate a{' '}
+        <Link to="https://www.restorativeauroville.org/restorative-circles">
+          Restorative Circle
+        </Link>
+        , which is a process designed to hold space for conflict within the
+        context of community.
+      </Fragment>
+    ),
   },
 ]
 
@@ -174,7 +183,7 @@ class NVCPage extends React.PureComponent {
           </Copy>
           <Copy>
             <h2 className="mask-p" style={{ marginBottom: 10 }}>
-              Surya Shares Her Experience…
+              Surya On Her Experience...
             </h2>
             <Video
               url="https://www.youtube.com/watch?v=uIyY6TDbnSQ"
@@ -227,6 +236,25 @@ class NVCPage extends React.PureComponent {
                 <br />~ <strong>Michelle, 2015</strong>
               </span>
             </p>
+            <div style={{ width: '100%', height: 18, marginBottom: 16 }}>
+              <p
+                style={{
+                  margin: 0,
+                }}
+              >
+                <small>
+                  <Link
+                    style={{
+                      display: 'inline-block',
+                      float: 'right',
+                    }}
+                    to="/writings/celebrations-and-gratitude"
+                  >
+                    More Celebrations & Gratitude ⇝
+                  </Link>
+                </small>
+              </p>
+            </div>
 
             <hr />
             <h2 className="mask-p" style={{ marginBottom: 5 }}>

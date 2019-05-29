@@ -132,7 +132,7 @@ const query = graphql`
 const DisqusCommentsX = ({
   pageData,
   collapsible = true,
-  text = 'Please share your thoughts and inspiration.',
+  text = 'Please share your thoughts and inspiration...',
 }) => {
   return (
     <div

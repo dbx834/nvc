@@ -11,11 +11,10 @@ import { css } from 'glamor'
 import pick from 'lodash/pick'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-// import Link from "gatsby-link";
-// import ContainerDimensions from "react-container-dimensions";
+import { graphql } from 'gatsby'
 
-import Image from '@bodhi-project/components/lib/Image'
-// import OutLink from "@bodhi-project/components/lib/OutLink";
+import Img from 'gatsby-image'
+import Gallery from '@bodhi-project/components/lib/gatsby/Gallery'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import Copy from '../components/Copy'
@@ -39,9 +38,37 @@ const pageData = {
 const seoData = seoHelper(pageData)
 
 // ----------------------------------------------------------------------------
+// --------------------------------------------------------------------- Images
+// ----------------------------------------------------------------------------
+export const query = graphql`
+  query {
+    img00001: file(relativePath: { eq: "laura/img00001.jpeg" }) {
+      ...defaultImage
+    }
+    img00002: file(relativePath: { eq: "laura/img00002.jpeg" }) {
+      ...defaultImage
+    }
+    img00003: file(relativePath: { eq: "laura/img00003.jpeg" }) {
+      ...defaultImage
+    }
+    img00004: file(relativePath: { eq: "laura/img00004.jpeg" }) {
+      ...defaultImage
+    }
+  }
+`
+
+// ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
-const pageStyle = css({}).toString()
+const pageStyle = css({
+  '@media(min-width: 992px)': {
+    '& .gatsby-image-wrapper': {
+      '&:nth-child(3)': {
+        display: 'none',
+      },
+    },
+  },
+}).toString()
 
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
@@ -114,47 +141,13 @@ class NVCPage extends React.PureComponent {
           </Copy>
           <Copy>
             <p style={{ marginBottom: 10 }}>
-              <strong>In Action…</strong>
+              <strong>In Action...</strong>
             </p>
-
-            <Image
-              src="/content-assets/laura-joy/laura4_900X600.jpeg"
-              rawWidth={900}
-              rawHeight={600}
-              style={{
-                width: '100%',
-                height: 'auto',
-                border: 0,
-                background: 'transparent',
-                display: 'block',
-                marginBottom: 10,
-              }}
-            />
-            <Image
-              src="/content-assets/laura-joy/laura2_900X600.jpeg"
-              rawWidth={900}
-              rawHeight={600}
-              style={{
-                width: '100%',
-                height: 'auto',
-                border: 0,
-                background: 'transparent',
-                display: 'block',
-                marginBottom: 10,
-              }}
-            />
-            <Image
-              src="/content-assets/laura-joy/laura3_900X600.jpeg"
-              rawWidth={900}
-              rawHeight={600}
-              style={{
-                width: '100%',
-                height: 'auto',
-                border: 0,
-                background: 'transparent',
-                display: 'block',
-                marginBottom: 10,
-              }}
+            <Gallery
+              data={this.props.data}
+              lookup="img"
+              columns={{ min: 2, max: 1 }}
+              Img={Img}
             />
           </Copy>
         </StandardDiv>

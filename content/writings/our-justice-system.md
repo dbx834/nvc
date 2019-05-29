@@ -11,7 +11,7 @@ tags:
 
 Published on Auronet.
 
-For me, all the talk about the feedback relating to the proposed WC/AVC members is connected to a much larger issue - our Justice System.
+For me, all the talk about the feedback relating to the proposed WC/AVC members is connected to a much larger issue – our Justice System.
 
 What does justice mean? What kind of a justice system do we want to have in Auroville?
 

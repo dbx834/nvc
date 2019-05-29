@@ -116,7 +116,9 @@ const popContent = (standardData, components, conf) => {
       </p>
       {!isNull(abstract) && <p>{abstract}</p>}
       <p>
-        <components.localLink to={`/${route}`}>Read more…</components.localLink>
+        <components.localLink to={`/${route}`}>
+          Read more...
+        </components.localLink>
       </p>
     </div>
   )

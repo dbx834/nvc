@@ -12,8 +12,9 @@ import pick from 'lodash/pick'
 // import Link from '../components/Link';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Images
+import Copy from '../components/Copy'
+import PageHeader from '../components/PageHeader'
+import StandardDiv from '../components/StandardDiv'
 import StandardPage from '../components/wrappers/StandardPage'
 import Donate from '../components/blocks/donate/Donate'
 import seoHelper from '../methods/seoHelper'
@@ -36,25 +37,9 @@ const seoData = seoHelper(pageData)
 // ----------------------------------------------------------------------------
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
-
 const pageStyle = css({
   '& .ant-form-item': {
     width: '100% !important',
-  },
-
-  '& main': {
-    '@media(min-width: 992px)': {
-      maxWidth: '60rem',
-      marginLeft: 'unset !important',
-
-      '& .ant-form-item:nth-child(1)': {
-        marginRight: '0px !important',
-      },
-
-      '& .ant-form-item:nth-child(2)': {
-        marginLeft: '0px !important',
-      },
-    },
   },
 }).toString()
 
@@ -71,7 +56,12 @@ class Page extends React.Component {
         seoData={seoData}
         {...pick(this.props, ['location'])}
       >
-        <Donate />
+        <PageHeader title="Donate" />
+        <StandardDiv>
+          <Copy>
+            <Donate />
+          </Copy>
+        </StandardDiv>
       </StandardPage>
     )
   }

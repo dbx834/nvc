@@ -13,10 +13,10 @@ import pick from 'lodash/pick'
 // import Link from '../components/Link';
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
-
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Images
+import Copy from '../components/Copy'
+import PageHeader from '../components/PageHeader'
+import StandardDiv from '../components/StandardDiv'
 import StandardPage from '../components/wrappers/StandardPage'
-
 import NewsletterForm from '../components/blocks/newsletter/NewsletterForm'
 import seoHelper from '../methods/seoHelper'
 
@@ -43,21 +43,6 @@ const pageStyle = css({
   '& .ant-form-item': {
     width: '100% !important',
   },
-
-  '& main': {
-    '@media(min-width: 992px)': {
-      maxWidth: '50rem',
-      marginLeft: 'unset !important',
-
-      '& .ant-form-item:nth-child(1)': {
-        marginRight: '0px !important',
-      },
-
-      '& .ant-form-item:nth-child(2)': {
-        marginLeft: '0px !important',
-      },
-    },
-  },
 }).toString()
 
 // ----------------------------------------------------------------------------
@@ -73,7 +58,12 @@ class Page extends React.Component {
         seoData={seoData}
         {...pick(this.props, ['location'])}
       >
-        <NewsletterForm />
+        <PageHeader title="Newsletter" />
+        <StandardDiv>
+          <Copy>
+            <NewsletterForm />
+          </Copy>
+        </StandardDiv>
       </StandardPage>
     )
   }

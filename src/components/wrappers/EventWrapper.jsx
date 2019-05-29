@@ -5,7 +5,10 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
 import { css } from 'glamor'
+
 import isNull from 'lodash/isNull'
+import startsWith from 'lodash/startsWith'
+import isUndefined from 'lodash/isUndefined'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import { FacebookProvider, Like as FBLike } from 'react-facebook'
@@ -138,6 +141,22 @@ const EventWrapper = props => {
     ? undefined
     : { nakedPageSlug: prev.fields.route }
 
+  const prevNext = isNull(next)
+    ? isNull(prev)
+      ? undefined
+      : prev.fields.route
+    : next.fields.route
+
+  let title = 'More events'
+
+  if (startsWith(prevNext, 'events/featured')) {
+    title = 'More Workshops'
+  } else if (startsWith(prevNext, 'events/nvc-practice-groups')) {
+    title = 'More NVC Practice Groups'
+  } else if (startsWith(prevNext, 'events/rc-practice-groups')) {
+    title = 'More RC Practice Groups'
+  }
+
   return (
     <Layout {...props} className={`${pageStyles} ${className}`}>
       {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SEO */}
@@ -163,7 +182,10 @@ const EventWrapper = props => {
                 />
               </div>
               <div className="abstract">
-                <h1 className="mask-h3" style={{ marginBottom: 5 }}>
+                <h1
+                  className="mask-h3"
+                  style={{ marginBottom: 14, lineHeight: 1.2 }}
+                >
                   {frontmatter.title}
                 </h1>
                 <p style={{ marginTop: 0, marginBottom: 0 }}>
@@ -228,7 +250,7 @@ const EventWrapper = props => {
             <hr />
             {children}
             <aside>
-              <h1 className="mask-h4">More events</h1>
+              <h1 className="mask-h4">{title}</h1>
               <PreviousNext prev={prevData} next={nextData} />
             </aside>
           </article>

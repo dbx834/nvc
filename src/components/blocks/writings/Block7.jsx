@@ -26,7 +26,7 @@ const Block = props => (
   <div>
     <hr />
     <h2 className="mask-p" style={{ marginBottom: 10 }}>
-      Some Inspiration…
+      Some Inspiration...
     </h2>
     <div
       style={{
@@ -53,7 +53,7 @@ const Block = props => (
             marginBottom: 10,
           }}
         />
-        <Link to="/contact">Contact us</Link> to get your set of Feelings &
+        <Link to="/contact-us">Contact us</Link> to get your set of Feelings &
         Needs Cards.
       </div>
       <hr />

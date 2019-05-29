@@ -75,7 +75,7 @@ const Pure = () => {
             <p>
               <span className="hero">
                 Evaluate accessibility needs, determine priorities, and chart a
-                path to meet your goals…
+                path to meet your goals...
               </span>
             </p>
             <ul className="mask-p">

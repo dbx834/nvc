@@ -5,6 +5,8 @@
 import React from 'react'
 import { css } from 'glamor'
 
+import isUndefined from 'lodash/isUndefined'
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Division from '@bodhi-project/components/lib/Division'
 import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/row/style/css'
@@ -62,16 +64,25 @@ const StandardDiv = ({ children, leftLine = true, rightLine = true }) => {
   const div2 = children[1]
 
   return (
-    <Division golden className={style}>
-      <Fragment>
-        {leftLine === true && <hr />}
-        {div1}
-      </Fragment>
-      <Fragment>
-        {rightLine === true && <hr />}
-        {div2}
-      </Fragment>
-    </Division>
+    <Fragment>
+      {!isUndefined(div2) ? (
+        <Division golden className={style}>
+          <Fragment>
+            {leftLine === true && <hr />}
+            {div1}
+          </Fragment>
+          <Fragment>
+            {rightLine === true && <hr />}
+            {div2}
+          </Fragment>
+        </Division>
+      ) : (
+        <div className={style}>
+          {leftLine === true && <hr />}
+          {children}
+        </div>
+      )}
+    </Fragment>
   )
 }
 

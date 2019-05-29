@@ -29,9 +29,19 @@ const getPrev = (index, edges, thisEdge) => {
 
   _.map(_.reverse(sliced), edge => {
     if (_.isNull(returnNode)) {
-      const type = _.split(_.trim(edge.node.fields.route), '/', 1)[0]
-      const thisType = _.split(_.trim(thisEdge.node.fields.route), '/', 1)[0]
-      if (type === thisType) {
+      const thatRoute = edge.node.fields.route
+      const thisRoute = thisEdge.node.fields.route
+      const type = _.split(_.trim(thatRoute), '/', 1)[0]
+      const thisType = _.split(_.trim(thisRoute), '/', 1)[0]
+      if (_.startsWith(thisType, 'events')) {
+        if (type === thisType) {
+          const type2 = _.split(_.trim(thatRoute), '/')[1]
+          const thisType2 = _.split(_.trim(thisRoute), '/')[1]
+          if (type2 === thisType2) {
+            returnNode = edge.node
+          }
+        }
+      } else if (type === thisType) {
         returnNode = edge.node
       }
     }
@@ -47,9 +57,20 @@ const getNext = (index, edges, thisEdge) => {
 
   _.map(sliced, edge => {
     if (_.isNull(returnNode)) {
-      const type = _.split(_.trim(edge.node.fields.route), '/', 1)[0]
-      const thisType = _.split(_.trim(thisEdge.node.fields.route), '/', 1)[0]
-      if (type === thisType) {
+      const thatRoute = edge.node.fields.route
+      const thisRoute = thisEdge.node.fields.route
+      const type = _.split(_.trim(thatRoute), '/', 1)[0]
+      const thisType = _.split(_.trim(thisRoute), '/', 1)[0]
+
+      if (_.startsWith(thisType, 'events')) {
+        if (type === thisType) {
+          const type2 = _.split(_.trim(thatRoute), '/')[1]
+          const thisType2 = _.split(_.trim(thisRoute), '/')[1]
+          if (type2 === thisType2) {
+            returnNode = edge.node
+          }
+        }
+      } else if (type === thisType) {
         returnNode = edge.node
       }
     }

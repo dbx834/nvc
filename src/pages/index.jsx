@@ -212,15 +212,11 @@ class IndexPage extends React.Component {
                       </p>
                       {matches === false && (
                         <Fragment>
-                          <hr />
-                          <h2 className="mask-p" style={{ marginBottom: 13 }}>
-                            Please share your thoughts and inspiration
-                          </h2>
+                          <br />
                           <br />
                           <DisqusComments
                             pageData={pageData}
                             collapsible={false}
-                            text=" "
                           />
                         </Fragment>
                       )}

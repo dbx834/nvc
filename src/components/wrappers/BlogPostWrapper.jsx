@@ -5,7 +5,9 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
 import { css } from 'glamor'
+
 import isNull from 'lodash/isNull'
+import kebabCase from 'lodash/kebabCase'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import { FacebookProvider, Like as FBLike } from 'react-facebook'
@@ -29,6 +31,7 @@ import Tag from 'antd/lib/tag'
 import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/tag/style/css'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
+import Link from '../Link'
 import Layout from '../layout/Layout'
 import PreviousNext from '../PreviousNext'
 
@@ -93,7 +96,10 @@ const pageStyle = css({
 
     '& .abstract': {
       flex: '12 1 0%',
-      paddingLeft: 15,
+
+      '@media(min-width: 992px)': {
+        paddingLeft: 15,
+      },
 
       '& h3': {
         marginTop: 0,
@@ -164,10 +170,17 @@ const BlogPostWrapper = ({ pageData, className, children, ...props }) => {
                 />
               </div>
               <div className="abstract">
-                <h1 className="mask-h3" style={{ marginBottom: 5 }}>
+                <h1
+                  className="mask-h3"
+                  style={{ marginBottom: 14, lineHeight: 1.2 }}
+                >
                   {frontmatter.title}
                 </h1>
-                <Tag>{catString}</Tag>
+                <Tag>
+                  <Link to={`/writings#${kebabCase(catString)}`}>
+                    {catString}
+                  </Link>
+                </Tag>
                 <p style={{ marginBottom: 0 }}>
                   <small>
                     <i>
@@ -207,13 +220,22 @@ const BlogPostWrapper = ({ pageData, className, children, ...props }) => {
             <hr />
             {children}
             <aside>
-              <h1 className="mask-h4">More articles</h1>
+              <h1 className="mask-h4">More Blogs</h1>
               <PreviousNext prev={prevData} next={nextData} />
             </aside>
             <hr />
             <br />
             <br />
             <DisqusComments pageData={pageData} collapsible={false} />
+            <hr
+              className="mobile-only"
+              style={{
+                marginTop: 0,
+                marginBottom: 22,
+                width: '100%',
+                borderTop: 'unset',
+              }}
+            />
           </article>
         </Copy>
         <Copy>

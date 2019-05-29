@@ -293,7 +293,7 @@ class Block extends React.Component {
                     </h3>
                     <p>{abstract}</p>
                     <p style={{ marginBottom: 10, color: '#6C7FA6' }}>
-                      <span>Read more…</span>
+                      <span>Read more...</span>
                     </p>
                   </div>
                 </components.localLink>

@@ -105,8 +105,18 @@ class DesktopListing extends React.Component {
   constructor(props) {
     super(props)
 
+    const { preFilter } = this.props
+    const filterSelector = {
+      'Nonviolent Communication': 'nvc',
+      'Restorative Circles': 'rc',
+      Testimonials: 'testimonials',
+      Journal: 'journal',
+    }
+    let thisPreFilter = filterSelector[preFilter]
+    thisPreFilter = isUndefined(thisPreFilter) ? 'all' : thisPreFilter
+
     this.state = {
-      filter: 'all',
+      filter: thisPreFilter,
       alreadyRendered: false,
     }
 
@@ -255,7 +265,7 @@ class DesktopListing extends React.Component {
                     </p>
                     <p>{abstract}</p>
                     <p style={{ marginBottom: 0, color: '#6C7FA6' }}>
-                      <span>Read more…</span>
+                      <span>Read more...</span>
                     </p>
                   </div>
                 </Link>

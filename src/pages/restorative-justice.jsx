@@ -15,6 +15,7 @@ import pick from 'lodash/pick'
 import FacebookWall from '../components/FacebookWall'
 
 import Image from '@bodhi-project/components/lib/Image'
+import Video from '@bodhi-project/components/lib/Video'
 // import OutLink from "@bodhi-project/components/lib/OutLink";
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
@@ -97,6 +98,22 @@ class NVCPage extends React.PureComponent {
               here – one that reflects our ideals, but that is also effective
               and has the power to bring about constructive change, both on the
               individual and community levels.
+            </p>
+            <h2 className="mask-h3">
+              "The Power of Dialogue": The Restorative System
+            </h2>
+            <p>
+              L'aura shares about her experience of engaging with Restorative
+              Circles in Auroville and the importance of designing a justice
+              system consciously, otherwise we'll just inherit the old ways.
+            </p>
+            <div style={{ maxWidth: 640 }} className="mask-p">
+              <Video url="https://www.youtube.com/watch?v=ur4OvDPkoSE" />
+            </div>
+            <p>
+              <Link to="https://www.restorativeauroville.org/the-power-of-dialogue">
+                See our Video Series: "The Power of Dialogue" ⇝
+              </Link>
             </p>
           </Copy>
           <Copy>

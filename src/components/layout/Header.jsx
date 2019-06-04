@@ -135,14 +135,14 @@ const styleX = css({
         },
       },
 
-      '@media(min-width: 1192px)': {
+      '@media(min-width: 1200px)': {
         '&:first-child': {
           lineHeight: '21px !important',
           height: '21px !important',
         },
       },
 
-      '@media(min-width: 1392px)': {
+      '@media(min-width: 1500px)': {
         '&:first-child': {
           lineHeight: '24px !important',
           height: '24px !important',
@@ -151,15 +151,18 @@ const styleX = css({
     },
 
     '& .ant-menu-submenu': {
-      '@media(max-width: 992px)': {
-        ':not(:first-child)': {
+      ':not(:first-child)': {
+        '@media(max-width: 992px)': {
           marginTop: 8,
         },
-      },
-
-      '@media(min-width: 992px)': {
-        ':not(:first-child)': {
-          marginTop: 20,
+        '@media(min-width: 992px)': {
+          marginTop: 10,
+        },
+        '@media(min-width: 1200px)': {
+          marginTop: 12,
+        },
+        '@media(min-width: 1500px)': {
+          marginTop: 14,
         },
       },
     },

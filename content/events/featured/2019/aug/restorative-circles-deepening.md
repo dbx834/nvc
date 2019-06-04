@@ -4,9 +4,7 @@ subTitle: na
 cover: /content-assets/2018-events/aurovillerc.png
 category: 3.Featured
 abstract: Restorative Circles (RC) offer ways for individuals and communities to establish connection, discover meaning and recover power on profound levels.
-date: 2019-06-08
-startDate: 2019-06-08
-finishDate: 2019-06-09
+date: 2019-08-31
 fromTime: 2pm
 toTime: 6pm
 type: event

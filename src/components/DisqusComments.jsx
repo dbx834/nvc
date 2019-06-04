@@ -5,9 +5,8 @@
 import React from 'react'
 import { css } from 'glamor'
 
-import { StaticQuery, graphql } from 'gatsby'
-
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
+import { StaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 import DisqusComments from '@bodhi-project/components/lib/DisqusComments'
@@ -132,7 +131,11 @@ const query = graphql`
 const DisqusCommentsX = ({
   pageData,
   collapsible = true,
-  text = 'Please share your thoughts and inspiration...',
+  text = [
+    <p>
+      <strong>Please share your thoughts and inspiration...</strong>
+    </p>,
+  ],
 }) => {
   return (
     <div

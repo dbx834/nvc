@@ -27,7 +27,7 @@ Ideal for participants at beginner level (no prior training in NVC), but also su
 
 **Limited spaces. Register now!**
 
-![{"height": "60vh", "width": "auto", "display": "inline-block", "background": "transparent"}](/content-assets/generic-posters/nvc-intro_800X1200.jpg)
+![{"height": "60vh", "width": "auto", "display": "inline-block", "background": "transparent", "margin-top": "0.36rem"}](/content-assets/generic-posters/nvc-intro_800X1200.jpg)
 
 **Nonviolent Communication (NVC)** offers a key to shifting paradigms from that of separation and right/wrong thinking to one of genuine collaboration and increased trust, safety and taking responsibility for one’s choices.
 Whereas our usual mode of expressing ourselves and hearing others can include judgements, right/wrong thinking, and imposing or giving up our power, all of which alienate us from others, NVC helps us to transform our habitual thinking and to put our focus instead on the feelings and needs that are alive in any given situation. We are invited to take responsibility for what we are experiencing, and NVC provides a clear framework within which to hear what is essential in someone’s message. As we move towards a respectful dialogue, the quality of connection transforms potential challenges into situations of clarity and good-will, bringing out win-win solutions for all, and thereby increasing our chances of living and acting in alignment with our deeper values.

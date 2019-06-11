@@ -102,41 +102,18 @@ const styleX = css({
       border: 'unset',
       background: 'unset',
       marginLeft: 40,
-      marginTop: 1,
-      marginBottom: 1,
+      marginTop: 26,
+      marginBottom: 11,
       height: '100px !important',
       width: '90px !important',
 
-      '@media(min-width: 1092px)': {
-        marginTop: 6,
-        marginBottom: 6,
-        height: '110px !important',
-        width: '99px !important',
-      },
-
-      '@media(min-width: 1192px)': {
-        marginTop: 11,
-        marginBottom: 11,
+      '@media(min-width: 1200px)': {
+        marginBottom: 17,
         height: '120px !important',
         width: '108px !important',
       },
 
-      '@media(min-width: 1292px)': {
-        marginTop: 16,
-        marginBottom: 16,
-        height: '130px !important',
-        width: '117px !important',
-      },
-
-      '@media(min-width: 1392px)': {
-        marginTop: 21,
-        marginBottom: 21,
-        height: '140px !important',
-        width: '126px !important',
-      },
-
-      '@media(min-width: 1492px)': {
-        marginTop: 26,
+      '@media(min-width: 1500px)': {
         marginBottom: 26,
         height: '150px !important',
         width: '135px !important',
@@ -206,12 +183,12 @@ const styleX = css({
       fontWeight: '500 !important',
       color: '#b43808 !important',
 
-      '@media(min-width: 1192px)': {
+      '@media(min-width: 1200px)': {
         lineHeight: '21px !important',
         height: '21px !important',
       },
 
-      '@media(min-width: 1392px)': {
+      '@media(min-width: 1500px)': {
         lineHeight: '24px !important',
         height: '24px !important',
       },

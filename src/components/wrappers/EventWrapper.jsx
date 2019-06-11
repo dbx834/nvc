@@ -85,14 +85,23 @@ const pageStyles = css({
     '& .banner': {
       flex: '7 1 0%',
 
+      // Mobile
       '@media(max-width: 992px)': {
+        maxWidth: 600,
         marginBottom: 10,
       },
     },
 
     '& .abstract': {
       flex: '12 1 0%',
-      paddingLeft: 15,
+
+      // Mobile
+      '@media(max-width: 992px)': {},
+
+      // Desktop
+      '@media(min-width: 992px)': {
+        paddingLeft: 15,
+      },
 
       '& h3': {
         marginTop: 0,

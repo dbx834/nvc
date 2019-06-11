@@ -133,41 +133,6 @@ const style = css({
     color: '#4a4a4a',
   },
 
-  // '&#appWrapper': {
-  //   position: 'relative',
-
-  //   '& #contentWrapper': {
-  //     backgroundColor: '#f8f2e6',
-  //     background: '#f8f2e6',
-  //     minHeight: '100vh',
-  //   },
-
-  //   '@media(min-width: 992px)': {
-  //     display: 'flex',
-
-  //     '& #menuWrapper': {
-  //       flexGrow: '19',
-  //       flexBasis: 0,
-  //       height: '100vh',
-  //     },
-
-  //     '& #contentWrapper': {
-  //       boxShadow: '0 0 25px rgba(0,0,0,.11)',
-  //       flexGrow: '81',
-  //       flexBasis: 0,
-  //       maxHeight: '100vh',
-  //       overflowX: 'hidden',
-  //       overflowY: 'scroll',
-  //       marginTop: 16,
-  //       borderTopLeftRadius: 16,
-  //     },
-  //   },
-  // },
-
-  // '& #menuWrapper': {
-  //   zIndex: 1000,
-  // },
-
   '@media(min-width: 992px)': {
     '& .mobile-only': {
       display: 'none',
@@ -177,6 +142,22 @@ const style = css({
   '@media(max-width: 992px)': {
     '& .desktop-only': {
       display: 'none',
+    },
+  },
+
+  '& #fb': {
+    '& > div': {
+      '& > div': {
+        '& > span': {
+          width: '96px !important',
+          overflow: 'hidden !important',
+
+          '& > iframe': {
+            width: '96px !important',
+            overflow: 'hidden !important',
+          },
+        },
+      },
     },
   },
 }).toString()

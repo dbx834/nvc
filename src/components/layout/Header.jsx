@@ -7,25 +7,15 @@ import PropTypes from 'prop-types'
 import { css } from 'glamor'
 
 import map from 'lodash/map'
-import startsWith from 'lodash/startsWith'
 import isUndefined from 'lodash/isUndefined'
-import split from 'lodash/split'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Container from '@bodhi-project/components/lib/Container'
 import Image from '@bodhi-project/components/lib/Image'
 import keygen from '@bodhi-project/components/lib/methods/keygen'
 
-import { Type } from '@bodhi-project/typography'
-
 import Menu from 'antd/lib/menu'
 import '@bodhi-project/antrd/lib/restorative-auroville/3.10.0/menu/style/css'
-
-import Popover from 'antd/lib/popover'
-import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/popover/style/css'
-
-import Modal from 'antd/lib/modal'
-import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/modal/style/css'
 
 import Drawer from 'antd/lib/drawer'
 import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/drawer/style/css'
@@ -39,11 +29,6 @@ import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/icon/style/css'
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import Link from '../Link'
 import websiteMenu from '../../data/menu.json'
-
-import ContactForm from '../blocks/contact/ContactForm'
-import NewsletterForm from '../blocks/newsletter/NewsletterForm'
-import Donate from '../blocks/donate/Donate'
-import PayFee from '../blocks/pay-fee/PayFee'
 
 import logo from '../../assets/logo.png'
 import mobileLogo from '../../assets/mobileLogo.webp'
@@ -112,6 +97,51 @@ const styleX = css({
       overflowY: 'scroll',
       overflowX: 'hidden',
     },
+
+    '& .top-logo': {
+      border: 'unset',
+      background: 'unset',
+      marginLeft: 40,
+      marginTop: 1,
+      marginBottom: 1,
+      height: '100px !important',
+      width: '90px !important',
+
+      '@media(min-width: 1092px)': {
+        marginTop: 6,
+        marginBottom: 6,
+        height: '110px !important',
+        width: '99px !important',
+      },
+
+      '@media(min-width: 1192px)': {
+        marginTop: 11,
+        marginBottom: 11,
+        height: '120px !important',
+        width: '108px !important',
+      },
+
+      '@media(min-width: 1292px)': {
+        marginTop: 16,
+        marginBottom: 16,
+        height: '130px !important',
+        width: '117px !important',
+      },
+
+      '@media(min-width: 1392px)': {
+        marginTop: 21,
+        marginBottom: 21,
+        height: '140px !important',
+        width: '126px !important',
+      },
+
+      '@media(min-width: 1492px)': {
+        marginTop: 26,
+        marginBottom: 26,
+        height: '150px !important',
+        width: '135px !important',
+      },
+    },
   },
 
   // Both
@@ -153,16 +183,16 @@ const styleX = css({
     '& .ant-menu-submenu': {
       ':not(:first-child)': {
         '@media(max-width: 992px)': {
-          marginTop: 8,
+          marginTop: 4,
         },
         '@media(min-width: 992px)': {
-          marginTop: 10,
+          marginTop: 8,
         },
         '@media(min-width: 1200px)': {
           marginTop: 12,
         },
         '@media(min-width: 1500px)': {
-          marginTop: 14,
+          marginTop: 16,
         },
       },
     },
@@ -314,14 +344,6 @@ const styleX = css({
   },
 }).toString()
 
-const modalStyle = css({
-  '& h1': {
-    fontFamily: 'futura-pt, sans-serif !important',
-    fontWeight: 700,
-    marginTop: 0,
-  },
-}).toString()
-
 // ----------------------------------------------------------------------------
 // ------------------------------------------------------------------ Component
 // ----------------------------------------------------------------------------
@@ -394,15 +416,7 @@ class DesktopNav extends React.Component {
                   src={logo}
                   rawWidth={842}
                   rawHeight={936}
-                  style={{
-                    height: 156,
-                    width: 140,
-                    border: 'unset',
-                    background: 'unset',
-                    marginLeft: 40,
-                    marginBottom: 26,
-                    marginTop: 26,
-                  }}
+                  className="top-logo"
                   loader="gradient"
                   alt="NVC India"
                 />
@@ -544,74 +558,6 @@ class DesktopNav extends React.Component {
             </Drawer>
           </Fragment>
         )}
-        <Modal
-          visible={this.state.modalVisible}
-          bodyStyle={{
-            minWidth: '640px',
-            minHeight: '480px',
-            padding: 0,
-          }}
-          style={{
-            minWidth: '640px',
-            minHeight: '480px',
-            top: 30,
-            padding: 0,
-            borderRadius: 8,
-          }}
-          title={null}
-          closable={false}
-          footer={[null, null]}
-        >
-          <Type
-            kit="jdd4npp"
-            style={{
-              minWidth: '640px',
-              minHeight: '480px',
-            }}
-            className={modalStyle}
-            options={{
-              range: [15, 21], // Min and Max font-sizes
-              paragraphSpacingFactor: 1.2, // Greater for tighter paragraph-paragraph spacing
-              headingParagraphGapSpacingFactor: 0.95, // Greater for tighter header-paragraph spacing
-              indentParagraphs: false,
-            }}
-          >
-            <main
-              style={{
-                minWidth: '640px',
-                minHeight: '480px',
-                padding: '1.5rem',
-                backgroundColor: '#f8f2e6',
-                position: 'relative',
-              }}
-            >
-              <div
-                style={{
-                  position: 'absolute',
-                  display: 'inline-block',
-                  top: 30,
-                  right: '1.5rem',
-                  zIndex: 10,
-                  marginBottom: 0,
-                }}
-                className="mask-p"
-              >
-                <a
-                  href="#"
-                  onClick={e => {
-                    this.hideModal(e)
-                  }}
-                >
-                  Close
-                </a>
-              </div>
-              {modalRoute === '/contact-us' && <ContactForm />}
-              {modalRoute === '/newsletter' && <NewsletterForm />}
-              {modalRoute === '/pay-fee' && <PayFee />}
-              {modalRoute === '/donate' && <Donate />}
-            </main>
-          </Type>
-        </Modal>
       </header>
     )
   }

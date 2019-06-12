@@ -9,10 +9,6 @@ import merge from 'lodash/merge'
 // --------------------------------------------------------------------- Styles
 // ----------------------------------------------------------------------------
 export const formStyle = css({
-  display: 'flex !important',
-  flexWrap: 'wrap !important',
-  color: 'inherit !important',
-
   '& .ant-form-item': merge({
     display: 'flex !important',
     width: '100%',
@@ -30,16 +26,14 @@ export const formStyle = css({
     },
 
     '& .ant-select-selection': {
-      border: 'none',
-      borderBottom: '2px solid #646464',
+      border: '1.25px solid #646464',
       borderRadius: 0,
       height: 'auto',
       backgroundColor: '#f8f2e6',
 
       '&:focus,:active': {
-        border: 'none',
+        border: '1.25px solid #646464',
         boxShadow: 'none',
-        borderBottom: '2px solid #646464',
       },
     },
 
@@ -72,14 +66,13 @@ export const formStyle = css({
   '& .ant-input': {
     fontSize: 'inherit !important',
     fontFamily: 'inherit',
-    border: 'none',
-    borderBottom: '2px solid #646464',
+    border: '1.25px solid #646464',
     borderRadius: 0,
     height: 'auto',
     color: '#363636',
     transition: 'border 500ms cubic-bezier(0.215, 0.61, 0.355, 1)',
-    backgroundColor: '#f8f2e6',
-    padding: '0.5rem 1rem 0.5rem 0rem',
+    backgroundColor: 'rgba(255,215,0,0.033) !important',
+    padding: '0.5rem',
 
     '&::-webkit-input-placeholder': {
       color: '#363636',
@@ -90,50 +83,36 @@ export const formStyle = css({
     },
 
     '&:hover': {
-      border: 'none',
       boxShadow: 'none',
-      borderBottom: '2px solid #646464',
+      border: '1.25px solid #646464',
       color: '#b43808',
     },
     '&:visited': {
-      border: 'none',
       boxShadow: 'none',
-      borderBottom: '2px solid #646464',
+      border: '1.25px solid #646464',
     },
     '&:link': {
-      border: 'none',
+      border: '1.25px solid #646464',
       boxShadow: 'none',
-      borderBottom: '2px solid #646464',
     },
     '&:active': {
-      border: 'none',
+      border: '1.25px solid #646464',
       boxShadow: 'none',
-      borderBottom: '2px solid #646464',
     },
     '&:focus': {
-      border: 'none',
+      border: '1.25px solid #646464',
       boxShadow: 'none',
-      borderBottom: '2px solid #b43808',
       color: '#b43808',
     },
   },
 
   // Submit button
-  '& .ant-btn-primary': merge(
-    {
-      fontSize: 'inherit',
-      borderRadius: 0,
-      backgroundColor: '#b43808',
-      borderColor: '#b43808',
-      marginTop: 30,
-      padding: '0px 8px',
-
-      '& span': {
-        fontSize: '80%',
-      },
-    }
-    // ...applyRhythm({ padding: '0X 0.625X' })
-  ),
+  '& .ant-btn-primary': {
+    borderRadius: 0,
+    backgroundColor: '#b43808',
+    borderColor: '#b43808',
+    margin: 0,
+  },
 
   '& .ant-btn-primary[disabled]': {
     color: 'rgba(54, 54, 54, 0.375)',
@@ -144,10 +123,22 @@ export const formStyle = css({
     backgroundSize: '10px 10px',
   },
 
-  '& .has-error .ant-input:focus': {
-    border: 'none !important',
+  // Error state
+  '& .has-error .ant-input': {
     boxShadow: 'none !important',
-    borderBottom: '3px solid #ff4d4f !important',
+    borderColor: '#8b0000 !important',
+
+    '&:focus': {
+      boxShadow: 'none !important',
+      borderColor: '#8b0000 !important',
+    },
+  },
+
+  // Space below error message
+  '& .ant-form-explain': {
+    '& > p': {
+      marginBottom: 12,
+    },
   },
 }).toString()
 

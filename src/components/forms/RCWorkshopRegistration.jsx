@@ -11,6 +11,7 @@ import isNull from 'lodash/isNull'
 import isUndefined from 'lodash/isUndefined'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
+import { validateEmail } from '@bodhi-project/components/lib/methods/formHelpers'
 import Image from '@bodhi-project/components/lib/Image'
 
 import Tooltip from 'antd/lib/tooltip'
@@ -35,7 +36,6 @@ import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/radio/style/css'
 import Link from '../Link'
 import {
   hasErrors,
-  validateEmail,
   validateName,
   validateMobile,
   validateCountry,
@@ -310,80 +310,143 @@ class RCPracticeGroupSide extends React.Component {
                     className={`${formStyle} mask-p`}
                   >
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Name */}
-                    <FormItem validateStatus={nameError ? 'error' : ''} help="">
+                    <p>Name</p>
+                    <FormItem
+                      validateStatus={nameError ? 'error' : ''}
+                      help={
+                        nameError ? (
+                          <p>
+                            <small>{nameError}</small>
+                          </p>
+                        ) : (
+                          ''
+                        )
+                      }
+                      className="mask-p"
+                    >
                       {getFieldDecorator('name', {
                         validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateName }],
-                      })(<Input placeholder="Name" />)}
+                      })(<Input />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Email */}
+                    <p>Email</p>
                     <FormItem
                       validateStatus={emailError ? 'error' : ''}
-                      help=""
+                      help={
+                        emailError ? (
+                          <p>
+                            <small>{emailError}</small>
+                          </p>
+                        ) : (
+                          ''
+                        )
+                      }
+                      className="mask-p"
                     >
                       {getFieldDecorator('email', {
                         validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateEmail }],
-                      })(<Input placeholder="Email" />)}
+                      })(<Input />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Mobile */}
+                    <p>Mobile / WhatsApp</p>
                     <FormItem
                       validateStatus={mobileError ? 'error' : ''}
-                      help=""
+                      help={
+                        mobileError ? (
+                          <p>
+                            <small>{mobileError}</small>
+                          </p>
+                        ) : (
+                          ''
+                        )
+                      }
+                      className="mask-p"
                     >
                       {getFieldDecorator('mobile', {
                         validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateMobile }],
-                      })(<Input placeholder="Mobile / WhatsApp" />)}
+                      })(<Input />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Country Selection */}
+                    <p>What's your country of origin?</p>
                     <FormItem
                       validateStatus={countryError ? 'error' : ''}
-                      help=""
+                      help={
+                        countryError ? (
+                          <p>
+                            <small>{countryError}</small>
+                          </p>
+                        ) : (
+                          ''
+                        )
+                      }
+                      className="mask-p"
                     >
                       {getFieldDecorator('country', {
                         validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateCountry }],
-                      })(
-                        <Input placeholder="What's your country of origin?" />
-                      )}
+                      })(<Input />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Location */}
+                    <p>Where are you living presently?</p>
                     <FormItem
                       validateStatus={currentLocationError ? 'error' : ''}
-                      help=""
+                      help={
+                        currentLocationError ? (
+                          <p>
+                            <small>{currentLocationError}</small>
+                          </p>
+                        ) : (
+                          ''
+                        )
+                      }
+                      className="mask-p"
                     >
                       {getFieldDecorator('currentLocation', {
                         validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateCurrentLocation }],
-                      })(
-                        <Input placeholder="Where are you living presently?" />
-                      )}
+                      })(<Input />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ What Draws You */}
+                    <p>What draws you to this workshop?</p>
                     <FormItem
                       validateStatus={whatDrawsYouError ? 'error' : ''}
-                      help=""
+                      help={
+                        whatDrawsYouError ? (
+                          <p>
+                            <small>{whatDrawsYouError}</small>
+                          </p>
+                        ) : (
+                          ''
+                        )
+                      }
+                      className="mask-p"
                     >
                       {getFieldDecorator('whatDrawsYou', {
                         validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateWhatDrawsYou }],
-                      })(
-                        <TextArea
-                          placeholder="What draws you to this workshop?"
-                          autosize={{ minRows: 3, maxRows: 5 }}
-                        />
-                      )}
+                      })(<TextArea autosize={{ minRows: 3, maxRows: 5 }} />)}
                     </FormItem>
 
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Experience Level */}
-                    <span style={{ marginBottom: 8, display: 'block' }}>
+                    <p>
                       Do you have any previous experience with NVC and/or RC (or
                       Restorative Justice)?
-                    </span>
+                    </p>
                     <FormItem
                       validateStatus={experienceError ? 'error' : ''}
-                      help=""
+                      help={
+                        experienceError ? (
+                          <p>
+                            <small>{experienceError}</small>
+                          </p>
+                        ) : (
+                          ''
+                        )
+                      }
+                      className="mask-p"
                     >
                       {getFieldDecorator('experience', {
                         validateTrigger: ['onChange', 'onBlur'],
@@ -422,29 +485,46 @@ class RCPracticeGroupSide extends React.Component {
                     </FormItem>
 
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Journey */}
+                    <p>
+                      Please share a few sentences about your NVC and/or RC
+                      journey.
+                    </p>
                     <FormItem
                       validateStatus={journeyError ? 'error' : ''}
-                      help=""
+                      help={
+                        journeyError ? (
+                          <p>
+                            <small>{journeyError}</small>
+                          </p>
+                        ) : (
+                          ''
+                        )
+                      }
+                      className="mask-p"
                     >
                       {getFieldDecorator('journey', {
                         validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateComment }],
-                      })(
-                        <TextArea
-                          placeholder="Please share a few sentences about your NVC and/or RC journey."
-                          autosize={{ minRows: 3, maxRows: 5 }}
-                        />
-                      )}
+                      })(<TextArea autosize={{ minRows: 3, maxRows: 5 }} />)}
                     </FormItem>
 
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ More Info. */}
-                    <span style={{ marginBottom: 8, display: 'block' }}>
+                    <p>
                       Would you be like to receive information about future NVC
                       and/or RC events?
-                    </span>
+                    </p>
                     <FormItem
                       validateStatus={wouldLikeInfoError ? 'error' : ''}
-                      help=""
+                      help={
+                        wouldLikeInfoError ? (
+                          <p>
+                            <small>{wouldLikeInfoError}</small>
+                          </p>
+                        ) : (
+                          ''
+                        )
+                      }
+                      className="mask-p"
                     >
                       {getFieldDecorator('wouldLikeInfo', {
                         validateTrigger: ['onChange', 'onBlur'],
@@ -469,19 +549,24 @@ class RCPracticeGroupSide extends React.Component {
                     </FormItem>
 
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Comment */}
+                    <p>Any other comments / questions?</p>
                     <FormItem
                       validateStatus={commentError ? 'error' : ''}
-                      help=""
+                      help={
+                        commentError ? (
+                          <p>
+                            <small>{commentError}</small>
+                          </p>
+                        ) : (
+                          ''
+                        )
+                      }
+                      className="mask-p"
                     >
                       {getFieldDecorator('comment', {
                         validateTrigger: ['onChange', 'onBlur'],
                         rules: [{ validator: validateComment }],
-                      })(
-                        <TextArea
-                          placeholder="Any other comments / questions?"
-                          autosize={{ minRows: 3, maxRows: 5 }}
-                        />
-                      )}
+                      })(<TextArea autosize={{ minRows: 3, maxRows: 5 }} />)}
                     </FormItem>
                     {/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Event Selection */}
                     <div style={{ display: 'none' }}>
@@ -517,6 +602,7 @@ class RCPracticeGroupSide extends React.Component {
                         htmlType="submit"
                         disabled={hasErrors(getFieldsError())}
                         loading={this.state.loader}
+                        className="mask-p"
                       >
                         Submit
                       </Button>

@@ -67,12 +67,13 @@ export const formStyle = css({
     fontSize: 'inherit !important',
     fontFamily: 'inherit',
     border: '1.25px solid #646464',
-    borderRadius: 0,
+    borderRadius: 6,
     height: 'auto',
     color: '#363636',
     transition: 'border 500ms cubic-bezier(0.215, 0.61, 0.355, 1)',
     backgroundColor: 'rgba(255,215,0,0.033) !important',
-    padding: '0.5rem',
+    boxShadow: '0 3px 6px rgba(255,215,0,0.033)',
+    padding: '0.25rem 0.5rem',
 
     '&::-webkit-input-placeholder': {
       color: '#363636',

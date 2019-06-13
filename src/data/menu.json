@@ -59,18 +59,6 @@
       { "title": "Blog", "link": "/writings", "mobileOnly": false },
       { "title": "Gallery", "link": "/gallery", "mobileOnly": false },
       {
-        "title": "Newsletter",
-        "link": "/newsletter",
-        "renderInModal": true,
-        "mobileOnly": false
-      },
-      {
-        "title": "Contact Us",
-        "link": "/contact-us",
-        "renderInModal": true,
-        "mobileOnly": false
-      },
-      {
         "title": "Donate",
         "link": "/donate",
         "renderInModal": true,
@@ -80,6 +68,18 @@
       {
         "title": "NVC Certification Info",
         "link": "/nvc-certification",
+        "mobileOnly": false
+      },
+      {
+        "title": "Newsletter",
+        "link": "/newsletter",
+        "renderInModal": true,
+        "mobileOnly": false
+      },
+      {
+        "title": "Contact Us",
+        "link": "/contact-us",
+        "renderInModal": true,
         "mobileOnly": false
       }
     ]

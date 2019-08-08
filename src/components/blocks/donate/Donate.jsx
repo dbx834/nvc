@@ -73,7 +73,7 @@ class Donate extends React.Component {
         </p>
         <div className="mask-p">
           <Button type="primary" style={{ marginTop: 10, marginBottom: 10 }}>
-            <Link to="https://www.auroville.com/donations/">Donate Now</Link>
+            <Link to="https://donations.auroville.com/">Donate Now</Link>
           </Button>
         </div>
         <p>

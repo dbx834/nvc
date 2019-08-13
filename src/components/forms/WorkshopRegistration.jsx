@@ -212,38 +212,17 @@ class RCPracticeGroupSide extends React.Component {
     const begins = moment(!isNull(startDate) ? startDate : date)
     const beginDateInt = parseInt(begins.format('YYYYMMDD'), 10)
     let eventStatus = null
-    let noPay = false
 
-    if (inArray(data.tags, 'noPay')) {
-      noPay = true
-    }
-
-    if (noPay === false) {
-      if (todayInt > beginDateInt) {
-        eventStatus = 'past'
-      } else if (todayInt < beginDateInt) {
-        eventStatus = 'future'
-      } else {
-        eventStatus = 'present'
-      }
+    if (todayInt > beginDateInt) {
+      eventStatus = 'past'
+    } else if (todayInt < beginDateInt) {
+      eventStatus = 'future'
     } else {
-      eventStatus = 'manual'
+      eventStatus = 'present'
     }
 
     return (
       <div className={styleClass}>
-        {eventStatus === 'manual' && (
-          <Fragment>
-            <h1 className="mask-h4">
-              <span>FEE</span>
-            </h1>
-            <p style={{ marginTop: 10 }}>
-              <strong>
-                <i>{data.cost}</i>
-              </strong>
-            </p>
-          </Fragment>
-        )}
         {(eventStatus === 'past' || eventStatus === 'present') && (
           <Fragment>
             <h1 className="mask-h4">

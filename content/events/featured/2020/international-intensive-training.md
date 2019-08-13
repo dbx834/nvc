@@ -1,12 +1,12 @@
 ---
 title: International Intensive Training (Kerala)
 subTitle: na
-cover: /content-assets/2020-events/iit.jpg
+cover: /content-assets/2020-events/iitNew_1440X900.jpg
 category: 3.Featured
 abstract: International Intensive Training in Nonviolent Communication.
 date: 2020-01-17
 startDate: 2020-01-17
-finishDate: 2020-01-25
+finishDate: 2020-01-26
 fromTime: 9am
 toTime: 5pm
 type: event
@@ -21,6 +21,6 @@ tags:
 
 &nbsp;
 
-![{"height": "auto", "width": "85%", "display": "inline-block", "background": "transparent"}](/content-assets/2020-events/iit_1440X900.jpg)
+![{"height": "auto", "width": "85%", "display": "inline-block", "background": "transparent"}](/content-assets/2020-events/iitNew_1440X900.jpg)
 
 For more details contact: iitindia2020@gmail.com

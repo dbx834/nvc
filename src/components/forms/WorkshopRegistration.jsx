@@ -9,6 +9,7 @@ import moment from 'moment'
 
 import isNull from 'lodash/isNull'
 import isUndefined from 'lodash/isUndefined'
+import indexOf from 'lodash/indexOf'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
 import Image from '@bodhi-project/components/lib/Image'
@@ -58,6 +59,18 @@ const radioStyle = {
   display: 'block',
   height: '24px',
   lineHeight: '24px',
+}
+
+// ----------------------------------------------------------------------------
+// ------------------------------------------------------------ Local Functions
+// ----------------------------------------------------------------------------
+/** inArray */
+const inArray = (array, value) => {
+  let rx = false
+  if (indexOf(array, value) >= 0) {
+    rx = true
+  }
+  return rx
 }
 
 // ----------------------------------------------------------------------------
@@ -199,17 +212,37 @@ class RCPracticeGroupSide extends React.Component {
     const begins = moment(!isNull(startDate) ? startDate : date)
     const beginDateInt = parseInt(begins.format('YYYYMMDD'), 10)
     let eventStatus = null
+    let noPay = false
 
-    if (todayInt > beginDateInt) {
-      eventStatus = 'past'
-    } else if (todayInt < beginDateInt) {
-      eventStatus = 'future'
+    if (inArray(data.tags, 'noPay')) {
+      noPay = true
+    }
+
+    if (noPay === false) {
+      if (todayInt > beginDateInt) {
+        eventStatus = 'past'
+      } else if (todayInt < beginDateInt) {
+        eventStatus = 'future'
+      } else {
+        eventStatus = 'present'
+      }
     } else {
-      eventStatus = 'present'
+      eventStatus = 'manual'
     }
 
     return (
       <div className={styleClass}>
+        {eventStatus === 'manual' && (
+          <Fragment>
+            <h1 className="mask-h4">
+              <span>Registration Closed</span>
+            </h1>
+            <p>
+              Please see the event description for information on how to
+              register.
+            </p>
+          </Fragment>
+        )}
         {(eventStatus === 'past' || eventStatus === 'present') && (
           <Fragment>
             <h1 className="mask-h4">

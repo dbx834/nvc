@@ -23,4 +23,6 @@ tags:
 
 ![{"height": "auto", "width": "85%", "display": "inline-block", "background": "transparent"}](/content-assets/2020-events/iitNew_1440X900.jpg)
 
-For more details contact: iitindia2020@gmail.com
+&nbsp;
+
+**For more details contact: iitindia2020@gmail.com**

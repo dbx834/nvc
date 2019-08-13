@@ -226,16 +226,12 @@ class NVCPracticeGroupSide extends React.Component {
         {eventStatus === 'manual' && (
           <Fragment>
             <h1 className="mask-h4">
-              <span>Fee</span>
+              <span>FEE</span>
             </h1>
             <p style={{ marginTop: 10 }}>
               <strong>
                 <i>{data.cost}</i>
               </strong>
-            </p>
-            <p>
-              Registration is closed. Please see the event description for
-              information on how to register.
             </p>
           </Fragment>
         )}
@@ -249,7 +245,7 @@ class NVCPracticeGroupSide extends React.Component {
         {eventStatus === 'future' && (
           <Fragment>
             <h1 className="mask-h4">
-              <span>Fee</span>
+              <span>FEE</span>
             </h1>
             <p style={{ marginTop: 10, marginBottom: 10 }}>
               <strong>

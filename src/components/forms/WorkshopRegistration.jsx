@@ -235,11 +235,12 @@ class RCPracticeGroupSide extends React.Component {
         {eventStatus === 'manual' && (
           <Fragment>
             <h1 className="mask-h4">
-              <span>Registration Closed</span>
+              <span>FEE</span>
             </h1>
-            <p>
-              Please see the event description for information on how to
-              register.
+            <p style={{ marginTop: 10 }}>
+              <strong>
+                <i>{data.cost}</i>
+              </strong>
             </p>
           </Fragment>
         )}

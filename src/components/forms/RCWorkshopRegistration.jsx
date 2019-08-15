@@ -210,7 +210,7 @@ class RCPracticeGroupSide extends React.Component {
         {eventStatus === 'future' && (
           <Fragment>
             <h1 className="mask-h4">
-              <span>FEE</span>
+              <span>Fee</span>
             </h1>
             <p style={{ marginTop: 10, marginBottom: 10 }}>
               <strong>

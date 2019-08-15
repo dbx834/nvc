@@ -18,6 +18,10 @@ import Image from '@bodhi-project/components/lib/Image'
 import Video from '@bodhi-project/components/lib/Video'
 // import OutLink from "@bodhi-project/components/lib/OutLink";
 
+import Division from '@bodhi-project/components/lib/Division'
+import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/row/style/css'
+import '@bodhi-project/antrd/lib/joy-living-learning/3.13.5/col/style/css'
+
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import Link from '../components/Link'
 import Copy from '../components/Copy'
@@ -99,20 +103,51 @@ class NVCPage extends React.PureComponent {
               and has the power to bring about constructive change, both on the
               individual and community levels.
             </p>
-            <h2 className="mask-h3">
-              "The Power of Dialogue": The Restorative System
-            </h2>
-            <p>
-              L'aura shares about her experience of engaging with Restorative
-              Circles in Auroville and the importance of designing a justice
-              system consciously, otherwise we'll just inherit the old ways.
-            </p>
-            <div style={{ maxWidth: 640 }} className="mask-p">
-              <Video url="https://www.youtube.com/watch?v=ur4OvDPkoSE" />
+            <h2 className="mask-h4">"The Power of Dialogue" Video Series</h2>
+            <div
+              style={{
+                padding: 8,
+                border: '1px dotted #b43808',
+                borderRadius: 8,
+                background: '#feece4',
+              }}
+            >
+              <Division>
+                <div>
+                  <Video url="https://www.youtube.com/watch?v=ur4OvDPkoSE" />
+                </div>
+                <div>
+                  <p>
+                    <strong>
+                      3.2 Designing our Justice System Consciously
+                    </strong>
+                    <br />
+                    L'aura shares about her experience of engaging with
+                    Restorative Circles in Auroville and the importance of
+                    designing a justice system consciously, otherwise we'll just
+                    inherit the old ways.
+                  </p>
+                </div>
+              </Division>
+              <Division>
+                <div>
+                  <Video url="https://www.youtube.com/watch?v=O40ut-RDcgI" />
+                </div>
+                <div>
+                  <p style={{ marginBottom: 0 }}>
+                    <strong>4.2 The Value of RC Facilitation</strong>
+                    <br />
+                    Pranjal reflects on his learning journey with RC
+                    facilitation, and appreciates how the skills he has acquired
+                    here can provide for a strong foundation in holding space in
+                    different contexts.
+                  </p>
+                </div>
+              </Division>
             </div>
-            <p>
+            <p style={{ marginBottom: 0 }}>
               <Link to="https://www.restorativeauroville.org/the-power-of-dialogue">
-                See our Video Series: "The Power of Dialogue" ⇝
+                See more ⇝
               </Link>
             </p>
           </Copy>

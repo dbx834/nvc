@@ -153,8 +153,8 @@ class EventList extends React.Component {
         loading={loading}
         locale={{
           emptyText: (
-            <p style={{ marginBottom: 0, color: '#989898', textAlign: 'left' }}>
-              <small>
+            <p style={{ marginBottom: 0, textAlign: 'left' }}>
+              <small style={{ fontSize: '90%' }}>
                 <i>Please check back later.</i>
               </small>
             </p>

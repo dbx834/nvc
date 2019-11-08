@@ -331,8 +331,8 @@ const defaultStyles = css({
 
     '& .ant-fullcalendar-calendar-body': {
       padding: 0,
-      width: 'fit-content',
-      maxWidth: 'fit-content',
+      width: '100%',
+      maxWidth: '100%',
 
       '& table': {
         '& thead': {

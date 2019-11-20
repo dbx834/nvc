@@ -19,8 +19,6 @@ tags:
   - unpay
 ---
 
-&nbsp;
-
 ![{"height": "auto", "width": "85%", "display": "inline-block", "background": "transparent"}](/content-assets/2020-events/iitNew_1440X900.jpg)
 
 &nbsp;

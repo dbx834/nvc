@@ -192,24 +192,12 @@ const BlogPostWrapper = ({ pageData, className, children, ...props }) => {
                   {frontmatter.abstract}
                 </p>
                 <br />
-                <div style={{ position: 'relative' }}>
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 99,
-                      backgroundColor: '#f8f2e6',
-                      zIndex: 10,
-                      height: 20,
-                      width: 'calc(100% - 96px)',
-                    }}
-                  />
-                  <div style={{ maxWidth: 96 }} id="fb">
+                <div style={{ position: 'relative' }} className="mask-p">
+                  <div style={{ maxWidth: 114, overflow: 'hidden' }}>
                     <FacebookProvider appId="218604115574634">
                       <FBLike
                         href={withUrl(route, data)}
                         colorScheme="dark"
-                        showFaces
                         share
                       />
                     </FacebookProvider>

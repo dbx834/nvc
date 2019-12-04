@@ -231,24 +231,15 @@ const EventWrapper = props => {
                   </i>
                 </p>
                 <br />
-                <div style={{ position: 'relative' }}>
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 99,
-                      backgroundColor: '#f8f2e6',
-                      zIndex: 10,
-                      height: 20,
-                      width: 'calc(100% - 96px)',
-                    }}
-                  />
-                  <div style={{ maxWidth: 96 }} id="fb">
+                <div
+                  style={{ position: 'relative', marginBottom: 0 }}
+                  className="mask-p"
+                >
+                  <div style={{ maxWidth: 114, overflow: 'hidden' }}>
                     <FacebookProvider appId="218604115574634">
                       <FBLike
                         href={withUrl(route, data)}
                         colorScheme="dark"
-                        showFaces
                         share
                       />
                     </FacebookProvider>
@@ -271,6 +262,7 @@ const EventWrapper = props => {
               pathContext={pathContext}
               showRegister={showRegister}
               showPay={showPay}
+              tags={tags}
             />
           )}
           {!isNull(whichSide) && whichSide === 'nvc-practice-group' && (
@@ -279,6 +271,7 @@ const EventWrapper = props => {
               pathContext={pathContext}
               showRegister={showRegister}
               showPay={showPay}
+              tags={tags}
             />
           )}
           {!isNull(whichSide) && whichSide === 'rc-workshop' && (
@@ -287,6 +280,7 @@ const EventWrapper = props => {
               pathContext={pathContext}
               showRegister={showRegister}
               showPay={showPay}
+              tags={tags}
             />
           )}
           {!isNull(whichSide) && whichSide === 'rc-workshop-featured' && (
@@ -295,6 +289,7 @@ const EventWrapper = props => {
               pathContext={pathContext}
               showRegister={showRegister}
               showPay={showPay}
+              tags={tags}
             />
           )}
           {!isNull(whichSide) && whichSide === 'nvc-workshop' && (
@@ -303,6 +298,7 @@ const EventWrapper = props => {
               pathContext={pathContext}
               showRegister={showRegister}
               showPay={showPay}
+              tags={tags}
             />
           )}
           {!isNull(whichSide) && whichSide === 'workshop' && (
@@ -311,6 +307,7 @@ const EventWrapper = props => {
               pathContext={pathContext}
               showRegister={showRegister}
               showPay={showPay}
+              tags={tags}
             />
           )}
         </Copy>

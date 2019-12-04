@@ -214,7 +214,7 @@ const BlogPostWrapper = ({ pageData, className, children, ...props }) => {
             <hr />
             <br />
             <br />
-            <DisqusComments pageData={pageData} collapsible={false} />
+            <DisqusComments pageData={pageData} collapsible />
             <hr
               className="mobile-only"
               style={{

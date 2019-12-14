@@ -17,8 +17,6 @@ tags:
   - featured
 ---
 
-![{"height": "60vh", "width": "auto", "display": "inline-block", "background": "transparent"}](/content-assets/2018-events/rcintro_800X1200.png)
-
 **Limited spaces. Register now!**
 
 **Building a Compassionate Justice System**

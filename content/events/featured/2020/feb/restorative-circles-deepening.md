@@ -4,9 +4,11 @@ subTitle: na
 cover: /content-assets/2018-events/aurovillerc.png
 category: 3.Featured
 abstract: Restorative Circles (RC) offer ways for individuals and communities to establish connection, discover meaning and recover power on profound levels.
-date: 2020-02-09
-fromTime: 2pm
-toTime: 6pm
+date: 2020-02-08
+startDate: 2020-02-08
+finishDate: 2020-02-09
+fromTime: 9.30am
+toTime: 5pm
 type: event
 cost: ₹ 3,000 (inclusive of GST)
 tags:
@@ -14,10 +16,6 @@ tags:
   - workshop
   - featured
 ---
-
-![{"height": "60vh", "width": "auto", "display": "inline-block", "background": "transparent"}](/content-assets/2018-events/rcintro_800X1200.png)
-
-&nbsp;
 
 **Limited spaces. Register now!**
 

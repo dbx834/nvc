@@ -4,9 +4,9 @@ subTitle: na
 cover: /content-assets/2018-events/aurovillenvc.png
 category: 3.Featured
 abstract: A path of Nonviolence offers both a deeply-rooted consciousness of oneness, as well as very practical tools to live this more and more in our daily lives.
-date: 2020-03-14
-startDate: 2020-03-14
-finishDate: 2020-03-15
+date: 2020-03-28
+startDate: 2020-03-28
+finishDate: 2020-03-29
 fromTime: 9.30am
 toTime: 5pm
 type: event

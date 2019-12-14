@@ -6,7 +6,7 @@ category: 3.Featured
 abstract: A path of Nonviolence offers both a deeply-rooted consciousness of oneness, as well as very practical tools to live this more and more in our daily lives.
 date: 2020-02-15
 startDate: 2020-02-15
-finishDate: 2020-02-15
+finishDate: 2020-02-16
 fromTime: 9.30am
 toTime: 5pm
 type: event

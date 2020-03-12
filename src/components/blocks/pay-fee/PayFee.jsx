@@ -67,7 +67,7 @@ class PayFee extends React.Component {
         <div className="mask-p">
           <br />
           <Link
-            to="https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD"
+            to="https://www.instamojo.com/@joylivinglearning/lc8626c75ec504947856a740e8ba71b94/"
             style={{ marginRight: 17 }}
             className="hover"
           >

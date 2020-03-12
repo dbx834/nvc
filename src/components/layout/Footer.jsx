@@ -35,7 +35,7 @@ import facebook from '../../assets/facebook.png'
 import youtube from '../../assets/youtube.png'
 import vimeo from '../../assets/vimeo.png'
 import paypal from '../../assets/paypal.png'
-import payu from '../../assets/payu.png'
+import instaMojo from '../../assets/instaMojo.png'
 import soundcloud from '../../assets/soundcloud.png'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions
@@ -190,13 +190,13 @@ const DesktopFooter = props => {
             alt="Listen to our dialogues on Soundcloud - https://soundcloud.com/laura-joy-145472107"
           />
         </Link>
-        <Link to="https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD">
+        <Link to="https://www.instamojo.com/@joylivinglearning/lc8626c75ec504947856a740e8ba71b94/">
           <Image
-            src={payu}
+            src={instaMojo}
             rawWidth={450}
             rawHeight={450}
             className="img"
-            alt="Donate or pay fees through PayU - https://www.payumoney.com/paybypayumoney/#/767B47CF78C16C75195046663CFE75CD"
+            alt="Donate or pay fees through InstaMojo - https://www.instamojo.com/@joylivinglearning/lc8626c75ec504947856a740e8ba71b94/"
           />
         </Link>
         <form

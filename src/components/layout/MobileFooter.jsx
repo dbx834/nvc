@@ -26,7 +26,6 @@ import facebook from '../../assets/facebook.png'
 import youtube from '../../assets/youtube.png'
 import vimeo from '../../assets/vimeo.png'
 import paypal from '../../assets/paypal.png'
-import payu from '../../assets/payu.png'
 import soundcloud from '../../assets/soundcloud.png'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Abstractions

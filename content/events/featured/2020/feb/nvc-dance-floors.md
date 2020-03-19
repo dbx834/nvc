@@ -1,7 +1,7 @@
 ---
 title: NVC Dance Floors – NVC Deepening (Auroville)
 subTitle: na
-cover: /content-assets/2018-events/aurovillenvc.png
+cover: /content-assets/2018-events/aurovillenvc-cancelled.jpg
 category: 3.Featured
 abstract: Coming soon.
 date: 2020-02-22

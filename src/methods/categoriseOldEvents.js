@@ -30,7 +30,7 @@ const inArray = (array, value) => {
 /** categoriseEvents */
 const categoriseEvents = (
   postEdges,
-  totalFeaturedEvents = 16,
+  totalFeaturedEvents = 124,
   totalPracticeGroups = 4
 ) => {
   const featuredEvents = []

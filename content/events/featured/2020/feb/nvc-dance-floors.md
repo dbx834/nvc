@@ -3,7 +3,7 @@ title: NVC Dance Floors – NVC Deepening (Auroville)
 subTitle: na
 cover: /content-assets/2018-events/aurovillenvc-cancelled.jpg
 category: 3.Featured
-abstract: Coming soon.
+abstract: Cancelled.
 date: 2020-02-22
 fromTime: 9.30am
 toTime: 5pm
@@ -15,4 +15,6 @@ tags:
   - featured
 ---
 
-Coming soon.
+&nbsp;
+
+Cancelled.

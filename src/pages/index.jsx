@@ -261,7 +261,8 @@ class IndexPage extends React.Component {
                   <About />
                   <UpcomingEvents data={events.featuredEvents} />
                   <NVCEvents data={events.NVCEvents} />
-                  <RCEvents data={events.RCEvents} />
+                  {/* <RCEvents data={events.RCEvents} /> */}
+                  <RCEvents data={[]} />
                   <Quotes />
                   <FacebookWall />
                   {/*

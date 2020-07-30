@@ -11,7 +11,6 @@ import startsWith from 'lodash/startsWith'
 import isUndefined from 'lodash/isUndefined'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import { FacebookProvider, Like as FBLike } from 'react-facebook'
 import {
   // --------------- Basic
   UpdateTitle,
@@ -230,21 +229,6 @@ const EventWrapper = props => {
                     {toTime}
                   </i>
                 </p>
-                <br />
-                <div
-                  style={{ position: 'relative', marginBottom: 0 }}
-                  className="mask-p"
-                >
-                  <div style={{ maxWidth: 114, overflow: 'hidden' }}>
-                    <FacebookProvider appId="218604115574634">
-                      <FBLike
-                        href={withUrl(route, data)}
-                        colorScheme="dark"
-                        share
-                      />
-                    </FacebookProvider>
-                  </div>
-                </div>
               </div>
             </header>
             <hr />

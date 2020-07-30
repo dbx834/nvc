@@ -603,7 +603,8 @@ class RCPracticeGroupSide extends React.Component {
                       <Button
                         type="primary"
                         htmlType="submit"
-                        disabled={hasErrors(getFieldsError())}
+                        // disabled={hasErrors(getFieldsError())}
+                        disabled
                         loading={this.state.loader}
                         className="mask-p"
                       >

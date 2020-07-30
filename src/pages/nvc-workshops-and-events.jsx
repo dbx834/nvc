@@ -190,7 +190,8 @@ class EventsAndCalendar extends React.Component {
           </Copy>
           <Copy>
             <NVCEvents data={events.NVCEvents} />
-            <RCEvents data={events.RCEvents} />
+            {/* <RCEvents data={events.RCEvents} /> */}
+            <RCEvents data={[]} />
           </Copy>
         </StandardDiv>
       </StandardPage>

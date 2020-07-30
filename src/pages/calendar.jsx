@@ -12,6 +12,7 @@ import join from 'lodash/join'
 import pick from 'lodash/pick'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
+import ContainerDimensions from 'react-container-dimensions'
 import { withPrefix } from 'gatsby'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
@@ -228,10 +229,63 @@ const Calendar = props => {
         hero="We offer learning opportunities through workshops and practice groups on Nonviolent Communication and Restorative Circles. We are also available for individual coaching and mediation, and we are happy to consult with community-based projects that are seeking to shift paradigms."
       />
       <StandardDiv>
-        <Copy>
-          <DesktopCalendar data={phoebeData} />
-          <MobileCalendar data={altHalleyData} style={{ padding: 0 }} />
-        </Copy>
+        <div className="notice-container">
+          <Copy>
+            <DesktopCalendar data={phoebeData} />
+            <MobileCalendar data={altHalleyData} style={{ padding: 0 }} />
+          </Copy>
+          <ContainerDimensions>
+            {({ width, height }) => {
+              return (
+                <svg
+                  width={width}
+                  height={height}
+                  viewBox={`0 0 ${width} ${height}`}
+                  className="notice-overlay"
+                >
+                  <rect
+                    x="10"
+                    y="10"
+                    width={width - 20}
+                    height={height - 20}
+                    style={{ stroke: '#ff3434', strokeWidth: 10, fill: 'none' }}
+                    rx={20}
+                    ry={20}
+                  />
+                  <line
+                    id="line"
+                    x1="17.5"
+                    y1="17.5"
+                    x2={width - 17.5}
+                    y2={height - 17.5}
+                    stroke="#ff3434"
+                    strokeWidth="20"
+                  />
+                  <g>
+                    <circle
+                      cx={width / 2}
+                      cy={height / 2}
+                      r={80}
+                      style={{ fill: '#ff3434' }}
+                    />
+                    <text
+                      x="50%"
+                      y="50%"
+                      textAnchor="middle"
+                      fill="#fff"
+                      dy={-8}
+                    >
+                      <tspan>Paused until</tspan>
+                      <tspan dy={18} dx={-95}>
+                        further notice...
+                      </tspan>
+                    </text>
+                  </g>
+                </svg>
+              )
+            }}
+          </ContainerDimensions>
+        </div>
         <Copy>
           <RightBlock line={false}>
             <p>

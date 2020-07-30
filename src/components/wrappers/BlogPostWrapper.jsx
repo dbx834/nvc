@@ -10,7 +10,6 @@ import isNull from 'lodash/isNull'
 import kebabCase from 'lodash/kebabCase'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Components
-import { FacebookProvider, Like as FBLike } from 'react-facebook'
 import {
   // --------------- Basic
   UpdateTitle,
@@ -191,18 +190,6 @@ const BlogPostWrapper = ({ pageData, className, children, ...props }) => {
                   <br />
                   {frontmatter.abstract}
                 </p>
-                <br />
-                <div style={{ position: 'relative' }} className="mask-p">
-                  <div style={{ maxWidth: 114, overflow: 'hidden' }}>
-                    <FacebookProvider appId="218604115574634">
-                      <FBLike
-                        href={withUrl(route, data)}
-                        colorScheme="dark"
-                        share
-                      />
-                    </FacebookProvider>
-                  </div>
-                </div>
               </div>
             </header>
             <hr />

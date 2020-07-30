@@ -26,6 +26,7 @@ import {
 } from '@bodhi-project/seo'
 
 import Image from '@bodhi-project/components/lib/Image'
+import ContainerDimensions from 'react-container-dimensions'
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Locals
 import Layout from '../layout/Layout'
@@ -179,60 +180,118 @@ const EventWrapper = props => {
       <StandardDiv leftLine={false}>
         <Copy>
           <article>
-            <header className="headings">
-              <div className="banner">
-                <Image
-                  src={eventBanner}
-                  rawWidth={1440}
-                  rawHeight={900}
-                  loader="gradient"
-                  style={{ border: 0 }}
-                />
-              </div>
-              <div className="abstract">
-                <h1
-                  className="mask-h3"
-                  style={{ marginBottom: 14, lineHeight: 1.2 }}
-                >
-                  {frontmatter.title}
-                </h1>
-                <p style={{ marginTop: 0, marginBottom: 0 }}>
-                  {(inArray(tags, 'rc') && inArray(tags, 'practice-group')) ||
-                  (inArray(tags, 'nvc') && inArray(tags, 'practice-group')) ? (
-                    <Fragment>
-                      <strong>
-                        {frontmatter.subTitle}
-                        &nbsp; • &nbsp;
-                        {fromTime}
-                        &nbsp;–&nbsp;
-                        {toTime}
-                      </strong>
-                      <br />
-                      <br />
-                    </Fragment>
-                  ) : (
-                    <Fragment>
-                      {frontmatter.subTitle !== 'na' && (
-                        <Fragment>
-                          <strong>{frontmatter.subTitle}</strong>
-                          <br />
-                          <br />
-                        </Fragment>
-                      )}
-                    </Fragment>
-                  )}
-                  <i>{humanDate}</i>
-                  <br />
-                  <i>
-                    {fromTime}
-                    &nbsp;-&nbsp;
-                    {toTime}
-                  </i>
-                </p>
-              </div>
-            </header>
-            <hr />
-            {children}
+            <div className="notice-container">
+              <header className="headings">
+                <div className="banner">
+                  <Image
+                    src={eventBanner}
+                    rawWidth={1440}
+                    rawHeight={900}
+                    loader="gradient"
+                    style={{ border: 0 }}
+                  />
+                </div>
+                <div className="abstract">
+                  <h1
+                    className="mask-h3"
+                    style={{ marginBottom: 14, lineHeight: 1.2 }}
+                  >
+                    {frontmatter.title}
+                  </h1>
+                  <p style={{ marginTop: 0, marginBottom: 0 }}>
+                    {(inArray(tags, 'rc') && inArray(tags, 'practice-group')) ||
+                    (inArray(tags, 'nvc') &&
+                      inArray(tags, 'practice-group')) ? (
+                      <Fragment>
+                        <strong>
+                          {frontmatter.subTitle}
+                          &nbsp; • &nbsp;
+                          {fromTime}
+                          &nbsp;–&nbsp;
+                          {toTime}
+                        </strong>
+                        <br />
+                        <br />
+                      </Fragment>
+                    ) : (
+                      <Fragment>
+                        {frontmatter.subTitle !== 'na' && (
+                          <Fragment>
+                            <strong>{frontmatter.subTitle}</strong>
+                            <br />
+                            <br />
+                          </Fragment>
+                        )}
+                      </Fragment>
+                    )}
+                    <i>{humanDate}</i>
+                    <br />
+                    <i>
+                      {fromTime}
+                      &nbsp;-&nbsp;
+                      {toTime}
+                    </i>
+                  </p>
+                </div>
+              </header>
+              <hr />
+              {children}
+              <ContainerDimensions>
+                {({ width, height }) => {
+                  return (
+                    <svg
+                      width={width}
+                      height={height}
+                      viewBox={`0 0 ${width} ${height}`}
+                      className="notice-overlay"
+                    >
+                      <rect
+                        x="10"
+                        y="10"
+                        width={width - 20}
+                        height={height - 20}
+                        style={{
+                          stroke: '#ff3434',
+                          strokeWidth: 10,
+                          fill: 'none',
+                        }}
+                        rx={20}
+                        ry={20}
+                      />
+                      <line
+                        id="line"
+                        x1="17.5"
+                        y1="17.5"
+                        x2={width - 17.5}
+                        y2={height - 17.5}
+                        stroke="#ff3434"
+                        strokeWidth="20"
+                      />
+                      <g>
+                        <circle
+                          cx={width / 2}
+                          cy={height / 2}
+                          r={80}
+                          style={{ fill: '#ff3434' }}
+                        />
+                        <text
+                          x="50%"
+                          y="50%"
+                          textAnchor="middle"
+                          fill="#fff"
+                          dy={-8}
+                        >
+                          <tspan>Paused until</tspan>
+                          <tspan dy={18} dx={-95}>
+                            further notice...
+                          </tspan>
+                        </text>
+                      </g>
+                    </svg>
+                  )
+                }}
+              </ContainerDimensions>
+            </div>
             <aside>
               <h1 className="mask-h4">{title}</h1>
               <PreviousNext prev={prevData} next={nextData} />

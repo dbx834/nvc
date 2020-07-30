@@ -658,6 +658,9 @@ class RCPracticeGroupSide extends React.Component {
                         </FormItem>
                       </Form>
                     )}
+                    <p className="home" style={{ textIndent: 0 }}>
+                      Paused until further notice...
+                    </p>
                     {/* On-sent message */}
                     {this.state.formSent === true && (
                       <p className="home" style={{ marginTop: 10 }}>

@@ -281,8 +281,8 @@ const EventWrapper = props => {
                           fill="#fff"
                           dy={-8}
                         >
-                          <tspan>Paused until</tspan>
-                          <tspan dy={18} dx={-95}>
+                          <tspan dx={5}>Paused until</tspan>
+                          <tspan dy={18} dx={-72}>
                             further notice...
                           </tspan>
                         </text>

@@ -29,6 +29,7 @@ const style = css({}).toString()
 /** UpcomingEvents */
 const UpcomingEvents = props => {
   const { data } = props
+  console.log(data)
 
   return (
     <Fragment>
@@ -52,7 +53,7 @@ const UpcomingEvents = props => {
           </small>
         </p>
       </div>
-      <EventList data={data} />
+      <EventList data={[]} />
     </Fragment>
   )
 }
